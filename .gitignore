@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Node (also handled per-subproject)
+node_modules/
+
+# Next.js build artefacts (also handled per-subproject)
+.next/
+out/
+build/
+dist/
+
+# Vercel
+.vercel/
+
+# Références design — conservées en local uniquement (non publiées)
+design_handoff_marion_chartier_site/
+Design_conception/
+

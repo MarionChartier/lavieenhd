@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs — palette "La vie en HD" */
+  --color-ink-deep: #503c62;
+  --color-ink: #766488;
+  --color-ink-soft: #9784aa;
+  --color-ink-lilac: #bea4d8;
+  --color-turquoise: #75ced2;
+  --color-turquoise-soft: #dbeef4;
+  --color-beige: #c1ad8d;
+  --color-beige-soft: #decdad;
+  --color-beige-paper: #f5ecdb;
+  --color-sage: #b8c8b8;
+  --color-sage-soft: #d8e0d6;
+  --color-paper: #fdfbf7;
+  --color-line: #e8dff0;
+  --color-dark: #1c1424;
+
+  /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-script: var(--font-tansongbird), var(--font-cormorant), cursive;
+  --font-sub: var(--font-rebel), var(--font-cormorant), serif;
+  --font-body: var(--font-luciole), "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", monospace;
+
+  /* Spacing custom (en plus du scale Tailwind par défaut) */
+  --container-content: 1280px;
+
+  /* Shadows signature */
+  --shadow-card: 0 16px 40px -20px rgba(80, 60, 98, 0.16);
+  --shadow-card-hover: 0 24px 48px -24px rgba(80, 60, 98, 0.18);
+  --shadow-simu: 0 30px 70px -30px rgba(80, 60, 98, 0.18);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink-deep);
+  background: var(--color-white, #ffffff);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+}
+
+/* Reset doux pour les titres : le design veut du léger partout */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Textures de fond (sage, beige) — réplique des classes du proto */
+.bg-texture-sage {
+  background-color: var(--color-sage-soft);
+  background-image:
+    radial-gradient(ellipse at 15% 30%, rgba(255, 255, 255, 0.5), transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(184, 200, 184, 0.4), transparent 50%);
+  position: relative;
+}
+
+.bg-texture-sage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23a8b8a8' stroke-width='0.8' opacity='0.18'><path d='M50 100 Q120 60 180 120 T 320 180 T 480 240'/><path d='M70 200 Q140 160 200 220 T 340 280 T 500 340'/><ellipse cx='100' cy='150' rx='8' ry='25' transform='rotate(20 100 150)'/><ellipse cx='130' cy='130' rx='6' ry='20' transform='rotate(45 130 130)'/><ellipse cx='160' cy='160' rx='7' ry='22' transform='rotate(70 160 160)'/><ellipse cx='450' cy='420' rx='10' ry='28' transform='rotate(-30 450 420)'/><ellipse cx='480' cy='440' rx='7' ry='22' transform='rotate(-10 480 440)'/></g></svg>");
+}
+
+.bg-texture-beige {
+  background-color: var(--color-beige-paper);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(193, 173, 141, 0.25), transparent 50%);
+  position: relative;
+}
+
+.bg-texture-beige::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23a08b6c' stroke-width='0.7' opacity='0.18'><path d='M40 80 Q110 50 170 110 T 310 170 T 470 230'/><ellipse cx='90' cy='130' rx='8' ry='24' transform='rotate(25 90 130)'/><ellipse cx='120' cy='110' rx='6' ry='20' transform='rotate(50 120 110)'/><ellipse cx='150' cy='140' rx='7' ry='22' transform='rotate(75 150 140)'/><ellipse cx='430' cy='400' rx='10' ry='26' transform='rotate(-25 430 400)'/></g></svg>");
+}
+
+.bg-lavender-gradient {
+  background: linear-gradient(180deg, #fbf8fd 0%, #f5eef9 100%);
+}
