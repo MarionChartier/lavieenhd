@@ -1,115 +1,71 @@
-import Image from "next/image";
 import Link from "next/link";
-import { EXTERNAL } from "@/lib/links";
 
-const NAV_LINKS = [
-  { href: "/", label: "Accueil" },
-  { href: "/test-gratuit", label: "TEST gratuit" },
-  { href: "/mes-offres", label: "Mes offres" },
-  { href: "/qui-je-suis", label: "Qui je suis" },
-] as const;
+const CONTACT = {
+  email: "hello@marionchartier-lavieenhd.com",
+  instagramUrl: "https://www.instagram.com/marionchartier_lavieenhd/",
+} as const;
 
-const PARCOURS = [
-  { label: "00 · Quiz Environnement HD", href: EXTERNAL.quiz },
-  { label: "01 · INSIDE", href: EXTERNAL.offre.insideClub },
-  { label: "02 · THE PLACE TO BE", href: EXTERNAL.offre.thePlaceToBe },
-  { label: "03 · REVEAL", href: EXTERNAL.offre.reveal },
-  { label: "04 · Fleur de Talents Innés®", href: EXTERNAL.offre.fleurDeTalents },
-  { label: "05 · RECONNECT", href: EXTERNAL.offre.reconnect },
-] as const;
-
-const BOTTOM_LINKS = [
+const LEGAL_LINKS = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "CGV", href: "/cgv" },
-  { label: "Politique de confidentialité", href: "/confidentialite" },
-  { label: "Contact", href: "mailto:contact@lavieenhd.fr" },
+  { label: "Confidentialité", href: "/confidentialite" },
 ] as const;
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className={className}
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="bg-dark px-6 pb-10 pt-20 text-[#d8c9e5] md:px-20 md:pt-[100px]">
-      <div className="mx-auto grid max-w-(--container-content) gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-15">
-        <div>
-          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-white p-1">
-            <Image
-              src="/assets/logo-main.png"
-              alt=""
-              width={56}
-              height={56}
-              className="h-full w-full object-contain"
-            />
-          </div>
-          <p className="mb-4 font-display text-[22px] italic text-white">La vie en HD.</p>
-          <p className="max-w-[260px] text-[13px] leading-relaxed text-white/70">
-            Praticienne en Human Design. Je t'accompagne à te rencontrer — vraiment — pour vivre
-            en couleur, en grand, en toi.
-          </p>
-        </div>
+    <footer className="bg-ink text-white">
+      <div className="flex flex-col gap-5 px-6 pt-8 pb-6 md:flex-row md:items-center md:justify-between md:gap-10 md:px-20 md:pt-9 md:pb-7">
+        <p className="font-script text-[15px] leading-none tracking-wide text-white">La vie en HD</p>
 
-        <div>
-          <h4 className="mb-6 font-body text-[11px] uppercase tracking-[0.22em] text-turquoise">
-            Navigation
-          </h4>
-          <ul className="flex flex-col gap-3">
-            {NAV_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-[14px] text-white/80 transition-colors hover:text-turquoise"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-6 font-body text-[11px] uppercase tracking-[0.22em] text-turquoise">
-            Le parcours
-          </h4>
-          <ul className="flex flex-col gap-3">
-            {PARCOURS.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[14px] text-white/80 transition-colors hover:text-turquoise"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-6 font-body text-[11px] uppercase tracking-[0.22em] text-turquoise">
-            The Soul Letter
-          </h4>
-          <p className="mb-5 text-[13px] text-white/75">
-            Une fois par semaine, je t'écris comme à une amie.
-          </p>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-10">
           <a
-            href={EXTERNAL.newsletter}
+            href={`mailto:${CONTACT.email}`}
+            className="font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
+          >
+            Contactez-moi par mail
+          </a>
+
+          <a
+            href={CONTACT.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 font-body text-[11px] uppercase tracking-[0.18em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
+            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
           >
-            Rejoindre →
+            <InstagramIcon className="h-4 w-4" />
+            Rejoignez-moi sur Instagram
           </a>
         </div>
       </div>
 
-      <div className="mx-auto mt-15 flex max-w-(--container-content) flex-col gap-4 border-t border-white/10 pt-7 text-[12px] text-white/60 md:flex-row md:items-center md:justify-between">
+      <div className="mx-6 border-t border-white/15 md:mx-20" />
+
+      <div className="flex flex-col gap-3 px-6 py-5 text-[11px] tracking-[0.1em] text-white/55 md:flex-row md:items-center md:justify-between md:px-20">
         <div>© {new Date().getFullYear()} Marion Chartier · La vie en HD</div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          {BOTTOM_LINKS.map((item) => (
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          {LEGAL_LINKS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-turquoise"
+              className="transition-colors hover:text-white"
             >
               {item.label}
             </Link>

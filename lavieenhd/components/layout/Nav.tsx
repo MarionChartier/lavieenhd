@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
   { href: "/", label: "Accueil" },
-  { href: "/test-gratuit", label: "TEST gratuit" },
+  { href: "/test-gratuit", label: "TESTS gratuits" },
   { href: "/mes-offres", label: "Mes offres" },
   { href: "/qui-je-suis", label: "Qui je suis" },
 ] as const;
@@ -28,20 +27,10 @@ export function Nav() {
   }, [mobileOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-ink/10 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-(--container-content) items-center justify-between px-6 py-4 md:px-20 md:py-[18px]">
-        <Link href="/" className="flex items-center gap-3" aria-label="Accueil">
-          <Image
-            src="/assets/logo-main.png"
-            alt=""
-            width={42}
-            height={42}
-            className="h-9 w-9 object-cover md:h-[42px] md:w-[42px]"
-            priority
-          />
-          <span className="font-script text-[13px] tracking-wide text-ink-deep">
-            La vie en HD
-          </span>
+    <nav className="sticky top-0 z-50 border-b border-ink/10 bg-paper/92 backdrop-blur-md">
+      <div className="flex items-center justify-between px-6 py-4 md:px-20 md:py-[18px]">
+        <Link href="/" className="font-script text-[15px] tracking-wide text-ink" aria-label="Accueil">
+          Marion Chartier
         </Link>
 
         <div className="hidden items-center gap-11 lg:flex">
@@ -51,9 +40,7 @@ export function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative py-1.5 font-body text-[12px] uppercase tracking-[0.18em] transition-colors ${
-                  isActive ? "text-ink-deep" : "text-ink hover:text-turquoise"
-                }`}
+                className="relative py-1.5 font-body text-[12px] uppercase tracking-[0.18em] text-ink transition-colors hover:text-turquoise"
               >
                 {item.label}
                 {isActive && (
@@ -64,13 +51,6 @@ export function Nav() {
           })}
         </div>
 
-        <Link
-          href="/test-gratuit"
-          className="hidden rounded-full border border-ink-deep px-5 py-3 font-body text-[11px] uppercase tracking-[0.18em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-paper lg:inline-flex"
-        >
-          Découvre ton Type →
-        </Link>
-
         <button
           type="button"
           onClick={() => setMobileOpen((v) => !v)}
@@ -80,12 +60,12 @@ export function Nav() {
         >
           <span className="relative block h-3 w-6">
             <span
-              className={`absolute left-0 top-0 block h-px w-6 bg-ink-deep transition-transform ${
+              className={`absolute left-0 top-0 block h-px w-6 bg-ink transition-transform ${
                 mobileOpen ? "translate-y-1.5 rotate-45" : ""
               }`}
             />
             <span
-              className={`absolute bottom-0 left-0 block h-px w-6 bg-ink-deep transition-transform ${
+              className={`absolute bottom-0 left-0 block h-px w-6 bg-ink transition-transform ${
                 mobileOpen ? "-translate-y-1.5 -rotate-45" : ""
               }`}
             />
@@ -94,7 +74,7 @@ export function Nav() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-[72px] z-40 h-[calc(100dvh-72px)] overflow-y-auto bg-white px-6 py-10 lg:hidden">
+        <div className="fixed inset-x-0 top-[72px] z-40 h-[calc(100dvh-72px)] overflow-y-auto bg-paper px-6 py-10 lg:hidden">
           <div className="flex flex-col gap-6">
             {NAV_ITEMS.map((item) => {
               const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -103,7 +83,7 @@ export function Nav() {
                   key={item.href}
                   href={item.href}
                   className={`flex items-center justify-between border-b border-line py-3 font-display text-[28px] ${
-                    isActive ? "text-turquoise" : "text-ink-deep"
+                    isActive ? "text-turquoise" : "text-ink"
                   }`}
                 >
                   {item.label}
@@ -113,12 +93,6 @@ export function Nav() {
                 </Link>
               );
             })}
-            <Link
-              href="/test-gratuit"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-ink-deep px-6 py-4 font-body text-[12px] uppercase tracking-[0.18em] text-paper"
-            >
-              Découvre ton Type →
-            </Link>
           </div>
         </div>
       )}

@@ -33,7 +33,7 @@ const luciole = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "La vie en HD — Marion Chartier · Human Design",
+  title: "La vie en HD · Marion Chartier · Human Design",
   description:
     "Marion Chartier, praticienne en Human Design. Un chemin intérieur pour révéler qui tu es vraiment.",
 };

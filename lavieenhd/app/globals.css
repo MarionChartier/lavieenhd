@@ -35,6 +35,7 @@
 
 html {
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -95,3 +96,4 @@ h6 {
 .bg-lavender-gradient {
   background: linear-gradient(180deg, #fbf8fd 0%, #f5eef9 100%);
 }
+
