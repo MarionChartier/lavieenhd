@@ -6,18 +6,18 @@ import { useState } from "react";
 type Testimonial = {
   name: string;
   text: string;
-  /** URL de portrait Unsplash (placeholder en attendant les vraies photos clientes) */
+  /** Portrait rond (liseré doré) fourni par la cliente, sinon "Anonyme". */
   photo: string;
 };
 
-/** Base d'URL Unsplash + paramètres communs pour les avatars (200px, focus visage) */
-const photoUrl = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=200&q=80&auto=format&fit=crop&crop=face`;
+/** Dossier des portraits de témoignages (photos clientes, liseré doré déjà intégré). */
+const PHOTO = (file: string) => `/assets/temoignages/${file}`;
+const ANONYME = PHOTO("Anonyme.png");
 
 const TESTIMONIALS: Testimonial[] = [
   {
     name: "Louise-Armance",
-    photo: photoUrl("1531746020798-e6953c6e8e04"),
+    photo: PHOTO("Louise-Armance.png"),
     text: `Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi !
 
 Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connait pas ! 😮 Et c'est quand même dingue d'avoir attendu plus de 35 ans pour découvrir que j'avais été livrée avec un mode d'emploi ! 😂
@@ -28,7 +28,7 @@ Merci mille fois pour toutes ces informations précieuses Marion, ça résonne b
   },
   {
     name: "Sylvie",
-    photo: photoUrl("1544005313-94ddf0286df2"),
+    photo: ANONYME,
     text: `Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds.
 
 Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature.
@@ -39,7 +39,7 @@ Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'invite
   },
   {
     name: "Camille",
-    photo: photoUrl("1632765854612-9b02b6ec2b15"),
+    photo: PHOTO("Camille.png"),
     text: `J'ai tout dévoré d'une seule traite ! C'est IN-CROY-ABLE !!! On dirait que tu me connais depuis 30 ans, tout est juste, c'est fou, je n'en reviens pas ! 🤩
 
 C'est étrange comme sensation de lire ce que je suis dans la réalité, juste à partir de mes informations de naissance. C'est impressionnant !
@@ -50,7 +50,7 @@ Merci infiniment Marion ! 💖`,
   },
   {
     name: "Justine",
-    photo: photoUrl("1506863530036-1efeddceb993"),
+    photo: PHOTO("Justine.png"),
     text: `Déjà visuellement j'adore, ça donne vraiment envie de lire ! Le guide est super bien structuré, organisé, clair, beau et lumineux ! ✨
 
 Et c'est super parce que tes explications sont concrètes et illustrées, ça rend les choses hyper compréhensibles. On sent qu'il y a eu un gros travail de vulgarisation pour clarifier des termes qui peuvent sembler abstraits, et rendre ça accessible à tout le monde, c'est trop chouette !
@@ -63,7 +63,7 @@ Et je pense sincèrement que le coaching avec toi est un vrai plus à s'offrir !
   },
   {
     name: "Ludivine",
-    photo: photoUrl("1529626455594-4ff0802cfb7e"),
+    photo: PHOTO("Ludivine.png"),
     text: `Coucou Marion, déjà merci !!! Beaucoup !!! J'adore comment c'est rédigé, la façon dont tu écris et expliques les choses, c'est très clair.
 
 J'y ai retrouvé des choses tellement vraies, tellement moi ; un peu l'histoire de ma vie ! 😄
@@ -74,7 +74,7 @@ Wahou je trouve le HD vraiment magique, c'est ma plus belle découverte de l'ann
   },
   {
     name: "Fabienne",
-    photo: photoUrl("1573496359142-b8d87734a5a2"),
+    photo: PHOTO("Fabienne.png"),
     text: `Oh la la 🤩🤩🤩!! Je voulais te remercier 🙏 pour ton travail qui est remarquable, c'est une vraie pépite ! 💕
 
 Franchement, chapeau, je me reconnais dans tout ce que tu décris, tout me fait écho !
@@ -164,13 +164,13 @@ function TestimonialCard({
       }`}
     >
       <div className="mb-5 flex items-center gap-4">
-        <div className="relative h-14 w-14 flex-none overflow-hidden rounded-full">
+        <div className="relative h-16 w-16 flex-none">
           <Image
             src={photo}
             alt={`Portrait de ${name}`}
             fill
-            sizes="56px"
-            className="object-cover"
+            sizes="64px"
+            className="object-contain"
           />
         </div>
         <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>

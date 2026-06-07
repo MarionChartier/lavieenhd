@@ -40,8 +40,9 @@ export function Nav() {
   }, [mobileOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-ink/10 bg-white">
-      {/* Fond paillettes doré (Fond doré 4) + voile blanc pour la lisibilité */}
+    <nav className="sticky top-0 z-50 bg-white">
+      {/* Fond paillettes doré (Fond doré 4) + voile blanc pour la lisibilité.
+          Le fond doré s'estompe vers le bas pour se fondre dans la section blanche. */}
       <Image
         src="/assets/header-glitter.png"
         alt=""
@@ -50,8 +51,17 @@ export function Nav() {
         priority
         sizes="100vw"
         className="pointer-events-none absolute inset-0 object-cover"
+        style={{
+          WebkitMaskImage: "linear-gradient(to bottom, black 88%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, black 88%, transparent 100%)",
+        }}
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/55" />
+      {/* Dégradé blanc en bas — fondu très léger vers la section suivante */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-white"
+      />
 
       <div className="relative flex items-center justify-between px-6 py-2 md:px-20 md:py-2">
         <Link href="/" className="flex items-center gap-2.5" aria-label="Accueil — La vie en HD">

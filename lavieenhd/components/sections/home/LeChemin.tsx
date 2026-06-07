@@ -113,7 +113,7 @@ function Postcard({ offre }: { offre: Offre }) {
         {/* DESCRIPTION — droite, même zone colorée que le logo */}
         <div className={`relative grid place-items-center overflow-hidden px-6 py-5 ${gradient}`}>
           <div className="absolute -inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.5)_0%,transparent_70%)]" />
-          <p className="relative font-display text-[16px] italic leading-snug text-ink-deep md:text-[18px]">
+          <p className="relative font-display text-[16px] font-light leading-snug text-ink-deep md:text-[18px]">
             {offre.shortDescription}
           </p>
         </div>

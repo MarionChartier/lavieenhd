@@ -39,8 +39,8 @@ export function TransitSolaireBanner() {
               <p className="font-body text-[10px] uppercase tracking-[0.26em] text-ink-deep/60">
                 Transit solaire actuel
               </p>
-              <p className="mt-1 font-display text-[22px] font-light leading-none text-ink-deep md:text-[26px]">
-                Porte {TRANSIT.porte} <span className="italic">· {TRANSIT.nom}</span>
+              <p className="mt-1 font-body text-[17px] leading-tight text-ink-deep md:text-[19px]">
+                Porte {TRANSIT.porte} · {TRANSIT.nom}
               </p>
               <p className="mt-1 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
                 {TRANSIT.periode}
@@ -52,7 +52,7 @@ export function TransitSolaireBanner() {
           <span aria-hidden className="relative hidden h-12 w-px bg-ink-deep/20 md:block" />
 
           {/* Mini explication */}
-          <p className="relative font-display text-[16px] font-light italic leading-snug text-ink-deep md:text-[18px]">
+          <p className="relative font-display text-[16px] font-light leading-relaxed text-ink-deep">
             {TRANSIT.resume}
           </p>
         </div>

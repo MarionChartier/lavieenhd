@@ -44,7 +44,7 @@ export function FaqSection({
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-6 py-5 text-left"
                 >
-                  <span className="font-display text-[19px] font-light leading-snug text-ink-deep md:text-[22px]">
+                  <span className="font-display text-[19px] font-semibold leading-snug text-ink-deep md:text-[22px]">
                     {item.q}
                   </span>
                   <span
