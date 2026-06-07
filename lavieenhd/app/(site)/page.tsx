@@ -2,6 +2,7 @@ import { HomeHero } from "@/components/sections/home/HomeHero";
 import { TransitSolaireBanner } from "@/components/sections/home/TransitSolaireBanner";
 import { LeChemin } from "@/components/sections/home/LeChemin";
 import { AboutTeaser } from "@/components/sections/home/AboutTeaser";
+import { InstagramBanner } from "@/components/sections/home/InstagramBanner";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { SoulLetterBanner } from "@/components/sections/SoulLetterBanner";
@@ -38,6 +39,7 @@ export default function HomePage() {
       <TransitSolaireBanner />
       <LeChemin />
       <AboutTeaser />
+      <InstagramBanner />
       <Testimonials />
       <FaqSection items={HOME_FAQ} />
       <SoulLetterBanner />
