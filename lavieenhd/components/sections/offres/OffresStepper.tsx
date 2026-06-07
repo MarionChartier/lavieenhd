@@ -3,7 +3,7 @@ import { OFFRES, type OffreColor } from "@/lib/content/offres";
 
 /** Couleur de fond du cercle, suivant la couleur sous-marque de chaque offre */
 const STEPPER_BG: Record<OffreColor, string> = {
-  free: "bg-[#e5f0e4]",
+  free: "bg-[#f0e3cc]",
   violet: "bg-[#ece4f5]",
   turquoise: "bg-[#dbeef4]",
   beige: "bg-[#f0e3cc]",

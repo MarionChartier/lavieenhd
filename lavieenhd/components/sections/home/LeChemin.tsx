@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { OFFRES, type Offre, type OffreColor } from "@/lib/content/offres";
 
 const COLOR_GRADIENTS: Record<OffreColor, string> = {
-  free: "bg-[linear-gradient(135deg,#e5f0e4_0%,#d4e4d2_100%)]",
+  free: "bg-[linear-gradient(135deg,#f4ead2_0%,#e7d3a6_100%)]",
   violet: "bg-[linear-gradient(135deg,#ece4f5_0%,#dccef0_100%)]",
   turquoise: "bg-[linear-gradient(135deg,#dbeef4_0%,#c5e6e9_100%)]",
   beige: "bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]",
@@ -26,10 +27,7 @@ export function LeChemin() {
         </div>
 
         {/* Vertical journey */}
-        <div className="relative mx-auto mt-16 max-w-[1180px] pl-20 md:mt-20 md:pl-28">
-          {/* Vertical line — alignée sur le centre des badges */}
-          <div className="absolute left-8 top-8 bottom-8 w-px bg-ink-lilac md:left-10" />
-
+        <div className="relative mx-auto mt-16 max-w-[1180px] md:mt-20">
           {/* Postcards */}
           <div className="flex flex-col gap-6">
             {OFFRES.map((offre) => (
@@ -44,17 +42,16 @@ export function LeChemin() {
 
 function Postcard({ offre }: { offre: Offre }) {
   const gradient = COLOR_GRADIENTS[offre.color];
+  // Le Quiz (offre 01) renvoie vers le formulaire externe ; les autres vers leur page dédiée.
+  const isQuiz = offre.num === "01";
+  const href = isQuiz ? offre.href : `/mes-offres/${offre.slug}`;
 
   return (
-    <a
-      href={`/mes-offres#${offre.slug}`}
+    <Link
+      href={href}
+      {...(isQuiz ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="relative block transition-all hover:-translate-y-1"
     >
-      {/* Badge numéro — centré pile sur la ligne verticale */}
-      <div className="absolute top-1/2 -left-[80px] z-10 grid h-16 w-16 -translate-y-1/2 place-items-center rounded-full border border-ink-lilac bg-white font-display text-[24px] italic text-ink-deep shadow-[0_8px_24px_-10px_rgba(80,60,98,0.18)] md:-left-[104px]">
-        {offre.num}
-      </div>
-
       {/* Accent floral discret — uniquement pour l'offre signature, dans la zone droite */}
       {offre.signature && (
         <MiniFleur className="pointer-events-none absolute top-3 right-3 z-10 h-10 w-10 text-ink-deep opacity-50" />
@@ -76,7 +73,9 @@ function Postcard({ offre }: { offre: Offre }) {
               alt=""
               width={170}
               height={110}
-              className="relative max-h-[120px] w-auto max-w-[85%] object-contain"
+              className={`relative w-auto object-contain ${
+                offre.slug === "inside" ? "max-h-[150px] max-w-[100%]" : "max-h-[120px] max-w-[85%]"
+              }`}
             />
           ) : offre.signature ? (
             <FleurSvg />
@@ -98,10 +97,17 @@ function Postcard({ offre }: { offre: Offre }) {
           >
             {offre.tag}
           </span>
-          <h3 className="font-display text-[28px] leading-none text-ink-deep md:text-[32px]">
-            {offre.name}
-            {offre.trademark && <sup className="ml-0.5 text-[0.5em]">®</sup>}
-          </h3>
+          <div className="flex flex-col gap-1.5">
+            <h3 className="font-display text-[28px] leading-none text-ink-deep md:text-[32px]">
+              {offre.name}
+              {offre.trademark && <sup className="ml-0.5 text-[0.5em]">®</sup>}
+            </h3>
+            {offre.subtitle && (
+              <p className="font-display text-[13px] font-light italic leading-snug text-ink md:text-[14px]">
+                {offre.subtitle}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* DESCRIPTION — droite, même zone colorée que le logo */}
@@ -112,7 +118,7 @@ function Postcard({ offre }: { offre: Offre }) {
           </p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

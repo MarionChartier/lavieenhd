@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Qui je suis · La vie en HD",
+  title: "Qui suis-je ? · La vie en HD",
   description:
     "Marion Chartier, Manifesting Generator 2/4, accompagne celles et ceux qui veulent se révéler grâce au Human Design.",
 };
@@ -336,8 +336,52 @@ export default function QuiJeSuisPage() {
         </div>
       </section>
 
+      {/* SECTION 04bis — MES VALEURS (gauche) + FUN FACT (droite) */}
+      <section className="relative overflow-hidden bg-paper px-6 py-20 md:px-20 md:py-28">
+        <div className="mx-auto max-w-(--container-content)">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+            {/* GAUCHE — nuage de valeurs incliné */}
+            <div>
+              <h2 className="font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[58px]">
+                Ce qui me <em className="italic text-turquoise">guide</em>.
+              </h2>
+
+              <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 md:gap-x-9">
+                {[
+                  { word: "Clarté", cls: "text-[44px] text-ink-deep md:text-[64px]", rot: "-rotate-2" },
+                  { word: "Sens", cls: "text-[34px] text-turquoise md:text-[46px]", rot: "rotate-3" },
+                  { word: "Confiance", cls: "text-[50px] text-ink-lilac md:text-[76px]", rot: "rotate-1" },
+                  { word: "Audace", cls: "text-[38px] text-ink-deep md:text-[52px]", rot: "-rotate-3" },
+                  { word: "Action", cls: "text-[46px] text-turquoise md:text-[64px]", rot: "rotate-2" },
+                ].map((v) => (
+                  <span
+                    key={v.word}
+                    className={`inline-block font-sub leading-none ${v.cls} ${v.rot}`}
+                  >
+                    {v.word}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* DROITE — fun fact en note penchée avec pastille */}
+            <div className="relative">
+              <div className="relative rotate-[-2deg] rounded-[28px] border border-[#d8bf8b]/60 bg-[linear-gradient(160deg,#f8efd6_0%,#ecd6a6_100%)] p-8 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.28)] md:p-11">
+                <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
+                  Fun fact
+                </span>
+                <p className="mt-3 font-display text-[21px] font-light italic leading-relaxed text-ink-deep md:text-[26px]">
+                  «&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Un petit secret
+                  sur moi, à compléter très vite&nbsp;!&nbsp;»
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 05 — CTA BAS, pont vers Test gratuit + Mes offres */}
-      <section className="bg-white px-6 pb-24 md:px-20 md:pb-32">
+      <section className="bg-white px-6 pt-10 pb-24 md:px-20 md:pt-16 md:pb-32">
         <div className="mx-auto max-w-(--container-content)">
           <div className="rounded-2xl border border-ink-deep/8 bg-paper p-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:p-16">
             <h3 className="font-display text-[32px] font-light leading-tight text-ink-deep md:text-[52px]">

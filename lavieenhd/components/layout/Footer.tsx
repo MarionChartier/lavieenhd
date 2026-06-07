@@ -41,7 +41,7 @@ export function Footer() {
             href={`mailto:${CONTACT.email}`}
             className="font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
           >
-            Contactez-moi par mail
+            Contacte-moi par mail
           </a>
 
           <a
@@ -51,7 +51,7 @@ export function Footer() {
             className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
           >
             <InstagramIcon className="h-4 w-4" />
-            Rejoignez-moi sur Instagram
+            Rejoins-moi sur Instagram
           </a>
         </div>
       </div>

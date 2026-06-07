@@ -7,6 +7,10 @@ export interface Offre {
   /** Identifiant URL (fragment d'ancre /mes-offres#slug) */
   slug: string;
   name: string;
+  /** Sous-titre commercial affiché sous le nom (ex: "Le Guide d'Immersion dans ton Design Unique") */
+  subtitle?: string;
+  /** FAQ dédiée à l'offre (sinon une FAQ générique est affichée sur la page) */
+  faq?: { q: string; a: string }[];
   /** Label compact pour les composants type stepper / mini-nav (ex: "QUIZ HD", "PLACE TO BE") */
   shortLabel: string;
   trademark?: boolean;
@@ -43,6 +47,7 @@ export const OFFRES: Offre[] = [
     num: "01",
     slug: "quiz",
     name: "Quiz Environnement HD",
+    subtitle: "6 questions ludiques pour découvrir ton environnement",
     shortLabel: "Quiz HD",
     tag: "Découvrir",
     shortDescription:
@@ -69,7 +74,7 @@ export const OFFRES: Offre[] = [
     price: "offert",
     imgUrl:
       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=900&q=80&auto=format&fit=crop",
-    logoSrc: null,
+    logoSrc: "/assets/logo-quiz.png",
     color: "free",
     href: EXTERNAL.quiz,
   },
@@ -77,8 +82,9 @@ export const OFFRES: Offre[] = [
     num: "02",
     slug: "place-to-be",
     name: "THE PLACE TO BE",
+    subtitle: "Le Guide d'Exploration de ton Environnement HD",
     shortLabel: "Place to be",
-    tag: "Approfondir",
+    tag: "S'initier",
     shortDescription:
       "Ton guide personnalisé pour révéler l'environnement HD dans lequel tu t'épanouis.",
     lead: "Ton environnement, en clair.",
@@ -99,7 +105,33 @@ export const OFFRES: Offre[] = [
       "Conseils concrets pour aménager ton espace de vie ou de travail",
       "Reçu par email instantanément après ta commande",
     ],
-    keyword: "Approfondir",
+    keyword: "S'initier",
+    faq: [
+      {
+        q: "Le guide est-il fait pour moi, même si je débute en Human Design ?",
+        a: "Oui. Il est conçu pour être accessible à tout le monde : tout est clairement expliqué, vulgarisé et décrypté, même si le Human Design est une découverte pour toi.",
+      },
+      {
+        q: "Comment je découvre mon environnement HD ?",
+        a: "Avec le test HD gratuit, à partir de tes informations de naissance (date, heure, lieu). Ton environnement apparaît sur la dernière ligne de ton schéma.",
+      },
+      {
+        q: "Le guide me donne-t-il le lieu exact où vivre ?",
+        a: "Non, mais il te donne des indications claires sur tes zones de prédilection (bord de mer, zone humide, environnement citadin…) et sur la façon de t'en rapprocher au quotidien.",
+      },
+      {
+        q: "Est-ce personnalisé ?",
+        a: "Oui, chaque guide correspond à ton environnement spécifique parmi les 6 types, avec un bonus selon ton profil HD.",
+      },
+      {
+        q: "Sous quelle forme je le reçois ?",
+        a: "Ton guide t'est envoyé sous forme de livret PDF à télécharger, après ta commande.",
+      },
+      {
+        q: "Je peux l'offrir autour de moi ?",
+        a: "Oui, c'est une jolie idée cadeau et une belle porte d'entrée dans le Human Design.",
+      },
+    ],
     price: "22 €",
     imgUrl:
       "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80&auto=format&fit=crop",
@@ -111,6 +143,7 @@ export const OFFRES: Offre[] = [
     num: "03",
     slug: "inside",
     name: "INSIDE",
+    subtitle: "Le Guide d'Immersion dans ton Design Unique",
     shortLabel: "Inside",
     tag: "Découvrir",
     shortDescription:
@@ -145,6 +178,7 @@ export const OFFRES: Offre[] = [
     num: "04",
     slug: "reveal",
     name: "REVEAL",
+    subtitle: "La Séance Clarté HD Pro",
     shortLabel: "Reveal",
     tag: "Résoudre",
     shortDescription:
@@ -180,6 +214,7 @@ export const OFFRES: Offre[] = [
     num: "05",
     slug: "fleur-de-talents",
     name: "Fleur de Talents Innés",
+    subtitle: "L'Exploration Croisée de tes Talents Uniques",
     shortLabel: "Talents",
     trademark: true,
     tag: "Révéler",
@@ -218,6 +253,7 @@ export const OFFRES: Offre[] = [
     num: "06",
     slug: "reconnect",
     name: "RECONNECT",
+    subtitle: "L'Accompagnement Premium de Reconnexion Professionnelle",
     shortLabel: "Reconnect",
     tag: "Transformer",
     shortDescription:

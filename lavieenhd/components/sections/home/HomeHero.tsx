@@ -45,13 +45,21 @@ export function HomeHero() {
 
       {/* Silhouette en arrière-plan — ancrée à 40% de la largeur de la page, au bas de la section */}
       <Image
-        src="/assets/human.png"
+        src="/assets/marion-plage-particules.png"
         alt=""
-        width={1024}
-        height={1536}
+        width={600}
+        height={300}
         priority={false}
         aria-hidden
-        className="pointer-events-none absolute bottom-[15%] left-[28%] hidden h-auto w-[450px] opacity-25 mix-blend-multiply lg:block"
+        className="pointer-events-none absolute bottom-[6%] left-[10%] hidden h-auto w-[1000px] opacity-40 mix-blend-multiply lg:block"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 72%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 72%, transparent 100%)",
+          WebkitMaskComposite: "source-in",
+          maskComposite: "intersect",
+        }}
       />
 
       <div className="relative mx-auto grid max-w-(--container-content) gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-20">

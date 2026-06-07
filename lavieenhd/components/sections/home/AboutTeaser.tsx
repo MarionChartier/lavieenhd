@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 
 const PHOTO_MARION_LIVING =
   "https://images.unsplash.com/photo-1542596594-649edbc13630?w=900&q=80&auto=format&fit=crop";
@@ -34,8 +33,7 @@ export function AboutTeaser() {
 
         {/* Copy */}
         <div>
-          <Eyebrow>Qui je suis</Eyebrow>
-          <h2 className="mt-5 font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
+          <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
             Marion,
             <br />
             <em className="italic">multi-passionnée.</em>

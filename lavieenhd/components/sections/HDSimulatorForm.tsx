@@ -1,24 +1,70 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { EXTERNAL } from "@/lib/links";
 
+/** Hauteur de secours tant que le widget n'a pas communiqué sa taille. */
+const FALLBACK_HEIGHT = 650;
+
 /**
- * Formulaire de simulateur Human Design — partagé entre la home (HomeHero)
- * et la page Test gratuit. Redirige vers le simulateur systeme.io de Marion.
+ * Tente d'extraire une hauteur (px) d'un message postMessage, quel que soit
+ * le format émis par Bodygraphchart (nombre brut, objet { height }, chaîne
+ * type iframe-resizer "[iFrameSizer]...height:1234...", etc.).
+ */
+function extractHeight(data: unknown): number | null {
+  if (typeof data === "number") return data > 150 ? data : null;
+  if (typeof data === "string") {
+    const m = data.match(/height["':\s]+(\d{2,5})/i);
+    if (m) return Number(m[1]);
+    const n = Number(data);
+    return !Number.isNaN(n) && n > 150 ? n : null;
+  }
+  if (data && typeof data === "object") {
+    const obj = data as Record<string, unknown>;
+    for (const key of ["height", "iframeHeight", "scrollHeight", "docHeight"]) {
+      const v = obj[key];
+      if (typeof v === "number" && v > 150) return v;
+      if (typeof v === "string" && !Number.isNaN(Number(v)) && Number(v) > 150) {
+        return Number(v);
+      }
+    }
+    if (obj.data && typeof obj.data === "object") return extractHeight(obj.data);
+  }
+  return null;
+}
+
+/**
+ * Calculateur Human Design — partagé entre la home (HomeHero) et la page
+ * Test HD gratuit. On embarque le widget officiel Bodygraphchart (le back-end
+ * de Marion), dans une carte habillée aux couleurs du site.
  *
- * Le visuel (logo en pastille top-right, champs, bouton) reste identique partout
- * pour garder une signature forte. Le wrapping autour (titres, explications)
- * varie d'une page à l'autre.
+ * L'iframe s'auto-redimensionne à la hauteur de son contenu SI Bodygraphchart
+ * émet sa taille via postMessage ; sinon on garde FALLBACK_HEIGHT.
  */
 export function HDSimulatorForm() {
+  const [height, setHeight] = useState<number>(FALLBACK_HEIGHT);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (!e.origin.includes("bodygraphchart")) return;
+      const h = extractHeight(e.data);
+      if (h) setHeight(Math.ceil(h));
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   return (
-    <div className="relative rounded-md border border-ink/15 bg-white p-7 shadow-[0_30px_70px_-30px_rgba(80,60,98,0.18)] md:p-9">
+    <div className="relative rounded-md border border-ink/15 bg-white p-5 shadow-[0_30px_70px_-30px_rgba(80,60,98,0.18)] md:p-7">
       {/* Logo Marion — premier plan, en haut à droite de la carte */}
-      <div className="absolute -top-6 -right-6 z-10 h-[96px] w-[96px] rounded-full border border-line bg-white p-3 shadow-[0_18px_40px_-15px_rgba(80,60,98,0.3)] md:-top-8 md:-right-8 md:h-[110px] md:w-[110px]">
+      <div className="absolute -top-6 -right-6 z-10 h-[96px] w-[96px] overflow-hidden rounded-full border border-line bg-white shadow-[0_18px_40px_-15px_rgba(80,60,98,0.3)] md:-top-8 md:-right-8 md:h-[110px] md:w-[110px]">
         <Image
           src="/assets/logo-main.png"
           alt=""
-          width={110}
-          height={110}
+          width={256}
+          height={256}
           className="h-full w-full object-contain"
         />
       </div>
@@ -28,99 +74,17 @@ export function HDSimulatorForm() {
         Découvre ton schéma <em className="italic text-turquoise">Human Design</em>.
       </h3>
 
-      <form
-        action={EXTERNAL.simulateur}
-        method="GET"
-        target="_blank"
-        className="mt-6 flex flex-col gap-4"
-      >
-        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-          <Field label="Prénom" name="firstname" placeholder="Camille" required />
-          <Field label="Nom" name="lastname" placeholder="Dupont" required />
-        </div>
-
-        <Field
-          label="Lieu de naissance"
-          name="birthplace"
-          placeholder="Paris"
-          required
+      {/* Fond blanc derrière l'iframe transparent */}
+      <div className="relative mt-2 overflow-hidden rounded border border-line bg-white">
+        <iframe
+          ref={iframeRef}
+          src={EXTERNAL.bodygraph}
+          title="Calculateur Human Design"
+          loading="lazy"
+          style={{ height: `${height}px`, backgroundColor: "transparent" }}
+          className="relative block w-full"
         />
-
-        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-          <Field
-            label="Date de naissance"
-            name="birthdate"
-            type="text"
-            placeholder="JJ / MM / AAAA"
-            required
-          />
-          <Field
-            label="Heure de naissance"
-            name="birthtime"
-            type="text"
-            placeholder="HH : MM"
-            required
-          />
-        </div>
-
-        <Field
-          label="Adresse email"
-          name="email"
-          type="email"
-          placeholder="ton@email.fr"
-          required
-        />
-
-        <label className="mt-1 flex items-start gap-3 text-[12px] leading-snug text-ink">
-          <input
-            type="checkbox"
-            name="newsletter_consent"
-            className="mt-[3px] h-4 w-4 flex-none cursor-pointer rounded-sm border border-ink-lilac text-turquoise accent-turquoise"
-          />
-          <span className="font-body">
-            J'accepte de recevoir des emails de La vie en HD{" "}
-            <span className="italic text-ink-soft">(pas de spam, que du love)</span>
-          </span>
-        </label>
-
-        <a
-          href={EXTERNAL.bodygraph}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 flex w-full items-center justify-center rounded-full bg-ink-deep px-6 py-4 font-body text-[12px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
-        >
-          Calculer mon schéma
-        </a>
-      </form>
+      </div>
     </div>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  placeholder,
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: "text" | "email";
-  placeholder: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="flex flex-col gap-1.5">
-      <span className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-        {label}
-      </span>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        required={required}
-        className="rounded border border-line bg-paper px-3.5 py-3 font-body text-[14px] text-ink-deep outline-none transition-colors placeholder:font-display placeholder:font-light placeholder:italic placeholder:text-ink-deep/80 focus:border-turquoise focus:bg-white"
-      />
-    </label>
   );
 }
