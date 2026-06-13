@@ -74,7 +74,9 @@ function Postcard({ offre }: { offre: Offre }) {
               width={170}
               height={110}
               className={`relative w-auto object-contain ${
-                offre.slug === "inside" ? "max-h-[150px] max-w-[100%]" : "max-h-[120px] max-w-[85%]"
+                offre.slug === "inside" || offre.slug === "place-to-be"
+                  ? "max-h-[155px] max-w-[90%]"
+                  : "max-h-[120px] max-w-[85%]"
               }`}
             />
           ) : offre.signature ? (

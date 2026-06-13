@@ -24,14 +24,17 @@ export function OffresStepper() {
         <Fragment key={offre.slug}>
           <a
             href={`#${offre.slug}`}
-            className="group flex flex-col items-center gap-3 md:gap-4"
+            className="group flex w-[88px] flex-col items-center gap-2 md:w-[120px] md:gap-2.5"
           >
+            <span className="font-display text-[12px] italic leading-none text-turquoise md:text-[14px]">
+              {offre.tag}
+            </span>
             <span
               className={`grid h-12 w-12 place-items-center rounded-full font-display text-[14px] italic text-ink-deep transition-transform group-hover:scale-110 md:h-14 md:w-14 md:text-[16px] ${STEPPER_BG[offre.color]}`}
             >
               {offre.num}
             </span>
-            <span className="font-body text-[9px] uppercase tracking-[0.18em] text-ink-soft transition-colors group-hover:text-ink-deep md:text-[10px] md:tracking-[0.22em]">
+            <span className="text-center font-body text-[9px] uppercase leading-tight tracking-[0.16em] text-ink-soft transition-colors group-hover:text-ink-deep md:text-[10px] md:tracking-[0.18em]">
               {offre.shortLabel}
             </span>
           </a>

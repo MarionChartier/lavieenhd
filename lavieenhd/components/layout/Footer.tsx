@@ -11,6 +11,24 @@ const LEGAL_LINKS = [
   { label: "Confidentialité", href: "/confidentialite" },
 ] as const;
 
+function MailIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className={className}
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m3.5 7 8.5 6 8.5-6" />
+    </svg>
+  );
+}
+
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -39,9 +57,10 @@ export function Footer() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-10">
           <a
             href={`mailto:${CONTACT.email}`}
-            className="font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
+            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
           >
-            Contacte-moi par mail
+            <MailIcon className="h-4 w-4" />
+            Me contacter
           </a>
 
           <a
@@ -51,7 +70,7 @@ export function Footer() {
             className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
           >
             <InstagramIcon className="h-4 w-4" />
-            Rejoins-moi sur Instagram
+            Me rejoindre sur Instagram
           </a>
         </div>
       </div>

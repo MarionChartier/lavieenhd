@@ -12,7 +12,7 @@ import { useEffect } from "react";
  *   3. Le coller dans BEHOLD_FEED_ID ci-dessous.
  * Tant que l'ID est vide, une grille d'exemple (placeholder) est affichée.
  */
-const BEHOLD_FEED_ID = ""; // ← coller ici l'ID du feed Behold
+const BEHOLD_FEED_ID = "piSaskkOPUDFfBB3e2ZF"; // ← ID du feed Behold de Marion
 
 const INSTAGRAM_URL = "https://www.instagram.com/marionchartier_lavieenhd/";
 const HANDLE = "@marionchartier_lavieenhd";

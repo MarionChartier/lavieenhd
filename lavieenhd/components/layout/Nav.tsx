@@ -73,8 +73,13 @@ export function Nav() {
             priority
             className="h-16 w-16 object-contain md:h-[70px] md:w-[70px]"
           />
-          <span className="font-body text-[12px] font-medium uppercase tracking-[0.16em] text-ink-deep md:text-[13px]">
-            Marion Chartier
+          <span className="flex flex-col leading-none">
+            <span className="font-script text-[23px] leading-none text-ink-deep md:text-[27px]">
+              La vie en HD
+            </span>
+            <span className="mt-1 font-body text-[10px] font-medium uppercase tracking-[0.18em] text-ink-soft md:text-[11px]">
+              Marion Chartier
+            </span>
           </span>
         </Link>
 
@@ -111,6 +116,7 @@ export function Nav() {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => (document.activeElement as HTMLElement | null)?.blur()}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
                           >
                             {link.label}
@@ -119,6 +125,7 @@ export function Nav() {
                           <Link
                             key={link.label}
                             href={link.href}
+                            onClick={() => (document.activeElement as HTMLElement | null)?.blur()}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
                           >
                             {link.label}

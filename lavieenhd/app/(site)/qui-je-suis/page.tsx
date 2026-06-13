@@ -66,6 +66,37 @@ const HD_ATTRIBUTES = [
   },
 ];
 
+/** Nuage de valeurs (dans le désordre, voulu par Marion). */
+const VALEURS = [
+  "Intuition",
+  "Bienveillance",
+  "Confiance",
+  "Audace",
+  "Amour",
+  "Sensibilité",
+  "Ouverture d'esprit",
+  "Humour",
+  "Fun",
+  "Découverte",
+  "Voyage",
+  "Aventure",
+  "Mouvement",
+  "Evolution",
+  "Dynamisme",
+  "Abondance",
+  "Humanité",
+  "Créativité",
+  "Légèreté",
+  "Joie",
+  "Partage",
+  "Spiritualité",
+  "Beauté",
+  "Nature",
+  "Authenticité",
+  "Relations",
+  "Expansion",
+] as const;
+
 const PILIERS = [
   {
     title: "Doux",
@@ -346,21 +377,26 @@ export default function QuiJeSuisPage() {
                 Ce qui me <em className="italic text-turquoise">guide</em>.
               </h2>
 
-              <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 md:gap-x-9">
-                {[
-                  { word: "Clarté", cls: "text-[44px] text-ink-deep md:text-[64px]", rot: "-rotate-2" },
-                  { word: "Sens", cls: "text-[34px] text-turquoise md:text-[46px]", rot: "rotate-3" },
-                  { word: "Confiance", cls: "text-[50px] text-ink-lilac md:text-[76px]", rot: "rotate-1" },
-                  { word: "Audace", cls: "text-[38px] text-ink-deep md:text-[52px]", rot: "-rotate-3" },
-                  { word: "Action", cls: "text-[46px] text-turquoise md:text-[64px]", rot: "rotate-2" },
-                ].map((v) => (
-                  <span
-                    key={v.word}
-                    className={`inline-block font-sub leading-none ${v.cls} ${v.rot}`}
-                  >
-                    {v.word}
-                  </span>
-                ))}
+              <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-2.5 md:gap-x-6 md:gap-y-3">
+                {VALEURS.map((word, i) => {
+                  const sizes = [
+                    "text-[20px] md:text-[28px]",
+                    "text-[26px] md:text-[40px]",
+                    "text-[22px] md:text-[32px]",
+                    "text-[30px] md:text-[48px]",
+                    "text-[24px] md:text-[36px]",
+                  ];
+                  const colors = ["text-ink-deep", "text-turquoise", "text-ink-lilac", "text-ink"];
+                  const rots = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-3", "rotate-3", "-rotate-1"];
+                  return (
+                    <span
+                      key={word}
+                      className={`inline-block font-sub leading-none ${sizes[i % sizes.length]} ${colors[i % colors.length]} ${rots[i % rots.length]}`}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
@@ -370,9 +406,11 @@ export default function QuiJeSuisPage() {
                 <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                   Fun fact
                 </span>
-                <p className="mt-3 font-display text-[21px] font-light italic leading-relaxed text-ink-deep md:text-[26px]">
-                  «&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Un petit secret
-                  sur moi, à compléter très vite&nbsp;!&nbsp;»
+                <p className="mt-3 font-display text-[19px] font-light italic leading-relaxed text-ink-deep md:text-[23px]">
+                  «&nbsp;Je n'ai pas découvert le Human Design par hasard, il s'est carrément
+                  imposé à moi&nbsp;! 😄 C'est en recherchant une nounou pour mon bébé que l'une
+                  d'elles (qui n'est même pas devenue son ass' mat'&nbsp;!) a évoqué cet outil
+                  fantastique. Je ne savais pas encore que ça allait changer toute ma vie&nbsp;!&nbsp;»
                 </p>
               </div>
             </div>

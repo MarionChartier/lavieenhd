@@ -46,10 +46,10 @@ export const OFFRES: Offre[] = [
   {
     num: "01",
     slug: "quiz",
-    name: "Quiz Environnement HD",
+    name: "Quiz - Ton lieu de vie/de travail idéal",
     subtitle: "6 questions ludiques pour découvrir ton environnement",
-    shortLabel: "Quiz HD",
-    tag: "Découvrir",
+    shortLabel: "Quiz lieu idéal",
+    tag: "Explorer",
     shortDescription:
       "Découvre en 12 questions ton environnement HD idéal, parmi 6 profils possibles.",
     lead: "5 minutes pour t'éclairer.",
@@ -83,7 +83,7 @@ export const OFFRES: Offre[] = [
     slug: "place-to-be",
     name: "THE PLACE TO BE",
     subtitle: "Le Guide d'Exploration de ton Environnement HD",
-    shortLabel: "Place to be",
+    shortLabel: "The Place to be",
     tag: "S'initier",
     shortDescription:
       "Ton guide personnalisé pour révéler l'environnement HD dans lequel tu t'épanouis.",
@@ -180,7 +180,7 @@ export const OFFRES: Offre[] = [
     name: "REVEAL",
     subtitle: "La Séance Clarté HD Pro",
     shortLabel: "Reveal",
-    tag: "Résoudre",
+    tag: "Clarifier",
     shortDescription:
       "Analyse HD sur ta problématique précise + 1h30 de visio pour l'explorer ensemble.",
     lead: "1h30 pour dénouer ce qui te bloque.",
@@ -202,7 +202,7 @@ export const OFFRES: Offre[] = [
       "Plan d'action concret et aligné avec ton design",
       "Replay de la séance",
     ],
-    keyword: "Résoudre",
+    keyword: "Clarifier",
     price: "222 €",
     imgUrl:
       "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
@@ -215,7 +215,7 @@ export const OFFRES: Offre[] = [
     slug: "fleur-de-talents",
     name: "Fleur de Talents Innés",
     subtitle: "L'Exploration Croisée de tes Talents Uniques",
-    shortLabel: "Talents",
+    shortLabel: "Fleur de Talents Innés",
     trademark: true,
     tag: "Révéler",
     shortDescription:

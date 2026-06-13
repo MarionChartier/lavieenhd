@@ -19,7 +19,7 @@
 
   /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
   --font-display: var(--font-cormorant), "Times New Roman", serif;
-  --font-script: var(--font-tansongbird), var(--font-cormorant), cursive;
+  --font-script: var(--font-breathing), var(--font-cormorant), cursive;
   --font-sub: var(--font-rebel), var(--font-cormorant), serif;
   --font-body: var(--font-luciole), "Inter", system-ui, sans-serif;
   --font-mono: ui-monospace, "JetBrains Mono", monospace;

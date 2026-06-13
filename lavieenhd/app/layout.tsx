@@ -18,6 +18,14 @@ const tansongbird = localFont({
   weight: "400",
 });
 
+// Breathing — licence "Personal Use Only" : à régulariser (licence commerciale) avant mise en ligne.
+const breathing = localFont({
+  src: "./fonts/Breathing.ttf",
+  variable: "--font-breathing",
+  display: "swap",
+  weight: "400",
+});
+
 const rebel = localFont({
   src: "./fonts/Rebel.otf",
   variable: "--font-rebel",
@@ -46,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${cormorant.variable} ${tansongbird.variable} ${rebel.variable} ${luciole.variable}`}
+      className={`${cormorant.variable} ${tansongbird.variable} ${breathing.variable} ${rebel.variable} ${luciole.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white text-ink-deep">
         {children}
