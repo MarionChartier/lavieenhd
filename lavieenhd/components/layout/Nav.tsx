@@ -14,12 +14,12 @@ const NAV_ITEMS = [
 ] as const;
 
 /** Liens du menu déroulant "Mes offres" : vue d'ensemble + chaque offre.
- *  Le Quiz (offre 01, gratuit) renvoie vers le formulaire externe. */
+ *  Le Quiz (offre 01, gratuit) mène à la page interne "Quiz gratuits" (/quiz). */
 const OFFRE_LINKS: { label: string; href: string; external: boolean }[] = [
   { label: "Toutes les offres", href: "/mes-offres", external: false },
   ...OFFRES.map((o) =>
     o.num === "01"
-      ? { label: o.name, href: o.href, external: true }
+      ? { label: o.name, href: o.href, external: false }
       : { label: o.name, href: `/mes-offres/${o.slug}`, external: false },
   ),
 ];
@@ -40,30 +40,21 @@ export function Nav() {
   }, [mobileOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white">
-      {/* Fond paillettes doré (Fond doré 4) + voile blanc pour la lisibilité.
-          Le fond doré s'estompe vers le bas pour se fondre dans la section blanche. */}
-      <Image
-        src="/assets/header-glitter.png"
-        alt=""
-        aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        className="pointer-events-none absolute inset-0 object-cover"
-        style={{
-          WebkitMaskImage: "linear-gradient(to bottom, black 88%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, black 88%, transparent 100%)",
-        }}
-      />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/55" />
-      {/* Dégradé blanc en bas — fondu très léger vers la section suivante */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-white"
-      />
-
-      <div className="relative flex items-center justify-between px-6 py-2 md:px-20 md:py-2">
+    <nav className="sticky top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
+      {/* Bandeau flottant, entouré d'une bordure texturée (aquarelle), coins arrondis */}
+      <div className="relative rounded-[20px] p-1.5 shadow-[0_18px_40px_-20px_rgba(80,60,98,0.4)] md:p-2">
+        {/* Bordure texturée (aquarelle violette/cyan + dorée), même image que l'oracle */}
+        <Image
+          src="/assets/oracle-frame.png"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none absolute inset-0 rounded-[20px] object-cover"
+        />
+        <div className="relative rounded-2xl bg-white">
+      <div className="relative flex items-center justify-between px-6 py-2 md:px-10 md:py-2">
         <Link href="/" className="flex items-center gap-2.5" aria-label="Accueil — La vie en HD">
           <Image
             src="/assets/logo-lavieenhd.png"
@@ -73,11 +64,11 @@ export function Nav() {
             priority
             className="h-16 w-16 object-contain md:h-[70px] md:w-[70px]"
           />
-          <span className="flex flex-col leading-none">
+          <span className="flex flex-col items-center leading-none">
             <span className="font-script text-[23px] leading-none text-ink-deep md:text-[27px]">
               La vie en HD
             </span>
-            <span className="mt-1 font-body text-[10px] font-medium uppercase tracking-[0.18em] text-ink-soft md:text-[11px]">
+            <span className="mt-2 font-script text-[13px] leading-none text-ink-soft md:mt-2.5 md:text-[15px]">
               Marion Chartier
             </span>
           </span>
@@ -177,9 +168,11 @@ export function Nav() {
           </span>
         </button>
       </div>
+        </div>
+      </div>
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-[72px] z-40 h-[calc(100dvh-72px)] overflow-y-auto bg-paper px-6 py-10 lg:hidden">
+        <div className="fixed inset-x-0 top-[100px] z-40 h-[calc(100dvh-100px)] overflow-y-auto bg-paper px-6 py-10 lg:hidden">
           <div className="flex flex-col gap-6">
             {NAV_ITEMS.map((item) => {
               const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);

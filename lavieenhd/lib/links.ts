@@ -31,7 +31,7 @@ export const EXTERNAL = {
       "https://marionchartier-humandesign.systeme.io/lavieenhd_guide-environnement#CHOIXGUIDES",
     insideClub: "https://marionchartier-humandesign.systeme.io/commande-guide_design-guidee",
     reveal: "https://marionchartier-humandesign.systeme.io/commande-seance-clarte",
-    fleurDeTalents: LEGACY_BASE,
+    fleurDeTalents: "/blooming.html",
     reconnect: "https://marionchartier-humandesign.systeme.io/reconnect",
   },
 } as const;

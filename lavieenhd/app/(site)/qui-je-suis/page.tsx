@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { OracleDuJour } from "@/components/sections/home/OracleDuJour";
 
 export const metadata: Metadata = {
   title: "Qui suis-je ? · La vie en HD",
@@ -414,6 +415,24 @@ export default function QuiJeSuisPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 04ter — ORACLE DU JOUR (après Mes valeurs) */}
+      <section className="bg-paper px-6 pb-20 md:px-20 md:pb-28">
+        <div className="mx-auto max-w-[680px]">
+          <div className="text-center">
+            <p className="font-display text-[22px] font-light italic leading-snug text-ink-deep md:text-[26px]">
+              ...et j&apos;adooore aussi les oracles. Et toi, tu crois au «&nbsp;hasard&nbsp;»&nbsp;? 😇👇
+            </p>
+            <p className="mx-auto mt-4 max-w-[520px] font-body text-[14px] leading-relaxed text-ink md:text-[15px]">
+              Clique ici pour un petit supplément d&apos;âme&nbsp;; un message aléatoire rien que
+              pour toi. 😘
+            </p>
+          </div>
+          <div className="mt-8">
+            <OracleDuJour />
           </div>
         </div>
       </section>

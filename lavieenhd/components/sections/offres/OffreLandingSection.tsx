@@ -22,7 +22,7 @@ const BULLET_COLOR: Record<OffreColor, string> = {
 /**
  * Vue d'ensemble d'une offre sur /mes-offres : logo + brief + bouton "Découvrir"
  * qui mène vers la page dédiée (/mes-offres/[slug]). Le Quiz (offre 01, gratuit)
- * renvoie directement vers le formulaire externe (Tally).
+ * mène à la page interne "Quiz gratuits" (/quiz) qui présente les 2 quiz.
  */
 export function OffreLandingSection({
   offre,
@@ -136,17 +136,15 @@ export function OffreLandingSection({
                 ))}
               </ul>
 
-              {/* CTA — Quiz : lien externe ; autres : page dédiée */}
+              {/* CTA — Quiz : page interne /quiz ; autres : page dédiée */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 {isQuiz ? (
-                  <a
+                  <Link
                     href={offre.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-full bg-ink-deep px-8 pt-[17px] pb-[15px] font-body text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
                   >
-                    Faire le quiz
-                  </a>
+                    Voir les quiz gratuits
+                  </Link>
                 ) : (
                   <Link
                     href={`/mes-offres/${offre.slug}`}

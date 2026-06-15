@@ -42,14 +42,17 @@ export function LeChemin() {
 
 function Postcard({ offre }: { offre: Offre }) {
   const gradient = COLOR_GRADIENTS[offre.color];
-  // Le Quiz (offre 01) renvoie vers le formulaire externe ; les autres vers leur page dédiée.
+  // Le Quiz (offre 01) mène à la page "Quiz gratuits" (/quiz).
+  // La Fleur de Talents (Blooming) renvoie directement vers sa page de vente (offre.href).
+  // Les autres offres mènent à leur page dédiée.
   const isQuiz = offre.num === "01";
-  const href = isQuiz ? offre.href : `/mes-offres/${offre.slug}`;
+  const isDirectSale = offre.slug === "fleur-de-talents";
+  const href = isQuiz || isDirectSale ? offre.href : `/mes-offres/${offre.slug}`;
 
   return (
     <Link
       href={href}
-      {...(isQuiz ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      {...(isDirectSale ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="relative block transition-all hover:-translate-y-1"
     >
       {/* Accent floral discret — uniquement pour l'offre signature, dans la zone droite */}
@@ -74,9 +77,15 @@ function Postcard({ offre }: { offre: Offre }) {
               width={170}
               height={110}
               className={`relative w-auto object-contain ${
-                offre.slug === "inside" || offre.slug === "place-to-be"
-                  ? "max-h-[155px] max-w-[90%]"
-                  : "max-h-[120px] max-w-[85%]"
+                offre.slug === "inside"
+                  ? "max-h-[201px] max-w-[100%] -translate-y-7"
+                  : offre.slug === "reveal"
+                    ? "max-h-[165px] max-w-[92%] -translate-y-4"
+                    : offre.slug === "place-to-be"
+                      ? "max-h-[155px] max-w-[90%]"
+                      : offre.slug === "fleur-de-talents"
+                        ? "max-h-[140px] max-w-[88%] -translate-y-2"
+                        : "max-h-[120px] max-w-[85%]"
               }`}
             />
           ) : offre.signature ? (

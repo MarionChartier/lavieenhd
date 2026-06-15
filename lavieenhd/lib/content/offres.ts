@@ -46,19 +46,19 @@ export const OFFRES: Offre[] = [
   {
     num: "01",
     slug: "quiz",
-    name: "Quiz - Ton lieu de vie/de travail idéal",
-    subtitle: "6 questions ludiques pour découvrir ton environnement",
-    shortLabel: "Quiz lieu idéal",
+    name: "Quiz gratuits",
+    subtitle: "Deux quiz ludiques pour mieux te connaître",
+    shortLabel: "Quiz gratuits",
     tag: "Explorer",
     shortDescription:
-      "Découvre en 12 questions ton environnement HD idéal, parmi 6 profils possibles.",
-    lead: "5 minutes pour t'éclairer.",
+      "Deux quiz offerts : ton lieu de vie/de travail idéal et ton alignement vie pro.",
+    lead: "Deux mini-voyages pour mieux te connaître.",
     briefDescription:
-      "Découvre lequel des 6 environnements HD est ton terreau naturel, celui où ton énergie circule sans effort et où tu deviens toi-même.",
+      "Deux quiz ludiques et 100% offerts : l'un révèle le type de lieux qui booste ton énergie, l'autre ton niveau d'alignement dans ta vie pro. Résultat instantané à chaque fois.",
     briefBullets: [
-      "12 questions guidées",
-      "Résultat instantané",
-      "Rapport email personnalisé",
+      "Quiz - Ton lieu de vie/de travail idéal",
+      "Quiz - Ton alignement vie pro actuel",
+      "Quelques minutes, résultat immédiat",
     ],
     longDescription:
       "Le Human Design définit pour chacun un « Environnement idéal » parmi 6 profils : Marchés, Cuisines, Grottes, Côtes, Jardins, Sommets. C'est l'environnement où ton énergie circule au mieux, où tu te ressources naturellement. En 12 questions intuitives, ce quiz te donne ton profil + une explication détaillée de pourquoi cet espace te nourrit.",
@@ -76,7 +76,7 @@ export const OFFRES: Offre[] = [
       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-quiz.png",
     color: "free",
-    href: EXTERNAL.quiz,
+    href: "/quiz",
   },
   {
     num: "02",
@@ -244,7 +244,7 @@ export const OFFRES: Offre[] = [
     price: "300 €",
     imgUrl:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
-    logoSrc: null,
+    logoSrc: "/assets/logo-blooming.png",
     color: "turquoise",
     signature: true,
     href: EXTERNAL.offre.fleurDeTalents,
