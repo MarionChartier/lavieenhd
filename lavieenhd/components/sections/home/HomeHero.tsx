@@ -75,14 +75,14 @@ export function HomeHero() {
             Vraiment. En couleur, en grand, en toi.
           </p>
 
-          <p className="mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
+          <p className="mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
             Le Human Design est lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.
           </p>
 
-          <p className="mt-5 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
+          <p className="mt-5 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
             Je suis <strong className="font-semibold">Marion</strong>. Lorem ipsum dolor sit
             amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse

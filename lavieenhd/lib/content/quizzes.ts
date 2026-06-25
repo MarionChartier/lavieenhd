@@ -19,7 +19,7 @@ export interface QuizItem {
   subtitle: string;
   /** Accroche descriptive (1-2 phrases) */
   description: string;
-  /** Méta affichée en pastille (durée / nb de questions) */
+  /** Méta affichée (durée / nb de questions) */
   meta: string;
   /** Lien vers la page HTML autonome dans /public/quiz */
   href: string;
@@ -30,7 +30,7 @@ export const QUIZZES: QuizItem[] = [
   {
     slug: "environnement",
     name: "Quiz - Ton lieu de vie/de travail idéal",
-    subtitle: "Et si certains lieux te boostaient, et d'autres t'épuisaient ?",
+    subtitle: "Et si certains lieux te boostaient, et d'autres t'épuisaient ?",
     description:
       "Découvre quel type de lieux est bénéfique pour ton énergie actuellement, parmi 6 profils, pour que tu te ressources naturellement au quotidien.",
     meta: "6 questions · 2 minutes",
@@ -40,7 +40,7 @@ export const QUIZZES: QuizItem[] = [
   {
     slug: "alignement-pro",
     name: "Quiz - Ton alignement vie pro actuel",
-    subtitle: "Quel est ton niveau d'alignement actuel dans ta vie pro ?",
+    subtitle: "Quel est ton niveau d'alignement actuel dans ta vie pro ?",
     description:
       "Quelques questions sur ce que tu ressens au quotidien. Les réponses en révèlent souvent bien plus qu'on ne le croit.",
     meta: "7 questions · 2 minutes",

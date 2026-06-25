@@ -67,36 +67,23 @@ const HD_ATTRIBUTES = [
   },
 ];
 
-/** Nuage de valeurs (dans le désordre, voulu par Marion). */
-const VALEURS = [
-  "Intuition",
-  "Bienveillance",
-  "Confiance",
-  "Audace",
-  "Amour",
-  "Sensibilité",
-  "Ouverture d'esprit",
-  "Humour",
-  "Fun",
-  "Découverte",
-  "Voyage",
-  "Aventure",
-  "Mouvement",
-  "Evolution",
-  "Dynamisme",
-  "Abondance",
-  "Humanité",
-  "Créativité",
-  "Légèreté",
-  "Joie",
-  "Partage",
-  "Spiritualité",
-  "Beauté",
-  "Nature",
-  "Authenticité",
-  "Relations",
-  "Expansion",
-] as const;
+/** Nuage de valeurs — top 13 de Marion (dans le désordre, voulu).
+ *  `big: true` = mots à mettre en avant (plus gros). */
+const VALEURS: { word: string; big: boolean }[] = [
+  { word: "Intuition", big: true },
+  { word: "Audace", big: false },
+  { word: "Aventure", big: true },
+  { word: "Amour", big: false },
+  { word: "Bienveillance", big: true },
+  { word: "Partage", big: false },
+  { word: "Fun", big: true },
+  { word: "Spiritualité", big: false },
+  { word: "Créativité", big: false },
+  { word: "Authenticité", big: true },
+  { word: "Ouverture", big: false },
+  { word: "Confiance", big: false },
+  { word: "Rêve", big: false },
+];
 
 const PILIERS = [
   {
@@ -379,20 +366,22 @@ export default function QuiJeSuisPage() {
               </h2>
 
               <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-2.5 md:gap-x-6 md:gap-y-3">
-                {VALEURS.map((word, i) => {
-                  const sizes = [
-                    "text-[20px] md:text-[28px]",
-                    "text-[26px] md:text-[40px]",
-                    "text-[22px] md:text-[32px]",
-                    "text-[30px] md:text-[48px]",
-                    "text-[24px] md:text-[36px]",
-                  ];
-                  const colors = ["text-ink-deep", "text-turquoise", "text-ink-lilac", "text-ink"];
+                {VALEURS.map(({ word, big }, i) => {
+                  // Mots en avant = grande taille + couleur soutenue ; les autres, plus discrets.
+                  const size = big
+                    ? "text-[34px] md:text-[54px]"
+                    : "text-[20px] md:text-[30px]";
+                  const color =
+                    word === "Aventure"
+                      ? "text-[#5e3aa6]" // violet foncé demandé par Marion
+                      : big
+                        ? ["text-turquoise", "text-ink-deep"][i % 2]
+                        : ["text-ink", "text-ink-lilac"][i % 2];
                   const rots = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-3", "rotate-3", "-rotate-1"];
                   return (
                     <span
                       key={word}
-                      className={`inline-block font-sub leading-none ${sizes[i % sizes.length]} ${colors[i % colors.length]} ${rots[i % rots.length]}`}
+                      className={`inline-block font-sub leading-none ${size} ${color} ${rots[i % rots.length]}`}
                     >
                       {word}
                     </span>

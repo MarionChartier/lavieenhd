@@ -114,7 +114,7 @@ function Postcard({ offre }: { offre: Offre }) {
               {offre.trademark && <sup className="ml-0.5 text-[0.5em]">®</sup>}
             </h3>
             {offre.subtitle && (
-              <p className="font-display text-[13px] font-light italic leading-snug text-ink md:text-[14px]">
+              <p className="font-display text-[13px] font-light italic leading-snug text-ink-deep md:text-[14px]">
                 {offre.subtitle}
               </p>
             )}

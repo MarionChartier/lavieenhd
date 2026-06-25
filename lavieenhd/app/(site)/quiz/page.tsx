@@ -10,19 +10,23 @@ export const metadata: Metadata = {
 
 const ACCENT: Record<
   QuizAccent,
-  { chip: string; chipText: string; cardHover: string; cta: string }
+  { card: string; border: string; blob: string; meta: string; desc: string; cta: string }
 > = {
   turquoise: {
-    chip: "bg-turquoise-soft",
-    chipText: "text-ink-deep",
-    cardHover: "hover:border-turquoise",
-    cta: "group-hover:bg-turquoise group-hover:text-ink-deep",
+    card: "bg-[linear-gradient(155deg,#e4f4f5_0%,#ffffff_62%)]",
+    border: "border-turquoise/30 hover:border-turquoise",
+    blob: "bg-turquoise/30",
+    meta: "text-ink-deep/70",
+    desc: "text-[#5e3aa6]", // même violet que la carte pro, pleine opacité
+    cta: "bg-turquoise text-ink-deep hover:bg-[#5cb8bc]",
   },
   violet: {
-    chip: "bg-line",
-    chipText: "text-ink-deep",
-    cardHover: "hover:border-ink-lilac",
-    cta: "group-hover:bg-ink-lilac group-hover:text-white",
+    card: "bg-[linear-gradient(155deg,#efe8f8_0%,#ffffff_62%)]",
+    border: "border-ink-lilac/30 hover:border-ink-lilac",
+    blob: "bg-ink-lilac/30",
+    meta: "text-ink-deep/70",
+    desc: "text-[#5e3aa6]", // violet foncé lisible — uniquement sur la description
+    cta: "bg-ink-lilac text-white hover:bg-[#8f76c0]",
   },
 };
 
@@ -37,15 +41,16 @@ export default function QuizPage() {
         <h1 className="mt-5 font-display text-[45px] font-light leading-[0.95] text-ink-deep md:text-[78px]">
           Mes <em className="italic text-turquoise">quiz gratuits</em>
         </h1>
-        <p className="mx-auto mt-8 max-w-[620px] font-display text-[18px] font-light italic leading-snug text-ink md:text-[22px]">
-          Deux petits voyages ludiques pour mieux te connaître. Choisis celui qui
-          t'appelle aujourd'hui : tout se révèle en quelques minutes.
+        <p className="mx-auto mt-8 max-w-[620px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
+          J'ai créé pour toi des petits voyages introspectifs, ludiques et
+          révélateurs. Suis celui qui t'appelle aujourd'hui, et laisse la lumière
+          se faire.
         </p>
       </section>
 
       {/* CARTES QUIZ */}
       <section className="bg-white px-6 pb-24 md:px-20 md:pb-32">
-        <div className="mx-auto grid max-w-[980px] gap-6 md:grid-cols-2 md:gap-8">
+        <div className="mx-auto grid max-w-[980px] items-start gap-6 md:grid-cols-2 md:gap-8">
           {QUIZZES.map((quiz) => {
             const a = ACCENT[quiz.accent];
             return (
@@ -54,42 +59,39 @@ export default function QuizPage() {
                 href={quiz.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group flex flex-col rounded-2xl border border-ink/12 bg-paper p-10 shadow-[0_16px_40px_-24px_rgba(80,60,98,0.2)] transition-all hover:-translate-y-1 hover:shadow-[0_28px_56px_-26px_rgba(80,60,98,0.26)] md:p-12 ${a.cardHover}`}
+                className={`group relative flex flex-col items-center overflow-hidden rounded-[28px] border text-center ${a.border} ${a.card} p-9 shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_64px_-28px_rgba(80,60,98,0.32)] md:p-11`}
               >
+                {/* Couche de masque dédiée : clip-path arrondi qui rogne proprement
+                    le blob flouté/animé (l'overflow-hidden du parent le laisse fuir
+                    aux coins sur WebKit). Sans ombre, donc le clip ne rogne rien d'utile. */}
                 <span
-                  className={`inline-flex w-fit items-center rounded-full px-4 pt-[7px] pb-[5px] font-body text-[10px] uppercase tracking-[0.18em] ${a.chip} ${a.chipText}`}
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 [clip-path:inset(0_round_28px)]"
+                >
+                  <span
+                    className={`absolute -right-12 -top-12 h-44 w-44 rounded-full ${a.blob} blur-2xl transition-transform duration-500 group-hover:scale-125`}
+                  />
+                </span>
+
+                {/* Méta en haut à gauche, sans pastille */}
+                <span
+                  className={`relative font-body text-[11px] uppercase tracking-[0.2em] ${a.meta}`}
                 >
                   {quiz.meta}
                 </span>
 
-                <h2 className="mt-10 pt-4 font-display text-[27px] font-light leading-[1.05] text-ink-deep md:text-[31px]">
+                <h2 className="relative mt-5 pt-4 font-script text-[26px] leading-[2.05] text-ink-deep md:pt-6 md:text-[31px] md:leading-[1.95]">
                   {quiz.name.replace(/^Quiz\s*[-–]\s*/, "")}
                 </h2>
 
-                <p className="mt-6 font-sans text-[15px] font-normal leading-snug text-ink md:text-[16px]">
+                <p className={`relative mt-5 text-center font-display text-[17px] italic leading-snug md:text-[19px] ${a.desc}`}>
                   {quiz.subtitle}
                 </p>
 
-                <p className="mt-6 font-sans text-[15px] font-normal leading-relaxed text-ink">
-                  {quiz.description}
-                </p>
-
-                {/* Espace flexible : garantit un minimum d'air + colle le CTA en bas */}
-                <div className="min-h-10 flex-1" />
-
                 <span
-                  className={`inline-flex w-fit items-center justify-center gap-2 rounded-full border border-ink-deep bg-white px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] text-ink-deep transition-colors ${a.cta}`}
+                  className={`relative mt-7 inline-flex w-fit items-center justify-center self-center rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
                 >
                   Faire le quiz
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                    <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
                 </span>
               </a>
             );
