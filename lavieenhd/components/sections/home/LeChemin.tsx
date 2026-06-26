@@ -42,17 +42,16 @@ export function LeChemin() {
 
 function Postcard({ offre }: { offre: Offre }) {
   const gradient = COLOR_GRADIENTS[offre.color];
-  // Le Quiz (offre 01) mène à la page "Quiz gratuits" (/quiz).
-  // La Fleur de Talents (Blooming) renvoie directement vers sa page de vente (offre.href).
-  // Les autres offres mènent à leur page dédiée.
-  const isQuiz = offre.num === "01";
-  const isDirectSale = offre.slug === "fleur-de-talents";
-  const href = isQuiz || isDirectSale ? offre.href : `/mes-offres/${offre.slug}`;
+  // Chaque offre renvoie directement vers sa page (offre.href) : /quiz pour le
+  // Quiz, la page de vente Blooming pour Fleur de Talents. Les offres dont la
+  // page HTML n'est pas encore fournie renvoient vers leur section dans la frise.
+  const href = offre.href || `/mes-offres#${offre.slug}`;
+  const isExternal = href.startsWith("http");
 
   return (
     <Link
       href={href}
-      {...(isDirectSale ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="relative block transition-all hover:-translate-y-1"
     >
       {/* Accent floral discret — uniquement pour l'offre signature, dans la zone droite */}

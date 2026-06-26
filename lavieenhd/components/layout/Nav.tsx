@@ -14,13 +14,15 @@ const NAV_ITEMS = [
 ] as const;
 
 /** Liens du menu déroulant "Mes offres" : vue d'ensemble + chaque offre.
- *  Le Quiz (offre 01, gratuit) mène à la page interne "Quiz gratuits" (/quiz). */
+ *  Le Quiz (offre 01) mène à /quiz. Les offres avec une page dédiée pointent
+ *  directement dessus ; les autres (page à venir) renvoient vers leur section
+ *  dans la frise /mes-offres#slug. */
 const OFFRE_LINKS: { label: string; href: string; external: boolean }[] = [
   { label: "Toutes les offres", href: "/mes-offres", external: false },
   ...OFFRES.map((o) =>
-    o.num === "01"
-      ? { label: o.name, href: o.href, external: false }
-      : { label: o.name, href: `/mes-offres/${o.slug}`, external: false },
+    o.href
+      ? { label: o.name, href: o.href, external: o.href.startsWith("http") }
+      : { label: o.name, href: `/mes-offres#${o.slug}`, external: false },
   ),
 ];
 

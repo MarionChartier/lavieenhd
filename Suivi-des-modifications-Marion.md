@@ -45,6 +45,11 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 
 **Page de vente Blooming (Fleur de Talents Innés)**
 - Ta page de vente Blooming est intégrée au site avec son design d'origine. Tous les boutons du site qui mènent à l'offre Fleur de Talents Innés pointent désormais vers cette page de vente.
+- On a commencé à harmoniser cette page avec le reste du site, section par section :
+  - Boutons : coins entièrement arrondis (forme "pilule"), comme partout sur le site.
+  - Textes : le quasi-noir d'origine est remplacé par notre violet foncé, pour une teinte cohérente avec le site.
+  - Section "Le document" : réorganisée en deux blocs. En haut, l'aperçu sur téléphone à gauche et deux textes à droite ; en dessous, un texte à gauche et l'image du document à droite, avec un joli fondu sur les bords pour qu'elle se fonde dans le fond.
+  - Bas de page : remplacé par le footer exact du site (même fond aquarelle, wordmark "La vie en HD" en Breathing, liens "Me contacter" / "Me rejoindre sur Instagram", liens légaux).
 
 **Offres**
 - Le quiz s'appelle désormais "Quiz - Ton lieu de vie/de travail idéal" (sans "HD"), et son bouton est passé à "Explorer".
@@ -54,6 +59,7 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - Descriptions des offres harmonisées : on n'a plus un mélange de polices qui se télescopent. Les titres/accroches restent en élégant, et les textes de description + listes sont passés dans une police simple, fine et bien lisible (fini le gras un peu lourd).
 - Le petit repère de section ("01 / Explorer", etc.) est devenu beaucoup plus discret, posé en haut à gauche au-dessus du titre, avec un peu d'air en dessous.
 - Quiz gratuits : la citation sous le titre était un doublon ("...pour mieux te connaître" répété). Elle est devenue "Réponds spontanément, et laisse-toi surprendre.".
+- "Mes offres" : la section beige de description détaillée a été supprimée. Les boutons des offres renvoient maintenant directement vers leur page (Quiz vers les quiz gratuits, Fleur de Talents vers la page de vente Blooming). Pour les offres dont la page n'est pas encore prête, le bouton affiche "Bientôt disponible".
 
 **Page Test HD gratuit**
 - Allègement du haut de la section simulateur : suppression du petit titre "Test HD gratuit" et du titre "Calcule ton schéma personnalisé." (redondants avec le grand titre de la page).
@@ -63,6 +69,8 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 **Qui suis-je**
 - Nuage de mots-clés : remplacé par ton top 13 de valeurs, avec 5 mots mis en avant en plus gros (Aventure, Fun, Bienveillance, Intuition, Authenticité). "Aventure" est en violet foncé.
 - Fun fact : ton vrai texte (la découverte du Human Design grâce à la nounou).
+- Tes vraies photos ont remplacé les images temporaires : ton portrait et la photo "réflexion".
+- Section "Ma façon de t'accompagner" : refonte des 3 cartes dans le style moderne des cartes quiz (fond en dégradé doux), sans les pictogrammes ni les libellés "Pilier 1/2/3".
 
 **Bas de page (footer)**
 - "Me contacter" (avec une icône bulle de discussion, comme demandé) et "Me rejoindre sur Instagram".
@@ -103,3 +111,4 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - **Remplir et tenir à jour tes Google Sheets** : celui des transits solaires (avec les phases lunaires) et celui des messages de l'oracle. Le site s'y branche en direct.
 - Les **textes définitifs** (accroches, présentation Qui suis-je, descriptifs des offres si tu veux les retravailler).
 - Le réglage des **couleurs du calculateur**, depuis ton compte Bodygraphchart.
+- **The Soul Letter, tag d'inscription** : tu voulais qu'un tag soit posé sur les personnes qui s'inscrivent. Ce tag se crée dans ton systeme.io (Automatisations → Workflow "Funnel form subscribed" sur le formulaire Soul Letter → action "Add tag"). Une fois fait, on testera une inscription pour vérifier que le tag s'applique bien. Si besoin, on basculera sur l'iframe officielle systeme.io.

@@ -25,13 +25,16 @@ export const EXTERNAL = {
   /** Inscription newsletter Soul Letter — temporairement = base (V2 : endpoint dédié) */
   newsletter: LEGACY_BASE,
 
-  /** Pages d'offres individuelles sur l'espace systeme.io de Marion */
+  /**
+   * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages.
+   * Vides pour le moment : à compléter quand Marion fournit ses futures pages HTML.
+   * Seules Fleur de Talents Innés (page de vente Blooming) et le Quiz sont actives.
+   */
   offre: {
-    thePlaceToBe:
-      "https://marionchartier-humandesign.systeme.io/lavieenhd_guide-environnement#CHOIXGUIDES",
-    insideClub: "https://marionchartier-humandesign.systeme.io/commande-guide_design-guidee",
-    reveal: "https://marionchartier-humandesign.systeme.io/commande-seance-clarte",
+    thePlaceToBe: "",
+    insideClub: "",
+    reveal: "",
     fleurDeTalents: "/blooming.html",
-    reconnect: "https://marionchartier-humandesign.systeme.io/reconnect",
+    reconnect: "",
   },
 } as const;

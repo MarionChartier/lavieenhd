@@ -133,7 +133,8 @@ export function OffreLandingSection({
                 ))}
               </ul>
 
-              {/* CTA — Quiz : page interne /quiz ; autres : page dédiée */}
+              {/* CTA — lien direct vers la page de l'offre. Vide pour le moment
+                  pour les offres dont la page HTML n'est pas encore fournie. */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 {isQuiz ? (
                   <Link
@@ -142,14 +143,24 @@ export function OffreLandingSection({
                   >
                     Voir les quiz gratuits
                   </Link>
-                ) : (
-                  <Link
-                    href={`/mes-offres/${offre.slug}`}
+                ) : offre.href ? (
+                  <a
+                    href={offre.href}
+                    {...(offre.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="inline-flex items-center gap-2 rounded-full border border-ink-deep bg-white/40 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
                   >
                     Découvrir
                     <span aria-hidden>→</span>
-                  </Link>
+                  </a>
+                ) : (
+                  <span
+                    aria-disabled
+                    className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-ink-deep/25 bg-white/30 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep/45"
+                  >
+                    Bientôt disponible
+                  </span>
                 )}
               </div>
             </div>

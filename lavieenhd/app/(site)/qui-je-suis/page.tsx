@@ -10,10 +10,8 @@ export const metadata: Metadata = {
 };
 
 const PHOTOS = {
-  hero:
-    "https://images.unsplash.com/photo-1542596594-649edbc13630?w=1200&q=80&auto=format&fit=crop",
-  story:
-    "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1100&q=80&auto=format&fit=crop",
+  hero: "/assets/marion-portrait-quisuisje.jpg",
+  story: "/assets/marion-reflexion.jpg",
 } as const;
 
 const PILLS = [
@@ -323,32 +321,38 @@ export default function QuiJeSuisPage() {
             </p>
           </div>
 
-          {/* 3 cards */}
-          <div className="mt-16 grid gap-6 md:mt-20 md:grid-cols-3 md:gap-8">
+          {/* 3 cards — même design moderne que les cartes de quiz */}
+          <div className="mt-16 grid items-start gap-6 md:mt-20 md:grid-cols-3 md:gap-8">
             {PILIERS.map((p, i) => {
               // Alternance cyan / violet / cyan
-              const tone =
-                i === 1
-                  ? "border-ink-lilac/45 bg-[linear-gradient(160deg,#f1eafa_0%,#e6d9f5_100%)]"
-                  : "border-turquoise/40 bg-[linear-gradient(160deg,#e2f3f5_0%,#cfeaec_100%)]";
+              const isViolet = i === 1;
+              const card = isViolet
+                ? "border-ink-lilac/30 bg-[linear-gradient(155deg,#efe8f8_0%,#ffffff_62%)]"
+                : "border-turquoise/30 bg-[linear-gradient(155deg,#e4f4f5_0%,#ffffff_62%)]";
+              const blob = isViolet ? "bg-ink-lilac/30" : "bg-turquoise/30";
               return (
-              <div
-                key={p.title}
-                className={`flex flex-col rounded-2xl border p-8 shadow-[0_16px_40px_-24px_rgba(80,60,98,0.16)] md:p-10 ${tone}`}
-              >
-                {/* Pictogramme — petit symbole géométrique */}
-                <PilierIcon index={i} />
+                <div
+                  key={p.title}
+                  className={`relative isolate flex flex-col items-center overflow-hidden rounded-[28px] border p-9 text-center shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] md:p-11 ${card}`}
+                >
+                  {/* Couche de masque : clip-path arrondi qui rogne proprement le blob flouté */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 [clip-path:inset(0_round_28px)]"
+                  >
+                    <span
+                      className={`absolute -right-12 -top-12 h-44 w-44 rounded-full ${blob} blur-2xl`}
+                    />
+                  </span>
 
-                <p className="mt-6 font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  Pilier {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-2 font-display text-[30px] font-light leading-none text-ink-deep md:text-[36px]">
-                  {p.title}
-                </h3>
-                <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  {p.blurb}
-                </p>
-              </div>
+                  <h3 className="relative z-10 pt-2 font-script text-[28px] leading-[1.6] text-ink-deep md:text-[34px]">
+                    {p.title}
+                  </h3>
+
+                  <p className="relative z-10 mt-4 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                    {p.blurb}
+                  </p>
+                </div>
               );
             })}
           </div>
@@ -516,60 +520,5 @@ function Row({ label, value }: { label: string; value: string }) {
       <dt>{label}</dt>
       <dd className="font-semibold text-ink-deep">{value}</dd>
     </div>
-  );
-}
-
-/** Pictogramme géométrique simple pour chacun des 3 piliers */
-function PilierIcon({ index }: { index: number }) {
-  if (index === 0) {
-    // Pilier Doux — vague souple
-    return (
-      <svg viewBox="0 0 60 60" className="h-12 w-12" aria-hidden>
-        <path
-          d="M 6 36 Q 18 18 30 36 T 54 36"
-          fill="none"
-          stroke="#75ced2"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-        <circle cx="30" cy="30" r="2.5" fill="#503c62" />
-      </svg>
-    );
-  }
-  if (index === 1) {
-    // Pilier Concret — carré + cercle
-    return (
-      <svg viewBox="0 0 60 60" className="h-12 w-12" aria-hidden>
-        <rect
-          x="12"
-          y="12"
-          width="36"
-          height="36"
-          fill="none"
-          stroke="#75ced2"
-          strokeWidth="1.4"
-        />
-        <circle
-          cx="30"
-          cy="30"
-          r="10"
-          fill="none"
-          stroke="#503c62"
-          strokeWidth="1.4"
-        />
-      </svg>
-    );
-  }
-  // Pilier Personnalisé — étoile fine 4-branches
-  return (
-    <svg viewBox="0 0 60 60" className="h-12 w-12" aria-hidden>
-      <g stroke="#75ced2" strokeWidth="1.4" fill="none" strokeLinecap="round">
-        <line x1="30" y1="8" x2="30" y2="52" />
-        <line x1="8" y1="30" x2="52" y2="30" />
-        <line x1="14" y1="14" x2="46" y2="46" opacity="0.5" />
-        <line x1="46" y1="14" x2="14" y2="46" opacity="0.5" />
-      </g>
-      <circle cx="30" cy="30" r="3" fill="#503c62" />
-    </svg>
   );
 }
