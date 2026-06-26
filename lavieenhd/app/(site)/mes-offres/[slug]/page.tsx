@@ -133,7 +133,7 @@ export default async function OffrePage({
               </h1>
 
               {offre.subtitle && (
-                <p className="mt-3 font-display text-[19px] font-light italic leading-snug text-ink md:text-[22px]">
+                <p className="mt-3 font-display text-[19px] font-light leading-snug text-ink md:text-[22px]">
                   {offre.subtitle}
                 </p>
               )}

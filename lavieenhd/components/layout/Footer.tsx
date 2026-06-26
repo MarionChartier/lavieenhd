@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const CONTACT = {
@@ -53,25 +54,28 @@ function InstagramIcon({ className }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
-      {/* Fine ligne dorée en haut + halos doux pour réchauffer le bandeau */}
-      <div
+    <footer className="relative overflow-hidden text-ink-deep">
+      {/* Fond aquarelle du header (effet "bookend" haut/bas du site) */}
+      <Image
+        src="/assets/oracle-frame.png"
+        alt=""
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(216,191,139,0.7),transparent)]"
+        fill
+        sizes="100vw"
+        className="pointer-events-none absolute inset-0 object-cover"
       />
+      {/* Voile blanc doux : garde l'aquarelle visible tout en assurant la lisibilité du texte */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/35" />
+      {/* Fine ligne dorée en haut, pour séparer nettement de la page */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 right-[8%] h-64 w-64 rounded-full bg-turquoise/10 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-28 left-[10%] h-72 w-72 rounded-full bg-ink-lilac/15 blur-3xl"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(184,151,90,0.85),transparent)]"
       />
 
       <div className="relative flex flex-col gap-5 px-6 pt-9 pb-6 md:flex-row md:items-center md:justify-between md:gap-10 md:px-20 md:pt-11 md:pb-7">
         <div className="flex flex-col gap-1.5">
-          <p className="font-script text-[18px] leading-none tracking-wide text-white">La vie en HD</p>
-          <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/45">
+          <p className="font-script text-[20px] leading-none tracking-wide text-ink-deep">La vie en HD</p>
+          <p className="font-body text-[10px] uppercase tracking-[0.24em] text-ink-soft">
             Human Design · Marion Chartier
           </p>
         </div>
@@ -79,7 +83,7 @@ export function Footer() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-10">
           <a
             href={`mailto:${CONTACT.email}`}
-            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
+            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-ink-deep transition-colors hover:text-turquoise"
           >
             <ChatIcon className="h-4 w-4" />
             Me contacter
@@ -89,7 +93,7 @@ export function Footer() {
             href={CONTACT.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-white/85 transition-colors hover:text-white"
+            className="flex items-center gap-2.5 font-display text-[16px] font-semibold italic text-ink-deep transition-colors hover:text-[#7a57b5]"
           >
             <InstagramIcon className="h-4 w-4" />
             Me rejoindre sur Instagram
@@ -97,16 +101,16 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative mx-6 border-t border-white/15 md:mx-20" />
+      <div className="relative mx-6 border-t border-ink/15 md:mx-20" />
 
-      <div className="relative flex flex-col gap-3 px-6 py-5 text-[11px] tracking-[0.1em] text-white/55 md:flex-row md:items-center md:justify-between md:px-20">
+      <div className="relative flex flex-col gap-3 px-6 py-5 text-[11px] tracking-[0.1em] text-ink-soft md:flex-row md:items-center md:justify-between md:px-20">
         <div>© {new Date().getFullYear()} Marion Chartier · La vie en HD</div>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {LEGAL_LINKS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-turquoise"
             >
               {item.label}
             </Link>

@@ -52,7 +52,7 @@ export const OFFRES: Offre[] = [
     tag: "Explorer",
     shortDescription:
       "Deux quiz offerts : ton lieu de vie/de travail idéal et ton alignement vie pro.",
-    lead: "Deux mini-voyages pour mieux te connaître.",
+    lead: "Réponds spontanément, et laisse-toi surprendre.",
     briefDescription:
       "Deux quiz ludiques et 100% offerts : l'un révèle le type de lieux qui booste ton énergie, l'autre ton niveau d'alignement dans ta vie pro. Résultat instantané à chaque fois.",
     briefBullets: [

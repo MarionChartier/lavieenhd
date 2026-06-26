@@ -49,16 +49,11 @@ export default function TestGratuitPage() {
                 className="pointer-events-none -z-10 object-cover opacity-[0.05] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]"
               />
 
-              <p className="relative font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-                Test HD gratuit
+              <p className="relative font-script text-[30px] leading-[1.3] text-ink-deep md:text-[40px]">
+                Ton design
               </p>
-
-              <h2 className="mt-5 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[64px]">
-                Calcule ton <em className="italic text-turquoise">schéma</em> personnalisé.
-              </h2>
-
-              <p className="mt-6 font-display text-[18px] italic leading-snug text-ink-deep md:text-[22px]">
-                «&nbsp;Ton design, tel qu'il est inscrit dans le ciel à ta naissance.&nbsp;»
+              <p className="relative mt-5 font-display text-[18px] italic leading-snug text-ink-deep md:mt-6 md:text-[22px]">
+                tel qu'il est inscrit dans le ciel à ta naissance.
               </p>
 
               <p className="mt-5 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
@@ -67,30 +62,32 @@ export default function TestGratuitPage() {
                 bien plus. C'est la base de tout&nbsp;: la cartographie unique de ton énergie.
               </p>
 
-              {/* CE QUE TU OBTIENS */}
-              <div className="mt-8">
-                <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
-                  Ce que tu reçois
-                </p>
-                <ul className="mt-4 flex flex-col gap-3">
-                  {[
-                    "Ton schéma visuel complet (les 9 centres, canaux et portes)",
-                    "Ton Type énergétique parmi les 5 (Generator, MG, Projector, Manifestor, Reflector)",
-                    "Ton Autorité intérieure pour décider juste",
-                    "Ton Profil de personnalité (les 12 combinaisons)",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 font-body text-[14px] leading-snug text-ink-deep md:text-[15px]"
-                    >
-                      <span
-                        aria-hidden
-                        className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-turquoise"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              {/* CE QUE TU REÇOIS — card dorée penchée, même style que le fun fact */}
+              <div className="relative mt-10">
+                <div className="relative rotate-[-2deg] rounded-[28px] border border-[#d8bf8b]/60 bg-[linear-gradient(160deg,#f8efd6_0%,#ecd6a6_100%)] p-8 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.28)] md:p-11">
+                  <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
+                    Ce que tu reçois
+                  </span>
+                  <ul className="mt-3 flex flex-col gap-3">
+                    {[
+                      "Ton schéma visuel complet (les 9 centres, canaux et portes)",
+                      "Ton Type énergétique parmi les 5 (Generator, MG, Projector, Manifestor, Reflector)",
+                      "Ton Autorité intérieure pour décider juste",
+                      "Ton Profil de personnalité (les 12 combinaisons)",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-ink-deep"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* À SAVOIR — précisions sur les champs, structure label + texte */}

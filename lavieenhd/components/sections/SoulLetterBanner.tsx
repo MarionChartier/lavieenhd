@@ -1,15 +1,81 @@
+"use client";
+
 import Image from "next/image";
-import { EXTERNAL } from "@/lib/links";
+import { useState } from "react";
 
 /**
  * Section "The Soul Letter" — bandeau HQ pleine largeur (titre + sous-titre déjà
  * intégrés à l'image), avec le formulaire d'inscription (prénom + email) posé
- * directement sur le bandeau. Le form envoie vers l'écosystème systeme.io.
+ * directement sur le bandeau.
+ *
+ * Inscription branchée sur systeme.io en arrière-plan (même mécanisme que les quiz) :
+ * un POST est envoyé dans une iframe cachée vers l'endpoint d'inscription du
+ * formulaire Soul Letter, et l'utilisateur reste sur le site (message de confirmation).
+ *
+ * À compléter avec le CODE D'INTEGRATION du formulaire Soul Letter de Marion :
+ *   - action     : l'URL du <form action="..."> (ex. https://systeme.io/embedded/XXXXXXXX/subscription)
+ *   - emailField : le name="" du champ email (souvent "email")
+ *   - nameField  : le name="" du champ prénom (souvent "first_name")
+ *   - hidden     : champs cachés éventuels { "nom": "valeur" }
+ * Tant que "action" est vide, le formulaire reste inerte (rien n'est envoyé), sans casser la page.
  *
  * Bannière HQ fournie par Marion (1600×533), version dorée. La version cyan
  * (soulletter-banner-cian-hq.png) est aussi disponible si on change la palette.
  */
+const SOULLETTER = {
+  action: "https://systeme.io/embedded/42096565/subscription",
+  emailField: "email",
+  nameField: "first_name",
+  hidden: {} as Record<string, string>,
+};
+
 export function SoulLetterBanner() {
+  const [done, setDone] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const prenom = (form.elements.namedItem("firstname") as HTMLInputElement | null)?.value.trim() ?? "";
+    const email = (form.elements.namedItem("email") as HTMLInputElement | null)?.value.trim() ?? "";
+    if (!email) return;
+
+    if (SOULLETTER.action) {
+      try {
+        let iframe = document.getElementById("sio-sink-soulletter") as HTMLIFrameElement | null;
+        if (!iframe) {
+          iframe = document.createElement("iframe");
+          iframe.name = "sio-sink-soulletter";
+          iframe.id = "sio-sink-soulletter";
+          iframe.style.display = "none";
+          document.body.appendChild(iframe);
+        }
+        const sio = document.createElement("form");
+        sio.method = "POST";
+        sio.action = SOULLETTER.action;
+        sio.target = "sio-sink-soulletter";
+        sio.style.display = "none";
+        const add = (name: string, value: string) => {
+          if (!name) return;
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = name;
+          input.value = value;
+          sio.appendChild(input);
+        };
+        add(SOULLETTER.emailField, email);
+        add(SOULLETTER.nameField, prenom);
+        Object.entries(SOULLETTER.hidden).forEach(([k, v]) => add(k, v));
+        document.body.appendChild(sio);
+        sio.submit();
+        setTimeout(() => sio.remove(), 1000);
+      } catch {
+        /* on n'empêche jamais l'affichage de la confirmation */
+      }
+    }
+
+    setDone(true);
+  }
+
   return (
     <section className="bg-white px-6 pt-4 pb-14 md:px-20 md:pt-6 md:pb-20">
       {/* Titre + description au-dessus du bandeau */}
@@ -36,12 +102,15 @@ export function SoulLetterBanner() {
       </div>
 
       {/* Formulaire CTA, juste sous le bandeau */}
-      <form
-        action={EXTERNAL.newsletter}
-        method="GET"
-        target="_blank"
-        className="mx-auto mt-6 flex w-full max-w-[760px] flex-col gap-2 sm:flex-row sm:items-center md:mt-8"
-      >
+      {done ? (
+        <p className="mx-auto mt-6 max-w-[760px] text-center font-display text-[18px] font-light italic text-ink-deep md:mt-8 md:text-[20px]">
+          Merci, c'est confirmé ✨ Surveille ta boîte mail, je t'écris très vite.
+        </p>
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mt-6 flex w-full max-w-[760px] flex-col gap-2 sm:flex-row sm:items-center md:mt-8"
+        >
           <input
             name="firstname"
             placeholder="Ton prénom"
@@ -62,6 +131,7 @@ export function SoulLetterBanner() {
             Je rejoins la Soul Letter
           </button>
         </form>
+      )}
     </section>
   );
 }

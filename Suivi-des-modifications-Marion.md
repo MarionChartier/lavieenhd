@@ -1,7 +1,7 @@
 # La vie en HD, suivi des modifications, V3
 
 Document de suivi du site pour la construction de la V3.
-Dernière mise à jour : 25 juin 2026.
+Dernière mise à jour : 26 juin 2026.
 
 ---
 
@@ -32,6 +32,7 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - Section "Bienvenue chez toi" : les logos The Place to be, Inside, Reveal et Blooming (Fleur de Talents) ont été agrandis et recentrés pour un meilleur équilibre.
 - La carte Blooming renvoie directement vers ta page de vente Blooming (pas besoin de passer par la page de description).
 - Bandeau The Soul Letter : remplacé par ta version haute qualité (dorée), bien nette en pleine largeur.
+- The Soul Letter : le formulaire d'inscription (prénom + email) est maintenant branché sur ton systeme.io. La personne reste sur le site (pas de redirection), voit un message de confirmation, et le contact arrive bien chez toi (test fait, inscription validée).
 - Ta photo (marion_home) a été ajoutée en filigrane discret en fond de l'accueil.
 - Les textes de présentation et les sous-titres des offres ont été harmonisés dans une même teinte prune, pour plus de lisibilité et de cohérence.
 - Transit solaire : voir ci-dessous, désormais branché sur ton Google Sheet.
@@ -50,6 +51,14 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - Reveal : le verbe d'action est passé à "Clarifier".
 - Frise en haut de "Mes offres" : les verbes d'action sont ajoutés en italique au-dessus de chaque étape, et les noms "The Place to be" et "Fleur de Talents Innés" sont corrigés.
 - Le menu déroulant "Mes offres" se referme bien quand on clique sur une offre.
+- Descriptions des offres harmonisées : on n'a plus un mélange de polices qui se télescopent. Les titres/accroches restent en élégant, et les textes de description + listes sont passés dans une police simple, fine et bien lisible (fini le gras un peu lourd).
+- Le petit repère de section ("01 / Explorer", etc.) est devenu beaucoup plus discret, posé en haut à gauche au-dessus du titre, avec un peu d'air en dessous.
+- Quiz gratuits : la citation sous le titre était un doublon ("...pour mieux te connaître" répété). Elle est devenue "Réponds spontanément, et laisse-toi surprendre.".
+
+**Page Test HD gratuit**
+- Allègement du haut de la section simulateur : suppression du petit titre "Test HD gratuit" et du titre "Calcule ton schéma personnalisé." (redondants avec le grand titre de la page).
+- L'accroche "Ton design" est mise en avant dans la police Breathing, suivie en dessous de "tel qu'il est inscrit dans le ciel à ta naissance." en plus discret.
+- Le bloc "Ce que tu reçois" est présenté dans une jolie carte dorée (même style que le fun fact de la page Qui suis-je), pour le rendre plus vivant.
 
 **Qui suis-je**
 - Nuage de mots-clés : remplacé par ton top 13 de valeurs, avec 5 mots mis en avant en plus gros (Aventure, Fun, Bienveillance, Intuition, Authenticité). "Aventure" est en violet foncé.

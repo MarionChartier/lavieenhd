@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PHOTO_MARION_LIVING =
-  "https://images.unsplash.com/photo-1542596594-649edbc13630?w=900&q=80&auto=format&fit=crop";
+const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.jpg";
 
 const PILLS = [
   "Manifesting Generator 2/4",
@@ -16,13 +15,13 @@ export function AboutTeaser() {
       <div className="mx-auto grid max-w-(--container-content) gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
         {/* Photo + HDCard */}
         <div className="relative">
-          <div className="relative h-[480px] w-full overflow-hidden rounded md:h-[580px]">
+          <div className="relative h-[480px] w-full overflow-hidden rounded-2xl border border-ink/10 shadow-[0_24px_55px_-28px_rgba(80,60,98,0.28)] md:h-[580px]">
             <Image
               src={PHOTO_MARION_LIVING}
-              alt="Portrait de Marion Chartier"
+              alt="Marion Chartier"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
           {/* HD Card flottante */}

@@ -96,22 +96,19 @@ export function OffreLandingSection({
 
             {/* Contenu hero */}
             <div>
-              <p className="flex items-baseline gap-3">
-                <span className="font-display text-[26px] italic text-turquoise md:text-[30px]">
-                  {offre.num}
-                </span>
-                <span className="font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-                  {offre.tag}
-                </span>
+              <p className="flex items-center gap-2 pb-3 font-body text-[10px] uppercase tracking-[0.28em] text-ink-soft/70 md:pb-4">
+                <span>{offre.num}</span>
+                <span aria-hidden className="h-3 w-px bg-ink-soft/30" />
+                <span>{offre.tag}</span>
               </p>
 
-              <h2 className="mt-5 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
+              <h2 className="mt-3 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
                 {offre.name}
                 {offre.trademark && <sup className="ml-1 text-[0.4em]">®</sup>}
               </h2>
 
               {offre.subtitle && (
-                <p className="mt-3 font-display text-[19px] font-light italic leading-snug text-ink md:text-[22px]">
+                <p className="mt-3 font-display text-[19px] font-light leading-snug text-ink md:text-[22px]">
                   {offre.subtitle}
                 </p>
               )}
@@ -120,7 +117,7 @@ export function OffreLandingSection({
                 «&nbsp;{offre.lead}&nbsp;»
               </p>
 
-              <p className="mt-5 max-w-[480px] font-body text-[14px] leading-relaxed text-ink-deep md:text-[15px]">
+              <p className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]">
                 {offre.briefDescription}
               </p>
 
@@ -128,7 +125,7 @@ export function OffreLandingSection({
                 {offre.briefBullets.map((b) => (
                   <li
                     key={b}
-                    className="flex items-center gap-3 font-body text-[14px] text-ink-deep md:text-[15px]"
+                    className="flex items-center gap-3 font-sans text-[14px] font-normal leading-snug text-ink-deep md:text-[15px]"
                   >
                     <span aria-hidden className={`h-2 w-2 flex-none rounded-full ${bulletColor}`} />
                     {b}

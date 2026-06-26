@@ -89,9 +89,6 @@ export function Nav() {
                     }`}
                   >
                     {item.label}
-                    <span aria-hidden className="text-[8px] transition-transform group-hover:rotate-180">
-                      ▾
-                    </span>
                     {isActive && (
                       <span className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-turquoise" />
                     )}
