@@ -52,6 +52,12 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
   - Bas de page : remplacé par le footer exact du site (même fond aquarelle, wordmark "La vie en HD" en Breathing, liens "Me contacter" / "Me rejoindre sur Instagram", liens légaux).
   - Bouton "Retour" flottant en haut à gauche : un petit chevron pour revenir à la page précédente (ou à l'accueil si la personne arrive directement sur la page). Sur mobile, il se réduit à un cercle discret.
 
+**Page de vente The Place to be (Guide d'Exploration de ton Environnement HD)**
+- Nouvelle page de vente créée de zéro, sur le même design que Blooming (mêmes couleurs, polices, footer, bouton retour, navigation par points), à partir du contenu de ton ancienne page.
+- Sections : accroche, le constat (les signaux de désalignement), l'harmonie par ton lieu de vie, à propos du Guide (avec aperçus en fondu sur la section), les 6 Environnements (Grottes, Marchés, Cuisines, Montagnes, Vallées, Rivages) avec une carte par environnement et son bouton de commande, rappel du test gratuit, témoignages, qui je suis, FAQ, et appel final vers le test HD.
+- Le bouton "The Place to be" (accueil et page Mes offres) ne dit plus "Bientôt disponible" : il mène directement à cette page.
+- Prix (22 €) et délai (7 jours) repris de l'ancienne page : à confirmer s'ils sont toujours d'actualité.
+
 **Offres**
 - Le quiz s'appelle désormais "Quiz - Ton lieu de vie/de travail idéal" (sans "HD"), et son bouton est passé à "Explorer".
 - Reveal : le verbe d'action est passé à "Clarifier".

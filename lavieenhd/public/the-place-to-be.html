@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Place to be — Ton Environnement HD — La vie en HD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    @font-face{font-family:'Breathing';src:url(/fonts/Breathing.ttf) format('truetype');font-weight:400;font-display:swap;}
+    @font-face{font-family:'Luciole';src:url(/fonts/Luciole-Bold.ttf) format('truetype');font-weight:700;font-display:swap;}
+    :root {
+      --violet:     #766488;
+      --lavande:    #bea4d8;
+      --lavande-pale:#e9dff5;
+      --cyan:       #75ced2;
+      --cyan-clair: #dbeef4;
+      --or:         #decdad;
+      --blanc:      #ffffff;
+      --creme:      #f9f7fb;
+      --texte:      #503c62;
+      --texte-doux: #5a4e6a;
+      --font-display:'Cinzel', serif;
+      --font-serif:  'Cormorant Garamond', serif;
+      --font-sans:   'Jost', sans-serif;
+      --font-script:'Breathing','Cormorant Garamond',cursive;
+      --font-body:'Luciole','Jost',sans-serif;
+      --gap:        120px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--creme);color:var(--texte);font-family:var(--font-sans);font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:860px;margin:0 auto;padding:0 28px;}
+    .container--wide{max-width:1060px;margin:0 auto;padding:0 28px;}
+    .eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+    .divider{width:48px;height:1px;background:var(--lavande);margin:20px auto;}
+    .divider--left{margin-left:0;}
+    .section{padding:var(--gap) 0;}
+    .section-header{text-align:center;margin-bottom:64px;}
+    .section-header h2{font-size:clamp(26px,4vw,44px);margin-top:12px;}
+    .display{font-family:var(--font-sans);font-weight:700;}
+    .btn-primary{display:inline-block;background:var(--violet);color:var(--blanc);font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:18px 48px;border-radius:9999px;transition:background .25s,transform .2s;}
+    .btn-primary:hover{background:#5a4d6e;transform:translateY(-2px);}
+    .btn-ghost{display:inline-block;border:1px solid var(--lavande);color:var(--lavande);font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 36px;border-radius:9999px;transition:border-color .25s,color .25s;}
+    .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 28px 80px;position:relative;overflow:hidden;background:var(--creme);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(190,164,216,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 50% at 85% 75%,rgba(117,206,210,.12) 0%,transparent 55%);pointer-events:none;}
+    .hero-logo{width:100%;max-width:340px;margin:0 auto 26px;position:relative;z-index:1;}
+    .hero h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(26px,4.2vw,46px);line-height:1.3;color:var(--texte);max-width:760px;margin:14px auto 0;position:relative;z-index:1;}
+    .hero h1 em{font-style:normal;color:var(--violet);}
+    .hero-sub{font-family:var(--font-serif);font-size:clamp(17px,2.2vw,22px);font-style:italic;font-weight:300;color:var(--texte-doux);max-width:620px;margin:26px auto 44px;position:relative;z-index:1;}
+    .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;}
+
+    /* STRIP */
+    .strip{background:var(--violet);padding:56px 28px;text-align:center;position:relative;overflow:hidden;}
+    .strip blockquote{font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);font-weight:300;font-style:italic;color:var(--blanc);max-width:700px;margin:0 auto;line-height:1.55;position:relative;z-index:1;}
+    .strip blockquote em{color:var(--cyan);font-style:normal;}
+    .strip cite{display:block;margin-top:16px;font-family:var(--font-sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-style:normal;}
+
+    /* WHAT / FLOW */
+    .what-section{background:var(--blanc);padding:var(--gap) 0;}
+    .what-flow::after{content:"";display:block;clear:both;}
+    .what-flow h2{font-size:clamp(24px,3.5vw,40px);margin:14px 0 30px;}
+    .what-flow p{font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:2;margin-bottom:24px;}
+    .what-flow p strong{font-weight:700;color:var(--texte);}
+    .what-flow .divider--left{margin-top:18px;margin-bottom:26px;}
+    .what-flow .eyebrow{display:block;}
+    .flow-img{float:right;width:330px;max-width:44%;margin:6px 0 28px 44px;border-radius:16px;box-shadow:0 18px 48px -18px rgba(80,60,98,.4);}
+    @media(max-width:720px){.flow-img{float:none;width:100%;max-width:320px;margin:0 auto 28px;}}
+
+    /* SIGNAL / BENEFIT LISTS */
+    .signal-wrap{background:var(--lavande-pale);border-radius:16px;padding:36px 40px;margin-top:8px;}
+    .signal-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 36px;}
+    .signal-list li{position:relative;padding-left:26px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.5;}
+    .signal-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lavande);}
+    .benefit-list li::before{background:var(--cyan);}
+    @media(max-width:720px){.signal-list{grid-template-columns:1fr;}.signal-wrap{padding:30px 26px;}}
+
+    /* GUIDE / MOCKUPS */
+    .guide-section{padding:var(--gap) 0;background:var(--cyan-clair);}
+    .doc-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px;}
+    .doc-texts{display:flex;flex-direction:column;gap:24px;}
+    .doc-texts h3{font-family:var(--font-serif);font-size:24px;font-weight:600;color:var(--texte);}
+    .doc-texts p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;}
+    .doc-img{display:flex;justify-content:center;}
+    .doc-img img{width:100%;max-width:420px;border-radius:14px;box-shadow:0 18px 48px -16px rgba(80,60,98,.32);}
+    .doc-img--fade img{box-shadow:none;border-radius:0;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
+    @media(max-width:720px){.doc-row{grid-template-columns:1fr;gap:36px;}}
+    .voyage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:56px;}
+    .voyage-item{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:12px;padding:26px 24px;text-align:center;}
+    .voyage-item .icon{font-size:26px;margin-bottom:12px;}
+    .voyage-item p{font-family:var(--font-serif);font-size:16px;color:var(--texte-doux);line-height:1.55;}
+
+    /* ENVIRONNEMENTS */
+    .env-section{padding:var(--gap) 0;}
+    .price-tag{display:inline-block;font-family:var(--font-serif);font-size:clamp(22px,3vw,30px);font-style:italic;color:var(--violet);margin:6px 0;}
+    .price-note{max-width:580px;margin:24px auto 0;background:var(--lavande-pale);border-radius:14px;padding:22px 30px;font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--texte-doux);line-height:1.6;text-align:center;}
+    .env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px;}
+    .env-card{background:var(--blanc);border:1px solid rgba(190,164,216,.28);border-radius:16px;padding:36px 30px;display:flex;flex-direction:column;text-align:center;box-shadow:0 16px 44px -26px rgba(80,60,98,.45);transition:transform .25s,box-shadow .25s;}
+    .env-card:hover{transform:translateY(-4px);box-shadow:0 24px 54px -24px rgba(80,60,98,.5);}
+    .env-num{width:48px;height:48px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:var(--font-display);font-size:20px;color:var(--violet);}
+    .env-name{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;color:var(--violet);margin-bottom:4px;}
+    .env-tagline{font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--cyan);margin-bottom:18px;}
+    .env-card p{font-family:var(--font-serif);font-size:16px;font-weight:300;line-height:1.7;color:var(--texte-doux);margin-bottom:24px;flex:1;}
+    .env-card .btn-primary{font-size:11px;padding:14px 26px;align-self:center;}
+
+    /* TEST GRATUIT BRIDGE */
+    .tg-bridge{background:var(--cyan-clair);padding:64px 28px;text-align:center;}
+    .tg-bridge h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,3vw,32px);color:var(--violet);margin-bottom:14px;}
+    .tg-bridge p{font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--texte-doux);max-width:580px;margin:0 auto 28px;}
+
+    /* TESTI */
+    .testi-section{background:var(--blanc);padding:var(--gap) 0;}
+    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
+    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
+    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:start;}
+    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
+    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
+    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+
+    /* ABOUT */
+    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
+    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
+    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
+    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
+    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
+    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
+
+    /* FAQ */
+    .faq-section{background:var(--blanc);padding:var(--gap) 0;}
+    .faq-list{max-width:720px;margin:48px auto 0;border-top:1px solid rgba(80,60,98,.1);}
+    .faq-item{border-bottom:1px solid rgba(80,60,98,.1);}
+    .faq-question{width:100%;background:none;border:none;padding:24px 0;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--texte);}
+    .faq-icon{display:inline-block;flex-shrink:0;font-size:26px;line-height:1;color:var(--cyan);transition:transform .3s;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s ease;}
+    .faq-item.open .faq-answer{max-height:1800px;}
+    .faq-answer-inner{padding:0 0 28px;font-family:var(--font-serif);font-size:17px;font-weight:300;line-height:1.82;color:var(--texte-doux);}
+
+    /* FINAL CTA */
+    .final-cta{padding:var(--gap) 0;text-align:center;background:var(--blanc);}
+    .final-cta h2{font-size:clamp(26px,4vw,48px);margin:12px 0 18px;}
+    .final-cta .sub{font-family:var(--font-serif);font-size:20px;font-style:italic;color:var(--texte-doux);max-width:520px;margin:0 auto 40px;}
+
+    /* FOOTER */
+    footer{position:relative;overflow:hidden;color:#503c62;}
+    .ft-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .ft-veil{position:absolute;inset:0;background:rgba(255,255,255,.35);pointer-events:none;}
+    .ft-goldline{position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(184,151,90,.85),transparent);}
+    .ft-main{position:relative;display:flex;flex-direction:column;gap:20px;padding:36px 24px 24px;}
+    .ft-brand{display:flex;flex-direction:column;gap:6px;}
+    .ft-brand-name{font-family:var(--font-script);font-size:20px;line-height:1;letter-spacing:.02em;color:#503c62;}
+    .ft-brand-sub{font-family:var(--font-body);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:#9784aa;}
+    .ft-links{display:flex;flex-direction:column;gap:12px;}
+    .ft-link{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:16px;font-weight:600;font-style:italic;color:#503c62;transition:color .2s;}
+    .ft-link svg{width:16px;height:16px;flex-shrink:0;}
+    .ft-link--mail:hover{color:#75ced2;}
+    .ft-link--insta:hover{color:#7a57b5;}
+    .ft-divider{position:relative;margin:0 24px;border-top:1px solid rgba(118,100,136,.15);}
+    .ft-bottom{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px 24px;font-size:11px;letter-spacing:.1em;color:#9784aa;}
+    .ft-legal{display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .ft-legal a{color:#9784aa;transition:color .2s;}
+    .ft-legal a:hover{color:#75ced2;}
+    @media(min-width:768px){
+      .ft-main{flex-direction:row;align-items:center;justify-content:space-between;gap:40px;padding:44px 80px 28px;}
+      .ft-links{flex-direction:row;align-items:center;gap:40px;}
+      .ft-divider{margin:0 80px;}
+      .ft-bottom{flex-direction:row;align-items:center;justify-content:space-between;padding:20px 80px;}
+    }
+
+    @media(max-width:720px){
+      :root{--gap:80px;}
+      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOUTON RETOUR FLOTTANT -->
+<style>
+  .back-btn{position:fixed;top:22px;left:22px;z-index:9500;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px 0 15px;border-radius:9999px;background:rgba(253,251,247,.92);border:1px solid rgba(190,164,216,.5);box-shadow:0 10px 30px -12px rgba(80,60,98,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.04em;color:var(--texte);transition:border-color .25s,color .25s,transform .25s;cursor:pointer;}
+  .back-btn:hover{border-color:var(--cyan);color:var(--violet);transform:translateX(-2px);}
+  .back-btn svg{width:16px;height:16px;flex-shrink:0;}
+  @media(max-width:720px){.back-btn{top:14px;left:14px;height:42px;width:42px;padding:0;justify-content:center;gap:0;}.back-btn .back-label{display:none;}}
+</style>
+<a href="/" class="back-btn" aria-label="Revenir a la page precedente" onclick="if(window.history.length>1){window.history.back();return false;}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  <span class="back-label">Retour</span>
+</a>
+
+<!-- NAV POINTS FLOTTANTS -->
+<style>
+  .sidenav { position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:14px;align-items:flex-end; }
+  .sidenav a { display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer; }
+  .dot { width:10px;height:10px;border-radius:50%;background:rgba(190,164,216,.35);border:1px solid var(--lavande);flex-shrink:0;transition:all .3s; }
+  .dot-label { font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--violet);background:rgba(249,247,251,.95);padding:4px 10px;border-radius:20px;border:1px solid rgba(190,164,216,.3);opacity:0;transform:translateX(8px);transition:all .25s;white-space:nowrap;pointer-events:none; }
+  .sidenav a:hover .dot-label,
+  .sidenav a.active .dot-label { opacity:1;transform:translateX(0); }
+  .sidenav a:hover .dot,
+  .sidenav a.active .dot { background:var(--violet);border-color:var(--violet);transform:scale(1.3); }
+  @media(max-width:720px) { .sidenav { right:10px; } .dot-label { display:none; } }
+</style>
+<nav class="sidenav" id="sidenav">
+  <a href="javascript:void(0)" onclick="document.getElementById('probleme').scrollIntoView({behavior:'smooth'})" data-section="probleme"><span class="dot-label">Le constat</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('harmonie').scrollIntoView({behavior:'smooth'})" data-section="harmonie"><span class="dot-label">L'harmonie</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})" data-section="guide"><span class="dot-label">Le Guide</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('environnements').scrollIntoView({behavior:'smooth'})" data-section="environnements"><span class="dot-label">Les 6 Environnements</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="/assets/logo-place.png" alt="The Place to be — Le Guide d'Exploration de ton Environnement HD"/>
+  <span class="eyebrow" style="position:relative;z-index:1;">La vie en HD · Marion Chartier</span>
+  <p class="hero-sub">Un Guide complet, clair et facilement actionnable, pour explorer une clé d'alignement majeure : ton Environnement idéal de Human Design. Comprends enfin pourquoi certains lieux te boostent, et d'autres t'épuisent.</p>
+  <div class="hero-cta-group">
+    <a href="javascript:void(0)" onclick="document.getElementById('environnements').scrollIntoView({behavior:'smooth'})" class="btn-primary">Go, je plonge le cœur en premier →</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Découvrir le Guide</a>
+  </div>
+</section>
+
+<!-- STRIP CITATION -->
+<div class="strip">
+  <blockquote>
+    Ton énergie s'éteint sans raison apparente&nbsp;?<br/>Et si ce n'était pas toi, mais <em>l'endroit</em>&nbsp;?
+    <cite>— La clé d'alignement la plus méconnue du Human Design</cite>
+  </blockquote>
+</div>
+
+<!-- PROBLEME -->
+<section class="section" id="probleme">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Tu te sens dans le flou, désaxé·e ?</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:26px;">Ton environnement influence profondément ton énergie vitale.</h2>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:22px;">Tu n'en as pas forcément conscience, mais ton environnement agit en profondeur sur ton énergie, et sur tout ce qui en découle dans ton quotidien, autant dans ta vie personnelle que professionnelle.</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:34px;">Même si tout se joue au niveau cellulaire et énergétique, si tu navigues à contre-courant de ton Environnement, ton système nerveux va progressivement être mis à mal, et t'envoyer des signaux tels que&nbsp;:</p>
+      <div class="signal-wrap">
+        <ul class="signal-list">
+          <li>la sensation d'être vidé·e</li>
+          <li>un sommeil perturbé, pas récupérateur</li>
+          <li>un stress constant, en arrière-plan ou non</li>
+          <li>une concentration en dents de scie</li>
+          <li>un manque de créativité</li>
+          <li>de l'irritabilité</li>
+          <li>un manque de clarté, une sensation de flou</li>
+          <li>un manque d'ancrage</li>
+          <li>un sentiment de dispersion</li>
+          <li>voire un véritable mal-être dans la durée</li>
+        </ul>
+      </div>
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;margin-top:34px;">Pour éviter ces symptômes de désalignement, commence par explorer ton espace idéal : ton corps sait exactement où il se sent détendu pour agir, créer et se relâcher. Il est temps de l'écouter pour faire renaître naturellement ton énergie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HARMONIE -->
+<section class="what-section" id="harmonie">
+  <div class="container">
+    <div class="what-flow reveal">
+      <img class="flow-img" src="/assets/environnement-sun.jpeg" alt="Reconnexion à son environnement"/>
+      <span class="eyebrow">L'harmonie par ton lieu de vie</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display">L'âme s'apaise quand le lieu résonne.</h2>
+      <p>La variable de ton Environnement en Human Design (avec celle de ta Digestion) est l'une des fondations d'une bonne qualité de vie. Elle est directement liée au bien-être de ton corps, au bon fonctionnement de tes cellules. C'est ce qu'on appelle <strong>l'intelligence cellulaire</strong>.</p>
+      <p>En Human Design, on retrouve 6 types d'Environnements (Grottes, Marchés, Cuisines, Montagnes, Vallées, Rivages), avec chacun 2 types de Profils associés. Nous avons tous l'un de ces 6 Environnements défini dans notre Design unique : celui dans lequel notre corps s'apaise et se sent au mieux énergétiquement.</p>
+      <p>On ne parle pas ici d'une histoire de goûts personnels ou de sensibilité, mais bien de <strong>données énergétiques profondes, inscrites dans ton ADN</strong>. Baigner dans ton Environnement idéal au quotidien a un impact positif direct sur ton alignement et la fluidité de ton énergie, et t'offre&nbsp;:</p>
+      <div class="signal-wrap" style="background:var(--cyan-clair);">
+        <ul class="signal-list benefit-list">
+          <li>un sommeil réparateur</li>
+          <li>une meilleure concentration</li>
+          <li>une qualité de présence améliorée</li>
+          <li>une créativité retrouvée</li>
+          <li>moins de nervosité</li>
+          <li>une clarté nouvelle</li>
+          <li>une sensation de calme intérieur</li>
+          <li>une énergie qui circule librement</li>
+        </ul>
+      </div>
+      <p style="margin-top:28px;font-style:italic;color:var(--violet);">Connaître ton Environnement de prédilection et t'y immerger au quotidien, dans ton lieu de vie comme dans ton espace de travail, te permet de maximiser tes ressources internes et d'optimiser ton bien-être et tes performances.</p>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="javascript:void(0)" onclick="document.getElementById('environnements').scrollIntoView({behavior:'smooth'})" class="btn-primary">Waouh, je veux mon Guide direct&nbsp;! →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LE GUIDE -->
+<section class="guide-section" id="guide">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">À propos du Guide</span>
+      <h2 class="display">Le Guide d'Exploration de ton Environnement HD</h2>
+    </div>
+    <div class="reveal" style="max-width:760px;margin:0 auto;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:19px;font-weight:300;color:var(--texte-doux);line-height:1.9;margin-bottom:20px;">C'est une plongée inédite et ludique dans ton écologie intérieure que je te propose : le point de départ d'une vraie reconnexion. Un Guide complet de plus de 30 pages en PDF, conçu à la demande, que j'ai voulu clair, accessible à tous et pragmatique.</p>
+      <p style="font-family:var(--font-serif);font-size:19px;font-weight:300;color:var(--texte-doux);line-height:1.9;">Pas de jargon incompréhensible. Ici, on décrypte, on infuse et on applique dans la vraie vie, sans avoir besoin de déménager ou de changer de job.</p>
+    </div>
+
+    <div class="doc-row reveal">
+      <div class="doc-img doc-img--fade"><img src="/assets/place-to-be/mockup-laptop.jpg" alt="Aperçu du Guide d'Exploration sur ordinateur"/></div>
+      <div class="doc-texts">
+        <div>
+          <h3>Conçu à la main, pour toi</h3>
+          <p>Au-delà de la théorie, tu y retrouveras des clés essentielles pour activer ce pilier d'alignement énergétique au quotidien, dans ta vie personnelle comme professionnelle.</p>
+        </div>
+        <div>
+          <h3>Pensé pour passer à l'action</h3>
+          <p>Des leviers utiles et puissants pour (ré)aménager simplement ton lieu de vie et ton espace de travail, en accord avec tes besoins cellulaires profonds. Un Guide conçu avec cœur, humanité et bienveillance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="voyage-grid reveal">
+      <div class="voyage-item"><div class="icon">📖</div><p>Des explications claires et décodées</p></div>
+      <div class="voyage-item"><div class="icon">📝</div><p>Des pages de prise de conscience, comme un journal de bord</p></div>
+      <div class="voyage-item"><div class="icon">🔑</div><p>Des conseils pratiques et faciles à mettre en place</p></div>
+      <div class="voyage-item"><div class="icon">💡</div><p>Des exemples concrets</p></div>
+      <div class="voyage-item"><div class="icon">🎨</div><p>Des visuels et des inspirations de décoration</p></div>
+      <div class="voyage-item"><div class="icon">🌈</div><p>Une planche d'ambiance couleurs &amp; matières</p></div>
+    </div>
+
+    <div class="doc-row reveal" style="margin-top:64px;">
+      <div class="doc-texts">
+        <div>
+          <h3>À relire à l'infini</h3>
+          <p>Ton Environnement est noté tout en bas de ton schéma HD. Une fois identifié, ce Guide devient un compagnon : tu y reviens à chaque réaménagement, à chaque envie de te recentrer.</p>
+        </div>
+        <div>
+          <h3>Et aussi pour tes proches</h3>
+          <p>Un cadeau précieux à offrir, et même un superbe outil pour adapter la chambre de ton enfant et soutenir son sommeil. Il te suffit de connaître les informations de naissance de la personne.</p>
+        </div>
+      </div>
+      <div class="doc-img doc-img--fade"><img src="/assets/place-to-be/mockup-phone.jpg" alt="Le Guide d'Exploration sur téléphone"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- LES 6 ENVIRONNEMENTS -->
+<section class="env-section" id="environnements">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">6 mondes, 6 vibrations intérieures</span>
+      <h2 class="display">Commande dès maintenant ton Guide d'Exploration</h2>
+      <p class="price-tag">Un Guide pour la vie, à relire à l'infini, au prix tout doux de 22&nbsp;€.</p>
+      <div class="price-note">
+        <strong style="font-style:normal;color:var(--violet);">Note importante&nbsp;:</strong> ton Guide d'Exploration est conçu à la main, avec le cœur, par une humaine (moi 😉). Il y a donc un délai d'au moins 7 jours entre la commande et la réception de ton Guide personnalisé.
+      </div>
+    </div>
+
+    <div class="env-grid reveal">
+      <div class="env-card">
+        <div class="env-num">1</div>
+        <div class="env-name">Grottes</div>
+        <div class="env-tagline">Le Refuge intérieur</div>
+        <p>Ici, tout commence par le silence. Tu es chez toi dans les recoins feutrés, là où la lumière est douce et les sons étouffés. Ce n'est pas de solitude que tu te nourris, mais de sécurité et d'intimité choisie. Dans ton refuge sacré, tu redeviens entier·ière.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-grottes" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+      <div class="env-card">
+        <div class="env-num">2</div>
+        <div class="env-name">Marchés</div>
+        <div class="env-tagline">Le Carrefour vivant</div>
+        <p>Tu appartiens aux lieux qui bruissent et circulent, là où les chemins se croisent et les regards s'échangent. Marchand·e d'idées, de talents ou d'expériences, tu prospères dans l'échange vivant. C'est dans le mouvement que tu trouves ta place.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-marches" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+      <div class="env-card">
+        <div class="env-num">3</div>
+        <div class="env-name">Cuisines</div>
+        <div class="env-tagline">L'Atelier bouillonnant</div>
+        <p>Dans ton monde, tout est matière à alchimiser. Tu vibres dans les lieux où l'on transforme, mélange, expérimente. Ton esprit est une marmite en ébullition, avide de mélanges inattendus. C'est en brassant que tu fais naître ta magie, ton feu sacré.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-cuisines" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+      <div class="env-card">
+        <div class="env-num">4</div>
+        <div class="env-name">Montagnes</div>
+        <div class="env-tagline">L'Observatoire paisible</div>
+        <p>Tu recherches l'air pur et la vue dégagée, les cimes silencieuses. Ton esprit s'élève dans les hauteurs tranquilles, là où le bruit s'étouffe. Le calme est ta fondation, et la hauteur ton inspiration. C'est là-haut que tes idées prennent leur juste place.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-montagnes" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+      <div class="env-card">
+        <div class="env-num">5</div>
+        <div class="env-name">Vallées</div>
+        <div class="env-tagline">Le Jardin des échos</div>
+        <p>Tu vis dans le lien et la résonance avec l'autre. Ce qui t'anime, c'est la proximité, la justesse d'une présence, une union fluide entre toi, l'environnement et les gens. Dans ton berceau, tu écoutes, tu dialogues, tu tisses. C'est dans le cœur à cœur que tu prospères.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-vallees" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+      <div class="env-card">
+        <div class="env-num">6</div>
+        <div class="env-name">Rivages</div>
+        <div class="env-tagline">L'Entre-deux Mondes</div>
+        <p>Tu es né·e pour les zones de rencontre, là où les mondes se touchent sans se confondre. Ni tout à fait ici, ni tout à fait là-bas. Tu captes la richesse des passages, des transitions. Sur la lisière sensible, tu trouves ta liberté. Là où tout change, et tout se crée.</p>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-rivages" target="_blank" rel="noopener" class="btn-primary">Je veux mon Guide complet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST GRATUIT BRIDGE -->
+<div class="tg-bridge" id="test-gratuit">
+  <div class="container reveal">
+    <h3 class="display">Tu ne sais pas quel est ton Environnement HD&nbsp;?</h3>
+    <p>Pas de panique&nbsp;! Fais ton test gratuit pour le découvrir. C'est super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Ton Environnement apparaît sur la dernière ligne, sous ton schéma.</p>
+    <a href="/test-gratuit" class="btn-primary">Faire mon test HD gratuit →</a>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section class="testi-section" id="testimonials">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Ils en parlent</span>
+      <h2 class="display">Témoignages</h2>
+    </div>
+
+    <div class="testi-whatsapp reveal">
+      Franchement bluffée de ce guide&nbsp;! Il est agréable à lire, et surtout totalement juste. C'est rigolo car je m'aperçois que j'ai spontanément peint mon bureau de travail aux couleurs de mon environnement&nbsp;! Merci infiniment Marion.
+      <div class="testi-tag"><span class="testi-avatar">N</span> Nathalie</div>
+    </div>
+
+    <div class="testi-cards reveal">
+      <div class="testi-card">
+        <p>"Qui aurait cru qu'à partir de mes infos de naissance j'aurais pu en apprendre autant sur moi&nbsp;? Grâce au guide de Marion, j'ai pu comprendre mon Environnement et identifier ce qui me correspond le mieux en termes d'aménagement et d'ambiance. Très instructif et utile pour mieux vivre en harmonie avec mon environnement perso et pro&nbsp;! Merci beaucoup Marion 🥰"</p>
+        <div class="author">— Eloïse</div>
+      </div>
+      <div class="testi-card">
+        <p>"À la première lecture, j'étais sceptique : je me disais que tout le monde pouvait se reconnaître. Mais des détails ont refait surface et m'ont interpellé. J'ai relu une seconde fois, et là, tout a changé. Je me suis reconnu dans tous les aspects, même certains dont je n'avais pas conscience. Mon conseil pour les sceptiques&nbsp;? Essayez, vous serez bluffés&nbsp;!"</p>
+        <div class="author">— Nicolas</div>
+      </div>
+      <div class="testi-card">
+        <p>"Je m'attendais à sortir le globe terrestre pour poser une gommette sur mon lieu idéal&nbsp;! Mais ce que j'ai découvert, c'est bien plus que ça. J'ai dévoré ce guide comme le meilleur roman du moment&nbsp;! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour appliquer des changements concrets. Encore merci Marion 🌟"</p>
+        <div class="author">— Astrig</div>
+      </div>
+      <div class="testi-card">
+        <p>"J'ai adoré le format, la charte visuelle, c'est pétillant&nbsp;! Je ne m'y connaissais pas du tout en Human Design et c'est bluffant comme je retrouve plein de choses justes sur mes besoins et ma sensibilité. Un guide super révélateur et hallucinant de justesse&nbsp;! Pour l'anecdote, mon environnement est 'Cuisines' et… je viens de ce milieu-là&nbsp;! 😍"</p>
+        <div class="author">— Gloria</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUI JE SUIS -->
+<section class="about-section" id="about">
+  <div class="container--wide">
+    <div class="about-inner reveal">
+      <img class="about-photo" src="/assets/marion-portrait-quisuisje.jpg" alt="Marion Chartier"/>
+      <div class="about-text">
+        <span class="eyebrow">En quelques mots</span>
+        <div class="divider divider--left"></div>
+        <h2 class="display">Qui je suis&nbsp;?</h2>
+        <p>Moi c'est Marion&nbsp;! En Human Design, je suis MG 2/4 : la magicienne fraternelle multi-passionnée, si on veut faire un (gros) résumé&nbsp;! 😄</p>
+        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens à ne pas trouver ma place, je me suis retrouvée grâce à un plongeon dans le Human Design. Je suis aujourd'hui coach transformationnelle, pour toi. ♥</p>
+        <p>Je vois trop de personnes qui, à force de conditionnements extérieurs, se retrouvent déconnectées et perdues à l'âge adulte, si éloignées de qui elles sont (moi la première, je suis passée par là…). C'est une vraie mission de cœur pour moi de t'accompagner, grâce à des outils puissants comme le Human Design, à te retrouver et te révéler pleinement. 🌟</p>
+        <p class="signature">La vie en HD, à ta portée</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les questions qui reviennent le plus souvent</span>
+      <h2 class="display">FAQ</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">C'est quoi exactement le Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Il regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens et le yi-king chinois. Grâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « schéma HD », qui dévoile notre fonctionnement énergétique, nos dons, nos talents et notre chemin d'évolution. Pour découvrir ton schéma HD, c'est par ici. 😊</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide est-il fait pour moi, même si je ne connais pas le Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Guide d'Exploration est conçu de manière à le rendre accessible à tout le monde, même si le Human Design est une découverte pour toi. Tout est clairement expliqué, vulgarisé et décrypté. 🎈</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment connaître mon Environnement de Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pour découvrir ton Environnement, je t'invite à faire ton TEST HD GRATUIT. C'est très rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Ce test génère ton schéma HD, en-dessous duquel tu retrouveras ton Environnement, sur la dernière ligne.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Et si je veux décrypter les autres informations de mon schéma HD&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Si tu souhaites poursuivre ton exploration, je t'invite à découvrir Le Guide d'Immersion dans ton Design Unique (Inside). 🌟 Tu y retrouveras le décryptage concret et personnalisé des 7 clés majeures de ton Design : pour mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi&nbsp;! ♡</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide me donne-t-il le point GPS de mon « endroit idéal »&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Non, le Guide d'Exploration ne te donnera pas de localisation géographique précise. Il peut cependant te fournir des indications sur tes zones de prédilection : bord de mer, zone humide, environnement citadin… ⏩</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide est-il personnalisé&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, chaque Guide d'Exploration est propre à TON Environnement spécifique (1 parmi les 6). 🎁 De plus, tu y retrouveras en BONUS les descriptions de ton « Profil HD », actif ou passif.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je commander le Guide pour l'Environnement de mon enfant&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Bien sûr&nbsp;! Le Guide de l'Environnement HD de ton enfant va te donner des billes précieuses pour adapter l'univers de sa chambre par exemple, dans le but d'améliorer son sommeil 😴. C'est un vrai cadeau que de décoder ce genre de clé d'alignement dès le plus jeune âge, pour offrir un cadre adapté à sa nature profonde. ♡</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je offrir le Guide autour de moi&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">C'est même une super idée de cadeau&nbsp;! 💎 Une jolie porte d'entrée dans l'univers du Human Design. Il te faut juste connaître les informations de naissance de la personne, faire son TEST HD, puis choisir le bon Environnement au moment de l'achat.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Difficile de modifier mon espace de travail : le Guide me sera-t-il utile&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Tu vas découvrir dans ton Guide des conseils pratiques faciles à mettre en place, même en tant que salarié·e sans possibilité d'adapter ton espace. Par exemple, utiliser ta pause déjeuner pour te rapprocher de ton Environnement 🌱, ou de petits éléments de décoration qui auront une influence positive inconsciente sur ton bien-être. 🎯 De petites actions sont toujours possibles.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide est-il un ebook ou un livre papier&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">💌 Ton Guide d'Exploration t'est envoyé (au moins 7 jours après la commande) sous forme de livret PDF à télécharger. Ensuite, libre à toi de le faire imprimer sur un joli support si tu le souhaites&nbsp;! 🎀</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Y a-t-il du pratico-pratique, ou uniquement de la théorie&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">N'étant moi-même pas une grande adepte du « full-théorie », je mets un point d'honneur à te partager un maximum de clés concrètes et applicables dans ton quotidien (en complément de la théorie indispensable et vulgarisée). 🎯 Je suis une scientifique avec les pieds sur Terre&nbsp;: il est primordial pour moi de ramener les aspects plus ésotériques dans la réalité de tous les jours&nbsp;!</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Découvre ton schéma HD</span>
+      <div class="divider"></div>
+      <h2 class="display">Et si tu retrouvais ton <em style="font-family:var(--font-serif);font-style:italic;color:var(--violet)">axe énergétique</em>&nbsp;?</h2>
+      <p class="sub">Fais ton test HD gratuit en 2 minutes&nbsp;: ton Environnement est noté tout en bas, sous ton schéma.</p>
+      <a href="/test-gratuit" class="btn-primary">Mon test HD gratuit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="ft-bg" src="/assets/oracle-frame.png" alt="" aria-hidden="true"/>
+  <div class="ft-veil" aria-hidden="true"></div>
+  <div class="ft-goldline" aria-hidden="true"></div>
+  <div class="ft-main">
+    <div class="ft-brand">
+      <p class="ft-brand-name">La vie en HD</p>
+      <p class="ft-brand-sub">Human Design · Marion Chartier</p>
+    </div>
+    <div class="ft-links">
+      <a class="ft-link ft-link--mail" href="mailto:hello@marionchartier-lavieenhd.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-8.5 8 9 9 0 0 1-3.4-.7L3.5 20l1.2-4.6A8 8 0 0 1 12 3.5a8 8 0 0 1 8.5 8z"/><circle cx="8.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="15.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/></svg>
+        Me contacter
+      </a>
+      <a class="ft-link ft-link--insta" href="https://www.instagram.com/marionchartier_lavieenhd/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+        Me rejoindre sur Instagram
+      </a>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-bottom">
+    <div>© 2026 Marion Chartier · La vie en HD</div>
+    <div class="ft-legal">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/cgv">CGV</a>
+      <a href="/confidentialite">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active dot on scroll
+  const sections = ['probleme','harmonie','guide','environnements','testimonials','about','faq'];
+  const navLinks = document.querySelectorAll('#sidenav a');
+  function updateNav() {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+</script>
+</body>
+</html>

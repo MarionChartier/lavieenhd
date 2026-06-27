@@ -28,10 +28,11 @@ export const EXTERNAL = {
   /**
    * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages.
    * Vides pour le moment : à compléter quand Marion fournit ses futures pages HTML.
-   * Seules Fleur de Talents Innés (page de vente Blooming) et le Quiz sont actives.
+   * Seules The Place to be, Fleur de Talents Innés (page de vente Blooming)
+   * et le Quiz sont actives.
    */
   offre: {
-    thePlaceToBe: "",
+    thePlaceToBe: "/the-place-to-be.html",
     insideClub: "",
     reveal: "",
     fleurDeTalents: "/blooming.html",
