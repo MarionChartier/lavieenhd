@@ -377,7 +377,7 @@ export default function QuiJeSuisPage() {
                     : "text-[20px] md:text-[30px]";
                   const color =
                     word === "Aventure"
-                      ? "text-[#5e3aa6]" // violet foncé demandé par Marion
+                      ? "text-ink-deep" // même couleur qu'Authenticité (ink-deep)
                       : big
                         ? ["text-turquoise", "text-ink-deep"][i % 2]
                         : ["text-ink", "text-ink-lilac"][i % 2];

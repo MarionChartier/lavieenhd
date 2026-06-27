@@ -200,10 +200,13 @@ function SunIcon({ className }: { className?: string }) {
         {Array.from({ length: 12 }).map((_, i) => {
           const a = (i * 360) / 12;
           const rad = (a * Math.PI) / 180;
-          const x1 = 24 + Math.cos(rad) * 13;
-          const y1 = 24 + Math.sin(rad) * 13;
-          const x2 = 24 + Math.cos(rad) * 18;
-          const y2 = 24 + Math.sin(rad) * 18;
+          // Arrondi pour que serveur et client produisent exactement la même
+          // chaîne (sinon mismatch d'hydratation sur les flottants type 17.5000…4).
+          const round = (n: number) => Math.round(n * 1000) / 1000;
+          const x1 = round(24 + Math.cos(rad) * 13);
+          const y1 = round(24 + Math.sin(rad) * 13);
+          const x2 = round(24 + Math.cos(rad) * 18);
+          const y2 = round(24 + Math.sin(rad) * 18);
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
         })}
       </g>

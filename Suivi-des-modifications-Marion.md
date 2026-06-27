@@ -1,7 +1,7 @@
 # La vie en HD, suivi des modifications, V3
 
 Document de suivi du site pour la construction de la V3.
-Dernière mise à jour : 26 juin 2026.
+Dernière mise à jour : 27 juin 2026.
 
 ---
 
@@ -50,6 +50,7 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
   - Textes : le quasi-noir d'origine est remplacé par notre violet foncé, pour une teinte cohérente avec le site.
   - Section "Le document" : réorganisée en deux blocs. En haut, l'aperçu sur téléphone à gauche et deux textes à droite ; en dessous, un texte à gauche et l'image du document à droite, avec un joli fondu sur les bords pour qu'elle se fonde dans le fond.
   - Bas de page : remplacé par le footer exact du site (même fond aquarelle, wordmark "La vie en HD" en Breathing, liens "Me contacter" / "Me rejoindre sur Instagram", liens légaux).
+  - Bouton "Retour" flottant en haut à gauche : un petit chevron pour revenir à la page précédente (ou à l'accueil si la personne arrive directement sur la page). Sur mobile, il se réduit à un cercle discret.
 
 **Offres**
 - Le quiz s'appelle désormais "Quiz - Ton lieu de vie/de travail idéal" (sans "HD"), et son bouton est passé à "Explorer".
