@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inside — Le Guide d'Immersion dans ton Design Unique — La vie en HD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    @font-face{font-family:'Breathing';src:url(/fonts/Breathing.ttf) format('truetype');font-weight:400;font-display:swap;}
+    @font-face{font-family:'Luciole';src:url(/fonts/Luciole-Bold.ttf) format('truetype');font-weight:700;font-display:swap;}
+    :root {
+      --violet:     #766488;
+      --lavande:    #bea4d8;
+      --lavande-pale:#e9dff5;
+      --cyan:       #75ced2;
+      --cyan-clair: #dbeef4;
+      --or:         #decdad;
+      --blanc:      #ffffff;
+      --creme:      #f9f7fb;
+      --texte:      #503c62;
+      --texte-doux: #5a4e6a;
+      --font-display:'Cinzel', serif;
+      --font-serif:  'Cormorant Garamond', serif;
+      --font-sans:   'Jost', sans-serif;
+      --font-script:'Breathing','Cormorant Garamond',cursive;
+      --font-body:'Luciole','Jost',sans-serif;
+      --gap:        120px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--creme);color:var(--texte);font-family:var(--font-sans);font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:860px;margin:0 auto;padding:0 28px;}
+    .container--wide{max-width:1060px;margin:0 auto;padding:0 28px;}
+    .eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+    .divider{width:48px;height:1px;background:var(--lavande);margin:20px auto;}
+    .divider--left{margin-left:0;}
+    .section{padding:var(--gap) 0;}
+    .section-header{text-align:center;margin-bottom:64px;}
+    .section-header h2{font-size:clamp(26px,4vw,44px);margin-top:12px;}
+    .display{font-family:var(--font-sans);font-weight:700;}
+    .btn-primary{display:inline-block;background:var(--violet);color:var(--blanc);font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:18px 48px;border-radius:9999px;transition:background .25s,transform .2s;}
+    .btn-primary:hover{background:#5a4d6e;transform:translateY(-2px);}
+    .btn-ghost{display:inline-block;border:1px solid var(--lavande);color:var(--lavande);font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 36px;border-radius:9999px;transition:border-color .25s,color .25s;}
+    .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 28px 80px;position:relative;overflow:hidden;background:var(--creme);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(190,164,216,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 50% at 85% 75%,rgba(117,206,210,.12) 0%,transparent 55%);pointer-events:none;}
+    .hero-logo{width:100%;max-width:320px;margin:0 auto 26px;position:relative;z-index:1;}
+    .hero h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(26px,4.2vw,46px);line-height:1.3;color:var(--texte);max-width:780px;margin:14px auto 0;position:relative;z-index:1;}
+    .hero h1 em{font-style:normal;color:var(--violet);}
+    .hero-sub{font-family:var(--font-serif);font-size:clamp(17px,2.2vw,22px);font-style:italic;font-weight:300;color:var(--texte-doux);max-width:640px;margin:26px auto 44px;position:relative;z-index:1;}
+    .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;}
+
+    /* STRIP */
+    .strip{background:var(--violet);padding:56px 28px;text-align:center;position:relative;overflow:hidden;}
+    .strip blockquote{font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);font-weight:300;font-style:italic;color:var(--blanc);max-width:700px;margin:0 auto;line-height:1.55;position:relative;z-index:1;}
+    .strip blockquote em{color:var(--cyan);font-style:normal;}
+    .strip cite{display:block;margin-top:16px;font-family:var(--font-sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-style:normal;}
+
+    /* WHAT / FLOW */
+    .what-section{background:var(--blanc);padding:var(--gap) 0;}
+    .what-flow::after{content:"";display:block;clear:both;}
+    .what-flow h2{font-size:clamp(24px,3.5vw,40px);margin:14px 0 30px;}
+    .what-flow p{font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:2;margin-bottom:24px;}
+    .what-flow p strong{font-weight:700;color:var(--texte);}
+    .what-flow .divider--left{margin-top:18px;margin-bottom:26px;}
+    .what-flow .eyebrow{display:block;}
+    .flow-img{float:right;width:330px;max-width:44%;margin:6px 0 28px 44px;border-radius:16px;box-shadow:0 18px 48px -18px rgba(80,60,98,.4);}
+    @media(max-width:720px){.flow-img{float:none;width:100%;max-width:320px;margin:0 auto 28px;}}
+
+    /* SIGNAL / BENEFIT LISTS */
+    .signal-wrap{background:var(--lavande-pale);border-radius:16px;padding:36px 40px;margin-top:8px;}
+    .signal-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 36px;}
+    .signal-list li{position:relative;padding-left:26px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.5;}
+    .signal-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lavande);}
+    .benefit-list li::before{background:var(--cyan);}
+    @media(max-width:720px){.signal-list{grid-template-columns:1fr;}.signal-wrap{padding:30px 26px;}}
+
+    /* GUIDE / MOCKUPS */
+    .guide-section{padding:var(--gap) 0;background:var(--cyan-clair);}
+    .doc-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px;}
+    .doc-texts{display:flex;flex-direction:column;gap:24px;}
+    .doc-texts h3{font-family:var(--font-serif);font-size:24px;font-weight:600;color:var(--texte);}
+    .doc-texts p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;}
+    .doc-img{display:flex;justify-content:center;}
+    .doc-img img{width:100%;max-width:420px;border-radius:14px;box-shadow:0 18px 48px -16px rgba(80,60,98,.32);}
+    .doc-img--fade img{box-shadow:none;border-radius:0;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
+    @media(max-width:720px){.doc-row{grid-template-columns:1fr;gap:36px;}}
+    .voyage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:56px;}
+    .voyage-item{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:12px;padding:26px 24px;text-align:center;}
+    .voyage-item .icon{font-size:26px;margin-bottom:12px;}
+    .voyage-item p{font-family:var(--font-serif);font-size:16px;color:var(--texte-doux);line-height:1.55;}
+
+    /* PROCESSUS / 7 CLES */
+    .steps-section{padding:var(--gap) 0;}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:56px;}
+    .step-card{background:var(--blanc);border:1px solid rgba(190,164,216,.28);border-radius:16px;padding:32px 28px;box-shadow:0 16px 44px -28px rgba(80,60,98,.4);transition:transform .25s,box-shadow .25s;}
+    .step-card:hover{transform:translateY(-4px);box-shadow:0 24px 54px -24px rgba(80,60,98,.5);}
+    .step-num{width:44px;height:44px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-family:var(--font-display);font-size:18px;color:var(--violet);}
+    .step-name{font-family:var(--font-display);font-size:20px;letter-spacing:.03em;color:var(--violet);margin-bottom:8px;}
+    .step-card p{font-family:var(--font-serif);font-size:16px;font-weight:300;line-height:1.7;color:var(--texte-doux);}
+    .step-card p .qty{display:block;font-style:italic;color:var(--cyan);font-size:14px;margin-top:6px;}
+
+    /* OFFRES / TARIFS */
+    .env-section{padding:var(--gap) 0;}
+    .price-note{max-width:600px;margin:24px auto 0;background:var(--lavande-pale);border-radius:14px;padding:22px 30px;font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--texte-doux);line-height:1.6;text-align:center;}
+    .offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:56px;max-width:840px;margin-left:auto;margin-right:auto;}
+    .offer-card{background:var(--blanc);border:1px solid rgba(190,164,216,.28);border-radius:18px;padding:40px 34px;display:flex;flex-direction:column;text-align:center;box-shadow:0 16px 44px -26px rgba(80,60,98,.45);transition:transform .25s,box-shadow .25s;position:relative;}
+    .offer-card:hover{transform:translateY(-4px);box-shadow:0 24px 54px -24px rgba(80,60,98,.5);}
+    .offer-card--featured{border-color:var(--lavande);box-shadow:0 24px 60px -22px rgba(118,100,136,.55);}
+    .offer-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--cyan);color:var(--blanc);font-family:var(--font-sans);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:7px 18px;border-radius:9999px;white-space:nowrap;}
+    .offer-name{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;color:var(--violet);margin-bottom:4px;}
+    .offer-tagline{font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--cyan);margin-bottom:18px;}
+    .offer-price{font-family:var(--font-sans);font-weight:700;font-size:42px;color:var(--texte);margin-bottom:22px;}
+    .offer-list{list-style:none;text-align:left;margin-bottom:28px;flex:1;}
+    .offer-list li{position:relative;padding-left:26px;font-family:var(--font-serif);font-size:16px;color:var(--texte-doux);line-height:1.55;margin-bottom:12px;}
+    .offer-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lavande);}
+    .offer-card .btn-primary{font-size:11px;padding:15px 28px;align-self:center;}
+
+    /* TEST GRATUIT BRIDGE */
+    .tg-bridge{background:var(--cyan-clair);padding:64px 28px;text-align:center;}
+    .tg-bridge h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,3vw,32px);color:var(--violet);margin-bottom:14px;}
+    .tg-bridge p{font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--texte-doux);max-width:600px;margin:0 auto 28px;}
+
+    /* TESTI */
+    .testi-section{background:var(--blanc);padding:var(--gap) 0;}
+    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
+    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
+    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:start;}
+    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
+    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
+    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+
+    /* ABOUT */
+    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
+    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
+    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
+    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
+    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
+    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
+
+    /* FAQ */
+    .faq-section{background:var(--blanc);padding:var(--gap) 0;}
+    .faq-list{max-width:720px;margin:48px auto 0;border-top:1px solid rgba(80,60,98,.1);}
+    .faq-item{border-bottom:1px solid rgba(80,60,98,.1);}
+    .faq-question{width:100%;background:none;border:none;padding:24px 0;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--texte);}
+    .faq-icon{display:inline-block;flex-shrink:0;font-size:26px;line-height:1;color:var(--cyan);transition:transform .3s;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s ease;}
+    .faq-item.open .faq-answer{max-height:1800px;}
+    .faq-answer-inner{padding:0 0 28px;font-family:var(--font-serif);font-size:17px;font-weight:300;line-height:1.82;color:var(--texte-doux);}
+
+    /* FOOTER */
+    footer{position:relative;overflow:hidden;color:#503c62;}
+    .ft-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .ft-veil{position:absolute;inset:0;background:rgba(255,255,255,.35);pointer-events:none;}
+    .ft-goldline{position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(184,151,90,.85),transparent);}
+    .ft-main{position:relative;display:flex;flex-direction:column;gap:20px;padding:36px 24px 24px;}
+    .ft-brand{display:flex;flex-direction:column;gap:6px;}
+    .ft-brand-name{font-family:var(--font-script);font-size:20px;line-height:1;letter-spacing:.02em;color:#503c62;}
+    .ft-brand-sub{font-family:var(--font-body);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:#9784aa;}
+    .ft-links{display:flex;flex-direction:column;gap:12px;}
+    .ft-link{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:16px;font-weight:600;font-style:italic;color:#503c62;transition:color .2s;}
+    .ft-link svg{width:16px;height:16px;flex-shrink:0;}
+    .ft-link--mail:hover{color:#75ced2;}
+    .ft-link--insta:hover{color:#7a57b5;}
+    .ft-divider{position:relative;margin:0 24px;border-top:1px solid rgba(118,100,136,.15);}
+    .ft-bottom{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px 24px;font-size:11px;letter-spacing:.1em;color:#9784aa;}
+    .ft-legal{display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .ft-legal a{color:#9784aa;transition:color .2s;}
+    .ft-legal a:hover{color:#75ced2;}
+    @media(min-width:768px){
+      .ft-main{flex-direction:row;align-items:center;justify-content:space-between;gap:40px;padding:44px 80px 28px;}
+      .ft-links{flex-direction:row;align-items:center;gap:40px;}
+      .ft-divider{margin:0 80px;}
+      .ft-bottom{flex-direction:row;align-items:center;justify-content:space-between;padding:20px 80px;}
+    }
+
+    @media(max-width:720px){
+      :root{--gap:80px;}
+      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOUTON RETOUR FLOTTANT -->
+<style>
+  .back-btn{position:fixed;top:22px;left:22px;z-index:9500;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px 0 15px;border-radius:9999px;background:rgba(253,251,247,.92);border:1px solid rgba(190,164,216,.5);box-shadow:0 10px 30px -12px rgba(80,60,98,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.04em;color:var(--texte);transition:border-color .25s,color .25s,transform .25s;cursor:pointer;}
+  .back-btn:hover{border-color:var(--cyan);color:var(--violet);transform:translateX(-2px);}
+  .back-btn svg{width:16px;height:16px;flex-shrink:0;}
+  @media(max-width:720px){.back-btn{top:14px;left:14px;height:42px;width:42px;padding:0;justify-content:center;gap:0;}.back-btn .back-label{display:none;}}
+</style>
+<a href="/" class="back-btn" aria-label="Revenir a la page precedente" onclick="if(window.history.length>1){window.history.back();return false;}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  <span class="back-label">Retour</span>
+</a>
+
+<!-- NAV POINTS FLOTTANTS -->
+<style>
+  .sidenav { position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:14px;align-items:flex-end; }
+  .sidenav a { display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer; }
+  .dot { width:10px;height:10px;border-radius:50%;background:rgba(190,164,216,.35);border:1px solid var(--lavande);flex-shrink:0;transition:all .3s; }
+  .dot-label { font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--violet);background:rgba(249,247,251,.95);padding:4px 10px;border-radius:20px;border:1px solid rgba(190,164,216,.3);opacity:0;transform:translateX(8px);transition:all .25s;white-space:nowrap;pointer-events:none; }
+  .sidenav a:hover .dot-label,
+  .sidenav a.active .dot-label { opacity:1;transform:translateX(0); }
+  .sidenav a:hover .dot,
+  .sidenav a.active .dot { background:var(--violet);border-color:var(--violet);transform:scale(1.3); }
+  @media(max-width:720px) { .sidenav { right:10px; } .dot-label { display:none; } }
+</style>
+<nav class="sidenav" id="sidenav">
+  <a href="javascript:void(0)" onclick="document.getElementById('probleme').scrollIntoView({behavior:'smooth'})" data-section="probleme"><span class="dot-label">Le constat</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('immersion').scrollIntoView({behavior:'smooth'})" data-section="immersion"><span class="dot-label">L'immersion</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})" data-section="guide"><span class="dot-label">Le Guide</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('cles').scrollIntoView({behavior:'smooth'})" data-section="cles"><span class="dot-label">Les 7 Clés</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})" data-section="offres"><span class="dot-label">Les offres</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="/assets/logo-inside.png" alt="Inside — Le Guide d'Immersion dans ton Design Unique"/>
+  <span class="eyebrow" style="position:relative;z-index:1;">La vie en HD · Marion Chartier</span>
+  <p class="hero-sub">Un Guide concret pour décrypter les bases de ton mode d'emploi unique, issu de ton schéma de Human Design.</p>
+  <div class="hero-cta-group">
+    <a href="javascript:void(0)" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})" class="btn-primary">Ça m'appelle carrément, je fonce ! 🤍</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Découvrir le Guide</a>
+  </div>
+</section>
+
+<!-- STRIP CITATION -->
+<div class="strip">
+  <blockquote>
+    Et si tout était déjà inscrit en toi&nbsp;?<br/>Ton Design unique est ton <em>mode d'emploi</em>, il suffit d'apprendre à le lire.
+    <cite>La vie en HD, à ta portée</cite>
+  </blockquote>
+</div>
+
+<!-- PROBLEME -->
+<section class="section" id="probleme">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Tu te sens éloigné·e de toi ?</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:26px;">Ou tu as simplement envie de mieux te comprendre&nbsp;?</h2>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:22px;">Tu cherches ce fameux alignement dont tout le monde parle, sans vraiment savoir par où commencer. Tu sens une vérité intérieure qui demande à émerger, mais tu ne sais pas vraiment comment y accéder.</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:34px;">Tu te reconnais peut-être dans ces signaux du quotidien&nbsp;:</p>
+      <div class="signal-wrap">
+        <ul class="signal-list">
+          <li>tu te sens souvent en décalage, tiraillé·e entre ton mental et ton intuition</li>
+          <li>il t'arrive de t'épuiser, de trop forcer, de lutter contre toi-même</li>
+          <li>tu as du mal à faire des choix en confiance</li>
+          <li>tu vis dans une forme de confusion, sans vraiment te connaître</li>
+          <li>tu peines à décoder tes signaux d'alignement ou de désalignement</li>
+          <li>tu ressens un flou professionnel, déconnecté·e de ta mission de vie</li>
+        </ul>
+      </div>
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;margin-top:34px;">Et si la clé était déjà en toi&nbsp;? Ton schéma de Human Design est une véritable carte de qui tu es vraiment. Apprendre à la lire, c'est te donner les moyens d'arrêter de douter, et de revenir à ta nature profonde.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMMERSION -->
+<section class="what-section" id="immersion">
+  <div class="container">
+    <div class="what-flow reveal">
+      <img class="flow-img" src="/assets/inside/mockup-ipad.jpg" alt="Le Guide d'Immersion dans ton Design Unique"/>
+      <span class="eyebrow">Une plongée dans ton mode d'emploi</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display">Décode et incarne les 7 piliers fondateurs de ton Design.</h2>
+      <p>Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. À partir de tes seules données de naissance (date, heure et lieu), tu obtiens une carte individuelle unique : ton <strong>schéma HD</strong>.</p>
+      <p>Le Guide d'Immersion est un focus sur les 7 clés principales de ton Design. Ce n'est pas une lecture de l'intégralité de ton schéma, mais bien le Guide essentiel pour <strong>te reconnecter à toi à travers les bases du HD</strong>.</p>
+      <p>Un Guide clair, actionnable et déculpabilisant, sans jargon complexe ou trop perché. Ici, on décrypte, on infuse et on applique dans la vraie vie. Tu y gagnes&nbsp;:</p>
+      <div class="signal-wrap" style="background:var(--cyan-clair);">
+        <ul class="signal-list benefit-list">
+          <li>une compréhension claire de ton fonctionnement</li>
+          <li>la capacité de faire des choix alignés</li>
+          <li>la fin du doute permanent sur tes décisions</li>
+          <li>la reconnaissance de tes signaux de désalignement</li>
+          <li>une nouvelle confiance dans qui tu es</li>
+          <li>un chemin concret vers ton alignement</li>
+        </ul>
+      </div>
+      <p style="margin-top:28px;font-style:italic;color:var(--violet);">Mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi.</p>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="javascript:void(0)" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})" class="btn-primary">Je veux vivre cette fluidité, je commande mon Guide direct 🤍</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LE GUIDE -->
+<section class="guide-section" id="guide">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">À propos du Guide</span>
+      <h2 class="display">Le Guide d'Immersion dans ton Design Unique</h2>
+    </div>
+    <div class="reveal" style="max-width:760px;margin:0 auto;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:19px;font-weight:300;color:var(--texte-doux);line-height:1.9;margin-bottom:20px;">Un Guide conçu à la demande à partir de ta date, ton heure et ton lieu de naissance, et délivré au format PDF. Je l'ai voulu clair, accessible à tous et pragmatique.</p>
+      <p style="font-family:var(--font-serif);font-size:19px;font-weight:300;color:var(--texte-doux);line-height:1.9;">Pas de jargon incompréhensible. Au-delà de la théorie indispensable et vulgarisée, tu y trouveras un maximum de clés concrètes et applicables dans ton quotidien.</p>
+    </div>
+
+    <div class="doc-row reveal">
+      <div class="doc-img doc-img--fade"><img src="/assets/inside/apercu-page.jpg" alt="Aperçu de la première page du Guide d'Immersion"/></div>
+      <div class="doc-texts">
+        <div>
+          <h3>Une combinaison ultra personnalisée</h3>
+          <p>Chaque Guide est propre aux 7 clés fondatrices de TON Design unique, issu de tes informations de naissance. Ton Type, ta Signature, ton Non soi, ta Stratégie, ton Autorité intérieure, ton Profil, ta Croix d'Incarnation : une combinaison qui n'appartient qu'à toi.</p>
+        </div>
+        <div>
+          <h3>Pensé pour passer à l'action</h3>
+          <p>Je ne suis pas une grande adepte du « full-théorie ». Scientifique avec les pieds sur Terre, je mets un point d'honneur à ramener les aspects plus ésotériques dans la réalité de la vie de tous les jours.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="voyage-grid reveal">
+      <div class="voyage-item"><div class="icon">📖</div><p>Des explications claires et décodées</p></div>
+      <div class="voyage-item"><div class="icon">📝</div><p>Des petites questions au fil du Guide pour conscientiser</p></div>
+      <div class="voyage-item"><div class="icon">🔑</div><p>Des conseils pratiques et concrets</p></div>
+      <div class="voyage-item"><div class="icon">💡</div><p>Des exemples concrets pour illustrer</p></div>
+      <div class="voyage-item"><div class="icon">✨</div><p>Un format beau, lumineux et structuré</p></div>
+      <div class="voyage-item"><div class="icon">🔁</div><p>Un compagnon à relire à l'infini</p></div>
+    </div>
+
+    <div class="doc-row reveal" style="margin-top:64px;">
+      <div class="doc-texts">
+        <div>
+          <h3>Accessible, même si tu débutes</h3>
+          <p>Le Guide est conçu pour être accessible à tout le monde, même si le Human Design est une découverte pour toi. Tout est clairement expliqué, vulgarisé et décrypté.</p>
+        </div>
+        <div>
+          <h3>Et aussi pour tes proches</h3>
+          <p>Une super idée de cadeau, et même un outil précieux pour mieux comprendre ton enfant et l'accompagner à grandir au plus proche de qui il est. Il te suffit de connaître les informations de naissance de la personne.</p>
+        </div>
+      </div>
+      <div class="doc-img doc-img--fade"><img src="/assets/inside/mockup-laptop.jpg" alt="Le Guide d'Immersion sur ordinateur"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- LES 7 CLES -->
+<section class="steps-section" id="cles">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">7 étapes, 7 piliers de ton Design</span>
+      <h2 class="display">Le déroulé de ton immersion</h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-name">Ton Type</div>
+        <p>Pour comprendre et respecter ton fonctionnement énergétique.<span class="qty">parmi les 5 existants</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-name">Ton Autorité intérieure</div>
+        <p>Pour découvrir comment faire des choix alignés pour toi.<span class="qty">parmi les 8 existantes</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-name">Ta Signature</div>
+        <p>Pour explorer ton but ultime.<span class="qty">parmi les 4 existantes</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-name">Ton Non soi</div>
+        <p>Pour apprendre à reconnaître tes signaux de désalignement.<span class="qty">parmi les 4 existants</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-name">Ta Stratégie</div>
+        <p>Pour comprendre comment attirer naturellement les opportunités à toi.<span class="qty">parmi les 4 existantes</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-name">Ta Définition</div>
+        <p>Pour découvrir la manière dont l'énergie circule à l'intérieur de toi.<span class="qty">parmi les 4 existantes</span></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-name">Ton Profil</div>
+        <p>Pour mettre de la lumière sur ta personnalité unique.<span class="qty">parmi les 12 existants</span></p>
+      </div>
+      <div class="step-card" style="display:flex;flex-direction:column;justify-content:center;background:var(--lavande-pale);border-color:var(--lavande);">
+        <div class="step-name" style="margin-bottom:10px;">En bonus : ta Croix d'Incarnation</div>
+        <p>Le thème de fond de ton existence, parmi 192 possibles. Une combinaison qui n'appartient qu'à toi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES / TARIFS -->
+<section class="env-section" id="offres">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Choisis ta formule</span>
+      <h2 class="display">Commande dès maintenant ton Guide d'Immersion</h2>
+      <div class="price-note">
+        <strong style="font-style:normal;color:var(--violet);">Note importante&nbsp;:</strong> ton Guide d'Immersion est conçu à la main, avec le cœur, par une humaine (moi 😉). Il y a donc un délai d'au moins 10 jours entre la commande et la réception de ton Guide personnalisé, envoyé au format PDF à télécharger.
+      </div>
+    </div>
+
+    <div class="offer-grid reveal">
+      <div class="offer-card">
+        <div class="offer-name">Plongée autonome</div>
+        <div class="offer-tagline">Pour explorer et intégrer à ton rythme</div>
+        <div class="offer-price">44&nbsp;€</div>
+        <ul class="offer-list">
+          <li>Le Guide d'Immersion dans ton Design Unique, au format PDF</li>
+          <li>Le décryptage personnalisé des 7 clés fondatrices de ton Design</li>
+          <li>Ta Croix d'Incarnation en bonus</li>
+        </ul>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-guide_design-autonome" target="_blank" rel="noopener" class="btn-primary">Je découvre en douceur ♡</a>
+      </div>
+      <div class="offer-card offer-card--featured">
+        <div class="offer-badge">Clarté &amp; guidance</div>
+        <div class="offer-name">Plongée guidée</div>
+        <div class="offer-tagline">Pour approfondir et rendre concret</div>
+        <div class="offer-price">122&nbsp;€</div>
+        <ul class="offer-list">
+          <li>Le Guide d'Immersion dans ton Design Unique, au format PDF</li>
+          <li><strong>1 séance d'1h de coaching en visio avec moi</strong></li>
+          <li>Pour faire des liens avec ta vie réelle et ancrer tes prises de conscience</li>
+          <li>Pour poser des mots clairs, répondre à tes questions et te guider dans ton alignement</li>
+        </ul>
+        <a href="https://marionchartier-humandesign.systeme.io/commande-guide_design-guidee" target="_blank" rel="noopener" class="btn-primary">Je m'offre clarté &amp; guidance ♡</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST GRATUIT BRIDGE -->
+<div class="tg-bridge" id="test-gratuit">
+  <div class="container reveal">
+    <h3 class="display">Tu ne connais pas encore ton Design HD&nbsp;?</h3>
+    <p>Pas de panique&nbsp;! Fais ton test gratuit pour découvrir ton schéma. C'est super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Sous ton schéma, tu retrouveras l'intitulé des clés décryptées dans ton Guide d'Immersion.</p>
+    <a href="/test-gratuit" class="btn-primary">Faire mon test HD gratuit →</a>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section class="testi-section" id="testimonials">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Elles en parlent</span>
+      <h2 class="display">Témoignages</h2>
+    </div>
+
+    <div class="testi-whatsapp reveal">
+      Je ne connaissais absolument rien du tout au Human Design, et le Guide d'Immersion m'a donné beaucoup d'indications réellement étonnantes&nbsp;: je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi&nbsp;! Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connaît pas. Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement, c'est tout à fait moi depuis enfant, c'est fou&nbsp;! Merci mille fois Marion, ça résonne beaucoup en moi. Bluffant même&nbsp;! 💥
+      <div class="testi-tag"><span class="testi-avatar">L</span> Louise-Armance</div>
+    </div>
+
+    <div class="testi-cards reveal">
+      <div class="testi-card">
+        <p>"J'ai découvert le Human Design grâce à Marion. Au fur et à mesure que je lisais mon Guide d'Immersion, j'étais bluffée et scotchée par la justesse&nbsp;! La lecture est très fluide, j'ai adoré les exemples. Et dans le coaching associé, elle est très pédagogue, à l'écoute et impressionnante dans son expertise. Ça m'a permis de mettre des mots sur des ressentis ancrés depuis des années. Je recommande Marion les yeux fermés&nbsp;! 🥰"</p>
+        <div class="author">Astrig</div>
+      </div>
+      <div class="testi-card">
+        <p>"Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps&nbsp;: mon mode de fonctionnement, mes élans, mes besoins profonds. J'ai enfin pu me reconnecter à ma vraie nature. Je croyais que le Human Design était réservé aux initiés, mais en réalité c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi."</p>
+        <div class="author">Sylvie</div>
+      </div>
+      <div class="testi-card">
+        <p>"J'ai tout dévoré d'une seule traite&nbsp;! C'est IN-CROY-ABLE&nbsp;! On dirait que tu me connais depuis 30 ans, tout est juste, je n'en reviens pas&nbsp;! 🤩 Maintenant que j'ai ce Guide d'Immersion, je trouve ça hyper apaisant et rassurant de constater que certains de mes fonctionnements ne sont pas juste une « lubie » de ma part, mais que ça fait partie de moi&nbsp;! Merci infiniment Marion&nbsp;! 💖"</p>
+        <div class="author">Camille</div>
+      </div>
+      <div class="testi-card">
+        <p>"Déjà visuellement j'adore, ça donne vraiment envie de lire&nbsp;! Le Guide est super bien structuré, clair, beau et lumineux. Tes explications sont concrètes et illustrées. Les petites questions au fil du Guide amènent vraiment à réfléchir. Et tout ce que tu décris c'est exactement moi&nbsp;! Je pense sincèrement que le coaching avec toi est un vrai plus à s'offrir. Merci beaucoup Marion&nbsp;! 🥰"</p>
+        <div class="author">Justine</div>
+      </div>
+      <div class="testi-card">
+        <p>"J'adore comment c'est rédigé, la façon dont tu expliques les choses, c'est très clair. J'y ai retrouvé des choses tellement vraies, tellement moi&nbsp;; un peu l'histoire de ma vie&nbsp;! Et j'ai aussi appris plein de choses nouvelles. Wahou, je trouve le HD vraiment magique, c'est ma plus belle découverte de l'année&nbsp;! Merci Marion, c'est génial&nbsp;! 😍"</p>
+        <div class="author">Ludivine</div>
+      </div>
+      <div class="testi-card">
+        <p>"Oh la la 🤩&nbsp;! Je voulais te remercier pour ton travail qui est remarquable, c'est une vraie pépite&nbsp;! Franchement, chapeau, je me reconnais dans tout ce que tu décris, tout me fait écho. Ça m'a provoqué beaucoup de joie de te lire, et ça a mis du sens sur certaines choses, en enlevant la peur que j'y associais. Le HD est un outil remarquable, merci encore&nbsp;! 🔥"</p>
+        <div class="author">Fabienne</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUI JE SUIS -->
+<section class="about-section" id="about">
+  <div class="container--wide">
+    <div class="about-inner reveal">
+      <img class="about-photo" src="/assets/place-to-be/marion-portrait.jpg" alt="Marion Chartier"/>
+      <div class="about-text">
+        <span class="eyebrow">En quelques mots</span>
+        <div class="divider divider--left"></div>
+        <h2 class="display">Qui je suis&nbsp;?</h2>
+        <p>Moi c'est Marion&nbsp;! En Human Design, je suis MG 2/4 : la magicienne fraternelle multi-passionnée, si on veut faire un (gros) résumé&nbsp;! 😄</p>
+        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens professionnel à ne pas trouver ma place, je me suis finalement retrouvée grâce à un plongeon dans le Human Design. Je suis aujourd'hui coach transformationnelle, et maman d'un petit Manifesteur. ♥</p>
+        <p>Je vois trop de personnes qui, à force de conditionnements extérieurs, se retrouvent complètement déconnectées et perdues à l'âge adulte (moi la première, je suis passée par là…). C'est une vraie mission de cœur pour moi de t'accompagner, grâce à des outils puissants comme le Human Design, à te retrouver et te révéler pleinement dans ta vie pro (mais pas que&nbsp;!). 🌟</p>
+        <p class="signature">La vie en HD, à ta portée</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les questions qui reviennent le plus souvent</span>
+      <h2 class="display">FAQ</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">C'est quoi exactement le Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Le fondateur est Alan Robert Krakower (alias Ra Uru Hu), qui l'a découvert en 1987. Le HD regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens et le yi-king chinois. ✨ Grâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « charte HD » ou « schéma HD ». Ce schéma contient énormément d'informations cryptées qui, lues avec le bon filtre, dévoilent toute la lumière sur notre personnalité, notre fonctionnement énergétique, nos dons, nos talents, notre mission de vie, nos forces et notre chemin d'évolution. Les champs d'application sont nombreux : déconditionnement et alignement, découverte de tes potentiels uniques et de ta zone de génie, éclairage sur tes relations, décodage business.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide d'Immersion est-il fait pour moi, même si je ne connais pas le Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Guide d'Immersion est conçu de manière à le rendre accessible à tout le monde, même si le Human Design est une découverte pour toi. Tout est clairement expliqué, vulgarisé et décrypté. 🎈</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment fait-on pour connaître son « Design » du Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Ton « Design » correspond à ton schéma HD. Si tu souhaites le découvrir, je t'invite à faire ton TEST HD GRATUIT. Ce test va te générer ton schéma HD, en-dessous duquel tu retrouveras l'intitulé des 7 clés principales de ton Design qui sont décryptées dans ton Guide d'Immersion : Type, Signature, Non soi, Autorité intérieure, Stratégie, Profil et Croix d'Incarnation. Ensuite, pour le décodage, c'est direction le Guide d'Immersion. 😊</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide d'Immersion est-il personnalisé&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, chaque Guide d'Immersion est personnel, et propre aux 7 clés fondatrices de TON Design unique, issu de tes informations de naissance. Ton Guide est donc une combinaison ultra personnalisée de ton Type parmi 5 existants, ta Signature parmi les 4 existantes, ton Non soi parmi les 4 existants, ta Stratégie parmi les 4 existantes, ton Autorité intérieure parmi les 8 existantes, ton Profil parmi les 12 existants, et ta Croix d'Incarnation parmi les 192 existantes&nbsp;!</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide d'Immersion est-il une lecture complète de mon schéma HD&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Guide d'Immersion est un focus sur les 7 clés principales de ton Design. Ce n'est donc pas une lecture de l'intégralité de ton schéma, mais plutôt un Guide essentiel pour se reconnecter à soi à travers les bases du HD.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je commander le Guide d'Immersion pour le Design de mon enfant&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Bien sûr&nbsp;! Le Guide d'Immersion dans le Design de ton enfant va te donner des billes précieuses pour mieux le comprendre, et l'accompagner au mieux à grandir sereinement, au plus proche de qui il est vraiment. 💎 C'est un vrai cadeau pour nos enfants que de décoder ces clés d'alignement HD dès leur plus jeune âge, pour leur offrir un cadre adapté et personnalisé à leur nature profonde. ♡</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je offrir le Guide d'Immersion autour de moi&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">C'est même une super idée de cadeau&nbsp;! 🎁 Cela peut être l'occasion d'une découverte du Human Design, ou une jolie attention pour apprendre à mieux se connaître. ♡ Il te faut juste connaître les informations de naissance de la personne à qui tu souhaites offrir le Guide, pour les indiquer au moment de l'achat.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Le Guide d'Immersion est-il un ebook ou un livre papier&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">💌 Ton Guide d'Immersion t'est envoyé (au moins 10 jours après la commande) sous forme de livret PDF à télécharger. Ensuite, libre à toi de le faire imprimer sur un joli support si tu le souhaites&nbsp;! 🎀</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Y a-t-il du pratico-pratique dans le Guide, ou uniquement de la théorie&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">N'étant moi-même pas une grande adepte du « full-théorie » quand je plonge dans un sujet, je mets un point d'honneur à te partager dans ce Guide un maximum de clés concrètes et applicables dans ton quotidien (en complément de toute la théorie indispensable et vulgarisée évidemment). 🎯 Je suis une scientifique avec les pieds sur Terre, et à travers mon cheminement spirituel, j'ai vraiment fait le constat de combien il est primordial de ramener certains aspects plus ésotériques dans la réalité de la vie de tous les jours&nbsp;!</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="padding:0 0 var(--gap);text-align:center;background:var(--blanc);">
+  <div class="container">
+    <div class="reveal">
+      <a href="javascript:void(0)" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})" class="btn-primary">Accéder à mon Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="ft-bg" src="/assets/oracle-frame.png" alt="" aria-hidden="true"/>
+  <div class="ft-veil" aria-hidden="true"></div>
+  <div class="ft-goldline" aria-hidden="true"></div>
+  <div class="ft-main">
+    <div class="ft-brand">
+      <p class="ft-brand-name">La vie en HD</p>
+      <p class="ft-brand-sub">Human Design · Marion Chartier</p>
+    </div>
+    <div class="ft-links">
+      <a class="ft-link ft-link--mail" href="mailto:hello@marionchartier-lavieenhd.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-8.5 8 9 9 0 0 1-3.4-.7L3.5 20l1.2-4.6A8 8 0 0 1 12 3.5a8 8 0 0 1 8.5 8z"/><circle cx="8.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="15.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/></svg>
+        Me contacter
+      </a>
+      <a class="ft-link ft-link--insta" href="https://www.instagram.com/marionchartier_lavieenhd/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+        Me rejoindre sur Instagram
+      </a>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-bottom">
+    <div>© 2026 Marion Chartier · La vie en HD</div>
+    <div class="ft-legal">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/cgv">CGV</a>
+      <a href="/confidentialite">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active dot on scroll
+  const sections = ['probleme','immersion','guide','cles','offres','testimonials','about','faq'];
+  const navLinks = document.querySelectorAll('#sidenav a');
+  function updateNav() {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+</script>
+</body>
+</html>

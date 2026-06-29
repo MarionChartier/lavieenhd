@@ -58,6 +58,15 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - Le bouton "The Place to be" (accueil et page Mes offres) ne dit plus "Bientôt disponible" : il mène directement à cette page.
 - Prix (22 €) et délai (7 jours) repris de l'ancienne page : à confirmer s'ils sont toujours d'actualité.
 
+**Pages de vente Inside, Reveal et Reconnect**
+- Les 3 pages de vente sont créées sur le même modèle (Blooming / The Place to be) : même design, mêmes couleurs et polices, footer, bouton retour, navigation par points.
+- Contenu repris de tes anciennes pages systeme.io. Les boutons "Inside", "Reveal" et "Reconnect" (accueil et Mes offres) ne disent plus "Bientôt disponible" : ils mènent directement à ces pages.
+- Points à vérifier de ton côté (repris des anciennes pages, à valider) :
+  - Inside : prix 44 € (autonome) et 122 € (avec coaching), délai "au moins 10 jours". Et la liste des 7 clés (Définition ou Croix d'Incarnation comme 7e clé ?).
+  - Reveal : prix 222 €, durée 1h30, lien de réservation. Témoignages : 3 vrais repris (Johanna, Laura, Astrig) ; les autres sont à compléter.
+  - Reconnect : prix 1 444 € (ou 4 x 361 €), 13 semaines, 5 places/mois. Les témoignages étaient en images sur l'ancienne page (non récupérables) : placés en "à confirmer", à remplacer par les vrais.
+  - Les liens de commande/réservation systeme.io sont repris au mieux : à confirmer qu'ils sont actifs.
+
 **Offres**
 - Le quiz s'appelle désormais "Quiz - Ton lieu de vie/de travail idéal" (sans "HD"), et son bouton est passé à "Explorer".
 - Reveal : le verbe d'action est passé à "Clarifier".

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>REVEAL · Séance Clarté HD Pro · La vie en HD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    @font-face{font-family:'Breathing';src:url(/fonts/Breathing.ttf) format('truetype');font-weight:400;font-display:swap;}
+    @font-face{font-family:'Luciole';src:url(/fonts/Luciole-Bold.ttf) format('truetype');font-weight:700;font-display:swap;}
+    :root {
+      --violet:     #766488;
+      --lavande:    #bea4d8;
+      --lavande-pale:#e9dff5;
+      --cyan:       #75ced2;
+      --cyan-clair: #dbeef4;
+      --or:         #decdad;
+      --blanc:      #ffffff;
+      --creme:      #f9f7fb;
+      --texte:      #503c62;
+      --texte-doux: #5a4e6a;
+      --font-display:'Cinzel', serif;
+      --font-serif:  'Cormorant Garamond', serif;
+      --font-sans:   'Jost', sans-serif;
+      --font-script:'Breathing','Cormorant Garamond',cursive;
+      --font-body:'Luciole','Jost',sans-serif;
+      --gap:        120px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--creme);color:var(--texte);font-family:var(--font-sans);font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:860px;margin:0 auto;padding:0 28px;}
+    .container--wide{max-width:1060px;margin:0 auto;padding:0 28px;}
+    .eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+    .divider{width:48px;height:1px;background:var(--lavande);margin:20px auto;}
+    .divider--left{margin-left:0;}
+    .section{padding:var(--gap) 0;}
+    .section-header{text-align:center;margin-bottom:64px;}
+    .section-header h2{font-size:clamp(26px,4vw,44px);margin-top:12px;}
+    .display{font-family:var(--font-sans);font-weight:700;}
+    .btn-primary{display:inline-block;background:var(--violet);color:var(--blanc);font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:18px 48px;border-radius:9999px;transition:background .25s,transform .2s;}
+    .btn-primary:hover{background:#5a4d6e;transform:translateY(-2px);}
+    .btn-ghost{display:inline-block;border:1px solid var(--lavande);color:var(--lavande);font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 36px;border-radius:9999px;transition:border-color .25s,color .25s;}
+    .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 28px 80px;position:relative;overflow:hidden;background:var(--creme);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(190,164,216,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 50% at 85% 75%,rgba(117,206,210,.12) 0%,transparent 55%);pointer-events:none;}
+    .hero-logo{width:100%;max-width:300px;margin:0 auto 26px;position:relative;z-index:1;}
+    .hero h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(26px,4.2vw,46px);line-height:1.3;color:var(--texte);max-width:760px;margin:14px auto 0;position:relative;z-index:1;}
+    .hero h1 em{font-style:normal;color:var(--violet);}
+    .hero-sub{font-family:var(--font-serif);font-size:clamp(17px,2.2vw,22px);font-style:italic;font-weight:300;color:var(--texte-doux);max-width:620px;margin:26px auto 44px;position:relative;z-index:1;}
+    .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;}
+
+    /* STRIP */
+    .strip{background:var(--violet);padding:56px 28px;text-align:center;position:relative;overflow:hidden;}
+    .strip blockquote{font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);font-weight:300;font-style:italic;color:var(--blanc);max-width:700px;margin:0 auto;line-height:1.55;position:relative;z-index:1;}
+    .strip blockquote em{color:var(--cyan);font-style:normal;}
+    .strip cite{display:block;margin-top:16px;font-family:var(--font-sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-style:normal;}
+
+    /* WHAT / FLOW */
+    .what-section{background:var(--blanc);padding:var(--gap) 0;}
+    .what-flow::after{content:"";display:block;clear:both;}
+    .what-flow h2{font-size:clamp(24px,3.5vw,40px);margin:14px 0 30px;}
+    .what-flow p{font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:2;margin-bottom:24px;}
+    .what-flow p strong{font-weight:700;color:var(--texte);}
+    .what-flow .divider--left{margin-top:18px;margin-bottom:26px;}
+    .what-flow .eyebrow{display:block;}
+    .flow-img{float:right;width:330px;max-width:44%;margin:6px 0 28px 44px;border-radius:16px;box-shadow:0 18px 48px -18px rgba(80,60,98,.4);}
+    @media(max-width:720px){.flow-img{float:none;width:100%;max-width:320px;margin:0 auto 28px;}}
+
+    /* SIGNAL / BENEFIT LISTS */
+    .signal-wrap{background:var(--lavande-pale);border-radius:16px;padding:36px 40px;margin-top:8px;}
+    .signal-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 36px;}
+    .signal-list li{position:relative;padding-left:26px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.5;}
+    .signal-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lavande);}
+    .benefit-list li::before{background:var(--cyan);}
+    @media(max-width:720px){.signal-list{grid-template-columns:1fr;}.signal-wrap{padding:30px 26px;}}
+
+    /* GUIDE / INCLUS */
+    .guide-section{padding:var(--gap) 0;background:var(--cyan-clair);}
+    .doc-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px;}
+    .doc-texts{display:flex;flex-direction:column;gap:24px;}
+    .doc-texts h3{font-family:var(--font-serif);font-size:24px;font-weight:600;color:var(--texte);}
+    .doc-texts p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;}
+    .doc-img{display:flex;justify-content:center;}
+    .doc-img img{width:100%;max-width:420px;border-radius:14px;box-shadow:0 18px 48px -16px rgba(80,60,98,.32);}
+    @media(max-width:720px){.doc-row{grid-template-columns:1fr;gap:36px;}}
+    .voyage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:56px;}
+    .voyage-item{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:12px;padding:26px 24px;text-align:center;}
+    .voyage-item .icon{font-size:26px;margin-bottom:12px;}
+    .voyage-item p{font-family:var(--font-serif);font-size:16px;color:var(--texte-doux);line-height:1.55;}
+
+    /* DEROULE / STEPS */
+    .steps-section{padding:var(--gap) 0;}
+    .steps-list{max-width:760px;margin:56px auto 0;display:flex;flex-direction:column;gap:0;}
+    .step-item{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;padding:0 0 40px;position:relative;}
+    .step-item:not(:last-child)::after{content:"";position:absolute;left:23px;top:54px;bottom:0;width:1px;background:rgba(190,164,216,.5);}
+    .step-num{width:48px;height:48px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;color:var(--violet);flex-shrink:0;position:relative;z-index:1;}
+    .step-body h3{font-family:var(--font-serif);font-size:22px;font-weight:600;color:var(--texte);margin-bottom:8px;}
+    .step-body p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.8;}
+    .reveal-list{background:var(--lavande-pale);border-radius:16px;padding:30px 36px;margin:8px auto 0;max-width:760px;}
+    .reveal-list ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 30px;}
+    .reveal-list li{position:relative;padding-left:24px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);}
+    .reveal-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--cyan);}
+    @media(max-width:720px){.reveal-list ul{grid-template-columns:1fr;}}
+
+    /* OFFRE / PRIX */
+    .env-section{padding:var(--gap) 0;}
+    .price-tag{display:inline-block;font-family:var(--font-serif);font-size:clamp(22px,3vw,30px);font-style:italic;color:var(--violet);margin:6px 0;}
+    .price-note{max-width:580px;margin:24px auto 0;background:var(--lavande-pale);border-radius:14px;padding:22px 30px;font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--texte-doux);line-height:1.6;text-align:center;}
+    .offre-card{background:var(--blanc);border:1px solid rgba(190,164,216,.28);border-radius:20px;padding:48px 44px;max-width:620px;margin:56px auto 0;text-align:center;box-shadow:0 18px 52px -26px rgba(80,60,98,.45);}
+    .offre-card .price-big{font-family:var(--font-display);font-size:clamp(40px,7vw,64px);color:var(--violet);line-height:1;margin:4px 0 6px;}
+    .offre-card .price-detail{font-family:var(--font-serif);font-style:italic;font-size:19px;color:var(--cyan);margin-bottom:28px;}
+    .offre-card ul{list-style:none;text-align:left;max-width:420px;margin:0 auto 32px;display:flex;flex-direction:column;gap:12px;}
+    .offre-card li{position:relative;padding-left:30px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.55;}
+    .offre-card li::before{content:"✦";position:absolute;left:0;top:0;color:var(--lavande);font-size:14px;}
+
+    /* TEST GRATUIT BRIDGE */
+    .tg-bridge{background:var(--cyan-clair);padding:64px 28px;text-align:center;}
+    .tg-bridge h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,3vw,32px);color:var(--violet);margin-bottom:14px;}
+    .tg-bridge p{font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--texte-doux);max-width:580px;margin:0 auto 28px;}
+
+    /* TESTI */
+    .testi-section{background:var(--blanc);padding:var(--gap) 0;}
+    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
+    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
+    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:start;}
+    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
+    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
+    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+
+    /* ABOUT */
+    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
+    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
+    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
+    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
+    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
+    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
+
+    /* FAQ */
+    .faq-section{background:var(--blanc);padding:var(--gap) 0;}
+    .faq-list{max-width:720px;margin:48px auto 0;border-top:1px solid rgba(80,60,98,.1);}
+    .faq-item{border-bottom:1px solid rgba(80,60,98,.1);}
+    .faq-question{width:100%;background:none;border:none;padding:24px 0;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--texte);}
+    .faq-icon{display:inline-block;flex-shrink:0;font-size:26px;line-height:1;color:var(--cyan);transition:transform .3s;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s ease;}
+    .faq-item.open .faq-answer{max-height:1800px;}
+    .faq-answer-inner{padding:0 0 28px;font-family:var(--font-serif);font-size:17px;font-weight:300;line-height:1.82;color:var(--texte-doux);}
+
+    /* FOOTER */
+    footer{position:relative;overflow:hidden;color:#503c62;}
+    .ft-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .ft-veil{position:absolute;inset:0;background:rgba(255,255,255,.35);pointer-events:none;}
+    .ft-goldline{position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(184,151,90,.85),transparent);}
+    .ft-main{position:relative;display:flex;flex-direction:column;gap:20px;padding:36px 24px 24px;}
+    .ft-brand{display:flex;flex-direction:column;gap:6px;}
+    .ft-brand-name{font-family:var(--font-script);font-size:20px;line-height:1;letter-spacing:.02em;color:#503c62;}
+    .ft-brand-sub{font-family:var(--font-body);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:#9784aa;}
+    .ft-links{display:flex;flex-direction:column;gap:12px;}
+    .ft-link{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:16px;font-weight:600;font-style:italic;color:#503c62;transition:color .2s;}
+    .ft-link svg{width:16px;height:16px;flex-shrink:0;}
+    .ft-link--mail:hover{color:#75ced2;}
+    .ft-link--insta:hover{color:#7a57b5;}
+    .ft-divider{position:relative;margin:0 24px;border-top:1px solid rgba(118,100,136,.15);}
+    .ft-bottom{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px 24px;font-size:11px;letter-spacing:.1em;color:#9784aa;}
+    .ft-legal{display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .ft-legal a{color:#9784aa;transition:color .2s;}
+    .ft-legal a:hover{color:#75ced2;}
+    @media(min-width:768px){
+      .ft-main{flex-direction:row;align-items:center;justify-content:space-between;gap:40px;padding:44px 80px 28px;}
+      .ft-links{flex-direction:row;align-items:center;gap:40px;}
+      .ft-divider{margin:0 80px;}
+      .ft-bottom{flex-direction:row;align-items:center;justify-content:space-between;padding:20px 80px;}
+    }
+
+    @media(max-width:720px){
+      :root{--gap:80px;}
+      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOUTON RETOUR FLOTTANT -->
+<style>
+  .back-btn{position:fixed;top:22px;left:22px;z-index:9500;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px 0 15px;border-radius:9999px;background:rgba(253,251,247,.92);border:1px solid rgba(190,164,216,.5);box-shadow:0 10px 30px -12px rgba(80,60,98,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.04em;color:var(--texte);transition:border-color .25s,color .25s,transform .25s;cursor:pointer;}
+  .back-btn:hover{border-color:var(--cyan);color:var(--violet);transform:translateX(-2px);}
+  .back-btn svg{width:16px;height:16px;flex-shrink:0;}
+  @media(max-width:720px){.back-btn{top:14px;left:14px;height:42px;width:42px;padding:0;justify-content:center;gap:0;}.back-btn .back-label{display:none;}}
+</style>
+<a href="/" class="back-btn" aria-label="Revenir a la page precedente" onclick="if(window.history.length>1){window.history.back();return false;}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  <span class="back-label">Retour</span>
+</a>
+
+<!-- NAV POINTS FLOTTANTS -->
+<style>
+  .sidenav { position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:14px;align-items:flex-end; }
+  .sidenav a { display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer; }
+  .dot { width:10px;height:10px;border-radius:50%;background:rgba(190,164,216,.35);border:1px solid var(--lavande);flex-shrink:0;transition:all .3s; }
+  .dot-label { font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--violet);background:rgba(249,247,251,.95);padding:4px 10px;border-radius:20px;border:1px solid rgba(190,164,216,.3);opacity:0;transform:translateX(8px);transition:all .25s;white-space:nowrap;pointer-events:none; }
+  .sidenav a:hover .dot-label,
+  .sidenav a.active .dot-label { opacity:1;transform:translateX(0); }
+  .sidenav a:hover .dot,
+  .sidenav a.active .dot { background:var(--violet);border-color:var(--violet);transform:scale(1.3); }
+  @media(max-width:720px) { .sidenav { right:10px; } .dot-label { display:none; } }
+</style>
+<nav class="sidenav" id="sidenav">
+  <a href="javascript:void(0)" onclick="document.getElementById('probleme').scrollIntoView({behavior:'smooth'})" data-section="probleme"><span class="dot-label">Le constat</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('seance').scrollIntoView({behavior:'smooth'})" data-section="seance"><span class="dot-label">La séance</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('inclus').scrollIntoView({behavior:'smooth'})" data-section="inclus"><span class="dot-label">Ce que tu reçois</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('deroule').scrollIntoView({behavior:'smooth'})" data-section="deroule"><span class="dot-label">Le déroulé</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('offre').scrollIntoView({behavior:'smooth'})" data-section="offre"><span class="dot-label">Réserver</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="/assets/logo-reveal.png" alt="REVEAL · Séance Clarté HD Pro"/>
+  <span class="eyebrow" style="position:relative;z-index:1;">La vie en HD · Marion Chartier</span>
+  <p class="hero-sub">Un échange en visio, où je t'apporte de la lumière grâce à une lecture ciblée de ton Human Design et à ma guidance intuitive, pour débloquer une situation et remettre de la clarté au milieu du chaos.</p>
+  <div class="hero-cta-group">
+    <a href="javascript:void(0)" onclick="document.getElementById('offre').scrollIntoView({behavior:'smooth'})" class="btn-primary">C'est exactement ce dont j'ai besoin, let's go ! 🔥</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('seance').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Découvrir la séance</a>
+  </div>
+</section>
+
+<!-- STRIP CITATION -->
+<div class="strip">
+  <blockquote>
+    Quand tu prends conscience que ton blocage est une perception, et qu'un nouveau regard peut <em>tout changer</em>...<br/>alors la magie peut opérer.
+    <cite>Tu es à un clic de ton déclic</cite>
+  </blockquote>
+</div>
+
+<!-- PROBLEME -->
+<section class="section" id="probleme">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Tu vis une phase de brouillard pro ?</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:26px;">Tu sais que tu aurais besoin d'un regard extérieur pour rallumer la lumière.</h2>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:22px;">Tu as le sentiment de vivre une phase de brouillard dans ta vie professionnelle, et tu sens que tu aurais besoin d'un regard extérieur plus objectif et intuitif, pour rallumer la lumière et te débloquer ? <strong style="color:var(--texte);">La Séance Clarté HD Pro est née pour toi.</strong> ♡</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:22px;">Il est souvent plus difficile de s'extraire de son propre sac de nœuds. Je le sais, je l'ai vécu, et je le vis encore parfois. Quand tu as le nez plongé dans ta problématique, tu peux avoir du mal à dézoomer et démêler tout ça, sans dramatiser ou projeter des scénarios catastrophes. C'est humain, no culpabilité à avoir. 🙏</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:34px;">Dans ces situations de blocages, tu peux vraiment ressentir cette désagréable impression d'être figé·e, dans une sorte d'immobilisme paralysant, ou au contraire une forte agitation intérieure, comme un lion en cage qui a besoin d'espace. 🦁 Et tu te reconnais peut-être dans l'une de ces phrases :</p>
+      <div class="signal-wrap">
+        <ul class="signal-list">
+          <li>"Je ne sais plus si ce job est encore fait pour moi."</li>
+          <li>"Je ressens un décalage dans ma vie pro, sans savoir d'où il vient."</li>
+          <li>"Je veux changer de travail, mais j'ai peur de me tromper."</li>
+          <li>"Je me sens paumé·e sur la direction à prendre."</li>
+          <li>"Je dois prendre une décision pour ma vie pro, mais je n'y arrive pas."</li>
+          <li>"Je me sens bloquée, je ne sais pas par quoi commencer ma reconversion."</li>
+          <li>"J'ai besoin d'une confirmation pour ma vie pro."</li>
+          <li>"J'aimerais me lancer à mon compte, mais je ne sais pas si c'est fait pour moi."</li>
+          <li>"Je suis entrepreneur·e et je m'épuise pour peu de résultats."</li>
+          <li>"Je bloque sur la communication dans mon business."</li>
+        </ul>
+      </div>
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;margin-top:34px;">Bref, tu as l'impression de patauger dans la semoule, et tu aimerais enfin sortir la tête du brouillard, et avoir des réponses claires pour avancer plus sereinement ?</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA SEANCE -->
+<section class="what-section" id="seance">
+  <div class="container">
+    <div class="what-flow reveal">
+      <img class="flow-img" src="/assets/reveal/seance-visio.jpg" alt="Séance Clarté HD Pro en visio"/>
+      <span class="eyebrow">Ce qu'est la Séance Clarté HD Pro</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display">Une vraie boussole personnalisée pour revenir à toi.</h2>
+      <p>La Séance Clarté HD Pro est une vraie boussole personnalisée pour <strong>faire le tri, revenir à toi, et prendre une décision alignée</strong> pour ton projet ou ta prochaine étape professionnelle.</p>
+      <p>C'est un échange basé sur une écoute active, bienveillante, transformative, et sans jugement. Grâce à une lecture ciblée de ton Human Design et à ma guidance intuitive, tu repars avec des réponses et des clés concrètes pour avancer sur TON chemin, en accord avec toi-même.</p>
+      <p>Et je ne crois pas au hasard : si tu es arrivé·e ici, c'est que tu en as ressenti l'appel. <strong>Tu es donc à un clic de ton déclic.</strong></p>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="javascript:void(0)" onclick="document.getElementById('offre').scrollIntoView({behavior:'smooth'})" class="btn-primary">GO je veux m'offrir la HD ! 🤍</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE TU RECOIS -->
+<section class="guide-section" id="inclus">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Ce qui est inclus</span>
+      <h2 class="display">Ce que tu reçois avec ta Séance Clarté</h2>
+    </div>
+
+    <div class="voyage-grid reveal">
+      <div class="voyage-item"><div class="icon">📋</div><p>Un formulaire à remplir en amont avec ta problématique et tes données de naissance</p></div>
+      <div class="voyage-item"><div class="icon">🔍</div><p>Une étude de ton Human Design ciblée sur ta problématique</p></div>
+      <div class="voyage-item"><div class="icon">💻</div><p>Une séance d'1h30 de coaching ultra personnalisé en visio</p></div>
+      <div class="voyage-item"><div class="icon">✉️</div><p>Un compte-rendu après-séance par e-mail</p></div>
+      <div class="voyage-item"><div class="icon">🎧</div><p>Le support audio de l'échange, pour une réécoute et une infusion prolongée</p></div>
+      <div class="voyage-item"><div class="icon">🎁</div><p>Une surprise incluse (chut, c'est une surprise 🤫)</p></div>
+    </div>
+
+    <div class="doc-row reveal">
+      <div class="doc-img"><img src="/assets/reveal/ambiance-clarte.jpg" alt="Ambiance douce et lumineuse de la Séance Clarté"/></div>
+      <div class="doc-texts">
+        <div>
+          <h3>Du sur-mesure, pour toi</h3>
+          <p>La séance est conçue à partir de TA problématique et de l'analyse de TON Design unique, issu de tes informations de naissance. Elle est donc ultra personnalisée, et j'adapte mon coaching selon ton Type HD et ce que cela implique.</p>
+        </div>
+        <div>
+          <h3>Une lumière qui se prolonge</h3>
+          <p>Au-delà de l'échange, tu repars avec un compte-rendu des principaux points clés évoqués et un support audio de notre séance, pour réécouter, infuser et laisser le déclic se déployer tranquillement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LE DEROULE -->
+<section class="steps-section" id="deroule">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Concrètement, comment ça se passe ?</span>
+      <h2 class="display">Le déroulé de ta séance, étape par étape</h2>
+    </div>
+
+    <div class="steps-list reveal">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Avant la séance : ta préparation</h3>
+          <p>Tu remplis un formulaire avec ta problématique et tes informations de naissance. C'est le point de départ de notre exploration.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Avant la séance : ma lecture ciblée</h3>
+          <p>Je me plonge dans ton Human Design pour réaliser une lecture ciblée en lien avec ta problématique. Cela me permet de mettre en évidence les points de lumière que je vais ensuite te partager.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Pendant la séance : l'analyse de ton Design</h3>
+          <p>Lors de notre échange d'1h30, je te transmets l'analyse des éléments clés de ton Human Design, pour te permettre de réancrer de la clarté objective autour de ta problématique.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Pendant la séance : la guidance intuitive</h3>
+          <p>Au fil de l'échange, tu accèdes à une lecture "entre les lignes" de ta situation, grâce à ma guidance intuitive. Elle fait émerger de potentiels blocages inconscients, des croyances limitantes sous-jacentes, ou des clés actionnables à explorer.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Après la séance : ton infusion prolongée</h3>
+          <p>Je te partage un compte-rendu des principaux points clés évoqués, ainsi qu'un support audio de notre échange, pour une réécoute ultérieure et une infusion prolongée. ♡</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="max-width:760px;margin:48px auto 0;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;">C'est grâce à cette alliance précieuse que les nœuds se défont, et que tu assistes à un lever de voile, qui peut se traduire par :</p>
+    </div>
+    <div class="reveal-list reveal">
+      <ul>
+        <li>Une nouvelle compréhension qui naît</li>
+        <li>Un déclic qui se fait</li>
+        <li>Une certitude intérieure qui se révèle</li>
+        <li>Une confiance qui s'installe</li>
+        <li>Des clés qui apparaissent</li>
+        <li>Une libération qui s'opère</li>
+        <li>Des évidences qui jaillissent</li>
+        <li>Une lucidité qui revient</li>
+      </ul>
+    </div>
+    <div class="reveal" style="max-width:760px;margin:28px auto 0;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;">C'est ainsi que tu sors du flou, que tes doutes se dissolvent, et que tu retrouves une nouvelle confiance, et un nouvel élan. Et si le besoin s'en fait sentir, j'utilise aussi d'autres outils puissants pendant la séance : Gene Keys, Numérologie, EFT, visualisations...</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRE / RESERVER -->
+<section class="env-section" id="offre">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Prête·e à sortir du brouillard ?</span>
+      <h2 class="display">Réserve ta Séance Clarté HD Pro</h2>
+      <p class="price-tag">1h30 ensemble, pour rallumer la lumière et avancer aligné·e.</p>
+    </div>
+
+    <div class="offre-card reveal">
+      <div class="price-big">222 €</div>
+      <div class="price-detail">pour une séance d'1h30 en visio</div>
+      <ul>
+        <li>Formulaire à remplir en amont (problématique + données de naissance)</li>
+        <li>Étude de ton Human Design ciblée sur ta problématique</li>
+        <li>1h30 de coaching ultra personnalisé en visio</li>
+        <li>Compte-rendu après-séance par e-mail</li>
+        <li>Support audio de l'échange</li>
+        <li>Une surprise incluse 🎁</li>
+      </ul>
+      <a href="https://marionchartier-humandesign.systeme.io/commande-seance-clarte" target="_blank" rel="noopener" class="btn-primary">JE FONCE ! ♡</a>
+    </div>
+
+    <div class="price-note">
+      <strong style="font-style:normal;color:var(--violet);">Bon à savoir :</strong> si tu habites près de moi (en Haute-Savoie), on peut se retrouver pour faire la séance en direct, avec plaisir. À distance, je privilégie la visio, mais le téléphone est aussi possible si tu es plus à l'aise.
+    </div>
+  </div>
+</section>
+
+<!-- TEST GRATUIT BRIDGE -->
+<div class="tg-bridge" id="test-gratuit">
+  <div class="container reveal">
+    <h3 class="display">Tu ne connais pas encore ton schéma HD ?</h3>
+    <p>Pas de panique ! Fais ton test gratuit pour le découvrir. C'est super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu).</p>
+    <a href="/test-gratuit" class="btn-primary">Faire mon test HD gratuit →</a>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section class="testi-section" id="testimonials">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Elles ont vécu la séance</span>
+      <h2 class="display">Témoignages</h2>
+    </div>
+
+    <div class="testi-whatsapp reveal">
+      Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe... Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante ! Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer ! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça ! 🙏 J'y vois beaucoup plus clair, et j'ai ouvert des portes que je ne soupçonnais pas possibles pour moi.
+      <div class="testi-tag"><span class="testi-avatar">M</span> Marjory</div>
+    </div>
+
+    <div class="testi-cards reveal">
+      <div class="testi-card">
+        <p>"Cette séance a été un vrai déclic pour moi et un booster pour passer à l'action ! J'étais vraiment en train de m'éteindre dans un job qui ne me correspondait plus car j'étais bloquée par mes peurs (nombreuses ! 😱). Avec l'éclairage de Marion, et sa guidance bluffante qui a su taper dans le mille, je sais maintenant que le job dont je rêve est vraiment possible pour moi, et que ça colle même parfaitement à mon Human Design ! Je repars avec de l'apaisement, de la confiance, et une grosse dose de détermination ! Merci infiniment Marion ! 🙏"</p>
+        <div class="author">Johanna</div>
+      </div>
+      <div class="testi-card">
+        <p>"Merci infiniment pour toute la richesse de ce que tu m'as partagé autour de la synergie de mon entreprise et moi. C'est vraiment précieux et éclairant. J'ai l'impression que ça a enfin posé des mots justes sur ce que je ressens depuis un moment sans trop savoir comment l'expliquer et l'appréhender, surtout le lien entre l'autorité émotionnelle de mon entreprise et ma propre autorité sacrale. Avec tout ce que tu m'as transmis, je sens qu'on touche à des couches très puissantes."</p>
+        <div class="author">Laura</div>
+      </div>
+      <div class="testi-card">
+        <p>"Je suis scotchée. Je mène une enquête sur moi depuis tant d'années pour essayer de me comprendre, et de comprendre pourquoi 'ça ne marche pas' professionnellement. Là j'ai l'impression d'avoir fait une chute vertigineuse depuis des années et d'être tombée sur un coussin de plumes géant qui a amorti ma chute et qui m'a ôté d'un poids considérable ! J'ai compris plein de choses et c'est ultra positif ! À la fois ça m'a donné des confirmations, et en même temps ça précise des pistes que je peux explorer. Ça va énormément m'aider pour la suite sur le plan vocal et entrepreneurial, tu n'as même pas idée ! J'en ressors curieuse et excitée de la suite du chemin ! Encore merci !!"</p>
+        <div class="author">Astrig</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUI JE SUIS -->
+<section class="about-section" id="about">
+  <div class="container--wide">
+    <div class="about-inner reveal">
+      <img class="about-photo" src="/assets/place-to-be/marion-portrait.jpg" alt="Marion Chartier"/>
+      <div class="about-text">
+        <span class="eyebrow">En quelques mots</span>
+        <div class="divider divider--left"></div>
+        <h2 class="display">Qui je suis ?</h2>
+        <p>Moi c'est Marion ! En Human Design, je suis MG 2/4 : la magicienne fraternelle multi-passionnée, si on veut faire un (gros) résumé ! 😄</p>
+        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens professionnel à ne pas trouver ma place, je me suis finalement retrouvée grâce à un plongeon dans le Human Design. Je suis aujourd'hui coach transformationnelle, pour toi. ♥</p>
+        <p>Je vois trop de personnes qui, à force de conditionnements extérieurs, se retrouvent complètement déconnectées et perdues à l'âge adulte, si éloignées de qui elles sont (moi la première, je suis passée par là...).</p>
+        <p>C'est donc une vraie mission de cœur pour moi aujourd'hui de t'accompagner, grâce à des outils puissants comme le Human Design, à te retrouver pour te révéler pleinement dans ta vie pro (mais pas que !). 🌟</p>
+        <p class="signature">La vie en HD, à ta portée</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les questions qui reviennent le plus souvent</span>
+      <h2 class="display">FAQ</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">C'est quoi exactement le Human Design ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Le fondateur est Alan Robert Krakower (alias Ra Uru Hu), qui l'a découvert en 1987. Le HD regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens, et le yi-king chinois. ✨ Grâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « charte HD » ou « schéma HD ». Ce schéma contient énormément d'informations cryptées (sous forme de numéros, symboles, couleurs...) qui, en les lisant avec le bon filtre, dévoilent alors toute la lumière sur notre personnalité, notre fonctionnement énergétique, nos dons, nos talents, notre mission de vie, nos forces, notre chemin d'évolution... 🎯 Les champs d'application sont nombreux : déconditionnement et alignement, découverte de tes potentiels uniques et de ta zone de génie, éclairage sur tes relations (couple, famille, amis, collègues...), décodage business (dynamique d'entreprise, communication...).</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Est-ce que je peux faire la Séance Clarté HD Pro si je ne connais pas le Human Design ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Bien sûr ! Durant la séance, je te partage mon analyse de ton Human Design de manière à ce que cela soit compréhensible et accessible, même si le Human Design est une découverte pour toi. Je fais en sorte d'être le plus claire possible, en décryptant et en vulgarisant chaque donnée. 🎈</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment fait-on pour connaître son schéma de Human Design ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pour découvrir ton schéma de Human Design, je t'invite à aller faire ton TEST HD GRATUIT. 💎 Et si tu souhaites un décodage des éléments principaux de ton schéma, c'est direction le Guide d'Immersion dans ton Design Unique. :)</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Est-ce que la séance est personnalisée ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, la séance est conçue à partir de TA problématique et de l'analyse de TON Design unique, issu de tes informations de naissance ; elle est donc ultra personnalisée. ⏩ D'autant plus que j'adapte mon coaching selon ton « Type HD » et ce que cela implique. 😉🌟</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Pendant la séance, fais-tu une lecture complète de mon schéma HD ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pas nécessairement, car mon analyse est centrée sur les points clés de ton schéma HD qui vont nous apporter de la lumière sur ta problématique. 🎯 Selon le sujet, je ne vais donc pas explorer les mêmes informations de ton schéma. C'est vraiment du sur-mesure. 😇</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Est-ce que la séance se fait obligatoirement en visio ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">🗻 Si tu habites près de moi (en Haute-Savoie), on peut se retrouver pour faire la séance en direct, avec plaisir. :) 💻 Ensuite, pour les RDV à distance, je privilégie la visio car cela facilite la communication, et la guidance également. Mais ce n'est en rien une obligation. 📞 Si tu es plus à l'aise par téléphone, nous ferons de cette manière-là sans souci. Dans ce cas, envoie-moi un petit message pour qu'on voie ensemble comment s'organiser. :)</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Est-ce qu'il est possible de faire plusieurs séances ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, bien sûr. ✨ Si le besoin se fait sentir de plonger encore plus loin, de creuser davantage, ou d'aller explorer une autre problématique, tu peux tout à fait réserver une nouvelle séance ! 📅</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Que se passe-t-il si je dois finalement annuler ma séance ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pour toute séance annulée moins de 48 heures à l'avance, il n'y a aucun remboursement. 📍 Sauf si, dans les 48h précédant la séance, nous refixons une autre date de RDV (dans la limite de 1 déplacement de RDV pour une même séance 🙏).</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Peux-tu nous dire ce qu'est la surprise d'après-séance ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Évidemment... que non ! 😂🤫✨</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="padding:0 0 var(--gap);text-align:center;background:var(--blanc);">
+  <div class="container">
+    <div class="reveal">
+      <a href="javascript:void(0)" onclick="document.getElementById('offre').scrollIntoView({behavior:'smooth'})" class="btn-primary">Réserver ma séance →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="ft-bg" src="/assets/oracle-frame.png" alt="" aria-hidden="true"/>
+  <div class="ft-veil" aria-hidden="true"></div>
+  <div class="ft-goldline" aria-hidden="true"></div>
+  <div class="ft-main">
+    <div class="ft-brand">
+      <p class="ft-brand-name">La vie en HD</p>
+      <p class="ft-brand-sub">Human Design · Marion Chartier</p>
+    </div>
+    <div class="ft-links">
+      <a class="ft-link ft-link--mail" href="mailto:hello@marionchartier-lavieenhd.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-8.5 8 9 9 0 0 1-3.4-.7L3.5 20l1.2-4.6A8 8 0 0 1 12 3.5a8 8 0 0 1 8.5 8z"/><circle cx="8.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="15.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/></svg>
+        Me contacter
+      </a>
+      <a class="ft-link ft-link--insta" href="https://www.instagram.com/marionchartier_lavieenhd/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+        Me rejoindre sur Instagram
+      </a>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-bottom">
+    <div>© 2026 Marion Chartier · La vie en HD</div>
+    <div class="ft-legal">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/cgv">CGV</a>
+      <a href="/confidentialite">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active dot on scroll
+  const sections = ['probleme','seance','inclus','deroule','offre','testimonials','about','faq'];
+  const navLinks = document.querySelectorAll('#sidenav a');
+  function updateNav() {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+</script>
+</body>
+</html>

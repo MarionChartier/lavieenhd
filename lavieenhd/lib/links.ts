@@ -26,16 +26,14 @@ export const EXTERNAL = {
   newsletter: LEGACY_BASE,
 
   /**
-   * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages.
-   * Vides pour le moment : à compléter quand Marion fournit ses futures pages HTML.
-   * Seules The Place to be, Fleur de Talents Innés (page de vente Blooming)
-   * et le Quiz sont actives.
+   * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages
+   * de vente HTML servies depuis /public. Toutes les offres sont branchées.
    */
   offre: {
     thePlaceToBe: "/the-place-to-be.html",
-    insideClub: "",
-    reveal: "",
+    insideClub: "/inside.html",
+    reveal: "/reveal.html",
     fleurDeTalents: "/blooming.html",
-    reconnect: "",
+    reconnect: "/reconnect.html",
   },
 } as const;

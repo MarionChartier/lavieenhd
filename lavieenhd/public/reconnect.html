@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RECONNECT, Accompagnement de Reconnexion Professionnelle, La vie en HD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    @font-face{font-family:'Breathing';src:url(/fonts/Breathing.ttf) format('truetype');font-weight:400;font-display:swap;}
+    @font-face{font-family:'Luciole';src:url(/fonts/Luciole-Bold.ttf) format('truetype');font-weight:700;font-display:swap;}
+    :root {
+      --violet:     #766488;
+      --lavande:    #bea4d8;
+      --lavande-pale:#e9dff5;
+      --cyan:       #75ced2;
+      --cyan-clair: #dbeef4;
+      --or:         #decdad;
+      --blanc:      #ffffff;
+      --creme:      #f9f7fb;
+      --texte:      #503c62;
+      --texte-doux: #5a4e6a;
+      --font-display:'Cinzel', serif;
+      --font-serif:  'Cormorant Garamond', serif;
+      --font-sans:   'Jost', sans-serif;
+      --font-script:'Breathing','Cormorant Garamond',cursive;
+      --font-body:'Luciole','Jost',sans-serif;
+      --gap:        120px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--creme);color:var(--texte);font-family:var(--font-sans);font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:860px;margin:0 auto;padding:0 28px;}
+    .container--wide{max-width:1060px;margin:0 auto;padding:0 28px;}
+    .eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+    .divider{width:48px;height:1px;background:var(--lavande);margin:20px auto;}
+    .divider--left{margin-left:0;}
+    .section{padding:var(--gap) 0;}
+    .section-header{text-align:center;margin-bottom:64px;}
+    .section-header h2{font-size:clamp(26px,4vw,44px);margin-top:12px;}
+    .display{font-family:var(--font-sans);font-weight:700;}
+    .btn-primary{display:inline-block;background:var(--violet);color:var(--blanc);font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:18px 48px;border-radius:9999px;transition:background .25s,transform .2s;}
+    .btn-primary:hover{background:#5a4d6e;transform:translateY(-2px);}
+    .btn-ghost{display:inline-block;border:1px solid var(--lavande);color:var(--lavande);font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 36px;border-radius:9999px;transition:border-color .25s,color .25s;}
+    .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 28px 80px;position:relative;overflow:hidden;background:var(--creme);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(190,164,216,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 50% at 85% 75%,rgba(117,206,210,.12) 0%,transparent 55%);pointer-events:none;}
+    .hero-logo{width:100%;max-width:300px;margin:0 auto 26px;position:relative;z-index:1;}
+    .hero h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(26px,4.2vw,46px);line-height:1.3;color:var(--texte);max-width:780px;margin:14px auto 0;position:relative;z-index:1;}
+    .hero h1 em{font-style:normal;color:var(--violet);}
+    .hero-sub{font-family:var(--font-serif);font-size:clamp(17px,2.2vw,22px);font-style:italic;font-weight:300;color:var(--texte-doux);max-width:640px;margin:26px auto 44px;position:relative;z-index:1;}
+    .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;}
+
+    /* STRIP */
+    .strip{background:var(--violet);padding:56px 28px;text-align:center;position:relative;overflow:hidden;}
+    .strip blockquote{font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);font-weight:300;font-style:italic;color:var(--blanc);max-width:700px;margin:0 auto;line-height:1.55;position:relative;z-index:1;}
+    .strip blockquote em{color:var(--cyan);font-style:normal;}
+    .strip cite{display:block;margin-top:16px;font-family:var(--font-sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-style:normal;}
+
+    /* WHAT / FLOW */
+    .what-section{background:var(--blanc);padding:var(--gap) 0;}
+    .what-flow::after{content:"";display:block;clear:both;}
+    .what-flow h2{font-size:clamp(24px,3.5vw,40px);margin:14px 0 30px;}
+    .what-flow p{font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:2;margin-bottom:24px;}
+    .what-flow p strong{font-weight:700;color:var(--texte);}
+    .what-flow .divider--left{margin-top:18px;margin-bottom:26px;}
+    .what-flow .eyebrow{display:block;}
+    .flow-img{float:right;width:330px;max-width:44%;margin:6px 0 28px 44px;border-radius:16px;box-shadow:0 18px 48px -18px rgba(80,60,98,.4);}
+    @media(max-width:720px){.flow-img{float:none;width:100%;max-width:320px;margin:0 auto 28px;}}
+
+    /* SIGNAL / BENEFIT LISTS */
+    .signal-wrap{background:var(--lavande-pale);border-radius:16px;padding:36px 40px;margin-top:8px;}
+    .signal-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 36px;}
+    .signal-list li{position:relative;padding-left:26px;font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.5;}
+    .signal-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lavande);}
+    .benefit-list li::before{background:var(--cyan);}
+    @media(max-width:720px){.signal-list{grid-template-columns:1fr;}.signal-wrap{padding:30px 26px;}}
+
+    /* GUIDE / CONTENU */
+    .guide-section{padding:var(--gap) 0;background:var(--cyan-clair);}
+    .voyage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:56px;}
+    .voyage-item{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:12px;padding:26px 24px;text-align:center;}
+    .voyage-item .icon{font-size:26px;margin-bottom:12px;}
+    .voyage-item p{font-family:var(--font-serif);font-size:16px;color:var(--texte-doux);line-height:1.55;}
+
+    /* DEROULE / TIMELINE */
+    .flow-steps{max-width:760px;margin:56px auto 0;display:flex;flex-direction:column;gap:0;}
+    .step{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:flex-start;padding:0 0 40px;position:relative;}
+    .step:last-child{padding-bottom:0;}
+    .step-num{width:48px;height:48px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;color:var(--violet);flex-shrink:0;}
+    .step-body h3{font-family:var(--font-serif);font-size:22px;font-weight:600;color:var(--texte);margin-bottom:8px;}
+    .step-body p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.8;}
+
+    /* INVESTISSEMENT */
+    .env-section{padding:var(--gap) 0;}
+    .price-tag{display:inline-block;font-family:var(--font-serif);font-size:clamp(22px,3vw,30px);font-style:italic;color:var(--violet);margin:6px 0;}
+    .price-note{max-width:580px;margin:24px auto 0;background:var(--lavande-pale);border-radius:14px;padding:22px 30px;font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--texte-doux);line-height:1.6;text-align:center;}
+    .invest-card{background:var(--blanc);border:1px solid rgba(190,164,216,.28);border-radius:16px;padding:44px 38px;max-width:560px;margin:56px auto 0;text-align:center;box-shadow:0 16px 44px -26px rgba(80,60,98,.45);}
+    .invest-card .price-main{font-family:var(--font-display);font-size:clamp(34px,6vw,52px);color:var(--violet);line-height:1.1;}
+    .invest-card .price-split{font-family:var(--font-serif);font-style:italic;font-size:18px;color:var(--cyan);margin:10px 0 24px;}
+    .invest-card .invest-line{font-family:var(--font-serif);font-size:17px;color:var(--texte-doux);line-height:1.8;margin-bottom:8px;}
+    .invest-card .invest-line strong{color:var(--violet);font-weight:600;}
+    .invest-card .btn-primary{margin-top:26px;}
+
+    /* TEST GRATUIT BRIDGE */
+    .tg-bridge{background:var(--cyan-clair);padding:64px 28px;text-align:center;}
+    .tg-bridge h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,3vw,32px);color:var(--violet);margin-bottom:14px;}
+    .tg-bridge p{font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--texte-doux);max-width:580px;margin:0 auto 28px;}
+
+    /* TESTI */
+    .testi-section{background:var(--blanc);padding:var(--gap) 0;}
+    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
+    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
+    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:start;}
+    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
+    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
+    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+
+    /* ABOUT */
+    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
+    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
+    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
+    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
+    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
+    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
+
+    /* FAQ */
+    .faq-section{background:var(--blanc);padding:var(--gap) 0;}
+    .faq-list{max-width:720px;margin:48px auto 0;border-top:1px solid rgba(80,60,98,.1);}
+    .faq-item{border-bottom:1px solid rgba(80,60,98,.1);}
+    .faq-question{width:100%;background:none;border:none;padding:24px 0;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--texte);}
+    .faq-icon{display:inline-block;flex-shrink:0;font-size:26px;line-height:1;color:var(--cyan);transition:transform .3s;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s ease;}
+    .faq-item.open .faq-answer{max-height:1800px;}
+    .faq-answer-inner{padding:0 0 28px;font-family:var(--font-serif);font-size:17px;font-weight:300;line-height:1.82;color:var(--texte-doux);}
+
+    /* FOOTER */
+    footer{position:relative;overflow:hidden;color:#503c62;}
+    .ft-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .ft-veil{position:absolute;inset:0;background:rgba(255,255,255,.35);pointer-events:none;}
+    .ft-goldline{position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(184,151,90,.85),transparent);}
+    .ft-main{position:relative;display:flex;flex-direction:column;gap:20px;padding:36px 24px 24px;}
+    .ft-brand{display:flex;flex-direction:column;gap:6px;}
+    .ft-brand-name{font-family:var(--font-script);font-size:20px;line-height:1;letter-spacing:.02em;color:#503c62;}
+    .ft-brand-sub{font-family:var(--font-body);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:#9784aa;}
+    .ft-links{display:flex;flex-direction:column;gap:12px;}
+    .ft-link{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:16px;font-weight:600;font-style:italic;color:#503c62;transition:color .2s;}
+    .ft-link svg{width:16px;height:16px;flex-shrink:0;}
+    .ft-link--mail:hover{color:#75ced2;}
+    .ft-link--insta:hover{color:#7a57b5;}
+    .ft-divider{position:relative;margin:0 24px;border-top:1px solid rgba(118,100,136,.15);}
+    .ft-bottom{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px 24px;font-size:11px;letter-spacing:.1em;color:#9784aa;}
+    .ft-legal{display:flex;flex-wrap:wrap;gap:8px 20px;}
+    .ft-legal a{color:#9784aa;transition:color .2s;}
+    .ft-legal a:hover{color:#75ced2;}
+    @media(min-width:768px){
+      .ft-main{flex-direction:row;align-items:center;justify-content:space-between;gap:40px;padding:44px 80px 28px;}
+      .ft-links{flex-direction:row;align-items:center;gap:40px;}
+      .ft-divider{margin:0 80px;}
+      .ft-bottom{flex-direction:row;align-items:center;justify-content:space-between;padding:20px 80px;}
+    }
+
+    @media(max-width:720px){
+      :root{--gap:80px;}
+      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOUTON RETOUR FLOTTANT -->
+<style>
+  .back-btn{position:fixed;top:22px;left:22px;z-index:9500;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px 0 15px;border-radius:9999px;background:rgba(253,251,247,.92);border:1px solid rgba(190,164,216,.5);box-shadow:0 10px 30px -12px rgba(80,60,98,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.04em;color:var(--texte);transition:border-color .25s,color .25s,transform .25s;cursor:pointer;}
+  .back-btn:hover{border-color:var(--cyan);color:var(--violet);transform:translateX(-2px);}
+  .back-btn svg{width:16px;height:16px;flex-shrink:0;}
+  @media(max-width:720px){.back-btn{top:14px;left:14px;height:42px;width:42px;padding:0;justify-content:center;gap:0;}.back-btn .back-label{display:none;}}
+</style>
+<a href="/" class="back-btn" aria-label="Revenir a la page precedente" onclick="if(window.history.length>1){window.history.back();return false;}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  <span class="back-label">Retour</span>
+</a>
+
+<!-- NAV POINTS FLOTTANTS -->
+<style>
+  .sidenav { position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:14px;align-items:flex-end; }
+  .sidenav a { display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer; }
+  .dot { width:10px;height:10px;border-radius:50%;background:rgba(190,164,216,.35);border:1px solid var(--lavande);flex-shrink:0;transition:all .3s; }
+  .dot-label { font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--violet);background:rgba(249,247,251,.95);padding:4px 10px;border-radius:20px;border:1px solid rgba(190,164,216,.3);opacity:0;transform:translateX(8px);transition:all .25s;white-space:nowrap;pointer-events:none; }
+  .sidenav a:hover .dot-label,
+  .sidenav a.active .dot-label { opacity:1;transform:translateX(0); }
+  .sidenav a:hover .dot,
+  .sidenav a.active .dot { background:var(--violet);border-color:var(--violet);transform:scale(1.3); }
+  @media(max-width:720px) { .sidenav { right:10px; } .dot-label { display:none; } }
+</style>
+<nav class="sidenav" id="sidenav">
+  <a href="javascript:void(0)" onclick="document.getElementById('pourqui').scrollIntoView({behavior:'smooth'})" data-section="pourqui"><span class="dot-label">Pour qui</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('reconnect').scrollIntoView({behavior:'smooth'})" data-section="reconnect"><span class="dot-label">Reconnect</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('inclus').scrollIntoView({behavior:'smooth'})" data-section="inclus"><span class="dot-label">Ce qui est inclus</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('deroule').scrollIntoView({behavior:'smooth'})" data-section="deroule"><span class="dot-label">Le déroulé</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" data-section="investissement"><span class="dot-label">L'investissement</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
+  <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="/assets/logo-reconnect.png" alt="RECONNECT, Accompagnement de Reconnexion Professionnelle"/>
+  <span class="eyebrow" style="position:relative;z-index:1;">La vie en HD · Marion Chartier</span>
+  <p class="hero-sub">À la croisée de la connaissance de soi, de la stratégie énergétique et de la guidance intuitive : un accompagnement premium pour clarifier ta zone de génie, retrouver élan et audace, et faire (re)naître un projet professionnel vibrant, qui colle à ton ADN.</p>
+  <div class="hero-cta-group">
+    <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" class="btn-primary">Rejoindre Reconnect →</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('reconnect').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Découvrir l'accompagnement</a>
+  </div>
+</section>
+
+<!-- STRIP CITATION -->
+<div class="strip">
+  <blockquote>
+    Te retrouver, t'orienter, oser, <em>rayonner</em>.
+    <cite>RECONNECT · L'accompagnement de reconnexion professionnelle</cite>
+  </blockquote>
+</div>
+
+<!-- POUR QUI -->
+<section class="section" id="pourqui">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Pour qui&nbsp;?</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:26px;">Tu sens que tu aspires à autre chose, mais tu ne sais pas encore vers quoi.</h2>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:22px;">Pour toi si tu ne te sens pas, ou plus, épanoui·e dans ton job actuel, que tu t'y éteins à petits feux, que tu manques de sens, que tu sens profondément que tu aspires à autre chose, mais qu'en parallèle, tu n'as aucune idée de ce que tu pourrais faire d'autre, de ce qui te ferait vibrer, ou de ce pour quoi tu es doué·e.</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.95;margin-bottom:34px;">Tu te sens tiraillé·e entre le besoin de changement et d'alignement pro qui bouillonne en toi, et ton état actuel de flou, de brouillard mental et d'énergie en berne qui te paralyse. Tu pourrais aussi te reconnaître si&nbsp;:</p>
+      <div class="signal-wrap">
+        <ul class="signal-list">
+          <li>ton métier d'aujourd'hui ne résonne plus</li>
+          <li>tu es dans une dynamique de transition professionnelle</li>
+          <li>tu veux te réorienter ou te reconvertir</li>
+          <li>tu veux réinventer ta façon de travailler</li>
+          <li>tu es déterminé·e à changer de voie pro</li>
+          <li>tu as déjà fait un bilan de compétences sans succès</li>
+          <li>tu cherches à reconnecter à ton essence</li>
+          <li>tu veux de la cohérence entre ton énergie, tes envies et ta carrière</li>
+        </ul>
+      </div>
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;margin-top:34px;">Aujourd'hui, tu souhaites un accompagnement plus profond pour t'aider à définir ton orientation, et (re)trouver de la cohérence entre ton énergie, tes envies profondes et ta carrière.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECONNECT / CE QUE C'EST -->
+<section class="what-section" id="reconnect">
+  <div class="container">
+    <div class="what-flow reveal">
+      <img class="flow-img" src="/assets/reconnect/horizon.jpg" alt="S'orienter vers une nouvelle voie professionnelle"/>
+      <span class="eyebrow">Qu'est-ce que Reconnect&nbsp;?</span>
+      <div class="divider divider--left"></div>
+      <h2 class="display">Un espace intime où tu es écouté·e, vu·e et reconnu·e à ta juste valeur.</h2>
+      <p>Je me suis moi-même cherchée professionnellement tellement longtemps (on parle en années&nbsp;!), que j'ai décidé de concevoir le programme d'accompagnement multi-dimensionnel que j'aurais voulu suivre, et qui aurait fait toute la différence, j'en suis certaine.</p>
+      <p>Cet accompagnement premium de reconnexion professionnelle, c'est vraiment le fruit de plusieurs années de quête, d'expérimentations, et de formations à différents outils et méthodes. J'y ai mis tout mon cœur, et je l'ai créé pour toi qui aspires, au plus profond de tes tripes, à vivre cet épanouissement professionnel qui fait tant rêver.</p>
+      <p>Je veux que ce rêve qui te semble peut-être un peu flou (et fou) aujourd'hui devienne un vrai objectif de vie <strong>atteignable et réalisable</strong>, en te faisant gagner le temps que moi-même j'ai pu perdre dans cette quête.</p>
+      <p>Je te propose un accompagnement 1:1 profond et puissant, pour te libérer de ce qui te bloque, et mettre enfin de la lumière et de l'élan vers ce qui t'appelle. C'est un vrai voyage transformateur au cours duquel je te guide pour&nbsp;:</p>
+      <div class="signal-wrap" style="background:var(--cyan-clair);">
+        <ul class="signal-list benefit-list">
+          <li>te retrouver et comprendre qui tu es vraiment</li>
+          <li>te libérer des peurs et des blocages qui te figent</li>
+          <li>débunker tes croyances limitantes et tes conditionnements</li>
+          <li>clarifier tes envies, tes talents, ta direction</li>
+          <li>réconcilier ambition et alignement</li>
+          <li>replugger ta boussole à ton feu intérieur</li>
+          <li>te reconnecter à ton essence pro, ta voie, ta mission</li>
+          <li>définir un projet pro aligné, incarné et viable</li>
+          <li>prendre des décisions audacieuses, fidèles à qui tu es</li>
+          <li>redéployer ta vie pro avec sens et fluidité</li>
+        </ul>
+      </div>
+      <p style="margin-top:28px;font-style:italic;color:var(--violet);">Tu repars avec une vraie clarté, une orientation solide, et un vrai regain de détermination et d'audace pour avancer sereinement vers ton épanouissement professionnel. Pour te révéler pleinement.</p>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" class="btn-primary">Je veux vivre cette reconnexion →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUI EST INCLUS -->
+<section class="guide-section" id="inclus">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les modalités et le contenu</span>
+      <h2 class="display">Ce que tu retrouves dans Reconnect</h2>
+    </div>
+    <div class="reveal" style="max-width:760px;margin:0 auto;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:19px;font-weight:300;color:var(--texte-doux);line-height:1.9;margin-bottom:20px;">L'accompagnement se déroule à distance, sur une durée de 13 semaines, et il est à 90% personnalisé et individuel. Voici concrètement ce que tu y retrouves.</p>
+      <p style="font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--violet);line-height:1.7;">(Le contenu est susceptible d'évoluer sensiblement, mais toujours pour du mieux&nbsp;!)</p>
+    </div>
+
+    <div class="voyage-grid reveal">
+      <div class="voyage-item"><div class="icon">📋</div><p>Un pré-diagnostic de ta situation actuelle via un formulaire approfondi et ciblé</p></div>
+      <div class="voyage-item"><div class="icon">✍️</div><p>Un questionnaire introspectif par semaine, sur une thématique précise</p></div>
+      <div class="voyage-item"><div class="icon">🧩</div><p>Des exercices pratiques pour ancrer chaque prise de conscience</p></div>
+      <div class="voyage-item"><div class="icon">🔮</div><p>Une analyse des 7 clés principales de ton schéma HD (Le Guide d'Immersion INSIDE en PDF, avant la 1ère séance)</p></div>
+      <div class="voyage-item"><div class="icon">🌸</div><p>Une analyse HD / Numérologie / Gene Keys focus vie pro, et ta Fleur de Talents Innés® détaillée en PDF (avant la 2ème séance)</p></div>
+      <div class="voyage-item"><div class="icon">🎥</div><p>3 séances de coaching intuitif de 1h30 en visio individuelle, une par mois</p></div>
+      <div class="voyage-item"><div class="icon">🌿</div><p>3 soins énergétiques collectifs d'1h, en distanciel</p></div>
+      <div class="voyage-item"><div class="icon">💫</div><p>Des ressources personnalisées après chaque séance : recommandations, exercices, boosts mindset</p></div>
+      <div class="voyage-item"><div class="icon">🎧</div><p>Des ressources mutualisées : audios énergétiques, séances d'EFT, méditations guidées, tests de personnalité</p></div>
+      <div class="voyage-item"><div class="icon">💬</div><p>Un accès privilégié via un canal de discussion privé individuel, pour un suivi profond entre les séances</p></div>
+      <div class="voyage-item"><div class="icon">🎁</div><p>Et quelques surprises en chemin&nbsp;!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LE DEROULE -->
+<section class="section" id="deroule">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Le voyage, étape par étape</span>
+      <h2 class="display">Le déroulé de ton accompagnement</h2>
+    </div>
+    <div class="flow-steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>On fait le point</h3>
+          <p>Avant de démarrer, un pré-diagnostic approfondi de ta situation actuelle, via un formulaire avec différentes questions ciblées. On pose ensemble le décor, là où tu en es et là où tu aspires à aller.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>On se révèle (mois 1)</h3>
+          <p>Tu reçois le Guide d'Immersion dans ton Design unique (INSIDE) et l'analyse des 7 clés principales de ton schéma HD. Première séance de coaching intuitif de 1h30 en visio, et un premier soin énergétique collectif.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>On clarifie ta zone de génie (mois 2)</h3>
+          <p>Tu reçois ton analyse HD / Numérologie / Gene Keys focus vie pro, et ta Fleur de Talents Innés® détaillée. Deuxième séance de coaching, deuxième soin énergétique, et toujours ton suivi continu entre les rendez-vous.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>On ancre et on déploie (mois 3)</h3>
+          <p>Troisième séance de coaching et troisième soin énergétique pour consolider ta direction. Tu repars avec une orientation solide, un projet professionnel qui te ressemble, et l'audace d'avancer.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px;" class="reveal">
+      <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" class="btn-primary">Voir les dates et l'investissement →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTISSEMENT -->
+<section class="env-section" id="investissement">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les dates et l'investissement</span>
+      <h2 class="display">Rejoindre Reconnect</h2>
+      <p class="price-tag">Un accompagnement premium, pour réaligner ta vie professionnelle à ton essence.</p>
+      <div class="price-note">
+        <strong style="font-style:normal;color:var(--violet);">Note importante&nbsp;:</strong> les portes de cet accompagnement sont ouvertes en continu. Tu peux t'inscrire à tout moment, pour un démarrage le lundi suivant ton inscription, et pour une durée de 13 semaines. Le nombre de places est limité à 5 personnes par mois (priorité à la qualité 💎).
+      </div>
+    </div>
+
+    <div class="invest-card reveal">
+      <div class="price-main">1 444&nbsp;€</div>
+      <div class="price-split">ou 4 mensualités de 361&nbsp;€</div>
+      <p class="invest-line"><strong>13 semaines</strong> d'accompagnement à distance, à 90% personnalisé</p>
+      <p class="invest-line">3 séances de coaching intuitif 1:1 + 3 soins énergétiques</p>
+      <p class="invest-line">Suivi continu via un canal privé individuel</p>
+      <a href="https://marionchartier-humandesign.systeme.io/commande-reconnect" target="_blank" rel="noopener" class="btn-primary">Je veux vivre cette reconnexion 🔥</a>
+    </div>
+
+    <div class="reveal" style="max-width:680px;margin:48px auto 0;text-align:center;">
+      <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--texte-doux);line-height:1.9;margin-bottom:16px;">Ce programme n'est pas fait pour toi si tu cherches le simple équivalent d'un bilan de compétences. Ici, nous allons plus loin, plus en profondeur, et nous prenons en compte l'entièreté de ta personne, pas uniquement ta part mentale.</p>
+      <p style="font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--violet);line-height:1.85;">Il est donc important que tu sois prêt·e à plonger pleinement en toi, à accueillir toutes tes facettes, et à libérer ce qui doit l'être pour avancer vers tes rêves. 🦚</p>
+      <p style="font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.9;margin-top:24px;">Si tu as une question, viens m'en parler en DM sur Insta ou par mail. Ce serait dommage de rester sur le banc de touche, juste parce que tu n'as pas osé. 😉</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEST GRATUIT BRIDGE -->
+<div class="tg-bridge" id="test-gratuit">
+  <div class="container reveal">
+    <h3 class="display">Tu veux d'abord découvrir ton schéma HD&nbsp;?</h3>
+    <p>Fais ton test gratuit pour découvrir ton Design unique. C'est rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Une belle première porte d'entrée avant de plonger dans Reconnect.</p>
+    <a href="/test-gratuit" class="btn-primary">Faire mon test HD gratuit →</a>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section class="testi-section" id="testimonials">
+  <div class="container--wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Elles et ils en parlent</span>
+      <h2 class="display">Témoignages</h2>
+    </div>
+
+    <div class="testi-whatsapp reveal">
+      Cet accompagnement a été un vrai tournant pour moi. J'ai retrouvé de la clarté sur ce que je veux vraiment faire, et surtout l'audace de me lancer. Marion m'a écoutée et guidée avec une justesse incroyable. Merci du fond du cœur.
+      <div class="testi-tag"><span class="testi-avatar">♡</span> Témoignage à confirmer</div>
+    </div>
+
+    <div class="testi-cards reveal">
+      <div class="testi-card">
+        <p>"Avant Reconnect, j'étais dans un flou total et une énergie en berne. Aujourd'hui, j'ai une direction claire et un projet qui me ressemble vraiment. Le mélange coaching, Human Design et soins énergétiques fait toute la différence."</p>
+        <div class="author">Témoignage à confirmer</div>
+      </div>
+      <div class="testi-card">
+        <p>"J'avais déjà fait un bilan de compétences sans résultat. Ici, on va beaucoup plus loin, on touche à l'essentiel. Je me suis sentie vue et reconnue à ma juste valeur, et c'est ce qui a tout débloqué."</p>
+        <div class="author">Témoignage à confirmer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUI JE SUIS -->
+<section class="about-section" id="about">
+  <div class="container--wide">
+    <div class="about-inner reveal">
+      <img class="about-photo" src="/assets/marion-reflexion.jpg" alt="Marion Chartier"/>
+      <div class="about-text">
+        <span class="eyebrow">En quelques mots</span>
+        <div class="divider divider--left"></div>
+        <h2 class="display">Qui je suis&nbsp;?</h2>
+        <p>Moi c'est Marion&nbsp;! En Human Design, je suis MG 2/4 : la magicienne fraternelle multi-passionnée, si on veut faire un (gros) résumé&nbsp;! 😄</p>
+        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens à ne pas trouver ma place, je me suis retrouvée grâce à un plongeon dans le Human Design. Je suis aujourd'hui coach transformationnelle, pour toi. ♥</p>
+        <p>Je me suis cherchée professionnellement tellement longtemps que j'ai conçu Reconnect comme l'accompagnement multi-dimensionnel que j'aurais voulu suivre. C'est une vraie mission de cœur pour moi de t'aider, grâce à des outils puissants, à te retrouver et te révéler pleinement. 🌟</p>
+        <p class="signature">La vie en HD, à ta portée</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Les questions qui reviennent le plus souvent</span>
+      <h2 class="display">FAQ</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">C'est quoi exactement le Human Design&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Il regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens et le yi-king chinois. Grâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « schéma HD », qui dévoile notre fonctionnement énergétique, nos dons, nos talents et notre chemin d'évolution. 😊</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Combien de temps dure l'accompagnement&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Reconnect se déroule à distance sur une durée de 13 semaines (environ 3 mois), avec un démarrage le lundi suivant ton inscription. L'accompagnement est à 90% personnalisé et individuel. 🌈</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">En quoi est-ce différent d'un bilan de compétences&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Ce programme n'est pas fait pour toi si tu cherches le simple équivalent d'un bilan de compétences. Ici, nous allons plus loin, plus en profondeur, et nous prenons en compte l'entièreté de ta personne, pas uniquement ta part mentale. On combine connaissance de soi, stratégie énergétique et guidance intuitive. 🙏</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Dois-je déjà connaître le Human Design pour rejoindre Reconnect&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pas du tout&nbsp;! Tout est expliqué, vulgarisé et décrypté pour toi. Tu reçois d'ailleurs en amont le Guide d'Immersion dans ton Design unique (INSIDE), qui te donne toutes les clés de lecture de ton schéma. 🎈</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment se déroulent les séances&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Tu bénéficies de 3 séances de coaching intuitif de 1h30 en visio individuelle (une par mois) et de 3 soins énergétiques collectifs d'1h en distanciel. Entre les séances, tu as un accès privilégié via un canal de discussion privé individuel, pour un suivi profond et continu, dans un cadre horaire défini. 🎥</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Qu'est-ce qui est inclus exactement&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Un pré-diagnostic approfondi, un questionnaire introspectif hebdomadaire, des exercices pratiques, l'analyse des 7 clés de ton schéma HD (INSIDE), une analyse HD / Numérologie / Gene Keys focus vie pro avec ta Fleur de Talents Innés®, 3 séances de coaching, 3 soins énergétiques, des ressources personnalisées et mutualisées, un suivi privé, et quelques surprises. 🎁</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Quel est l'investissement&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">L'investissement pour cet accompagnement complet est de 1 444&nbsp;€, que tu peux choisir de diviser en 4 mensualités de 361&nbsp;€. 😉</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Combien de places sont disponibles&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le nombre de places est limité à 5 personnes par mois, pour donner la priorité à la qualité de l'accompagnement. 💎 Les portes étant ouvertes en continu, tu peux t'inscrire à tout moment pour un démarrage le lundi suivant.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">J'ai une question avant de m'inscrire, comment faire&nbsp;?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Viens m'en parler en DM sur Instagram ou par mail (hello@marionchartier-lavieenhd.com). Ce serait dommage de rester sur le banc de touche, juste parce que tu n'as pas osé. 😉</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="padding:0 0 var(--gap);text-align:center;background:var(--blanc);">
+  <div class="container">
+    <div class="reveal">
+      <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" class="btn-primary">Rejoindre Reconnect →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="ft-bg" src="/assets/oracle-frame.png" alt="" aria-hidden="true"/>
+  <div class="ft-veil" aria-hidden="true"></div>
+  <div class="ft-goldline" aria-hidden="true"></div>
+  <div class="ft-main">
+    <div class="ft-brand">
+      <p class="ft-brand-name">La vie en HD</p>
+      <p class="ft-brand-sub">Human Design · Marion Chartier</p>
+    </div>
+    <div class="ft-links">
+      <a class="ft-link ft-link--mail" href="mailto:hello@marionchartier-lavieenhd.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-8.5 8 9 9 0 0 1-3.4-.7L3.5 20l1.2-4.6A8 8 0 0 1 12 3.5a8 8 0 0 1 8.5 8z"/><circle cx="8.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="0.95" fill="currentColor" stroke="none"/><circle cx="15.5" cy="11.5" r="0.95" fill="currentColor" stroke="none"/></svg>
+        Me contacter
+      </a>
+      <a class="ft-link ft-link--insta" href="https://www.instagram.com/marionchartier_lavieenhd/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+        Me rejoindre sur Instagram
+      </a>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-bottom">
+    <div>© 2026 Marion Chartier · La vie en HD</div>
+    <div class="ft-legal">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/cgv">CGV</a>
+      <a href="/confidentialite">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active dot on scroll
+  const sections = ['pourqui','reconnect','inclus','deroule','investissement','testimonials','about','faq'];
+  const navLinks = document.querySelectorAll('#sidenav a');
+  function updateNav() {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+</script>
+</body>
+</html>
