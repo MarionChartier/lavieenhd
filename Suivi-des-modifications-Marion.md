@@ -64,8 +64,9 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 - Points à vérifier de ton côté (repris des anciennes pages, à valider) :
   - Inside : prix 44 € (autonome) et 122 € (avec coaching), délai "au moins 10 jours". Et la liste des 7 clés (Définition ou Croix d'Incarnation comme 7e clé ?).
   - Reveal : prix 222 €, durée 1h30, lien de réservation. Témoignages : 3 vrais repris (Johanna, Laura, Astrig) ; les autres sont à compléter.
-  - Reconnect : prix 1 444 € (ou 4 x 361 €), 13 semaines, 5 places/mois. Les témoignages étaient en images sur l'ancienne page (non récupérables) : placés en "à confirmer", à remplacer par les vrais.
+  - Reconnect : prix 1 444 € (ou 4 x 361 €), 13 semaines, 5 places/mois. Tes vrais témoignages ont été intégrés (un mis en avant + 4 cartes), attribués "Membre Reconnect" : à confirmer si on peut afficher les vrais prénoms à la place.
   - Les liens de commande/réservation systeme.io sont repris au mieux : à confirmer qu'ils sont actifs.
+- Sur les 4 pages (Inside, Reveal, Reconnect, The Place to be), les cartes de témoignages d'une même rangée ont été mises à la même hauteur, pour un alignement net.
 
 **Offres**
 - Le quiz s'appelle désormais "Quiz - Ton lieu de vie/de travail idéal" (sans "HD"), et son bouton est passé à "Explorer".
