@@ -8,7 +8,7 @@ import { OFFRES } from "@/lib/content/offres";
 
 const NAV_ITEMS = [
   { href: "/", label: "Accueil" },
-  { href: "/test-gratuit", label: "TEST HD gratuit" },
+  { href: "/test-gratuit", label: "Test HD gratuit" },
   { href: "/mes-offres", label: "Mes offres", dropdown: true },
   { href: "/qui-je-suis", label: "Qui suis-je ?" },
 ] as const;
@@ -44,7 +44,7 @@ export function Nav() {
   return (
     <nav className="sticky top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       {/* Bandeau flottant, entouré d'une bordure texturée (aquarelle), coins arrondis */}
-      <div className="relative rounded-[20px] p-1.5 shadow-[0_18px_40px_-20px_rgba(80,60,98,0.4)] md:p-2">
+      <div className="relative z-[60] rounded-[20px] p-1.5 shadow-[0_18px_40px_-20px_rgba(80,60,98,0.4)] md:p-2">
         {/* Bordure texturée (aquarelle violette/cyan + dorée), même image que l'oracle */}
         <Image
           src="/assets/oracle-frame.png"

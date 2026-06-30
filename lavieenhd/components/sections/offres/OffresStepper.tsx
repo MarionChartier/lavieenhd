@@ -18,13 +18,13 @@ export function OffresStepper() {
   return (
     <nav
       aria-label="Naviguer entre les offres"
-      className="mx-auto mt-14 flex max-w-[1100px] items-start px-4 md:mt-20"
+      className="mx-auto mt-14 flex max-w-[1100px] flex-wrap items-start justify-center gap-y-7 px-4 md:mt-20 md:flex-nowrap md:justify-start md:gap-y-0"
     >
       {OFFRES.map((offre, i) => (
         <Fragment key={offre.slug}>
           <a
             href={`#${offre.slug}`}
-            className="group flex w-[88px] flex-col items-center gap-2 md:w-[120px] md:gap-2.5"
+            className="group flex basis-1/3 flex-col items-center gap-2 md:w-[120px] md:basis-auto md:gap-2.5"
           >
             <span className="font-display text-[12px] italic leading-none text-turquoise md:text-[14px]">
               {offre.tag}
@@ -43,7 +43,7 @@ export function OffresStepper() {
           {i < OFFRES.length - 1 && (
             <span
               aria-hidden
-              className="mt-6 min-w-6 flex-1 border-t border-dashed border-ink-lilac md:mt-7"
+              className="mt-6 hidden min-w-6 flex-1 border-t border-dashed border-ink-lilac md:mt-7 md:block"
             />
           )}
         </Fragment>

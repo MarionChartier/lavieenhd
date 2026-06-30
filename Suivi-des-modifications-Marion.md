@@ -1,7 +1,7 @@
 # La vie en HD, suivi des modifications, V3
 
 Document de suivi du site pour la construction de la V3.
-Dernière mise à jour : 27 juin 2026.
+Dernière mise à jour : 30 juin 2026.
 
 ---
 
@@ -91,6 +91,15 @@ On construit la V3 ensemble, à partir de tes retours sur la V2. Ce document ré
 **Bas de page (footer)**
 - "Me contacter" (avec une icône bulle de discussion, comme demandé) et "Me rejoindre sur Instagram".
 - Le bandeau a été enrichi visuellement (dégradé, fine ligne dorée en haut, halos doux, mini-tagline) pour qu'il soit moins sobre.
+
+**Affichage sur téléphone et tablette (responsive)**
+- Passage complet du site sur téléphone et tablette, page par page, pour corriger tout ce qui s'affichait mal.
+- Accueil : le bandeau "Transit solaire" et la frise "Le parcours en 6 étapes" qui se tassaient sur tablette s'affichent maintenant proprement (mise en page empilée et centrée). Sur téléphone, les textes des offres et de la frise sont centrés, et le soleil du bandeau transit (qui décalait le texte) est masqué pour un rendu bien centré. La carte "Inside" n'a plus d'espace vide sous son logo.
+- "Test HD gratuit" dans le menu : plus de majuscules disgracieuses, le libellé s'écrit normalement.
+- Page "Mes offres" : sur téléphone, la frise des 6 offres ne déborde plus de l'écran (elle passe sur deux lignes de trois).
+- Pages de vente (Inside, Reveal, etc.) : les images s'intègrent mieux (bords fondus dans le fond, plus l'effet "carte" qui faisait artificiel), et les sections "étape par étape" sont centrées sur téléphone.
+- Pages de vente sur tablette : suppression du grand espace vide au-dessus du logo à l'ouverture (le contenu remonte en haut de page).
+- Menu : à l'ouverture sur tablette, le haut du site (logo + croix de fermeture) n'est plus masqué par le menu.
 
 ---
 

@@ -150,7 +150,7 @@ export function TransitSolaireBanner() {
   return (
     <section className="bg-white px-6 py-10 md:px-20 md:py-14">
       <div className="mx-auto max-w-(--container-content)">
-        <div className="relative flex flex-col items-center gap-6 overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-8 text-center shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] md:flex-row md:justify-center md:gap-10 md:px-12 md:py-9 md:text-left">
+        <div className="relative flex flex-col items-center gap-6 overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-8 text-center shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:flex-row lg:justify-center lg:gap-10 lg:px-12 lg:py-9 lg:text-left">
           {/* Fond paillettes doré (même que le header) + voile blanc pour mieux se fondre */}
           <Image
             src="/assets/header-glitter.png"
@@ -164,7 +164,7 @@ export function TransitSolaireBanner() {
 
           {/* Soleil + porte */}
           <div className="relative flex flex-none items-center gap-4">
-            <SunIcon className="h-12 w-12 flex-none text-[#b8975a]" />
+            <SunIcon className="hidden h-12 w-12 flex-none text-[#b8975a] lg:block" />
             <div>
               <p className="font-body text-[10px] uppercase tracking-[0.26em] text-ink-deep/60">
                 Transit solaire actuel
@@ -180,7 +180,7 @@ export function TransitSolaireBanner() {
           </div>
 
           {/* Séparateur vertical (desktop) */}
-          <span aria-hidden className="relative hidden h-14 w-px bg-ink-deep/20 md:block" />
+          <span aria-hidden className="relative hidden h-14 w-px bg-ink-deep/20 lg:block" />
 
           {/* Mini explication */}
           <p className="relative max-w-[460px] font-display text-[17px] leading-relaxed text-ink-deep md:text-[18px]">
