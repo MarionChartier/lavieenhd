@@ -115,6 +115,7 @@ export function Nav() {
                           <Link
                             key={link.label}
                             href={link.href}
+                            prefetch={link.href.endsWith(".html") ? false : undefined}
                             onClick={() => (document.activeElement as HTMLElement | null)?.blur()}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
                           >
@@ -206,6 +207,7 @@ export function Nav() {
                           <Link
                             key={link.label}
                             href={link.href}
+                            prefetch={link.href.endsWith(".html") ? false : undefined}
                             className="py-1.5 font-body text-[14px] text-ink-soft"
                           >
                             {link.label}

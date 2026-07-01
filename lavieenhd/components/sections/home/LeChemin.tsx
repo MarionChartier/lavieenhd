@@ -47,10 +47,14 @@ function Postcard({ offre }: { offre: Offre }) {
   // page HTML n'est pas encore fournie renvoient vers leur section dans la frise.
   const href = offre.href || `/mes-offres#${offre.slug}`;
   const isExternal = href.startsWith("http");
+  // Les pages de vente sont des fichiers .html statiques (pas des routes Next) :
+  // on coupe le prefetch pour éviter des requêtes RSC qui renvoient 404.
+  const isStaticFile = href.endsWith(".html");
 
   return (
     <Link
       href={href}
+      prefetch={isStaticFile ? false : undefined}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="relative block transition-all hover:-translate-y-1"
     >
