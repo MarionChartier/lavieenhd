@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Clarity } from "@/components/analytics/Clarity";
+import { CookieBanner } from "@/components/legal/CookieBanner";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -18,7 +21,6 @@ const tansongbird = localFont({
   weight: "400",
 });
 
-// Breathing — licence "Personal Use Only" : à régulariser (licence commerciale) avant mise en ligne.
 const breathing = localFont({
   src: "./fonts/Breathing.ttf",
   variable: "--font-breathing",
@@ -41,9 +43,62 @@ const luciole = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "La vie en HD · Marion Chartier · Human Design",
-  description:
-    "Marion Chartier, praticienne en Human Design. Un chemin intérieur pour révéler qui tu es vraiment.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} · ${SITE_TAGLINE}`,
+    template: `%s · ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "Human Design",
+    "Marion Chartier",
+    "La vie en HD",
+    "design humain",
+    "accompagnement",
+    "développement personnel",
+  ],
+  authors: [{ name: "Marion Chartier" }],
+  creator: "Marion Chartier",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} · ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    images: [{ url: "/assets/marion_home.png", alt: "Marion Chartier · La vie en HD" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} · ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    images: ["/assets/marion_home.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+/** Données structurées (JSON-LD) : aide les moteurs à comprendre l'activité de Marion. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  image: `${SITE_URL}/assets/marion_home.png`,
+  areaServed: "FR",
+  knowsAbout: ["Human Design", "Développement personnel", "Accompagnement"],
+  founder: {
+    "@type": "Person",
+    name: "Marion Chartier",
+    jobTitle: "Praticienne en Human Design",
+  },
+  sameAs: ["https://www.instagram.com/marionchartier_lavieenhd/"],
 };
 
 export default function RootLayout({
@@ -58,6 +113,13 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col bg-white text-ink-deep">
         {children}
+        <CookieBanner />
+        <Clarity />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );

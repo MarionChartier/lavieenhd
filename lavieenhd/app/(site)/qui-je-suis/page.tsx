@@ -4,7 +4,7 @@ import Link from "next/link";
 import { OracleDuJour } from "@/components/sections/home/OracleDuJour";
 
 export const metadata: Metadata = {
-  title: "Qui suis-je ? · La vie en HD",
+  title: "Qui suis-je ?",
   description:
     "Marion Chartier, Manifesting Generator 2/4, accompagne celles et ceux qui veulent se révéler grâce au Human Design.",
 };

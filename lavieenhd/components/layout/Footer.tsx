@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ManageCookiesButton } from "@/components/legal/ManageCookiesButton";
 
 const CONTACT = {
   email: "hello@marionchartier-lavieenhd.com",
@@ -115,6 +116,7 @@ export function Footer() {
               {item.label}
             </Link>
           ))}
+          <ManageCookiesButton className="text-left transition-colors hover:text-turquoise" />
         </div>
       </div>
     </footer>

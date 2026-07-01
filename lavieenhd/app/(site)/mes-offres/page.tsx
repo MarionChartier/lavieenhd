@@ -5,7 +5,7 @@ import { OffresStepper } from "@/components/sections/offres/OffresStepper";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 
 export const metadata: Metadata = {
-  title: "Mes offres · La vie en HD",
+  title: "Mes offres",
   description:
     "Six offres pour explorer le Human Design avec Marion Chartier. À chaque besoin, sa formule.",
 };

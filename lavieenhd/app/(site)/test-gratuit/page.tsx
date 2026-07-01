@@ -5,7 +5,7 @@ import { HDSimulatorForm } from "@/components/sections/HDSimulatorForm";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 
 export const metadata: Metadata = {
-  title: "Test HD gratuit · La vie en HD",
+  title: "Test HD gratuit",
   description:
     "Ta porte d'entrée gratuite vers ton Human Design : calcule ton schéma personnalisé en quelques secondes.",
 };
