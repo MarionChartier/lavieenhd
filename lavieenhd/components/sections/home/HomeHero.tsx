@@ -49,7 +49,7 @@ export function HomeHero() {
         alt=""
         width={600}
         height={300}
-        priority={false}
+        priority
         aria-hidden
         className="pointer-events-none absolute bottom-[12%] left-[10%] hidden h-auto w-[700px] opacity-[0.22] mix-blend-multiply lg:block"
         style={{

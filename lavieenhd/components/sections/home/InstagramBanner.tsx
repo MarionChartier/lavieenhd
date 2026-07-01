@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * Bandeau "On se retrouve sur Instagram".
@@ -21,15 +21,33 @@ const HANDLE = "@marionchartier_lavieenhd";
 const BeholdWidget = "behold-widget" as unknown as React.FC<{ "feed-id": string }>;
 
 export function InstagramBanner() {
-  // Charge le script Behold une seule fois, uniquement si un feed est configuré.
+  const feedRef = useRef<HTMLDivElement>(null);
+
+  // Charge le script Behold une seule fois, et seulement quand la section approche
+  // du viewport (différé pour ne pas peser sur le chargement initial de la page).
   useEffect(() => {
     if (!BEHOLD_FEED_ID) return;
+    const el = feedRef.current;
+    if (!el) return;
     const SRC = "https://w.behold.so/widget.js";
-    if (document.querySelector(`script[src="${SRC}"]`)) return;
-    const s = document.createElement("script");
-    s.type = "module";
-    s.src = SRC;
-    document.body.appendChild(s);
+    const load = () => {
+      if (document.querySelector(`script[src="${SRC}"]`)) return;
+      const s = document.createElement("script");
+      s.type = "module";
+      s.src = SRC;
+      document.body.appendChild(s);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          load();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "400px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -52,7 +70,7 @@ export function InstagramBanner() {
         </div>
 
         {/* Flux Instagram (Behold) ou grille d'exemple */}
-        <div className="mt-12">
+        <div ref={feedRef} className="mt-12">
           {BEHOLD_FEED_ID ? (
             <BeholdWidget feed-id={BEHOLD_FEED_ID} />
           ) : (
