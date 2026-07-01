@@ -27,6 +27,7 @@ export function CookieBanner() {
         alt=""
         aria-hidden
         fill
+        priority
         sizes="100vw"
         className="pointer-events-none absolute inset-0 object-cover"
       />

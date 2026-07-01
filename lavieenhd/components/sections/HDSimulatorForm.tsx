@@ -63,16 +63,16 @@ export function HDSimulatorForm() {
         <Image
           src="/assets/logo-main.png"
           alt=""
-          width={256}
-          height={256}
+          width={128}
+          height={128}
           className="h-full w-full object-contain"
         />
       </div>
 
       {/* pr-* garantit que le titre ne passera jamais sous le logo */}
-      <h3 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
+      <h2 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
         Découvre ton schéma <em className="italic text-turquoise">Human Design</em>.
-      </h3>
+      </h2>
 
       {/* Fond blanc derrière l'iframe transparent */}
       <div className="relative mt-2 overflow-hidden rounded border border-line bg-white">

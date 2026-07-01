@@ -111,6 +111,11 @@ export default function RootLayout({
       lang="fr"
       className={`${cormorant.variable} ${tansongbird.variable} ${breathing.variable} ${rebel.variable} ${luciole.variable}`}
     >
+      {/* Préconnexion aux services externes (calculateur HD, flux Instagram) pour accélérer le LCP. */}
+      <link rel="preconnect" href="https://app.bodygraphchart.com" />
+      <link rel="preconnect" href="https://embed.bodygraphchart.com" />
+      <link rel="preconnect" href="https://feeds.behold.so" />
+      <link rel="preconnect" href="https://w.behold.so" />
       <body className="min-h-screen flex flex-col bg-white text-ink-deep">
         {children}
         <CookieBanner />
