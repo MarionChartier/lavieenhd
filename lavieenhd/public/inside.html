@@ -129,6 +129,9 @@
     .tg-bridge{background:var(--cyan-clair);padding:64px 28px;text-align:center;}
     .tg-bridge h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,3vw,32px);color:var(--violet);margin-bottom:14px;}
     .tg-bridge p{font-family:var(--font-serif);font-size:18px;font-style:italic;color:var(--texte-doux);max-width:600px;margin:0 auto 28px;}
+    .tg-calc{max-width:760px;margin:0 auto;background:var(--blanc);border-radius:12px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(80,60,98,.22);}
+    .tg-calc iframe{display:block;width:100%;border:0;background:transparent;height:820px;}
+    @media(min-width:700px){.tg-calc iframe{height:500px;}}
 
     /* TESTI */
     .testi-section{background:var(--blanc);padding:var(--gap) 0;}
@@ -448,10 +451,44 @@
 <div class="tg-bridge" id="test-gratuit">
   <div class="container reveal">
     <h3 class="display">Tu ne connais pas encore ton Design HD&nbsp;?</h3>
-    <p>Pas de panique&nbsp;! Fais ton test gratuit pour découvrir ton schéma. C'est super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Sous ton schéma, tu retrouveras l'intitulé des clés décryptées dans ton Guide d'Immersion.</p>
-    <a href="/test-gratuit" class="btn-primary">Faire mon test HD gratuit →</a>
+    <p>Pas de panique&nbsp;! Fais ton test gratuit ci-dessous pour découvrir ton schéma. C'est super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu). Sous ton schéma, tu retrouveras l'intitulé des clés décryptées dans ton Guide d'Immersion.</p>
+    <div class="tg-calc">
+      <iframe id="hd-calc" title="Calculateur Human Design" loading="lazy"
+        src="https://embed.bodygraphchart.com/v1/22753/iframe?token=2189c054-2215-4954-8f03-822921c2b1ff"></iframe>
+    </div>
   </div>
 </div>
+<script>
+/* Redimensionne le calculateur Bodygraphchart à la hauteur de son contenu (schéma inclus). */
+(function () {
+  var f = document.getElementById("hd-calc");
+  if (!f) return;
+  function extractHeight(d) {
+    if (typeof d === "number") return d > 150 ? d : null;
+    if (typeof d === "string") {
+      var m = d.match(/height["':\s]+(\d{2,5})/i);
+      if (m) return Number(m[1]);
+      var n = Number(d);
+      return !isNaN(n) && n > 150 ? n : null;
+    }
+    if (d && typeof d === "object") {
+      var keys = ["height", "iframeHeight", "scrollHeight", "docHeight"];
+      for (var i = 0; i < keys.length; i++) {
+        var v = d[keys[i]];
+        if (typeof v === "number" && v > 150) return v;
+        if (typeof v === "string" && !isNaN(Number(v)) && Number(v) > 150) return Number(v);
+      }
+      if (d.data && typeof d.data === "object") return extractHeight(d.data);
+    }
+    return null;
+  }
+  window.addEventListener("message", function (e) {
+    if (String(e.origin).indexOf("bodygraphchart") === -1) return;
+    var h = extractHeight(e.data);
+    if (h) f.style.height = Math.ceil(h) + "px";
+  });
+})();
+</script>
 
 <!-- TEMOIGNAGES -->
 <section class="testi-section" id="testimonials">
