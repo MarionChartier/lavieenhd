@@ -5,8 +5,8 @@ const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.jpg";
 
 const PILLS = [
   "Manifesting Generator 2/4",
-  "Magicienne fraternelle",
-  "Maman d'un Manifestor",
+  "Coach transformationnelle",
+  "Maman d'un petit Manifestor",
 ] as const;
 
 export function AboutTeaser() {
@@ -46,7 +46,7 @@ export function AboutTeaser() {
 
           <p className="mt-4 max-w-[520px] font-display text-[16px] italic leading-relaxed text-ink">
             « Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la
-            tienne. »
+            tienne, et à l'exploiter. »
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -77,13 +77,13 @@ function HDCardMarion() {
   return (
     <div className="w-[260px] rounded-md border border-ink/14 bg-white p-6 shadow-[0_16px_40px_-20px_rgba(80,60,98,0.16)] md:w-[280px]">
       <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-        Carte HD de Marion
+        Carte d'identité HD
       </p>
       <p className="mt-1.5 pb-2 font-display text-[24px] leading-[1.05] text-ink-deep md:text-[26px]">
         Manifesting Generator 2/4
       </p>
       <p className="font-sub text-[12px] tracking-wide text-turquoise">
-        L'Ermite · l'Opportuniste
+        Magicienne fraternelle
       </p>
 
       <hr className="my-3.5 border-line" />
@@ -93,7 +93,6 @@ function HDCardMarion() {
         <Row label="Signature" value="Satisfaction" />
         <Row label="Stratégie" value="Répondre" />
         <Row label="Non-Soi" value="Frustration" />
-        <Row label="Profil" value="2/4" />
         <Row label="Définition" value="Double" />
         <Row label="Environnement" value="Montagnes" />
       </dl>
@@ -114,7 +113,7 @@ function HDCardMarion() {
         })}
       </div>
       <p className="mt-2 text-center font-body text-[10px] uppercase tracking-[0.16em] text-ink-soft">
-        9 centres · 7 définis
+        7 centres sur 9 définis
       </p>
     </div>
   );
