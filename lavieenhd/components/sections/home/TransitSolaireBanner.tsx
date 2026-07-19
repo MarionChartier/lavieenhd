@@ -197,7 +197,7 @@ function InfoTooltip({ id, texte, dark }: { id: string; texte: string; dark?: bo
       <span
         role="tooltip"
         id={id}
-        className="pointer-events-none invisible absolute top-8 right-0 z-20 w-[290px] rounded-md border border-ink/10 bg-white px-4 py-3 text-left font-body text-[12px] leading-relaxed normal-case tracking-normal text-ink shadow-[0_18px_40px_-18px_rgba(80,60,98,0.45)] opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 md:w-[340px]"
+        className="pointer-events-none invisible absolute top-8 right-0 z-20 w-[290px] rounded-md border border-ink/10 bg-white px-4 py-3 text-left font-sans text-[13px] font-normal not-italic leading-relaxed normal-case tracking-normal text-ink shadow-[0_18px_40px_-18px_rgba(80,60,98,0.45)] opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 md:w-[340px]"
       >
         {texte}
       </span>
