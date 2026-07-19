@@ -72,7 +72,7 @@ export function TransitSolaireBanner() {
               </p>
             )}
           </div>
-          <p className="max-w-[440px] font-display text-[17px] leading-relaxed text-ink-deep italic md:text-[18px]">
+          <p className="max-w-[440px] font-display text-[17px] leading-relaxed text-ink-deep md:text-[18px]">
             «&nbsp;{transit.message}&nbsp;»
           </p>
         </BannerCard>
@@ -93,7 +93,7 @@ export function TransitSolaireBanner() {
             {transit.phase || "Phase du jour"}
           </p>
           {transit.phaseDescription && (
-            <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-white/90 md:text-[17px]">
+            <p className="max-w-[440px] font-display text-[17px] leading-relaxed whitespace-pre-line text-white md:text-[18px]">
               {transit.phaseDescription}
             </p>
           )}
