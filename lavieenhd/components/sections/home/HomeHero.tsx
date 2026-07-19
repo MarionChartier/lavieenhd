@@ -70,23 +70,52 @@ export function HomeHero() {
           </h1>
 
           <p className="mt-8 max-w-[520px] font-display text-[18px] italic leading-snug text-ink-deep md:text-[22px]">
-            Et si tu te rencontrais&nbsp;?
-            <br />
-            Vraiment. En couleur, en grand, en toi.
+            Ton Human Design, ta boussole.
+          </p>
+
+          <p className="mt-3 max-w-[520px] font-display text-[16px] font-light leading-snug text-ink md:text-[18px]">
+            Le chemin idéal pour te retrouver, te révéler pleinement, et (enfin) trouver ta
+            voie professionnelle.
           </p>
 
           <p className="mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
-            Le Human Design est lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Au fil de notre vie, nous nous construisons à travers des figures qui nous
+            élèvent, nous éduquent, nous influencent (parents, éducateurs, professeurs,
+            société,...), et par le biais de ce que nous traversons. C&rsquo;est ainsi que nous
+            grandissons toutes et tous avec des conditionnements, plus ou moins ancrés, et que
+            nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, bien éloignés de qui ils sont
+            vraiment, déconnectés de leur vraie nature.
           </p>
 
           <p className="mt-5 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
-            Je suis <strong className="font-semibold">Marion</strong>. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore.
+            Moi la première, je suis passée par là, et cela a eu un impact direct sur ma vie
+            professionnelle dans laquelle j&rsquo;étais perdue.
+            <br />
+            <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
+          </p>
+
+          <p className="mt-5 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
+            Et c&rsquo;est clairement le <strong className="font-semibold">Human Design</strong>{" "}
+            qui m&rsquo;a permis de sortir du brouillard, révéler ma zone de génie, et trouver ma
+            voie.
+            <br />
+            Cet outil puissant, basé sur tes informations de naissance, permet d&rsquo;obtenir ta
+            carte d&rsquo;identité énergétique unique et comprendre ton fonctionnement originel,
+            au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être.
+            <br />
+            Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te
+            permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer,
+            de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.
+          </p>
+
+          <p className="mt-5 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink-deep">
+            Aujourd&rsquo;hui je peux enfin dire que je me sens à ma place, et c&rsquo;est une vraie
+            mission de cœur pour moi de t&rsquo;accompagner à trouver toi-aussi ce chemin vers ton
+            épanouissement pro. ღ
+          </p>
+
+          <p className="mt-6 font-script text-[24px] leading-none text-ink-deep md:text-[28px]">
+            La vie en HD, à ta portée
           </p>
         </div>
 
