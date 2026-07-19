@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { findTransit, parseCsv } from "./transit";
+import { findTransit, parseCsv, splitPhaseDescription } from "./transit";
 
 describe("parseCsv", () => {
   it("découpe lignes et champs simples", () => {
@@ -72,5 +72,56 @@ describe("findTransit", () => {
   it("ignore les lignes vides ou mal datées", () => {
     const sheet = [HEADER, ["", "", "", "", "", ""], ...SHEET.slice(1)];
     expect(findTransit(sheet, new Date(2026, 6, 19))!.porte).toBe("56");
+  });
+
+  it("sépare les mots-clés de la description de phase", () => {
+    const sheet = [
+      HEADER,
+      [
+        "19/07/2026",
+        "56",
+        "Histoire",
+        '"Je partage."',
+        "Lune croissante",
+        "Période d'action et de prise de décision.\n VITALITE - JOIE - INSPIRATION",
+      ],
+    ];
+    const t = findTransit(sheet, new Date(2026, 6, 19))!;
+    expect(t.phaseDescription).toBe("Période d'action et de prise de décision.");
+    expect(t.phaseMotsCles).toBe("VITALITE - JOIE - INSPIRATION");
+  });
+});
+
+describe("splitPhaseDescription", () => {
+  it("extrait les mots-clés placés après un retour à la ligne", () => {
+    expect(splitPhaseDescription("Période d'action.\n VITALITE - JOIE - INSPIRATION")).toEqual({
+      texte: "Période d'action.",
+      motsCles: "VITALITE - JOIE - INSPIRATION",
+    });
+  });
+
+  it("extrait les mots-clés collés en fin de phrase (sans retour à la ligne)", () => {
+    expect(
+      splitPhaseDescription(
+        "C'est le moment de lâcher prise sur ce qui n'a pas fonctionné. RALENTISSEMENT - BAISSE D'ENERGIE - TRI",
+      ),
+    ).toEqual({
+      texte: "C'est le moment de lâcher prise sur ce qui n'a pas fonctionné.",
+      motsCles: "RALENTISSEMENT - BAISSE D'ENERGIE - TRI",
+    });
+  });
+
+  it("laisse la description intacte quand il n'y a pas de mots-clés", () => {
+    expect(splitPhaseDescription("Période de repos et de purification.")).toEqual({
+      texte: "Période de repos et de purification.",
+      motsCles: "",
+    });
+  });
+
+  it("ne confond pas un mot isolé en capitales avec des mots-clés", () => {
+    expect(splitPhaseDescription("Une énergie de type YANG")).toEqual({
+      texte: "Une énergie de type YANG",
+      motsCles: "",
+    });
   });
 });
