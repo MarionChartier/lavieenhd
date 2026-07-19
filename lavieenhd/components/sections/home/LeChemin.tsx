@@ -75,13 +75,19 @@ function Postcard({ offre }: { offre: Offre }) {
           <div className="absolute -inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.6)_0%,transparent_65%)]" />
           {offre.logoSrc ? (
             <Image
-              src={offre.logoSrc}
+              // Sur la home, le soin utilise la version détourée (halo transparent)
+              // qui se fond dans la zone colorée, sans crop rond.
+              src={
+                offre.slug === "soin-energetique"
+                  ? "/assets/logo-soin-glow.png"
+                  : offre.logoSrc
+              }
               alt=""
               width={170}
               height={110}
               className={`relative w-auto object-contain ${
                 offre.slug === "soin-energetique"
-                  ? "h-[118px] w-[118px] rounded-full object-cover shadow-[0_10px_26px_-10px_rgba(80,60,98,0.45)]"
+                  ? "max-h-[150px] max-w-[92%]"
                   : offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:max-h-[201px] lg:-translate-y-7"
                   : offre.slug === "reveal"
