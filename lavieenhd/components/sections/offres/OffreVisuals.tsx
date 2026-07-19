@@ -24,7 +24,11 @@ export function LogoCircle({ offre }: { offre: Offre }) {
           width={280}
           height={180}
           className={`relative object-contain ${
-            offre.slug === "inside" ? "max-h-[82%] max-w-[88%]" : "max-h-[60%] max-w-[65%]"
+            offre.slug === "soin-energetique"
+              ? "h-[62%] w-[62%] rounded-full object-cover shadow-[0_16px_40px_-16px_rgba(80,60,98,0.5)]"
+              : offre.slug === "inside"
+                ? "max-h-[82%] max-w-[88%]"
+                : "max-h-[60%] max-w-[65%]"
           }`}
         />
       ) : offre.signature ? (
