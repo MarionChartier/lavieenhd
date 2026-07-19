@@ -14,8 +14,6 @@ export interface Transit {
   phaseDescription: string;
 }
 
-export type MoonPhase = "nouvelle" | "pleine" | "croissante" | "decroissante";
-
 /** Mini-parseur CSV gérant les champs entre guillemets, les guillemets échappés ("") et les retours à la ligne dans un champ. */
 export function parseCsv(text: string): string[][] {
   const rows: string[][] = [];
@@ -136,14 +134,4 @@ export function findTransit(rows: string[][], today: Date): Transit | null {
     phase: (todayRow[4] ?? "").trim(),
     phaseDescription: (todayRow[5] ?? "").trim(),
   };
-}
-
-/** Catégorise le libellé de phase de la feuille (suffixes "J-2"/"J+1" tolérés). */
-export function moonPhase(label: string): MoonPhase | null {
-  const l = label.toLowerCase();
-  if (l.includes("nouvelle")) return "nouvelle";
-  if (l.includes("pleine")) return "pleine";
-  if (l.includes("décroissante") || l.includes("decroissante")) return "decroissante";
-  if (l.includes("croissante")) return "croissante";
-  return null;
 }
