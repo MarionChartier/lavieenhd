@@ -85,7 +85,7 @@ export function TransitSolaireBanner() {
         {/* ——— Card Phase lunaire — fond photo des phases de la lune, mode nuit ——— */}
         <BannerCard
           bgSrc="/assets/phase-lunaire.jpg"
-          veilClass="bg-[#1c1424]/55"
+          veilClass="bg-ink-deep/65"
           info={{ id: "lune-tooltip", texte: LUNE_EXPLICATION, dark: true }}
         >
           <Wordmark
