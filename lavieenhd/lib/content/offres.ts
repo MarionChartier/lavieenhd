@@ -29,7 +29,6 @@ export interface Offre {
   forWhom: string;
   /** Liste complète des éléments inclus dans l'offre (bloc détail) */
   included: string[];
-  keyword: string;
   price: string;
   imgUrl: string;
   /** Path vers logo dans /public/assets (null si pas de logo dédié) */
@@ -70,7 +69,6 @@ export const OFFRES: Offre[] = [
       "Une description détaillée de ce qui te ressource",
       "Aucune création de compte requise",
     ],
-    keyword: "Le hameçon",
     price: "offert",
     imgUrl:
       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=900&q=80&auto=format&fit=crop",
@@ -105,7 +103,6 @@ export const OFFRES: Offre[] = [
       "Feedback détaillé de Marion par email le lendemain",
       "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
     ],
-    keyword: "Libérer",
     price: "20 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
@@ -140,7 +137,6 @@ export const OFFRES: Offre[] = [
       "Conseils concrets pour aménager ton espace de vie ou de travail",
       "Reçu par email instantanément après ta commande",
     ],
-    keyword: "S'initier",
     faq: [
       {
         q: "Le guide est-il fait pour moi, même si je débute en Human Design ?",
@@ -201,7 +197,6 @@ export const OFFRES: Offre[] = [
       "1h de coaching en visio avec Marion",
       "Replay de ta séance",
     ],
-    keyword: "Découvrir",
     price: "122 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80&auto=format&fit=crop",
@@ -237,7 +232,6 @@ export const OFFRES: Offre[] = [
       "Plan d'action concret et aligné avec ton design",
       "Replay de la séance",
     ],
-    keyword: "Clarifier",
     price: "222 €",
     imgUrl:
       "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
@@ -275,7 +269,6 @@ export const OFFRES: Offre[] = [
       "Signaux de désalignement à reconnaître",
       "1h30 de coaching pour faire les liens avec ta vie",
     ],
-    keyword: "Révéler",
     price: "300 €",
     imgUrl:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
@@ -315,7 +308,6 @@ export const OFFRES: Offre[] = [
       "Fleur de Talents Innés® inclus",
       "Suivi par messagerie tout au long du parcours",
     ],
-    keyword: "Transformer",
     price: "1 111 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
