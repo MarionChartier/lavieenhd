@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HomeHero } from "@/components/sections/home/HomeHero";
 import { TransitSolaireBanner } from "@/components/sections/home/TransitSolaireBanner";
 import { LeChemin } from "@/components/sections/home/LeChemin";
@@ -12,7 +13,18 @@ import { SoulLetterBanner } from "@/components/sections/SoulLetterBanner";
 const HOME_FAQ = [
   {
     q: "C'est quoi exactement le Human Design ?",
-    a: "Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Le fondateur est Alan Robert Krakower (alias Ra Uru Hu), qui l'a découvert en 1987.\n\nLe HD regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens, et le yi-king chinois.\n\nGrâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « charte HD » ou « schéma HD ».\n\nCe schéma contient énormément d'informations cryptées (sous forme de numéros, symboles, couleurs,…), qui, en les lisant avec le bon filtre, dévoilent alors toute la lumière sur notre personnalité, notre fonctionnement énergétique, nos dons, nos talents, notre mission de vie, nos forces, notre chemin d'évolution,…\n\nLes champs d'applications sont nombreux, je t'en donne quelques-uns : Déconditionnement et alignement, Découverte de tes potentiels uniques et de ta zone de génie, Éclairage sur tes relations (couple, famille, amis, collègues,…), Décodage Business (dynamique d'entreprise, communication,…).\n\nPour découvrir ton schéma HD, c'est par ici.",
+    a: (
+      <>
+        {"Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Le fondateur est Alan Robert Krakower (alias Ra Uru Hu), qui l'a découvert en 1987.\n\nLe HD regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens, et le yi-king chinois.\n\nGrâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « charte HD » ou « schéma HD ».\n\nCe schéma contient énormément d'informations cryptées (sous forme de numéros, symboles, couleurs,…), qui, en les lisant avec le bon filtre, dévoilent alors toute la lumière sur notre personnalité, notre fonctionnement énergétique, nos dons, nos talents, notre mission de vie, nos forces, notre chemin d'évolution,…\n\nLes champs d'applications sont nombreux, je t'en donne quelques-uns : Déconditionnement et alignement, Découverte de tes potentiels uniques et de ta zone de génie, Éclairage sur tes relations (couple, famille, amis, collègues,…), Décodage Business (dynamique d'entreprise, communication,…).\n\nPour découvrir ton schéma HD, c'est par "}
+        <Link
+          href="/test-gratuit"
+          className="text-turquoise underline underline-offset-2 transition-colors hover:text-ink-deep"
+        >
+          ici
+        </Link>
+        .
+      </>
+    ),
   },
   {
     q: "Je n'y connais rien, est-ce que c'est quand même pour moi ?",
