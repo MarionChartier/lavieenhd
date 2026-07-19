@@ -33,6 +33,7 @@ const FALLBACK: Transit = {
   periode: "",
   phase: "",
   phaseDescription: "",
+  phaseMotsCles: "",
 };
 
 export function TransitSolaireBanner() {
@@ -91,6 +92,7 @@ export function TransitSolaireBanner() {
           />
           <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
             {transit.phase || "Phase du jour"}
+            {transit.phaseMotsCles ? ` · ${transit.phaseMotsCles}` : ""}
           </p>
           {transit.phaseDescription && (
             <p className="max-w-[440px] font-display text-[17px] leading-relaxed whitespace-pre-line text-white md:text-[18px]">

@@ -12,6 +12,8 @@ export interface Transit {
   periode: string;
   phase: string;
   phaseDescription: string;
+  /** Mots-clés extraits de la fin de la description ("VITALITE - JOIE - INSPIRATION"). */
+  phaseMotsCles: string;
 }
 
 /** Mini-parseur CSV gérant les champs entre guillemets, les guillemets échappés ("") et les retours à la ligne dans un champ. */
@@ -102,6 +104,22 @@ function stripQuotes(s: string): string {
 }
 
 /**
+ * Sépare la description de phase de ses mots-clés de fin ("VITALITE - JOIE - INSPIRATION").
+ * Dans la feuille ils suivent la description, après un retour à la ligne ou collés à la
+ * dernière phrase : on capture une suite finale d'au moins deux groupes en capitales
+ * séparés par des tirets.
+ */
+export function splitPhaseDescription(description: string): { texte: string; motsCles: string } {
+  const GROUPE = "[A-ZÀ-ÖØ-Þ0-9'’]+(?: [A-ZÀ-ÖØ-Þ0-9'’]+)*";
+  const m = description.trim().match(new RegExp(`\\s*(${GROUPE}(?:\\s*-\\s*${GROUPE})+)$`, "u"));
+  if (!m) return { texte: description.trim(), motsCles: "" };
+  return {
+    texte: description.trim().slice(0, -m[0].length).trim(),
+    motsCles: m[1].trim(),
+  };
+}
+
+/**
  * Trouve la ligne du jour et regroupe la plage de jours contigus qui partagent
  * la même porte pour construire la période affichée. Null si le jour est absent.
  */
@@ -126,12 +144,15 @@ export function findTransit(rows: string[][], today: Date): Transit | null {
   while (samePorte(shiftDay(start, -1))) start = shiftDay(start, -1);
   while (samePorte(shiftDay(end, 1))) end = shiftDay(end, 1);
 
+  const phaseDesc = splitPhaseDescription(todayRow[5] ?? "");
+
   return {
     porte,
     motsCles: (todayRow[2] ?? "").trim(),
     message: stripQuotes(todayRow[3] ?? ""),
     periode: formatPeriode(start, end),
     phase: (todayRow[4] ?? "").trim(),
-    phaseDescription: (todayRow[5] ?? "").trim(),
+    phaseDescription: phaseDesc.texte,
+    phaseMotsCles: phaseDesc.motsCles,
   };
 }
