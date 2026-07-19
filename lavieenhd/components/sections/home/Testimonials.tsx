@@ -194,9 +194,10 @@ function TestimonialCard({
         className={`relative font-display text-[15px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[16px] ${
           !isExpanded ? "line-clamp-3" : ""
         }`}
-      >
-        {text}
-      </blockquote>
+        dangerouslySetInnerHTML={{
+          __html: text.replace(/Quelques mois après/g, '<u>Quelques mois après</u>')
+        }}
+      />
 
       <button
         type="button"
