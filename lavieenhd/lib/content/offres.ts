@@ -202,7 +202,7 @@ export const OFFRES: Offre[] = [
       "Replay de ta séance",
     ],
     keyword: "Découvrir",
-    price: "111 €",
+    price: "122 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-inside.png",
