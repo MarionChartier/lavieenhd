@@ -65,8 +65,12 @@ export function TransitSolaireBanner() {
           <div>
             <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
               Porte {transit.porte}
-              {transit.motsCles ? ` · ${transit.motsCles}` : ""}
             </p>
+            {transit.motsCles && (
+              <p className="mt-2 font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+                {transit.motsCles}
+              </p>
+            )}
             {transit.periode && (
               <p className="mt-2 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
                 {transit.periode}
@@ -90,10 +94,16 @@ export function TransitSolaireBanner() {
             capsClass="text-ink-lilac"
             scriptClass="text-[#e9dcc0]"
           />
-          <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
-            {transit.phase || "Phase du jour"}
-            {transit.phaseMotsCles ? ` · ${transit.phaseMotsCles}` : ""}
-          </p>
+          <div>
+            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
+              {transit.phase || "Phase du jour"}
+            </p>
+            {transit.phaseMotsCles && (
+              <p className="mt-2 font-body text-[14px] uppercase tracking-[0.16em] text-white">
+                {transit.phaseMotsCles}
+              </p>
+            )}
+          </div>
           {transit.phaseDescription && (
             <p className="max-w-[440px] font-display text-[17px] leading-relaxed whitespace-pre-line text-white md:text-[18px]">
               {transit.phaseDescription}
