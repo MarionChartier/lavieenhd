@@ -47,11 +47,11 @@ export const OFFRES: Offre[] = [
     num: "01",
     slug: "quiz",
     name: "Quiz gratuits",
-    subtitle: "Deux quiz ludiques pour mieux te connaître",
+    subtitle: "Des quiz rapides et ludiques pour mieux te connaître.",
     shortLabel: "Quiz gratuits",
     tag: "Explorer",
     shortDescription:
-      "Deux quiz offerts : ton lieu de vie/de travail idéal et ton alignement vie pro.",
+      "Découvre à la fois dans quel type de lieux ton corps se sent le plus à son aise, et également ton niveau d'alignement actuel avec ta vie professionnelle.",
     lead: "Réponds spontanément, et laisse-toi surprendre.",
     briefDescription:
       "Deux quiz ludiques et 100% offerts : l'un révèle le type de lieux qui booste ton énergie, l'autre ton niveau d'alignement dans ta vie pro. Résultat instantané à chaque fois.",
@@ -121,7 +121,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "The Place to be",
     tag: "S'initier",
     shortDescription:
-      "Un Guide complet pour adapter facilement ton lieu de vie et de travail selon TON PROPRE ENVIRONNEMENT Human Design. Parfait pour booster ta vitalité, ton bien-être et tes performances! ✨",
+      "Un Guide complet pour adapter facilement ton lieu de vie et de travail selon ton propre Environnement de Human Design, et booster ainsi ta vitalité, ton bien-être et tes performances.",
     lead: "Ton environnement, en clair.",
     briefDescription:
       "Tu sais où tu te ressources, maintenant. Ce guide approfondit : ton lieu de vie idéal, ton environnement de travail, les lieux qui te déposent.",
@@ -182,7 +182,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "Inside",
     tag: "Découvrir",
     shortDescription:
-      "Un Guide de décryptage PERSONNALISÉ des 7 clés fondamentales de ton schéma HD ; pour mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi! ♡",
+      "Un Guide de décryptage personnalisé des 7 clés fondamentales de ton schéma de Human Design ; pour mieux te comprendre, arrêter de douter de tes choix, et te reconnecter à ta vraie nature. 1h de coaching inclus.",
     lead: "Plonger dans les fondamentaux de ton design.",
     briefDescription:
       "On entre dans le détail : type, autorité, signature, non-soi, stratégie, profil, croix d'incarnation. Un guide personnalisé et une heure avec moi.",
@@ -215,9 +215,9 @@ export const OFFRES: Offre[] = [
     name: "REVEAL",
     subtitle: "La Séance Clarté HD Pro",
     shortLabel: "Reveal",
-    tag: "Clarifier",
+    tag: "Démêler",
     shortDescription:
-      "1h30 ensemble en visio pour sortir du flou sur une problématique de ta vie pro (débloquer une situation, obtenir une réponse, clarifier une décision,...), grâce à une lecture ciblée de ton HUMAN DESIGN & guidance intuitive.",
+      "1h30 ensemble en visio pour dénouer une situation bloquante de ta vie professionnelle, clarifier une décision ou éclairer un questionnement, grâce à une analyse ciblée de ton Human Design.",
     lead: "1h30 pour dénouer ce qui te bloque.",
     briefDescription:
       "Tu as un sujet précis qui te questionne. Je prépare une analyse HD ciblée sur ta problématique, puis nous explorons ensemble en visio pour trouver ta voie.",
@@ -248,13 +248,13 @@ export const OFFRES: Offre[] = [
   {
     num: "06",
     slug: "fleur-de-talents",
-    name: "Fleur de Talents Innés",
-    subtitle: "L'Exploration Croisée de tes Talents Uniques",
+    name: "BLOOMING",
+    subtitle: "Ta Fleur de Talents Innés®",
     shortLabel: "Fleur de Talents Innés",
     trademark: true,
     tag: "Révéler",
     shortDescription:
-      "Exploration croisée HD, Numérologie et Gene Keys pour révéler tes talents innés.",
+      "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
     lead: "Tes talents innés, en une fleur.",
     briefDescription:
       "Une exploration croisée Human Design, Numérologie et Gene Keys pour révéler ce qui te rend unique. Ta fleur de talents et 40 pages personnalisées pour comprendre la trace que tu peux laisser.",
@@ -290,9 +290,9 @@ export const OFFRES: Offre[] = [
     name: "RECONNECT",
     subtitle: "L'Accompagnement Premium de Reconnexion Professionnelle",
     shortLabel: "Reconnect",
-    tag: "Transformer",
+    tag: "Incarner",
     shortDescription:
-      "3 mois d'Accompagnement 1:1 transformationnel, sur-mesure et profond, pour réaligner ta vie professionnelle à tes aspirations de coeur, et oser prendre ta place. 👑 Te révéler & rayonner.",
+      "3 mois d'Accompagnement 1:1 pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Introspection, Libération et Transformation. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
     lead: "3 mois pour incarner qui tu es.",
     briefDescription:
       "L'accompagnement premium pour aligner ta vie sur ton design en profondeur. Coachings, soins énergétiques, EFT, et tout l'écosystème Marion inclus.",

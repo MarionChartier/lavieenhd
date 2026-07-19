@@ -1,0 +1,333 @@
+- generic [active] [ref=f457e1]:
+  - link "Revenir a la page precedente" [ref=f457e2] [cursor=pointer]:
+    - /url: /
+    - img [ref=f457e3]
+    - generic [ref=f457e5]: Retour
+  - navigation [ref=f457e6]:
+    - link "Le constat" [ref=f457e7] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Le constat
+    - link "La séance" [ref=f457e9] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: La séance
+    - link "Ce que tu reçois" [ref=f457e11] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Ce que tu reçois
+    - link "Le déroulé" [ref=f457e13] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Le déroulé
+    - link "Réserver" [ref=f457e15] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Réserver
+    - link "Témoignages" [ref=f457e17] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Témoignages
+    - link "FAQ" [ref=f457e19] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: FAQ
+  - generic [ref=f457e21]:
+    - img "REVEAL · Séance Clarté HD Pro" [ref=f457e23]
+    - generic [ref=f457e24]: La vie en HD · Marion Chartier
+    - heading "1h30 ENSEMBLE POUR SORTIR DU FLOU SUR UNE PROBLÉMATIQUE DE TA VIE PRO !" [level=1] [ref=f457e25]:
+      - text: 1h30 ENSEMBLE
+      - text: POUR
+      - emphasis [ref=f457e26]: SORTIR DU FLOU
+      - text: SUR UNE PROBLÉMATIQUE DE TA VIE PRO !
+    - paragraph [ref=f457e27]: ~ Un échange en visio, où je t'apporte de la lumière grâce à une lecture ciblée de ton HUMAN DESIGN et à ma guidance intuitive, pour débloquer une situation, et remettre de la clarté au milieu du chaos. ~
+    - generic [ref=f457e28]:
+      - paragraph [ref=f457e29]:
+        - text: Tu as le sentiment de vivre une phase de brouillard dans ta vie professionnelle, et tu sens que tu aurais besoin d'un regard extérieur plus objectif et intuitif, pour rallumer la lumière et te débloquer?
+        - strong [ref=f457e30]: La Séance Clarté HD Pro est née pour toi! ♡
+      - paragraph [ref=f457e31]: 90 minutes d'éclairage et de coaching 100% sur-mesure, porté par ma guidance intuitive qui me permet de lire entre les lignes de ta problématique, et soutenu par la lecture personnalisée et concrète de ton Design comme base d'ancrage (ainsi que celle de tes Gene Keys et de ta Numérologie selon ta problématique).
+      - paragraph [ref=f457e32]: Grâce à La Séance Clarté HD Pro, tu repars avec des réponses à tes questions, une vision plus claire sur les choix à faire, et un nouvel élan pour avancer plus sereinement dans ta vie professionnelle.
+    - link "C'est exactement ce dont j'ai besoin, let's go! 🔥" [ref=f457e34] [cursor=pointer]:
+      - /url: javascript:void(0)
+  - blockquote [ref=f457e36]:
+    - text: ~ La Séance Clarté HD Pro est une vraie boussole personnalisée pour faire le tri, revenir à toi, et prendre
+    - emphasis [ref=f457e37]: une décision alignée
+    - text: pour ton projet ou ta prochaine étape professionnelle. ~
+  - generic [ref=f457e40]:
+    - text: Tu tournes en boucle dans ta tête, sans réponse?
+    - heading "Tu fais face à un blocage dans ta vie pro?" [level=2] [ref=f457e42]
+    - paragraph [ref=f457e43]:
+      - text: Il est souvent plus difficile de s'extraire de son propre
+      - strong [ref=f457e44]: sac de nœuds
+      - text: "! Je le sais, je l'ai vécu, et je le vis encore parfois! Quand tu as le nez plongé dans ta problématique, tu peux avoir du mal à dézoomer et démêler tout ça, sans dramatiser ou projeter des scénarios catastrophes! C'est humain, no culpabilité à avoir! 🙏"
+    - paragraph [ref=f457e45]: Dans ces situations de blocages, tu peux vraiment avoir la désagréable sensation d'être figé·e, dans une sorte d'immobilisme paralysant. Tu peux également ressentir une forte agitation intérieure, comme une impression de lion en cage qui a besoin d'espace! 🦁
+    - paragraph [ref=f457e46]: Quoi qu'il en soit, les doutes te submergent, et tu ne sais plus quel est le bon chemin à emprunter, ou la bonne action à entreprendre... Cela peut t'amener à vivre de la frustration, de la colère, de l'amertume ou encore de la déception face à ce questionnement sans réponse!
+    - paragraph [ref=f457e47]:
+      - text: "Par exemple, parmi les différents cas de figure possibles, peut-être que tu te reconnais dans une de ces problématiques :"
+      - emphasis [ref=f457e48]: (La liste est non exhaustive.)
+    - list [ref=f457e50]:
+      - listitem [ref=f457e51]: "\"Je ne sais plus si ce job est encore fait pour moi.\""
+      - listitem [ref=f457e52]: "\"Je ressens un décalage dans ma vie pro, mais je ne sais pas d'où il vient.\""
+      - listitem [ref=f457e53]: "\"Je veux changer de travail, mais j'ai peur de [me tromper] / [perdre ma stabilité financière] / ...\""
+      - listitem [ref=f457e54]: "\"Je me sens paumé·e sur la direction à prendre.\""
+      - listitem [ref=f457e55]: "\"Je dois prendre une décision pour ma vie pro, mais je n'y arrive pas.\""
+      - listitem [ref=f457e56]: "\"Je me sens bloquée, je ne sais pas par quoi commencer dans ma reconversion.\""
+      - listitem [ref=f457e57]: "\"J'ai besoin d'une confirmation pour ma vie pro.\""
+      - listitem [ref=f457e58]: "\"J'aimerais me lancer à mon compte, mais je ne sais pas si c'est fait pour moi.\""
+      - listitem [ref=f457e59]: "\"Je suis entrepreneur·e et je m'épuise pour peu de résultats.\""
+      - listitem [ref=f457e60]: "\"Je bloque sur la communication dans mon business.\""
+    - paragraph [ref=f457e61]: Bref, tu as l'impression de patauger dans la semoule, et tu aimerais enfin sortir la tête du brouillard, et avoir des réponses claires pour avancer plus sereinement?
+    - paragraph [ref=f457e62]:
+      - text: ~ La Séance Clarté HD Pro est faite pour toi. ~
+      - text: Elle va t'aider à rebrancher la lumière, là où tu en as besoin. 🎯
+  - generic [ref=f457e65]:
+    - img "Séance Clarté HD Pro en visio" [ref=f457e66]
+    - generic [ref=f457e67]: Light on
+    - heading "Un nouveau regard éclairé" [level=2] [ref=f457e69]
+    - paragraph [ref=f457e70]:
+      - text: Quand tu prends conscience que ton blocage est une perception, et qu'un nouveau regard peut tout changer... alors
+      - strong [ref=f457e71]: la magie peut opérer
+      - text: . 🌟
+    - paragraph [ref=f457e72]: Pour sortir de l'ambivalence, et du mode "petit hamster dans sa roue", il est essentiel de faire un pas de côté, et d'observer la situation sous un autre angle, avec plus de hauteur et plus d'objectivité.
+    - paragraph [ref=f457e73]:
+      - text: Et c'est là que la lecture des subtilités de ton Human Design, ciblée sur ta problématique, est précieuse. C'est un vrai ancrage pour revenir à ton
+      - strong [ref=f457e74]: mode d'emploi
+      - text: ", et à ce qui est bon pour toi. ♡"
+    - paragraph [ref=f457e75]: Une vraie boussole à laquelle te raccrocher et te fier, lorsque tu navigues dans le brouillard!
+    - paragraph [ref=f457e76]: En association avec une lecture intuitive plus globale de ta situation, et de ce qui se joue autour de ce blocage, c'est une nouvelle clarté qui s'offre alors à toi. 💡
+    - paragraph [ref=f457e77]: ~ Tu as enfin des réponses et des clés concrètes pour avancer sur TON chemin en accord avec toi-même. ~
+    - link "GO je veux m'offrir la HD! 🤍" [ref=f457e79] [cursor=pointer]:
+      - /url: javascript:void(0)
+  - generic [ref=f457e81]:
+    - generic [ref=f457e82]:
+      - text: À propos
+      - heading "La Séance Clarté HD Pro" [level=2] [ref=f457e83]
+    - generic [ref=f457e84]:
+      - paragraph [ref=f457e85]: 👉 Cette séance est faite pour toi si tu as une question, un blocage, un besoin de clarté ou de prise de décision dans ton parcours professionnel.
+      - paragraph [ref=f457e86]: C'est une invitation à porter un nouveau regard sur ta situation, pour retrouver lucidité et clairvoyance. ♡
+    - generic [ref=f457e87]:
+      - generic [ref=f457e88]:
+        - generic [ref=f457e89]: ✍️
+        - paragraph [ref=f457e90]: Un formulaire à remplir en amont
+      - generic [ref=f457e91]:
+        - generic [ref=f457e92]: 🔎
+        - paragraph [ref=f457e93]: Une étude de ton Human Design ciblée sur ta problématique
+      - generic [ref=f457e94]:
+        - generic [ref=f457e95]: 💻
+        - paragraph [ref=f457e96]: Une séance de 1h30 de coaching ultra personnalisé en visio
+      - generic [ref=f457e97]:
+        - generic [ref=f457e98]: 💌
+        - paragraph [ref=f457e99]: Un compte-rendu après-séance envoyé par e-mail les jours suivants
+      - generic [ref=f457e100]:
+        - generic [ref=f457e101]: 🎁
+        - paragraph [ref=f457e102]: Une surprise qui se glissera dans ton e-mail de compte-rendu.
+    - generic [ref=f457e103]:
+      - img "Ambiance douce et lumineuse de la Séance Clarté" [ref=f457e106]
+      - generic [ref=f457e107]:
+        - generic [ref=f457e108]:
+          - heading "À noter :" [level=3] [ref=f457e109]
+          - paragraph [ref=f457e110]: ✨ Durant notre séance, il est également possible que j'utilise d'autres outils puissants si le besoin s'en fait sentir ; Gene Keys, Numérologie, EFT, visualisations,...
+          - paragraph [ref=f457e111]: ✨ La guidance que je te transmets n'est pas quelque chose de magique. C'est l'association de ma sensibilité accrue et d'une écoute développée de mon intuition, qui me permet d'entrer en connexion énergétique avec toi et ta situation. 😉
+        - paragraph [ref=f457e113]: Un échange basé sur une écoute active, bienveillante, transformative, et sans jugement. ♥
+  - generic [ref=f457e115]:
+    - generic [ref=f457e116]:
+      - text: Concrètement
+      - heading "Comment se déroule la Séance?" [level=2] [ref=f457e117]
+    - generic [ref=f457e118]:
+      - generic [ref=f457e119]:
+        - generic [ref=f457e120]: "1"
+        - generic [ref=f457e121]:
+          - heading "En amont" [level=3] [ref=f457e122]
+          - paragraph [ref=f457e123]: En amont de notre rdv en visio, et après que tu m'aies transmis les informations requises, je me plonge dans ton Human Design, pour réaliser une lecture ciblée en lien avec ta problématique. Celle-ci me permet de mettre en évidence les points de lumière que je vais ensuite te partager pendant notre échange d'1h30.
+      - generic [ref=f457e124]:
+        - generic [ref=f457e125]: "2"
+        - generic [ref=f457e126]:
+          - heading "Lors de notre séance" [level=3] [ref=f457e127]
+          - paragraph [ref=f457e128]: Je te transmets donc l'analyse des éléments clés de ton Human Design, pour te permettre de réancrer de la clarté objective autour de ta problématique.
+      - generic [ref=f457e129]:
+        - generic [ref=f457e130]: "3"
+        - generic [ref=f457e131]:
+          - heading "Au fil de notre échange" [level=3] [ref=f457e132]
+          - paragraph [ref=f457e133]: Tu auras également accès à une lecture "entre les lignes" de ta situation, grâce à ma guidance intuitive. Celle-ci permettra notamment de faire émerger de potentiels blocages plus inconscients, des croyances limitantes sous-jacentes, ou encore des clés actionnables à explorer.
+    - paragraph [ref=f457e135]: "C'est grâce à cette alliance précieuse que les nœuds se défont, et que tu assistes à un lever de voile, qui peut se traduire par :"
+    - list [ref=f457e137]:
+      - listitem [ref=f457e138]: Une nouvelle compréhension qui naît,
+      - listitem [ref=f457e139]: Un déclic qui se fait,
+      - listitem [ref=f457e140]: Une certitude intérieure qui se révèle,
+      - listitem [ref=f457e141]: Une confiance qui s'installe,
+      - listitem [ref=f457e142]: Des clés qui apparaissent,
+      - listitem [ref=f457e143]: Une libération qui s'opère,
+      - listitem [ref=f457e144]: Des évidences qui jaillissent,
+      - listitem [ref=f457e145]: Une lucidité qui revient.
+    - generic [ref=f457e146]:
+      - paragraph [ref=f457e147]: C'est ainsi que tu sors du flou, que tes doutes se dissolvent, et que tu retrouves une nouvelle confiance, et un nouvel élan.
+      - paragraph [ref=f457e148]: Après la séance, je te partage un compte-rendu des principaux points clés évoqués, ainsi qu'un support audio de notre échange, pour une réécoute ultérieure, et une infusion prolongée. ♡
+  - generic [ref=f457e150]:
+    - generic [ref=f457e151]:
+      - text: ~ 1h30 pour sortir du flou ~
+      - heading "Réserve dès maintenant ta Séance Clarté HD Pro" [level=2] [ref=f457e152]
+      - paragraph [ref=f457e153]: Une Séance qui t'invite à démêler ta problématique en ouvrant le champ des possibles, en te laissant porter par une nouvelle clarté, et en explorant de précieuses clés qu'il te manquait jusque là! ♥
+      - paragraph [ref=f457e154]: Et je ne crois pas au hasard, si tu es arrivé·e ici, c'est que tu en as ressenti l'appel. ✨
+      - paragraph [ref=f457e155]: ~ Tu es donc à un clic de ton déclic! 🚀 ~
+    - generic [ref=f457e156]:
+      - generic [ref=f457e157]: ⁘⁛⁘
+      - heading "MA SÉANCE CLARTÉ HD PRO" [level=3] [ref=f457e158]
+      - generic [ref=f457e159]: 222€
+      - list [ref=f457e160]:
+        - listitem [ref=f457e161]:
+          - text: ✦
+          - strong [ref=f457e162]: ✍️ Un formulaire à remplir en amont
+          - text: ➡ Tu me décris ta problématique, et me communiques tes informations de naissance pour générer ton schéma HD.
+        - listitem [ref=f457e163]:
+          - text: ✦
+          - strong [ref=f457e164]: 🔎 Une étude de ton Human Design ciblée sur ta problématique
+          - text: ➡ Là, c'est moi qui bosse en sous-marin, tu n'as rien à faire! 😉
+        - listitem [ref=f457e165]:
+          - text: ✦
+          - strong [ref=f457e166]: 💻 Une séance de 1h30 de coaching ultra personnalisé en visio
+          - text: ➡ Je te partage l'analyse de ton Human Design et ma guidance, au fil de notre échange. ♥
+        - listitem [ref=f457e167]:
+          - text: ✦
+          - strong [ref=f457e168]: 💌 Un compte-rendu après-séance envoyé par e-mail les jours suivants
+          - text: ➡ Je te transmets le résumé des points clés de la séance.
+        - listitem [ref=f457e169]:
+          - text: ✦
+          - strong [ref=f457e170]: 🎁 Une surprise qui se glissera dans ton e-mail de compte-rendu.
+          - text: ➡ Je ne t'en dis pas plus, sinon ce n'est plus une surprise! 🤫
+      - link "JE FONCE! ♡" [ref=f457e171] [cursor=pointer]:
+        - /url: https://marionchartier-humandesign.systeme.io/commande-seance-clarte
+  - generic [ref=f457e173]:
+    - heading "Découvre ton schéma HD" [level=3] [ref=f457e174]
+    - paragraph [ref=f457e175]:
+      - text: Pour obtenir ton schéma de Human Design, il te suffit de faire ton TEST HD GRATUIT en 2 minutes juste ici 👇
+      - text: Et si tu souhaites un décodage des éléments principaux de ton schéma, je t'invite à découvrir
+      - link "le Guide d'Immersion dans ton Design Unique" [ref=f457e176] [cursor=pointer]:
+        - /url: /inside.html
+      - text: . :)
+    - iframe [ref=f457e178]
+  - generic [ref=f457e180]:
+    - generic [ref=f457e181]:
+      - text: Ils en parlent.ღ
+      - heading "Témoignages" [level=2] [ref=f457e182]
+    - generic [ref=f457e183]:
+      - img "Marjory" [ref=f457e184]
+      - generic [ref=f457e185]:
+        - generic [ref=f457e186]: “
+        - paragraph [ref=f457e187]: Marjory
+        - paragraph [ref=f457e188]: Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe...Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante! Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça! 🙏🙏🙏 J'y vois beaucoup plus clair, et j'ai ouvert des portes que je ne soupçonnais pas possibles pour moi.
+        - paragraph [ref=f457e189]: "Quelques mois après : \"Honnêtement merci encore Marion parce que vraiment tes conseils ont été précieux et aujourd'hui ils sont ancrés. Peu importe ce que les gens me disent je sais, moi, toute seule ce qui est le mieux et ça a tout changé dans ma vie. 🙏\""
+    - generic [ref=f457e190]:
+      - generic [ref=f457e191]:
+        - img "Johanna" [ref=f457e192]
+        - paragraph [ref=f457e193]: Johanna
+        - paragraph [ref=f457e194]: Cette séance a été un vrai déclic pour moi et un booster pour passer à l'action! J'étais vraiment en train de m'éteindre dans un job qui ne me correspondait plus car j'étais bloquée par mes peurs (nombreuses! 😱). Avec l'éclairage de Marion, et sa guidance bluffante qui a su taper dans le mille, je sais maintenant que le job dont je rêve est vraiment possible pour moi, et que ça colle même parfaitement à mon Human Design! Je repars avec de l'apaisement, de la confiance, et une grosse dose de détermination! Merci infiniment Marion! 🙏
+      - generic [ref=f457e195]:
+        - img "Laura" [ref=f457e196]
+        - paragraph [ref=f457e197]: Laura
+        - paragraph [ref=f457e198]: Merci infiniment pour toute la richesse de ce que tu m'as partagé autour de la synergie de mon entreprise et moi. C'est vraiment précieux et éclairant. J'ai l'impression que ça a enfin posé des mots justes sur ce que je ressens depuis un moment sans trop savoir comment l'expliquer et l'appréhender - surtout le lien entre l'autorité émotionnelle de mon entreprise et ma propre autorité sacrale. Avec tout ce que tu m'as transmis, je sens qu'on touche à des couches très puissantes.
+      - generic [ref=f457e199]:
+        - img "Astrig" [ref=f457e200]
+        - paragraph [ref=f457e201]: Astrig
+        - paragraph [ref=f457e202]: Je suis scotchée. Je mène une enquête sur moi depuis tant d'années pour essayer de me comprendre, et de comprendre pourquoi "ça ne marche pas" professionnellement, comprendre où est le problème,... Là j'ai l'impression d'avoir fait une chute vertigineuse depuis des années (ma naissance?) et d'être tombée sur un coussin de plumes géant qui a amorti ma chute et qui m'a ôté d'un poids considérable! J'ai compris plein de choses et c'est ultra positif!! À la fois ça m'a donné des confirmations, et en même temps ça précise des pistes que je peux explorer. Ça va énormément m'aider pour la suite sur le plan vocal et entrepreneurial, tu n'as même pas idée! Et ça m'aide aussi à affiner ma grande vision, c'est énorme. J'en ressors curieuse et excitée de la suite du chemin! Encore merci!!
+  - generic [ref=f457e204]:
+    - generic [ref=f457e205]:
+      - text: Les questions qui reviennent le plus souvent
+      - heading "FAQ" [level=2] [ref=f457e206]
+    - generic [ref=f457e207]:
+      - generic [ref=f457e208]:
+        - button "C'est quoi exactement le Human Design? +" [ref=f457e209] [cursor=pointer]:
+          - text: C'est quoi exactement le Human Design?
+          - generic [ref=f457e210]: +
+        - generic [ref=f457e211]:
+          - text: Le Human Design (HD) est un outil puissant de connaissance de soi, où la science et la spiritualité se rencontrent. Le fondateur est Alan Robert Krakower (alias Ra Uru Hu), qui l'a découvert en 1987.
+          - text: "Le HD regroupe plusieurs outils : la génétique, l'astrologie occidentale, la kabbale, les chakras indiens, et le yi-king chinois. ✨"
+          - text: Grâce à nos données de naissance (date, heure et lieu), nous obtenons une carte individuelle unique, appelée « charte HD » ou « schéma HD ».
+          - text: Ce schéma contient énormément d'informations cryptées (sous forme de numéros, symboles, couleurs,…), qui, en les lisant avec le bon filtre, dévoilent alors toute la lumière sur notre personnalité, notre fonctionnement énergétique, nos dons, nos talents, notre mission de vie, nos forces, notre chemin d'évolution,…
+          - text: "🎯 Les champs d'applications sont nombreux, je t'en donne quelques-uns : Déconditionnement et alignement, Découverte de tes potentiels uniques et de ta zone de génie, Éclairage sur tes relations (couple, famille, amis, collègues,…), Décodage Business (dynamique d'entreprise, communication,…)."
+          - text: Pour découvrir ton schéma HD, c'est
+          - link "par ici" [ref=f457e212] [cursor=pointer]:
+            - /url: "#test-gratuit"
+          - text: . 😊
+      - generic [ref=f457e213]:
+        - button "Est-ce que je peux faire la Séance Clarté HD Pro si je ne connais pas le Human Design? +" [ref=f457e214] [cursor=pointer]:
+          - text: Est-ce que je peux faire la Séance Clarté HD Pro si je ne connais pas le Human Design?
+          - generic [ref=f457e215]: +
+        - generic [ref=f457e216]:
+          - text: Bien sûr!
+          - text: Durant la séance je te partage mon analyse de ton Human Design de manière à ce que cela soit compréhensible et accessible, même si le Human Design est une découverte pour toi.
+          - text: Je fais en sorte d'être le plus claire possible, en décryptant et en vulgarisant chaque donnée.🎈
+      - generic [ref=f457e217]:
+        - button "Comment fait-on pour connaître son schéma de Human Design? +" [ref=f457e218] [cursor=pointer]:
+          - text: Comment fait-on pour connaître son schéma de Human Design?
+          - generic [ref=f457e219]: +
+        - generic [ref=f457e220]:
+          - text: Pour découvrir ton schéma de Human Design, je t'invite à cliquer
+          - link "ici" [ref=f457e221] [cursor=pointer]:
+            - /url: "#test-gratuit"
+          - text: pour aller faire ton TEST HD GRATUIT.
+          - text: 💎 Et si tu souhaites un décodage des éléments principaux de ton schéma, c'est direction le
+          - link "Guide d'Immersion dans ton Design Unique" [ref=f457e222] [cursor=pointer]:
+            - /url: /inside.html
+          - text: . :)
+      - generic [ref=f457e223]:
+        - button "Est-ce que la Séance est personnalisée? +" [ref=f457e224] [cursor=pointer]:
+          - text: Est-ce que la Séance est personnalisée?
+          - generic [ref=f457e225]: +
+        - generic [ref=f457e226]:
+          - text: Oui la Séance est conçue à partir de TA problématique, et de l'analyse de TON Design unique, issu de tes informations de naissance ; elle est donc ultra personnalisée.
+          - text: ⏩ D'autant plus que j'adapte mon coaching selon ton "Type HD" et ce que cela implique. 😉🌟
+      - generic [ref=f457e227]:
+        - button "Est-ce que durant la Séance tu fais une lecture complète de mon schéma HD? +" [ref=f457e228] [cursor=pointer]:
+          - text: Est-ce que durant la Séance tu fais une lecture complète de mon schéma HD?
+          - generic [ref=f457e229]: +
+        - generic [ref=f457e230]:
+          - text: Pas nécessairement car mon analyse est centrée sur les points clés de ton schéma HD qui vont nous apporter de la lumière sur ta problématique. 🎯
+          - text: Donc, selon le sujet, je ne vais pas explorer les mêmes informations de ton schéma.
+          - text: C'est vraiment du sur-mesure. 😇
+      - generic [ref=f457e231]:
+        - button "Est-ce que la Séance se fait obligatoirement en visio? +" [ref=f457e232] [cursor=pointer]:
+          - text: Est-ce que la Séance se fait obligatoirement en visio?
+          - generic [ref=f457e233]: +
+        - generic [ref=f457e234]:
+          - text: 🗻 Si tu habites près de moi (en Haute-Savoie), on peut se retrouver pour faire la Séance en direct avec plaisir. :)
+          - text: 💻 Ensuite, pour les RDV à distance, je privilégie la visio car cela facilite la communication, et la guidance également. Mais ce n'est en rien une obligation.
+          - text: 📞 Si tu es plus à l'aise par téléphone, nous ferons de cette manière-là sans souci. Dans ce cas, envoie-moi un petit message pour qu'on voit ensemble comment s'organiser. :)
+      - generic [ref=f457e235]:
+        - button "Est-ce qu'il est possible de faire plusieurs Séances? +" [ref=f457e236] [cursor=pointer]:
+          - text: Est-ce qu'il est possible de faire plusieurs Séances?
+          - generic [ref=f457e237]: +
+        - generic [ref=f457e238]:
+          - text: Oui bien sûr. ✨
+          - text: Si le besoin se fait sentir de plonger encore plus loin, de creuser davantage, ou d'aller explorer une autre problématique, tu peux tout à fait réserver une nouvelle Séance! 📅
+      - generic [ref=f457e239]:
+        - button "Que se passe-t-il si je dois finalement annuler ma Séance? +" [ref=f457e240] [cursor=pointer]:
+          - text: Que se passe-t-il si je dois finalement annuler ma Séance?
+          - generic [ref=f457e241]: +
+        - generic [ref=f457e242]:
+          - text: Pour toute Séance annulée moins de 48 heures à l'avance, il n'y a aucun remboursement.
+          - text: 📍 Sauf si dans les 48h précédents la Séance, nous refixons une autre date de RDV (dans la limite de 1 déplacement de RDV pour une même Séance 🙏).
+      - generic [ref=f457e243]:
+        - button "Est-ce que tu peux nous dire ce qu'est la surprise d'après-séance? +" [ref=f457e244] [cursor=pointer]:
+          - text: Est-ce que tu peux nous dire ce qu'est la surprise d'après-séance?
+          - generic [ref=f457e245]: +
+        - generic [ref=f457e246]: Evidemment... que non! 😂🤫✨
+  - link "JE FONCE! ♡" [ref=f457e250] [cursor=pointer]:
+    - /url: javascript:void(0)
+  - contentinfo [ref=f457e251]:
+    - generic:
+      - img
+    - generic [ref=f457e252]:
+      - generic [ref=f457e253]:
+        - paragraph [ref=f457e254]: La vie en HD
+        - paragraph [ref=f457e255]: Human Design · Marion Chartier
+      - generic [ref=f457e256]:
+        - link "Me contacter" [ref=f457e257] [cursor=pointer]:
+          - /url: mailto:hello@marionchartier-lavieenhd.com
+          - img [ref=f457e258]
+          - text: Me contacter
+        - link "Me rejoindre sur Instagram" [ref=f457e263] [cursor=pointer]:
+          - /url: https://www.instagram.com/marionchartier_lavieenhd/
+          - img [ref=f457e264]
+          - text: Me rejoindre sur Instagram
+    - generic [ref=f457e269]:
+      - generic [ref=f457e270]: © 2026 Marion Chartier · La vie en HD
+      - generic [ref=f457e271]:
+        - link "Mentions légales" [ref=f457e272] [cursor=pointer]:
+          - /url: /mentions-legales
+        - link "CGV" [ref=f457e273] [cursor=pointer]:
+          - /url: /cgv
+        - link "Confidentialité" [ref=f457e274] [cursor=pointer]:
+          - /url: /confidentialite

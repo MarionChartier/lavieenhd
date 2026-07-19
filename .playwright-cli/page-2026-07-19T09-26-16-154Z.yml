@@ -1,0 +1,312 @@
+- generic [active] [ref=f465e1]:
+  - navigation [ref=f465e2]:
+    - generic [ref=f465e3]:
+      - img
+      - generic [ref=f465e5]:
+        - link "Accueil — La vie en HD" [ref=f465e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f465e7]:
+            - generic [ref=f465e8]: La vie en HD
+            - generic [ref=f465e9]: Marion Chartier
+        - generic [ref=f465e10]:
+          - link "Accueil" [ref=f465e11] [cursor=pointer]:
+            - /url: /
+            - text: Accueil
+          - link "Test HD gratuit" [ref=f465e13] [cursor=pointer]:
+            - /url: /test-gratuit
+          - link "Mes offres" [ref=f465e15] [cursor=pointer]:
+            - /url: /mes-offres
+          - link "Qui suis-je ?" [ref=f465e16] [cursor=pointer]:
+            - /url: /qui-je-suis
+  - main [ref=f465e17]:
+    - generic [ref=f465e18]:
+      - img
+      - img
+      - generic [ref=f465e19]:
+        - generic [ref=f465e20]:
+          - heading "La vie en HD" [level=1] [ref=f465e21]
+          - paragraph [ref=f465e22]:
+            - text: Et si tu te rencontrais ?
+            - text: Vraiment. En couleur, en grand, en toi.
+          - paragraph [ref=f465e23]: Le Human Design est lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          - paragraph [ref=f465e24]:
+            - text: Je suis
+            - strong [ref=f465e25]: Marion
+            - text: . Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+        - generic [ref=f465e27]:
+          - heading "Découvre ton schéma Human Design." [level=2] [ref=f465e29]:
+            - text: Découvre ton schéma
+            - emphasis [ref=f465e30]: Human Design
+            - text: .
+          - iframe [ref=f465e32]:
+            
+    - generic [ref=f465e35]:
+      - img
+      - generic [ref=f465e36]:
+        - img [ref=f465e37]
+        - generic [ref=f465e48]:
+          - paragraph [ref=f465e49]: Transit solaire actuel
+          - paragraph [ref=f465e50]: Porte 12 · La Prudence
+          - paragraph [ref=f465e51]: du 1 au 6 juin
+      - paragraph [ref=f465e53]: Une période pour choisir tes mots avec soin et n'exprimer que ce qui est vraiment juste pour toi.
+    - generic [ref=f465e55]:
+      - generic [ref=f465e56]:
+        - heading "Bienvenue chez toi" [level=2] [ref=f465e57]
+        - paragraph [ref=f465e58]: — Le parcours en 6 étapes —
+        - paragraph [ref=f465e59]: Tu peux les emprunter dans l'ordre, ou choisir celui qui te parle aujourd'hui.
+      - generic [ref=f465e61]:
+        - 'link "Explorer Quiz gratuits Deux quiz ludiques pour mieux te connaître Deux quiz offerts : ton lieu de vie/de travail idéal et ton alignement vie pro." [ref=f465e62] [cursor=pointer]':
+          - /url: /quiz
+          - generic [ref=f465e63]:
+            - generic [ref=f465e66]:
+              - generic [ref=f465e67]: Explorer
+              - generic [ref=f465e68]:
+                - heading "Quiz gratuits" [level=3] [ref=f465e69]
+                - paragraph [ref=f465e70]: Deux quiz ludiques pour mieux te connaître
+            - paragraph [ref=f465e73]: "Deux quiz offerts : ton lieu de vie/de travail idéal et ton alignement vie pro."
+        - link "S'initier THE PLACE TO BE Le Guide d'Exploration de ton Environnement HD Un Guide complet pour adapter facilement ton lieu de vie et de travail selon TON PROPRE ENVIRONNEMENT Human Design. Parfait pour booster ta vitalité, ton bien-être et tes performances! ✨" [ref=f465e74] [cursor=pointer]:
+          - /url: /the-place-to-be.html
+          - generic [ref=f465e75]:
+            - generic [ref=f465e78]:
+              - generic [ref=f465e79]: S'initier
+              - generic [ref=f465e80]:
+                - heading "THE PLACE TO BE" [level=3] [ref=f465e81]
+                - paragraph [ref=f465e82]: Le Guide d'Exploration de ton Environnement HD
+            - paragraph [ref=f465e85]: Un Guide complet pour adapter facilement ton lieu de vie et de travail selon TON PROPRE ENVIRONNEMENT Human Design. Parfait pour booster ta vitalité, ton bien-être et tes performances! ✨
+        - link "Découvrir INSIDE Le Guide d'Immersion dans ton Design Unique Un Guide de décryptage PERSONNALISÉ des 7 clés fondamentales de ton schéma HD ; pour mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi! ♡" [ref=f465e86] [cursor=pointer]:
+          - /url: /inside.html
+          - generic [ref=f465e87]:
+            - generic [ref=f465e90]:
+              - generic [ref=f465e91]: Découvrir
+              - generic [ref=f465e92]:
+                - heading "INSIDE" [level=3] [ref=f465e93]
+                - paragraph [ref=f465e94]: Le Guide d'Immersion dans ton Design Unique
+            - paragraph [ref=f465e97]: Un Guide de décryptage PERSONNALISÉ des 7 clés fondamentales de ton schéma HD ; pour mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi! ♡
+        - link "Clarifier REVEAL La Séance Clarté HD Pro 1h30 ensemble en visio pour sortir du flou sur une problématique de ta vie pro (débloquer une situation, obtenir une réponse, clarifier une décision,...), grâce à une lecture ciblée de ton HUMAN DESIGN & guidance intuitive." [ref=f465e98] [cursor=pointer]:
+          - /url: /reveal.html
+          - generic [ref=f465e99]:
+            - generic [ref=f465e102]:
+              - generic [ref=f465e103]: Clarifier
+              - generic [ref=f465e104]:
+                - heading "REVEAL" [level=3] [ref=f465e105]
+                - paragraph [ref=f465e106]: La Séance Clarté HD Pro
+            - paragraph [ref=f465e109]: 1h30 ensemble en visio pour sortir du flou sur une problématique de ta vie pro (débloquer une situation, obtenir une réponse, clarifier une décision,...), grâce à une lecture ciblée de ton HUMAN DESIGN & guidance intuitive.
+        - link "Révéler Fleur de Talents Innés® L'Exploration Croisée de tes Talents Uniques Exploration croisée HD, Numérologie et Gene Keys pour révéler tes talents innés." [ref=f465e110] [cursor=pointer]:
+          - /url: /blooming.html
+          - img
+          - generic [ref=f465e111]:
+            - generic [ref=f465e114]:
+              - generic [ref=f465e115]: Révéler
+              - generic [ref=f465e116]:
+                - heading "Fleur de Talents Innés®" [level=3] [ref=f465e117]:
+                  - text: Fleur de Talents Innés
+                  - superscript [ref=f465e118]: ®
+                - paragraph [ref=f465e119]: L'Exploration Croisée de tes Talents Uniques
+            - paragraph [ref=f465e122]: Exploration croisée HD, Numérologie et Gene Keys pour révéler tes talents innés.
+        - link "Transformer RECONNECT L'Accompagnement Premium de Reconnexion Professionnelle 3 mois d'Accompagnement 1:1 transformationnel, sur-mesure et profond, pour réaligner ta vie professionnelle à tes aspirations de coeur, et oser prendre ta place. 👑 Te révéler & rayonner." [ref=f465e123] [cursor=pointer]:
+          - /url: /reconnect.html
+          - generic [ref=f465e124]:
+            - generic [ref=f465e127]:
+              - generic [ref=f465e128]: Transformer
+              - generic [ref=f465e129]:
+                - heading "RECONNECT" [level=3] [ref=f465e130]
+                - paragraph [ref=f465e131]: L'Accompagnement Premium de Reconnexion Professionnelle
+            - paragraph [ref=f465e134]: 3 mois d'Accompagnement 1:1 transformationnel, sur-mesure et profond, pour réaligner ta vie professionnelle à tes aspirations de coeur, et oser prendre ta place. 👑 Te révéler & rayonner.
+    - generic [ref=f465e136]:
+      - generic [ref=f465e137]:
+        - img "Marion Chartier" [ref=f465e139]
+        - generic [ref=f465e141]:
+          - paragraph [ref=f465e142]: Carte HD de Marion
+          - paragraph [ref=f465e143]: Manifesting Generator 2/4
+          - paragraph [ref=f465e144]: L'Ermite · l'Opportuniste
+          - separator [ref=f465e145]
+          - generic [ref=f465e146]:
+            - generic [ref=f465e147]:
+              - term [ref=f465e148]: Autorité
+              - definition [ref=f465e149]: Émotionnelle
+            - generic [ref=f465e150]:
+              - term [ref=f465e151]: Signature
+              - definition [ref=f465e152]: Satisfaction
+            - generic [ref=f465e153]:
+              - term [ref=f465e154]: Stratégie
+              - definition [ref=f465e155]: Répondre
+            - generic [ref=f465e156]:
+              - term [ref=f465e157]: Non-Soi
+              - definition [ref=f465e158]: Frustration
+            - generic [ref=f465e159]:
+              - term [ref=f465e160]: Profil
+              - definition [ref=f465e161]: 2/4
+            - generic [ref=f465e162]:
+              - term [ref=f465e163]: Définition
+              - definition [ref=f465e164]: Double
+            - generic [ref=f465e165]:
+              - term [ref=f465e166]: Environnement
+              - definition [ref=f465e167]: Montagnes
+          - separator [ref=f465e168]
+          - paragraph [ref=f465e179]: 9 centres · 7 définis
+      - generic [ref=f465e180]:
+        - heading "Marion, multi-passionnée." [level=2] [ref=f465e181]:
+          - text: Marion,
+          - emphasis [ref=f465e182]: multi-passionnée.
+        - paragraph [ref=f465e183]: Après des années d'ingénierie en multinationales à chercher ma place, je me suis retrouvée grâce au Human Design. Aujourd'hui, je t'accompagne à te révéler pleinement, dans ta vie pro et au-delà.
+        - paragraph [ref=f465e184]: « Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la tienne. »
+        - generic [ref=f465e185]:
+          - generic [ref=f465e186]: Manifesting Generator 2/4
+          - generic [ref=f465e188]: Magicienne fraternelle
+          - generic [ref=f465e190]: Maman d'un Manifestor
+        - link "Faire connaissance" [ref=f465e192] [cursor=pointer]:
+          - /url: /qui-je-suis
+    - generic [ref=f465e194]:
+      - generic [ref=f465e195]:
+        - heading "Les coulisses, au quotidien." [level=2] [ref=f465e196]:
+          - text: Les coulisses,
+          - emphasis [ref=f465e197]: au quotidien
+          - text: .
+        - link "@marionchartier_lavieenhd" [ref=f465e198] [cursor=pointer]:
+          - /url: https://www.instagram.com/marionchartier_lavieenhd/
+          - img [ref=f465e199]
+          - text: "@marionchartier_lavieenhd"
+      - link "Suivre sur Instagram" [ref=f465e204] [cursor=pointer]:
+        - /url: https://www.instagram.com/marionchartier_lavieenhd/
+        - img [ref=f465e205]
+        - text: Suivre sur Instagram
+    - generic [ref=f465e209]:
+      - img
+      - generic [ref=f465e210]:
+        - heading "Des retours qui me touchent." [level=2] [ref=f465e212]:
+          - text: Des
+          - emphasis [ref=f465e213]: retours
+          - text: qui me touchent.
+        - generic [ref=f465e214]:
+          - article [ref=f465e216]:
+            - generic [ref=f465e217]:
+              - img "Portrait de Barbara" [ref=f465e219]
+              - generic [ref=f465e220]:
+                - paragraph [ref=f465e221]: Barbara
+                - generic [ref=f465e222]: Soin énergétique
+            - blockquote [ref=f465e223]: "Je dois vraiment te dire merci du fond du cœur car je pense que le soin de décembre a ouvert la porte derrière laquelle je restais coincée. On en parlait avec une amie cet après-midi : elle a fait le soin aussi, elle a le même ressenti. 💖"
+            - button "Lire la suite" [ref=f465e224]:
+              - generic [ref=f465e225]: Lire la suite
+              - generic [ref=f465e226]: ↓
+          - article [ref=f465e228]:
+            - generic [ref=f465e229]:
+              - img "Portrait de Astrig" [ref=f465e231]
+              - generic [ref=f465e232]:
+                - paragraph [ref=f465e233]: Astrig
+                - generic [ref=f465e234]: The Place to be
+            - blockquote [ref=f465e235]: "Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi ! Mais ce que j'ai découvert, c'est bien plus que ça ! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment ! Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite ! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien. Encore merci Marion 🌟"
+            - button "Lire la suite" [ref=f465e236]:
+              - generic [ref=f465e237]: Lire la suite
+              - generic [ref=f465e238]: ↓
+          - article [ref=f465e240]:
+            - generic [ref=f465e241]:
+              - img "Portrait de Louise-Armance" [ref=f465e243]
+              - generic [ref=f465e244]:
+                - paragraph [ref=f465e245]: Louise-Armance
+                - generic [ref=f465e246]: Inside
+            - blockquote [ref=f465e247]: Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi ! Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connait pas ! 😮 Et c'est quand même dingue d'avoir attendu plus de 35 ans pour découvrir que j'avais été livrée avec un mode d'emploi ! 😂 Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement, c'est tout à fait moi, depuis enfant, c'est fou ! Et il y a d'autres aspects de moi que je découvre et que j'ai envie de creuser du coup ! 😍 Merci mille fois pour toutes ces informations précieuses Marion, ça résonne beaucoup en moi, c'est très parlant ! Bluffant même ! 💥
+            - button "Lire la suite" [ref=f465e248]:
+              - generic [ref=f465e249]: Lire la suite
+              - generic [ref=f465e250]: ↓
+          - article [ref=f465e252]:
+            - generic [ref=f465e253]:
+              - img "Portrait de Marjory" [ref=f465e255]
+              - generic [ref=f465e256]:
+                - paragraph [ref=f465e257]: Marjory
+                - generic [ref=f465e258]: Reveal
+            - blockquote [ref=f465e259]: "Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe... Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante ! Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer ! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça ! 🙏🙏🙏 J'y vois beaucoup plus clair, et j'ai ouvert des portes que je ne soupçonnais pas possibles pour moi. Quelques mois après : « Honnêtement merci encore Marion parce que vraiment tes conseils ont été précieux et aujourd'hui ils sont ancrés. Peu importe ce que les gens me disent je sais, moi, toute seule ce qui est le mieux et ça a tout changé dans ma vie. 🙏 »"
+            - button "Lire la suite" [ref=f465e260]:
+              - generic [ref=f465e261]: Lire la suite
+              - generic [ref=f465e262]: ↓
+          - article [ref=f465e264]:
+            - generic [ref=f465e265]:
+              - img "Portrait de Émilie" [ref=f465e267]
+              - generic [ref=f465e268]:
+                - paragraph [ref=f465e269]: Émilie
+                - generic [ref=f465e270]: Blooming
+            - blockquote [ref=f465e271]: Waw 😍🥲 ! Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗). Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue. Je vais l'imprimer en grand je pense tellement elle est belle 😁 !
+            - button "Lire la suite" [ref=f465e272]:
+              - generic [ref=f465e273]: Lire la suite
+              - generic [ref=f465e274]: ↓
+          - article [ref=f465e276]:
+            - generic [ref=f465e277]:
+              - img "Portrait de Justine" [ref=f465e279]
+              - generic [ref=f465e280]:
+                - paragraph [ref=f465e281]: Justine
+                - generic [ref=f465e282]: Reconnect
+            - blockquote [ref=f465e283]: "Cela fait plusieurs années maintenant que je fais des coachings professionnels, des bilans de compétences, des tests de personnalité, thème astral, numérologie etc... pour essayer de trouver ma voie professionnelle. C'est donc en toute connaissance de cause que je peux affirmer que Reconnect est l'accompagnement le plus complet que j'ai fait jusqu'à présent. Ce que j'ai beaucoup aimé c'est le format : un questionnaire par semaine, que l'on peut faire n'importe où. Cela permet vraiment d'avancer à son rythme sur la semaine et chaque lundi on a la surprise du nouveau questionnaire, c'est un peu comme un cadeau que l'on se fait à soi même :) J'adore également le fait (et c'est aussi selon moi ce qui fait que l'accompagnement se démarque complètement de tous les autres) que Marion utilise tous les outils à sa disposition pour nous aider : le Human Design bien sûr qui est un outil que je ne connaissais pas et qui m'a vraiment bluffée (très complet), la numérologie, l'EFT, des tests de personnalité, des exercices pratiques et concrets, des guidances sur certaines thématiques, des soins énergétiques... En fait, TOUT est vraiment mélangé et recoupé en un accompagnement hyper puissant parce que Marion maitrise ses sujets et grâce à elle et à ses coachings on avance vraiment. Il y a un avant et un après l'accompagnement. J'ai appris énormément de choses que je ne soupçonnais même pas sur moi alors que vraiment cela fait plusieurs années que je fais tous les tests de personnalité possibles^^ et inversement cela m'a aussi conforté dans certains choix professionnels. De plus, Marion est super disponible et à l'écoute. Son super pouvoir selon moi c'est vraiment cette capacité à vulgariser ce qui peut nous sembler abstrait pour le rendre concret, compréhensible et que l'on puisse l'appliquer à notre vie de tous les jours. Elle est vraiment impliquée pour nous aider et nous faire avancer, de sa disponibilité en passant par les retours de soins énergétiques jusqu'à ses exercices pratiques « bonus » en fin de mail hebdomadaires, tout a vraiment été pensé et mis en place pour les personnes qui suivent le programme. Je recommande les yeux fermés, à mon sens c'est vraiment l'accompagnement le plus complet que j'ai pu vivre jusqu'à maintenant. C'est LA clé si vous êtes bloqués dans votre vie professionnelle. Encore Merci !!!"
+            - button "Lire la suite" [ref=f465e284]:
+              - generic [ref=f465e285]: Lire la suite
+              - generic [ref=f465e286]: ↓
+    - generic [ref=f465e288]:
+      - heading "Questions fréquentes" [level=2] [ref=f465e290]
+      - generic [ref=f465e291]:
+        - generic [ref=f465e292]:
+          - button "C'est quoi exactement le Human Design ?" [expanded] [ref=f465e293]:
+            - generic [ref=f465e294]: C'est quoi exactement le Human Design ?
+            - generic [ref=f465e295]: +
+          - paragraph [ref=f465e298]: Un outil puissant de connaissance de soi, à la croisée de la science et du spirituel. À partir de ta date, ton heure et ton lieu de naissance, tu obtiens une carte unique qui révèle ta personnalité, ton fonctionnement énergétique et tes talents.
+        - generic [ref=f465e299]:
+          - button "Je n'y connais rien, est-ce que c'est quand même pour moi ?" [ref=f465e300]:
+            - generic [ref=f465e301]: Je n'y connais rien, est-ce que c'est quand même pour moi ?
+            - generic [ref=f465e302]: +
+          - paragraph [ref=f465e303]: Oui, totalement. Tout est pensé pour être accessible, vulgarisé et décrypté, même si le Human Design est une découverte complète pour toi.
+        - generic [ref=f465e304]:
+          - button "Comment je découvre mon schéma ?" [ref=f465e305]:
+            - generic [ref=f465e306]: Comment je découvre mon schéma ?
+            - generic [ref=f465e307]: +
+          - paragraph [ref=f465e308]: En faisant le test HD gratuit avec tes informations de naissance (date, heure et lieu). Ton schéma complet s'affiche en quelques secondes, sans création de compte.
+        - generic [ref=f465e309]:
+          - button "Par où je commence ?" [ref=f465e310]:
+            - generic [ref=f465e311]: Par où je commence ?
+            - generic [ref=f465e312]: +
+          - paragraph [ref=f465e313]: "Commence par ton test gratuit pour découvrir ton schéma, puis explore les offres selon ce qui te parle aujourd'hui : ton environnement idéal, ton design en profondeur ou tes talents innés."
+        - generic [ref=f465e314]:
+          - button "Sous quelle forme je reçois mes guides ?" [ref=f465e315]:
+            - generic [ref=f465e316]: Sous quelle forme je reçois mes guides ?
+            - generic [ref=f465e317]: +
+          - paragraph [ref=f465e318]: Tes guides te sont envoyés sous forme de livret PDF à télécharger, après ta commande.
+    - generic [ref=f465e319]:
+      - generic [ref=f465e320]:
+        - heading "De temps en temps, je t'écris comme à une amie." [level=2] [ref=f465e321]
+        - paragraph [ref=f465e322]: Des réflexions tendres, des outils Human Design et des coulisses de mon quotidien. Sans bullshit, sans diffusion massive.
+      - img "The Soul Letter, la newsletter intimiste & authentique" [ref=f465e324]
+      - link "Je rejoins The Soul Letter" [ref=f465e326] [cursor=pointer]:
+        - /url: https://marionchartier-humandesign.systeme.io/newsletter
+  - contentinfo [ref=f465e327]:
+    - img
+    - generic [ref=f465e328]:
+      - generic [ref=f465e329]:
+        - paragraph [ref=f465e330]: La vie en HD
+        - paragraph [ref=f465e331]: Human Design · Marion Chartier
+      - generic [ref=f465e332]:
+        - link "Me contacter" [ref=f465e333] [cursor=pointer]:
+          - /url: mailto:hello@marionchartier-lavieenhd.com
+          - img [ref=f465e334]
+          - text: Me contacter
+        - link "Me rejoindre sur Instagram" [ref=f465e339] [cursor=pointer]:
+          - /url: https://www.instagram.com/marionchartier_lavieenhd/
+          - img [ref=f465e340]
+          - text: Me rejoindre sur Instagram
+    - generic [ref=f465e345]:
+      - generic [ref=f465e346]: © 2026 Marion Chartier · La vie en HD
+      - generic [ref=f465e347]:
+        - link "Mentions légales" [ref=f465e348] [cursor=pointer]:
+          - /url: /mentions-legales
+        - link "CGV" [ref=f465e349] [cursor=pointer]:
+          - /url: /cgv
+        - link "Confidentialité" [ref=f465e350] [cursor=pointer]:
+          - /url: /confidentialite
+        - button "Gérer les cookies" [ref=f465e351]
+  - dialog "Consentement aux cookies" [ref=f465e352]:
+    - img
+    - generic [ref=f465e354]:
+      - paragraph [ref=f465e355]: Ce site utilise des cookies pour comprendre comment il est utilisé et l'améliorer. Tu peux les accepter ou les refuser, et modifier ton choix à tout moment. Aucun cookie de mesure n'est déposé sans ton accord.
+      - generic [ref=f465e356]:
+        - link "Politique de confidentialité" [ref=f465e357] [cursor=pointer]:
+          - /url: /confidentialite
+        - generic [ref=f465e358]:
+          - button "Tout refuser" [ref=f465e359]
+          - button "Tout accepter" [ref=f465e360]
+  - button "Open Next.js Dev Tools" [ref=f465e366] [cursor=pointer]:
+    - img [ref=f465e367]

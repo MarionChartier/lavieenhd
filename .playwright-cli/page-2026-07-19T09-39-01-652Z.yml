@@ -1,0 +1,149 @@
+- generic [active] [ref=f469e1]:
+  - link "Revenir a la page precedente" [ref=f469e2] [cursor=pointer]:
+    - /url: /
+    - img [ref=f469e3]
+    - generic [ref=f469e5]: Retour
+  - navigation [ref=f469e6]:
+    - link "Pour qui ?" [ref=f469e7] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Pour qui ?
+    - link "Le déroulé" [ref=f469e9] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Le déroulé
+    - link "S'inscrire" [ref=f469e11] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: S'inscrire
+    - link "Témoignages" [ref=f469e13] [cursor=pointer]:
+      - /url: javascript:void(0)
+      - generic: Témoignages
+  - generic [ref=f469e15]:
+    - img "Soin énergétique collectif" [ref=f469e17]
+    - generic [ref=f469e18]: La vie en HD · Marion Chartier
+    - heading "SOIN ÉNERGÉTIQUE COLLECTIF Libération & recalibration" [level=1] [ref=f469e19]:
+      - text: SOIN ÉNERGÉTIQUE COLLECTIF
+      - emphasis [ref=f469e20]: Libération & recalibration
+    - paragraph [ref=f469e21]: "~ Notre rendez-vous mensuel : chaque dernier dimanche du mois à 21h, un soin collectif à distance pour libérer tes blocages, et pumper ton énergie ! 🌈 ~"
+    - generic [ref=f469e22]:
+      - paragraph [ref=f469e23]:
+        - text: Un Soin complet pour t'aider à
+        - strong [ref=f469e24]: te libérer de tes blocages actuels
+        - text: (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. 🌈
+      - paragraph [ref=f469e25]: Un temps rien que pour toi, où tu n'as rien à faire d'autre que de te laisser chouchouter énergétiquement. 💖
+      - paragraph [ref=f469e26]:
+        - text: 📅
+        - strong [ref=f469e27]: Le dernier dimanche du mois à 21h00
+        - emphasis [ref=f469e28]: (durée approximative 1h/1h15)
+    - link "Go, je m'offre ce bain de jouvence énergétique ! 🦚✨" [ref=f469e30] [cursor=pointer]:
+      - /url: javascript:void(0)
+  - blockquote [ref=f469e32]:
+    - text: ~ Pas de chichi, de grandes cérémonies ou de rituels ésotériques perchouilles.
+    - emphasis [ref=f469e33]: Du simple, du vrai, de l'efficace !
+    - text: 🎯 ~
+  - generic [ref=f469e36]:
+    - text: 👀 Pour qui ?
+    - heading "Ce soin est ouvert à tous ceux qui en ressentent l'appel. 💎" [level=2] [ref=f469e38]
+    - paragraph [ref=f469e39]: "👉 Ce Soin peut être bénéfique pour toi si :"
+    - list [ref=f469e41]:
+      - listitem [ref=f469e42]: Tu rencontres des résistances actuellement dans ta vie,
+      - listitem [ref=f469e43]: Tu te sens un peu « à plat » ou dans le flou,
+      - listitem [ref=f469e44]: Tu as envie de venir « ouvrir les fenêtres en grand » pour libérer énergétiquement tout ce qu'il y a à libérer aujourd'hui,
+      - listitem [ref=f469e45]: Tu as tout simplement envie de repimper ton énergie ! 🔥🔥
+  - generic [ref=f469e47]:
+    - generic [ref=f469e48]:
+      - text: 💡 Concrètement
+      - heading "Comment ça se déroule ?" [level=2] [ref=f469e49]
+      - paragraph [ref=f469e50]:
+        - text: "Pas de présentiel, pas de live, de zoom ou autre :"
+        - strong [ref=f469e51]: juste de la connexion énergétique
+        - text: "! Tout se fait à distance."
+    - generic [ref=f469e52]:
+      - generic [ref=f469e53]:
+        - generic [ref=f469e54]: "1"
+        - generic [ref=f469e55]:
+          - heading "Tu t'inscris, et tu poses l'intention" [level=3] [ref=f469e56]
+          - paragraph [ref=f469e57]: Pour participer tu n'as rien à « faire », juste à être disposé·e à recevoir le Soin en posant l'intention. Je t'enverrai un email le jour du Soin pour bien expliquer le déroulement, ainsi que les « petites consignes ».
+      - generic [ref=f469e58]:
+        - generic [ref=f469e59]: "2"
+        - generic [ref=f469e60]:
+          - heading "Le jour J, à 21h, tu te mets en mode réception" [level=3] [ref=f469e61]
+          - paragraph [ref=f469e62]:
+            - text: Installe-toi de préférence en mode cocooning, chill, dans des conditions calmes où tu ne seras pas dérangé·e ; méditation, lecture, dessin, musique,...
+            - emphasis [ref=f469e63]: "[Si tu n'es pas dans les conditions optimales, no panic, l'énergie fera le job malgré tout ! 🙏✨]"
+      - generic [ref=f469e64]:
+        - generic [ref=f469e65]: "3"
+        - generic [ref=f469e66]:
+          - heading "Je me mets en position de transmettrice" [level=3] [ref=f469e67]
+          - paragraph [ref=f469e68]: J'envoie la sauce énergétique, et toi, tu as juste à recevoir. 🥰 Et c'est tout !
+      - generic [ref=f469e69]:
+        - generic [ref=f469e70]: "4"
+        - generic [ref=f469e71]:
+          - 'heading "After Soin : mon feedback détaillé 💌" [level=3] [ref=f469e72]'
+          - paragraph [ref=f469e73]: Je te partage mon feedback détaillé par email le lendemain. Je t'y explique mes ressentis et mes perceptions, le travail énergétique effectué, et très certainement des canalisations groupées (et/ou personnelles selon ce qui vient ! 💖).
+  - generic [ref=f469e75]:
+    - generic [ref=f469e76]:
+      - text: ~ Notre rendez-vous mensuel ~
+      - heading "Inscris-toi au prochain Soin énergétique" [level=2] [ref=f469e77]
+      - paragraph [ref=f469e78]: ~ 20€ tout rond ❣ ~
+    - generic [ref=f469e79]:
+      - generic [ref=f469e80]: ⁘⁛⁘
+      - heading "SOIN ÉNERGÉTIQUE COLLECTIF" [level=3] [ref=f469e81]
+      - generic [ref=f469e82]: 20€
+      - generic [ref=f469e83]:
+        - text: Le dernier dimanche du mois à 21h00
+        - emphasis [ref=f469e84]: (durée approximative 1h/1h15)
+      - list [ref=f469e85]:
+        - listitem [ref=f469e86]:
+          - text: ✦
+          - strong [ref=f469e87]: 🦚 Un soin collectif à distance
+          - text: ➡ Libérer tes blocages, refaire circuler l'énergie, te recalibrer sur la plus haute fréquence.
+        - listitem [ref=f469e88]:
+          - text: ✦
+          - strong [ref=f469e89]: 💌 Mon feedback détaillé par email le lendemain
+          - text: ➡ Mes ressentis, mes perceptions, le travail énergétique effectué, et très certainement des canalisations groupées.
+        - listitem [ref=f469e90]:
+          - text: ✦
+          - strong [ref=f469e91]: "🎁 Bonus : un tirage au sort avant le soin"
+          - text: "➡ 1 personne parmi les inscrits (case à cocher dans le bon de commande) gagne une mini-guidance intuitive personnalisée : le lendemain du soin, elle reçoit en plus un message individuel avec ma lecture de son énergie actuelle. 😘"
+      - link "Go, je m'offre ce bain de jouvence ! 🦚✨" [ref=f469e92] [cursor=pointer]:
+        - /url: https://marionchartier-humandesign.systeme.io/commande-soinenergetique
+  - generic [ref=f469e94]:
+    - generic [ref=f469e95]:
+      - text: 💕 Ceux qui l'ont déjà expérimenté en parlent mieux que moi
+      - heading "Témoignages" [level=2] [ref=f469e96]
+    - generic [ref=f469e97]:
+      - img "Barbara" [ref=f469e98]
+      - generic [ref=f469e99]:
+        - generic [ref=f469e100]: “
+        - paragraph [ref=f469e101]: Barbara
+        - paragraph [ref=f469e102]: "Je dois vraiment te dire merci du fond du cœur car je pense que le soin de décembre a ouvert la porte derrière laquelle je restais coincée. On en parlait avec une amie cet après-midi : elle a fait le soin aussi, elle a le même ressenti. 💖"
+    - generic [ref=f469e103]:
+      - paragraph [ref=f469e105]: "\"Donc, comme la première fois, ce soin énergétique était incroyable 🤩🥰 je suis hyper reconnaissante envers toi de nous faire partager ça, c'est indescriptible et vraiment, waw ! Merci 🫶💖\""
+      - paragraph [ref=f469e107]: "\"Tout ça confirme mes ressentis. Je me sens très bien suite à ce soin, limite je fais une fête pour célébrer. Merci du fond du cœur Marion, tes soins sont incroyables. Bisous ❤️\""
+      - paragraph [ref=f469e109]: "\"Merci est un mot bien trop faible pour la soirée qu'on a vécue. 💫\""
+  - link "Je m'inscris TOUT DE SUITE ! 🌈" [ref=f469e113] [cursor=pointer]:
+    - /url: javascript:void(0)
+  - contentinfo [ref=f469e114]:
+    - generic:
+      - img
+    - generic [ref=f469e115]:
+      - generic [ref=f469e116]:
+        - paragraph [ref=f469e117]: La vie en HD
+        - paragraph [ref=f469e118]: Human Design · Marion Chartier
+      - generic [ref=f469e119]:
+        - link "Me contacter" [ref=f469e120] [cursor=pointer]:
+          - /url: mailto:hello@marionchartier-lavieenhd.com
+          - img [ref=f469e121]
+          - text: Me contacter
+        - link "Me rejoindre sur Instagram" [ref=f469e126] [cursor=pointer]:
+          - /url: https://www.instagram.com/marionchartier_lavieenhd/
+          - img [ref=f469e127]
+          - text: Me rejoindre sur Instagram
+    - generic [ref=f469e132]:
+      - generic [ref=f469e133]: © 2026 Marion Chartier · La vie en HD
+      - generic [ref=f469e134]:
+        - link "Mentions légales" [ref=f469e135] [cursor=pointer]:
+          - /url: /mentions-legales
+        - link "CGV" [ref=f469e136] [cursor=pointer]:
+          - /url: /cgv
+        - link "Confidentialité" [ref=f469e137] [cursor=pointer]:
+          - /url: /confidentialite

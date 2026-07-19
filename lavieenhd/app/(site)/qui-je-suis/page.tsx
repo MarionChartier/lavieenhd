@@ -16,8 +16,8 @@ const PHOTOS = {
 
 const PILLS = [
   "Manifesting Generator 2/4",
-  "Magicienne fraternelle",
-  "Maman d'un Manifestor",
+  "Coach transformationnelle",
+  "Maman d'un petit Manifestor",
 ] as const;
 
 const HD_ATTRIBUTES = [
@@ -29,7 +29,7 @@ const HD_ATTRIBUTES = [
   },
   {
     label: "Profil",
-    value: "2/4 · L'Ermite & l'Opportuniste",
+    value: "2/4",
     blurb:
       "Le besoin de cocon pour digérer, l'élan vers les autres une fois le seuil franchi.",
   },
@@ -126,8 +126,7 @@ export default function QuiJeSuisPage() {
             </h1>
 
             <p className="mt-8 max-w-[520px] font-display text-[20px] font-light italic leading-snug text-ink-deep md:text-[26px]">
-              «&nbsp;Ingénieure qui a déposé les armes, magicienne fraternelle qui s'est
-              autorisée à briller.&nbsp;»
+              «&nbsp;Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la tienne, et à l'exploiter.&nbsp;»
             </p>
 
             <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
@@ -467,13 +466,13 @@ function HDCardLarge() {
   return (
     <div className="w-full max-w-[380px] rounded-md border border-ink/14 bg-white p-7 shadow-[0_24px_60px_-28px_rgba(80,60,98,0.20)] md:p-8">
       <p className="font-body text-[10px] uppercase tracking-[0.24em] text-ink-soft">
-        Carte HD de Marion
+        Carte d'identité HD
       </p>
       <p className="mt-2 pb-1 font-display text-[28px] leading-[1.05] text-ink-deep md:text-[32px]">
         Manifesting Generator 2/4
       </p>
       <p className="font-sub text-[13px] tracking-wide text-turquoise">
-        L'Ermite · l'Opportuniste
+        Magicienne fraternelle
       </p>
 
       <hr className="my-5 border-line" />
@@ -483,7 +482,6 @@ function HDCardLarge() {
         <Row label="Signature" value="Satisfaction" />
         <Row label="Stratégie" value="Répondre" />
         <Row label="Non-Soi" value="Frustration" />
-        <Row label="Profil" value="2/4" />
         <Row label="Définition" value="Double" />
         <Row label="Environnement" value="Montagnes" />
         <Row label="Croix" value="Phœnix Dormant" />
@@ -508,7 +506,7 @@ function HDCardLarge() {
         })}
       </div>
       <p className="mt-3 font-body text-[10px] uppercase tracking-[0.18em] text-ink-soft">
-        9 centres · 7 définis
+        7 centres sur 9 définis
       </p>
     </div>
   );

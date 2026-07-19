@@ -16,13 +16,10 @@ export function LeChemin() {
         {/* Header — titre script + eyebrow + description */}
         <div className="text-center">
           <h2 className="font-script text-[30px] tracking-wide text-ink-deep">
-            Bienvenue chez toi
+            Bienvenue dans le parcours multi-étapes.
           </h2>
           <p className="mt-6 font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-            — Le parcours en 7 étapes —
-          </p>
-          <p className="mx-auto mt-6 max-w-[560px] text-[15px] leading-relaxed text-ink">
-            Tu peux les emprunter dans l'ordre, ou choisir celui qui te parle aujourd'hui.
+            — Une traversée progressive, ou un choix ciblé, selon ce qui t'appelle. —
           </p>
         </div>
 
