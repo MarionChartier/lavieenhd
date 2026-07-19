@@ -86,7 +86,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "The Place to be",
     tag: "S'initier",
     shortDescription:
-      "Ton guide personnalisé pour révéler l'environnement HD dans lequel tu t'épanouis.",
+      "Un Guide complet pour adapter facilement ton lieu de vie et de travail selon TON PROPRE ENVIRONNEMENT Human Design. Parfait pour booster ta vitalité, ton bien-être et tes performances! ✨",
     lead: "Ton environnement, en clair.",
     briefDescription:
       "Tu sais où tu te ressources, maintenant. Ce guide approfondit : ton lieu de vie idéal, ton environnement de travail, les lieux qui te déposent.",
@@ -147,7 +147,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "Inside",
     tag: "Découvrir",
     shortDescription:
-      "Les bases personnalisées de ton schéma HD : tes 7 piliers + 1h de coaching.",
+      "Un Guide de décryptage PERSONNALISÉ des 7 clés fondamentales de ton schéma HD ; pour mieux te comprendre, arrêter de douter de tes choix, et enfin vivre une vie alignée où tu es pleinement toi! ♡",
     lead: "Plonger dans les fondamentaux de ton design.",
     briefDescription:
       "On entre dans le détail : type, autorité, signature, non-soi, stratégie, profil, croix d'incarnation. Un guide personnalisé et une heure avec moi.",
@@ -182,7 +182,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "Reveal",
     tag: "Clarifier",
     shortDescription:
-      "Analyse HD sur ta problématique précise + 1h30 de visio pour l'explorer ensemble.",
+      "1h30 ensemble en visio pour sortir du flou sur une problématique de ta vie pro (débloquer une situation, obtenir une réponse, clarifier une décision,...), grâce à une lecture ciblée de ton HUMAN DESIGN & guidance intuitive.",
     lead: "1h30 pour dénouer ce qui te bloque.",
     briefDescription:
       "Tu as un sujet précis qui te questionne. Je prépare une analyse HD ciblée sur ta problématique, puis nous explorons ensemble en visio pour trouver ta voie.",
@@ -257,7 +257,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "Reconnect",
     tag: "Transformer",
     shortDescription:
-      "3 mois d'introspection profonde : coachings, soins énergétiques, EFT, Inside et Fleur de Talents.",
+      "3 mois d'Accompagnement 1:1 transformationnel, sur-mesure et profond, pour réaligner ta vie professionnelle à tes aspirations de coeur, et oser prendre ta place. 👑 Te révéler & rayonner.",
     lead: "3 mois pour incarner qui tu es.",
     briefDescription:
       "L'accompagnement premium pour aligner ta vie sur ton design en profondeur. Coachings, soins énergétiques, EFT, et tout l'écosystème Marion inclus.",
