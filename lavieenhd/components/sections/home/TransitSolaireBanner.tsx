@@ -54,65 +54,67 @@ export function TransitSolaireBanner() {
 
   return (
     <section className="bg-white px-6 py-10 md:px-20 md:py-14">
-      <div className="mx-auto max-w-(--container-content)">
-        <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-12">
-          {/* Fond paillettes doré (même que le header) + voile blanc pour mieux se fondre */}
-          <Image
-            src="/assets/header-glitter.png"
-            alt=""
-            aria-hidden
-            fill
-            sizes="100vw"
-            className="pointer-events-none absolute inset-0 object-cover"
-          />
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/78" />
-
-          <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
-            {/* ——— Transit solaire ——— */}
-            <div className="flex flex-col items-center gap-5 text-center">
-              <div className="flex items-start gap-3">
-                <Wordmark caps="Transit" script="Solaire" capsClass="text-turquoise" scriptClass="text-[#b8975a]" />
-                <InfoTooltip texte={TRANSIT_EXPLICATION} />
-              </div>
-              <div>
-                <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
-                  Porte {transit.porte}
-                  {transit.motsCles ? ` · ${transit.motsCles}` : ""}
-                </p>
-                {transit.periode && (
-                  <p className="mt-2 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
-                    {transit.periode}
-                  </p>
-                )}
-              </div>
-              <p className="max-w-[440px] font-display text-[17px] leading-relaxed text-ink-deep italic md:text-[18px]">
-                «&nbsp;{transit.message}&nbsp;»
-              </p>
-            </div>
-
-            {/* Séparateur vertical (desktop) / horizontal (mobile) */}
-            <span aria-hidden className="hidden h-full w-px self-stretch bg-ink-deep/15 lg:block" />
-            <span aria-hidden className="mx-auto block h-px w-24 bg-ink-deep/15 lg:hidden" />
-
-            {/* ——— Phase lunaire ——— */}
-            <div className="flex flex-col items-center gap-5 text-center">
-              <Wordmark caps="Phase" script="Lunaire" capsClass="text-ink-lilac" scriptClass="text-ink-deep" />
-              <div className="flex items-center gap-3">
-                {phase && <MoonIcon phase={phase} className="h-9 w-9 flex-none" />}
-                <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
-                  {transit.phase || "Phase du jour"}
-                </p>
-              </div>
-              {transit.phaseDescription && (
-                <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[17px]">
-                  {transit.phaseDescription}
-                </p>
-              )}
-            </div>
+      {/* Deux cards indépendantes : transit à gauche, phase lunaire à droite ; empilées sur mobile. */}
+      <div className="mx-auto grid max-w-(--container-content) grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
+        {/* ——— Card Transit solaire ——— */}
+        <BannerCard>
+          <div className="flex items-start gap-3">
+            <Wordmark caps="Transit" script="Solaire" capsClass="text-turquoise" scriptClass="text-[#b8975a]" />
+            <InfoTooltip texte={TRANSIT_EXPLICATION} />
           </div>
-        </div>
+          <div>
+            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+              Porte {transit.porte}
+              {transit.motsCles ? ` · ${transit.motsCles}` : ""}
+            </p>
+            {transit.periode && (
+              <p className="mt-2 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                {transit.periode}
+              </p>
+            )}
+          </div>
+          <p className="max-w-[440px] font-display text-[17px] leading-relaxed text-ink-deep italic md:text-[18px]">
+            «&nbsp;{transit.message}&nbsp;»
+          </p>
+        </BannerCard>
+
+        {/* ——— Card Phase lunaire ——— */}
+        <BannerCard>
+          <Wordmark caps="Phase" script="Lunaire" capsClass="text-ink-lilac" scriptClass="text-ink-deep" />
+          <div className="flex items-center gap-3">
+            {phase && <MoonIcon phase={phase} className="h-9 w-9 flex-none" />}
+            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+              {transit.phase || "Phase du jour"}
+            </p>
+          </div>
+          {transit.phaseDescription && (
+            <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[17px]">
+              {transit.phaseDescription}
+            </p>
+          )}
+        </BannerCard>
       </div>
     </section>
+  );
+}
+
+/** Card du bandeau — fond paillettes doré (même que le header) + voile blanc. */
+function BannerCard({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-10">
+      <Image
+        src="/assets/header-glitter.png"
+        alt=""
+        aria-hidden
+        fill
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        className="pointer-events-none absolute inset-0 object-cover"
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/78" />
+      <div className="relative flex h-full flex-col items-center justify-start gap-5 text-center">
+        {children}
+      </div>
+    </div>
   );
 }
 
