@@ -2,112 +2,34 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { findTransit, moonPhase, parseCsv, type MoonPhase, type Transit } from "@/lib/transit";
 
 /**
- * Bandeau "Transit solaire actuel".
+ * Bandeau "Transit solaire" + "Phase lunaire".
  *
  * Les données sont gérées par Marion dans un Google Sheet (publié en lecture),
- * lu en direct par le site : la ligne dont la période contient la date du jour
- * est sélectionnée automatiquement. Toute modif dans la feuille apparaît sans
- * redéploiement.
- * Colonnes : Date début | Date fin | Porte | Nom | Message | Phase lunaire
- * Dates au format JJ/MM/AAAA.
+ * lu en direct par le site : la ligne du jour est sélectionnée automatiquement
+ * (une ligne par jour). Toute modif dans la feuille apparaît sans redéploiement.
+ * Colonnes : Date | Porte | Mots clés | Message | Phase lunaire | Description phase lunaire
+ * Dates au format JJ/MM/AAAA. Parsing et regroupement de période : lib/transit.ts.
  */
 const TRANSIT_CSV =
   "https://docs.google.com/spreadsheets/d/1Vh4NuX8EFQHFMJoJy8W7DqYD-M9sf5Y01DzCLV2UMgU/gviz/tq?tqx=out:csv";
 
-interface Transit {
-  porte: string;
-  nom: string;
-  periode: string;
-  resume: string;
-  phase: string;
-}
+/** Texte de Marion pour le point d'interrogation. */
+const TRANSIT_EXPLICATION =
+  "Chaque semaine, le Soleil active une des 64 portes du Human Design. Il vient alors mettre en lumière une thématique particulière que nous allons tous ressentir énergétiquement (que nous ayons ou non la Porte en question active sur notre schéma).";
 
 /** Repli si la feuille est momentanément indisponible. */
 const FALLBACK: Transit = {
   porte: "12",
-  nom: "La Prudence",
-  periode: "du 1 au 6 juin",
-  resume:
+  motsCles: "La Prudence",
+  message:
     "Une période pour choisir tes mots avec soin et n'exprimer que ce qui est vraiment juste pour toi.",
+  periode: "",
   phase: "",
+  phaseDescription: "",
 };
-
-const MOIS = [
-  "janvier",
-  "février",
-  "mars",
-  "avril",
-  "mai",
-  "juin",
-  "juillet",
-  "août",
-  "septembre",
-  "octobre",
-  "novembre",
-  "décembre",
-];
-
-/** Mini-parseur CSV gérant les champs entre guillemets et les guillemets échappés (""). */
-function parseCsv(text: string): string[][] {
-  const rows: string[][] = [];
-  let row: string[] = [];
-  let field = "";
-  let inQuotes = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (inQuotes) {
-      if (c === '"') {
-        if (text[i + 1] === '"') {
-          field += '"';
-          i++;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        field += c;
-      }
-    } else if (c === '"') {
-      inQuotes = true;
-    } else if (c === ",") {
-      row.push(field);
-      field = "";
-    } else if (c === "\n") {
-      row.push(field);
-      rows.push(row);
-      row = [];
-      field = "";
-    } else if (c !== "\r") {
-      field += c;
-    }
-  }
-  if (field.length > 0 || row.length > 0) {
-    row.push(field);
-    rows.push(row);
-  }
-  return rows;
-}
-
-/** "13/06/2026" -> { key, day, month } ; null si invalide. */
-function parseDateFr(s: string): { key: number; day: number; month: number } | null {
-  const m = s.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-  if (!m) return null;
-  const day = Number(m[1]);
-  const month = Number(m[2]);
-  const year = Number(m[3]);
-  return { key: year * 10000 + month * 100 + day, day, month };
-}
-
-function formatPeriode(
-  start: { day: number; month: number },
-  end: { day: number; month: number },
-): string {
-  if (start.month === end.month) {
-    return `du ${start.day} au ${end.day} ${MOIS[end.month - 1]}`;
-  }
-  return `du ${start.day} ${MOIS[start.month - 1]} au ${end.day} ${MOIS[end.month - 1]}`;
-}
 
 export function TransitSolaireBanner() {
   const [transit, setTransit] = useState<Transit>(FALLBACK);
@@ -117,27 +39,8 @@ export function TransitSolaireBanner() {
     fetch(TRANSIT_CSV)
       .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
       .then((csv) => {
-        const rows = parseCsv(csv).slice(1); // saute l'en-tête
-        const now = new Date();
-        const todayKey =
-          now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
-        for (const r of rows) {
-          const start = parseDateFr(r[0] ?? "");
-          const end = parseDateFr(r[1] ?? "");
-          if (!start || !end) continue;
-          if (todayKey >= start.key && todayKey <= end.key) {
-            if (!cancelled) {
-              setTransit({
-                porte: (r[2] ?? "").trim(),
-                nom: (r[3] ?? "").trim(),
-                periode: formatPeriode(start, end),
-                resume: (r[4] ?? "").trim(),
-                phase: (r[5] ?? "").trim(),
-              });
-            }
-            break;
-          }
-        }
+        const found = findTransit(parseCsv(csv), new Date());
+        if (found && !cancelled) setTransit(found);
       })
       .catch(() => {
         /* on garde le repli */
@@ -147,10 +50,12 @@ export function TransitSolaireBanner() {
     };
   }, []);
 
+  const phase = moonPhase(transit.phase);
+
   return (
     <section className="bg-white px-6 py-10 md:px-20 md:py-14">
       <div className="mx-auto max-w-(--container-content)">
-        <div className="relative flex flex-col items-center gap-6 overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-8 text-center shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:flex-row lg:justify-center lg:gap-10 lg:px-12 lg:py-9 lg:text-left">
+        <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-12">
           {/* Fond paillettes doré (même que le header) + voile blanc pour mieux se fondre */}
           <Image
             src="/assets/header-glitter.png"
@@ -160,56 +65,136 @@ export function TransitSolaireBanner() {
             sizes="100vw"
             className="pointer-events-none absolute inset-0 object-cover"
           />
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/75" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/78" />
 
-          {/* Soleil + porte */}
-          <div className="relative flex flex-none items-center gap-4">
-            <SunIcon className="hidden h-12 w-12 flex-none text-[#b8975a] lg:block" />
-            <div>
-              <p className="font-body text-[10px] uppercase tracking-[0.26em] text-ink-deep/60">
-                Transit solaire actuel
-              </p>
-              <p className="mt-2 font-body text-[15px] uppercase tracking-[0.16em] text-ink-deep">
-                Porte {transit.porte} · {transit.nom}
-              </p>
-              <p className="mt-2 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
-                {transit.periode}
-                {transit.phase ? ` · ${transit.phase}` : ""}
+          <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
+            {/* ——— Transit solaire ——— */}
+            <div className="flex flex-col items-center gap-5 text-center">
+              <div className="flex items-start gap-3">
+                <Wordmark caps="Transit" script="Solaire" capsClass="text-turquoise" scriptClass="text-[#b8975a]" />
+                <InfoTooltip texte={TRANSIT_EXPLICATION} />
+              </div>
+              <div>
+                <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+                  Porte {transit.porte}
+                  {transit.motsCles ? ` · ${transit.motsCles}` : ""}
+                </p>
+                {transit.periode && (
+                  <p className="mt-2 font-body text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                    {transit.periode}
+                  </p>
+                )}
+              </div>
+              <p className="max-w-[440px] font-display text-[17px] leading-relaxed text-ink-deep italic md:text-[18px]">
+                «&nbsp;{transit.message}&nbsp;»
               </p>
             </div>
+
+            {/* Séparateur vertical (desktop) / horizontal (mobile) */}
+            <span aria-hidden className="hidden h-full w-px self-stretch bg-ink-deep/15 lg:block" />
+            <span aria-hidden className="mx-auto block h-px w-24 bg-ink-deep/15 lg:hidden" />
+
+            {/* ——— Phase lunaire ——— */}
+            <div className="flex flex-col items-center gap-5 text-center">
+              <Wordmark caps="Phase" script="Lunaire" capsClass="text-ink-lilac" scriptClass="text-ink-deep" />
+              <div className="flex items-center gap-3">
+                {phase && <MoonIcon phase={phase} className="h-9 w-9 flex-none" />}
+                <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+                  {transit.phase || "Phase du jour"}
+                </p>
+              </div>
+              {transit.phaseDescription && (
+                <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[17px]">
+                  {transit.phaseDescription}
+                </p>
+              )}
+            </div>
           </div>
-
-          {/* Séparateur vertical (desktop) */}
-          <span aria-hidden className="relative hidden h-14 w-px bg-ink-deep/20 lg:block" />
-
-          {/* Mini explication */}
-          <p className="relative max-w-[460px] font-display text-[17px] leading-relaxed text-ink-deep md:text-[18px]">
-            {transit.resume}
-          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function SunIcon({ className }: { className?: string }) {
+/**
+ * Wordmark entrelacé façon visuel de référence de Marion :
+ * capitales serif espacées + mot en script superposé sur la moitié basse.
+ */
+function Wordmark({
+  caps,
+  script,
+  capsClass,
+  scriptClass,
+}: {
+  caps: string;
+  script: string;
+  capsClass: string;
+  scriptClass: string;
+}) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden>
-      <circle cx="24" cy="24" r="8" fill="currentColor" opacity="0.85" />
-      <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-        {Array.from({ length: 12 }).map((_, i) => {
-          const a = (i * 360) / 12;
-          const rad = (a * Math.PI) / 180;
-          // Arrondi pour que serveur et client produisent exactement la même
-          // chaîne (sinon mismatch d'hydratation sur les flottants type 17.5000…4).
-          const round = (n: number) => Math.round(n * 1000) / 1000;
-          const x1 = round(24 + Math.cos(rad) * 13);
-          const y1 = round(24 + Math.sin(rad) * 13);
-          const x2 = round(24 + Math.cos(rad) * 18);
-          const y2 = round(24 + Math.sin(rad) * 18);
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
-        })}
-      </g>
+    <span className="relative inline-block pb-6">
+      <span
+        className={`font-display text-[34px] font-light uppercase tracking-[0.26em] drop-shadow-[0_2px_6px_rgba(80,60,98,0.18)] md:text-[40px] ${capsClass}`}
+      >
+        {caps}
+      </span>
+      <span
+        aria-hidden
+        className={`absolute top-[46%] left-1/2 -translate-x-1/2 font-script text-[34px] whitespace-nowrap drop-shadow-[0_2px_5px_rgba(80,60,98,0.28)] md:text-[40px] ${scriptClass}`}
+      >
+        {script}
+      </span>
+      <span className="sr-only">{script}</span>
+    </span>
+  );
+}
+
+/** Point d'interrogation cerclé — tooltip au survol et au focus clavier. */
+function InfoTooltip({ texte }: { texte: string }) {
+  return (
+    <button
+      type="button"
+      aria-describedby="transit-tooltip"
+      className="group relative mt-1 grid h-6 w-6 flex-none cursor-help place-items-center rounded-full border border-ink-deep/40 font-body text-[13px] text-ink-deep/70 transition-colors hover:border-turquoise hover:text-turquoise focus-visible:border-turquoise focus-visible:text-turquoise focus-visible:outline-none"
+    >
+      ?
+      <span
+        role="tooltip"
+        id="transit-tooltip"
+        className="pointer-events-none invisible absolute top-8 left-1/2 z-20 w-[290px] -translate-x-1/2 rounded-md border border-ink/10 bg-white px-4 py-3 text-left font-body text-[12px] leading-relaxed normal-case tracking-normal text-ink shadow-[0_18px_40px_-18px_rgba(80,60,98,0.45)] opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 md:w-[340px]"
+      >
+        {texte}
+      </span>
+    </button>
+  );
+}
+
+/** Pictogramme de lune selon la phase (flat, une seule teinte). */
+function MoonIcon({ phase, className }: { phase: MoonPhase; className?: string }) {
+  const gold = "#b8975a";
+  return (
+    <svg viewBox="0 0 40 40" className={className} aria-hidden>
+      {phase === "pleine" && (
+        <>
+          <circle cx="20" cy="20" r="14" fill={gold} opacity="0.9" />
+          <circle cx="15" cy="16" r="2.4" fill="#fff" opacity="0.35" />
+          <circle cx="24" cy="23" r="1.6" fill="#fff" opacity="0.3" />
+        </>
+      )}
+      {phase === "nouvelle" && (
+        <circle cx="20" cy="20" r="14" fill="none" stroke={gold} strokeWidth="2" opacity="0.85" />
+      )}
+      {phase === "croissante" && (
+        <path
+          d="M14 6.6 a14 14 0 1 0 0 26.8 a17 17 0 0 1 0 -26.8 Z"
+          transform="rotate(180 20 20)"
+          fill={gold}
+          opacity="0.9"
+        />
+      )}
+      {phase === "decroissante" && (
+        <path d="M14 6.6 a14 14 0 1 0 0 26.8 a17 17 0 0 1 0 -26.8 Z" fill={gold} opacity="0.9" />
+      )}
     </svg>
   );
 }
