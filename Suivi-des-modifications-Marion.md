@@ -11,7 +11,9 @@ Grosse fournée de juillet : toutes les finitions convenues ensemble sont termin
 
 ---
 
-## Réalisé en juillet 2026 — finitions
+## Ce qui a été fait
+
+### Finitions V3 — témoignages, textes et nettoyages
 
 **Ton texte d'accueil sur la home**
 - Le texte provisoire sous « La vie en HD » a été remplacé par ton texte définitif : « Ton Human Design, ta boussole. », le sous-titre, tes quatre paragraphes (conditionnements, ton parcours, ce qu'est le Human Design, ta mission), et la signature manuscrite « La vie en HD, à ta portée ».
@@ -37,9 +39,7 @@ Grosse fournée de juillet : toutes les finitions convenues ensemble sont termin
 **Mesure d'audience (Microsoft Clarity)**
 - Ton identifiant Clarity est branché. Rappel : rien ne se déclenche tant que la personne n'a pas accepté les cookies. Il restera à enregistrer l'identifiant côté hébergement (Vercel) au moment de la mise en ligne — je m'en occupe.
 
----
-
-## Réalisé en juillet 2026 — sprint 1
+### Sprint 1 — rituel du jour & nouvelle offre
 
 **Le rituel du jour : Transit solaire & Phase lunaire (page d'accueil)**
 - Deux cards côte à côte accueillent la visiteuse avec l'énergie du moment : le **Transit solaire** (sur le fond pailleté doré du site) et la **Phase lunaire** (en « nuit violette » : la photo des phases de la lune en fond, sous un voile au violet du site).
@@ -54,13 +54,11 @@ Grosse fournée de juillet : toutes les finitions convenues ensemble sont termin
 - Le visuel mains/lumière de ton magasin est utilisé : version détourée avec halo sur la home, médaillon rond sur la page Mes offres.
 - Une **page de vente dédiée** a été créée sur le modèle des autres : présentation, « pour qui ? », le déroulé en 4 étapes (inscription et intention, le jour J en mode réception, toi en transmettrice, le feedback du lendemain), la carte 20 € avec le **bonus tirage au sort** (mini-guidance personnalisée), et des témoignages réels repris de ta page systeme.io (dont Barbara). Le bouton d'achat pointe vers ton bon de commande systeme.io.
 
+### Textes et pages légales — V3 complétée
+
 **Pages légales finalisées**
 - Les pages **Mentions légales** et **Conditions générales de vente** sont complètement remplies avec tes informations officielles : statut micro-entreprise, adresse (20 chemin de Menoux 74350 Cercier), SIRET 93858978500014, TVA non applicable article 293 B du CGI, email de contact.
 - La **Politique de confidentialité** a été enrichie : section Durée de conservation clarifiée, nouvelle section Litiges ajoutée avec renvoi au droit français et médiation de la consommation.
-
----
-
-## Réalisé le 19 juillet 2026 — textes et pages légales (deuxième livraison)
 
 **Textes et descriptions complètement renouvelés — suite à ta review**
 
