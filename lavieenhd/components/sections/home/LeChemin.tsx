@@ -19,7 +19,7 @@ export function LeChemin() {
             Bienvenue chez toi
           </h2>
           <p className="mt-6 font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-            — Le parcours en 6 étapes —
+            — Le parcours en 7 étapes —
           </p>
           <p className="mx-auto mt-6 max-w-[560px] text-[15px] leading-relaxed text-ink">
             Tu peux les emprunter dans l'ordre, ou choisir celui qui te parle aujourd'hui.
@@ -80,7 +80,9 @@ function Postcard({ offre }: { offre: Offre }) {
               width={170}
               height={110}
               className={`relative w-auto object-contain ${
-                offre.slug === "inside"
+                offre.slug === "soin-energetique"
+                  ? "h-[118px] w-[118px] rounded-full object-cover shadow-[0_10px_26px_-10px_rgba(80,60,98,0.45)]"
+                  : offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:max-h-[201px] lg:-translate-y-7"
                   : offre.slug === "reveal"
                     ? "max-h-[125px] max-w-[80%] lg:max-h-[135px] lg:-translate-y-1"

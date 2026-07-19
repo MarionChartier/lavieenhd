@@ -80,6 +80,41 @@ export const OFFRES: Offre[] = [
   },
   {
     num: "02",
+    slug: "soin-energetique",
+    name: "SOIN ÉNERGÉTIQUE",
+    subtitle: "Notre rendez-vous mensuel",
+    shortLabel: "Soin énergétique",
+    tag: "Libérer",
+    shortDescription:
+      "On se retrouve chaque dernier dimanche du mois à 21h, pour un soin collectif à distance afin de libérer tes blocages, et pumper ton énergie.",
+    lead: "Un temps rien que pour toi.",
+    briefDescription:
+      "Chaque dernier dimanche du mois à 21h, un soin énergétique collectif à distance : libérer tes blocages (visibles ou non), refaire circuler l'énergie, et te recalibrer sur la plus haute fréquence.",
+    briefBullets: [
+      "Chaque dernier dimanche du mois à 21h",
+      "Tout se fait à distance, en mode réception",
+      "Feedback détaillé par email le lendemain",
+    ],
+    longDescription:
+      "Un Soin complet pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. Pas de présentiel, pas de live : tout se fait à distance. Tu poses l'intention, tu t'installes en mode cocooning, et tu te laisses chouchouter énergétiquement. Le lendemain, Marion t'envoie son feedback détaillé par email : ressentis, perceptions, travail énergétique effectué, et très souvent des canalisations groupées.",
+    forWhom:
+      "Ce soin est ouvert à tous ceux qui en ressentent l'appel. Il peut t'être bénéfique si tu rencontres des résistances en ce moment, si tu te sens un peu « à plat » ou dans le flou, ou simplement si tu as envie d'ouvrir les fenêtres en grand pour libérer ce qu'il y a à libérer et repimper ton énergie.",
+    included: [
+      "Soin énergétique collectif à distance (1h à 1h15 environ)",
+      "Chaque dernier dimanche du mois à 21h",
+      "Feedback détaillé de Marion par email le lendemain",
+      "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
+    ],
+    keyword: "Libérer",
+    price: "20 €",
+    imgUrl:
+      "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
+    logoSrc: "/assets/logo-soin.png",
+    color: "beige",
+    href: EXTERNAL.offre.soinEnergetique,
+  },
+  {
+    num: "03",
     slug: "place-to-be",
     name: "THE PLACE TO BE",
     subtitle: "Le Guide d'Exploration de ton Environnement HD",
@@ -140,7 +175,7 @@ export const OFFRES: Offre[] = [
     href: EXTERNAL.offre.thePlaceToBe,
   },
   {
-    num: "03",
+    num: "04",
     slug: "inside",
     name: "INSIDE",
     subtitle: "Le Guide d'Immersion dans ton Design Unique",
@@ -175,7 +210,7 @@ export const OFFRES: Offre[] = [
     href: EXTERNAL.offre.insideClub,
   },
   {
-    num: "04",
+    num: "05",
     slug: "reveal",
     name: "REVEAL",
     subtitle: "La Séance Clarté HD Pro",
@@ -211,7 +246,7 @@ export const OFFRES: Offre[] = [
     href: EXTERNAL.offre.reveal,
   },
   {
-    num: "05",
+    num: "06",
     slug: "fleur-de-talents",
     name: "Fleur de Talents Innés",
     subtitle: "L'Exploration Croisée de tes Talents Uniques",
@@ -250,7 +285,7 @@ export const OFFRES: Offre[] = [
     href: EXTERNAL.offre.fleurDeTalents,
   },
   {
-    num: "06",
+    num: "07",
     slug: "reconnect",
     name: "RECONNECT",
     subtitle: "L'Accompagnement Premium de Reconnexion Professionnelle",
