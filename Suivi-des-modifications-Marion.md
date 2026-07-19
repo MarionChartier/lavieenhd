@@ -1,7 +1,7 @@
 # La vie en HD, suivi des modifications
 
 Document de suivi du site, sans jargon. On l'enrichit au fur et à mesure.
-Dernière mise à jour : 19 juillet 2026.
+Dernière mise à jour : 19 juillet 2026 (fin d'après-midi — textes complets, pages légales finalisées).
 
 ---
 
@@ -53,6 +53,58 @@ Grosse fournée de juillet : toutes les finitions convenues ensemble sont termin
 - L'offre entre dans le parcours « Bienvenue chez toi » en étape 02 avec le verbe **« Libérer »**, le nom **SOIN ENERGETIQUE**, le sous-titre « Notre rendez-vous mensuel » et ta description. Le parcours passe officiellement de 6 à **7 étapes** (et « Sept espaces » sur la page Mes offres).
 - Le visuel mains/lumière de ton magasin est utilisé : version détourée avec halo sur la home, médaillon rond sur la page Mes offres.
 - Une **page de vente dédiée** a été créée sur le modèle des autres : présentation, « pour qui ? », le déroulé en 4 étapes (inscription et intention, le jour J en mode réception, toi en transmettrice, le feedback du lendemain), la carte 20 € avec le **bonus tirage au sort** (mini-guidance personnalisée), et des témoignages réels repris de ta page systeme.io (dont Barbara). Le bouton d'achat pointe vers ton bon de commande systeme.io.
+
+**Pages légales finalisées**
+- Les pages **Mentions légales** et **Conditions générales de vente** sont complètement remplies avec tes informations officielles : statut micro-entreprise, adresse (20 chemin de Menoux 74350 Cercier), SIRET 93858978500014, TVA non applicable article 293 B du CGI, email de contact.
+- La **Politique de confidentialité** a été enrichie : section Durée de conservation clarifiée, nouvelle section Litiges ajoutée avec renvoi au droit français et médiation de la consommation.
+
+---
+
+## Réalisé le 19 juillet 2026 — textes et pages légales (deuxième livraison)
+
+**Textes et descriptions complètement renouvelés — suite à ta review**
+
+*Section hero et calculateur*
+- Titre au-dessus du calculateur remplacé : « Il est temps de dévoiler ton mode d'emploi personnel. »
+
+*Section "Le Chemin" (offres)*
+- Titre principal : « Bienvenue dans le parcours multi-étapes. »
+- Sous-titre : « — Une traversée progressive, ou un choix ciblé, selon ce qui t'appelle. — »
+- Suppression de la phrase « Tu peux les emprunter dans l'ordre... » pour plus de clarté.
+
+*Descriptions des offres — alignées avec ta voix*
+- **Quiz gratuits** : nouveau sous-titre « Des quiz rapides et ludiques pour mieux te connaître. » et description complète sur la découverte.
+- **The Place to Be** : description orientée vers l'adaptation de l'environnement et la vitalité.
+- **Inside** : description axée sur les 7 clés et la reconnexion à ta vraie nature.
+- **Reveal** : verbe d'action changé de « Clarifier » à « Démêler » ; description complète sur le dénoument des situations bloquantes.
+- **BLOOMING** (anciennement « Fleur de Talents Innés ») : renommé avec sous-titre « Ta Fleur de Talents Innés® » ; description orientée vers la mise en lumière de tes dons et zone de génie avec 1h30 de coaching inclus.
+- **Reconnect** : verbe d'action changé de « Transformer » à « Incarner » ; description détaillée incluant tous les éléments (INSIDE, BLOOMING, tests, coachings, soins énergétiques, EFT, méditations).
+
+*Section "Qui je suis" (ta page Marion)*
+- PILLS mises à jour : « Coach transformationnelle » au lieu de « Magicienne fraternelle » ; « Maman d'un petit Manifestor » au lieu de « Maman d'un Manifestor ».
+- Ta citation remplacée : « Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la tienne, et à l'exploiter. »
+- Carte HD renommée : « Carte d'identité HD » au lieu de « Carte HD de Marion ».
+- Profil sur la carte : « Magicienne fraternelle » au lieu de « L'Ermite · l'Opportuniste ».
+- Suppression de la ligne « Profil » en double sur la carte.
+- Centres mis à jour : « 7 centres sur 9 définis » au lieu de « 9 centres · 7 définis ».
+
+*Section Instagram*
+- Bouton CTA : « Me suivre sur Instagram » au lieu de « Suivre sur Instagram ».
+
+*Soul Letter Banner*
+- Titre : « De temps en temps, je t'écris en toute intimité. »
+- Description : « Des tips de Human Design et d'alignement de vie professionnelle, des réflexions, des prises de conscience, des actualités de La vie en HD, mais aussi les coulisses de mon quotidien. Sans bullshit, sans diffusion massive. »
+
+*FAQ de la page d'accueil — grande mise à jour*
+- Remplacement complet avec réponses plus détaillées et éducatives.
+- Deux nouvelles questions ajoutées :
+  - « Pourquoi avoir quitté ton poste d'Ingénieur pour ça? » — ta vraie histoire, ta mission.
+  - « Quelle différence entre Blooming, Reveal et Reconnect? » — guide clair pour les clientes.
+
+*Pages légales*
+- **Mentions légales** : remplies complètement avec tes coordonnées officielles.
+- **Conditions générales de vente** : articles complets (champ d'application, limitation d'âge, commande, prix, paiement, délivrable, données, droit applicable, droit de rétractation, exécution et annulation, responsabilité, informations de la société).
+- **Politique de confidentialité** : section Durée de conservation clarifiée ; nouvelle section Litiges ajoutée.
 
 ---
 
