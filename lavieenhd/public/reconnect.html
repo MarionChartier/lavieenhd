@@ -129,13 +129,6 @@
     .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
 
     /* ABOUT */
-    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
-    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
-    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
-    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
-    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
-    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
-    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
 
     /* FAQ */
     .faq-section{background:var(--blanc);padding:var(--gap) 0;}
@@ -176,7 +169,7 @@
 
     @media(max-width:720px){
       :root{--gap:80px;}
-      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+      .testi-cards{grid-template-columns:1fr;gap:40px;}
     }
   </style>
 </head>
@@ -213,7 +206,6 @@
   <a href="javascript:void(0)" onclick="document.getElementById('deroule').scrollIntoView({behavior:'smooth'})" data-section="deroule"><span class="dot-label">Le déroulé</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" data-section="investissement"><span class="dot-label">L'investissement</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
-  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
 </nav>
 
@@ -466,26 +458,6 @@
   </div>
 </section>
 
-<!-- QUI JE SUIS -->
-<section class="about-section" id="about">
-  <div class="container--wide">
-    <div class="about-inner reveal">
-      <picture><source type="image/webp" srcset="/assets/marion-reflexion.webp"/><img class="about-photo" src="/assets/marion-reflexion.jpg" alt="Marion Chartier"/></picture>
-      <div class="about-text">
-        <span class="eyebrow">En quelques mots</span>
-        <div class="divider divider--left"></div>
-        <h2 class="display">Qui je suis?</h2>
-        <p>Moi c'est Marion ! :) En Human Design, je suis MG 2/4 ; la magicienne fraternelle multi-passionnée si on veut faire un (gros) résumé! 😄</p>
-        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens professionnel à ne pas trouver ma place, je me suis finalement retrouvée grâce à un plongeon dans le Human Design, et je suis aujourd'hui Coach transformationnelle, pour toi.♥</p>
-        <p>Je suis maman d'un petit Manifestor de 2 ans qui me montre chaque jour à quel point on est finalement aligné naturellement à sa vraie nature lorsqu'on est enfant! C'est une priorité essentielle pour moi de le maintenir connecté à lui au maximum, loin des moules rigides et des injonctions qui pourraient l'éteindre!</p>
-        <p>Je vois trop de personnes, qui, à force de conditionnements extérieurs, se retrouvent complètement déconnectées et perdues à l'âge adulte, si éloignées de qui elles sont ! (Moi la première je suis passée par là...)</p>
-        <p>C'est donc une vraie mission de cœur pour moi aujourd'hui de t'accompagner grâce à des outils puissants comme le Human Design, à te retrouver pour te révéler pleinement dans ta vie pro (mais pas que!). 🌟</p>
-        <p class="signature">La vie en HD, à ta portée</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="faq-section" id="faq">
   <div class="container">
@@ -590,7 +562,7 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Active dot on scroll
-  const sections = ['pourqui','reconnect','inclus','deroule','investissement','testimonials','about','faq'];
+  const sections = ['pourqui','reconnect','inclus','deroule','investissement','testimonials','faq'];
   const navLinks = document.querySelectorAll('#sidenav a');
   function updateNav() {
     let current = '';
