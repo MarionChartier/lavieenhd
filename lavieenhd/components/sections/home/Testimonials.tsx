@@ -21,8 +21,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Barbara",
     offre: "Soin énergétique",
-    // Photo transmise prochainement par Marion — Anonyme en attendant.
-    photo: ANONYME,
+    photo: PHOTO("Barbara.png"),
     text: `Je dois vraiment te dire merci du fond du cœur car je pense que le soin de décembre a ouvert la porte derrière laquelle je restais coincée.
 
 On en parlait avec une amie cet après-midi : elle a fait le soin aussi, elle a le même ressenti. 💖`,
@@ -64,8 +63,7 @@ Quelques mois après : « Honnêtement merci encore Marion parce que vraiment te
   {
     name: "Émilie",
     offre: "Blooming",
-    // Photo transmise prochainement par Marion — Anonyme en attendant.
-    photo: ANONYME,
+    photo: PHOTO("Emilie.png"),
     text: `Waw 😍🥲 !
 
 Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗).
