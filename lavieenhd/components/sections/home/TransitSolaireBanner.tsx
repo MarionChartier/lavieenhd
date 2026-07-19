@@ -78,17 +78,22 @@ export function TransitSolaireBanner() {
           </p>
         </BannerCard>
 
-        {/* ——— Card Phase lunaire ——— */}
-        <BannerCard>
-          <Wordmark caps="Phase" script="Lunaire" capsClass="text-ink-lilac" scriptClass="text-ink-deep" />
+        {/* ——— Card Phase lunaire — fond photo des phases de la lune, mode nuit ——— */}
+        <BannerCard bgSrc="/assets/phase-lunaire.jpg" veilClass="bg-[#1c1424]/55">
+          <Wordmark
+            caps="Phase"
+            script="Lunaire"
+            capsClass="text-ink-lilac"
+            scriptClass="text-[#e9dcc0]"
+          />
           <div className="flex items-center gap-3">
             {phase && <MoonIcon phase={phase} className="h-9 w-9 flex-none" />}
-            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
+            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
               {transit.phase || "Phase du jour"}
             </p>
           </div>
           {transit.phaseDescription && (
-            <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[17px]">
+            <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-white/90 md:text-[17px]">
               {transit.phaseDescription}
             </p>
           )}
@@ -98,19 +103,30 @@ export function TransitSolaireBanner() {
   );
 }
 
-/** Card du bandeau — fond paillettes doré (même que le header) + voile blanc. */
-function BannerCard({ children }: { children: React.ReactNode }) {
+/**
+ * Card du bandeau. Par défaut : fond paillettes doré (même que le header) + voile blanc.
+ * La card lunaire passe sa propre image (photo des phases) + un voile sombre.
+ */
+function BannerCard({
+  children,
+  bgSrc = "/assets/header-glitter.png",
+  veilClass = "bg-white/78",
+}: {
+  children: React.ReactNode;
+  bgSrc?: string;
+  veilClass?: string;
+}) {
   return (
     <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-10">
       <Image
-        src="/assets/header-glitter.png"
+        src={bgSrc}
         alt=""
         aria-hidden
         fill
         sizes="(min-width: 1024px) 50vw, 100vw"
         className="pointer-events-none absolute inset-0 object-cover"
       />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/78" />
+      <div aria-hidden className={`pointer-events-none absolute inset-0 ${veilClass}`} />
       <div className="relative flex h-full flex-col items-center justify-start gap-5 text-center">
         {children}
       </div>
