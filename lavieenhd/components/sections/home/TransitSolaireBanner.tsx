@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { findTransit, moonPhase, parseCsv, type MoonPhase, type Transit } from "@/lib/transit";
+import { findTransit, parseCsv, type Transit } from "@/lib/transit";
 
 /**
  * Bandeau "Transit solaire" + "Phase lunaire".
@@ -54,8 +54,6 @@ export function TransitSolaireBanner() {
     };
   }, []);
 
-  const phase = moonPhase(transit.phase);
-
   return (
     <section className="bg-white px-6 py-10 md:px-20 md:py-14">
       {/* Deux cards indépendantes : transit à gauche, phase lunaire à droite ; empilées sur mobile. */}
@@ -91,12 +89,9 @@ export function TransitSolaireBanner() {
             capsClass="text-ink-lilac"
             scriptClass="text-[#e9dcc0]"
           />
-          <div className="flex items-center gap-3">
-            {phase && <MoonIcon phase={phase} className="h-9 w-9 flex-none" />}
-            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
-              {transit.phase || "Phase du jour"}
-            </p>
-          </div>
+          <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
+            {transit.phase || "Phase du jour"}
+          </p>
           {transit.phaseDescription && (
             <p className="max-w-[440px] font-display text-[16px] leading-relaxed whitespace-pre-line text-white/90 md:text-[17px]">
               {transit.phaseDescription}
@@ -202,35 +197,5 @@ function InfoTooltip({ id, texte, dark }: { id: string; texte: string; dark?: bo
         {texte}
       </span>
     </button>
-  );
-}
-
-/** Pictogramme de lune selon la phase (flat, une seule teinte). */
-function MoonIcon({ phase, className }: { phase: MoonPhase; className?: string }) {
-  const gold = "#b8975a";
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
-      {phase === "pleine" && (
-        <>
-          <circle cx="20" cy="20" r="14" fill={gold} opacity="0.9" />
-          <circle cx="15" cy="16" r="2.4" fill="#fff" opacity="0.35" />
-          <circle cx="24" cy="23" r="1.6" fill="#fff" opacity="0.3" />
-        </>
-      )}
-      {phase === "nouvelle" && (
-        <circle cx="20" cy="20" r="14" fill="none" stroke={gold} strokeWidth="2" opacity="0.85" />
-      )}
-      {phase === "croissante" && (
-        <path
-          d="M14 6.6 a14 14 0 1 0 0 26.8 a17 17 0 0 1 0 -26.8 Z"
-          transform="rotate(180 20 20)"
-          fill={gold}
-          opacity="0.9"
-        />
-      )}
-      {phase === "decroissante" && (
-        <path d="M14 6.6 a14 14 0 1 0 0 26.8 a17 17 0 0 1 0 -26.8 Z" fill={gold} opacity="0.9" />
-      )}
-    </svg>
   );
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { findTransit, moonPhase, parseCsv } from "./transit";
+import { findTransit, parseCsv } from "./transit";
 
 describe("parseCsv", () => {
   it("découpe lignes et champs simples", () => {
@@ -72,22 +72,5 @@ describe("findTransit", () => {
   it("ignore les lignes vides ou mal datées", () => {
     const sheet = [HEADER, ["", "", "", "", "", ""], ...SHEET.slice(1)];
     expect(findTransit(sheet, new Date(2026, 6, 19))!.porte).toBe("56");
-  });
-});
-
-describe("moonPhase", () => {
-  it.each([
-    ["Pleine Lune", "pleine"],
-    ["Pleine Lune J-2", "pleine"],
-    ["Nouvelle Lune J+3", "nouvelle"],
-    ["Lune croissante", "croissante"],
-    ["Lune décroissante", "decroissante"],
-  ])("%s → %s", (label, expected) => {
-    expect(moonPhase(label)).toBe(expected);
-  });
-
-  it("retourne null pour un libellé inconnu ou vide", () => {
-    expect(moonPhase("")).toBeNull();
-    expect(moonPhase("Éclipse totale")).toBeNull();
   });
 });
