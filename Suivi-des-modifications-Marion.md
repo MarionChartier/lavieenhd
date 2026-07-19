@@ -136,7 +136,7 @@ Reste à faire (contenus et finitions) :
 
 - La barre de navigation reste visible en permanence quand on défile (ton choix).
 - Header : bandeau blanc flottant, entouré d'une fine bordure aquarelle (violet/cyan/doré), aux coins arrondis. Recréé directement en code, ajustable à volonté.
-- Reveal : verbe d'action « Clarifier » ; Soin énergétique : « Libérer ».
+- Reveal : verbe d'action « Démêler » ; Soin énergétique : « Libérer ».
 - Quiz : intégrés en pages autonomes (ton design 100% préservé).
 - Inside : **122 €** partout ; la Plongée autonome n'existe plus.
 - Rituel du jour : deux cards indépendantes côte à côte (l'essai « bandeaux pleine largeur » a été écarté), sans pictogramme de lune, fond de la card lunaire adouci au violet du site.
