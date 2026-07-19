@@ -135,14 +135,18 @@
 
     /* TESTI */
     .testi-section{background:var(--blanc);padding:var(--gap) 0;}
-    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
-    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
-    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
-    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
-    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:stretch;}
-    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
-    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
-    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+    .testi-hero{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;max-width:880px;margin:0 auto;}
+    .testi-photo{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto;}
+    .testi-quote{display:block;font-family:var(--font-serif);font-size:64px;line-height:.4;color:var(--cyan);text-align:center;}
+    .testi-name{font-family:var(--font-script);font-size:30px;line-height:1.2;color:var(--cyan);text-align:center;margin-bottom:16px;}
+    .testi-text{font-family:var(--font-serif);font-size:18px;font-weight:300;line-height:1.85;color:var(--texte);text-align:center;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px;align-items:stretch;}
+    .testi-card{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:16px;padding:36px 30px 32px;display:flex;flex-direction:column;align-items:center;box-shadow:0 14px 38px -26px rgba(80,60,98,.35);}
+    .testi-card:nth-child(odd):last-child{grid-column:1/-1;}
+    .testi-card .testi-photo{max-width:84px;margin-bottom:10px;}
+    .testi-card .testi-name{font-size:24px;margin-bottom:12px;}
+    .testi-card .testi-text{font-size:16px;line-height:1.75;max-width:680px;}
+    @media(max-width:720px){.testi-hero{grid-template-columns:1fr;gap:24px;}.testi-hero .testi-photo{max-width:160px;}}
 
     /* FAQ */
     .faq-section{background:var(--blanc);padding:var(--gap) 0;}
@@ -480,35 +484,45 @@
       <h2 class="display">Témoignages</h2>
     </div>
 
-    <div class="testi-whatsapp reveal">
-      Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi! Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connait pas! 😮 Et c'est quand même dingue d'avoir attendu plus de 35ans pour découvrir que j'avais été livrée avec un mode d'emploi!! 😂 Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement, c'est tout à fait moi, depuis enfant, c'est fou! Et il y a d'autres aspects de moi que je découvre et que j'ai envie de creuser du coup! 😍 Merci mille fois pour toutes ces informations précieuses Marion, ça résonne beaucoup en moi, c'est très parlant! Bluffant même! 💥
-      <div class="testi-tag"><span class="testi-avatar">L</span> Louise-Armance</div>
+    <div class="testi-hero reveal">
+      <img class="testi-photo" src="/assets/temoignages/Louise-Armance.png" alt="Louise-Armance" loading="lazy"/>
+      <div>
+        <span class="testi-quote" aria-hidden="true">“</span>
+        <p class="testi-name">Louise-Armance</p>
+        <p class="testi-text">Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi! Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connait pas! 😮 Et c'est quand même dingue d'avoir attendu plus de 35ans pour découvrir que j'avais été livrée avec un mode d'emploi!! 😂 Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement, c'est tout à fait moi, depuis enfant, c'est fou! Et il y a d'autres aspects de moi que je découvre et que j'ai envie de creuser du coup! 😍 Merci mille fois pour toutes ces informations précieuses Marion, ça résonne beaucoup en moi, c'est très parlant! Bluffant même! 💥</p>
+      </div>
     </div>
 
     <div class="testi-cards reveal">
       <div class="testi-card">
-        <p>"J'ai découvert le Human Design grâce à Marion. Je ne connaissais pas du tout, et au fur et à mesure que je lisais mon guide d'immersion j'étais bluffée et scotchée par la justesse! La lecture est très fluide, c'est vraiment agréable, et j'ai adoré les exemples pour illustrer. Marion donne beaucoup d'informations très claires et précises, et le guide est hyper structuré, construit, détaillé. Et dans le coaching associé, elle est très pédagogue, très à l'écoute et impressionnante dans son expertise (tout en se mettant parfaitement à la place d'une novice comme moi!) 🙏💗 Et ça m'a surtout permis de mettre des mots sur des ressentis profondément ancrés depuis des années, et que je n'arrivais pas à verbaliser jusqu'à présent! Donc ça a été un vrai soulagement pour moi, comme-ci on m'avait ôté un poids considérable! C'est tellement fou de chez fou que j'ai du mal à y croire, je suis vraiment épatée de tout ça. Et en plus ça vient aussi confirmer mes choix, comme-ci ça venait valider et ancrer mes intuitions! Je recommande Marion les yeux fermés, merci pour cette belle découverte et le temps consacré à mes questions.🥰"</p>
-        <div class="author">Astrig</div>
+        <img class="testi-photo" src="/assets/temoignages/Astrig2.png" alt="Astrig" loading="lazy"/>
+        <p class="testi-name">Astrig</p>
+        <p class="testi-text">J'ai découvert le Human Design grâce à Marion. Je ne connaissais pas du tout, et au fur et à mesure que je lisais mon guide d'immersion j'étais bluffée et scotchée par la justesse! La lecture est très fluide, c'est vraiment agréable, et j'ai adoré les exemples pour illustrer. Marion donne beaucoup d'informations très claires et précises, et le guide est hyper structuré, construit, détaillé. Et dans le coaching associé, elle est très pédagogue, très à l'écoute et impressionnante dans son expertise (tout en se mettant parfaitement à la place d'une novice comme moi!) 🙏💗 Et ça m'a surtout permis de mettre des mots sur des ressentis profondément ancrés depuis des années, et que je n'arrivais pas à verbaliser jusqu'à présent! Donc ça a été un vrai soulagement pour moi, comme-ci on m'avait ôté un poids considérable! C'est tellement fou de chez fou que j'ai du mal à y croire, je suis vraiment épatée de tout ça. Et en plus ça vient aussi confirmer mes choix, comme-ci ça venait valider et ancrer mes intuitions! Je recommande Marion les yeux fermés, merci pour cette belle découverte et le temps consacré à mes questions.🥰</p>
       </div>
       <div class="testi-card">
-        <p>"Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds. Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature. Je croyais que le Human Design était réservé aux initiés, mais en réalité, c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi. Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'inviter dans ma vie."</p>
-        <div class="author">Sylvie</div>
+        <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Sylvie" loading="lazy"/>
+        <p class="testi-name">Sylvie</p>
+        <p class="testi-text">Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds. Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature. Je croyais que le Human Design était réservé aux initiés, mais en réalité, c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi. Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'inviter dans ma vie.</p>
       </div>
       <div class="testi-card">
-        <p>"J'ai tout dévoré d'une seule traite! C'est IN-CROY-ABLE !!! On dirait que tu me connais depuis 30 ans, tout est juste, c'est fou, je n'en reviens pas! 🤩 C'est étrange comme sensation de lire ce que je suis dans la réalité, juste à partir de mes informations de naissance. C'est impressionnant! Maintenant que j'ai ce guide d'immersion dans mon Design, je trouve ça hyper apaisant et rassurant de constater que certains de mes fonctionnements ne sont pas juste une "lubie" de ma part, mais que ça fait parti de moi en fait! Merci infiniment Marion! 💖"</p>
-        <div class="author">Camille</div>
+        <img class="testi-photo" src="/assets/temoignages/Camille.png" alt="Camille" loading="lazy"/>
+        <p class="testi-name">Camille</p>
+        <p class="testi-text">J'ai tout dévoré d'une seule traite! C'est IN-CROY-ABLE !!! On dirait que tu me connais depuis 30 ans, tout est juste, c'est fou, je n'en reviens pas! 🤩 C'est étrange comme sensation de lire ce que je suis dans la réalité, juste à partir de mes informations de naissance. C'est impressionnant! Maintenant que j'ai ce guide d'immersion dans mon Design, je trouve ça hyper apaisant et rassurant de constater que certains de mes fonctionnements ne sont pas juste une "lubie" de ma part, mais que ça fait parti de moi en fait! Merci infiniment Marion! 💖</p>
       </div>
       <div class="testi-card">
-        <p>"Déjà visuellement j'adore, ça donne vraiment envie de lire! Le guide est super bien structuré, organisé, clair, beau et lumineux! ✨ Et c'est super parce que tes explications sont concrètes et illustrées, ça rend les choses hyper compréhensibles. On sent qu'il y a eu un gros travail de vulgarisation pour clarifier des termes qui peuvent sembler abstraits, et rendre ça accessible à tout le monde, c'est trop chouette! En bonus, les petites questions au fil du guide amènent vraiment à réfléchir et à conscientiser les choses. Et tout ce que tu décris c'est exactement moi, truc de dingue! Je m'y retrouve énormément, ça reflète vraiment qui je suis au fond de moi je trouve. C'est ultra intéressant, je vais le relire plusieurs fois parce qu'il y a beaucoup de choses à assimiler. Et je pense sincèrement que le coaching avec toi est un vrai plus à s'offrir! Franchement merci beaucoup Marion 🥰"</p>
-        <div class="author">Justine</div>
+        <img class="testi-photo" src="/assets/temoignages/Justine.png" alt="Justine" loading="lazy"/>
+        <p class="testi-name">Justine</p>
+        <p class="testi-text">Déjà visuellement j'adore, ça donne vraiment envie de lire! Le guide est super bien structuré, organisé, clair, beau et lumineux! ✨ Et c'est super parce que tes explications sont concrètes et illustrées, ça rend les choses hyper compréhensibles. On sent qu'il y a eu un gros travail de vulgarisation pour clarifier des termes qui peuvent sembler abstraits, et rendre ça accessible à tout le monde, c'est trop chouette! En bonus, les petites questions au fil du guide amènent vraiment à réfléchir et à conscientiser les choses. Et tout ce que tu décris c'est exactement moi, truc de dingue! Je m'y retrouve énormément, ça reflète vraiment qui je suis au fond de moi je trouve. C'est ultra intéressant, je vais le relire plusieurs fois parce qu'il y a beaucoup de choses à assimiler. Et je pense sincèrement que le coaching avec toi est un vrai plus à s'offrir! Franchement merci beaucoup Marion 🥰</p>
       </div>
       <div class="testi-card">
-        <p>"Coucou Marion, Déjà merci !!! Beaucoup !!! J'adore comment c'est rédigé, la façon dont tu écris et explique les choses, c'est très clair. J'y ai retrouvé des choses tellement vraies, tellement moi ; un peu l'histoire de ma vie! 😄 Et j'ai aussi appris plein de choses nouvelles complémentaires à ce que je n'avais jamais lu encore. Wahou je trouve le HD vraiment magique, c'est ma plus belle découverte de l'année pour le moment! ^^ Merci Marion c'est génial !! 😍"</p>
-        <div class="author">Ludivine</div>
+        <img class="testi-photo" src="/assets/temoignages/Ludivine.png" alt="Ludivine" loading="lazy"/>
+        <p class="testi-name">Ludivine</p>
+        <p class="testi-text">Coucou Marion, Déjà merci !!! Beaucoup !!! J'adore comment c'est rédigé, la façon dont tu écris et explique les choses, c'est très clair. J'y ai retrouvé des choses tellement vraies, tellement moi ; un peu l'histoire de ma vie! 😄 Et j'ai aussi appris plein de choses nouvelles complémentaires à ce que je n'avais jamais lu encore. Wahou je trouve le HD vraiment magique, c'est ma plus belle découverte de l'année pour le moment! ^^ Merci Marion c'est génial !! 😍</p>
       </div>
       <div class="testi-card">
-        <p>"Oh la la 🤩🤩🤩!! Je voulais te remercier 🙏 pour ton travail qui est remarquable, c'est une vraie pépite!💕 Franchement, chapeau, je me reconnais dans tout ce que tu décris, tout me fait écho! Ça m'a provoqué beaucoup de joie de te lire, et ça a mis du sens sur certaines choses, en enlevant la peur que j'y associais! Le HD est un outil remarquable, merci encore, tu déchires! 🔥"</p>
-        <div class="author">Fabienne</div>
+        <img class="testi-photo" src="/assets/temoignages/Fabienne.png" alt="Fabienne" loading="lazy"/>
+        <p class="testi-name">Fabienne</p>
+        <p class="testi-text">Oh la la 🤩🤩🤩!! Je voulais te remercier 🙏 pour ton travail qui est remarquable, c'est une vraie pépite!💕 Franchement, chapeau, je me reconnais dans tout ce que tu décris, tout me fait écho! Ça m'a provoqué beaucoup de joie de te lire, et ça a mis du sens sur certaines choses, en enlevant la peur que j'y associais! Le HD est un outil remarquable, merci encore, tu déchires! 🔥</p>
       </div>
     </div>
   </div>
