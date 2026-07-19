@@ -64,7 +64,7 @@ function Postcard({ offre }: { offre: Offre }) {
       )}
 
       <div
-        className={`grid grid-cols-1 overflow-hidden rounded-md border border-ink/12 bg-white shadow-[0_12px_30px_-20px_rgba(80,60,98,0.18)] transition-all lg:h-[160px] lg:grid-cols-[220px_1fr_280px] ${
+        className={`grid grid-cols-1 overflow-hidden rounded-md border border-ink/12 bg-white shadow-[0_12px_30px_-20px_rgba(80,60,98,0.18)] transition-all lg:min-h-[160px] lg:grid-cols-[220px_1fr_300px] ${
           offre.signature
             ? "hover:border-turquoise hover:shadow-[0_0_60px_8px_rgba(117,206,210,0.55),0_20px_50px_-15px_rgba(80,60,98,0.22)]"
             : "hover:border-turquoise hover:shadow-[0_24px_48px_-24px_rgba(80,60,98,0.18)]"
@@ -83,11 +83,11 @@ function Postcard({ offre }: { offre: Offre }) {
                 offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:max-h-[201px] lg:-translate-y-7"
                   : offre.slug === "reveal"
-                    ? "max-h-[155px] max-w-[92%] lg:max-h-[165px] lg:-translate-y-4"
+                    ? "max-h-[125px] max-w-[80%] lg:max-h-[135px] lg:-translate-y-1"
                     : offre.slug === "place-to-be"
                       ? "max-h-[155px] max-w-[90%]"
                       : offre.slug === "fleur-de-talents"
-                        ? "max-h-[140px] max-w-[88%] lg:-translate-y-2"
+                        ? "max-h-[160px] max-w-[96%] lg:max-h-[175px] lg:-translate-y-2"
                         : "max-h-[120px] max-w-[85%]"
               }`}
             />
@@ -127,7 +127,7 @@ function Postcard({ offre }: { offre: Offre }) {
         {/* DESCRIPTION — droite, même zone colorée que le logo */}
         <div className={`relative grid place-items-center overflow-hidden px-6 py-5 ${gradient}`}>
           <div className="absolute -inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.5)_0%,transparent_70%)]" />
-          <p className="relative text-center font-display text-[16px] font-light leading-snug text-ink-deep md:text-[18px] lg:text-left">
+          <p className="relative text-center font-display text-[15px] font-light leading-snug text-ink-deep md:text-[16px] lg:text-left">
             {offre.shortDescription}
           </p>
         </div>

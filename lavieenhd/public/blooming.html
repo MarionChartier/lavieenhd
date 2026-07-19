@@ -125,18 +125,21 @@
     .tg-calc{max-width:760px;margin:0 auto;background:var(--blanc);border-radius:12px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(80,60,98,.22);}
     .tg-calc iframe{display:block;width:100%;border:0;background:transparent;height:820px;}
     @media(min-width:700px){.tg-calc iframe{height:500px;}}
-    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:600px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
-    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
-    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
-    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
+    .testi-hero{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;max-width:880px;margin:0 auto;}
+    .testi-photo{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto;}
+    .testi-quote{display:block;font-family:var(--font-serif);font-size:64px;line-height:.4;color:var(--cyan);text-align:center;}
+    .testi-name{font-family:var(--font-script);font-size:30px;line-height:1.2;color:var(--cyan);text-align:center;margin-bottom:16px;}
+    .testi-name small{display:block;font-family:var(--font-sans);font-size:11px;letter-spacing:.08em;color:var(--texte-doux);margin-top:6px;}
+    .testi-text{font-family:var(--font-serif);font-size:18px;font-weight:300;line-height:1.85;color:var(--texte);text-align:center;}
     .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:40px;}
     .score-card{text-align:center;padding:28px 14px;border:1px solid rgba(190,164,216,.25);border-radius:8px;}
     .score-number{font-family:var(--font-display);font-size:38px;color:var(--violet);line-height:1;margin-bottom:8px;}
     .score-label{font-size:13px;color:var(--texte-doux);line-height:1.4;}
-    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;}
-    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
-    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
-    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:40px;}
+    .testi-card{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:16px;padding:36px 30px 32px;display:flex;flex-direction:column;align-items:center;box-shadow:0 14px 38px -26px rgba(80,60,98,.35);}
+    .testi-card:nth-child(odd):last-child{grid-column:1/-1;}
+    .testi-card .testi-text{font-size:16px;line-height:1.75;max-width:680px;}
+    @media(max-width:720px){.testi-hero{grid-template-columns:1fr;gap:24px;}.testi-hero .testi-photo{max-width:160px;}}
 
     /* PRICING */
     .pricing-section{padding:var(--gap) 0;}
@@ -576,13 +579,14 @@ On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et
       <div class="divider"></div>
       <h2 class="display">Leurs mots valent plus qu'un long discours. ♡</h2>
     </div>
-    <div class="testi-whatsapp reveal">
-      Waw 😍🥲 !<br/><br/>
-      Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗).<br/><br/>
-      Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.<br/>Je vais l'imprimer en grand je pense tellement elle est belle 😁 !
-      <div class="testi-tag">
-        <div class="testi-avatar">É</div>
-        <span>Émilie — à chaud, quelques minutes après la découverte de sa Fleur</span>
+    <div class="testi-hero reveal">
+      <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Émilie" loading="lazy"/>
+      <div>
+        <span class="testi-quote" aria-hidden="true">“</span>
+        <p class="testi-name">Émilie<small>à chaud, quelques minutes après la découverte de sa Fleur</small></p>
+        <p class="testi-text">Waw 😍🥲 !<br/><br/>
+        Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗).<br/><br/>
+        Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.<br/>Je vais l'imprimer en grand je pense tellement elle est belle 😁 !</p>
       </div>
     </div>
     <div class="scores reveal">
@@ -598,12 +602,10 @@ On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et
     </div>
     <div class="testi-cards reveal">
       <div class="testi-card">
-        <p>"Ma Fleur m'a permis de confirmer certaines intuitions et a renforcé ma confiance sur des talents que je n'osais pas trop exploiter."</p>
-        
+        <p class="testi-text">"Ma Fleur m'a permis de confirmer certaines intuitions et a renforcé ma confiance sur des talents que je n'osais pas trop exploiter."</p>
       </div>
       <div class="testi-card">
-        <p>"Ma Fleur m'a ouvert les yeux sur certains métiers à envisager, et m'a permis de découvrir ma zone de génie."</p>
-        
+        <p class="testi-text">"Ma Fleur m'a ouvert les yeux sur certains métiers à envisager, et m'a permis de découvrir ma zone de génie."</p>
       </div>
     </div>
     <div style="text-align:center;margin:48px 0 0;"><a href="javascript:void(0)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="btn-primary">Waouh, moi aussi<br/>je veux ma Fleur →</a></div>

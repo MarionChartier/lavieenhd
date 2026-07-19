@@ -8,15 +8,38 @@ type Testimonial = {
   text: string;
   /** Portrait rond (liseré doré) fourni par la cliente, sinon "Anonyme". */
   photo: string;
+  /** Offre dont est issu le témoignage — affichée en pastille sur la card. */
+  offre: string;
 };
 
 /** Dossier des portraits de témoignages (photos clientes, liseré doré déjà intégré). */
 const PHOTO = (file: string) => `/assets/temoignages/${file}`;
 const ANONYME = PHOTO("Anonyme.png");
 
+/** Sélection de Marion : un témoignage par offre, dans l'ordre du parcours. */
 const TESTIMONIALS: Testimonial[] = [
   {
+    name: "Barbara",
+    offre: "Soin énergétique",
+    // Photo transmise prochainement par Marion — Anonyme en attendant.
+    photo: ANONYME,
+    text: `Je dois vraiment te dire merci du fond du cœur car je pense que le soin de décembre a ouvert la porte derrière laquelle je restais coincée.
+
+On en parlait avec une amie cet après-midi : elle a fait le soin aussi, elle a le même ressenti. 💖`,
+  },
+  {
+    name: "Astrig",
+    offre: "The Place to be",
+    photo: PHOTO("Astrig2.png"),
+    text: `Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi ! Mais ce que j'ai découvert, c'est bien plus que ça ! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment !
+
+Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite ! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien.
+
+Encore merci Marion 🌟`,
+  },
+  {
     name: "Louise-Armance",
+    offre: "Inside",
     photo: PHOTO("Louise-Armance.png"),
     text: `Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi !
 
@@ -27,59 +50,46 @@ Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement,
 Merci mille fois pour toutes ces informations précieuses Marion, ça résonne beaucoup en moi, c'est très parlant ! Bluffant même ! 💥`,
   },
   {
-    name: "Sylvie",
+    name: "Marjory",
+    offre: "Reveal",
     photo: ANONYME,
-    text: `Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds.
+    text: `Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe... Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante !
 
-Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature.
+Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer ! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça ! 🙏🙏🙏
 
-Je croyais que le Human Design était réservé aux initiés, mais en réalité, c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi.
+J'y vois beaucoup plus clair, et j'ai ouvert des portes que je ne soupçonnais pas possibles pour moi.
 
-Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'inviter dans ma vie.`,
+Quelques mois après : « Honnêtement merci encore Marion parce que vraiment tes conseils ont été précieux et aujourd'hui ils sont ancrés. Peu importe ce que les gens me disent je sais, moi, toute seule ce qui est le mieux et ça a tout changé dans ma vie. 🙏 »`,
   },
   {
-    name: "Camille",
-    photo: PHOTO("Camille.png"),
-    text: `J'ai tout dévoré d'une seule traite ! C'est IN-CROY-ABLE !!! On dirait que tu me connais depuis 30 ans, tout est juste, c'est fou, je n'en reviens pas ! 🤩
+    name: "Émilie",
+    offre: "Blooming",
+    // Photo transmise prochainement par Marion — Anonyme en attendant.
+    photo: ANONYME,
+    text: `Waw 😍🥲 !
 
-C'est étrange comme sensation de lire ce que je suis dans la réalité, juste à partir de mes informations de naissance. C'est impressionnant !
+Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗).
 
-Maintenant que j'ai ce guide d'immersion dans mon Design, je trouve ça hyper apaisant et rassurant de constater que certains de mes fonctionnements ne sont pas juste une « lubie » de ma part, mais que ça fait partie de moi en fait !
-
-Merci infiniment Marion ! 💖`,
+Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.
+Je vais l'imprimer en grand je pense tellement elle est belle 😁 !`,
   },
   {
     name: "Justine",
+    offre: "Reconnect",
     photo: PHOTO("Justine.png"),
-    text: `Déjà visuellement j'adore, ça donne vraiment envie de lire ! Le guide est super bien structuré, organisé, clair, beau et lumineux ! ✨
+    text: `Cela fait plusieurs années maintenant que je fais des coachings professionnels, des bilans de compétences, des tests de personnalité, thème astral, numérologie etc... pour essayer de trouver ma voie professionnelle. C'est donc en toute connaissance de cause que je peux affirmer que Reconnect est l'accompagnement le plus complet que j'ai fait jusqu'à présent.
 
-Et c'est super parce que tes explications sont concrètes et illustrées, ça rend les choses hyper compréhensibles. On sent qu'il y a eu un gros travail de vulgarisation pour clarifier des termes qui peuvent sembler abstraits, et rendre ça accessible à tout le monde, c'est trop chouette !
+Ce que j'ai beaucoup aimé c'est le format : un questionnaire par semaine, que l'on peut faire n'importe où. Cela permet vraiment d'avancer à son rythme sur la semaine et chaque lundi on a la surprise du nouveau questionnaire, c'est un peu comme un cadeau que l'on se fait à soi même :)
 
-En bonus, les petites questions au fil du guide amènent vraiment à réfléchir et à conscientiser les choses.
+J'adore également le fait (et c'est aussi selon moi ce qui fait que l'accompagnement se démarque complètement de tous les autres) que Marion utilise tous les outils à sa disposition pour nous aider : le Human Design bien sûr qui est un outil que je ne connaissais pas et qui m'a vraiment bluffée (très complet), la numérologie, l'EFT, des tests de personnalité, des exercices pratiques et concrets, des guidances sur certaines thématiques, des soins énergétiques...
+En fait, TOUT est vraiment mélangé et recoupé en un accompagnement hyper puissant parce que Marion maitrise ses sujets et grâce à elle et à ses coachings on avance vraiment. Il y a un avant et un après l'accompagnement. J'ai appris énormément de choses que je ne soupçonnais même pas sur moi alors que vraiment cela fait plusieurs années que je fais tous les tests de personnalité possibles^^ et inversement cela m'a aussi conforté dans certains choix professionnels.
 
-Et tout ce que tu décris c'est exactement moi, truc de dingue ! Je m'y retrouve énormément, ça reflète vraiment qui je suis au fond de moi je trouve. C'est ultra intéressant, je vais le relire plusieurs fois parce qu'il y a beaucoup de choses à assimiler.
+De plus, Marion est super disponible et à l'écoute. Son super pouvoir selon moi c'est vraiment cette capacité à vulgariser ce qui peut nous sembler abstrait pour le rendre concret, compréhensible et que l'on puisse l'appliquer à notre vie de tous les jours. Elle est vraiment impliquée pour nous aider et nous faire avancer, de sa disponibilité en passant par les retours de soins énergétiques jusqu'à ses exercices pratiques « bonus » en fin de mail hebdomadaires, tout a vraiment été pensé et mis en place pour les personnes qui suivent le programme.
 
-Et je pense sincèrement que le coaching avec toi est un vrai plus à s'offrir ! Franchement merci beaucoup Marion 🥰`,
-  },
-  {
-    name: "Ludivine",
-    photo: PHOTO("Ludivine.png"),
-    text: `Coucou Marion, déjà merci !!! Beaucoup !!! J'adore comment c'est rédigé, la façon dont tu écris et expliques les choses, c'est très clair.
+Je recommande les yeux fermés, à mon sens c'est vraiment l'accompagnement le plus complet que j'ai pu vivre jusqu'à maintenant.
+C'est LA clé si vous êtes bloqués dans votre vie professionnelle.
 
-J'y ai retrouvé des choses tellement vraies, tellement moi ; un peu l'histoire de ma vie ! 😄
-
-Et j'ai aussi appris plein de choses nouvelles complémentaires à ce que je n'avais jamais lu encore.
-
-Wahou je trouve le HD vraiment magique, c'est ma plus belle découverte de l'année pour le moment ! Merci Marion c'est génial !! 😍`,
-  },
-  {
-    name: "Fabienne",
-    photo: PHOTO("Fabienne.png"),
-    text: `Oh la la 🤩🤩🤩!! Je voulais te remercier 🙏 pour ton travail qui est remarquable, c'est une vraie pépite ! 💕
-
-Franchement, chapeau, je me reconnais dans tout ce que tu décris, tout me fait écho !
-
-Ça m'a provoqué beaucoup de joie de te lire, et ça a mis du sens sur certaines choses, en enlevant la peur que j'y associais ! Le HD est un outil remarquable, merci encore, tu déchires ! 🔥`,
+Encore Merci !!!`,
   },
 ];
 
@@ -149,6 +159,7 @@ function TestimonialCard({
   name,
   text,
   photo,
+  offre,
   isExpanded,
   onToggle,
 }: Testimonial & {
@@ -173,7 +184,12 @@ function TestimonialCard({
             className="object-contain"
           />
         </div>
-        <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
+        <div className="flex flex-col items-start gap-1.5">
+          <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
+          <span className="rounded-full border border-turquoise/50 bg-turquoise-soft/60 px-3 py-0.5 font-body text-[9px] uppercase tracking-[0.18em] text-ink-deep">
+            {offre}
+          </span>
+        </div>
       </div>
 
       <blockquote

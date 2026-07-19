@@ -120,23 +120,20 @@
 
     /* TESTI */
     .testi-section{background:var(--blanc);padding:var(--gap) 0;}
-    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
-    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
-    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
-    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
-    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:stretch;}
-    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
-    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
-    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+    .testi-hero{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;max-width:880px;margin:0 auto;}
+    .testi-photo{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto;}
+    .testi-quote{display:block;font-family:var(--font-serif);font-size:64px;line-height:.4;color:var(--cyan);text-align:center;}
+    .testi-name{font-family:var(--font-script);font-size:30px;line-height:1.2;color:var(--cyan);text-align:center;margin-bottom:16px;}
+    .testi-text{font-family:var(--font-serif);font-size:18px;font-weight:300;line-height:1.85;color:var(--texte);text-align:center;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px;align-items:stretch;}
+    .testi-card{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:16px;padding:36px 30px 32px;display:flex;flex-direction:column;align-items:center;box-shadow:0 14px 38px -26px rgba(80,60,98,.35);}
+    .testi-card:nth-child(odd):last-child{grid-column:1/-1;}
+    .testi-card .testi-photo{max-width:84px;margin-bottom:10px;}
+    .testi-card .testi-name{font-size:24px;margin-bottom:12px;}
+    .testi-card .testi-text{font-size:16px;line-height:1.75;max-width:680px;}
+    @media(max-width:720px){.testi-hero{grid-template-columns:1fr;gap:24px;}.testi-hero .testi-photo{max-width:160px;}}
 
     /* ABOUT */
-    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
-    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
-    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
-    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
-    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
-    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
-    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
 
     /* FAQ */
     .faq-section{background:var(--blanc);padding:var(--gap) 0;}
@@ -177,7 +174,7 @@
 
     @media(max-width:720px){
       :root{--gap:80px;}
-      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+      .testi-cards{grid-template-columns:1fr;gap:40px;}
     }
   </style>
 </head>
@@ -213,7 +210,6 @@
   <a href="javascript:void(0)" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})" data-section="guide"><span class="dot-label">Le Guide</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('environnements').scrollIntoView({behavior:'smooth'})" data-section="environnements"><span class="dot-label">Les 6 Environnements</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
-  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
 </nav>
 
@@ -462,47 +458,35 @@
       <h2 class="display">Témoignages</h2>
     </div>
 
-    <div class="testi-whatsapp reveal">
-      Franchement bluffée de ce guide ! Il est agréable à lire, et surtout totalement juste. C'est rigolo car je m'aperçois que j'ai spontanément peint mon bureau de travail aux couleurs de mon environnement! :) Merci infiniment Marion.
-      <div class="testi-tag"><span class="testi-avatar">N</span> Nathalie</div>
+    <div class="testi-hero reveal">
+      <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Nathalie" loading="lazy"/>
+      <div>
+        <span class="testi-quote" aria-hidden="true">“</span>
+        <p class="testi-name">Nathalie</p>
+        <p class="testi-text">Franchement bluffée de ce guide ! Il est agréable à lire, et surtout totalement juste. C'est rigolo car je m'aperçois que j'ai spontanément peint mon bureau de travail aux couleurs de mon environnement! :) Merci infiniment Marion.</p>
+      </div>
     </div>
 
     <div class="testi-cards reveal">
       <div class="testi-card">
-        <p>"Qui aurait cru qu'à partir de mes infos de naissance j'aurais pu en apprendre autant sur moi? Grâce au guide d'exploration de Marion, j'ai pu comprendre mon Environnement et identifier ce qui me correspond le mieux en terme d'aménagement et d'ambiance par exemple. L'ebook que j'ai reçu est très instructif et utile. Il va notamment me permettre d'être plus vigilante par la suite pour mieux vivre en harmonie avec mon environnement perso et pro! Merci beaucoup Marion 🥰"</p>
-        <div class="author">— Eloïse</div>
+        <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Eloïse" loading="lazy"/>
+        <p class="testi-name">Eloïse</p>
+        <p class="testi-text">Qui aurait cru qu'à partir de mes infos de naissance j'aurais pu en apprendre autant sur moi? Grâce au guide d'exploration de Marion, j'ai pu comprendre mon Environnement et identifier ce qui me correspond le mieux en terme d'aménagement et d'ambiance par exemple. L'ebook que j'ai reçu est très instructif et utile. Il va notamment me permettre d'être plus vigilante par la suite pour mieux vivre en harmonie avec mon environnement perso et pro! Merci beaucoup Marion 🥰</p>
       </div>
       <div class="testi-card">
-        <p>"À la première lecture de mon guide d'exploration, j'étais sceptique. Je me disais que tout le monde pouvait se reconnaître dans la description de mon Environnement. Mais, dans les jours qui ont suivis, des détails ont refait surface et m'ont interpellés. J'ai donc décidé de relire une seconde fois mon guide. Et là, je dois avouer que tout a changé. Les mots de Marion me parlaient vraiment, avec une résonance bluffante. Je me suis reconnu dans tous les aspects, même certains dont je n'avais pas conscience avant. J'ai hâte de continuer mon expérience du HD avec Marion. Mon conseil pour les sceptiques? Essayez, vous serez bluffés!"</p>
-        <div class="author">— Nicolas</div>
+        <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Nicolas" loading="lazy"/>
+        <p class="testi-name">Nicolas</p>
+        <p class="testi-text">À la première lecture de mon guide d'exploration, j'étais sceptique. Je me disais que tout le monde pouvait se reconnaître dans la description de mon Environnement. Mais, dans les jours qui ont suivis, des détails ont refait surface et m'ont interpellés. J'ai donc décidé de relire une seconde fois mon guide. Et là, je dois avouer que tout a changé. Les mots de Marion me parlaient vraiment, avec une résonance bluffante. Je me suis reconnu dans tous les aspects, même certains dont je n'avais pas conscience avant. J'ai hâte de continuer mon expérience du HD avec Marion. Mon conseil pour les sceptiques? Essayez, vous serez bluffés!</p>
       </div>
       <div class="testi-card">
-        <p>"Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi! Mais ce que j'ai découvert, c'est bien plus que ça! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment! Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien. Encore merci Marion 🌟"</p>
-        <div class="author">— Astrig</div>
+        <img class="testi-photo" src="/assets/temoignages/Astrig2.png" alt="Astrig" loading="lazy"/>
+        <p class="testi-name">Astrig</p>
+        <p class="testi-text">Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi! Mais ce que j'ai découvert, c'est bien plus que ça! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment! Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien. Encore merci Marion 🌟</p>
       </div>
       <div class="testi-card">
-        <p>"Merci Marion pour ce Guide d'exploration! Déjà j'ai beaucoup aimé le format, la charte visuelle, c'est pétillant! Je ne m'y connaissais pas du tout en Human Design et j'ai adoré ce preview sur mon environnement. Franchement c'est bluffant comme dans ton contenu je retrouve plein de choses très justes concernant mes besoins et ma sensibilité aux paramètres dont tu parles! C'est un guide super révélateur et hallucinant de justesse! Ça donne vraiment envie de découvrir les autres parties du HD! Par rapport à mon profil, je m'aperçois que je suis à l'opposé dans ma vie actuelle, et que c'est un vrai facteur d'anxiété pour moi. C'est vraiment un déclic de plus pour chercher à me construire une vie plus alignée avec moi, plus slow. Merci Marion pour tous les conseils pratiques! Pour l'anecdote, j'ai trouvé ça fou que mon environnement soit "Cuisines" parmi les 6, car je viens de ce milieu-là! Mon père a un magasin de cuisines, et, en tant qu'italienne, la cuisine est un lieu de réunion et de partage important! 😍"</p>
-        <div class="author">— Gloria</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUI JE SUIS -->
-<section class="about-section" id="about">
-  <div class="container--wide">
-    <div class="about-inner reveal">
-      <picture><source type="image/webp" srcset="/assets/place-to-be/marion-portrait.webp"/><img class="about-photo" src="/assets/place-to-be/marion-portrait.jpg" alt="Marion Chartier"/></picture>
-      <div class="about-text">
-        <span class="eyebrow">En quelques mots</span>
-        <div class="divider divider--left"></div>
-        <h2 class="display">Qui je suis?</h2>
-        <p>Moi c'est Marion ! :) En Human Design, je suis MG 2/4 ; la magicienne fraternelle multi-passionnée si on veut faire un (gros) résumé! 😄</p>
-        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens professionnel à ne pas trouver ma place, je me suis finalement retrouvée grâce à un plongeon dans le Human Design, et je suis aujourd'hui Coach transformationnelle, pour toi.♥</p>
-        <p>Je suis maman d'un petit Manifestor de 2 ans qui me montre chaque jour à quel point on est finalement aligné naturellement à sa vraie nature lorsqu'on est enfant! C'est une priorité essentielle pour moi de le maintenir connecté à lui au maximum, loin des moules rigides et des injonctions qui pourraient l'éteindre!</p>
-        <p>Je vois trop de personnes, qui, à force de conditionnements extérieurs, se retrouvent complètement déconnectées et perdues à l'âge adulte, si éloignées de qui elles sont ! (Moi la première je suis passée par là...)</p>
-        <p>C'est donc une vraie mission de cœur pour moi aujourd'hui de t'accompagner grâce à des outils puissants comme le Human Design, à te retrouver pour te révéler pleinement dans ta vie pro (mais pas que!). 🌟</p>
-        <p class="signature">La vie en HD, à ta portée</p>
+        <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Gloria" loading="lazy"/>
+        <p class="testi-name">Gloria</p>
+        <p class="testi-text">Merci Marion pour ce Guide d'exploration! Déjà j'ai beaucoup aimé le format, la charte visuelle, c'est pétillant! Je ne m'y connaissais pas du tout en Human Design et j'ai adoré ce preview sur mon environnement. Franchement c'est bluffant comme dans ton contenu je retrouve plein de choses très justes concernant mes besoins et ma sensibilité aux paramètres dont tu parles! C'est un guide super révélateur et hallucinant de justesse! Ça donne vraiment envie de découvrir les autres parties du HD! Par rapport à mon profil, je m'aperçois que je suis à l'opposé dans ma vie actuelle, et que c'est un vrai facteur d'anxiété pour moi. C'est vraiment un déclic de plus pour chercher à me construire une vie plus alignée avec moi, plus slow. Merci Marion pour tous les conseils pratiques! Pour l'anecdote, j'ai trouvé ça fou que mon environnement soit "Cuisines" parmi les 6, car je viens de ce milieu-là! Mon père a un magasin de cuisines, et, en tant qu'italienne, la cuisine est un lieu de réunion et de partage important! 😍</p>
       </div>
     </div>
   </div>
@@ -620,7 +604,7 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Active dot on scroll
-  const sections = ['probleme','harmonie','guide','environnements','testimonials','about','faq'];
+  const sections = ['probleme','harmonie','guide','environnements','testimonials','faq'];
   const navLinks = document.querySelectorAll('#sidenav a');
   function updateNav() {
     let current = '';

@@ -119,23 +119,20 @@
 
     /* TESTI */
     .testi-section{background:var(--blanc);padding:var(--gap) 0;}
-    .testi-whatsapp{background:var(--lavande-pale);border-radius:14px 14px 14px 0;padding:32px 36px;max-width:620px;margin:0 auto 48px;position:relative;font-family:var(--font-serif);font-size:19px;line-height:1.75;color:var(--texte);box-shadow:0 4px 24px rgba(0,0,0,.06);}
-    .testi-whatsapp::before{content:'"';position:absolute;top:-8px;left:24px;font-size:72px;font-family:var(--font-serif);color:rgba(190,164,216,.35);line-height:1;}
-    .testi-tag{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--texte-doux);}
-    .testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--lavande-pale);border:1px solid var(--lavande);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--violet);font-weight:500;}
-    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:stretch;}
-    .testi-card{background:var(--creme);border-radius:8px;padding:30px 26px;border-left:3px solid var(--lavande);}
-    .testi-card p{font-family:var(--font-serif);font-size:17px;font-style:italic;line-height:1.72;margin-bottom:14px;color:var(--texte);}
-    .testi-card .author{font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);}
+    .testi-hero{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;max-width:880px;margin:0 auto;}
+    .testi-photo{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto;}
+    .testi-quote{display:block;font-family:var(--font-serif);font-size:64px;line-height:.4;color:var(--cyan);text-align:center;}
+    .testi-name{font-family:var(--font-script);font-size:30px;line-height:1.2;color:var(--cyan);text-align:center;margin-bottom:16px;}
+    .testi-text{font-family:var(--font-serif);font-size:18px;font-weight:300;line-height:1.85;color:var(--texte);text-align:center;}
+    .testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px;align-items:stretch;}
+    .testi-card{background:var(--blanc);border:1px solid rgba(190,164,216,.25);border-radius:16px;padding:36px 30px 32px;display:flex;flex-direction:column;align-items:center;box-shadow:0 14px 38px -26px rgba(80,60,98,.35);}
+    .testi-card:nth-child(odd):last-child{grid-column:1/-1;}
+    .testi-card .testi-photo{max-width:84px;margin-bottom:10px;}
+    .testi-card .testi-name{font-size:24px;margin-bottom:12px;}
+    .testi-card .testi-text{font-size:16px;line-height:1.75;max-width:680px;}
+    @media(max-width:720px){.testi-hero{grid-template-columns:1fr;gap:24px;}.testi-hero .testi-photo{max-width:160px;}}
 
     /* ABOUT */
-    .about-section{padding:var(--gap) 0;background:linear-gradient(155deg,var(--creme) 0%,var(--lavande-pale) 100%);}
-    .about-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
-    .about-photo{width:100%;border-radius:16px;box-shadow:0 20px 56px -20px rgba(80,60,98,.45);}
-    .about-text h2{font-size:clamp(24px,3.5vw,40px);margin:12px 0 24px;}
-    .about-text p{font-family:var(--font-serif);font-size:17px;font-weight:300;color:var(--texte-doux);line-height:1.85;margin-bottom:16px;}
-    .about-text .signature{font-family:var(--font-script);font-size:30px;color:var(--violet);margin-top:8px;}
-    @media(max-width:720px){.about-inner{grid-template-columns:1fr;gap:36px;}}
 
     /* FAQ */
     .faq-section{background:var(--blanc);padding:var(--gap) 0;}
@@ -176,7 +173,7 @@
 
     @media(max-width:720px){
       :root{--gap:80px;}
-      .testi-cards,.about-inner{grid-template-columns:1fr;gap:40px;}
+      .testi-cards{grid-template-columns:1fr;gap:40px;}
     }
   </style>
 </head>
@@ -213,7 +210,6 @@
   <a href="javascript:void(0)" onclick="document.getElementById('deroule').scrollIntoView({behavior:'smooth'})" data-section="deroule"><span class="dot-label">Le déroulé</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('investissement').scrollIntoView({behavior:'smooth'})" data-section="investissement"><span class="dot-label">L'investissement</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})" data-section="testimonials"><span class="dot-label">Témoignages</span><span class="dot"></span></a>
-  <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-section="about"><span class="dot-label">Qui je suis</span><span class="dot"></span></a>
   <a href="javascript:void(0)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" data-section="faq"><span class="dot-label">FAQ</span><span class="dot"></span></a>
 </nav>
 
@@ -440,47 +436,31 @@
       <h2 class="display">⁘⁛ Les témoignages 💖 ⁛⁘</h2>
     </div>
 
-    <div class="testi-whatsapp reveal">
-      Et c'est un voyage extraordinaire 😍 avec plein de découvertes de soi et des prises de conscience incroyable 💖 cet accompagnement est la meilleure pépite qui puisse exister 🤗 ☀️ 🌷 🌸
-      <div class="testi-tag"><span class="testi-avatar">♡</span> Membre Reconnect</div>
+    <div class="testi-hero reveal">
+      <img class="testi-photo" src="/assets/temoignages/Anonyme.png" alt="Membre Reconnect" loading="lazy"/>
+      <div>
+        <span class="testi-quote" aria-hidden="true">“</span>
+        <p class="testi-name">Membre Reconnect</p>
+        <p class="testi-text">Et c'est un voyage extraordinaire 😍 avec plein de découvertes de soi et des prises de conscience incroyable 💖 cet accompagnement est la meilleure pépite qui puisse exister 🤗 ☀️ 🌷 🌸</p>
+      </div>
     </div>
 
     <div class="testi-cards reveal">
       <div class="testi-card">
-        <p>"Dans le questionnaire, il y a plein de questions qu'on ne se pose jamais et/ou qu'on ne nous a jamais posées en accompagnement. C'est vraiment différent des accompagnements 'classiques', et encore une fois ça amène à se questionner sur des sujets qu'on pensait connaître mais qui sont flous en réalité."</p>
-        <div class="author">Membre Reconnect</div>
+        <p class="testi-name">Membre Reconnect</p>
+        <p class="testi-text">Dans le questionnaire, il y a plein de questions qu'on ne se pose jamais et/ou qu'on ne nous a jamais posées en accompagnement. C'est vraiment différent des accompagnements 'classiques', et encore une fois ça amène à se questionner sur des sujets qu'on pensait connaître mais qui sont flous en réalité.</p>
       </div>
       <div class="testi-card">
-        <p>"Ta force, c'est vraiment d'expliquer avec des mots simples des concepts qui ne sont pas simples du tout ^^"</p>
-        <div class="author">Membre Reconnect</div>
+        <p class="testi-name">Membre Reconnect</p>
+        <p class="testi-text">Ta force, c'est vraiment d'expliquer avec des mots simples des concepts qui ne sont pas simples du tout ^^</p>
       </div>
       <div class="testi-card">
-        <p>"La méditation était incroyable, je l'ai enregistrée, bien précieuse pour pouvoir la refaire plus tard quand j'en ressentirai le besoin 🥰"</p>
-        <div class="author">Membre Reconnect</div>
+        <p class="testi-name">Membre Reconnect</p>
+        <p class="testi-text">La méditation était incroyable, je l'ai enregistrée, bien précieuse pour pouvoir la refaire plus tard quand j'en ressentirai le besoin 🥰</p>
       </div>
       <div class="testi-card">
-        <p>"J'adore tes questionnaires, ils sont vraiment percutants et je trouve les questions très justes ✨"</p>
-        <div class="author">Membre Reconnect</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUI JE SUIS -->
-<section class="about-section" id="about">
-  <div class="container--wide">
-    <div class="about-inner reveal">
-      <picture><source type="image/webp" srcset="/assets/marion-reflexion.webp"/><img class="about-photo" src="/assets/marion-reflexion.jpg" alt="Marion Chartier"/></picture>
-      <div class="about-text">
-        <span class="eyebrow">En quelques mots</span>
-        <div class="divider divider--left"></div>
-        <h2 class="display">Qui je suis?</h2>
-        <p>Moi c'est Marion ! :) En Human Design, je suis MG 2/4 ; la magicienne fraternelle multi-passionnée si on veut faire un (gros) résumé! 😄</p>
-        <p>Après des années d'ingénierie dans des multinationales, et surtout des années de quête de sens professionnel à ne pas trouver ma place, je me suis finalement retrouvée grâce à un plongeon dans le Human Design, et je suis aujourd'hui Coach transformationnelle, pour toi.♥</p>
-        <p>Je suis maman d'un petit Manifestor de 2 ans qui me montre chaque jour à quel point on est finalement aligné naturellement à sa vraie nature lorsqu'on est enfant! C'est une priorité essentielle pour moi de le maintenir connecté à lui au maximum, loin des moules rigides et des injonctions qui pourraient l'éteindre!</p>
-        <p>Je vois trop de personnes, qui, à force de conditionnements extérieurs, se retrouvent complètement déconnectées et perdues à l'âge adulte, si éloignées de qui elles sont ! (Moi la première je suis passée par là...)</p>
-        <p>C'est donc une vraie mission de cœur pour moi aujourd'hui de t'accompagner grâce à des outils puissants comme le Human Design, à te retrouver pour te révéler pleinement dans ta vie pro (mais pas que!). 🌟</p>
-        <p class="signature">La vie en HD, à ta portée</p>
+        <p class="testi-name">Membre Reconnect</p>
+        <p class="testi-text">J'adore tes questionnaires, ils sont vraiment percutants et je trouve les questions très justes ✨</p>
       </div>
     </div>
   </div>
@@ -590,7 +570,7 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Active dot on scroll
-  const sections = ['pourqui','reconnect','inclus','deroule','investissement','testimonials','about','faq'];
+  const sections = ['pourqui','reconnect','inclus','deroule','investissement','testimonials','faq'];
   const navLinks = document.querySelectorAll('#sidenav a');
   function updateNav() {
     let current = '';

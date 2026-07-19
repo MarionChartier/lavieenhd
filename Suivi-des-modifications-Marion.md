@@ -19,7 +19,7 @@ On passe en V4 : l'objectif est de préparer le site à sa mise en ligne "pour d
 - Les pages légales ont été rédigées avec des textes conformes : Mentions légales, Politique de confidentialité et CGV. Quelques informations restent à compléter avec tes données (voir "Ce qui dépend de toi"). La date de mise à jour est au 1er juillet 2026.
 
 **Mesure d'audience (Microsoft Clarity)**
-- L'outil Clarity a été intégré sur tout le site pour que tu puisses observer le comportement des visiteurs (pages vues, clics, parcours, enregistrements de sessions). Il ne se déclenche que si la personne a accepté les cookies. Il s'activera dès que tu m'auras transmis l'identifiant de ton compte Clarity.
+- L'outil Clarity a été intégré sur tout le site pour que tu puisses observer le comportement des visiteurs (pages vues, clics, parcours, enregistrements de sessions). Il ne se déclenche que si la personne a accepté les cookies. Ton identifiant Clarity est maintenant branché ; il sera aussi enregistré côté hébergement (Vercel) au moment de la mise en ligne.
 
 **Rapidité du site (images allégées)**
 - Les images des pages de vente ont été converties dans un format plus léger (WebP) : au total, elles passent d'environ 3,2 Mo à 1 Mo, soit trois fois moins lourd, sans perte de qualité visible. Le site se charge donc plus vite. Les images d'origine sont conservées en secours pour les navigateurs plus anciens.
@@ -66,6 +66,21 @@ Reste à faire (contenus et finitions) :
 
 ## Ce qui dépend de toi
 
+**Couleurs du calculateur HD (Bodygraphchart) — mode d'emploi**
+
+Le calculateur intégré sur le site vient de ton compte Bodygraphchart. Son design (couleurs, police) se règle depuis ton compte, pas depuis le site — voici comment l'accorder :
+
+1. Connecte-toi sur [bodygraphchart.com](https://bodygraphchart.com) avec ton compte.
+2. Va dans la partie **Embed / Widget** (là où tu avais récupéré le code d'intégration), puis ouvre les réglages **Design / Appearance** de ton widget.
+3. Renseigne les couleurs du site :
+   - Couleur principale / titres : violet foncé `#503c62`
+   - Couleur d'accent / boutons : turquoise `#75ced2`
+   - Fond : blanc cassé `#fdfbf7` (ou blanc pur `#ffffff`)
+   - Touche secondaire si proposée : lilas `#bea4d8`
+4. Enregistre : le widget se met à jour tout seul sur le site (page Test HD gratuit et pages de vente), rien à redéployer.
+
+Si un réglage n'existe pas dans ton offre Bodygraphchart, pas grave : la priorité est le fond clair + le turquoise des boutons pour que le calculateur se fonde dans la page.
+
 Au fil de l'eau :
 - **Remplir et tenir à jour tes Google Sheets** : celui des transits solaires (avec les phases lunaires) et celui des messages de l'oracle. Le site s'y branche en direct.
 - Les **textes définitifs** (accroches, présentation Qui suis-je, descriptifs des offres si tu veux les retravailler).
@@ -73,7 +88,6 @@ Au fil de l'eau :
 - **The Soul Letter, tag d'inscription** : tu voulais qu'un tag soit posé sur les personnes qui s'inscrivent. Ce tag se crée dans ton systeme.io (Automatisations → Workflow "Funnel form subscribed" sur le formulaire Soul Letter → action "Add tag"). Une fois fait, on testera une inscription pour vérifier que le tag s'applique bien. Si besoin, on basculera sur l'iframe officielle systeme.io.
 
 Au moment de la mise en ligne finale (je te le redemanderai en temps voulu, tout en dernier) :
-- **Clarity** : créer un projet sur clarity.microsoft.com et me transmettre l'identifiant, pour activer la mesure d'audience.
 - **Informations légales** pour compléter les pages : statut (micro-entreprise ou autre), adresse, numéro SIRET, mention TVA, durées de conservation des données, et coordonnées d'un médiateur de la consommation.
 - **Nom de domaine** choisi, et accès pour le brancher.
 - **Compte Vercel** (l'hébergement) et ton identifiant GitHub, pour te transférer le projet en gardant la main sur les évolutions.
