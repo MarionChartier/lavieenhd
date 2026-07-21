@@ -52,7 +52,7 @@ export default function ConfidentialitePage() {
         },
         {
           heading: "Durée de conservation",
-          body: "Tes données sont conservées le temps nécessaire aux finalités décrites, puis supprimées ou anonymisées. Durées précises : [À COMPLÉTER].",
+          body: "Tes données sont conservées le temps nécessaire aux finalités décrites. Elles peuvent être supprimées à tout moment à ta demande.",
         },
         {
           heading: "Cookies",
@@ -61,6 +61,10 @@ export default function ConfidentialitePage() {
         {
           heading: "Tes droits",
           body: "Conformément au RGPD, tu disposes d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de tes données. Pour les exercer, écris à hello@marionchartier-lavieenhd.com. Tu peux également introduire une réclamation auprès de la CNIL (www.cnil.fr).",
+        },
+        {
+          heading: "Litiges",
+          body: "Les présentes conditions sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut, tu peux recourir à un médiateur de la consommation.",
         },
       ]}
     />

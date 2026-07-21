@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-export type FaqItem = { q: string; a: string };
+export type FaqItem = { q: string; a: ReactNode };
 
 /**
  * Section FAQ en accordéon, réutilisable (accueil + pages d'offres).

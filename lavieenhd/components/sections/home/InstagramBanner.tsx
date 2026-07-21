@@ -87,7 +87,7 @@ export function InstagramBanner() {
             className="inline-flex items-center gap-2 rounded-full border border-ink-deep px-8 pt-[18px] pb-[14px] font-body text-[12px] leading-none uppercase tracking-[0.18em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-paper"
           >
             <InstagramIcon className="h-4 w-4" />
-            Suivre sur Instagram
+            Me suivre sur Instagram
           </a>
         </div>
       </div>

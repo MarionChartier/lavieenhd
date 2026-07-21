@@ -28,6 +28,9 @@ dist/
 # Vercel
 .vercel/
 
+# Playwright CLI — dumps de debug d'exploration, non versionnés
+.playwright-cli/
+
 # Références design — conservées en local uniquement (non publiées)
 design_handoff_marion_chartier_site/
 Design_conception/

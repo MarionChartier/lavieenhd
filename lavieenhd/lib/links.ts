@@ -30,6 +30,7 @@ export const EXTERNAL = {
    * de vente HTML servies depuis /public. Toutes les offres sont branchées.
    */
   offre: {
+    soinEnergetique: "/soin-energetique.html",
     thePlaceToBe: "/the-place-to-be.html",
     insideClub: "/inside.html",
     reveal: "/reveal.html",

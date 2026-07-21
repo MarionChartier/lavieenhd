@@ -16,10 +16,10 @@ export function SoulLetterBanner() {
       {/* Titre + description au-dessus du bandeau */}
       <div className="mx-auto mb-8 max-w-[680px] text-center md:mb-10">
         <h2 className="font-display text-[28px] font-light italic leading-tight text-ink-deep md:text-[40px]">
-          De temps en temps, je t'écris comme à une amie.
+          De temps en temps, je t'écris en toute intimité.
         </h2>
         <p className="mx-auto mt-4 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink md:text-[18px]">
-          Des réflexions tendres, des outils Human Design et des coulisses de mon quotidien.
+          Des tips de Human Design et d'alignement de vie professionnelle, des réflexions, des prises de conscience, des actualités de La vie en HD, mais aussi les coulisses de mon quotidien.
           Sans bullshit, sans diffusion massive.
         </p>
       </div>

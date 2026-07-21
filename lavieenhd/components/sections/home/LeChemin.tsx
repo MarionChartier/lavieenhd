@@ -16,13 +16,10 @@ export function LeChemin() {
         {/* Header — titre script + eyebrow + description */}
         <div className="text-center">
           <h2 className="font-script text-[30px] tracking-wide text-ink-deep">
-            Bienvenue chez toi
+            Bienvenue dans le parcours multi-étapes.
           </h2>
           <p className="mt-6 font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-            — Le parcours en 6 étapes —
-          </p>
-          <p className="mx-auto mt-6 max-w-[560px] text-[15px] leading-relaxed text-ink">
-            Tu peux les emprunter dans l'ordre, ou choisir celui qui te parle aujourd'hui.
+            — Une traversée progressive, ou un choix ciblé, selon ce qui t'appelle. —
           </p>
         </div>
 
@@ -75,12 +72,20 @@ function Postcard({ offre }: { offre: Offre }) {
           <div className="absolute -inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.6)_0%,transparent_65%)]" />
           {offre.logoSrc ? (
             <Image
-              src={offre.logoSrc}
+              // Sur la home, le soin utilise la version détourée (halo transparent)
+              // qui se fond dans la zone colorée, sans crop rond.
+              src={
+                offre.slug === "soin-energetique"
+                  ? "/assets/logo-soin-glow.png"
+                  : offre.logoSrc
+              }
               alt=""
               width={170}
               height={110}
               className={`relative w-auto object-contain ${
-                offre.slug === "inside"
+                offre.slug === "soin-energetique"
+                  ? "max-h-[150px] max-w-[92%]"
+                  : offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:max-h-[201px] lg:-translate-y-7"
                   : offre.slug === "reveal"
                     ? "max-h-[125px] max-w-[80%] lg:max-h-[135px] lg:-translate-y-1"
