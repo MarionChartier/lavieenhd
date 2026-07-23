@@ -28,7 +28,7 @@ export function LegalShell({ title, intro, updatedAt, sections }: LegalShellProp
         </h1>
 
         {intro && (
-          <p className="mt-6 font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+          <p className="mt-6 font-body text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
             {intro}
           </p>
         )}
@@ -47,14 +47,14 @@ export function LegalShell({ title, intro, updatedAt, sections }: LegalShellProp
                 {paragraphs.map((p, i) => (
                   <p
                     key={i}
-                    className="mt-3 font-display text-[16px] font-light leading-relaxed text-ink md:text-[17px]"
+                    className="mt-3 whitespace-pre-line font-body text-[16px] font-light leading-relaxed text-ink md:text-[17px]"
                   >
                     {p}
                   </p>
                 ))}
 
                 {s.items && s.items.length > 0 && (
-                  <ul className="mt-3 flex list-disc flex-col gap-1.5 pl-5 font-display text-[16px] font-light leading-relaxed text-ink md:text-[17px]">
+                  <ul className="mt-3 flex list-disc flex-col gap-1.5 pl-5 font-body text-[16px] font-light leading-relaxed text-ink md:text-[17px]">
                     {s.items.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
