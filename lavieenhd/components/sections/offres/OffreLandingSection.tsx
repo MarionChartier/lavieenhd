@@ -5,10 +5,10 @@ import { LogoCircle } from "@/components/sections/offres/OffreVisuals";
 
 /** Fond de section selon la couleur sous-marque de l'offre */
 const SECTION_BG: Record<OffreColor, string> = {
-  free: "bg-[#efe2c6]", // doré soft
-  violet: "bg-[#e6dcef]", // lavender soft
-  turquoise: "bg-[#d6e8ea]", // cyan soft
-  beige: "bg-[#ecdfc5]", // beige soft
+  free: "bg-[#efe2c6]/55", // doré soft — opacité réduite pour plus de discrétion
+  violet: "bg-[#e6dcef]/55", // lavender soft
+  turquoise: "bg-[#d6e8ea]/55", // cyan soft
+  beige: "bg-[#ecdfc5]/55", // beige soft
 };
 
 /** Couleur des puces (bullets) — accent assorti à l'offre */
@@ -36,16 +36,32 @@ export function OffreLandingSection({
   const isReversed = index % 2 === 1;
   // Le Quiz (offre 01) est plus compact : padding hero réduit + lien externe
   const isQuiz = offre.num === "01";
+  const isSoin = offre.slug === "soin-energetique";
 
   return (
-    <section id={offre.slug} className={`scroll-mt-24 ${bg}`}>
+    <section id={offre.slug} className={`scroll-mt-24 border-t border-white ${bg}`}>
       <div
         className={`relative overflow-hidden px-6 md:px-20 ${
           isQuiz ? "py-14 md:py-20" : "py-20 md:py-28"
         }`}
       >
-        {/* Fond paillettes doré (comme le header) — uniquement pour le Quiz */}
+        {/* Fond aquarelle oracle-frame — pour le Quiz gratuits */}
         {isQuiz && (
+          <>
+            <Image
+              src="/assets/oracle-frame.png"
+              alt=""
+              aria-hidden
+              fill
+              sizes="100vw"
+              className="pointer-events-none absolute inset-0 object-cover"
+            />
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/60" />
+          </>
+        )}
+
+        {/* Fond paillettes doré (comme le header, ex-Quiz) — pour le Soin énergétique */}
+        {isSoin && (
           <>
             <Image
               src="/assets/header-glitter.png"
@@ -132,6 +148,10 @@ export function OffreLandingSection({
                   </li>
                 ))}
               </ul>
+
+              <p className="mt-6 font-body text-[13px] leading-none tracking-wide text-ink-soft md:text-[14px]">
+                {offre.price}
+              </p>
 
               {/* CTA — lien direct vers la page de l'offre. Vide pour le moment
                   pour les offres dont la page HTML n'est pas encore fournie. */}

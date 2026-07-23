@@ -106,7 +106,7 @@ export const OFFRES: Offre[] = [
     price: "20 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/logo-soin.png",
+    logoSrc: "/assets/logo-soin-hands.webp",
     color: "beige",
     href: EXTERNAL.offre.soinEnergetique,
   },
@@ -244,7 +244,7 @@ export const OFFRES: Offre[] = [
     slug: "fleur-de-talents",
     name: "BLOOMING",
     subtitle: "Ta Fleur de Talents Innés®",
-    shortLabel: "Fleur de Talents Innés",
+    shortLabel: "BLOOMING",
     trademark: true,
     tag: "Révéler",
     shortDescription:

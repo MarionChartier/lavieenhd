@@ -35,7 +35,15 @@ export function OffresStepper() {
               {offre.num}
             </span>
             <span className="text-center font-body text-[9px] uppercase leading-tight tracking-[0.16em] text-ink-soft transition-colors group-hover:text-ink-deep md:text-[10px] md:tracking-[0.18em]">
-              {offre.shortLabel}
+              {offre.slug === "place-to-be" ? (
+                <>
+                  The Place
+                  <br />
+                  to be
+                </>
+              ) : (
+                offre.shortLabel
+              )}
             </span>
           </a>
 
