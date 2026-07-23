@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 };
 
 const PHOTOS = {
-  hero: "/assets/marion-portrait-quisuisje.jpg",
-  story: "/assets/marion-reflexion.jpg",
+  hero: "/assets/marion-quisuisje-hero.png",
+  story: "/assets/marion-quisuisje-story.png",
+  carte: "/assets/marion-quisuisje-carte.png",
 } as const;
 
 const PILLS = [
@@ -177,8 +178,9 @@ export default function QuiJeSuisPage() {
             </div>
           </div>
 
-          {/* Colonne droite : portrait grand format */}
-          <div className="relative">
+          {/* Colonne droite : portrait grand format (self-start pour ne pas s'étirer,
+              afin que le badge "Marion" s'ancre au bas de la photo et non de la colonne) */}
+          <div className="relative lg:self-start">
             <div className="relative h-[440px] w-full overflow-hidden rounded-md md:h-[600px]">
               <Image
                 src={PHOTOS.hero}
@@ -285,9 +287,18 @@ export default function QuiJeSuisPage() {
       <section className="bg-paper px-6 pt-16 pb-24 md:px-20 md:pt-20 md:pb-32">
         <div className="mx-auto max-w-(--container-content)">
           <div className="grid items-stretch gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-            {/* Colonne gauche : carte HD format affiche */}
-            <div className="flex justify-center lg:justify-start">
+            {/* Colonne gauche : carte HD format affiche + photo qui remplit le blanc */}
+            <div className="flex flex-col items-center gap-8 lg:items-stretch">
               <HDCardLarge />
+              <div className="relative hidden min-h-[280px] w-full max-w-[380px] flex-1 overflow-hidden rounded-md lg:block">
+                <Image
+                  src={PHOTOS.carte}
+                  alt="Marion Chartier"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
 
             {/* Colonne droite : header + grille d'attributs, calée sur la hauteur de la carte */}

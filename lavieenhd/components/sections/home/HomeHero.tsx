@@ -43,7 +43,7 @@ export function HomeHero() {
         </g>
       </svg>
 
-      {/* Silhouette en arrière-plan — ancrée à 40% de la largeur de la page, au bas de la section */}
+      {/* Silhouette en arrière-plan — ancrée en haut de section pour être visible dès l'ouverture */}
       <Image
         src="/assets/marion_home.png"
         alt=""
@@ -51,7 +51,7 @@ export function HomeHero() {
         height={300}
         priority
         aria-hidden
-        className="pointer-events-none absolute bottom-[12%] left-[10%] hidden h-auto w-[700px] opacity-[0.22] mix-blend-multiply lg:block"
+        className="pointer-events-none absolute top-24 left-[10%] hidden h-auto w-[700px] opacity-[0.22] mix-blend-multiply lg:block"
         style={{
           WebkitMaskImage:
             "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%)",

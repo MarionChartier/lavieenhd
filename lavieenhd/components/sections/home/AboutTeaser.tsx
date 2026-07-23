@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.jpg";
+const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.png";
 
 const PILLS = [
   "Manifesting Generator 2/4",
