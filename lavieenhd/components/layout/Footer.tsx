@@ -66,7 +66,7 @@ export function Footer() {
         className="pointer-events-none absolute inset-0 object-cover"
       />
       {/* Voile blanc doux : garde l'aquarelle visible tout en assurant la lisibilité du texte */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/35" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-white/60" />
       {/* Fine ligne dorée en haut, pour séparer nettement de la page */}
       <div
         aria-hidden

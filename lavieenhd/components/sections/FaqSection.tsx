@@ -58,11 +58,11 @@ export function FaqSection({
                 </button>
                 <div
                   className={`grid transition-all duration-300 ease-out ${
-                    isOpen ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"
+                    isOpen ? "grid-rows-[1fr] pb-6" : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-[820px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+                    <p className="max-w-[820px] whitespace-pre-line font-display text-[17px] font-light leading-loose text-ink-deep md:text-[19px]">
                       {item.a}
                     </p>
                   </div>

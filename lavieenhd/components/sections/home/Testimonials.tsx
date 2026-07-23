@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { EXTERNAL } from "@/lib/links";
 
 type Testimonial = {
   name: string;
@@ -90,6 +92,27 @@ C'est LA clé si vous êtes bloqués dans votre vie professionnelle.
 Encore Merci !!!`,
   },
 ];
+
+/** Couleur du badge alignée sur la card de l'offre associée (section « parcours »). */
+const BADGE_COLORS: Record<string, string> = {
+  "Soin énergétique": "border-[#e5d4b4] bg-[#f0e3cc]/70",
+  "The Place to be": "border-[#dccef0] bg-[#ece4f5]/70",
+  Inside: "border-[#c5e6e9] bg-[#dbeef4]/70",
+  Reveal: "border-[#dccef0] bg-[#ece4f5]/70",
+  Blooming: "border-[#c5e6e9] bg-[#dbeef4]/70",
+  Reconnect: "border-[#dccef0] bg-[#ece4f5]/70",
+};
+const BADGE_FALLBACK = "border-turquoise/50 bg-turquoise-soft/60";
+
+/** Page de vente de l'offre associée au témoignage (clic sur le badge). */
+const OFFRE_HREF: Record<string, string> = {
+  "Soin énergétique": EXTERNAL.offre.soinEnergetique,
+  "The Place to be": EXTERNAL.offre.thePlaceToBe,
+  Inside: EXTERNAL.offre.insideClub,
+  Reveal: EXTERNAL.offre.reveal,
+  Blooming: EXTERNAL.offre.fleurDeTalents,
+  Reconnect: EXTERNAL.offre.reconnect,
+};
 
 /** Renvoie les indices des cards qui partagent la même ligne dans la grille desktop (3 cols). */
 function getRowMates(index: number, total: number, rowSize = 3): number[] {
@@ -182,11 +205,17 @@ function TestimonialCard({
             className="object-contain"
           />
         </div>
-        <div className="flex flex-col items-start gap-1.5">
+        <div className="flex flex-1 flex-col items-start gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-3">
           <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
-          <span className="rounded-full border border-turquoise/50 bg-turquoise-soft/60 px-3 py-0.5 font-body text-[9px] uppercase tracking-[0.18em] text-ink-deep">
+          <Link
+            href={OFFRE_HREF[offre] ?? "/mes-offres"}
+            prefetch={false}
+            className={`inline-flex items-center rounded-md border px-2.5 pt-[5px] pb-[3px] font-body text-[9px] uppercase leading-none tracking-[0.18em] text-ink-deep transition-[border-color] hover:border-ink-deep/50 ${
+              BADGE_COLORS[offre] ?? BADGE_FALLBACK
+            }`}
+          >
             {offre}
-          </span>
+          </Link>
         </div>
       </div>
 

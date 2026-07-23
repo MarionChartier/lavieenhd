@@ -82,30 +82,30 @@ export function TransitSolaireBanner() {
           </p>
         </BannerCard>
 
-        {/* ——— Card Phase lunaire — fond photo des phases de la lune, mode nuit ——— */}
+        {/* ——— Card Phase lunaire — fond photo des phases de la lune, mode violet clair ——— */}
         <BannerCard
           bgSrc="/assets/phase-lunaire.jpg"
-          veilClass="bg-ink-deep/65"
-          info={{ id: "lune-tooltip", texte: LUNE_EXPLICATION, dark: true }}
+          veilClass="bg-gradient-to-br from-[#ece4f5]/93 to-[#dccef0]/93"
+          info={{ id: "lune-tooltip", texte: LUNE_EXPLICATION }}
         >
           <Wordmark
             caps="Phase"
             script="Lunaire"
-            capsClass="text-ink-lilac"
-            scriptClass="text-[#e9dcc0]"
+            capsClass="text-turquoise"
+            scriptClass="text-ink-deep"
           />
           <div>
-            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-white">
+            <p className="font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
               {transit.phase || "Phase du jour"}
             </p>
             {transit.phaseMotsCles && (
-              <p className="mt-2 font-body text-[14px] uppercase tracking-[0.16em] text-white">
+              <p className="mt-2 font-body text-[14px] uppercase tracking-[0.16em] text-ink-deep">
                 {transit.phaseMotsCles}
               </p>
             )}
           </div>
           {transit.phaseDescription && (
-            <p className="max-w-[440px] font-display text-[17px] leading-relaxed whitespace-pre-line text-white md:text-[18px]">
+            <p className="max-w-[440px] font-display text-[17px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[18px]">
               {transit.phaseDescription}
             </p>
           )}
@@ -117,7 +117,7 @@ export function TransitSolaireBanner() {
 
 /**
  * Card du bandeau. Par défaut : fond paillettes doré (même que le header) + voile blanc.
- * La card lunaire passe sa propre image (photo des phases) + un voile sombre.
+ * La card lunaire passe sa propre image (photo des phases) + un voile violet clair.
  * `info` affiche un « ? » cerclé dans le coin haut-droit avec son explication en tooltip.
  */
 function BannerCard({
@@ -129,7 +129,7 @@ function BannerCard({
   children: React.ReactNode;
   bgSrc?: string;
   veilClass?: string;
-  info?: { id: string; texte: string; dark?: boolean };
+  info?: { id: string; texte: string };
 }) {
   return (
     <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-10">
@@ -191,16 +191,14 @@ function Wordmark({
  * Point d'interrogation cerclé — tooltip au survol et au focus clavier.
  * Le panneau s'aligne sur le bord droit du bouton (coin de card oblige).
  */
-function InfoTooltip({ id, texte, dark }: { id: string; texte: string; dark?: boolean }) {
+function InfoTooltip({ id, texte }: { id: string; texte: string }) {
   return (
     <button
       type="button"
       aria-describedby={id}
-      className={`group relative grid h-6 w-6 flex-none cursor-help place-items-center rounded-full border font-body text-[13px] transition-colors hover:border-turquoise hover:text-turquoise focus-visible:border-turquoise focus-visible:text-turquoise focus-visible:outline-none ${
-        dark ? "border-white/50 text-white/80" : "border-ink-deep/40 text-ink-deep/70"
-      }`}
+      className="group relative grid h-6 w-6 flex-none cursor-help place-items-center rounded-full border border-ink-deep/40 font-body text-[13px] text-ink-deep/70 transition-colors hover:border-turquoise hover:text-turquoise focus-visible:border-turquoise focus-visible:text-turquoise focus-visible:outline-none"
     >
-      ?
+      <span className="inline-block translate-y-[3px] leading-none">?</span>
       <span
         role="tooltip"
         id={id}
