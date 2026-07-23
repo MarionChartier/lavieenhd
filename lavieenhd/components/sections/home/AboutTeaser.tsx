@@ -39,14 +39,14 @@ export function AboutTeaser() {
           </h2>
 
           <p className="mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
-            Après des années d'ingénierie en multinationales à chercher ma place, je me suis
-            retrouvée grâce au Human Design. Aujourd'hui, je t'accompagne à te révéler
+            Après des années d’ingénierie en multinationales à chercher ma place, je me suis
+            retrouvée grâce au Human Design. Aujourd’hui, je t’accompagne à te révéler
             pleinement, dans ta vie pro et au-delà.
           </p>
 
           <p className="mt-4 max-w-[520px] font-display text-[16px] italic leading-relaxed text-ink">
-            « Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la
-            tienne, et à l'exploiter. »
+            « Je crois qu’on a tous une zone de génie. Mon job, c’est de t’aider à voir la
+            tienne, et à l’exploiter. »
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -77,7 +77,7 @@ function HDCardMarion() {
   return (
     <div className="w-[260px] rounded-md border border-ink/14 bg-white p-6 shadow-[0_16px_40px_-20px_rgba(80,60,98,0.16)] md:w-[280px]">
       <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-        Carte d'identité HD
+        Carte d’identité HD
       </p>
       <p className="mt-1.5 pb-2 font-display text-[24px] leading-[1.05] text-ink-deep md:text-[26px]">
         Manifesting Generator 2/4

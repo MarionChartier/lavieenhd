@@ -18,6 +18,8 @@ export function OffresAccordion() {
   useEffect(() => {
     const hash = window.location.hash.slice(1);
     if (hash && OFFRES.some((o) => o.slug === hash)) {
+      // Sync unique au montage depuis l'URL (évite un mismatch d'hydratation SSR).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpenSlug(hash);
     }
   }, []);
@@ -155,7 +157,7 @@ function OffreItem({
 
               <div>
                 <p className="font-body text-[11px] uppercase tracking-[0.22em] text-turquoise">
-                  Pour qui c'est&nbsp;?
+                  Pour qui c’est&nbsp;?
                 </p>
                 <p className="mt-3 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
                   {offre.forWhom}

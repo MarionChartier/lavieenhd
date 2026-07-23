@@ -31,6 +31,8 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    // Fermer le menu mobile à chaque changement de route (sync UI ↔ navigation).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
   }, [pathname]);
 

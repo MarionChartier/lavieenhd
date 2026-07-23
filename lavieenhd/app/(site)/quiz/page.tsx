@@ -42,8 +42,8 @@ export default function QuizPage() {
           Mes <em className="italic text-turquoise">quiz gratuits</em>
         </h1>
         <p className="mx-auto mt-8 max-w-[620px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
-          J'ai créé pour toi des petits voyages introspectifs, ludiques et
-          révélateurs. Suis celui qui t'appelle aujourd'hui, et laisse la lumière
+          J’ai créé pour toi des petits voyages introspectifs, ludiques et
+          révélateurs. Suis celui qui t’appelle aujourd’hui, et laisse la lumière
           se faire.
         </p>
       </section>
@@ -104,7 +104,7 @@ export default function QuizPage() {
 
         {/* Pont vers les offres */}
         <p className="mx-auto mt-14 max-w-[560px] text-center font-body text-[14px] leading-relaxed text-ink-soft">
-          Envie d'aller plus loin après ton quiz ?{" "}
+          Envie d’aller plus loin après ton quiz ?{" "}
           <Link
             href="/mes-offres"
             className="text-turquoise underline-offset-2 hover:underline"
