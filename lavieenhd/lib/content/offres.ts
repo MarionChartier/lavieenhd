@@ -9,6 +9,8 @@ export interface Offre {
   name: string;
   /** Sous-titre commercial affiché sous le nom (ex: "Le Guide d'Immersion dans ton Design Unique") */
   subtitle?: string;
+  /** Petite ligne italique sous le sous-titre (ex: "avec 1h de coaching inclus") */
+  subtitleNote?: string;
   /** FAQ dédiée à l'offre (sinon une FAQ générique est affichée sur la page) */
   faq?: { q: string; a: string }[];
   /** Label compact pour les composants type stepper / mini-nav (ex: "QUIZ HD", "PLACE TO BE") */
@@ -37,6 +39,12 @@ export interface Offre {
   color: OffreColor;
   /** Lien externe vers l'écosystème systeme.io */
   href: string;
+  /**
+   * Accès direct au bon de commande ("Foncer sans détour"), court-circuitant
+   * la page de vente. Absent pour le Quiz (offre gratuite). Pour The Place to be,
+   * pointe vers la page de vente (choix de l'Environnement obligatoire).
+   */
+  orderHref?: string;
   /** Offre signature (Fleur de Talents Innés) → traitement visuel spécial */
   signature?: boolean;
 }
@@ -80,18 +88,21 @@ export const OFFRES: Offre[] = [
     num: "02",
     slug: "soin-energetique",
     name: "SOIN ÉNERGÉTIQUE",
-    subtitle: "Notre rendez-vous mensuel",
+    subtitle: "Soin collectif à distance",
     shortLabel: "Soin énergétique",
     tag: "Libérer",
     shortDescription:
       "On se retrouve chaque dernier dimanche du mois à 21h, pour un soin collectif à distance afin de libérer tes blocages, et pumper ton énergie.",
-    lead: "Un temps rien que pour toi.",
+    lead: "Un temps rien que pour toi, où tu n'as rien à faire d'autre que de te laisser chouchouter énergétiquement.",
     briefDescription:
-      "Chaque dernier dimanche du mois à 21h, un soin énergétique collectif à distance : libérer tes blocages (visibles ou non), refaire circuler l'énergie, et te recalibrer sur la plus haute fréquence.",
+      "Un Soin profond pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence.",
     briefBullets: [
+      "Entre 1h et 1h15 de soin énergétique collectif",
+      "À distance (pas de présentiel ni de live)",
       "Chaque dernier dimanche du mois à 21h",
-      "Tout se fait à distance, en mode réception",
-      "Feedback détaillé par email le lendemain",
+      "Consignes et conseils envoyés par email le jour du soin",
+      "Feedback détaillé par email le lendemain matin",
+      "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
     ],
     longDescription:
       "Un Soin complet pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. Pas de présentiel, pas de live : tout se fait à distance. Tu poses l'intention, tu t'installes en mode cocooning, et tu te laisses chouchouter énergétiquement. Le lendemain, Marion t'envoie son feedback détaillé par email : ressentis, perceptions, travail énergétique effectué, et très souvent des canalisations groupées.",
@@ -109,6 +120,7 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-soin-hands.webp",
     color: "beige",
     href: EXTERNAL.offre.soinEnergetique,
+    orderHref: EXTERNAL.commande.soinEnergetique,
   },
   {
     num: "03",
@@ -119,13 +131,16 @@ export const OFFRES: Offre[] = [
     tag: "S'initier",
     shortDescription:
       "Un Guide complet pour adapter facilement ton lieu de vie et de travail selon ton propre Environnement de Human Design, et booster ainsi ta vitalité, ton bien-être et tes performances.",
-    lead: "Ton environnement, en clair.",
+    lead: "Retrouve ta pleine énergie et ton plein potentiel, en t'entourant du bon espace pour toi.",
     briefDescription:
-      "Tu sais où tu te ressources, maintenant. Ce guide approfondit : ton lieu de vie idéal, ton environnement de travail, les lieux qui te déposent.",
+      "Ce Guide complet met en lumière ton lieu de vie idéal, et le meilleur environnement de travail pour toi selon ton Human Design ; découvre ainsi le type d'endroits qui te ressource, t'apaise et te booste.",
     briefBullets: [
-      "Guide personnalisé sur ton environnement",
-      "Conseils déco et choix de lieux",
-      "Carte mentale de ton « chez toi »",
+      "Plus de 30 pages PDF, personnalisées sur ton propre Environnement",
+      "Explications claires et décryptées, sans jargon complexe",
+      "Exemples et conseils pratiques et faciles à mettre en place",
+      "Espaces de réflexions personnelles",
+      "Visuels et inspirations de décoration",
+      "Planche d'ambiance couleurs & matières",
     ],
     longDescription:
       "Un guide personnalisé qui explore en profondeur ton Environnement HD idéal (parmi 6 profils possibles). Au-delà du quiz, tu reçois un guide écrit qui décrit ton environnement de prédilection avec précision : ce qui te ressource, ce qui t'épuise, comment aménager ton espace de vie ou de travail pour respecter ta vraie nature.",
@@ -169,23 +184,29 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-place.png",
     color: "violet",
     href: EXTERNAL.offre.thePlaceToBe,
+    // Exception : le choix de l'Environnement se fait sur la page de vente.
+    orderHref: EXTERNAL.offre.thePlaceToBe,
   },
   {
     num: "04",
     slug: "inside",
     name: "INSIDE",
     subtitle: "Le Guide d'Immersion dans ton Design Unique",
+    subtitleNote: "avec 1h de coaching inclus",
     shortLabel: "Inside",
     tag: "Découvrir",
     shortDescription:
       "Un Guide de décryptage personnalisé des 7 clés fondamentales de ton schéma de Human Design ; pour mieux te comprendre, arrêter de douter de tes choix, et te reconnecter à ta vraie nature. 1h de coaching inclus.",
-    lead: "Plonger dans les fondamentaux de ton design.",
+    lead: "Plonge dans les fondamentaux de ton Design pour te reconnecter à ta vraie nature.",
     briefDescription:
-      "On entre dans le détail : type, autorité, signature, non-soi, stratégie, profil, croix d'incarnation. Un guide personnalisé et une heure avec moi.",
+      "Reviens à qui tu es vraiment grâce à une analyse personnalisée des 7 informations principales de ton schéma de Human Design ; ton Type, ton Autorité intérieure, ta Signature, ton Non Soi, ta Stratégie, ta Définition et ton Profil, pour mieux comprendre comment ton énergie fonctionne, comment prendre des décisions justes, et comment attirer à toi les meilleures opportunités.",
     briefBullets: [
-      "Guide personnalisé d'environ 25 pages",
-      "1h de coaching en visio",
-      "Replay et ressources offertes",
+      "Guide personnalisé et accessible à vie",
+      "Environ 40 pages PDF",
+      "Explications claires et décryptées, sans jargon complexe",
+      "Exemples concrets et conseils pratiques",
+      "Espaces de réflexion et de mises en pratique",
+      "1h de coaching en visio pour approfondir et incarner",
     ],
     longDescription:
       "INSIDE est LA porte d'entrée si tu découvres le Human Design. On y explore les bases personnalisées de ton schéma : tes 7 piliers fondamentaux (Type, Autorité intérieure, Signature, Non-Soi, Stratégie, Profil, Croix d'incarnation). Tu reçois un guide écrit à partir de tes données de naissance, suivi d'1h de coaching en visio pour digérer, questionner, et faire le lien avec ta vie.",
@@ -203,6 +224,7 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-inside.png",
     color: "turquoise",
     href: EXTERNAL.offre.insideClub,
+    orderHref: EXTERNAL.commande.insideClub,
   },
   {
     num: "05",
@@ -213,13 +235,16 @@ export const OFFRES: Offre[] = [
     tag: "Démêler",
     shortDescription:
       "1h30 ensemble en visio pour dénouer une situation bloquante de ta vie professionnelle, clarifier une décision ou éclairer un questionnement, grâce à une analyse ciblée de ton Human Design.",
-    lead: "1h30 pour dénouer ce qui te bloque.",
+    lead: "1h30 pour dénouer ce qui te bloque aujourd'hui dans ta vie pro.",
     briefDescription:
-      "Tu as un sujet précis qui te questionne. Je prépare une analyse HD ciblée sur ta problématique, puis nous explorons ensemble en visio pour trouver ta voie.",
+      "Tu fais face à un blocage, un questionnement, un besoin de clarté ou de prise de décision dans ton parcours professionnel. Je prépare une analyse HD orientée sur ta problématique, puis nous explorons et allons dénouer tout ça ensemble en visio.",
     briefBullets: [
-      "Analyse HD cadrée sur ton sujet",
-      "1h30 de visio en tête-à-tête",
-      "Plan d'action et replay offerts",
+      "Analyse ciblée de ton Human Design",
+      "Décryptage concret et clair",
+      "90 minutes de coaching en 1:1",
+      "Guidance intuitive partagée au fil de l'échange",
+      "Conseils pratiques et adaptés à toi",
+      "Compte-rendu des points clés à relire à l'infini",
     ],
     longDescription:
       "REVEAL est une séance individuelle de clarté HD pro. Tu pars d'une problématique précise (un blocage, un choix à faire, un projet en suspens), Marion fait une analyse HD ciblée sur ta thématique, puis vous explorez ensemble en 1h30 de visio. À la fin de la séance, tu repars avec une clarté concrète et un plan d'action aligné avec ton design.",
@@ -238,24 +263,29 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-reveal.png",
     color: "violet",
     href: EXTERNAL.offre.reveal,
+    orderHref: EXTERNAL.commande.reveal,
   },
   {
     num: "06",
     slug: "fleur-de-talents",
     name: "BLOOMING",
     subtitle: "Ta Fleur de Talents Innés®",
+    subtitleNote: "avec 1h30 de coaching inclus",
     shortLabel: "BLOOMING",
     trademark: true,
     tag: "Révéler",
     shortDescription:
       "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
-    lead: "Tes talents innés, en une fleur.",
+    lead: "Toi aussi tu as des talents extraordinaires. Il est temps de les voir.",
     briefDescription:
-      "Une exploration croisée Human Design, Numérologie et Gene Keys pour révéler ce qui te rend unique. Ta fleur de talents et 40 pages personnalisées pour comprendre la trace que tu peux laisser.",
+      "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur de Talents Innés® est là pour révéler ta zone de génie et ton empreinte personnelle, grâce à une analyse approfondie de ton Human Design, et des éléments phares de ta Numérologie et de tes Gene Keys.",
     briefBullets: [
-      "Analyse croisée HD, Numérologie, Gene Keys",
-      "Fleur visuelle et 40 pages personnalisées",
-      "1h30 de coaching pour faire les liens",
+      "Analyse croisée HD, Numérologie, Gene Keys, 100% personnelle et unique",
+      "Fleur visuelle avec tes 5 pétales de talents innés",
+      "+ de 40 pages de détails vulgarisés et concrets",
+      "Ta zone de génie, et des pistes de métiers alignés à toi",
+      "Les configurations contre-nature pour toi (+ tes signaux d'alerte)",
+      "1h30 de coaching individuel pour ancrer tout ça dans TA réalité",
     ],
     longDescription:
       "Le programme signature de Marion. Une exploration croisée de tes grands pôles de talents innés à partir de trois grilles de lecture : Human Design, Numérologie et Gene Keys. Rendu sous forme d'une fleur visuelle, accompagné d'environ 40 pages de détails, d'une liste de métiers potentiels, des signaux de désalignement à reconnaître, et d'1h30 de coaching pour faire les liens avec ta vie.",
@@ -276,6 +306,7 @@ export const OFFRES: Offre[] = [
     color: "turquoise",
     signature: true,
     href: EXTERNAL.offre.fleurDeTalents,
+    orderHref: EXTERNAL.commande.fleurDeTalents,
   },
   {
     num: "07",
@@ -286,13 +317,16 @@ export const OFFRES: Offre[] = [
     tag: "Incarner",
     shortDescription:
       "3 mois d'Accompagnement 1:1 pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Introspection, Libération et Transformation. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
-    lead: "3 mois pour incarner qui tu es.",
+    lead: "3 mois pour sortir du flou ; savoir qui tu es, ce que tu veux, et enfin trouver ta juste place.",
     briefDescription:
-      "L'accompagnement premium pour aligner ta vie sur ton design en profondeur. Coachings, soins énergétiques, EFT, et tout l'écosystème Marion inclus.",
+      "Tu sais ce que tu ne veux plus pour ta vie professionnelle, mais tu ne sais pas ce que tu veux vraiment et vers quoi t'engager, tu doutes sur la voie à prendre et sur tes talents ?\n\nL'Accompagnement multi-dimensionnel Reconnect a été conçu pour toi ; il est là pour t'apporter clarté, direction et élan, afin de réaligner ta vie professionnelle à tes aspirations de cœur.",
     briefBullets: [
-      "3 coachings d'1h30 sur 3 mois",
-      "Soins énergétiques et séances EFT",
-      "INSIDE et Fleur de Talents inclus",
+      "Accompagnement individuel et transformationnel",
+      "3 coachings d'1h30, et un suivi privé et continu pendant les 3 mois",
+      "13 questionnaires hebdomadaires pour avancer pas à pas",
+      "Analyses HD, tests de personnalité, exercices et tips concrets",
+      "Soins énergétiques, séances d'EFT et méditations guidées",
+      "INSIDE et Fleur de Talents Innés® inclus",
     ],
     longDescription:
       "L'accompagnement premium de 3 mois. Un espace d'introspection et de transformation profonde : 1 questionnaire ciblé par semaine, des soins énergétiques, des séances EFT, 3 coachings d'1h30, INSIDE et Fleur de Talents Innés inclus. Un parcours sur-mesure pour incarner ton design en profondeur.",
@@ -314,5 +348,6 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-reconnect.png",
     color: "violet",
     href: EXTERNAL.offre.reconnect,
+    orderHref: EXTERNAL.commande.reconnect,
   },
 ];

@@ -88,6 +88,10 @@ export default function QuizPage() {
                   {quiz.subtitle}
                 </p>
 
+                <p className="relative mt-3 max-w-[340px] text-center font-body text-[13px] leading-relaxed text-ink-soft md:text-[14px]">
+                  {quiz.description}
+                </p>
+
                 <span
                   className={`relative mt-7 inline-flex w-fit items-center justify-center self-center rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
                 >

@@ -37,6 +37,9 @@ export function OffreLandingSection({
   // Le Quiz (offre 01) est plus compact : padding hero réduit + lien externe
   const isQuiz = offre.num === "01";
   const isSoin = offre.slug === "soin-energetique";
+  // Lien externe systeme.io → nouvel onglet ; pages de vente internes → même onglet
+  const externalProps = (url: string) =>
+    url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
     <section id={offre.slug} className={`scroll-mt-24 border-t border-white ${bg}`}>
@@ -129,13 +132,24 @@ export function OffreLandingSection({
                 </p>
               )}
 
+              {offre.subtitleNote && (
+                <p className="mt-1.5 font-display text-[15px] font-light italic leading-snug text-ink-soft md:text-[16px]">
+                  {offre.subtitleNote}
+                </p>
+              )}
+
               <p className="mt-6 font-display text-[18px] italic leading-snug text-ink-deep md:text-[22px]">
                 «&nbsp;{offre.lead}&nbsp;»
               </p>
 
-              <p className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]">
-                {offre.briefDescription}
-              </p>
+              {offre.briefDescription.split("\n\n").map((para, i) => (
+                <p
+                  key={i}
+                  className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]"
+                >
+                  {para}
+                </p>
+              ))}
 
               <ul className="mt-6 flex flex-col gap-3">
                 {offre.briefBullets.map((b) => (
@@ -155,29 +169,46 @@ export function OffreLandingSection({
 
               {/* CTA — lien direct vers la page de l'offre. Vide pour le moment
                   pour les offres dont la page HTML n'est pas encore fournie. */}
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8">
                 {isQuiz ? (
                   <Link
                     href={offre.href}
-                    className="inline-flex items-center justify-center rounded-full bg-ink-deep px-8 pt-[17px] pb-[15px] font-body text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
+                    className="inline-flex items-center justify-center rounded-md bg-ink-deep px-8 pt-[17px] pb-[15px] font-body text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
                   >
                     Voir les quiz gratuits
                   </Link>
                 ) : offre.href ? (
-                  <a
-                    href={offre.href}
-                    {...(offre.href.startsWith("http")
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink-deep bg-white/40 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
-                  >
-                    Découvrir
-                    <span aria-hidden>→</span>
-                  </a>
+                  <>
+                    <a
+                      href={offre.href}
+                      {...externalProps(offre.href)}
+                      className="inline-flex items-center gap-2 rounded-md border border-ink-deep bg-white/40 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
+                    >
+                      Découvrir
+                      <span aria-hidden>→</span>
+                    </a>
+
+                    {/* CTA secondaire — accès direct au bon de commande, en retrait par
+                        le traitement (lien texte, pas de pastille) pour ceux qui foncent à l'instinct */}
+                    <p className="mt-6 max-w-[440px] font-display text-[15px] italic leading-snug text-ink md:text-[16px]">
+                      Et si, comme moi, tu fonctionnes à l&apos;instinct, et que tu ressens
+                      l&apos;appel sans avoir besoin d&apos;en savoir plus&nbsp;;
+                    </p>
+                    <a
+                      href={offre.orderHref ?? offre.href}
+                      {...externalProps(offre.orderHref ?? offre.href)}
+                      className="group mt-3 inline-flex items-center gap-2 pt-2 font-body text-[13px] text-ink-deep underline decoration-ink-deep/40 decoration-1 underline-offset-4 transition-colors hover:decoration-ink-deep md:text-[14px]"
+                    >
+                      Foncer sans détour
+                      <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </a>
+                  </>
                 ) : (
                   <span
                     aria-disabled
-                    className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-ink-deep/25 bg-white/30 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep/45"
+                    className="inline-flex cursor-not-allowed items-center gap-2 rounded-md border border-ink-deep/25 bg-white/30 px-7 py-3 font-body text-[11px] uppercase tracking-[0.22em] text-ink-deep/45"
                   >
                     Bientôt disponible
                   </span>

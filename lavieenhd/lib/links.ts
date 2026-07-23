@@ -6,7 +6,8 @@
  * Si Marion change ses URLs systeme.io, c'est le seul fichier à mettre à jour.
  */
 
-const LEGACY_BASE = "https://marionchartier-humandesign.systeme.io/lavieenhd";
+const LEGACY_ROOT = "https://marionchartier-humandesign.systeme.io";
+const LEGACY_BASE = `${LEGACY_ROOT}/lavieenhd`;
 
 export const EXTERNAL = {
   /** Page principale de l'écosystème commercial de Marion */
@@ -36,5 +37,19 @@ export const EXTERNAL = {
     reveal: "/reveal.html",
     fleurDeTalents: "/blooming.html",
     reconnect: "/reconnect.html",
+  },
+
+  /**
+   * Bons de commande systeme.io — accès direct au paiement, court-circuitant
+   * la page de vente ("Foncer sans détour"). The Place to be n'y figure pas :
+   * l'acheteur doit d'abord choisir son Environnement sur la page de vente,
+   * qui embarque les 6 bons de commande dédiés.
+   */
+  commande: {
+    soinEnergetique: `${LEGACY_ROOT}/commande-soinenergetique`,
+    insideClub: `${LEGACY_ROOT}/commande-guide_design-guidee`,
+    reveal: `${LEGACY_ROOT}/commande-seance-clarte`,
+    fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
+    reconnect: `${LEGACY_ROOT}/commande-reconnect`,
   },
 } as const;

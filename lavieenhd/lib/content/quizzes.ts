@@ -30,9 +30,9 @@ export const QUIZZES: QuizItem[] = [
   {
     slug: "environnement",
     name: "Quiz - Ton lieu de vie/de travail idéal",
-    subtitle: "Et si certains lieux te boostaient, et d'autres t'épuisaient ?",
+    subtitle: "Et si réellement certains lieux te boostaient… et d'autres t'épuisaient ?",
     description:
-      "Découvre quel type de lieux est bénéfique pour ton énergie actuellement, parmi 6 profils, pour que tu te ressources naturellement au quotidien.",
+      "Des questions ciblées pour découvrir quel type de lieux est naturellement bénéfique pour ton énergie.",
     meta: "6 questions · 2 minutes",
     href: "/quiz/environnement.html",
     accent: "turquoise",
@@ -40,9 +40,9 @@ export const QUIZZES: QuizItem[] = [
   {
     slug: "alignement-pro",
     name: "Quiz - Ton alignement vie pro actuel",
-    subtitle: "Quel est ton niveau d'alignement actuel dans ta vie pro ?",
+    subtitle: "Où en es-tu réellement aujourd'hui dans ta vie professionnelle ?",
     description:
-      "Quelques questions sur ce que tu ressens au quotidien. Les réponses en révèlent souvent bien plus qu'on ne le croit.",
+      "Des questions du quotidien pour faire le point sur ton alignement professionnel actuel.",
     meta: "7 questions · 2 minutes",
     href: "/quiz/alignement-pro.html",
     accent: "violet",
