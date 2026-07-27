@@ -35,6 +35,10 @@ dist/
 design_handoff_marion_chartier_site/
 Design_conception/
 
+# Bundles des pages de vente pour Marion — régénérés par
+# `node scripts/bundles-marion.mjs build`, jamais versionnés (~36 Mo d'images dupliquées)
+bundles-marion/
+
 # Guides internes pour Marion — conservés en local uniquement
 Guide-Marion-tag-quiz.txt
 Suivi-des-modifications-Marion.txt
