@@ -17,14 +17,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = join(root, "public");
 const bundlesDir = join(root, "..", "bundles-marion");
 
-const PAGES = [
-  "soin-energetique",
-  "the-place-to-be",
-  "inside",
-  "reveal",
-  "blooming",
-  "reconnect",
-];
+/** blooming est absente : Marion l'a déjà retravaillée de son côté. */
+const PAGES = ["soin-energetique", "the-place-to-be", "inside", "reveal", "reconnect"];
 
 const { collectRefs, collectStrayRefs, toRelative, toAbsolute } = await import(
   "./bundle-paths.mjs"
@@ -143,39 +137,60 @@ async function reinject(pages) {
 }
 
 function readme(page) {
-  return `# Modifier la page « ${page} » avec Claude
+  return `# Modifier les textes de la page « ${page} »
 
-Ce dossier contient la page complète et tout ce dont elle a besoin.
-Tu peux l'ouvrir par double-clic sur \`${page}.html\` pour la voir dans ton navigateur.
+Ce dossier est ta **page d'essai**. Il contient la page et tout ce qu'il lui faut pour
+s'afficher exactement comme en ligne : ses photos et les écritures du site.
 
-## Comment faire
+**Commence par double-cliquer sur \`${page}.html\`** : la page s'ouvre dans ton
+navigateur. C'est ici que tu verras le résultat de tes modifications.
 
-1. Ouvre ce dossier dans Claude.
-2. Demande ta modification en langage normal. Sois précise sur l'endroit.
-3. Rafraîchis la page dans ton navigateur (touche F5) pour voir le résultat.
-4. Quand tu es contente, renvoie-moi le dossier entier : je le remets en ligne.
+## Le déroulé, étape par étape
+
+1. Va sur **claude.ai** et démarre une nouvelle conversation.
+2. **Joins le fichier \`${page}.html\`** (le trombone 📎, puis choisis le fichier dans
+   ce dossier). Ne colle pas son contenu dans le message : joins bien le fichier.
+3. Écris ta demande. Le plus simple est de recopier ce modèle :
+
+   > Voici une page de mon site. Modifie **uniquement** ce que je demande ci-dessous,
+   > et ne touche à rien d'autre : ni la mise en page, ni les couleurs, ni les images,
+   > ni le reste du texte. Rends-moi ensuite le fichier complet à télécharger.
+   >
+   > Ma demande : *(écris ici ce que tu veux changer)*
+
+4. **Télécharge le fichier** que Claude te renvoie, et mets-le dans ce dossier **à la
+   place de l'ancien** (garde exactement le même nom : \`${page}.html\`).
+5. Retourne dans ton navigateur et appuie sur **F5** : tu vois ta modification.
+6. Si ça te plaît, **envoie-moi le fichier**. Je le remets en ligne.
+
+Si le résultat ne te plaît pas, redemande dans la même conversation
+(« non, remets le titre d'avant et change plutôt… ») et retélécharge.
 
 ## Exemples de demandes qui marchent bien
 
+Sois précise sur **l'endroit** : cite le texte tel qu'il apparaît sur la page.
+
 - « Dans la section des tarifs, remplace “122 €” par “138 €”. »
-- « Le titre en haut de la page, écris plutôt : “...”. »
-- « Le paragraphe qui commence par “Tu ressens...”, remplace-le par ce texte : “...”. »
-- « Supprime le témoignage de Camille. »
-- « J'ai mis une photo \`nouvelle-photo.jpg\` dans le dossier. Utilise-la à la place de la photo du haut de page. »
+- « Le paragraphe qui commence par “Tu ressens…”, remplace-le par : “…”. »
+- « Supprime le témoignage de Camille, avec sa photo. »
+- « Le bouton “Je réserve ma place” doit dire “Je m'inscris”. »
 
-## Deux ou trois choses à savoir
+## Ce qui passe par moi, pas par Claude
 
-- **Pour changer une image**, dépose ton fichier dans ce dossier et dis à Claude laquelle
-  il doit remplacer. Chaque image existe en deux versions (une normale, une allégée pour
-  le téléphone) : dis simplement à Claude de **remplacer les deux**, il saura faire.
-- **Ne renomme pas** le fichier \`${page}.html\`, ni les dossiers \`assets\` et \`fonts\`.
-- **La mise en page se règle de mon côté.** Si tu veux déplacer un bloc, changer une
-  couleur ou une taille, écris-le moi plutôt que de le demander à Claude : c'est là qu'on
-  risque de casser quelque chose.
-- **Si un texte est trop long**, il peut déborder de son cadre. Regarde la page après
-  ta modification, et sur ton téléphone si tu peux.
-- **Si quelque chose s'est mal passé**, dis à Claude : « annule ma dernière modification ».
-  Et dans le pire des cas, redemande-moi le dossier d'origine : rien n'est perdu.
+- **Changer une photo.** Envoie-la moi en me disant laquelle elle remplace.
+- **Déplacer un bloc, changer une couleur, une taille, un espacement.** C'est là qu'on
+  risque de casser la mise en page — et sur claude.ai tu ne verrais le dégât qu'après
+  coup.
+
+## Trois choses à savoir
+
+- **Ne renomme rien** : ni le fichier \`${page}.html\`, ni les dossiers \`assets\` et
+  \`fonts\`. La page ne saurait plus retrouver ses photos.
+- **Vérifie toujours la page après téléchargement.** Un texte plus long que l'ancien peut
+  déborder de son cadre. Regarde aussi sur ton téléphone si tu peux.
+- **Rien n'est jamais perdu.** Si un fichier revient abîmé, redemande-moi le dossier
+  d'origine. Et de mon côté, avant chaque mise en ligne, je compare ta version à la
+  précédente et je vois exactement ce qui a changé.
 `;
 }
 
