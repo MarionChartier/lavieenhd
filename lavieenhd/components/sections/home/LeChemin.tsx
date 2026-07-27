@@ -27,7 +27,7 @@ export function LeChemin() {
             Bienvenue dans le parcours multi-étapes.
           </h2>
           <p className="mt-6 font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-            — Une traversée progressive, ou un choix ciblé, selon ce qui t'appelle. —
+            — Une traversée progressive, ou un choix ciblé, selon ce qui t’appelle. —
           </p>
         </div>
 

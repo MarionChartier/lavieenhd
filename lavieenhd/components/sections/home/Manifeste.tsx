@@ -7,8 +7,8 @@ export function Manifeste() {
         <Eyebrow centered>Manifeste</Eyebrow>
 
         <p className="mx-auto mt-8 max-w-[1000px] font-display text-[32px] font-light italic leading-tight text-ink-deep md:text-[56px]">
-          Tu n'es <em className="text-turquoise">pas trop</em>.<br />
-          Tu n'es pas <em className="text-turquoise">pas assez</em>.<br />
+          Tu n’es <em className="text-turquoise">pas trop</em>.<br />
+          Tu n’es pas <em className="text-turquoise">pas assez</em>.<br />
           Tu es exactement ce que tu es venu·e être.
         </p>
       </div>

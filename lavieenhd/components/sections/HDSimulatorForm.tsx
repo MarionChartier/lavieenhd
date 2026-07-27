@@ -71,7 +71,7 @@ export function HDSimulatorForm() {
 
       {/* pr-* garantit que le titre ne passera jamais sous le logo */}
       <h2 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
-        Il est temps de révéler ton <em className="italic text-turquoise">mode d'emploi personnel</em>.
+        Il est temps de révéler ton <em className="italic text-turquoise">mode d’emploi personnel</em>.
       </h2>
 
       {/* Fond blanc derrière l'iframe transparent */}

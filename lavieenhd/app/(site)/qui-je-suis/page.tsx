@@ -133,34 +133,34 @@ export default function QuiJeSuisPage() {
             </h1>
 
             <p className="mt-8 max-w-[520px] font-display text-[20px] font-light italic leading-snug text-ink-deep md:text-[26px]">
-              «&nbsp;Je crois qu'on a tous une zone de génie. Mon job, c'est de t'aider à voir la tienne, et à l'exploiter.&nbsp;»
+              «&nbsp;Je crois qu’on a tous une zone de génie. Mon job, c’est de t’aider à voir la tienne, et à l’exploiter.&nbsp;»
             </p>
 
             <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
-              Moi c'est Marion&nbsp;! En Human Design, je suis MG 2/4&nbsp;: la magicienne
+              Moi c’est Marion&nbsp;! En Human Design, je suis MG 2/4&nbsp;: la magicienne
               fraternelle multi-passionnée, si on veut faire un (gros) résumé! 😄
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
-              Après des années d'ingénierie dans des grosses entreprises, et surtout des
+              Après des années d’ingénierie dans des grosses entreprises, et surtout des
               années de quête de sens professionnel à ne pas trouver ma place, je me suis
               finalement retrouvée grâce à un plongeon dans le Human Design, et je suis
-              aujourd'hui Coach transformationnelle, pour toi.♥
+              aujourd’hui Coach transformationnelle, pour toi.♥
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
-              Je suis également maman d'un petit Manifestor, qui me montre chaque jour à quel
-              point on est finalement aligné naturellement à sa vraie nature lorsqu'on est
-              enfant. Et c'est une priorité essentielle pour moi de le maintenir connecté à
+              Je suis également maman d’un petit Manifestor, qui me montre chaque jour à quel
+              point on est finalement aligné naturellement à sa vraie nature lorsqu’on est
+              enfant. Et c’est une priorité essentielle pour moi de le maintenir connecté à
               lui au maximum, loin des moules rigides et des injonctions qui pourraient
-              l'éteindre (surtout en tant que Manifestor!). Je veux lui éviter le piège
+              l’éteindre (surtout en tant que Manifestor!). Je veux lui éviter le piège
               courant de se retrouver paumé une fois adulte, complètement éloigné de
               lui-même. Je suis passée par là, et je vois aussi malheureusement trop de
               personnes dans ce cas.
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
-              C'est donc une vraie mission de cœur pour moi aujourd'hui de t'accompagner
+              C’est donc une vraie mission de cœur pour moi aujourd’hui de t’accompagner
               grâce à des outils puissants comme le Human Design, à te retrouver pour te
               révéler pleinement dans ta vie pro (et au-delà!). 🌟
             </p>
@@ -215,7 +215,7 @@ export default function QuiJeSuisPage() {
             {/* Colonne gauche : titre sticky + petite photo */}
             <div>
               <h2 className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[64px]">
-                Du costume <em className="italic text-turquoise">d'ingé</em>
+                Du costume <em className="italic text-turquoise">d’ingé</em>
                 <br />à ma vraie nature.
               </h2>
 
@@ -234,16 +234,16 @@ export default function QuiJeSuisPage() {
             <div className="flex flex-col gap-7 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               <p>
                 Ayant des &quot;facilités&quot; mais ne sachant pas réellement quoi faire
-                lorsque j'ai été en âge de devoir choisir ma voie...j'ai opté pour un chemin
-                conventionnel me permettant d'avoir un &quot;bon poste&quot;, un &quot;bon
-                salaire&quot;, et la &quot;sécurité&quot; de l'emploi&nbsp;: études
+                lorsque j’ai été en âge de devoir choisir ma voie...j’ai opté pour un chemin
+                conventionnel me permettant d’avoir un &quot;bon poste&quot;, un &quot;bon
+                salaire&quot;, et la &quot;sécurité&quot; de l’emploi&nbsp;: études
                 supérieures puis CDI dans des industries multinationales.
               </p>
               <p>
-                Mais après plusieurs années à cocher des cases qui n'étaient pas faites pour
+                Mais après plusieurs années à cocher des cases qui n’étaient pas faites pour
                 moi, il est arrivé un moment où je ne pouvais plus me cacher la réalité
                 latente&nbsp;: je ressentais un profond manque de sens, ce métier
-                d'ingénieure n'était pas fait pour moi.
+                d’ingénieure n’était pas fait pour moi.
               </p>
               <p>
                 Une fois le constat fait (et accepté!)&nbsp;: le vide.
@@ -253,22 +253,22 @@ export default function QuiJeSuisPage() {
                 Beaucoup de questions, mais peu de réponses.
               </p>
               <p>
-                S'en suit une longue phase de flou artistique, et de quête existentielle.
+                S’en suit une longue phase de flou artistique, et de quête existentielle.
                 <br />
-                J'ai lu des dizaines de livres, fait plusieurs bilans de compétences, suivi
+                J’ai lu des dizaines de livres, fait plusieurs bilans de compétences, suivi
                 des coachings, testé différents métiers,...
                 <br />
-                J'ai vécu la frustration, le stress, l'épuisement et la lassitude de ne pas
+                J’ai vécu la frustration, le stress, l’épuisement et la lassitude de ne pas
                 savoir.
               </p>
               <p>
                 Et puis le Human Design est arrivé dans ma vie. Et tout a basculé. Pas comme
-                une révélation magique, mais comme un outil de clarté profonde qui m'a enfin
+                une révélation magique, mais comme un outil de clarté profonde qui m’a enfin
                 permis de me comprendre vraiment, et de trouver ma voie.
               </p>
               <p>
-                Aujourd'hui je peux enfin dire que je me sens à ma place (c'était pas
-                gagné!), et j'ai vraiment à cœur de t'aider, toi aussi, à trouver ce chemin
+                Aujourd’hui je peux enfin dire que je me sens à ma place (c’était pas
+                gagné!), et j’ai vraiment à cœur de t’aider, toi aussi, à trouver ce chemin
                 vers ton épanouissement pro. ♥
               </p>
             </div>
@@ -356,7 +356,7 @@ export default function QuiJeSuisPage() {
           {/* Header centré */}
           <div className="text-center">
             <h2 className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
-              Ma façon de <em className="italic text-turquoise">t'accompagner</em>.
+              Ma façon de <em className="italic text-turquoise">t’accompagner</em>.
             </h2>
             <p className="mx-auto mt-7 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
               N&apos;étant moi-même pas une grande adepte du «&nbsp;full-théorie&nbsp;» et des
@@ -447,9 +447,9 @@ export default function QuiJeSuisPage() {
                   Fun fact
                 </span>
                 <p className="mt-3 font-display text-[19px] font-light italic leading-relaxed text-ink-deep md:text-[23px]">
-                  «&nbsp;Je n'ai pas découvert le Human Design par hasard, il s'est carrément
-                  imposé à moi&nbsp;! 😄 C'est en recherchant une nounou pour mon bébé que l'une
-                  d'elles (qui n'est même pas devenue son ass' mat'&nbsp;!) a évoqué cet outil
+                  «&nbsp;Je n’ai pas découvert le Human Design par hasard, il s’est carrément
+                  imposé à moi&nbsp;! 😄 C’est en recherchant une nounou pour mon bébé que l’une
+                  d’elles (qui n’est même pas devenue son ass’ mat’&nbsp;!) a évoqué cet outil
                   fantastique. Je ne savais pas encore que ça allait changer toute ma vie&nbsp;!&nbsp;»
                 </p>
               </div>
@@ -486,7 +486,7 @@ export default function QuiJeSuisPage() {
             </h3>
             <p className="mx-auto mt-5 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink md:text-[18px]">
               Tu peux commencer par découvrir ton schéma personnel de Human Design, ou
-              explorer tout l'écosystème de La vie en HD.
+              explorer tout l’écosystème de La vie en HD.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
               <Link
@@ -514,7 +514,7 @@ function HDCardLarge() {
   return (
     <div className="w-full max-w-[380px] rounded-md border border-ink/14 bg-white p-7 shadow-[0_24px_60px_-28px_rgba(80,60,98,0.20)] md:p-8">
       <p className="font-body text-[10px] uppercase tracking-[0.24em] text-ink-soft">
-        Carte d'identité HD
+        Carte d’identité HD
       </p>
       <p className="mt-2 pb-1 font-display text-[28px] leading-[1.05] text-ink-deep md:text-[32px]">
         Manifesting Generator 2/4

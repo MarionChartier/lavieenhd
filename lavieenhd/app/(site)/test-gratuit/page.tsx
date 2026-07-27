@@ -70,13 +70,13 @@ export default function TestGratuitPage() {
                 Ton Design
               </p>
               <p className="relative mt-5 font-display text-[18px] italic leading-snug text-ink-deep md:mt-6 md:text-[22px]">
-                tel qu'il est inscrit dans le ciel à ta naissance.
+                tel qu’il est inscrit dans le ciel à ta naissance.
               </p>
 
               <p className="mt-5 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
                 À partir de ta date, ton heure et ton lieu de naissance, ton schéma Human
                 Design se révèle. Tu obtiens ton Type, ton Autorité intérieure, ton Profil et
-                bien plus. C'est la base de tout&nbsp;: la cartographie unique de ton énergie.
+                bien plus. C’est la base de tout&nbsp;: la cartographie unique de ton énergie.
               </p>
 
               {/* CE QUE TU DÉCOUVRES — card dorée penchée, même style que le fun fact */}
@@ -114,8 +114,8 @@ export default function TestGratuitPage() {
                     </p>
                     <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
                       Même 10 minutes peuvent changer ton Profil ou ton Autorité intérieure.
-                      Si tu ne la connais pas ou que tu as un doute, je t'invite à te
-                      rapprocher du siège de l'administration de ta ville de naissance. (Si
+                      Si tu ne la connais pas ou que tu as un doute, je t’invite à te
+                      rapprocher du siège de l’administration de ta ville de naissance. (Si
                       tu es né.e en France ou que tu as la nationalité française&nbsp;; tu
                       peux obtenir ton heure de naissance en demandant la copie intégrale de
                       ton acte de naissance auprès de la mairie de ta commune de naissance
@@ -127,9 +127,9 @@ export default function TestGratuitPage() {
                       Lieu de naissance
                     </p>
                     <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                      Une ville suffit, pas besoin de l'hôpital. Cependant vérifie bien la
+                      Une ville suffit, pas besoin de l’hôpital. Cependant vérifie bien la
                       combinaison entière proposée&nbsp;; ville - région - pays. Le
-                      calculateur s'occupe du fuseau horaire et des coordonnées.
+                      calculateur s’occupe du fuseau horaire et des coordonnées.
                     </p>
                   </li>
                   <li>
@@ -137,7 +137,7 @@ export default function TestGratuitPage() {
                       Aucun engagement
                     </p>
                     <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                      Le calculateur est gratuit, et ton schéma t'appartient. Tu peux ensuite
+                      Le calculateur est gratuit, et ton schéma t’appartient. Tu peux ensuite
                       explorer{" "}
                       <Link
                         href="/mes-offres"
@@ -168,13 +168,13 @@ export default function TestGratuitPage() {
         <div className="mx-auto max-w-(--container-content)">
           <div className="rounded-2xl border border-ink-deep/8 bg-paper p-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:p-14">
             <h3 className="font-display text-[32px] font-light leading-tight text-ink-deep md:text-[44px]">
-              Envie d'aller plus loin&nbsp;?
+              Envie d’aller plus loin&nbsp;?
             </h3>
             <p className="mx-auto mt-5 max-w-[560px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
               Explore <em className="text-turquoise">tous les espaces</em> de La vie en HD.
             </p>
             <p className="mx-auto mt-4 max-w-[560px] font-body text-[14px] leading-relaxed text-ink md:text-[15px]">
-              Du quiz découverte au programme d'incarnation de 3 mois,
+              Du quiz découverte au programme d’incarnation de 3 mois,
               <br />
               chaque offre correspond à un besoin et à un moment de ton parcours.
             </p>
