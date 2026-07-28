@@ -44,7 +44,23 @@ const HOME_FAQ = [
   },
   {
     q: "Quelle différence entre Blooming, Reveal et Reconnect?",
-    a: "Ce sont trois façons différentes d'explorer ton Human Design, selon ce dont tu as besoin :\n\nBlooming (Révéler) ; Une mise en lumière de tes dons et de ta zone de génie (avec ta Fleur de Talents Innés®) : un document PDF complet, associé à une séance de coaching d'1h30, pour identifier tes forces naturelles et savoir comment les exprimer.\nReveal (Démêler) ; Une séance unique de 90 minutes, centrée sur une problématique précise que tu traverses (questionnement, blocage, indécision...). On analyse ton design sous cet angle spécifique pour t'aider à y voir clair.\nReconnect (Incarner) ; Mon Accompagnement phare : un parcours complet de 3 mois pour celles et ceux qui veulent transformer en profondeur leur vie professionnelle, avec un suivi pas à pas, semaine après semaine (questionnaires et tests, coachings, soins énergétiques, méditations, EFT, exercices,...).\n\nEn résumé :\nBlooming pour révéler qui tu es et ce pour quoi tu es fait.e, Reveal pour éclairer et démêler une question précise, Reconnect pour t'accompagner dans une transformation complète.",
+    a: (
+      <>
+        {"Ce sont trois façons différentes d'explorer ton Human Design, selon ce dont tu as besoin :\n\n"}
+        <strong className="font-semibold">Blooming</strong>
+        {" (Révéler) ; Une mise en lumière de tes dons et de ta zone de génie (avec ta Fleur de Talents Innés®) : un document PDF complet, associé à une séance de coaching d'1h30, pour identifier tes forces naturelles et savoir comment les exprimer.\n\n"}
+        <strong className="font-semibold">Reveal</strong>
+        {" (Démêler) ; Une séance unique de 90 minutes, centrée sur une problématique pro que tu traverses (questionnement, blocage, indécision...). On analyse ton design sous cet angle spécifique pour t'aider à y voir clair.\n\n"}
+        <strong className="font-semibold">Reconnect</strong>
+        {" (Incarner) ; Mon Accompagnement phare : un parcours complet de 3 mois pour celles et ceux qui veulent transformer en profondeur leur vie professionnelle, avec un suivi pas à pas, semaine après semaine (questionnaires et tests, coachings, soins énergétiques, méditations, EFT, exercices,...).\n\nEn résumé :\n"}
+        <strong className="font-semibold">Blooming</strong>
+        {" pour révéler qui tu es et ce pour quoi tu es fait.e.\n"}
+        <strong className="font-semibold">Reveal</strong>
+        {" pour éclairer et démêler une question précise.\n"}
+        <strong className="font-semibold">Reconnect</strong>
+        {" pour t'accompagner dans une transformation complète."}
+      </>
+    ),
   },
 ];
 

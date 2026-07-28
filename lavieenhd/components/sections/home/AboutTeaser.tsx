@@ -15,13 +15,13 @@ export function AboutTeaser() {
       <div className="mx-auto grid max-w-(--container-content) gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
         {/* Photo + HDCard */}
         <div className="relative">
-          <div className="relative h-[480px] w-full overflow-hidden rounded-2xl border border-ink/10 shadow-[0_24px_55px_-28px_rgba(80,60,98,0.28)] md:h-[580px]">
+          <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_24px_55px_-28px_rgba(80,60,98,0.28)] md:h-[500px]">
             <Image
               src={PHOTO_MARION_LIVING}
               alt="Marion Chartier"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="object-cover object-[50%_22%]"
             />
           </div>
           {/* HD Card flottante */}

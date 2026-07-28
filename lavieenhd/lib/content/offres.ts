@@ -117,7 +117,7 @@ export const OFFRES: Offre[] = [
     price: "20 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/logo-soin-hands.webp",
+    logoSrc: "/assets/soin-energetique-mains.png",
     color: "beige",
     href: EXTERNAL.offre.soinEnergetique,
     orderHref: EXTERNAL.commande.soinEnergetique,
@@ -272,7 +272,6 @@ export const OFFRES: Offre[] = [
     subtitle: "Ta Fleur de Talents Innés®",
     subtitleNote: "avec 1h30 de coaching inclus",
     shortLabel: "BLOOMING",
-    trademark: true,
     tag: "Révéler",
     shortDescription:
       "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
@@ -299,7 +298,7 @@ export const OFFRES: Offre[] = [
       "Signaux de désalignement à reconnaître",
       "1h30 de coaching pour faire les liens avec ta vie",
     ],
-    price: "300 €",
+    price: "333 €",
     imgUrl:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-blooming.png",
@@ -316,7 +315,7 @@ export const OFFRES: Offre[] = [
     shortLabel: "Reconnect",
     tag: "Incarner",
     shortDescription:
-      "3 mois d'Accompagnement 1:1 pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Introspection, Libération et Transformation. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
+      "3 mois d'Accompagnement pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
     lead: "3 mois pour sortir du flou ; savoir qui tu es, ce que tu veux, et enfin trouver ta juste place.",
     briefDescription:
       "Tu sais ce que tu ne veux plus pour ta vie professionnelle, mais tu ne sais pas ce que tu veux vraiment et vers quoi t'engager, tu doutes sur la voie à prendre et sur tes talents ?\n\nL'Accompagnement multi-dimensionnel Reconnect a été conçu pour toi ; il est là pour t'apporter clarté, direction et élan, afin de réaligner ta vie professionnelle à tes aspirations de cœur.",
@@ -342,7 +341,7 @@ export const OFFRES: Offre[] = [
       "Fleur de Talents Innés® inclus",
       "Suivi par messagerie tout au long du parcours",
     ],
-    price: "1 111 €",
+    price: "1 444 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-reconnect.png",

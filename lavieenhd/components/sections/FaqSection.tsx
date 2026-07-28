@@ -17,7 +17,7 @@ export function FaqSection({
   title?: string;
   eyebrow?: string;
 }) {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className="bg-white px-6 py-20 md:px-20 md:py-28">

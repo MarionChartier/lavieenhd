@@ -9,6 +9,14 @@ const COLOR_GRADIENTS: Record<OffreColor, string> = {
   beige: "bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]",
 };
 
+// Bordure au hover, teintée selon la couleur de l'offre.
+const COLOR_BORDERS: Record<OffreColor, string> = {
+  free: "hover:border-turquoise",
+  violet: "hover:border-ink-lilac",
+  turquoise: "hover:border-turquoise",
+  beige: "hover:border-[#e0a94f]",
+};
+
 // Halo coloré au hover, teinté selon la couleur de l'offre (même intensité que le glow signature).
 const COLOR_GLOWS: Record<OffreColor, string> = {
   free: "hover:shadow-[0_0_60px_8px_rgba(117,206,210,0.5),0_20px_50px_-15px_rgba(80,60,98,0.22)]",
@@ -49,7 +57,6 @@ function Postcard({ offre }: { offre: Offre }) {
   const gradient = COLOR_GRADIENTS[offre.color];
   const isQuiz = offre.slug === "quiz";
   const isInside = offre.slug === "inside";
-  const isSoin = offre.slug === "soin-energetique";
   // Chaque offre renvoie directement vers sa page (offre.href) : /quiz pour le
   // Quiz, la page de vente Blooming pour Fleur de Talents. Les offres dont la
   // page HTML n'est pas encore fournie renvoient vers leur section dans la frise.
@@ -74,8 +81,8 @@ function Postcard({ offre }: { offre: Offre }) {
       <div
         className={`relative grid grid-cols-1 ${
           isInside ? "overflow-hidden lg:overflow-visible" : "overflow-hidden"
-        } rounded-md border border-ink/12 bg-white shadow-[0_12px_30px_-20px_rgba(80,60,98,0.18)] transition-all lg:min-h-[160px] lg:grid-cols-[220px_1fr_300px] ${
-          isSoin ? "hover:border-[#e0a94f]" : "hover:border-turquoise"
+        } rounded-md border border-ink/12 bg-white shadow-[0_12px_30px_-20px_rgba(80,60,98,0.18)] transition-all lg:min-h-[207px] lg:grid-cols-[220px_1fr_300px] ${
+          COLOR_BORDERS[offre.color]
         } ${
           offre.signature
             ? "hover:shadow-[0_0_60px_8px_rgba(117,206,210,0.55),0_20px_50px_-15px_rgba(80,60,98,0.22)]"
@@ -110,7 +117,7 @@ function Postcard({ offre }: { offre: Offre }) {
               height={110}
               className={`relative w-auto object-contain ${
                 offre.slug === "soin-energetique"
-                  ? "max-h-[112px] max-w-[92%]"
+                  ? "max-h-[140px] max-w-[94%] translate-y-2 opacity-90 drop-shadow-[0_10px_22px_rgba(224,169,79,0.4)]"
                   : offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:absolute lg:inset-0 lg:m-auto lg:max-h-[201px] lg:max-w-[100%]"
                   : offre.slug === "reveal"
