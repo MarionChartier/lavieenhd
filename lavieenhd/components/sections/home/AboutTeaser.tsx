@@ -24,8 +24,8 @@ export function AboutTeaser() {
               className="object-cover object-[50%_22%]"
             />
           </div>
-          {/* HD Card flottante */}
-          <div className="absolute -bottom-8 right-2 z-10 md:-bottom-10 md:-right-6">
+          {/* HD Card — sous la photo en mobile (pas de superposition), flottante dès md */}
+          <div className="mt-6 flex justify-center md:absolute md:-bottom-10 md:-right-6 md:z-10 md:mt-0">
             <HDCardMarion />
           </div>
         </div>
