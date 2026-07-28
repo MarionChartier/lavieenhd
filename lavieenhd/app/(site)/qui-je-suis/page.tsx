@@ -25,50 +25,96 @@ const HD_ATTRIBUTES = [
   {
     label: "Type",
     value: "Manifesting Generator",
-    blurb:
-      "Je suis multi-casquette, multi-tâches, multi-potentielle. Plusieurs vies dans une même vie. Exit l'étiquette de la nana instable : c'est un besoin viscéral pour moi de jongler!",
+    blurb: (
+      <>
+        {"Je suis multi-casquette, multi-tâches, multi-potentielle. Plusieurs vies dans une même vie. "}
+        <em className="italic">
+          {"Exit l'étiquette de la nana instable : c'est un besoin viscéral pour moi de jongler!"}
+        </em>
+      </>
+    ),
   },
   {
     label: "Profil",
     value: "2/4",
-    blurb:
-      `J'adore mes bulles de solitude (et j'en ai besoin!), mais j'aime aussi profondément tisser des liens, et vivre des moments de partage avec les autres. Tout un paradoxe à cultiver et à assumer! "On me voit, on me voit plus!"`,
+    blurb: (
+      <>
+        {"J'adore mes bulles de solitude "}
+        <em className="italic">{"(et j'en ai besoin!)"}</em>
+        {", mais j'aime aussi profondément tisser des liens, et vivre des moments de partage avec les autres. "}
+        <em className="italic">{`Tout un paradoxe à cultiver et à assumer! "On me voit, on me voit plus!"`}</em>
+      </>
+    ),
   },
   {
     label: "Autorité",
     value: "Émotionnelle",
-    blurb:
-      `Je traverse des vagues émotionnelles, mon lac intérieur est parfois agité, et j'ai besoin d'attendre que l'eau soit calme pour faire des choix. "Tu prends les choses trop à cœur Marion!" Non, je vis juste des émotions intenses tonton Roger!`,
+    blurb: (
+      <>
+        {"Je traverse des vagues émotionnelles, mon lac intérieur est parfois agité, et j'ai besoin d'attendre que l'eau soit calme pour faire des choix. "}
+        <em className="italic">
+          {`"Tu prends les choses trop à cœur Marion!" Non, je vis juste des émotions intenses tonton Roger!`}
+        </em>
+      </>
+    ),
   },
   {
     label: "Signature",
     value: "Satisfaction",
-    blurb:
-      "Les sentiments de satisfaction, d'accomplissement et de paix intérieure sont mes petits jalons qui m'indiquent que je marche dans le bon sens. Les did-lists sont d'ailleurs désormais mes amies!",
+    blurb: (
+      <>
+        {"Les sentiments de satisfaction, d'accomplissement et de paix intérieure sont mes petits jalons qui m'indiquent que je marche dans le bon sens. "}
+        <em className="italic">{"Les did-lists sont d'ailleurs désormais mes amies!"}</em>
+      </>
+    ),
   },
   {
     label: "Non-Soi",
     value: "Frustration",
-    blurb:
-      "La frustration (et la colère) sont clairement mes warnings intérieurs. Quand ces émotions se pointent, je sais maintenant qu'il y a simplement quelque chose à réajuster. J'ai dû apprendre à gérer ces émotions mal perçues, et accepter qu'elles avaient un message pour moi!",
+    blurb: (
+      <>
+        {"La frustration "}
+        <em className="italic">{"(et la colère)"}</em>
+        {" sont clairement mes warnings intérieurs. Quand ces émotions se pointent, je sais maintenant qu'il y a simplement quelque chose à réajuster. "}
+        <em className="italic">
+          {"J'ai dû apprendre à gérer ces émotions mal perçues, et accepter qu'elles avaient un message pour moi!"}
+        </em>
+      </>
+    ),
   },
   {
     label: "Stratégie",
     value: "Répondre",
-    blurb:
-      "Je suis à l'écoute de ce que la vie et les autres me proposent, et je fais confiance à mon sacral pour savoir s'il faut saisir l'opportunité ou non (+ j'informe de mes actions avec mon côté Manifestor). J'accepte d'être la reine des synchronicités!",
+    blurb: (
+      <>
+        {"Je suis à l'écoute de ce que la vie et les autres me proposent, et je fais confiance à mon sacral pour savoir s'il faut saisir l'opportunité ou non (+ j'informe de mes actions avec mon côté Manifestor). "}
+        <em className="italic">{"J'accepte d'être la reine des synchronicités!"}</em>
+      </>
+    ),
   },
   {
     label: "Définition",
     value: "Double",
-    blurb:
-      "La présence des autres permet de faire le pont entre tous mes centres énergétiques. Mes 2 voix intérieures sont bien réelles ; elles ont juste besoin de temps pour se relier et se mettre d'accord!",
+    blurb: (
+      <>
+        {"La présence des autres permet de faire le pont entre tous mes centres énergétiques. "}
+        <em className="italic">
+          {"Mes 2 voix intérieures sont bien réelles ; elles ont juste besoin de temps pour se relier et se mettre d'accord!"}
+        </em>
+      </>
+    ),
   },
   {
     label: "Environnement",
     value: "Montagnes",
-    blurb:
-      "J'ai besoin de grand air, d'altitude, et de vue à 360! Je n'ai pas choisi ma région de cœur pour rien : Annecy et ses environs sont ma favourite place!",
+    blurb: (
+      <>
+        {"J'ai besoin de grand air, d'altitude, et de vue à 360! "}
+        <em className="italic">
+          {"Je n'ai pas choisi ma région de cœur pour rien : Annecy et ses environs sont ma favourite place!"}
+        </em>
+      </>
+    ),
   },
 ];
 
@@ -90,9 +136,10 @@ const VALEURS: { word: string; big: boolean }[] = [
   { word: "Rêve", big: false },
 ];
 
-const PILIERS = [
+const PILIERS: { title: string; titleNote?: string; blurb: string }[] = [
   {
-    title: "Bienveillance (sans complaisance)",
+    title: "Bienveillance",
+    titleNote: "(sans complaisance)",
     blurb:
       "Je t'écoute sans jugement, mais je ne te materne pas non plus. Je crois profondément au pouvoir de la responsabilisation ; je ne te dis pas ce que tu as envie d'entendre, mais je te guide pour reprendre ton pouvoir d'action, à ton rythme. Ici, pas de pression de performance, juste un espace où tu peux te déposer, sans avoir à te justifier.",
   },
@@ -132,37 +179,59 @@ export default function QuiJeSuisPage() {
               </span>
             </h1>
 
+            {/* Photo mobile/tablette — sous le HELLO ; la colonne de droite prend le relais en desktop */}
+            <div className="relative mt-6 lg:hidden">
+              <div className="relative h-[440px] w-full overflow-hidden rounded-md md:h-[600px]">
+                <Image
+                  src={PHOTOS.hero}
+                  alt="Portrait de Marion Chartier"
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-4 z-10 hidden h-[120px] w-[120px] place-items-center rounded-full bg-paper shadow-[0_18px_40px_-15px_rgba(80,60,98,0.25)] md:grid md:h-[140px] md:w-[140px]">
+                <span className="font-script text-[16px] leading-none text-ink-deep md:text-[18px]">
+                  Marion
+                </span>
+              </div>
+            </div>
+
             <p className="mt-8 max-w-[520px] font-display text-[20px] font-light italic leading-snug text-ink-deep md:text-[26px]">
               «&nbsp;Je crois qu’on a tous une zone de génie. Mon job, c’est de t’aider à voir la tienne, et à l’exploiter.&nbsp;»
             </p>
 
-            <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+            <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               Moi c’est Marion&nbsp;! En Human Design, je suis MG 2/4&nbsp;: la magicienne
               fraternelle multi-passionnée, si on veut faire un (gros) résumé! 😄
             </p>
 
-            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               Après des années d’ingénierie dans des grosses entreprises, et surtout des
               années de quête de sens professionnel à ne pas trouver ma place, je me suis
               finalement retrouvée grâce à un plongeon dans le Human Design, et je suis
               aujourd’hui Coach transformationnelle, pour toi.♥
             </p>
 
-            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               Je suis également maman d’un petit Manifestor, qui me montre chaque jour à quel
               point on est finalement aligné naturellement à sa vraie nature lorsqu’on est
               enfant. Et c’est une priorité essentielle pour moi de le maintenir connecté à
               lui au maximum, loin des moules rigides et des injonctions qui pourraient
-              l’éteindre (surtout en tant que Manifestor!). Je veux lui éviter le piège
-              courant de se retrouver paumé une fois adulte, complètement éloigné de
-              lui-même. Je suis passée par là, et je vois aussi malheureusement trop de
-              personnes dans ce cas.
+              l’éteindre <em className="italic">(surtout en tant que Manifestor!)</em>. Je
+              veux lui éviter le piège courant de se retrouver paumé une fois adulte,
+              complètement éloigné de lui-même.{" "}
+              <em className="italic">
+                Je suis passée par là, et je vois aussi malheureusement trop de personnes
+                dans ce cas.
+              </em>
             </p>
 
-            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+            <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               C’est donc une vraie mission de cœur pour moi aujourd’hui de t’accompagner
               grâce à des outils puissants comme le Human Design, à te retrouver pour te
-              révéler pleinement dans ta vie pro (et au-delà!). 🌟
+              révéler pleinement dans ta vie pro <em className="italic">(et au-delà!)</em>. 🌟
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3 lg:mt-auto lg:pb-6 lg:pt-9">
@@ -180,7 +249,7 @@ export default function QuiJeSuisPage() {
 
           {/* Colonne droite : portrait grand format (self-start pour ne pas s'étirer,
               afin que le badge "Marion" s'ancre au bas de la photo et non de la colonne) */}
-          <div className="relative lg:self-start">
+          <div className="relative hidden lg:mt-12 lg:block lg:self-start">
             <div className="relative h-[440px] w-full overflow-hidden rounded-md md:h-[600px]">
               <Image
                 src={PHOTOS.hero}
@@ -214,12 +283,23 @@ export default function QuiJeSuisPage() {
           <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             {/* Colonne gauche : titre sticky + petite photo */}
             <div>
+              {/* Photo mobile/tablette — au-dessus du titre ; la version desktop reste sous le titre */}
+              <div className="relative mb-8 h-[300px] w-full overflow-hidden rounded-md md:h-[380px] lg:hidden">
+                <Image
+                  src={PHOTOS.story}
+                  alt="Marion en réflexion"
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+
               <h2 className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[64px]">
                 Du costume <em className="italic text-turquoise">d’ingé</em>
                 <br />à ma vraie nature.
               </h2>
 
-              <div className="relative mt-10 hidden h-[360px] w-full max-w-[360px] overflow-hidden rounded-md lg:block">
+              <div className="relative mt-10 hidden h-[480px] w-full max-w-[440px] overflow-hidden rounded-md lg:block">
                 <Image
                   src={PHOTOS.story}
                   alt="Marion en réflexion"
@@ -248,15 +328,19 @@ export default function QuiJeSuisPage() {
               <p>
                 Une fois le constat fait (et accepté!)&nbsp;: le vide.
                 <br />
-                Vers quoi aller? Pour quoi je suis faite? Quelle est ma place?
+                <em className="italic">
+                  Vers quoi aller? Pour quoi je suis faite? Quelle est ma place?
+                </em>
                 <br />
                 Beaucoup de questions, mais peu de réponses.
               </p>
               <p>
                 S’en suit une longue phase de flou artistique, et de quête existentielle.
                 <br />
-                J’ai lu des dizaines de livres, fait plusieurs bilans de compétences, suivi
-                des coachings, testé différents métiers,...
+                <em className="italic">
+                  J’ai lu des dizaines de livres, fait plusieurs bilans de compétences,
+                  suivi des coachings, testé différents métiers,...
+                </em>
                 <br />
                 J’ai vécu la frustration, le stress, l’épuisement et la lassitude de ne pas
                 savoir.
@@ -290,7 +374,7 @@ export default function QuiJeSuisPage() {
             {/* Colonne gauche : carte HD format affiche + photo qui remplit le blanc */}
             <div className="flex flex-col items-center gap-8 lg:items-stretch">
               <HDCardLarge />
-              <div className="relative hidden min-h-[280px] w-full max-w-[380px] flex-1 overflow-hidden rounded-md lg:block">
+              <div className="relative hidden min-h-[380px] w-full max-w-[380px] flex-1 overflow-hidden rounded-md lg:block">
                 <Image
                   src={PHOTOS.carte}
                   alt="Marion Chartier"
@@ -303,6 +387,17 @@ export default function QuiJeSuisPage() {
 
             {/* Colonne droite : header + grille d'attributs, calée sur la hauteur de la carte */}
             <div className="flex flex-col">
+              {/* Photo mobile/tablette — au-dessus du titre ; la version desktop reste sous la carte HD */}
+              <div className="relative mb-8 h-[300px] w-full overflow-hidden rounded-md md:h-[380px] lg:hidden">
+                <Image
+                  src={PHOTOS.carte}
+                  alt="Marion Chartier"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-top"
+                />
+              </div>
+
               <h2 className="font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[56px]">
                 Ma carte, <em className="italic text-turquoise">en clair</em>.
               </h2>
@@ -325,7 +420,7 @@ export default function QuiJeSuisPage() {
                         {attr.value}
                       </p>
                     </div>
-                    <p className="mt-1.5 font-display text-[14px] font-light italic leading-snug text-ink md:text-[15px]">
+                    <p className="mt-1.5 font-display text-[14px] font-light leading-snug text-ink-deep md:text-[15px]">
                       {attr.blurb}
                     </p>
                   </li>
@@ -358,7 +453,7 @@ export default function QuiJeSuisPage() {
             <h2 className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
               Ma façon de <em className="italic text-turquoise">t’accompagner</em>.
             </h2>
-            <p className="mx-auto mt-7 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink md:text-[19px]">
+            <p className="mx-auto mt-7 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               N&apos;étant moi-même pas une grande adepte du «&nbsp;full-théorie&nbsp;» et des
               grandes leçons moralisatrices, je mets un point d&apos;honneur à écouter
               activement tes problématiques, et à te partager un maximum de clés et conseils
@@ -392,7 +487,12 @@ export default function QuiJeSuisPage() {
                   </span>
 
                   <h3 className="relative z-10 pt-2 font-script text-[22px] leading-[1.5] text-ink-deep/85 md:text-[26px]">
-                    {p.title}
+                    <span className="whitespace-nowrap">
+                      {p.title}
+                      {p.titleNote && (
+                        <span className="text-[14px] md:text-[16px]"> {p.titleNote}</span>
+                      )}
+                    </span>
                   </h3>
 
                   <p className="relative z-10 mt-4 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
@@ -411,11 +511,11 @@ export default function QuiJeSuisPage() {
           <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
             {/* GAUCHE — nuage de valeurs incliné */}
             <div>
-              <h2 className="font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[58px]">
+              <h2 className="text-center font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[58px] lg:text-left">
                 Ce qui me <em className="italic text-turquoise">guide</em>.
               </h2>
 
-              <div className="mt-14 flex flex-wrap items-center gap-x-5 gap-y-2.5 md:mt-20 md:gap-x-6 md:gap-y-3">
+              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 md:mt-20 md:gap-x-6 md:gap-y-3 lg:justify-start">
                 {VALEURS.map(({ word, big }, i) => {
                   // Mots en avant = grande taille + couleur soutenue ; les autres, plus discrets.
                   const size = big
@@ -463,12 +563,12 @@ export default function QuiJeSuisPage() {
         <div className="mx-auto max-w-[680px]">
           <div className="text-center">
             <p className="font-display text-[22px] font-light italic leading-snug text-ink-deep md:text-[26px]">
-              ...et j&apos;adooore aussi les oracles. Et toi, tu crois au «&nbsp;hasard&nbsp;»&nbsp;? 😇👇
+              ...et j&apos;adooore aussi les oracles. Et toi, tu crois au «&nbsp;hasard&nbsp;»&nbsp;?
             </p>
-            <p className="mx-auto mt-4 max-w-[520px] font-body text-[14px] leading-relaxed text-ink md:text-[15px]">
-              Clique ici pour un petit supplément d&apos;âme
+            <p className="mx-auto mt-4 max-w-[520px] font-body text-[14px] leading-relaxed text-ink-deep md:text-[15px]">
+              Clique ici pour un petit&nbsp;supplément&nbsp;d&apos;âme&nbsp;;
               <br />
-              un message aléatoire rien que pour toi. 😘
+              un message aléatoire rien&nbsp;que&nbsp;pour&nbsp;toi.&nbsp;😘
             </p>
           </div>
           <div className="mt-8">
@@ -484,7 +584,7 @@ export default function QuiJeSuisPage() {
             <h3 className="font-display text-[32px] font-light leading-tight text-ink-deep md:text-[52px]">
               Deux façons de faire <em className="italic text-turquoise">le premier pas</em>.
             </h3>
-            <p className="mx-auto mt-5 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink md:text-[18px]">
+            <p className="mx-auto mt-5 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]">
               Tu peux commencer par découvrir ton schéma personnel de Human Design, ou
               explorer tout l’écosystème de La vie en HD.
             </p>
@@ -533,6 +633,25 @@ function HDCardLarge() {
         <Row label="Définition" value="Double" />
         <Row label="Environnement" value="Montagnes" />
       </dl>
+
+      <hr className="my-5 border-line" />
+
+      <div className="flex justify-center gap-1.5">
+        {Array.from({ length: 9 }).map((_, i) => {
+          // Ordre HD : Tête, Ajna, Gorge, G, Cœur, Plexus, Sacral, Rate, Racine
+          // Marion : Tête (0) et Ajna (1) ouverts → les 7 autres définis
+          const defined = i >= 2;
+          return (
+            <span
+              key={i}
+              className={`h-3.5 w-3.5 rounded-sm ${defined ? "bg-turquoise" : "bg-line"}`}
+            />
+          );
+        })}
+      </div>
+      <p className="mt-2.5 text-center font-body text-[10px] uppercase tracking-[0.16em] text-ink-soft">
+        7 centres sur 9 définis
+      </p>
     </div>
   );
 }
