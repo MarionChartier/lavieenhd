@@ -22,27 +22,43 @@ export function OffresStepper() {
   return (
     <nav
       aria-label="Naviguer entre les offres"
-      className="mx-auto mt-14 flex flex-col items-center gap-y-8 md:mt-20 md:gap-y-10"
+      className="mx-auto mt-14 flex flex-col items-center gap-y-8 md:mt-20"
     >
+      {/* Desktop : les 7 pastilles reliées en pointillés sur une seule ligne */}
+      <div className="hidden w-full max-w-[1040px] items-start justify-center lg:flex">
+        {OFFRES.map((offre, i) => (
+          <Fragment key={offre.slug}>
+            <StepLink offre={offre} />
+
+            {/* Trait pointillé entre deux cercles */}
+            {i < OFFRES.length - 1 && (
+              <span
+                aria-hidden
+                className="mt-7 min-w-4 flex-1 border-t border-dashed border-ink-lilac"
+              />
+            )}
+          </Fragment>
+        ))}
+      </div>
+
+      {/* Mobile / tablette : 2 rangées (3 + 4), trait discret qui serpente —
+          rangée 1 de la pastille 1 vers le bord droit de l'écran, rangée 2 du
+          bord gauche jusqu'à la pastille 7. */}
       {ROWS.map((row, rowIdx) => (
         <div
           key={rowIdx}
-          className={`flex w-full flex-wrap items-start justify-center gap-x-1 gap-y-6 md:flex-nowrap md:gap-x-0 md:gap-y-0 ${
-            row.length === 3 ? "md:max-w-[460px]" : "md:max-w-[600px]"
-          }`}
+          className="relative flex w-full flex-wrap items-start justify-center gap-x-1 gap-y-6 lg:hidden"
         >
-          {row.map((offre, i) => (
-            <Fragment key={offre.slug}>
-              <StepLink offre={offre} />
-
-              {/* Trait pointillé entre deux cercles — aligné sur le centre vertical du cercle */}
-              {i < row.length - 1 && (
-                <span
-                  aria-hidden
-                  className="mt-6 hidden min-w-6 flex-1 border-t border-dashed border-ink-lilac md:mt-7 md:block"
-                />
-              )}
-            </Fragment>
+          <span
+            aria-hidden
+            className={`absolute top-[44px] border-t border-dashed border-ink-lilac/50 ${
+              rowIdx === 0
+                ? "left-[calc(50%-76px)] right-[calc(50%-50vw)]"
+                : "left-[calc(50%-50vw)] right-[calc(50%-114px)]"
+            }`}
+          />
+          {row.map((offre) => (
+            <StepLink key={offre.slug} offre={offre} />
           ))}
         </div>
       ))}
@@ -55,13 +71,13 @@ function StepLink({ offre }: { offre: Offre }) {
   return (
     <a
       href={`#${offre.slug}`}
-      className="group flex w-[72px] flex-col items-center gap-2 md:w-[120px] md:gap-2.5"
+      className="group flex w-[72px] flex-col items-center gap-2 lg:w-[104px] lg:gap-2.5"
     >
-      <span className="font-display text-[12px] italic leading-none text-turquoise md:text-[14px]">
+      <span className="font-display text-[12px] italic leading-none text-ink-deep lg:text-[14px]">
         {offre.tag}
       </span>
       <span
-        className={`relative grid h-12 w-12 place-items-center overflow-hidden rounded-full font-display text-[14px] italic text-ink-deep transition-transform group-hover:scale-110 md:h-14 md:w-14 md:text-[16px] ${
+        className={`relative grid h-12 w-12 place-items-center overflow-hidden rounded-full font-display text-[14px] italic text-ink-deep transition-transform group-hover:scale-110 lg:h-14 lg:w-14 lg:text-[16px] ${
           isQuiz ? "" : STEPPER_BG[offre.color]
         }`}
       >
@@ -81,7 +97,7 @@ function StepLink({ offre }: { offre: Offre }) {
         <span className="relative">{offre.num}</span>
       </span>
       <span
-        className={`text-center font-body text-[9px] uppercase leading-tight tracking-[0.16em] text-ink-soft transition-colors group-hover:text-ink-deep md:text-[10px] md:tracking-[0.18em] ${
+        className={`text-center font-body text-[9px] uppercase leading-tight tracking-[0.16em] text-ink-soft transition-colors group-hover:text-ink-deep lg:text-[10px] lg:tracking-[0.18em] ${
           offre.slug === "place-to-be" ? "whitespace-nowrap" : ""
         }`}
       >

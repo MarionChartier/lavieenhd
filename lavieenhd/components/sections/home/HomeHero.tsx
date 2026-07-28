@@ -51,7 +51,7 @@ export function HomeHero() {
         height={300}
         priority
         aria-hidden
-        className="pointer-events-none absolute top-24 left-[10%] hidden h-auto w-[700px] opacity-[0.22] mix-blend-multiply lg:block"
+        className="pointer-events-none absolute top-40 left-1/2 h-auto w-[560px] max-w-none -translate-x-1/2 opacity-[0.22] mix-blend-multiply lg:top-32 lg:left-[10%] lg:w-[700px] lg:translate-x-0"
         style={{
           WebkitMaskImage:
             "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%)",
@@ -66,7 +66,7 @@ export function HomeHero() {
         {/* LEFT — copy */}
         <div className="pt-6 lg:pt-16">
           <h1 className="font-script text-[26px] font-normal leading-none whitespace-nowrap text-ink-deep md:text-[44px]">
-            La vie en <span className="not-italic text-turquoise">HD</span>
+            Ton <span className="not-italic text-turquoise">Human Design</span>
           </h1>
 
           <p className="mt-8 max-w-[520px] font-display text-[18px] italic leading-snug text-ink-deep md:text-[22px]">

@@ -30,6 +30,14 @@ export function Nav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  /** Clic sur un lien du menu : ferme le menu mobile et renvoie en haut de page.
+   *  Next ne re-scrolle pas quand on navigue vers la page courante ; les liens
+   *  d'ancre (#section) gardent leur défilement vers la section. */
+  const handleNavClick = (href: string) => {
+    setMobileOpen(false);
+    if (!href.includes("#")) window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     // Fermer le menu mobile à chaque changement de route (sync UI ↔ navigation).
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -88,6 +96,7 @@ export function Nav() {
                   <Link
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
+                    onClick={() => handleNavClick(item.href)}
                     className={`relative flex items-center gap-1.5 py-1.5 font-body text-[12px] uppercase tracking-[0.18em] transition-colors hover:text-turquoise ${
                       isActive ? "text-turquoise" : "text-ink"
                     }`}
@@ -118,7 +127,10 @@ export function Nav() {
                             key={link.label}
                             href={link.href}
                             prefetch={link.href.endsWith(".html") ? false : undefined}
-                            onClick={() => (document.activeElement as HTMLElement | null)?.blur()}
+                            onClick={() => {
+                              (document.activeElement as HTMLElement | null)?.blur();
+                              handleNavClick(link.href);
+                            }}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
                           >
                             {link.label}
@@ -136,6 +148,7 @@ export function Nav() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
+                onClick={() => handleNavClick(item.href)}
                 className={`relative py-1.5 font-body text-[12px] uppercase tracking-[0.18em] transition-colors hover:text-turquoise ${
                   isActive ? "text-turquoise" : "text-ink"
                 }`}
@@ -184,6 +197,7 @@ export function Nav() {
                   <div key={item.href} className="border-b border-line pb-3">
                     <Link
                       href={item.href}
+                      onClick={() => handleNavClick(item.href)}
                       className={`flex items-center justify-between py-3 font-display text-[28px] ${
                         isActive ? "text-turquoise" : "text-ink"
                       }`}
@@ -194,13 +208,14 @@ export function Nav() {
                       </span>
                     </Link>
                     <div className="mt-1 flex flex-col gap-1 pl-1">
-                      {OFFRE_LINKS.slice(1).map((link) =>
+                      {OFFRE_LINKS.map((link) =>
                         link.external ? (
                           <a
                             key={link.label}
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => setMobileOpen(false)}
                             className="py-1.5 font-body text-[14px] text-ink-soft"
                           >
                             {link.label}
@@ -210,6 +225,7 @@ export function Nav() {
                             key={link.label}
                             href={link.href}
                             prefetch={link.href.endsWith(".html") ? false : undefined}
+                            onClick={() => handleNavClick(link.href)}
                             className="py-1.5 font-body text-[14px] text-ink-soft"
                           >
                             {link.label}
@@ -225,6 +241,7 @@ export function Nav() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={() => handleNavClick(item.href)}
                   className={`flex items-center justify-between border-b border-line py-3 font-display text-[28px] ${
                     isActive ? "text-turquoise" : "text-ink"
                   }`}

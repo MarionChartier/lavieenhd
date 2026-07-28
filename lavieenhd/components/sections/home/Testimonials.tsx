@@ -16,7 +16,6 @@ type Testimonial = {
 
 /** Dossier des portraits de témoignages (photos clientes, liseré doré déjà intégré). */
 const PHOTO = (file: string) => `/assets/temoignages/${file}`;
-const ANONYME = PHOTO("Anonyme.png");
 
 /** Sélection de Marion : un témoignage par offre, dans l'ordre du parcours. */
 const TESTIMONIALS: Testimonial[] = [
@@ -53,7 +52,7 @@ Merci mille fois pour toutes ces informations précieuses Marion, ça résonne b
   {
     name: "Marjory",
     offre: "Reveal",
-    photo: ANONYME,
+    photo: PHOTO("Marjory.png"),
     text: `Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe... Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante !
 
 Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer ! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça ! 🙏🙏🙏
@@ -189,12 +188,23 @@ function TestimonialCard({
 }) {
   return (
     <article
-      className={`flex w-full flex-col rounded-md border border-ink/10 bg-white/80 p-7 backdrop-blur-sm md:p-9 ${
+      className={`relative flex w-full flex-col rounded-md border border-ink/10 bg-white/80 p-7 backdrop-blur-sm md:p-9 ${
         // Hauteur fixe quand dépliée pour garder une cohérence visuelle dans la grille,
         // même si le texte est court.
         isExpanded ? "min-h-[520px]" : ""
       }`}
     >
+      {/* Badge « scotch » — centré à cheval sur le bord haut de la card */}
+      <Link
+        href={OFFRE_HREF[offre] ?? "/mes-offres"}
+        prefetch={false}
+        className={`absolute -top-3 left-1/2 z-10 inline-flex -translate-x-1/2 -rotate-2 items-center border px-4 pt-[6px] pb-[4px] font-body text-[9px] uppercase leading-none tracking-[0.18em] whitespace-nowrap text-ink-deep shadow-[0_2px_6px_rgba(80,60,98,0.14)] transition-[border-color] hover:border-ink-deep/50 ${
+          BADGE_COLORS[offre] ?? BADGE_FALLBACK
+        }`}
+      >
+        {offre}
+      </Link>
+
       <div className="mb-5 flex items-center gap-4">
         <div className="relative h-16 w-16 flex-none">
           <Image
@@ -205,18 +215,7 @@ function TestimonialCard({
             className="object-contain"
           />
         </div>
-        <div className="flex flex-1 flex-col items-start gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-3">
-          <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
-          <Link
-            href={OFFRE_HREF[offre] ?? "/mes-offres"}
-            prefetch={false}
-            className={`inline-flex items-center rounded-md border px-2.5 pt-[5px] pb-[3px] font-body text-[9px] uppercase leading-none tracking-[0.18em] text-ink-deep transition-[border-color] hover:border-ink-deep/50 ${
-              BADGE_COLORS[offre] ?? BADGE_FALLBACK
-            }`}
-          >
-            {offre}
-          </Link>
-        </div>
+        <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
       </div>
 
       <blockquote

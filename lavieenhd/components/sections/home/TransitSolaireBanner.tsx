@@ -86,6 +86,7 @@ export function TransitSolaireBanner() {
         <BannerCard
           bgSrc="/assets/phase-lunaire.jpg"
           veilClass="bg-gradient-to-br from-[#ece4f5]/93 to-[#dccef0]/93"
+          borderClass="border-ink-lilac/30"
           info={{ id: "lune-tooltip", texte: LUNE_EXPLICATION }}
         >
           <Wordmark
@@ -124,15 +125,17 @@ function BannerCard({
   children,
   bgSrc = "/assets/header-glitter.png",
   veilClass = "bg-white/78",
+  borderClass = "border-[#d8bf8b]/40",
   info,
 }: {
   children: React.ReactNode;
   bgSrc?: string;
   veilClass?: string;
+  borderClass?: string;
   info?: { id: string; texte: string };
 }) {
   return (
-    <div className="relative overflow-hidden rounded-[32px] border border-[#d8bf8b]/40 px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-10">
+    <div className={`relative overflow-hidden rounded-[32px] border px-6 py-9 shadow-[0_24px_55px_-30px_rgba(80,60,98,0.22)] lg:px-10 ${borderClass}`}>
       <Image
         src={bgSrc}
         alt=""

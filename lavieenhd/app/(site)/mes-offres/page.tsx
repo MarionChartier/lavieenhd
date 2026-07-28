@@ -17,8 +17,9 @@ export default function MesOffresPage() {
       <section className="bg-white px-6 pt-16 pb-12 text-center md:px-20 md:pt-24 md:pb-20">
         {/* Titre massif */}
         <h1 className="font-display text-[56px] font-light leading-[0.95] text-ink-deep md:text-[112px]">
-          Plusieurs espaces pour te{" "}
-          <em className="italic text-turquoise">révéler</em>.
+          Plusieurs espaces
+          <br />
+          pour te <em className="italic text-turquoise">révéler</em>.
         </h1>
 
         {/* Lead italique */}

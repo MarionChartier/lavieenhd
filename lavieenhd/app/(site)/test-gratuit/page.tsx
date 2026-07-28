@@ -39,7 +39,7 @@ export default function TestGratuitPage() {
 
         <p className="mx-auto mt-8 max-w-[680px] font-display text-[18px] font-light italic leading-snug text-ink md:text-[22px]">
           À partir de ta date, ton heure et ton lieu de naissance, génère ton
-          schéma complet en quelques secondes.
+          schéma complet en&nbsp;quelques&nbsp;secondes.
         </p>
       </section>
 
@@ -81,7 +81,7 @@ export default function TestGratuitPage() {
 
               {/* CE QUE TU DÉCOUVRES — card dorée penchée, même style que le fun fact */}
               <div className="relative mt-10">
-                <div className="relative rotate-[-2deg] rounded-[28px] border border-[#d8bf8b]/60 bg-[linear-gradient(160deg,#f8efd6_0%,#ecd6a6_100%)] p-8 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.28)] md:p-11">
+                <div className="relative rotate-[-2deg] rounded-[28px] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-8 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11">
                   <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                     Ce que tu découvres
                   </span>
@@ -141,7 +141,7 @@ export default function TestGratuitPage() {
                       explorer{" "}
                       <Link
                         href="/mes-offres"
-                        className="text-turquoise underline-offset-2 hover:underline"
+                        className="text-ink-deep underline decoration-turquoise underline-offset-2 transition-colors hover:text-turquoise"
                       >
                         mes offres
                       </Link>{" "}
@@ -171,12 +171,19 @@ export default function TestGratuitPage() {
               Envie d’aller plus loin&nbsp;?
             </h3>
             <p className="mx-auto mt-5 max-w-[560px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
-              Explore <em className="text-turquoise">tous les espaces</em> de La vie en HD.
+              Explore{" "}
+              <Link
+                href="/mes-offres"
+                className="text-ink-deep underline decoration-turquoise underline-offset-4 transition-colors hover:text-turquoise"
+              >
+                tous les espaces
+              </Link>{" "}
+              de La vie en HD.
             </p>
             <p className="mx-auto mt-4 max-w-[560px] font-body text-[14px] leading-relaxed text-ink md:text-[15px]">
-              Du quiz découverte au programme d’incarnation de 3 mois,
+              Du quiz découverte au programme d’incarnation de&nbsp;3&nbsp;mois,
               <br />
-              chaque offre correspond à un besoin et à un moment de ton parcours.
+              chaque offre correspond à un besoin et à un moment de&nbsp;ton&nbsp;parcours.
             </p>
             <Link
               href="/mes-offres"
