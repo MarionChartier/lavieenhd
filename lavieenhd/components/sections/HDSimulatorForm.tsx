@@ -35,16 +35,12 @@ function extractHeight(data: unknown): number | null {
 }
 
 /**
- * Calculateur Human Design — partagé entre la home (HomeHero) et la page
- * Test HD gratuit. On embarque le widget officiel Bodygraphchart (le back-end
- * de Marion), dans une carte habillée aux couleurs du site.
- *
- * L'iframe s'auto-redimensionne à la hauteur de son contenu SI Bodygraphchart
- * émet sa taille via postMessage ; sinon on garde FALLBACK_HEIGHT.
+ * Hauteur auto-ajustée de l'iframe Bodygraphchart : écoute les postMessage du
+ * widget et renvoie sa hauteur si elle est émise, sinon la hauteur de secours.
+ * Partagé entre la carte calculateur et la page résultat /mon-design.
  */
-export function HDSimulatorForm() {
-  const [height, setHeight] = useState<number>(FALLBACK_HEIGHT);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+export function useBodygraphHeight(fallback: number): number {
+  const [height, setHeight] = useState<number>(fallback);
 
   useEffect(() => {
     function onMessage(e: MessageEvent) {
@@ -55,6 +51,21 @@ export function HDSimulatorForm() {
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
   }, []);
+
+  return height;
+}
+
+/**
+ * Calculateur Human Design — partagé entre la home (HomeHero) et la page
+ * Test HD gratuit. On embarque le widget officiel Bodygraphchart (le back-end
+ * de Marion), dans une carte habillée aux couleurs du site.
+ *
+ * L'iframe s'auto-redimensionne à la hauteur de son contenu SI Bodygraphchart
+ * émet sa taille via postMessage ; sinon on garde FALLBACK_HEIGHT.
+ */
+export function HDSimulatorForm() {
+  const height = useBodygraphHeight(FALLBACK_HEIGHT);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   return (
     <div className="relative rounded-md border border-ink/15 bg-white p-5 shadow-[0_30px_70px_-30px_rgba(80,60,98,0.18)] md:p-7">
