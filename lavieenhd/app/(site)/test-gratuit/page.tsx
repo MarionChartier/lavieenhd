@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { HDSimulatorForm } from "@/components/sections/HDSimulatorForm";
+import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 
 export const metadata: Metadata = {
@@ -53,9 +53,10 @@ export default function TestGratuitPage() {
       {/* SECTION — CALCULATEUR HD */}
       <section id="simulateur" className="scroll-mt-24 bg-white px-6 pt-12 pb-20 md:px-20 md:pt-16 md:pb-28">
         <div className="mx-auto max-w-(--container-content)">
-          <div className="grid items-start gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-            {/* Contenu à gauche — présentation du Design */}
-            <div className="relative isolate">
+          {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe */}
+          <CalculateurLayout columns="gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+            {/* Contenu pédagogique — présentation du Design */}
+            <>
               {/* Visuel en arrière-plan de la colonne, discret */}
               <Image
                 src="/assets/simulateur-aligne.jpeg"
@@ -150,13 +151,8 @@ export default function TestGratuitPage() {
                   </li>
                 </ul>
               </div>
-            </div>
-
-            {/* Calculateur à droite — composant partagé avec la home */}
-            <div className="relative lg:pt-2">
-              <HDSimulatorForm />
-            </div>
-          </div>
+            </>
+          </CalculateurLayout>
         </div>
       </section>
 
