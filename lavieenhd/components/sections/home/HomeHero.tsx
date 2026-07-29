@@ -63,12 +63,16 @@ export function HomeHero() {
       />
 
       {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe.
-          Même ratio que /test-gratuit, le formulaire y fait la même largeur. Le
-          plancher, c'est sa ligne de date : cinq cases sur un rang, qui deviennent
-          pénibles sous ~520px de carte. Les paragraphes ne sont plus plafonnés :
-          ils occupent toute la colonne. */}
+          Le plancher, c'est le champ année de la ligne de date : le widget lui
+          donne une fraction de la carte, et sous ~630px de carte les quatre
+          chiffres saisis sont rognés. 690px lui laissent 79px pour les 67px dont
+          il a besoin, soit une bonne digit de marge. Les paragraphes retombent du
+          coup sur ~510px, la mesure pour laquelle ils ont été écrits. */}
       <div className="relative mx-auto max-w-(--container-content)">
-        <CalculateurLayout columns="gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+        <CalculateurLayout
+          columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
+          temoignages={["camille", "ludivine"]}
+        >
           {/* LEFT — copy */}
           <div className="pt-6 lg:pt-16">
             <h1 className="font-script text-[26px] font-normal leading-none whitespace-nowrap text-ink-deep md:text-[44px]">

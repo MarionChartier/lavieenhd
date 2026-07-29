@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { HDSimulatorForm } from "@/components/sections/HDSimulatorForm";
+import {
+  CalculateurTemoignages,
+  type TemoignageKey,
+} from "@/components/sections/CalculateurTemoignages";
 import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 
 /**
@@ -16,12 +20,17 @@ import { useBodygraphResult } from "@/components/sections/BodygraphChart";
  *
  * `columns` : les classes de la grille à deux colonnes avant le calcul, propres
  * à chaque page — le hero et /test-gratuit n'ont pas le même ratio.
+ *
+ * `temoignages` : les voix affichées sous le formulaire, propres à chaque page
+ * elles aussi — la home en montre deux, elle a plus de place sous sa carte.
  */
 export function CalculateurLayout({
   columns,
+  temoignages,
   children,
 }: {
   columns: string;
+  temoignages: readonly TemoignageKey[];
   children: ReactNode;
 }) {
   const hasResult = useBodygraphResult();
@@ -55,6 +64,9 @@ export function CalculateurLayout({
         className={`relative scroll-mt-24 ${hasResult ? "" : "lg:pt-2"}`}
       >
         <HDSimulatorForm />
+        {/* Le vide sous le formulaire n'existe que dans l'état deux colonnes :
+            en pleine largeur le schéma occupe toute la place. */}
+        {!hasResult && <CalculateurTemoignages items={temoignages} />}
       </div>
     </div>
   );
