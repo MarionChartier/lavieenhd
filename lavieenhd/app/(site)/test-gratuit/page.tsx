@@ -53,8 +53,13 @@ export default function TestGratuitPage() {
       {/* SECTION — CALCULATEUR HD */}
       <section id="simulateur" className="scroll-mt-24 bg-white px-6 pt-12 pb-20 md:px-20 md:pt-16 md:pb-28">
         <div className="mx-auto max-w-(--container-content)">
-          {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe */}
-          <CalculateurLayout columns="gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe.
+              Même ratio que le hero : sous ~630px de carte, le champ année de la
+              ligne de date rogne les quatre chiffres saisis. */}
+          <CalculateurLayout
+            columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
+            temoignages={["fabienne"]}
+          >
             {/* Contenu pédagogique — présentation du Design */}
             <>
               {/* Visuel en arrière-plan de la colonne, discret */}
@@ -102,57 +107,62 @@ export default function TestGratuitPage() {
                   </ul>
                 </div>
               </div>
-
-              {/* À SAVOIR — précisions sur les champs, structure label + texte */}
-              <div className="mt-8 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-7">
-                <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
-                  À savoir avant de commencer
-                </p>
-                <ul className="mt-5 flex flex-col gap-5">
-                  <li>
-                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                      Heure de naissance précise
-                    </p>
-                    <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                      Même 10 minutes peuvent changer ton Profil ou ton Autorité intérieure.
-                      Si tu ne la connais pas ou que tu as un doute, je t’invite à te
-                      rapprocher du siège de l’administration de ta ville de naissance. (Si
-                      tu es né.e en France ou que tu as la nationalité française&nbsp;; tu
-                      peux obtenir ton heure de naissance en demandant la copie intégrale de
-                      ton acte de naissance auprès de la mairie de ta commune de naissance
-                      (service gratuit, souvent en ligne).)
-                    </p>
-                  </li>
-                  <li>
-                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                      Lieu de naissance
-                    </p>
-                    <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                      Une ville suffit, pas besoin de l’hôpital. Cependant vérifie bien la
-                      combinaison entière proposée&nbsp;; ville - région - pays. Le
-                      calculateur s’occupe du fuseau horaire et des coordonnées.
-                    </p>
-                  </li>
-                  <li>
-                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                      Aucun engagement
-                    </p>
-                    <p className="mt-1.5 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                      Le calculateur est gratuit, et ton schéma t’appartient. Tu peux ensuite
-                      explorer{" "}
-                      <Link
-                        href="/mes-offres"
-                        className="text-ink-deep underline decoration-turquoise underline-offset-2 transition-colors hover:text-turquoise"
-                      >
-                        mes offres
-                      </Link>{" "}
-                      si tu veux aller plus loin.
-                    </p>
-                  </li>
-                </ul>
-              </div>
             </>
           </CalculateurLayout>
+
+          {/* À SAVOIR — précisions sur les champs, structure label + texte.
+              Sous les deux colonnes et non dedans : dans la colonne de gauche il
+              étirait le texte 500px plus bas que le calculateur, et c'est de la
+              consigne à lire avant de remplir, pas de l'argumentaire. En pleine
+              largeur ses trois points restent empilés — titre, texte, titre suivant —
+              et les descriptions prennent toute la largeur du bloc. */}
+          <div className="mt-16 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
+            <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
+              À savoir avant de commencer
+            </p>
+            <ul className="mt-5 flex flex-col gap-5 lg:mt-7 lg:gap-7">
+              <li>
+                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                  Heure de naissance précise
+                </p>
+                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                  Même 10 minutes peuvent changer ton Profil ou ton Autorité intérieure. Si
+                  tu ne la connais pas ou que tu as un doute, je t’invite à te rapprocher du
+                  siège de l’administration de ta ville de naissance. (Si tu es né.e en
+                  France ou que tu as la nationalité française&nbsp;; tu peux obtenir ton
+                  heure de naissance en demandant la copie intégrale de ton acte de
+                  naissance auprès de la mairie de ta commune de naissance (service gratuit,
+                  souvent en ligne).)
+                </p>
+              </li>
+              <li>
+                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                  Lieu de naissance
+                </p>
+                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                  Une ville suffit, pas besoin de l’hôpital. Cependant vérifie bien la
+                  combinaison entière proposée&nbsp;; ville - région - pays. Le calculateur
+                  s’occupe du fuseau horaire et des coordonnées.
+                </p>
+              </li>
+              <li>
+                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                  Aucun engagement
+                </p>
+                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                  Le calculateur est gratuit, et ton schéma t’appartient. Tu peux ensuite
+                  explorer{" "}
+                  <Link
+                    href="/mes-offres"
+                    className="text-ink-deep underline decoration-turquoise underline-offset-2 transition-colors hover:text-turquoise"
+                  >
+                    mes offres
+                  </Link>{" "}
+                  si tu veux aller plus loin.
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 

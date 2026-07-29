@@ -142,13 +142,13 @@ export function Testimonials() {
     <section className="bg-lavender-gradient relative overflow-hidden px-6 py-20 md:px-20 md:py-24">
       {/* Image smile en arrière-plan discret */}
       <Image
-        src="/assets/smile.png"
+        src="/assets/marion-sourire.webp"
         alt=""
-        width={1200}
-        height={800}
+        width={1498}
+        height={1050}
         priority={false}
         aria-hidden
-        className="pointer-events-none absolute top-0 left-[68%] hidden h-auto w-[820px] -translate-x-1/2 opacity-20 mix-blend-multiply lg:block"
+        className="pointer-events-none absolute top-0 left-[68%] hidden h-auto w-[820px] -translate-x-1/2 opacity-20 mask-t-from-88% mask-r-from-85% mask-b-from-25% mix-blend-multiply lg:block"
       />
 
       <div className="relative z-10 mx-auto max-w-(--container-content)">
