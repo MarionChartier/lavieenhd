@@ -19,10 +19,6 @@ export const EXTERNAL = {
   /** Simulateur HD complet — temporairement = base */
   simulateur: LEGACY_BASE,
 
-  /** Générateur de bodygraph (widget externe bodygraphchart) */
-  bodygraph:
-    "https://embed.bodygraphchart.com/v1/22753/iframe?token=2189c054-2215-4954-8f03-822921c2b1ff",
-
   /** Inscription newsletter Soul Letter — temporairement = base (V2 : endpoint dédié) */
   newsletter: LEGACY_BASE,
 
@@ -52,4 +48,17 @@ export const EXTERNAL = {
     fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
     reconnect: `${LEGACY_ROOT}/commande-reconnect`,
   },
+} as const;
+
+/**
+ * Widget calculateur Bodygraphchart. On monte le web component officiel
+ * directement dans nos pages : la page d'embed de Bodygraph
+ * (embed.bodygraphchart.com) ne contient elle-même que ce script et cette
+ * balise, l'iframe n'ajoutait qu'une boîte intermédiaire nuisible (voir
+ * BodygraphChart pour le détail).
+ */
+export const BODYGRAPH = {
+  script: "https://app.bodygraphchart.com/integrate-chart/js",
+  chartId: "22753",
+  token: "2189c054-2215-4954-8f03-822921c2b1ff",
 } as const;
