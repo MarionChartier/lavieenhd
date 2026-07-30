@@ -11,39 +11,94 @@ const stagger = (i: number) => i * 80;
 /* Cartes numérotées                                                          */
 /* ------------------------------------------------------------------------- */
 
-export type Carte = { titre: string; paragraphes: ReactNode[] };
+export type Profil = { titre: string; paragraphes: ReactNode[] };
 
 /**
- * Grille de cartes « pour qui ». Pas de pictogramme : la hiérarchie tient au
- * numéro en Cormorant, au filet qui le souligne et au titre. C'est ce qui
- * remplace les emojis des anciennes pages.
+ * Inclinaisons et décalages des notes, volontairement irréguliers : trois
+ * cartes penchées du même angle se reliraient comme un motif, pas comme des
+ * notes posées. Le décalage alterne pour que rien ne s'aligne verticalement.
  */
-export function CartesGrid({ cartes }: { cartes: Carte[] }) {
+const NOTES = [
+  {
+    angle: "-rotate-[1.6deg]",
+    decalage: "md:mr-14",
+    fond: "bg-[linear-gradient(160deg,rgba(241,233,249,0.75)_0%,rgba(214,196,236,0.55)_100%)]",
+    bordure: "border-ink-lilac/35",
+    scotch: "border-[#dccef0] bg-[#ece4f5]/80",
+  },
+  {
+    angle: "rotate-[1.2deg]",
+    decalage: "md:ml-16",
+    fond: "bg-[linear-gradient(160deg,rgba(231,246,248,0.8)_0%,rgba(193,231,236,0.55)_100%)]",
+    bordure: "border-turquoise/35",
+    scotch: "border-[#c5e6e9] bg-[#dbeef4]/80",
+  },
+  {
+    angle: "-rotate-[0.8deg]",
+    decalage: "md:mr-8",
+    fond: "bg-[linear-gradient(160deg,rgba(248,239,214,0.75)_0%,rgba(236,214,166,0.55)_100%)]",
+    bordure: "border-[#d8bf8b]/45",
+    scotch: "border-[#e5d4b4] bg-[#f0e3cc]/80",
+  },
+] as const;
+
+/**
+ * Les profils « cette offre est pour toi si… », en notes penchées empilées.
+ * On reprend la grammaire du fun fact de /qui-je-suis (papier teinté, liseré
+ * chaud, léger angle) et le badge scotché des témoignages pour le numéro.
+ *
+ * Empilées et non côte à côte : ces profils ne sont pas des options à comparer,
+ * on descend jusqu'à se reconnaître dans l'un d'eux. Et deux paragraphes ne
+ * tiennent pas dans une colonne de tiers d'écran.
+ *
+ * À l'intérieur, titre à gauche et texte à droite : empilés, les deux
+ * paragraphes donnaient des notes deux fois plus hautes que larges, qui
+ * écrasaient tout le reste de la strate.
+ */
+export function ProfilsNotes({ profils }: { profils: Profil[] }) {
   return (
-    <div className="grid gap-6 md:grid-cols-3">
-      {cartes.map((carte, i) => (
-        <Reveal
-          key={carte.titre}
-          delay={stagger(i)}
-          className="group rounded-[28px] border border-line bg-white/70 p-8 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
-        >
-          <p className="font-display text-[34px] font-light leading-none text-ink-lilac">
-            {String(i + 1).padStart(2, "0")}
-          </p>
-          <span aria-hidden className="mt-4 block h-px w-10 bg-ink-lilac/40" />
+    // L'écart tient compte de la rotation : penchées, les cartes se rapprochent
+    // par leurs coins et le scotch suivant vient toucher le bas de la
+    // précédente.
+    <ol className="flex flex-col gap-9 md:gap-12">
+      {profils.map((profil, i) => {
+        const note = NOTES[i % NOTES.length];
 
-          <h3 className="mt-6 font-display text-[22px] font-semibold leading-snug text-ink-deep">
-            {carte.titre}
-          </h3>
+        return (
+          <Reveal as="li" key={profil.titre} delay={stagger(i)} className={note.decalage}>
+            <div
+              className={`relative rounded-[20px] border px-6 pt-7 pb-6 shadow-[0_18px_40px_-24px_rgba(80,60,98,0.25)] md:px-8 md:pt-8 md:pb-7 ${note.angle} ${note.fond} ${note.bordure}`}
+            >
+              {/* Badge scotché : coins vifs, léger angle à contresens de la
+                  note, à cheval sur le bord haut. Même traitement que sur les
+                  témoignages de l'accueil. */}
+              <span
+                className={`absolute -top-3 left-8 z-10 inline-flex -rotate-2 items-center border px-3 pt-[6px] pb-[4px] font-body text-[9px] leading-none tracking-[0.18em] text-ink-deep shadow-[0_2px_6px_rgba(80,60,98,0.14)] ${note.scotch}`}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-          {carte.paragraphes.map((p, j) => (
-            <p key={j} className="mt-4 font-display text-[16px] font-light leading-relaxed text-ink">
-              {p}
-            </p>
-          ))}
-        </Reveal>
-      ))}
-    </div>
+              <div className="grid gap-3 md:grid-cols-[190px_1fr] md:gap-7">
+                <h3 className="font-display text-[20px] font-semibold leading-snug text-ink-deep md:text-[22px]">
+                  {profil.titre}
+                </h3>
+
+                <div className="flex flex-col gap-2.5">
+                  {profil.paragraphes.map((p, j) => (
+                    <p
+                      key={j}
+                      className="font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]"
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        );
+      })}
+    </ol>
   );
 }
 

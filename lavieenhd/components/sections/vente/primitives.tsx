@@ -32,6 +32,7 @@ export function VenteSection({
   children,
   className = "",
   wide = false,
+  decor,
 }: {
   id?: string;
   bg?: VenteBg;
@@ -39,12 +40,16 @@ export function VenteSection({
   className?: string;
   /** Passe le conteneur en pleine largeur de contenu (grilles, mockups). */
   wide?: boolean;
+  /** Décor de fond posé sur toute la largeur de la strate, hors du conteneur
+   *  de lecture — sinon un motif large resterait enfermé au centre. */
+  decor?: ReactNode;
 }) {
   return (
     <section
       id={id}
       className={`relative scroll-mt-36 overflow-hidden px-6 py-20 md:px-20 md:py-28 ${BG[bg]} ${className}`}
     >
+      {decor}
       <div className={`relative mx-auto ${wide ? "max-w-(--container-content)" : "max-w-[880px]"}`}>
         {children}
       </div>
@@ -103,20 +108,16 @@ export function Cta({
   children,
   variant = "primary",
   external = false,
-  arrow = true,
   className = "",
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "ghost";
   external?: boolean;
-  /** La flèche appuie l'élan vers l'avant ; on la retire quand le libellé
-   *  se suffit à lui-même et qu'on veut un bouton plus posé. */
-  arrow?: boolean;
   className?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-9 pt-[17px] pb-[15px] text-center font-body text-[11px] uppercase leading-snug tracking-[0.22em] transition-colors duration-300 active:scale-[0.98] motion-reduce:active:scale-100";
+    "inline-flex items-center justify-center rounded-full px-9 pt-[17px] pb-[15px] text-center font-body text-[11px] uppercase leading-snug tracking-[0.22em] transition-colors duration-300 active:scale-[0.98] motion-reduce:active:scale-100";
 
   const styles =
     variant === "primary"
@@ -130,7 +131,6 @@ export function Cta({
       className={`${base} ${styles} ${className}`}
     >
       {children}
-      {arrow && <span aria-hidden>→</span>}
     </a>
   );
 }

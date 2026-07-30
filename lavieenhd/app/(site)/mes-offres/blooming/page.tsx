@@ -20,7 +20,7 @@ import {
 } from "@/components/sections/vente/primitives";
 import {
   BridgeOffre,
-  CartesGrid,
+  ProfilsNotes,
   LivrablesGrid,
   PricingCard,
   ProcessusSteps,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 /** Bon de commande systeme.io — destination de tous les CTA d’achat. */
 const COMMANDE = EXTERNAL.commande.fleurDeTalents;
 
-const CARTES = [
+const PROFILS = [
   {
     titre: "Tu cherches ta direction",
     paragraphes: [
@@ -225,8 +225,8 @@ export default function BloomingPage() {
             texte, un centrage vertical ferait descendre le logo bien en dessous
             de son bord supérieur. */}
         <div className="relative mx-auto grid max-w-(--container-content) items-start gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-          {/* Colonne texte */}
-          <div>
+          {/* Colonne texte, centrée */}
+          <div className="text-center">
             {/* Le nom de l’offre vit dans le logo ; on le redonne au texte pour
                 les lecteurs d’écran et l’indexation. */}
             <h1 className="sr-only">Blooming — Ta Fleur de Talents Innés®</h1>
@@ -238,21 +238,22 @@ export default function BloomingPage() {
                 width={500}
                 height={500}
                 priority
-                className="h-auto w-[210px] md:w-[240px]"
+                className="mx-auto h-auto w-[210px] md:w-[240px]"
               />
             </Reveal>
 
             <Reveal delay={160}>
-              <p className="mt-9 max-w-[520px] font-display text-[21px] font-light italic leading-snug text-ink-deep md:text-[27px]">
+              <p className="mx-auto mt-9 max-w-[520px] font-display text-[21px] font-light italic leading-snug text-ink-deep md:text-[27px]">
                 Découvre tes talents innés et ta zone de génie, révélés grâce à une analyse croisée
                 de ton Human Design, ta Numérologie et tes Gene Keys.
               </p>
             </Reveal>
 
-            <Reveal delay={240} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Cta href="#tarif" arrow={false}>
-                Je veux ma Fleur
-              </Cta>
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+            >
+              <Cta href="#tarif">Je veux ma Fleur</Cta>
               <a
                 href="#pour-qui"
                 className="font-body text-[12px] uppercase tracking-[0.18em] text-ink-soft underline decoration-ink-soft/40 decoration-1 underline-offset-[6px] transition-colors hover:text-ink-deep hover:decoration-ink-deep"
@@ -265,7 +266,10 @@ export default function BloomingPage() {
           {/* Colonne preuve. C’est le verbatim qui porte, pas l’image : la carte
               est au premier plan, la Fleur ne fait que la sourcer, glissée
               derrière son angle inférieur droit. */}
-          <Reveal delay={120} className="relative pb-12 lg:pb-28">
+          {/* Décalée vers le bas : alignée en haut sur le logo, la carte
+              terminait bien au-dessus du bouton et la colonne paraissait
+              flotter. Ce retrait la fait finir à hauteur du CTA. */}
+          <Reveal delay={120} className="relative pb-12 lg:pt-14 lg:pb-28">
             <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 shadow-simu backdrop-blur-sm md:p-8 lg:ml-0">
               <PetalHalo />
               {/* La Fleur est posée à cheval sur l’angle inférieur droit de la
@@ -342,40 +346,63 @@ export default function BloomingPage() {
           }
         />
 
-        <div className="mt-14">
-          <CartesGrid cartes={CARTES} />
-        </div>
+        <div className="mt-14 grid items-start gap-12 lg:grid-cols-[1fr_340px] lg:gap-16">
+          {/* Les portraits passent en tête sur mobile : rejetés après le bouton,
+              ils se retrouveraient tout en bas de la strate, hors du propos.
+              Plus de `sticky` ici : à deux photos la colonne dépasse la hauteur
+              d'écran, et un bloc collant plus haut que le viewport ne colle
+              jamais. Le second cliché est décalé, comme les notes. */}
+          {/* `aspect` fixe plutôt que la hauteur naturelle : les deux clichés
+              n'ont pas exactement le même rapport, et sans recadrage commun ils
+              ne feraient pas la même taille. `self-center` répartit l'espace
+              restant de part et d'autre au lieu de le laisser traîner sous la
+              seconde photo. */}
+          <Reveal
+            delay={80}
+            className="order-first flex flex-col items-center gap-8 lg:order-last lg:gap-10 lg:self-center"
+          >
+            <Image
+              src="/assets/marion-pensive.webp"
+              alt="Marion Chartier"
+              width={900}
+              height={1278}
+              className="aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card"
+            />
+            <Image
+              src="/assets/marion-nature.webp"
+              alt=""
+              aria-hidden
+              width={900}
+              height={1278}
+              className="aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card"
+            />
+          </Reveal>
 
-        <Reveal className="mx-auto mt-14 max-w-[720px] text-center">
-          <p className="font-display text-[18px] font-light italic leading-relaxed text-ink md:text-[19px]">
-            (Et, entre nous... tu en as probablement ta claque des outils qui veulent te faire
-            rentrer dans une case, et tu sens bien qu’une analyse sans âme sortie tout droit de
-            ChatGPT ne te révélera jamais qui tu es vraiment.)
-          </p>
-          <p className="mt-7 font-display text-[20px] font-semibold leading-relaxed text-ink-deep">
-            Toi tu veux du vrai, de l’authentique, du sur-mesure.
-          </p>
-          <Cta href="#tarif" className="mt-10">
-            Je veux donner vie à ma Fleur
-          </Cta>
-        </Reveal>
+          <div>
+            <ProfilsNotes profils={PROFILS} />
+
+            <Reveal className="mt-12">
+              <p className="max-w-[640px] font-display text-[18px] font-light italic leading-relaxed text-ink md:text-[19px]">
+                (Et, entre nous... tu en as probablement ta claque des outils qui veulent te faire
+                rentrer dans une case, et tu sens bien qu’une analyse sans âme sortie tout droit de
+                ChatGPT ne te révélera jamais qui tu es vraiment.)
+              </p>
+              <p className="mt-7 max-w-[640px] font-display text-[20px] font-semibold leading-relaxed text-ink-deep">
+                Toi tu veux du vrai, de l’authentique, du sur-mesure.
+              </p>
+              <Cta href="#tarif" className="mt-10">
+                Je veux donner vie à ma Fleur
+              </Cta>
+            </Reveal>
+          </div>
+        </div>
       </VenteSection>
 
       {/* ---------------------------------------------------------------- */}
       {/* L’OFFRE                                                          */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="offre" bg="paper">
+      <VenteSection id="offre" bg="paper" decor={<PetalField dense />}>
         <Reveal>
-          {/* La Fleur habille la colonne de texte en habillage éditorial :
-              elle accompagne la lecture au lieu d’occuper une strate à part. */}
-          <Image
-            src="/assets/blooming/fleur-vierge.webp"
-            alt="La Fleur de Talents Innés®, ses cinq pétales"
-            width={1000}
-            height={1000}
-            className="mx-auto mb-8 h-auto w-[280px] md:float-right md:mb-7 md:ml-12 md:w-[330px]"
-          />
-
           <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
             Ce qu’est la Fleur de Talents Innés®
           </p>
@@ -385,8 +412,15 @@ export default function BloomingPage() {
             <br />
             <em className="italic text-ink">comme il n’en existe pas deux.</em>
           </h2>
+        </Reveal>
 
-          <div className="mt-8 flex flex-col gap-6 font-display text-[17px] font-light leading-loose text-ink md:text-[18px]">
+        {/* Le texte enchaîne trois sujets distincts — ce que Marion analyse, ce
+            que contient le document, puis la séance d’intégration — que rien ne
+            distinguait typographiquement. On les sépare au filet et à l’espace,
+            sans intertitres : la structure était déjà dans le texte, il suffit
+            de la rendre lisible. */}
+        <div className="mt-10 font-display text-[17px] font-light leading-loose text-ink md:text-[18px]">
+          <Reveal className="grid items-center gap-8 md:grid-cols-[1fr_250px] md:gap-12">
             <p>
               À partir de ta date, heure et lieu de naissance, ainsi que de tes nom-prénoms,
               j’analyse en profondeur ton schéma de Human Design, et les éléments stratégiques de ta
@@ -399,6 +433,18 @@ export default function BloomingPage() {
               , et avec eux, ta zone de génie unique.
             </p>
 
+            <Image
+              src="/assets/blooming/fleur-vierge.webp"
+              alt="La Fleur de Talents Innés®, ses cinq pétales"
+              width={1000}
+              height={1000}
+              className="mx-auto h-auto w-[210px] md:w-full"
+            />
+          </Reveal>
+
+          <PetalDivider full className="my-12" />
+
+          <Reveal>
             <p>
               <strong className="font-semibold text-ink-deep">Le résultat</strong> : un document
               premium d’une quarantaine de pages, entièrement rédigé par mes petites mains
@@ -419,13 +465,16 @@ export default function BloomingPage() {
               </strong>
             </p>
 
-            <p>
+            <p className="mt-6">
               Et ta Fleur ne s’arrête pas là !
               <br />
               Le document inclut également :
             </p>
 
-            <ul className="flex flex-col gap-3">
+            {/* Les trois inclusions sortent du flux : c’est le passage le plus
+                concret de la section, celui qu’on vient chercher. Noyé entre
+                deux paragraphes, il se lisait comme le reste. */}
+            <ul className="mt-6 flex flex-col gap-4 rounded-[20px] border border-line bg-white/70 px-6 py-6 text-[16px] md:px-8 md:py-7 md:text-[17px]">
               {[
                 <>des pistes concrètes de métiers aligné·es à qui tu es vraiment,</>,
                 <>
@@ -438,13 +487,17 @@ export default function BloomingPage() {
                   contre-nature pour toi, et qui sont donc à éviter.
                 </>,
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Petal className="mt-2 h-3 w-3 flex-none text-turquoise" />
+                <li key={i} className="flex items-start gap-3 leading-relaxed">
+                  <Petal className="mt-1.5 h-3 w-3 flex-none text-turquoise" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
+          </Reveal>
 
+          <PetalDivider full className="my-12" />
+
+          <Reveal>
             <p>
               Et parce qu’une Fleur sans session d’intégration, c’est comme une carte au trésor sans
               légende... l’offre inclut également un{" "}
@@ -456,14 +509,15 @@ export default function BloomingPage() {
               On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et on ancre
               tout ça dans ta réalité concrète.
             </p>
+          </Reveal>
+        </div>
 
-            <p className="italic">
-              ~ Tout pour te ramener à qui tu es vraiment, et laisser éclore ce qui sommeille en toi
-              depuis toujours. ~
-            </p>
-          </div>
-
-          <div className="clear-both pt-12 text-center">
+        <Reveal className="pt-12 text-center">
+          <p className="font-display text-[18px] font-light italic leading-loose text-ink md:text-[20px]">
+            ~ Tout pour te ramener à qui tu es vraiment, et laisser éclore ce qui sommeille en toi
+            depuis toujours. ~
+          </p>
+          <div className="pt-9">
             <Cta href="#tarif">Je veux mon empreinte unique</Cta>
           </div>
         </Reveal>

@@ -62,19 +62,25 @@ export function Rosace({
  */
 export function PetalDivider({
   centered = true,
+  full = false,
   className = "",
 }: {
   centered?: boolean;
+  /** Les filets s'étirent sur toute la largeur — pour séparer deux blocs de
+   *  texte, là où le trait court ne tiendrait pas le rôle de rupture. */
+  full?: boolean;
   className?: string;
 }) {
+  const trait = full ? "flex-1" : "w-10";
+
   return (
     <div
       aria-hidden
       className={`flex items-center gap-3 ${centered ? "justify-center" : ""} ${className}`}
     >
-      <span className="block h-px w-10 bg-gradient-to-r from-transparent to-ink-lilac/60" />
+      <span className={`block h-px ${trait} bg-gradient-to-r from-transparent to-ink-lilac/60`} />
       <Petal className="h-3 w-3 text-turquoise" />
-      <span className="block h-px w-10 bg-gradient-to-l from-transparent to-ink-lilac/60" />
+      <span className={`block h-px ${trait} bg-gradient-to-l from-transparent to-ink-lilac/60`} />
     </div>
   );
 }
@@ -123,26 +129,54 @@ export function PetalHalo({ className = "" }: { className?: string }) {
   );
 }
 
+/** Voile léger : quelques pétales à peine perceptibles derrière un bloc. */
+const CHAMP_LEGER = [
+  { x: 6, y: 12, size: 190, rotate: -18, opacity: 0.05, tone: "text-ink-lilac" },
+  { x: 78, y: 4, size: 130, rotate: 34, opacity: 0.045, tone: "text-ink-lilac" },
+  { x: 88, y: 62, size: 220, rotate: -8, opacity: 0.04, tone: "text-ink-lilac" },
+  { x: 16, y: 74, size: 150, rotate: 22, opacity: 0.05, tone: "text-ink-lilac" },
+];
+
 /**
- * Matière de fond : quelques pétales très pâles, tailles et angles variés pour
- * éviter la régularité mécanique. Purement décoratif, sous le contenu.
+ * Gros plan : des pétales bien plus grands, qui débordent des bords pour qu'on
+ * ne voie jamais la forme entière — c'est ce hors-cadre qui fait la matière,
+ * un pétale entier posé au milieu se lirait comme un logo. Les trois teintes
+ * alternent, et les plus grands restent sur les marges pour laisser la colonne
+ * de lecture tranquille.
  */
-export function PetalField({ className = "" }: { className?: string }) {
-  const petals = [
-    { x: 6, y: 12, size: 190, rotate: -18, opacity: 0.05 },
-    { x: 78, y: 4, size: 130, rotate: 34, opacity: 0.045 },
-    { x: 88, y: 62, size: 220, rotate: -8, opacity: 0.04 },
-    { x: 16, y: 74, size: 150, rotate: 22, opacity: 0.05 },
-  ];
+const CHAMP_DENSE = [
+  { x: -9, y: 2, size: 400, rotate: -24, opacity: 0.14, tone: "text-ink-lilac" },
+  { x: 44, y: -12, size: 230, rotate: 58, opacity: 0.09, tone: "text-beige-soft" },
+  { x: 82, y: -6, size: 320, rotate: 36, opacity: 0.13, tone: "text-turquoise" },
+  { x: 86, y: 26, size: 460, rotate: -14, opacity: 0.1, tone: "text-ink-lilac" },
+  { x: -11, y: 40, size: 360, rotate: 30, opacity: 0.12, tone: "text-beige-soft" },
+  { x: 74, y: 66, size: 420, rotate: -38, opacity: 0.11, tone: "text-ink-lilac" },
+  { x: 2, y: 74, size: 280, rotate: 12, opacity: 0.13, tone: "text-turquoise" },
+  { x: 30, y: 90, size: 330, rotate: -52, opacity: 0.08, tone: "text-ink-lilac" },
+];
+
+/**
+ * Matière de fond, purement décoratif et sous le contenu. Positions, tailles et
+ * angles fixes mais irréguliers : la variation évite l'effet « motif dupliqué »
+ * d'un fond répétitif.
+ */
+export function PetalField({
+  dense = false,
+  className = "",
+}: {
+  /** Gros plan : pétales larges et plus present, pour donner de la matière à
+   *  une strate qui n'a que du texte à montrer. */
+  dense?: boolean;
+  className?: string;
+}) {
+  const petals = dense ? CHAMP_DENSE : CHAMP_LEGER;
 
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       {petals.map((p) => (
         <Petal
           key={`${p.x}-${p.y}`}
-          className="absolute text-ink-lilac"
-          // Positions et tailles fixes mais irrégulières — la variation évite
-          // l'effet « motif dupliqué » d'un fond répétitif.
+          className={`absolute ${p.tone}`}
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
