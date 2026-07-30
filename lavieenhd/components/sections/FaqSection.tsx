@@ -28,7 +28,7 @@ export function FaqSection({
               {eyebrow}
             </p>
           )}
-          <h2 className="mt-4 font-display text-[36px] font-light leading-tight text-ink-deep md:text-[52px]">
+          <h2 className="mt-6 font-display text-[36px] font-light leading-tight text-ink-deep md:text-[52px]">
             {title}
           </h2>
         </div>

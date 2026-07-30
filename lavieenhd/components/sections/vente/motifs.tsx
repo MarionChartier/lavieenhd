@@ -156,20 +156,35 @@ const CHAMP_DENSE = [
 ];
 
 /**
+ * Pétales clairs et volumineux, pour les strates sombres. Mêmes positions que
+ * le gros plan, mais en blanc : sur un fond profond, les teintes de la palette
+ * disparaissent, seul le blanc voilé se détache. Les opacités montent un peu,
+ * un blanc à 5% sur du violet ne se voit pas.
+ */
+const CHAMP_CLAIR = CHAMP_DENSE.map((p) => ({
+  ...p,
+  tone: "text-white",
+  opacity: Math.min(p.opacity + 0.03, 0.16),
+}));
+
+/**
  * Matière de fond, purement décoratif et sous le contenu. Positions, tailles et
  * angles fixes mais irréguliers : la variation évite l'effet « motif dupliqué »
  * d'un fond répétitif.
  */
 export function PetalField({
   dense = false,
+  clair = false,
   className = "",
 }: {
   /** Gros plan : pétales larges et plus present, pour donner de la matière à
    *  une strate qui n'a que du texte à montrer. */
   dense?: boolean;
+  /** Pétales blancs, pour les strates sombres. Implique le gros plan. */
+  clair?: boolean;
   className?: string;
 }) {
-  const petals = dense ? CHAMP_DENSE : CHAMP_LEGER;
+  const petals = clair ? CHAMP_CLAIR : dense ? CHAMP_DENSE : CHAMP_LEGER;
 
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>

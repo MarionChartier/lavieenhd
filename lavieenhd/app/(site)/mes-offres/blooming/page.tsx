@@ -19,16 +19,14 @@ import {
   VenteSection,
 } from "@/components/sections/vente/primitives";
 import {
+  type Livrable,
   BridgeOffre,
   ProfilsNotes,
   LivrablesGrid,
   PricingCard,
   ProcessusSteps,
-  ScoreCards,
-  TemoignageCards,
   TemoignageHero,
 } from "@/components/sections/vente/blocks";
-import { ImageZoom } from "@/components/sections/vente/interactions";
 
 export const metadata: Metadata = {
   title: "Blooming — Ta Fleur de Talents Innés® | La vie en HD",
@@ -63,11 +61,12 @@ const PROFILS = [
   },
 ];
 
-const LIVRABLES = [
+const LIVRABLES: Livrable[] = [
   {
     titre: "Ta Fleur visuelle",
     texte:
       "La représentation graphique de tes 5 pôles de Talents Innés ; unique, à imprimer, à afficher comme une boussole.",
+    taille: "pleine",
   },
   {
     titre: "L’analyse approfondie",
@@ -79,6 +78,7 @@ const LIVRABLES = [
         <em>(Aucun jargon ; tout est simplifié pour que ce soit clair et accessible à tous.)</em>
       </>
     ),
+    taille: "large",
   },
   {
     titre: "Le cœur de ta vocation",
@@ -101,6 +101,7 @@ const LIVRABLES = [
     titre: "Un coaching 1h30",
     texte:
       "1 semaine à 10 jours après réception de ta Fleur, on se retrouve pour explorer ensemble ce qui a émergé, et ancrer tout ça dans ta réalité.",
+    taille: "pleine",
   },
 ];
 
@@ -406,7 +407,7 @@ export default function BloomingPage() {
           <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
             Ce qu’est la Fleur de Talents Innés®
           </p>
-          <PetalDivider centered={false} className="mt-5" />
+          <PetalDivider centered={false} className="mt-7" />
           <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[44px]">
             Une empreinte unique,
             <br />
@@ -532,12 +533,12 @@ export default function BloomingPage() {
       {/* EXEMPLE                                                          */}
       {/* ---------------------------------------------------------------- */}
       <VenteSection id="exemple" wide>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
               Un exemple concret
             </p>
-            <PetalDivider centered={false} className="mt-5" />
+            <PetalDivider centered={false} className="mt-7" />
             <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[42px]">
               À quoi ressemble
               <br />
@@ -553,14 +554,17 @@ export default function BloomingPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={80}>
-            <ImageZoom
+          <Reveal delay={80} as="figure">
+            <Image
               src="/assets/blooming/fleur-emilie.webp"
               alt="Fleur de Talents Innés d’Émilie — exemple"
               width={1378}
               height={1378}
-              legende="Exemple — Fleur d’Émilie"
+              className="h-auto w-full"
             />
+            <figcaption className="mt-3 text-center font-body text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+              Exemple — Fleur d’Émilie
+            </figcaption>
           </Reveal>
         </div>
       </VenteSection>
@@ -568,114 +572,96 @@ export default function BloomingPage() {
       {/* ---------------------------------------------------------------- */}
       {/* LIVRABLES                                                        */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="livrables" bg="deep" wide>
+      <VenteSection id="livrables" bg="deep" wide decor={<PetalField clair />}>
         <SectionHeader
           onDeep
-          eyebrow="Les livrables"
+          eyebrow="Ce que tu obtiens"
           title="Un document pensé dans les moindres détails, et une session d’intégration pour aller plus loin."
         />
         <div className="mt-14">
           <LivrablesGrid livrables={LIVRABLES} />
         </div>
-      </VenteSection>
 
-      <CtaBand href="#tarif">Je veux voir ma Fleur éclore</CtaBand>
+        <Reveal className="mt-14 text-center">
+          <Cta href="#tarif" onDeep>
+            Je veux voir ma Fleur éclore
+          </Cta>
+        </Reveal>
+      </VenteSection>
 
       {/* ---------------------------------------------------------------- */}
       {/* LE DOCUMENT                                                      */}
       {/* ---------------------------------------------------------------- */}
+      {/* Strate portée par son visuel : l'écran occupe la colonne large, les
+          trois textes se rangent à côté en plus petit. */}
       <VenteSection bg="turquoise" wide>
         <SectionHeader eyebrow="Le document" title="Beau, profond, précieux." />
 
-        <div className="mt-16 flex flex-col gap-16 md:gap-24">
-          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-            <Reveal>
-              <Image
-                src="/assets/blooming/mockup-1.webp"
-                alt="Aperçu de la Fleur de Talents Innés sur téléphone"
-                width={1080}
-                height={1920}
-                className="mx-auto h-auto w-[280px] md:w-[330px]"
-              />
-            </Reveal>
+        <div className="mt-16 grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <Reveal className="mx-auto w-full max-w-[420px]">
+            <Image
+              src="/assets/blooming/mockup-1.webp"
+              alt="Aperçu de la Fleur de Talents Innés sur téléphone"
+              width={1080}
+              height={1920}
+              className="h-auto w-full rounded-[18px] shadow-simu"
+            />
+          </Reveal>
 
-            <Reveal delay={80} className="flex flex-col gap-10">
-              <div>
-                <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-                  Conçu pour durer
-                </p>
-                <h3 className="mt-4 font-display text-[26px] font-semibold leading-snug text-ink-deep">
-                  Un livrable que tu vas garder à vie.
-                </h3>
-                <p className="mt-4 font-display text-[17px] font-light leading-loose text-ink">
-                  Tu reçois ton document au format PDF ; pensé autant pour être lu sur écran,
-                  qu’imprimé sur papier.
-                  <br />
-                  <em>
-                    Certains·es client·es glissent leur Fleur dans un cadre, pour l’exposer et se
-                    laisser guider par elle jour après jour.
-                  </em>
-                </p>
-              </div>
+          <Reveal delay={80} className="flex flex-col gap-9">
+            <div>
+              <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
+                Conçu pour durer
+              </p>
+              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
+                Un livrable que tu vas garder à vie.
+              </h3>
+              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
+                Tu reçois ton document au format PDF ; pensé autant pour être lu sur écran,
+                qu’imprimé sur papier.
+                <br />
+                <em>
+                  Certains·es client·es glissent leur Fleur dans un cadre, pour l’exposer et se
+                  laisser guider par elle jour après jour.
+                </em>
+              </p>
+            </div>
 
-              <div>
-                <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-                  Sans jargon
-                </p>
-                <h3 className="mt-4 font-display text-[26px] font-semibold leading-snug text-ink-deep">
-                  Pas de formulations complexes ou ésotériques.
-                </h3>
-                <p className="mt-4 font-display text-[17px] font-light leading-loose text-ink">
-                  Le document est pensé pour être compris par tout le monde, même sans aucune
-                  connaissance du Human Design, de la Numérologie, ou des Gene Keys.
-                  <br />
-                  Tout est vulgarisé, illustré, rendu accessible.
-                  <br />
-                  <em>
-                    Chaque information est expliquée clairement et simplement, pour que tu puisses te
-                    reconnaître pleinement dans chaque ligne.
-                  </em>
-                </p>
-              </div>
-            </Reveal>
-          </div>
+            <div>
+              <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
+                Sans jargon
+              </p>
+              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
+                Pas de formulations complexes ou ésotériques.
+              </h3>
+              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
+                Le document est pensé pour être compris par tout le monde, même sans aucune
+                connaissance du Human Design, de la Numérologie, ou des Gene Keys.
+                <br />
+                Tout est vulgarisé, illustré, rendu accessible.
+                <br />
+                <em>
+                  Chaque information est expliquée clairement et simplement, pour que tu puisses te
+                  reconnaître pleinement dans chaque ligne.
+                </em>
+              </p>
+            </div>
 
-          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-            <Reveal className="md:order-2">
-              <Image
-                src="/assets/blooming/mockup-2.webp"
-                alt="Aperçu du document Fleur de Talents Innés"
-                width={1080}
-                height={1920}
-                className="mx-auto h-auto w-[280px] md:w-[330px]"
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)",
-                  maskImage:
-                    "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)",
-                  WebkitMaskComposite: "source-in",
-                  maskComposite: "intersect",
-                }}
-              />
-            </Reveal>
-
-            <Reveal delay={80} className="md:order-1">
+            <div>
               <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
                 À portée de main
               </p>
-              <h3 className="mt-4 font-display text-[26px] font-semibold leading-snug text-ink-deep">
+              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
                 Une boussole pour les jours de doute.
               </h3>
-              <p className="mt-4 font-display text-[17px] font-light leading-loose text-ink">
+              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
                 Quand tu traverses une période de remise en question, tu reviens à ta Fleur en
                 douceur.
                 <br />
-                <em>
-                  Elle te rappelle qui tu es, ce que tu apportes, et quelle est ta juste place.
-                </em>
+                <em>Elle te rappelle qui tu es, ce que tu apportes, et quelle est ta juste place.</em>
               </p>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </VenteSection>
 
@@ -696,8 +682,9 @@ export default function BloomingPage() {
       {/* ---------------------------------------------------------------- */}
       <VenteSection id="test-gratuit" bg="lavender" wide>
         {/* Pas d'eyebrow ici : le texte d'origine n'en a pas, et on n'invente
-            aucun mot sur cette page. */}
-        <SectionHeader title={<>Tu ne connais pas encore ton Design HD&nbsp;?</>} />
+            aucun mot sur cette page. Sans eyebrow, le filet à pétale n'annonce
+            plus rien, on le coupe aussi. */}
+        <SectionHeader filet={false} title={<>Tu ne connais pas encore ton Design HD&nbsp;?</>} />
         <Reveal className="mx-auto mt-6 max-w-[620px] text-center">
           <p className="font-display text-[18px] font-light italic leading-relaxed text-ink">
             Pas de panique&nbsp;! Fais ton test gratuit ci-dessous pour découvrir ton schéma. C’est
@@ -717,10 +704,9 @@ export default function BloomingPage() {
       {/* TÉMOIGNAGES                                                      */}
       {/* ---------------------------------------------------------------- */}
       <VenteSection id="temoignages" bg="white" wide>
-        <SectionHeader
-          eyebrow="Des retours précieux"
-          title="Leurs mots valent plus qu’un long discours. ♡"
-        />
+        {/* Ni eyebrow ni filet : le témoignage parle de lui-même, et l'appareil
+            d'en-tête des autres strates lui donnait un air d'argumentaire. */}
+        <SectionHeader filet={false} title="Leurs mots valent plus qu’un long discours. ♡" />
 
         <div className="mx-auto mt-14 max-w-[900px]">
           <TemoignageHero
@@ -735,29 +721,7 @@ Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.
 Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
           />
 
-          <ScoreCards
-            scores={[
-              { valeur: "10/10", label: "Note attribuée à sa Fleur" },
-              {
-                label: (
-                  <>
-                    «&nbsp;Une énorme révélation&nbsp;»
-                    <br />
-                    «&nbsp;D’une justesse incroyable&nbsp;»
-                  </>
-                ),
-              },
-            ]}
-          />
-
-          <TemoignageCards
-            verbatims={[
-              "« Ma Fleur m’a permis de confirmer certaines intuitions et a renforcé ma confiance sur des talents que je n’osais pas trop exploiter. »",
-              "« Ma Fleur m’a ouvert les yeux sur certains métiers à envisager, et m’a permis de découvrir ma zone de génie. »",
-            ]}
-          />
-
-          <Reveal className="mt-12 text-center">
+          <Reveal className="mt-14 text-center">
             <Cta href="#tarif">Waouh, moi aussi je veux ma Fleur</Cta>
           </Reveal>
         </div>
@@ -766,7 +730,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
       {/* ---------------------------------------------------------------- */}
       {/* TARIF                                                            */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="tarif">
+      <VenteSection id="tarif" wide decor={<PetalField dense />}>
         <SectionHeader eyebrow="Ton investissement" title="Prêt·e à découvrir tes Talents Innés ?" />
         <div className="mt-14">
           <PricingCard
@@ -794,10 +758,9 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
       <VenteSection bg="lavender" wide>
         <BridgeOffre
           eyebrow="Et après ?"
-          titre={
+          avant="Ta Fleur révèle."
+          apres={
             <>
-              Ta Fleur révèle.
-              <br />
               <em className="italic text-ink">Reconnect</em> transforme.
             </>
           }
@@ -810,7 +773,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
               l’Accompagnement qui suit naturellement.
             </>,
           ]}
-          carte={{
+          offre={{
             eyebrow: "Accompagnement Premium · 3 mois",
             logo: "/assets/logo-reconnect.webp",
             logoAlt: "Reconnect",

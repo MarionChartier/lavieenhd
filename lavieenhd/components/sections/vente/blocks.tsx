@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { Petal, Rosace } from "@/components/sections/vente/motifs";
+import { Petal, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { Cta } from "@/components/sections/vente/primitives";
 
@@ -106,39 +106,53 @@ export function ProfilsNotes({ profils }: { profils: Profil[] }) {
 /* Livrables                                                                  */
 /* ------------------------------------------------------------------------- */
 
-export type Livrable = { titre: string; texte: ReactNode };
+export type Livrable = {
+  titre: string;
+  texte: ReactNode;
+  /** Largeur dans la grille. Portée par la donnée et non calculée ici : chaque
+   *  page de vente a son propre nombre de livrables, et c'est elle qui sait
+   *  lesquels méritent d'être mis en avant. Par défaut, une colonne. */
+  taille?: "large" | "pleine";
+};
+
+const LARGEURS = {
+  large: "sm:col-span-2",
+  pleine: "sm:col-span-2 lg:col-span-3",
+} as const;
 
 /**
- * Grille des livrables, sur strate profonde. Quand le compte laisse une carte
- * orpheline en fin de grille, la dernière occupe toute la largeur plutôt que de
- * laisser un trou — et cela met justement en avant le livrable de clôture.
+ * Grille des livrables en bento, sur strate profonde : les cartes n'ont pas
+ * toutes la même largeur, ce qui donne du rythme là où sept cartes identiques
+ * se lisaient comme une liste de cases.
+ *
+ * Au survol, halo turquoise : le fond profond fait tout le contraste, il suffit
+ * d'allumer le liseré et de poser une lueur diffuse. Pas de mise à l'échelle ni
+ * de déplacement — la géométrie ne bouge jamais, seule la lumière change.
  */
 export function LivrablesGrid({ livrables }: { livrables: Livrable[] }) {
-  const derniereSeule = livrables.length % 3 === 1;
-
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {livrables.map((item, i) => {
-        const pleineLargeur = derniereSeule && i === livrables.length - 1;
-
-        return (
-          <Reveal
-            key={item.titre}
-            delay={stagger(i)}
-            className={`rounded-[28px] border border-turquoise/25 bg-white/[0.04] p-7 transition-colors duration-300 hover:border-turquoise/50 ${
-              pleineLargeur ? "sm:col-span-2 lg:col-span-3" : ""
-            }`}
-          >
-            <Petal className="h-4 w-4 text-turquoise" />
-            <h3 className="mt-4 font-display text-[20px] font-semibold leading-snug text-turquoise">
-              {item.titre}
-            </h3>
-            <p className="mt-3 font-display text-[16px] font-light leading-relaxed text-white/85">
-              {item.texte}
-            </p>
-          </Reveal>
-        );
-      })}
+      {livrables.map((item, i) => (
+        <Reveal
+          key={item.titre}
+          delay={stagger(i)}
+          className={`group rounded-[28px] border border-turquoise/25 bg-white/[0.04] p-7 transition-[background-color,border-color,box-shadow] duration-300 hover:border-turquoise hover:bg-turquoise/[0.07] hover:shadow-[0_0_30px_-6px_rgba(117,206,210,0.5),inset_0_0_20px_-12px_rgba(117,206,210,0.6)] motion-reduce:transition-none ${
+            item.taille ? LARGEURS[item.taille] : ""
+          }`}
+        >
+          {/* Le pétale ouvre le titre au lieu d'occuper sa propre ligne.
+              `items-start` et non `items-baseline` : une SVG n'a pas de ligne
+              de base, elle se colle au bas de la boîte. Le décalage haut la
+              recentre optiquement sur la première ligne du titre. */}
+          <h3 className="flex items-start gap-2.5 font-display text-[20px] font-semibold leading-snug text-turquoise">
+            <Petal className="mt-[5px] h-4 w-4 flex-none transition-[filter] duration-300 group-hover:drop-shadow-[0_0_6px_rgba(117,206,210,0.9)] motion-reduce:transition-none" />
+            <span>{item.titre}</span>
+          </h3>
+          <p className="mt-3.5 font-display text-[17px] font-light leading-relaxed text-white/90 md:text-[18px]">
+            {item.texte}
+          </p>
+        </Reveal>
+      ))}
     </div>
   );
 }
@@ -160,10 +174,14 @@ export function ProcessusSteps({ etapes }: { etapes: Etape[] }) {
         <Reveal as="li" key={etape.titre} delay={stagger(i)} className="text-center">
           <span className="relative mx-auto flex h-16 w-16 items-center justify-center">
             <Rosace className="absolute inset-0 h-16 w-16 text-ink-lilac/50" />
-            {/* Cormorant pose ses chiffres sur la ligne de base : sans ce
-                relèvement, le numéro paraît glisser sous le cœur de la rosace. */}
-            <span className="relative -translate-y-[0.09em] font-display text-[22px] font-light leading-none text-ink-deep">
-              {i + 1}
+            {/* Pastille blanche translucide au cœur de la rosace : le chiffre
+                se détachait mal des pétales. Le chiffre est en `font-body`,
+                sans empattement : Cormorant pose ses chiffres sur la ligne de
+                base et demandait un relèvement manuel pour paraître centré. */}
+            <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/70">
+              <span className="font-body text-[15px] font-semibold leading-none text-ink-deep">
+                {i + 1}
+              </span>
             </span>
           </span>
 
@@ -202,41 +220,61 @@ export function PricingCard({
   note: string;
 }) {
   return (
-    <Reveal className="mx-auto max-w-[560px] overflow-hidden rounded-[28px] border border-line bg-white shadow-simu">
-      {/* Fond plus profond que la strate « deep » : le lettrage blanc du logo
-          est fin, il lui faut ce contraste supplémentaire pour rester lisible. */}
-      <div className="relative overflow-hidden bg-ink-deep px-8 py-10 text-center">
-        <Image
-          src={logo}
-          alt={logoAlt}
-          width={200}
-          height={200}
-          className="relative mx-auto h-auto w-[180px]"
-        />
-        <p className="relative mt-4 font-display text-[50px] font-light leading-none text-turquoise">
-          {prix}
-        </p>
-      </div>
-
-      <div className="px-7 py-9 md:px-9">
+    <div className="grid items-start gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
+      {/* Ce qu'on reçoit d'abord, en pleine lecture : neuf lignes empilées dans
+          une carte étroite repoussaient le bouton sous la ligne de flottaison.
+          Ici le prix se lit en face de la valeur, et non après elle. */}
+      <Reveal>
         <ul className="flex flex-col">
           {inclus.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 border-b border-line py-3.5 last:border-b-0 font-display text-[16px] font-light leading-relaxed text-ink"
+              className="flex items-start gap-3.5 border-b border-line py-4 last:border-b-0 font-display text-[18px] leading-relaxed text-ink-deep"
             >
-              <Petal className="mt-1.5 h-3 w-3 flex-none text-turquoise" />
+              <Petal className="mt-2 h-3 w-3 flex-none text-turquoise" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
+      </Reveal>
 
-        <Cta href={href} external className="mt-8 w-full">
-          {libelleCta}
-        </Cta>
-        <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
+      {/* Centrée en hauteur face à la liste : l'espace restant se répartit de
+          part et d'autre au lieu de laisser la carte perchée en haut.
+          L'envolée de pétales est posée sur ce conteneur et non sur la carte :
+          la carte rogne ce qui dépasse d'elle, les pétales y seraient coupés
+          net au ras du liseré. */}
+      <div className="relative lg:self-center">
+        <PetalHalo />
+
+        <Reveal
+          delay={80}
+          className="relative overflow-hidden rounded-[28px] border border-line bg-white shadow-simu"
+        >
+          {/* Même violet adouci que la strate des livrables, plutôt que le ton
+              des boutons : sur toute une surface il pesait trop. Le lettrage
+              blanc du logo est fin, il garde ici 7.4:1. */}
+          <div className="bg-[#5a4e69] px-7 py-9 text-center">
+            <Image
+              src={logo}
+              alt={logoAlt}
+              width={200}
+              height={200}
+              className="mx-auto h-auto w-[150px]"
+            />
+            <p className="mt-4 font-display text-[46px] font-light leading-none text-turquoise">
+              {prix}
+            </p>
+          </div>
+
+          <div className="px-6 py-7">
+            <Cta href={href} external className="w-full">
+              {libelleCta}
+            </Cta>
+            <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
+          </div>
+        </Reveal>
       </div>
-    </Reveal>
+    </div>
   );
 }
 
@@ -245,38 +283,54 @@ export function PricingCard({
 /* ------------------------------------------------------------------------- */
 
 /** Témoignage principal : portrait à gauche, verbatim à droite. */
+/**
+ * Témoignage au format voulu par Marion, repris de ses pages systeme.io :
+ * portrait rond en grand, guillemet, prénom, puis le verbatim centré.
+ *
+ * L'anneau doré n'est pas dessiné en CSS, il est incrusté dans les PNG du
+ * dossier `temoignages` — comme sur les pages d'origine. D'où l'absence de
+ * `rounded-full` et de bordure ici : le fichier fait déjà le travail.
+ */
 export function TemoignageHero({
   photo,
   nom,
   contexte,
   texte,
+  inverse = false,
 }: {
   photo: string;
   nom: string;
   contexte: string;
   texte: ReactNode;
+  /** Portrait à droite. Les témoignages alternent d'un bloc à l'autre. */
+  inverse?: boolean;
 }) {
   return (
-    <Reveal className="grid items-center gap-8 md:grid-cols-[200px_1fr] md:gap-12">
+    <Reveal className="grid items-center gap-10 md:grid-cols-[300px_1fr] md:gap-14">
       <Image
         src={photo}
         alt={nom}
-        width={220}
-        height={220}
-        className="mx-auto h-auto w-[160px] md:w-[200px]"
+        width={600}
+        height={600}
+        className={`mx-auto h-auto w-[220px] md:w-[300px] ${inverse ? "md:order-2" : ""}`}
       />
 
-      <div>
-        <Rosace className="mx-auto h-8 w-8 text-turquoise/60 md:mx-0" />
-        {/* La script a de grandes hampes : sans cet écart, l'accent du prénom
-            touche la rosace. */}
-        <p className="mt-7 text-center font-script text-[28px] leading-none text-turquoise md:text-left">
-          {nom}
-        </p>
-        <p className="mt-2 text-center font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft md:text-left">
+      <div className="text-center">
+        {/* Le guillemet pailleté des pages systeme.io de Marion. Purement
+            décoratif : le verbatim se comprend sans lui. */}
+        <Image
+          src="/assets/temoignages/guillemet.webp"
+          alt=""
+          aria-hidden
+          width={160}
+          height={160}
+          className="mx-auto h-auto w-[56px]"
+        />
+        <p className="mt-4 font-display text-[22px] italic leading-none text-turquoise">{nom}</p>
+        <p className="mt-3 font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
           {contexte}
         </p>
-        <div className="mt-5 whitespace-pre-line font-display text-[17px] font-light leading-relaxed text-ink-deep">
+        <div className="mt-6 whitespace-pre-line font-display text-[17px] font-light leading-relaxed text-ink-deep">
           {texte}
         </div>
       </div>
@@ -322,10 +376,19 @@ export function TemoignageCards({ verbatims }: { verbatims: string[] }) {
         <Reveal
           key={texte}
           delay={stagger(i)}
-          className="rounded-[28px] border border-line bg-paper p-8 shadow-card"
+          className="rounded-[28px] border border-line bg-paper p-8 text-center shadow-card"
         >
-          <Petal className="h-4 w-4 text-turquoise/70" />
-          <p className="mt-4 font-display text-[17px] font-light italic leading-relaxed text-ink-deep">
+          {/* Même guillemet que le témoignage principal : les deux blocs se
+              lisent alors comme une seule famille. */}
+          <Image
+            src="/assets/temoignages/guillemet.webp"
+            alt=""
+            aria-hidden
+            width={160}
+            height={160}
+            className="mx-auto h-auto w-[42px]"
+          />
+          <p className="mt-5 font-display text-[17px] font-light italic leading-relaxed text-ink-deep">
             {texte}
           </p>
         </Reveal>
@@ -338,17 +401,28 @@ export function TemoignageCards({ verbatims }: { verbatims: string[] }) {
 /* Passerelle vers l'offre suivante                                           */
 /* ------------------------------------------------------------------------- */
 
-/** Renvoi vers l'offre du palier au-dessus, en fin de parcours. */
+/**
+ * Renvoi vers l'offre du palier au-dessus, en fin de parcours.
+ *
+ * Le titre est écrit en deux temps qui s'opposent — ce que l'offre courante
+ * fait, puis ce que la suivante apporte. La mise en page ne fait que rendre
+ * visible cette bascule, avec un pétale en pivot.
+ *
+ * Pas de carte ici : la strate arrive juste après le prix, et un bloc aussi
+ * appuyé que la carte d'achat mettrait les deux offres sur le même plan.
+ */
 export function BridgeOffre({
   eyebrow,
-  titre,
+  avant,
+  apres,
   paragraphes,
-  carte,
+  offre,
 }: {
   eyebrow: string;
-  titre: ReactNode;
+  avant: ReactNode;
+  apres: ReactNode;
   paragraphes: ReactNode[];
-  carte: {
+  offre: {
     eyebrow: string;
     logo: string;
     logoAlt: string;
@@ -359,10 +433,15 @@ export function BridgeOffre({
 }) {
   return (
     <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <Reveal>
+      {/* Le texte reste premier dans le code et passe à droite à l'affichage :
+          un lecteur d'écran doit rencontrer le titre avant la carte, et sur
+          mobile c'est aussi lui qui doit ouvrir la strate. */}
+      <Reveal className="lg:order-2">
         <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">{eyebrow}</p>
-        <h2 className="mt-5 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[42px]">
-          {titre}
+        <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[42px]">
+          {avant}
+          <br />
+          {apres}
         </h2>
         {paragraphes.map((p, i) => (
           <p key={i} className="mt-5 font-display text-[17px] font-light leading-relaxed text-ink">
@@ -371,23 +450,42 @@ export function BridgeOffre({
         ))}
       </Reveal>
 
-      <Reveal delay={80} className="rounded-[28px] bg-ink-deep px-8 py-10 text-center md:px-10">
-        <p className="font-body text-[11px] uppercase tracking-[0.22em] text-turquoise">
-          {carte.eyebrow}
-        </p>
-        <Image
-          src={carte.logo}
-          alt={carte.logoAlt}
-          width={160}
-          height={160}
-          className="mx-auto mt-6 h-auto w-[150px]"
-        />
-        <p className="mt-6 font-display text-[16px] font-light leading-relaxed text-white/85">
-          {carte.texte}
-        </p>
-        <Cta href={carte.href} variant="ghost" className="mt-8 border-turquoise/60 bg-transparent text-turquoise hover:bg-turquoise hover:text-ink-deep">
-          {carte.libelle}
-        </Cta>
+      {/* Carte claire et non violet profond : elle arrive quelques écrans après
+          la carte d'achat, et deux blocs sombres de même force mettraient les
+          deux offres sur le même plan. Le liseré et l'ombre suffisent à la
+          détacher du fond lavande. */}
+      <Reveal
+        delay={80}
+        className="relative overflow-hidden rounded-[28px] border border-ink-lilac/45 bg-white px-8 py-10 text-center shadow-card lg:order-1 md:px-10"
+      >
+        {/* Deux grands pétales entrant par des coins opposés, rognés par
+            l'arrondi de la carte : on n'en voit jamais la forme entière, ce qui
+            les garde à l'état de matière. Une lueur douce sous le logo lui
+            donne son écrin sans ajouter de cadre. */}
+        <span aria-hidden className="pointer-events-none absolute inset-0">
+          <Petal className="absolute -top-12 -left-16 h-56 w-56 rotate-[26deg] text-ink-lilac/[0.14]" />
+          <Petal className="absolute -right-14 -bottom-16 h-60 w-60 -rotate-[20deg] text-turquoise/[0.12]" />
+          <span className="absolute top-[26%] left-1/2 h-44 w-44 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(190,164,216,0.22)_0%,transparent_70%)]" />
+        </span>
+
+        <div className="relative">
+          <p className="font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">
+            {offre.eyebrow}
+          </p>
+          <Image
+            src={offre.logo}
+            alt={offre.logoAlt}
+            width={160}
+            height={160}
+            className="mx-auto mt-6 h-auto w-[150px]"
+          />
+          <p className="mt-6 font-display text-[16px] font-light leading-relaxed text-ink">
+            {offre.texte}
+          </p>
+          <Cta href={offre.href} variant="ghost" className="mt-8">
+            {offre.libelle}
+          </Cta>
+        </div>
       </Reveal>
     </div>
   );

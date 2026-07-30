@@ -23,7 +23,7 @@ export function Reveal({
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: "div" | "li" | "section";
+  as?: "div" | "li" | "section" | "figure";
 }) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
@@ -49,7 +49,7 @@ export function Reveal({
 
   return (
     <Tag
-      // Un seul type de nœud par usage ; le cast couvre les 3 balises autorisées.
+      // Un seul type de nœud par usage ; le cast couvre les balises autorisées.
       ref={ref as React.Ref<never>}
       style={{ transitionDelay: visible ? `${delay}ms` : undefined }}
       className={`transition-[opacity,transform,filter] duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] motion-reduce:transition-none ${

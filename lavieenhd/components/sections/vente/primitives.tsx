@@ -10,11 +10,13 @@ const BG = {
   paper: "bg-paper",
   white: "bg-white",
   /**
-   * Strate profonde, pour les temps forts. On prend le violet le plus sombre
-   * de la palette et pas `ink` : sur `ink`, le turquoise des titres tombe à
-   * 2.9:1 et le corps de texte à 4.3:1, tous deux sous le seuil AA.
+   * Strate profonde, pour les temps forts. Violet désaturé, plus doux que le
+   * `ink-deep` des boutons, qui rendait le bloc trop dense sur toute une
+   * hauteur d'écran. On ne réutilise pas un ton de la palette : `ink` fait
+   * tomber le turquoise des titres à 2.9:1 et le corps à 4.3:1, sous le seuil
+   * AA. Ici on mesure 4.22:1 sur le turquoise et 6.10:1 sur le corps.
    */
-  deep: "bg-ink-deep text-white",
+  deep: "bg-[#5a4e69] text-white",
   lavender: "bg-lavender-gradient",
   turquoise: "bg-turquoise-soft/60",
 } as const;
@@ -47,6 +49,9 @@ export function VenteSection({
   return (
     <section
       id={id}
+      // Si un jour une strate a besoin d'un bloc collant, il faudra passer en
+      // `overflow-clip` : `hidden` fait de la section un conteneur de
+      // défilement, ce qui neutralise silencieusement tout `sticky` interne.
       className={`relative scroll-mt-36 overflow-hidden px-6 py-20 md:px-20 md:py-28 ${BG[bg]} ${className}`}
     >
       {decor}
@@ -67,6 +72,7 @@ export function SectionHeader({
   title,
   centered = true,
   onDeep = false,
+  filet = true,
 }: {
   /** Optionnel : certaines strates n'en ont pas dans le texte d'origine. */
   eyebrow?: string;
@@ -74,6 +80,9 @@ export function SectionHeader({
   centered?: boolean;
   /** Variante pour les strates sombres (texte clair, eyebrow turquoise). */
   onDeep?: boolean;
+  /** Séparateur à pétale au-dessus du titre. À couper quand la strate n'a pas
+   *  d'eyebrow : seul, le filet n'annonce plus rien, il meuble. */
+  filet?: boolean;
 }) {
   return (
     <Reveal className={centered ? "text-center" : ""}>
@@ -86,11 +95,13 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <PetalDivider centered={centered} className={eyebrow ? "mt-5" : ""} />
+      {filet && <PetalDivider centered={centered} className={eyebrow ? "mt-7" : ""} />}
+      {/* La marge haute sépare le titre de ce qui le précède ; sans eyebrow ni
+          filet, elle n'ouvrirait qu'un vide en tête de strate. */}
       <h2
-        className={`mt-6 font-display text-[30px] font-light leading-[1.15] md:text-[46px] ${
-          onDeep ? "text-white" : "text-ink-deep"
-        }`}
+        className={`font-display text-[30px] font-light leading-[1.15] md:text-[46px] ${
+          eyebrow || filet ? "mt-6" : ""
+        } ${onDeep ? "text-white" : "text-ink-deep"}`}
       >
         {title}
       </h2>
@@ -108,19 +119,26 @@ export function Cta({
   children,
   variant = "primary",
   external = false,
+  onDeep = false,
   className = "",
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "ghost";
   external?: boolean;
+  /** Variante pour les strates sombres : le violet du bouton plein s'y noierait.
+   *  On prend le turquoise d'accent, qui donne 5.32:1 avec le texte encre. */
+  onDeep?: boolean;
   className?: string;
 }) {
   const base =
     "inline-flex items-center justify-center rounded-full px-9 pt-[17px] pb-[15px] text-center font-body text-[11px] uppercase leading-snug tracking-[0.22em] transition-colors duration-300 active:scale-[0.98] motion-reduce:active:scale-100";
 
-  const styles =
-    variant === "primary"
+  const styles = onDeep
+    ? variant === "primary"
+      ? "bg-turquoise text-ink-deep hover:bg-white"
+      : "border border-turquoise text-turquoise hover:bg-turquoise hover:text-ink-deep"
+    : variant === "primary"
       ? "bg-ink-deep text-white hover:bg-turquoise hover:text-ink-deep"
       : "border border-ink-deep bg-white/40 text-ink-deep hover:bg-ink-deep hover:text-white";
 
@@ -146,7 +164,9 @@ export function CtaBand({
   external?: boolean;
 }) {
   return (
-    <div className="bg-paper px-6 py-12 text-center md:py-16">
+    // Pas de marge haute : la bande suit toujours une strate qui a déjà sa
+    // propre respiration en bas, et les deux s'additionnaient.
+    <div className="bg-paper px-6 pb-12 text-center md:pb-16">
       <Reveal>
         <Cta href={href} external={external}>
           {children}
