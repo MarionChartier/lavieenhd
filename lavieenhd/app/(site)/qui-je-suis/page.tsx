@@ -118,24 +118,6 @@ const HD_ATTRIBUTES = [
   },
 ];
 
-/** Nuage de valeurs — top 13 de Marion (dans le désordre, voulu).
- *  `big: true` = mots à mettre en avant (plus gros). */
-const VALEURS: { word: string; big: boolean }[] = [
-  { word: "Intuition", big: true },
-  { word: "Audace", big: false },
-  { word: "Aventure", big: true },
-  { word: "Amour", big: false },
-  { word: "Bienveillance", big: true },
-  { word: "Partage", big: false },
-  { word: "Fun", big: true },
-  { word: "Spiritualité", big: false },
-  { word: "Créativité", big: false },
-  { word: "Authenticité", big: true },
-  { word: "Ouverture", big: false },
-  { word: "Confiance", big: false },
-  { word: "Rêve", big: false },
-];
-
 const PILIERS: { title: string; titleNote?: string; blurb: string }[] = [
   {
     title: "Bienveillance",
@@ -515,29 +497,17 @@ export default function QuiJeSuisPage() {
                 Ce qui me <em className="italic text-turquoise">guide</em>.
               </h2>
 
-              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 md:mt-20 md:gap-x-6 md:gap-y-3 lg:justify-start">
-                {VALEURS.map(({ word, big }, i) => {
-                  // Mots en avant = grande taille + couleur soutenue ; les autres, plus discrets.
-                  const size = big
-                    ? "text-[30px] md:text-[46px]"
-                    : "text-[18px] md:text-[26px]";
-                  const color =
-                    word === "Aventure"
-                      ? "text-ink-deep" // même couleur qu'Authenticité (ink-deep)
-                      : big
-                        ? ["text-turquoise", "text-ink-deep"][i % 2]
-                        : ["text-ink", "text-ink-lilac"][i % 2];
-                  const rots = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-3", "rotate-3", "-rotate-1"];
-                  return (
-                    <span
-                      key={word}
-                      className={`inline-block font-sub leading-none ${size} ${color} ${rots[i % rots.length]}`}
-                    >
-                      {word}
-                    </span>
-                  );
-                })}
-              </div>
+              {/* Nuage fourni par Marion, dans son propre lettrage. Il remplace
+                  la composition typographique qu'on générait ici : les valeurs
+                  restent listées dans l'`alt`, sans quoi elles disparaîtraient
+                  pour les lecteurs d'écran et les moteurs de recherche. */}
+              <Image
+                src="/assets/nuage-valeurs.webp"
+                alt="Liberté, Aventure, Spiritualité, Partage, Fun, Intuition, Créativité, Bienveillance, Amour, Audace, Authenticité"
+                width={1200}
+                height={846}
+                className="mt-10 h-auto w-full md:mt-14"
+              />
             </div>
 
             {/* DROITE — fun fact en note penchée avec pastille */}
