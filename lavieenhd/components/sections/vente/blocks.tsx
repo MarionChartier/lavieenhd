@@ -250,10 +250,12 @@ export function PricingCard({
           delay={80}
           className="relative overflow-hidden rounded-[28px] border border-line bg-white shadow-simu"
         >
-          {/* Même violet adouci que la strate des livrables, plutôt que le ton
-              des boutons : sur toute une surface il pesait trop. Le lettrage
-              blanc du logo est fin, il garde ici 7.4:1. */}
-          <div className="bg-[#5a4e69] px-7 py-9 text-center">
+          {/* Violet plus clair que la strate des livrables : sur ce bandeau
+              compact, entouré de blanc, le même ton paraissait plus dense
+              qu'en pleine largeur. Le prix turquoise y garde 3.48:1 — au-dessus
+              du seuil de 3:1 qui s'applique à ses 46px — et le lettrage blanc
+              du logo, qui est fin, 6.34:1. */}
+          <div className="bg-[#665b74] px-7 py-9 text-center">
             <Image
               src={logo}
               alt={logoAlt}

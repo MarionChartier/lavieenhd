@@ -350,14 +350,15 @@ export default function BloomingPage() {
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[1fr_340px] lg:gap-16">
           {/* Les portraits passent en tête sur mobile : rejetés après le bouton,
               ils se retrouveraient tout en bas de la strate, hors du propos.
-              Plus de `sticky` ici : à deux photos la colonne dépasse la hauteur
-              d'écran, et un bloc collant plus haut que le viewport ne colle
-              jamais. Le second cliché est décalé, comme les notes. */}
-          {/* `aspect` fixe plutôt que la hauteur naturelle : les deux clichés
+
+              `aspect` fixe plutôt que la hauteur naturelle : les deux clichés
               n'ont pas exactement le même rapport, et sans recadrage commun ils
               ne feraient pas la même taille. `self-center` répartit l'espace
               restant de part et d'autre au lieu de le laisser traîner sous la
-              seconde photo. */}
+              seconde photo.
+
+              Sur mobile, un seul portrait : empilés, les deux repoussaient le
+              texte d'un écran entier avant qu'on ait lu la première note. */}
           <Reveal
             delay={80}
             className="order-first flex flex-col items-center gap-8 lg:order-last lg:gap-10 lg:self-center"
@@ -375,7 +376,7 @@ export default function BloomingPage() {
               aria-hidden
               width={900}
               height={1278}
-              className="aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card"
+              className="hidden aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card lg:block"
             />
           </Reveal>
 
