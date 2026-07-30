@@ -12,7 +12,6 @@ import { fileURLToPath } from "node:url";
 const publicDir = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
 
 const TARGETS = [
-  "blooming.html",
   "the-place-to-be.html",
   "inside.html",
   "reveal.html",

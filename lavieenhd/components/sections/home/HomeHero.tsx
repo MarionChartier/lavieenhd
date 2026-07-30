@@ -88,23 +88,48 @@ export function HomeHero() {
               voie professionnelle.
             </p>
 
-            <p className="mt-7 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-              Au fil de notre vie, nous nous construisons à travers des <strong className="font-semibold">figures</strong> qui nous <strong className="font-semibold">élèvent</strong>, nous <strong className="font-semibold">éduquent</strong>, nous <strong className="font-semibold">influencent</strong> (parents, éducateurs, professeurs, société,...), et par le biais de ce que nous <strong className="font-semibold">traversons</strong>. C&rsquo;est ainsi que nous <strong className="font-semibold">grandissons toutes et tous</strong> avec des <strong className="font-semibold">conditionnements</strong>, plus ou moins ancrés, et que nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, <strong className="font-semibold">bien éloignés de qui ils sont vraiment, déconnectés de leur vraie nature</strong>.
-            </p>
+            {/* Le récit existe en deux longueurs. Sur un petit écran la version
+                complète repousse le calculateur très bas, alors que c'est lui
+                qu'on vient chercher : on sert donc une version resserrée
+                jusqu'à `lg`. Seuls ces trois paragraphes changent, l'accroche
+                et la conclusion sont communes. */}
+            <div className="mt-7 hidden lg:block">
+              <p className="font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                Au fil de notre vie, nous nous construisons à travers des <strong className="font-semibold">figures</strong> qui nous <strong className="font-semibold">élèvent</strong>, nous <strong className="font-semibold">éduquent</strong>, nous <strong className="font-semibold">influencent</strong> (parents, éducateurs, professeurs, société,...), et par le biais de ce que nous <strong className="font-semibold">traversons</strong>. C&rsquo;est ainsi que nous <strong className="font-semibold">grandissons toutes et tous</strong> avec des <strong className="font-semibold">conditionnements</strong>, plus ou moins ancrés, et que nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, <strong className="font-semibold">bien éloignés de qui ils sont vraiment, déconnectés de leur vraie nature</strong>.
+              </p>
 
-            <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-              Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> dans laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
-              <br />
-              <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
-            </p>
+              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> dans laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
+                <br />
+                <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
+              </p>
 
-            <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-              Et c&rsquo;est clairement le <strong className="font-semibold">Human Design</strong> qui m&rsquo;a permis de <strong className="font-semibold">sortir du brouillard</strong>, révéler ma <strong className="font-semibold">zone de génie</strong>, et <strong className="font-semibold">trouver ma voie</strong>.
-              <br />
-              Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être.
-              <br />
-              Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.
-            </p>
+              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                Et c&rsquo;est clairement le <strong className="font-semibold">Human Design</strong> qui m&rsquo;a permis de <strong className="font-semibold">sortir du brouillard</strong>, révéler ma <strong className="font-semibold">zone de génie</strong>, et <strong className="font-semibold">trouver ma voie</strong>.
+                <br />
+                Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être.
+                <br />
+                Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.
+              </p>
+            </div>
+
+            <div className="mt-7 lg:hidden">
+              <p className="font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                Nous <strong className="font-semibold">grandissons toutes et tous</strong> avec des <strong className="font-semibold">conditionnements</strong>, plus ou moins ancrés, et nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, <strong className="font-semibold">bien éloignés de qui ils sont vraiment</strong>.
+              </p>
+
+              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> au sujet de laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
+                <br />
+                <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
+              </p>
+
+              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
+                C&rsquo;est clairement le <strong className="font-semibold">Human Design</strong> qui m&rsquo;a permis de <strong className="font-semibold">sortir du brouillard</strong>, révéler ma <strong className="font-semibold">zone de génie</strong>, et <strong className="font-semibold">trouver ma voie</strong>.
+                <br />
+                Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être, <em>pour enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.</em>
+              </p>
+            </div>
 
             <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
               Aujourd&rsquo;hui je peux enfin dire que je me sens <strong className="font-semibold">à ma place</strong>, et c&rsquo;est une vraie <strong className="font-semibold">mission de cœur</strong> pour moi de <strong className="font-semibold">t&rsquo;accompagner</strong> à trouver toi-aussi ce chemin vers ton <strong className="font-semibold">épanouissement pro</strong>. ღ

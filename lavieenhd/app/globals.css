@@ -59,15 +59,20 @@ body {
   font-size: 15px;
 }
 
-/* Reset doux pour les titres : le design veut du léger partout */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-weight: 400;
+/* Reset doux pour les titres : le design veut du léger partout.
+   Impérativement dans `@layer base` : hors couche, cette règle l'emporterait
+   sur les utilitaires Tailwind (qui vivent, eux, dans `@layer utilities`), et
+   tout `mt-*` posé sur un titre serait silencieusement sans effet. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: 400;
+  }
 }
 
 /* Textures de fond (sage, beige) — réplique des classes du proto */

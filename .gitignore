@@ -45,3 +45,8 @@ Suivi-des-modifications-Marion.txt
 Guide-Marion-DNS-IONOS.txt
 Guide-Marion-Mise-en-ligne.html
 
+# Sources photo livrées par Marion (WeTransfer) — PNG lourds, plusieurs Mo pièce.
+# Seules les versions optimisées en WebP dans lavieenhd/public/assets/ sont versionnées.
+wetransfer_*/
+imagespourpagedeventeblooming/
+
