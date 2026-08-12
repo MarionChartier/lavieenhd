@@ -75,15 +75,16 @@ export function HomeHero() {
         >
           {/* LEFT — copy */}
           <div className="pt-6 lg:pt-16">
-            <h1 className="font-script text-[26px] font-normal leading-none whitespace-nowrap text-ink-deep md:text-[44px]">
-              Ton <span className="not-italic text-turquoise">Human Design</span>
+            {/* Pas de whitespace-nowrap : la phrase complète a besoin de deux
+                lignes sur les petites largeurs. */}
+            <h1 className="font-script text-[26px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[44px]">
+              Ton <span className="not-italic text-turquoise">Human Design</span>,
+              {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
+                  automatique coupe au milieu de « Human Design ». */}
+              <span className="mt-2 block text-[0.82em] md:mt-3">ta boussole.</span>
             </h1>
 
-            <p className="mt-8 font-display text-[18px] italic leading-snug text-ink-deep md:text-[22px]">
-              Ton Human Design, ta boussole.
-            </p>
-
-            <p className="mt-3 font-display text-[16px] font-light leading-snug text-ink md:text-[18px]">
+            <p className="mt-5 font-display text-[16px] font-light leading-snug text-ink md:text-[18px]">
               Le chemin idéal pour te retrouver, te révéler pleinement, et (enfin) trouver ta
               voie professionnelle.
             </p>
@@ -99,7 +100,7 @@ export function HomeHero() {
               </p>
 
               <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> dans laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
+                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> au sujet de laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
                 <br />
                 <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
               </p>
@@ -109,7 +110,7 @@ export function HomeHero() {
                 <br />
                 Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être.
                 <br />
-                Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.
+                <em>Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.</em>
               </p>
             </div>
 

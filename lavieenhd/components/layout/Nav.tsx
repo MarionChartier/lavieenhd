@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { scrollToTopInstant } from "@/components/layout/ScrollToTop";
 import { OFFRES } from "@/lib/content/offres";
 
 const NAV_ITEMS = [
@@ -29,13 +30,19 @@ const OFFRE_LINKS: { label: string; href: string; external: boolean }[] = [
 export function Nav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  /** Sous-menu « Mes offres » du panneau mobile : replié par défaut, comme le
+   *  survol sur desktop. */
+  const [offresOpen, setOffresOpen] = useState(false);
 
-  /** Clic sur un lien du menu : ferme le menu mobile et renvoie en haut de page.
-   *  Next ne re-scrolle pas quand on navigue vers la page courante ; les liens
-   *  d'ancre (#section) gardent leur défilement vers la section. */
+  /** Clic sur un lien du menu. Le menu mobile reste ouvert le temps du
+   *  chargement : il masque la page qu'on quitte, et l'effet sur `pathname` le
+   *  referme dès que la nouvelle page est rendue (en haut, via <ScrollToTop />).
+   *  Sans ce voile (desktop, ou clic sur la page courante) on remonte tout de
+   *  suite. Les liens d'ancre gardent leur défilement vers la section. */
   const handleNavClick = (href: string) => {
-    setMobileOpen(false);
-    if (!href.includes("#")) window.scrollTo(0, 0);
+    const samePage = href === pathname;
+    if (samePage) setMobileOpen(false);
+    if (!href.includes("#") && (samePage || !mobileOpen)) scrollToTopInstant();
   };
 
   useEffect(() => {
@@ -164,7 +171,10 @@ export function Nav() {
 
         <button
           type="button"
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => {
+            setMobileOpen((v) => !v);
+            setOffresOpen(false);
+          }}
           aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={mobileOpen}
           className="flex h-11 w-11 items-center justify-center lg:hidden"
@@ -195,19 +205,37 @@ export function Nav() {
               if ("dropdown" in item && item.dropdown) {
                 return (
                   <div key={item.href} className="border-b border-line pb-3">
-                    <Link
-                      href={item.href}
-                      onClick={() => handleNavClick(item.href)}
-                      className={`flex items-center justify-between py-3 font-display text-[28px] ${
-                        isActive ? "text-turquoise" : "text-ink"
-                      }`}
-                    >
-                      {item.label}
-                      <span className="font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-                        →
-                      </span>
-                    </Link>
-                    <div className="mt-1 flex flex-col gap-1 pl-1">
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={item.href}
+                        onClick={() => handleNavClick(item.href)}
+                        className={`flex-1 py-3 font-display text-[28px] ${
+                          isActive ? "text-turquoise" : "text-ink"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setOffresOpen((v) => !v)}
+                        aria-expanded={offresOpen}
+                        aria-label={
+                          offresOpen ? "Masquer les offres" : "Voir toutes les offres"
+                        }
+                        // justify-end : le chevron s'aligne sur les flèches des
+                        // autres entrées, la zone tactile de 44px déborde vers
+                        // la gauche.
+                        className="flex h-11 w-11 items-center justify-end font-body text-[20px] leading-none text-ink-soft"
+                      >
+                        <span
+                          aria-hidden
+                          className={`block transition-transform ${offresOpen ? "rotate-180" : ""}`}
+                        >
+                          ▾
+                        </span>
+                      </button>
+                    </div>
+                    <div className={`mt-1 flex-col gap-1 pl-1 ${offresOpen ? "flex" : "hidden"}`}>
                       {OFFRE_LINKS.map((link) =>
                         link.external ? (
                           <a

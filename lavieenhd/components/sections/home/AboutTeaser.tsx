@@ -10,12 +10,27 @@ const PILLS = [
 ] as const;
 
 export function AboutTeaser() {
+  const titre = (
+    <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
+      Marion,
+      <br />
+      <em className="italic">multi-passionnée.</em>
+    </h2>
+  );
+
   return (
     <section className="px-6 py-24 md:px-20 md:py-32">
       <div className="mx-auto grid max-w-(--container-content) gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
+        {/* Empilé (mobile, tablette), le titre annonce la photo ; en deux
+            colonnes il retrouve sa place en tête de la colonne de texte. */}
+        <div className="lg:hidden">{titre}</div>
+
         {/* Photo + HDCard */}
         <div className="relative">
-          <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_24px_55px_-28px_rgba(80,60,98,0.28)] md:h-[500px]">
+          {/* Décalé vers la gauche à partir de md : la carte d'identité, elle,
+              reste en place et dégage d'autant le visage. La section et la
+              grille ne bougent pas, seul le cadre photo glisse dans la marge. */}
+          <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_24px_55px_-28px_rgba(80,60,98,0.28)] md:h-[500px] md:-translate-x-6">
             <Image
               src={PHOTO_MARION_LIVING}
               alt="Marion Chartier"
@@ -25,20 +40,18 @@ export function AboutTeaser() {
             />
           </div>
           {/* HD Card — sous la photo en mobile (pas de superposition), flottante dès md */}
-          <div className="mt-6 flex justify-center md:absolute md:-bottom-10 md:-right-6 md:z-10 md:mt-0">
+          <div className="mt-6 flex justify-center md:absolute md:-bottom-16 md:-right-12 md:z-10 md:mt-0">
             <HDCardMarion />
           </div>
         </div>
 
         {/* Copy */}
         <div>
-          <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
-            Marion,
-            <br />
-            <em className="italic">multi-passionnée.</em>
-          </h2>
+          <div className="hidden lg:block">{titre}</div>
 
-          <p className="mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
+          {/* Le titre est passé au-dessus de la photo tant qu'on est empilé :
+              la marge haute ne sert plus qu'en deux colonnes. */}
+          <p className="lg:mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
             Après des années d’ingénierie en multinationales à chercher ma place, je me suis
             retrouvée grâce au Human Design. Aujourd’hui, je t’accompagne à te révéler
             pleinement, dans ta vie pro et au-delà.

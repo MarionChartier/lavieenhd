@@ -17,6 +17,12 @@ export function LogoCircle({ offre }: { offre: Offre }) {
     <div
       className={`relative grid place-items-center rounded-full bg-white/65 shadow-[0_30px_80px_-40px_rgba(80,60,98,0.25)] backdrop-blur-sm ${circleSize}`}
     >
+      {/* Le Soin est le seul visuel photo. Un halo doré derrière prolonge sa
+          lumière jusqu'au bord du cercle : sans lui, la photo se lit comme une
+          vignette rapportée au lieu de rayonner depuis le cercle. */}
+      {offre.slug === "soin-energetique" && (
+        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_46%,rgba(255,240,216,0.7)_0%,rgba(238,201,143,0.26)_40%,transparent_68%)]" />
+      )}
       {offre.logoSrc ? (
         <Image
           src={offre.logoSrc}
@@ -25,7 +31,9 @@ export function LogoCircle({ offre }: { offre: Offre }) {
           height={180}
           className={`relative object-contain ${
             offre.slug === "soin-energetique"
-              ? "max-h-[60%] max-w-[60%]"
+              ? // Fondu réel : un masque radial dissout les bords de la photo
+                // dans le cercle, au lieu de les arrêter net.
+                "h-auto w-[58%] opacity-80 [mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)] [-webkit-mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)]"
               : offre.slug === "inside"
                 ? "max-h-[82%] max-w-[88%]"
                 : "max-h-[60%] max-w-[65%]"

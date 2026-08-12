@@ -57,6 +57,15 @@ export function TransitSolaireBanner() {
 
   return (
     <section className="bg-white px-6 py-10 md:px-20 md:py-14">
+      <div className="mx-auto mb-8 max-w-(--container-content) text-center md:mb-10">
+        {/* leading généreux : les jambages de la script descendent bas et
+            viennent croiser la date si on serre l'interligne. */}
+        <h2 className="font-script text-[30px] leading-[1.5] text-ink-deep md:text-[36px]">
+          Les énergies du moment
+        </h2>
+        <DateDuJour />
+      </div>
+
       {/* Deux cards indépendantes : transit à gauche, phase lunaire à droite ; empilées sur mobile. */}
       <div className="mx-auto grid max-w-(--container-content) grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
         {/* ——— Card Transit solaire ——— */}
@@ -113,6 +122,33 @@ export function TransitSolaireBanner() {
         </BannerCard>
       </div>
     </section>
+  );
+}
+
+/**
+ * Date du jour, format « Samedi 8 Août 2026 ».
+ * Calculée après le montage : rendue côté serveur, elle refléterait le fuseau
+ * du serveur et provoquerait un écart d'hydratation à l'approche de minuit.
+ */
+function DateDuJour() {
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    const brut = new Date().toLocaleDateString("fr-FR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    // « samedi 8 août 2026 » → « Samedi 8 Août 2026 »
+    setDate(brut.replace(/(^|\s)(\p{L})/gu, (_, sep, lettre) => sep + lettre.toUpperCase()));
+  }, []);
+
+  // Hauteur réservée : sans elle, les cards sautent d'une ligne au montage.
+  return (
+    <p className="mt-8 h-4 font-body text-[12px] uppercase tracking-[0.18em] text-ink-soft">
+      {date}
+    </p>
   );
 }
 

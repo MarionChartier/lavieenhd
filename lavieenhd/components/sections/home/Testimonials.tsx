@@ -125,14 +125,18 @@ export function Testimonials() {
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) => {
-    const rowMates = getRowMates(i, TESTIMONIALS.length);
+    // Grille 3 colonnes (desktop) : on déplie toute la ligne pour garder les
+    // cards alignées. En 1 colonne (mobile), seule la card cliquée s'ouvre,
+    // sinon les cards du dessus poussent le texte hors de l'écran.
+    const isGrid = window.matchMedia("(min-width: 1024px)").matches;
+    const targets = isGrid ? getRowMates(i, TESTIMONIALS.length) : [i];
     const isCurrentlyExpanded = expanded.has(i);
     setExpanded((prev) => {
       const next = new Set(prev);
       if (isCurrentlyExpanded) {
-        rowMates.forEach((idx) => next.delete(idx));
+        targets.forEach((idx) => next.delete(idx));
       } else {
-        rowMates.forEach((idx) => next.add(idx));
+        targets.forEach((idx) => next.add(idx));
       }
       return next;
     });
