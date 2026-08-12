@@ -73,11 +73,6 @@ function Postcard({ offre }: { offre: Offre }) {
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="relative block transition-all hover:-translate-y-1"
     >
-      {/* Accent floral discret — uniquement pour l'offre signature, dans la zone droite */}
-      {offre.signature && (
-        <MiniFleur className="pointer-events-none absolute top-3 right-3 z-10 h-10 w-10 text-ink-deep opacity-50" />
-      )}
-
       <div
         className={`relative grid grid-cols-1 ${
           isInside ? "overflow-hidden lg:overflow-visible" : "overflow-hidden"
@@ -117,7 +112,7 @@ function Postcard({ offre }: { offre: Offre }) {
               height={110}
               className={`relative w-auto object-contain ${
                 offre.slug === "soin-energetique"
-                  ? "max-h-[140px] max-w-[94%] translate-y-2 opacity-90 drop-shadow-[0_10px_22px_rgba(224,169,79,0.4)]"
+                  ? "max-h-[124px] max-w-[86%] translate-y-1 opacity-80 [mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)] [-webkit-mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)]"
                   : offre.slug === "inside"
                   ? "max-h-[155px] max-w-[100%] lg:absolute lg:inset-0 lg:m-auto lg:max-h-[201px] lg:max-w-[100%]"
                   : offre.slug === "reveal"
@@ -186,32 +181,6 @@ function Postcard({ offre }: { offre: Offre }) {
         </div>
       </div>
     </Link>
-  );
-}
-
-/** Mini-fleur 8-pétales — décoration pour l'offre signature. La couleur suit currentColor (text-*). */
-function MiniFleur({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 280 280" className={className} aria-hidden>
-      <g fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round">
-        {Array.from({ length: 8 }).map((_, i) => {
-          const angleDeg = (i * 360) / 8 - 90;
-          const rad = (angleDeg * Math.PI) / 180;
-          const cx = 140 + Math.cos(rad) * 55;
-          const cy = 140 + Math.sin(rad) * 55;
-          return (
-            <ellipse
-              key={i}
-              cx={cx}
-              cy={cy}
-              rx="16"
-              ry="46"
-              transform={`rotate(${angleDeg + 90} ${cx} ${cy})`}
-            />
-          );
-        })}
-      </g>
-    </svg>
   );
 }
 

@@ -27,6 +27,33 @@ export function Petal({
 }
 
 /**
+ * Flèche courbe tracée à la main, qui désigne un élément placé à sa droite.
+ * Pour la pointer depuis l'autre côté, on la retourne (`-scale-x-100`).
+ *
+ * Au trait et non pleine : elle accompagne le regard vers le bon de commande
+ * sans venir concurrencer la carte, qui reste la seule pièce appuyée de la
+ * strate.
+ */
+export function FlecheCourbe({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 90" aria-hidden className={className} fill="none">
+      <g
+        stroke="currentColor"
+        strokeWidth="3.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Courbe d'élan, du bas-gauche vers la pointe à droite */}
+        <path d="M6 78C22 74 34 62 40 46 46 30 58 18 78 16c12-1 22 2 32 8" />
+        {/* Pointe, en deux traits ouverts comme un tracé à la plume */}
+        <path d="M96 8c6 5 11 10 14 16" />
+        <path d="M92 32c8-4 14-7 18-8" />
+      </g>
+    </svg>
+  );
+}
+
+/**
  * Rosace de 5 pétales — reprend littéralement la structure de la Fleur.
  * `filled` remplit les pétales, sinon ils restent au trait.
  */

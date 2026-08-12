@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BodygraphChart } from "@/components/sections/BodygraphChart";
+import { BodygraphChart, useBodygraphResult } from "@/components/sections/BodygraphChart";
 
 /**
  * Calculateur Human Design — partagé entre la home (HomeHero) et la page
@@ -10,8 +10,16 @@ import { BodygraphChart } from "@/components/sections/BodygraphChart";
  * là où le formulaire a été rempli, en pleine largeur (voir CalculateurLayout).
  */
 export function HDSimulatorForm() {
+  const hasResult = useBodygraphResult();
+
   return (
-    <div className="relative rounded-md border border-ink/15 bg-white p-5 shadow-[0_30px_70px_-30px_rgba(80,60,98,0.18)] md:p-7">
+    <div
+      className={`relative rounded-md border border-ink/15 bg-white p-5 shadow-[0_30px_70px_-30px_rgba(80,60,98,0.18)] md:p-7 ${
+        // Le schéma apporte déjà son propre blanc en bas : la marge pleine de la
+        // carte, en plus, creuse un vide sous le tableau de propriétés.
+        hasResult ? "pb-2 md:pb-3" : ""
+      }`}
+    >
       {/* Logo Marion — premier plan, en haut à droite de la carte */}
       <div className="absolute -top-6 -right-6 z-10 h-[96px] w-[96px] overflow-hidden rounded-full border border-line bg-white shadow-[0_18px_40px_-15px_rgba(80,60,98,0.3)] md:-top-8 md:-right-8 md:h-[110px] md:w-[110px]">
         <Image
@@ -30,7 +38,9 @@ export function HDSimulatorForm() {
 
       {/* Pas de cadre ici : le widget apporte le sien. Et surtout pas
           d'overflow-hidden, qui rognerait la liste des villes. */}
-      <div className="relative mt-2">
+      {/* Le schéma et son tableau sont à l'étroit sur mobile : on leur rend la
+          marge de la carte, ils vont alors jusqu'à sa bordure. */}
+      <div className={`relative mt-2 ${hasResult ? "-mx-5 md:mx-0" : ""}`}>
         <BodygraphChart />
       </div>
     </div>

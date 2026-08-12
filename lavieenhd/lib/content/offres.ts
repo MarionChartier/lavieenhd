@@ -54,18 +54,17 @@ export const OFFRES: Offre[] = [
     num: "01",
     slug: "quiz",
     name: "Quiz gratuits",
-    subtitle: "Des quiz rapides et ludiques pour mieux te connaître.",
+    subtitle: "Des petits quiz ludiques pour t'éclairer",
     shortLabel: "Quiz gratuits",
     tag: "Explorer",
     shortDescription:
       "Découvre à la fois dans quel type de lieux ton corps se sent le plus à son aise, et également ton niveau d'alignement actuel avec ta vie professionnelle.",
     lead: "Réponds spontanément, et laisse-toi surprendre.",
     briefDescription:
-      "Deux quiz ludiques et 100% offerts : l'un révèle le type de lieux qui booste ton énergie, l'autre ton niveau d'alignement dans ta vie pro. Résultat instantané à chaque fois.",
+      "Des quiz rapides et 100% offerts. Résultat instantané à chaque fois.",
     briefBullets: [
       "Quiz - Ton lieu de vie/de travail idéal",
       "Quiz - Ton alignement vie pro actuel",
-      "Quelques minutes, résultat immédiat",
     ],
     longDescription:
       "Le Human Design définit pour chacun un « Environnement idéal » parmi 6 profils : Marchés, Cuisines, Grottes, Côtes, Jardins, Sommets. C'est l'environnement où ton énergie circule au mieux, où tu te ressources naturellement. En 12 questions intuitives, ce quiz te donne ton profil + une explication détaillée de pourquoi cet espace te nourrit.",
@@ -95,14 +94,14 @@ export const OFFRES: Offre[] = [
       "On se retrouve chaque dernier dimanche du mois à 21h, pour un soin collectif à distance afin de libérer tes blocages, et pumper ton énergie.",
     lead: "Un temps rien que pour toi, où tu n'as rien à faire d'autre que de te laisser chouchouter énergétiquement.",
     briefDescription:
-      "Un Soin profond pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence.",
+      "Un Soin profond pour t'aider à te libérer de tes blocages actuels *(visibles ou non)*, refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence.",
     briefBullets: [
       "Entre 1h et 1h15 de soin énergétique collectif",
-      "À distance (pas de présentiel ni de live)",
-      "Chaque dernier dimanche du mois à 21h",
+      "À distance *(pas de présentiel ni de live)*",
+      "Chaque dernier Dimanche du mois à 21h00",
       "Consignes et conseils envoyés par email le jour du soin",
-      "Feedback détaillé par email le lendemain matin",
-      "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
+      "Feedback détaillé par email le lendemain matin du soin",
+      "+ Tirage au sort pour une mini-guidance intuitive personnalisée",
     ],
     longDescription:
       "Un Soin complet pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. Pas de présentiel, pas de live : tout se fait à distance. Tu poses l'intention, tu t'installes en mode cocooning, et tu te laisses chouchouter énergétiquement. Le lendemain, Marion t'envoie son feedback détaillé par email : ressentis, perceptions, travail énergétique effectué, et très souvent des canalisations groupées.",
@@ -135,8 +134,8 @@ export const OFFRES: Offre[] = [
     briefDescription:
       "Ce Guide complet met en lumière ton lieu de vie idéal, et le meilleur environnement de travail pour toi selon ton Human Design ; découvre ainsi le type d'endroits qui te ressource, t'apaise et te booste.",
     briefBullets: [
-      "Plus de 30 pages PDF, personnalisées sur ton propre Environnement",
-      "Explications claires et décryptées, sans jargon complexe",
+      "Plus de 30 pages pdf, *personnalisées sur ton propre Environnement*",
+      "Explications claires et décryptées, *sans jargon complexe*",
       "Exemples et conseils pratiques et faciles à mettre en place",
       "Espaces de réflexions personnelles",
       "Visuels et inspirations de décoration",
@@ -199,11 +198,11 @@ export const OFFRES: Offre[] = [
       "Un Guide de décryptage personnalisé des 7 clés fondamentales de ton schéma de Human Design ; pour mieux te comprendre, arrêter de douter de tes choix, et te reconnecter à ta vraie nature. 1h de coaching inclus.",
     lead: "Plonge dans les fondamentaux de ton Design pour te reconnecter à ta vraie nature.",
     briefDescription:
-      "Reviens à qui tu es vraiment grâce à une analyse personnalisée des 7 informations principales de ton schéma de Human Design ; ton Type, ton Autorité intérieure, ta Signature, ton Non Soi, ta Stratégie, ta Définition et ton Profil, pour mieux comprendre comment ton énergie fonctionne, comment prendre des décisions justes, et comment attirer à toi les meilleures opportunités.",
+      "Reviens à qui tu es vraiment grâce à une analyse personnalisée des 7 informations principales de ton schéma de Human Design ; *ton Type, ton Autorité intérieure, ta Signature, ton Non Soi, ta Stratégie, ta Définition et ton Profil,* pour mieux comprendre comment ton énergie fonctionne, comment prendre des décisions justes, et comment attirer à toi les meilleures opportunités.",
     briefBullets: [
       "Guide personnalisé et accessible à vie",
-      "Environ 40 pages PDF",
-      "Explications claires et décryptées, sans jargon complexe",
+      "Environ 40 pages pdf",
+      "Explications claires et décryptées, *sans jargon complexe*",
       "Exemples concrets et conseils pratiques",
       "Espaces de réflexion et de mises en pratique",
       "1h de coaching en visio pour approfondir et incarner",
@@ -237,7 +236,7 @@ export const OFFRES: Offre[] = [
       "1h30 ensemble en visio pour dénouer une situation bloquante de ta vie professionnelle, clarifier une décision ou éclairer un questionnement, grâce à une analyse ciblée de ton Human Design.",
     lead: "1h30 pour dénouer ce qui te bloque aujourd'hui dans ta vie pro.",
     briefDescription:
-      "Tu fais face à un blocage, un questionnement, un besoin de clarté ou de prise de décision dans ton parcours professionnel. Je prépare une analyse HD orientée sur ta problématique, puis nous explorons et allons dénouer tout ça ensemble en visio.",
+      "Tu fais face à un blocage, un questionnement, un besoin de clarté ou de prise de décision dans ton parcours professionnel ?\n\nJe prépare une analyse HD orientée sur ta problématique, puis nous explorons et allons dénouer tout ça ensemble en visio.",
     briefBullets: [
       "Analyse ciblée de ton Human Design",
       "Décryptage concret et clair",
@@ -279,11 +278,11 @@ export const OFFRES: Offre[] = [
     briefDescription:
       "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur de Talents Innés® est là pour révéler ta zone de génie et ton empreinte personnelle, grâce à une analyse approfondie de ton Human Design, et des éléments phares de ta Numérologie et de tes Gene Keys.",
     briefBullets: [
-      "Analyse croisée HD, Numérologie, Gene Keys, 100% personnelle et unique",
+      "Analyse croisée HD, Numérologie, Gene Keys, *100% personnel et unique*",
       "Fleur visuelle avec tes 5 pétales de talents innés",
       "+ de 40 pages de détails vulgarisés et concrets",
       "Ta zone de génie, et des pistes de métiers alignés à toi",
-      "Les configurations contre-nature pour toi (+ tes signaux d'alerte)",
+      "Les configurations contre-nature pour toi *(+ tes signaux d'alerte)*",
       "1h30 de coaching individuel pour ancrer tout ça dans TA réalité",
     ],
     longDescription:
@@ -321,7 +320,7 @@ export const OFFRES: Offre[] = [
       "Tu sais ce que tu ne veux plus pour ta vie professionnelle, mais tu ne sais pas ce que tu veux vraiment et vers quoi t'engager, tu doutes sur la voie à prendre et sur tes talents ?\n\nL'Accompagnement multi-dimensionnel Reconnect a été conçu pour toi ; il est là pour t'apporter clarté, direction et élan, afin de réaligner ta vie professionnelle à tes aspirations de cœur.",
     briefBullets: [
       "Accompagnement individuel et transformationnel",
-      "3 coachings d'1h30, et un suivi privé et continu pendant les 3 mois",
+      "3 coachings d'1h30, *et un suivi privé et continu pendant les 3 mois*",
       "13 questionnaires hebdomadaires pour avancer pas à pas",
       "Analyses HD, tests de personnalité, exercices et tips concrets",
       "Soins énergétiques, séances d'EFT et méditations guidées",

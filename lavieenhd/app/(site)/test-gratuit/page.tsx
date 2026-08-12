@@ -39,7 +39,7 @@ export default function TestGratuitPage() {
 
         <p className="mx-auto mt-8 max-w-[680px] font-display text-[18px] font-light italic leading-snug text-ink md:text-[22px]">
           À partir de ta date, ton heure et ton lieu de naissance, génère ton
-          schéma complet en&nbsp;quelques&nbsp;secondes.
+          schéma complet ... en seulement&nbsp;quelques&nbsp;secondes.
         </p>
       </section>
 
@@ -116,7 +116,7 @@ export default function TestGratuitPage() {
               consigne à lire avant de remplir, pas de l'argumentaire. En pleine
               largeur ses trois points restent empilés — titre, texte, titre suivant —
               et les descriptions prennent toute la largeur du bloc. */}
-          <div className="mt-16 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
+          <div className="mt-10 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
             <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
               À savoir avant de commencer
             </p>

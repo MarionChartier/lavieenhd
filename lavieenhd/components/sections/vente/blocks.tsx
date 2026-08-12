@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { Petal, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
+import { FlecheCourbe, Petal, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { Cta } from "@/components/sections/vente/primitives";
 
@@ -117,40 +117,46 @@ export type Livrable = {
 
 const LARGEURS = {
   large: "sm:col-span-2",
-  pleine: "sm:col-span-2 lg:col-span-3",
+  pleine: "sm:col-span-2",
 } as const;
 
 /**
- * Grille des livrables en bento, sur strate profonde : les cartes n'ont pas
- * toutes la même largeur, ce qui donne du rythme là où sept cartes identiques
- * se lisaient comme une liste de cases.
+ * Grille des livrables en bento : les cartes n'ont pas toutes la même largeur,
+ * ce qui donne du rythme là où sept cartes identiques se lisaient comme une
+ * liste de cases.
  *
- * Au survol, halo turquoise : le fond profond fait tout le contraste, il suffit
- * d'allumer le liseré et de poser une lueur diffuse. Pas de mise à l'échelle ni
- * de déplacement — la géométrie ne bouge jamais, seule la lumière change.
+ * Le halo turquoise est permanent et non plus au survol : c'est la mise en
+ * lumière que Marion voulait garder à l'écran, y compris au doigt où le survol
+ * n'existe pas. La géométrie ne bouge jamais.
  */
 export function LivrablesGrid({ livrables }: { livrables: Livrable[] }) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-2">
       {livrables.map((item, i) => (
+        // La carte est un enfant du Reveal et non le Reveal lui-même : les deux
+        // portent une transition, et celle de l'apparition écrasait celle du
+        // survol — le halo s'allumait alors d'un coup.
         <Reveal
           key={item.titre}
           delay={stagger(i)}
-          className={`group rounded-[28px] border border-turquoise/25 bg-white/[0.04] p-7 transition-[background-color,border-color,box-shadow] duration-300 hover:border-turquoise hover:bg-turquoise/[0.07] hover:shadow-[0_0_30px_-6px_rgba(117,206,210,0.5),inset_0_0_20px_-12px_rgba(117,206,210,0.6)] motion-reduce:transition-none ${
-            item.taille ? LARGEURS[item.taille] : ""
-          }`}
+          className={item.taille ? LARGEURS[item.taille] : ""}
         >
-          {/* Le pétale ouvre le titre au lieu d'occuper sa propre ligne.
-              `items-start` et non `items-baseline` : une SVG n'a pas de ligne
-              de base, elle se colle au bas de la boîte. Le décalage haut la
-              recentre optiquement sur la première ligne du titre. */}
-          <h3 className="flex items-start gap-2.5 font-display text-[20px] font-semibold leading-snug text-turquoise">
-            <Petal className="mt-[5px] h-4 w-4 flex-none transition-[filter] duration-300 group-hover:drop-shadow-[0_0_6px_rgba(117,206,210,0.9)] motion-reduce:transition-none" />
-            <span>{item.titre}</span>
-          </h3>
-          <p className="mt-3.5 font-display text-[17px] font-light leading-relaxed text-white/90 md:text-[18px]">
-            {item.texte}
-          </p>
+          <div className="h-full rounded-[28px] border border-turquoise/70 bg-white/80 p-7 shadow-[0_0_30px_-8px_rgba(117,206,210,0.55),inset_0_0_24px_-14px_rgba(117,206,210,0.7)] transition-[border-color,box-shadow] duration-300 hover:shadow-[0_0_26px_-2px_rgba(117,206,210,0.7),inset_0_0_24px_-14px_rgba(117,206,210,0.7)] motion-reduce:transition-none">
+            {/* Le pétale ouvre le titre au lieu d'occuper sa propre ligne.
+                `items-start` et non `items-baseline` : une SVG n'a pas de ligne
+                de base, elle se colle au bas de la boîte. Le décalage haut la
+                recentre optiquement sur la première ligne du titre. */}
+            <h3 className="flex items-start gap-2.5 font-display text-[20px] font-semibold leading-snug text-ink-deep">
+              <Petal className="mt-[5px] h-4 w-4 flex-none text-turquoise" />
+              <span>{item.titre}</span>
+            </h3>
+            {/* Encre profonde et non l'encre courante : sur ce fond clair et
+                derrière le halo, le gris violacé du texte de la page manquait
+                de tenue. La graisse passe aussi de light à normal. */}
+            <p className="mt-3.5 font-display text-[17px] leading-relaxed text-ink-deep md:text-[18px]">
+              {item.texte}
+            </p>
+          </div>
         </Reveal>
       ))}
     </div>
@@ -220,11 +226,10 @@ export function PricingCard({
   note: string;
 }) {
   return (
-    <div className="grid items-start gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
-      {/* Ce qu'on reçoit d'abord, en pleine lecture : neuf lignes empilées dans
-          une carte étroite repoussaient le bouton sous la ligne de flottaison.
-          Ici le prix se lit en face de la valeur, et non après elle. */}
-      <Reveal>
+    // Ce qu'on reçoit d'abord, en pleine lecture, puis le prix seul et centré
+    // sous la liste : à côté d'elle, il se lisait comme une colonne annexe.
+    <div className="mx-auto flex max-w-[820px] flex-col items-center gap-14">
+      <Reveal className="w-full">
         <ul className="flex flex-col">
           {inclus.map((item, i) => (
             <li
@@ -238,12 +243,18 @@ export function PricingCard({
         </ul>
       </Reveal>
 
-      {/* Centrée en hauteur face à la liste : l'espace restant se répartit de
-          part et d'autre au lieu de laisser la carte perchée en haut.
-          L'envolée de pétales est posée sur ce conteneur et non sur la carte :
-          la carte rogne ce qui dépasse d'elle, les pétales y seraient coupés
-          net au ras du liseré. */}
-      <div className="relative lg:self-center">
+      {/* Deux flèches manuscrites encadrent la carte pour désigner le passage à
+          l'action. Écartées dès `lg` seulement : plus étroit, elles voleraient
+          la largeur de la carte. */}
+      <div className="flex w-full items-center justify-center gap-4 xl:gap-10">
+        <FlecheCourbe
+          className="hidden h-[112px] w-[150px] flex-none -translate-y-4 text-ink-lilac/55 lg:block"
+        />
+
+        {/* L'envolée de pétales est posée sur ce conteneur et non sur la carte :
+            la carte rogne ce qui dépasse d'elle, les pétales y seraient coupés
+            net au ras du liseré. */}
+        <div className="relative w-full max-w-[380px]">
         <PetalHalo />
 
         <Reveal
@@ -275,6 +286,11 @@ export function PricingCard({
             <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
           </div>
         </Reveal>
+        </div>
+
+        <FlecheCourbe
+          className="hidden h-[112px] w-[150px] flex-none -translate-y-4 -scale-x-100 text-ink-lilac/55 lg:block"
+        />
       </div>
     </div>
   );
@@ -435,10 +451,9 @@ export function BridgeOffre({
 }) {
   return (
     <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      {/* Le texte reste premier dans le code et passe à droite à l'affichage :
-          un lecteur d'écran doit rencontrer le titre avant la carte, et sur
-          mobile c'est aussi lui qui doit ouvrir la strate. */}
-      <Reveal className="lg:order-2">
+      {/* Texte à gauche, carte de l'offre à droite : l'ordre du code est aussi
+          celui de l'affichage, on lit le pont avant l'offre qu'il annonce. */}
+      <Reveal>
         <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">{eyebrow}</p>
         <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[42px]">
           {avant}
@@ -458,7 +473,7 @@ export function BridgeOffre({
           détacher du fond lavande. */}
       <Reveal
         delay={80}
-        className="relative overflow-hidden rounded-[28px] border border-ink-lilac/45 bg-white px-8 py-10 text-center shadow-card lg:order-1 md:px-10"
+        className="relative overflow-hidden rounded-[28px] border border-ink-lilac/45 bg-white px-8 py-10 text-center shadow-card md:px-10"
       >
         {/* Deux grands pétales entrant par des coins opposés, rognés par
             l'arrondi de la carte : on n'en voit jamais la forme entière, ce qui
@@ -467,20 +482,28 @@ export function BridgeOffre({
         <span aria-hidden className="pointer-events-none absolute inset-0">
           <Petal className="absolute -top-12 -left-16 h-56 w-56 rotate-[26deg] text-ink-lilac/[0.14]" />
           <Petal className="absolute -right-14 -bottom-16 h-60 w-60 -rotate-[20deg] text-turquoise/[0.12]" />
-          <span className="absolute top-[26%] left-1/2 h-44 w-44 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(190,164,216,0.22)_0%,transparent_70%)]" />
         </span>
 
         <div className="relative">
           <p className="font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">
             {offre.eyebrow}
           </p>
-          <Image
-            src={offre.logo}
-            alt={offre.logoAlt}
-            width={160}
-            height={160}
-            className="mx-auto mt-6 h-auto w-[150px]"
-          />
+          {/* La lueur est ancrée sur le logo lui-même, et non à un pourcentage
+              de la carte : calée sur la carte, elle se retrouvait sous le logo
+              et décalée à droite. */}
+          <div className="relative mx-auto mt-6 w-[150px]">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(190,164,216,0.22)_0%,transparent_70%)]"
+            />
+            <Image
+              src={offre.logo}
+              alt={offre.logoAlt}
+              width={160}
+              height={160}
+              className="relative h-auto w-full"
+            />
+          </div>
           <p className="mt-6 font-display text-[16px] font-light leading-relaxed text-ink">
             {offre.texte}
           </p>

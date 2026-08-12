@@ -46,6 +46,30 @@ const BODYGRAPH_RESPONSIVE_PATCH = `
     .bgec-half-col .bgec-inner-col { width: 100%; padding: 0; margin-bottom: 15px; }
     .bgec-form-detail-section .bgec-input-item { margin-bottom: 0; }
     .bgec-dob-format { margin-bottom: 0; }
+    /* Le widget ajoute 10px de chaque côté à un conteneur déjà étroit ; notre
+       carte apporte déjà sa marge. */
+    .bgec-main-container { padding-left: 0; padding-right: 0; }
+  }
+  /* 30px de padding sous le tableau de propriétés, qui s'ajoutent à la marge de
+     notre carte et au bloc suivant : ça faisait un grand blanc sous le schéma. */
+  .bgec-chart-wrapper.bgec-chart-result-wrap.bgec-chart-portrait,
+  .bgec-chart-wrapper.bgec-chart-result-wrap { padding-bottom: 8px; }
+  /* Tableau de propriétés : sous 420px de carte, le duo libellé/valeur se
+     partage la ligne en 60/40 et coupe les valeurs en plein mot
+     ("Manifesti ng Generato r"). On les empile, chacun sur toute la largeur —
+     c'est ce que le widget fait lui-même, mais sur le viewport et à 374px. */
+  @container (max-width: 420px) {
+    .bgec-property-single-item { flex-wrap: wrap; }
+    /* Sélecteur calqué sur celui du widget (.bgec-chart-result-wrap, 150px
+       fixes) : à spécificité égale, notre feuille adoptée en dernier gagne. */
+    .bgec-chart-wrapper.bgec-chart-result-wrap .bgec-property-single-item .bgec-property-label,
+    .bgec-chart-wrapper.bgec-chart-result-wrap .bgec-property-single-item .bgec-property-content,
+    .bgec-property-single-item .bgec-property-label,
+    .bgec-property-single-item .bgec-property-content {
+      max-width: 100%;
+      flex: 1 1 100%;
+    }
+    .bgec-property-single-item .bgec-property-content { background: #fff; }
   }
 `;
 
