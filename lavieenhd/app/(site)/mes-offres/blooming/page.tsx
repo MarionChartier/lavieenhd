@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { EXTERNAL } from "@/lib/links";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { BodygraphChart } from "@/components/sections/BodygraphChart";
 import { Reveal } from "@/components/sections/vente/Reveal";
+import { SectionDots } from "@/components/sections/vente/SectionDots";
 import {
   Petal,
   PetalDivider,
@@ -14,7 +14,6 @@ import {
 import {
   CitationBand,
   Cta,
-  CtaBand,
   SectionHeader,
   VenteSection,
 } from "@/components/sections/vente/primitives";
@@ -48,7 +47,7 @@ const PROFILS = [
   {
     titre: "Tu doutes de tes dons",
     paragraphes: [
-      "Tu sens que tu as des facilités pour certaines choses, mais tu n’oses pas vraiment leur faire confiance, et tu ne sais pas forcément les nommer.",
+      "Tu sens que tu as des facilités pour certaines choses, mais tu ne sais pas forcément les nommer, et tu n’oses pas vraiment te faire confiance.",
       "Tu veux confirmer ce que tu pressens, poser des mots clairs sur tes talents innés, et avoir des conseils pratiques pour les exploiter au mieux.",
     ],
   },
@@ -64,18 +63,31 @@ const PROFILS = [
 const LIVRABLES: Livrable[] = [
   {
     titre: "Ta Fleur visuelle",
-    texte:
-      "La représentation graphique de tes 5 pôles de Talents Innés ; unique, à imprimer, à afficher comme une boussole.",
+    texte: (
+      <>
+        La représentation graphique unique et précieuse de tes 5 pôles de Talents Innés.
+        {/* Bloc à part et non simple retour à la ligne : la phrase en italique
+            est un commentaire du livrable, elle a besoin de respirer. */}
+        <em className="mt-3 block">
+          Un livrable à garder à vie, pensé autant pour être lu sur écran, qu’imprimé sur papier,
+          et affiché comme une boussole pour les jours de doute. Elle est là pour te rappeler qui tu
+          es, ce que tu apportes, et quelle est ta juste place.
+        </em>
+      </>
+    ),
     taille: "pleine",
   },
   {
     titre: "L’analyse approfondie",
     texte: (
       <>
-        d’une quarantaine de pages détaillant chaque pôle avec les données HD, Gene Keys et
-        Numérologie qui le nourrissent.
-        <br />
-        <em>(Aucun jargon ; tout est simplifié pour que ce soit clair et accessible à tous.)</em>
+        Le détail de chaque pôle de Talents avec tes données HD, Gene Keys et Numérologie qui le
+        nourrissent.
+        <em className="mt-3 block">
+          Aucun jargon, ou formulations complexes, le document est conçu pour être compris par tout
+          le monde, même sans aucune connaissance du Human Design, de la Numérologie, ou des Gene
+          Keys. Tout est simplifié et vulgarisé pour que ce soit clair et accessible à tous.
+        </em>
       </>
     ),
     taille: "large",
@@ -99,8 +111,13 @@ const LIVRABLES: Livrable[] = [
   },
   {
     titre: "Un coaching 1h30",
-    texte:
-      "1 semaine à 10 jours après réception de ta Fleur, on se retrouve pour explorer ensemble ce qui a émergé, et ancrer tout ça dans ta réalité.",
+    texte: (
+      <>
+        On vient approfondir tout ça ensemble une semaine à 10 jours après la réception de ton
+        document&nbsp;;{" "}
+        <em>le temps pour toi de lire, relire, et laisser infuser toutes les informations.</em>
+      </>
+    ),
     taille: "pleine",
   },
 ];
@@ -189,21 +206,48 @@ const FAQ = [
   },
   {
     q: "Quelle est la différence avec Reconnect ?",
-    a: "La Fleur est un livrable autonome : elle révèle, elle nomme, elle cartographie. C’est une boussole que tu gardes à vie. Reconnect est un Accompagnement individuel sur 3 mois pour incarner, transformer et passer à l’action. Les deux se complètent ; beaucoup de mes client·es passent par la Fleur avant d’intégrer Reconnect.",
-  },
-  {
-    q: "Puis-je offrir la Fleur à quelqu’un ?",
-    a: "Oui, absolument. C’est un cadeau rare et précieux pour quelqu’un qui traverse une transition professionnelle, ou qui cherche à se reconnecter à ce qu’il est vraiment.\nIl te faut simplement connaître les informations personnelles de la personne à laquelle tu souhaites offrir la Fleur (date, heure et lieu de naissance + nom/prénoms).\nTu pourras préciser dans le formulaire, qui te sera envoyé par mail juste après ta commande, si la Fleur est pour toi, ou si c’est un cadeau.",
+    a: "La Fleur est un livrable autonome : elle révèle, elle nomme, elle cartographie. C’est une boussole que tu gardes à vie. Reconnect est un Accompagnement individuel sur 3 mois pour incarner, transformer et passer à l’action, et la Fleur de Talents Innés est incluse dans Reconnect.",
   },
   {
     q: "Si j’ai déjà ma Fleur, comment cela se passe si je veux rejoindre Reconnect après ?",
     a: "Avec ou sans Fleur au préalable ; tu es la·le bienvenu·e dans Reconnect !\nEt ton investissement dans Blooming est loin d’être perdu.\nAprès réception de ta Fleur, tu reçois automatiquement par mail un code de réduction du montant de celle-ci pour l’Accompagnement Reconnect, valable pendant 3 mois.\nTa Fleur devient ainsi la première étape naturelle vers Reconnect, si tu ressens l’appel d’aller plus loin.",
   },
+  {
+    q: "Puis-je offrir la Fleur à quelqu’un ?",
+    a: (
+      <>
+        Oui, absolument. C’est un cadeau rare et précieux pour quelqu’un qui traverse une transition
+        professionnelle, ou qui cherche à se reconnecter à ce qu’il est vraiment.
+        <br />
+        Dans le formulaire qui te sera envoyé par mail juste après ta commande, tu pourras préciser
+        si la Fleur est pour toi, ou si c’est un cadeau, et choisir si tu préfères un bon cadeau à
+        offrir, ou directement la Fleur{" "}
+        <em>
+          (à condition de connaître les informations personnelles de la personne à laquelle tu
+          souhaites offrir la Fleur (date, heure et lieu de naissance + nom/prénoms))
+        </em>
+        .
+      </>
+    ),
+  },
+];
+
+/** Repères du menu à points, dans l'ordre de la page. */
+const POINTS = [
+  { id: "pour-qui", label: "Cette Fleur est pour toi si…" },
+  { id: "offre", label: "Ce qu’est la Fleur de Talents Innés®" },
+  { id: "exemple", label: "À quoi ressemble une vraie Fleur ?" },
+  { id: "livrables", label: "Ce que tu obtiens" },
+  { id: "processus", label: "Le processus" },
+  { id: "temoignages", label: "Les témoignages" },
+  { id: "tarif", label: "Faire éclore ta Fleur" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export default function BloomingPage() {
   return (
     <>
+      <SectionDots sections={POINTS} />
       {/* ---------------------------------------------------------------- */}
       {/* HERO                                                             */}
       {/* ---------------------------------------------------------------- */}
@@ -250,18 +294,6 @@ export default function BloomingPage() {
               </p>
             </Reveal>
 
-            <Reveal
-              delay={240}
-              className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
-            >
-              <Cta href="#tarif">Je veux ma Fleur</Cta>
-              <a
-                href="#pour-qui"
-                className="font-body text-[12px] uppercase tracking-[0.18em] text-ink-soft underline decoration-ink-soft/40 decoration-1 underline-offset-[6px] transition-colors hover:text-ink-deep hover:decoration-ink-deep"
-              >
-                Découvrir l’offre
-              </a>
-            </Reveal>
           </div>
 
           {/* Colonne preuve. C’est le verbatim qui porte, pas l’image : la carte
@@ -387,7 +419,7 @@ export default function BloomingPage() {
               <p className="max-w-[640px] font-display text-[18px] font-light italic leading-relaxed text-ink md:text-[19px]">
                 (Et, entre nous... tu en as probablement ta claque des outils qui veulent te faire
                 rentrer dans une case, et tu sens bien qu’une analyse sans âme sortie tout droit de
-                ChatGPT ne te révélera jamais qui tu es vraiment.)
+                ChatGPT ne te révélera jamais qui tu es vraiment&nbsp;!)
               </p>
               <p className="mt-7 max-w-[640px] font-display text-[20px] font-semibold leading-relaxed text-ink-deep">
                 Toi tu veux du vrai, de l’authentique, du sur-mesure.
@@ -478,7 +510,7 @@ export default function BloomingPage() {
                 deux paragraphes, il se lisait comme le reste. */}
             <ul className="mt-6 flex flex-col gap-4 rounded-[20px] border border-line bg-white/70 px-6 py-6 text-[16px] md:px-8 md:py-7 md:text-[17px]">
               {[
-                <>des pistes concrètes de métiers aligné·es à qui tu es vraiment,</>,
+                <>des pistes concrètes de métiers alignés à qui tu es vraiment,</>,
                 <>
                   les signaux intérieurs <em>- ressentis, comportements, émotions -</em> qui
                   t’indiquent quand tu fais fausse route,
@@ -503,13 +535,23 @@ export default function BloomingPage() {
             <p>
               Et parce qu’une Fleur sans session d’intégration, c’est comme une carte au trésor sans
               légende... l’offre inclut également un{" "}
-              <strong className="font-semibold text-ink-deep">coaching individuel d’1h30</strong>.
+              {/* La durée passe en sans-serif : les chiffres de Cormorant sont
+                  fins et bas sur la ligne, « 1h30 » y devient illisible en
+                  plein milieu d'une phrase. */}
+              <strong className="font-semibold text-ink-deep">
+                coaching individuel d’
+                {/* Même police que la phrase, mais chiffres alignés : par
+                    défaut Cormorant compose des chiffres elzéviriens, dont le
+                    « 1 » et le « 3 » plongent sous la ligne de base comme des
+                    minuscules. D'où le « 1h30 » illisible. */}
+                <span className="[font-variant-numeric:lining-nums]">1h30</span>
+              </strong>
+              .
               <br />
-              Il a lieu 1 semaine à 10 jours après la réception de ton document ;{" "}
-              <em>le temps de lire, relire, et laisser infuser toutes les informations.</em>
-              <br />
-              On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et on ancre
-              tout ça dans ta réalité concrète.
+              <em>
+                On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et on
+                ancre tout ça dans ta réalité concrète.
+              </em>
             </p>
           </Reveal>
         </div>
@@ -573,33 +615,21 @@ export default function BloomingPage() {
       {/* ---------------------------------------------------------------- */}
       {/* LIVRABLES                                                        */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="livrables" bg="deep" wide decor={<PetalField clair />}>
+      {/* Fond turquoise clair, repris de l'ancienne strate « Le document » : le
+          violet profond tranchait trop avec le reste de la page. Les cartes
+          passent donc en version claire, et le visuel du document, qui portait
+          cette strate supprimée, les rejoint ici. */}
+      <VenteSection id="livrables" bg="turquoise" wide decor={<PetalField />}>
         <SectionHeader
-          onDeep
           eyebrow="Ce que tu obtiens"
           title="Un document pensé dans les moindres détails, et une session d’intégration pour aller plus loin."
         />
-        <div className="mt-14">
-          <LivrablesGrid livrables={LIVRABLES} />
-        </div>
 
-        <Reveal className="mt-14 text-center">
-          <Cta href="#tarif" onDeep>
-            Je veux voir ma Fleur éclore
-          </Cta>
-        </Reveal>
-      </VenteSection>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* LE DOCUMENT                                                      */}
-      {/* ---------------------------------------------------------------- */}
-      {/* Strate portée par son visuel : l'écran occupe la colonne large, les
-          trois textes se rangent à côté en plus petit. */}
-      <VenteSection bg="turquoise" wide>
-        <SectionHeader eyebrow="Le document" title="Beau, profond, précieux." />
-
-        <div className="mt-16 grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <Reveal className="mx-auto w-full max-w-[420px]">
+        <div className="mt-14 grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          {/* Deux visuels empilés : la colonne de cartes est bien plus haute
+              que le seul aperçu, qui laissait un grand vide sous lui. Le second
+              est plus petit et détouré, il ne concurrence pas le premier. */}
+          <Reveal className="mx-auto flex w-full max-w-[320px] flex-col items-center gap-8 lg:sticky lg:top-28">
             <Image
               src="/assets/blooming/mockup-1.webp"
               alt="Aperçu de la Fleur de Talents Innés sur téléphone"
@@ -607,98 +637,45 @@ export default function BloomingPage() {
               height={1920}
               className="h-auto w-full rounded-[18px] shadow-simu"
             />
+            {/* Fondu en bas et vers le coin bas-gauche : l'avant-bras s'arrête
+                net sur le fond de la strate. Les deux dégradés sont croisés
+                (`intersect`), chacun n'efface que sa zone. */}
+            <Image
+              src="/assets/blooming/mockup-2.webp"
+              alt="La Fleur de Talents Innés consultée sur un téléphone, en main"
+              width={1080}
+              height={1920}
+              // Réservée aux deux colonnes : empilée, elle n'a plus de vide à
+              // combler et rallonge la page d'un écran avant les cartes.
+              className="hidden h-auto w-[72%] lg:block"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 74%, transparent 100%), linear-gradient(to bottom left, black 76%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(to bottom, black 74%, transparent 100%), linear-gradient(to bottom left, black 76%, transparent 100%)",
+                WebkitMaskComposite: "source-in",
+                maskComposite: "intersect",
+              }}
+            />
           </Reveal>
 
-          <Reveal delay={80} className="flex flex-col gap-9">
-            <div>
-              <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-                Conçu pour durer
-              </p>
-              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
-                Un livrable que tu vas garder à vie.
-              </h3>
-              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
-                Tu reçois ton document au format PDF ; pensé autant pour être lu sur écran,
-                qu’imprimé sur papier.
-                <br />
-                <em>
-                  Certains·es client·es glissent leur Fleur dans un cadre, pour l’exposer et se
-                  laisser guider par elle jour après jour.
-                </em>
-              </p>
-            </div>
-
-            <div>
-              <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-                Sans jargon
-              </p>
-              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
-                Pas de formulations complexes ou ésotériques.
-              </h3>
-              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
-                Le document est pensé pour être compris par tout le monde, même sans aucune
-                connaissance du Human Design, de la Numérologie, ou des Gene Keys.
-                <br />
-                Tout est vulgarisé, illustré, rendu accessible.
-                <br />
-                <em>
-                  Chaque information est expliquée clairement et simplement, pour que tu puisses te
-                  reconnaître pleinement dans chaque ligne.
-                </em>
-              </p>
-            </div>
-
-            <div>
-              <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-                À portée de main
-              </p>
-              <h3 className="mt-6 font-display text-[21px] font-semibold leading-snug text-ink-deep">
-                Une boussole pour les jours de doute.
-              </h3>
-              <p className="mt-3 font-display text-[15px] font-light leading-relaxed text-ink">
-                Quand tu traverses une période de remise en question, tu reviens à ta Fleur en
-                douceur.
-                <br />
-                <em>Elle te rappelle qui tu es, ce que tu apportes, et quelle est ta juste place.</em>
-              </p>
-            </div>
-          </Reveal>
+          <LivrablesGrid livrables={LIVRABLES} />
         </div>
+
+        <Reveal className="mt-14 text-center">
+          <Cta href="#tarif">Je veux voir ma Fleur éclore</Cta>
+        </Reveal>
       </VenteSection>
 
       {/* ---------------------------------------------------------------- */}
       {/* PROCESSUS                                                        */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="processus" wide>
+      {/* Fond lavande récupéré de la strate du calculateur, supprimée. */}
+      <VenteSection id="processus" bg="lavender" wide>
         <SectionHeader eyebrow="Le processus" title="Simple. Fluide. Impactant." />
         <div className="mt-16">
           <ProcessusSteps etapes={ETAPES} />
         </div>
-      </VenteSection>
-
-      <CtaBand href="#tarif">Go, c’est le bon moment pour faire épanouir ma Fleur</CtaBand>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* TEST GRATUIT                                                     */}
-      {/* ---------------------------------------------------------------- */}
-      <VenteSection id="test-gratuit" bg="lavender" wide>
-        {/* Pas d'eyebrow ici : le texte d'origine n'en a pas, et on n'invente
-            aucun mot sur cette page. Sans eyebrow, le filet à pétale n'annonce
-            plus rien, on le coupe aussi. */}
-        <SectionHeader filet={false} title={<>Tu ne connais pas encore ton Design HD&nbsp;?</>} />
-        <Reveal className="mx-auto mt-6 max-w-[620px] text-center">
-          <p className="font-display text-[18px] font-light italic leading-relaxed text-ink">
-            Pas de panique&nbsp;! Fais ton test gratuit ci-dessous pour découvrir ton schéma. C’est
-            super rapide, tu as juste besoin de tes informations de naissance (date, heure et lieu).
-          </p>
-        </Reveal>
-
-        <Reveal
-          delay={80}
-          className="mx-auto mt-12 max-w-[820px] rounded-[28px] border border-line bg-white p-4 shadow-simu md:p-6"
-        >
-          <BodygraphChart />
-        </Reveal>
       </VenteSection>
 
       {/* ---------------------------------------------------------------- */}
@@ -722,6 +699,56 @@ Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.
 Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
           />
 
+          {/* Suite du témoignage d'Émilie, sans cadre ni étiquette : ce sont
+              ses mots qui continuent, pas un encart rapporté. Le filet à
+              pétales, déjà utilisé dans la page, fait la respiration. */}
+          <PetalDivider full className="my-14" />
+
+          {/* Les questions posées à Émilie et ses réponses, en liste de
+              définitions : la question porte le contexte, la réponse reste ses
+              mots. Alignées à gauche, sans cadre — c'est un échange, pas un
+              formulaire. */}
+          <Reveal delay={80} className="mx-auto max-w-[620px]">
+            <dl className="flex flex-col gap-9">
+              {[
+                {
+                  q: "Tes sentiments à froid, après avoir relu ta Fleur au calme ?",
+                  r: <>Satisfaite, Ravie, Enchantée, Surprise.</>,
+                },
+                {
+                  q: "Qu’est-ce que ta Fleur t’a apporté ?",
+                  r: (
+                    <>
+                      Elle m’a permis de confirmer certaines intuitions, elle a renforcé ma
+                      confiance sur des talents que je n’osais pas trop exploiter, elle m’a ouvert
+                      les yeux sur certains métiers à envisager, et m’a permis de découvrir ma zone
+                      de génie.
+                    </>
+                  ),
+                },
+                {
+                  q: "Un mot sur la Fleur de Talents Innés® ?",
+                  r: (
+                    <>
+                      Ça a été une énorme révélation pour moi&nbsp;! La fleur de talents innés est
+                      d’une justesse incroyable.
+                    </>
+                  ),
+                },
+              ].map((item) => (
+                <div key={item.q} className="flex flex-col items-center gap-2 text-center">
+                  <dt className="flex items-baseline justify-center gap-2.5 font-display text-[15px] font-light italic leading-snug text-ink-soft md:text-[16px]">
+                    <Petal className="h-3 w-3 flex-none translate-y-[1px] text-turquoise/70" />
+                    <span>{item.q}</span>
+                  </dt>
+                  <dd className="font-display text-[18px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+                    {item.r}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+
           <Reveal className="mt-14 text-center">
             <Cta href="#tarif">Waouh, moi aussi je veux ma Fleur</Cta>
           </Reveal>
@@ -732,7 +759,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
       {/* TARIF                                                            */}
       {/* ---------------------------------------------------------------- */}
       <VenteSection id="tarif" wide decor={<PetalField dense />}>
-        <SectionHeader eyebrow="Ton investissement" title="Prêt·e à découvrir tes Talents Innés ?" />
+        <SectionHeader eyebrow="Faire éclore ta Fleur" title="Prêt·e à découvrir tes Talents Innés ?" />
         <div className="mt-14">
           <PricingCard
             logo="/assets/blooming/logo-blanc.webp"
