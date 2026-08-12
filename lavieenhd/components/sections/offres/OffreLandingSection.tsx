@@ -20,6 +20,17 @@ const BULLET_COLOR: Record<OffreColor, string> = {
 };
 
 /**
+ * Rend les passages entourés d'astérisques en italique — la mise en forme que
+ * Marion indique dans ses textes d'offres. Volontairement minimal : un seul
+ * marqueur, pas de moteur Markdown pour six phrases.
+ */
+function avecItaliques(texte: string) {
+  return texte.split(/\*([^*]+)\*/).map((morceau, i) =>
+    i % 2 === 1 ? <em key={i}>{morceau}</em> : morceau,
+  );
+}
+
+/**
  * Vue d'ensemble d'une offre sur /mes-offres : logo + brief + bouton "Découvrir"
  * qui mène vers la page dédiée (/mes-offres/[slug]). Le Quiz (offre 01, gratuit)
  * mène à la page interne "Quiz gratuits" (/quiz) qui présente les 2 quiz.
@@ -147,7 +158,7 @@ export function OffreLandingSection({
                   key={i}
                   className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]"
                 >
-                  {para}
+                  {avecItaliques(para)}
                 </p>
               ))}
 
@@ -158,7 +169,7 @@ export function OffreLandingSection({
                     className="flex items-center gap-3 font-sans text-[14px] font-normal leading-snug text-ink-deep md:text-[15px]"
                   >
                     <span aria-hidden className={`h-2 w-2 flex-none rounded-full ${bulletColor}`} />
-                    {b}
+                    <span>{avecItaliques(b)}</span>
                   </li>
                 ))}
               </ul>
@@ -175,7 +186,7 @@ export function OffreLandingSection({
                     href={offre.href}
                     className="inline-flex items-center justify-center rounded-md bg-ink-deep px-8 pt-[17px] pb-[15px] font-body text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
                   >
-                    Voir les quiz gratuits
+                    Découvrir les quiz gratuits
                   </Link>
                 ) : offre.href ? (
                   <>

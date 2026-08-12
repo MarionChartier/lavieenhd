@@ -24,8 +24,6 @@ export default function MesOffresPage() {
 
         {/* Lead italique */}
         <p className="mx-auto mt-8 max-w-[680px] font-display text-[18px] font-light italic leading-snug text-ink md:text-[22px]">
-          Quelle que soit ton entrée, tu es au bon endroit.
-          <br />
           Suis ton intuition et ce qui t&apos;appelle aujourd&apos;hui.
         </p>
 

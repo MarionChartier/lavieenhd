@@ -118,22 +118,29 @@ const HD_ATTRIBUTES = [
   },
 ];
 
-const PILIERS: { title: string; titleNote?: string; blurb: string }[] = [
+/** `chute` : la phrase de fin, détachée et en italique dans la card. */
+const PILIERS: { title: string; titleNote?: string; blurb: string; chute: string }[] = [
   {
     title: "Bienveillance",
     titleNote: "(sans complaisance)",
     blurb:
-      "Je t'écoute sans jugement, mais je ne te materne pas non plus. Je crois profondément au pouvoir de la responsabilisation ; je ne te dis pas ce que tu as envie d'entendre, mais je te guide pour reprendre ton pouvoir d'action, à ton rythme. Ici, pas de pression de performance, juste un espace où tu peux te déposer, sans avoir à te justifier.",
+      "Je t'écoute sans jugement, mais je ne te materne pas non plus. Je crois profondément au pouvoir de la responsabilisation ; je ne te dis pas ce que tu as envie d'entendre, mais je te guide pour reprendre ton pouvoir d'action, à ton rythme.",
+    chute:
+      "Ici, pas de pression de performance, juste un espace où tu peux te déposer, sans avoir à te justifier.",
   },
   {
     title: "Clarté et sens pratique",
     blurb:
-      "Je suis une scientifique avec les pieds sur Terre, et à travers mon cheminement spirituel, j'ai vraiment fait le constat de combien il est primordial de ramener certains aspects plus ésotériques dans la réalité de la vie de tous les jours! La vulgarisation et l'accessibilité à tous sont des non négociables pour moi.",
+      "Je suis une scientifique avec les pieds sur Terre, et à travers mon cheminement spirituel, j'ai vraiment fait le constat de combien il est primordial de ramener certains aspects plus ésotériques dans la réalité de la vie de tous les jours!",
+    chute:
+      "La vulgarisation et l'accessibilité à tous sont des non négociables pour moi.",
   },
   {
     title: "Personnalisation",
     blurb:
-      "L'unicité de chacun n'est plus à démontrer, et on n'accompagne pas un Generator ou un MG, comme on accompagne un Projector un Manifestor ou un Reflector. L'adaptation au fonctionnement de chacun est essentielle, et le coaching se doit d'être sur-mesure!",
+      "L'unicité de chacun n'est plus à démontrer, et on n'accompagne pas un Generator ou un MG, comme on accompagne un Projector, un Manifestor ou un Reflector.",
+    chute:
+      "L'adaptation au fonctionnement de chacun est essentielle, et le coaching se doit d'être sur-mesure!",
   },
 ];
 
@@ -186,7 +193,7 @@ export default function QuiJeSuisPage() {
 
             <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               Moi c’est Marion&nbsp;! En Human Design, je suis MG 2/4&nbsp;: la magicienne
-              fraternelle multi-passionnée, si on veut faire un (gros) résumé! 😄
+              fraternelle multi-passionnée, si on veut faire un (gros) résumé!
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
@@ -213,7 +220,7 @@ export default function QuiJeSuisPage() {
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               C’est donc une vraie mission de cœur pour moi aujourd’hui de t’accompagner
               grâce à des outils puissants comme le Human Design, à te retrouver pour te
-              révéler pleinement dans ta vie pro <em className="italic">(et au-delà!)</em>. 🌟
+              révéler pleinement dans ta vie pro <em className="italic">(et au-delà!)</em>.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3 lg:mt-auto lg:pb-6 lg:pt-9">
@@ -335,7 +342,7 @@ export default function QuiJeSuisPage() {
               <p>
                 Aujourd’hui je peux enfin dire que je me sens à ma place (c’était pas
                 gagné!), et j’ai vraiment à cœur de t’aider, toi aussi, à trouver ce chemin
-                vers ton épanouissement pro. ♥
+                vers ton épanouissement pro. ღ
               </p>
             </div>
           </div>
@@ -439,8 +446,10 @@ export default function QuiJeSuisPage() {
               N&apos;étant moi-même pas une grande adepte du «&nbsp;full-théorie&nbsp;» et des
               grandes leçons moralisatrices, je mets un point d&apos;honneur à écouter
               activement tes problématiques, et à te partager un maximum de clés et conseils
-              concrets et applicables dans ton quotidien. Voici trois principes qui guident
-              chacune de mes séances&nbsp;:
+              concrets et applicables dans ton quotidien.{" "}
+              <strong className="font-semibold">
+                Voici 3 principes qui guident chacune de mes séances&nbsp;:
+              </strong>
             </p>
           </div>
 
@@ -469,16 +478,29 @@ export default function QuiJeSuisPage() {
                   </span>
 
                   <h3 className="relative z-10 pt-2 font-script text-[22px] leading-[1.5] text-ink-deep/85 md:text-[26px]">
-                    <span className="whitespace-nowrap">
-                      {p.title}
-                      {p.titleNote && (
-                        <span className="text-[14px] md:text-[16px]"> {p.titleNote}</span>
-                      )}
+                    {/* Pas de whitespace-nowrap : « Clarté et sens pratique »
+                        sortait de la card entre 1024 et 1100px de large. */}
+                    <span>{p.title}</span>
+                    {/* La mention passe sous le titre : accolée, elle débordait
+                        de la card. La ligne est rendue même quand il n'y a pas
+                        de mention, sinon les paragraphes des deux autres cards
+                        se décalent d'un cran en trois colonnes. */}
+                    <span
+                      aria-hidden={!p.titleNote}
+                      className={`text-[14px] leading-[1.2] md:text-[16px] ${
+                        p.titleNote ? "block" : "hidden md:block"
+                      }`}
+                    >
+                      {p.titleNote ?? " "}
                     </span>
                   </h3>
 
                   <p className="relative z-10 mt-4 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
                     {p.blurb}
+                  </p>
+
+                  <p className="relative z-10 mt-4 font-display text-[16px] font-light italic leading-relaxed text-ink-deep md:text-[17px]">
+                    {p.chute}
                   </p>
                 </div>
               );

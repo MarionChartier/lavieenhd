@@ -23,6 +23,7 @@ export default function ConfidentialitePage() {
           body: "Selon tes actions sur le site, les données suivantes peuvent être recueillies :",
           items: [
             "Prénom et adresse email, lorsque tu t'inscris à la Soul Letter ou à une offre.",
+            "Nom de famille et adresse postale, lorsque tu achètes une offre (facturation).",
             "Données de naissance (date, heure, lieu), lorsque tu utilises l'outil de calcul de ton schéma Human Design.",
             "Données de navigation et de mesure d'audience (pages vues, interactions), uniquement si tu acceptes les cookies de mesure.",
           ],
@@ -33,6 +34,7 @@ export default function ConfidentialitePage() {
           items: [
             "T'envoyer la Soul Letter et les informations liées aux offres auxquelles tu t'inscris.",
             "Générer ton schéma Human Design lorsque tu en fais la demande.",
+            "Générer les factures liées aux offres.",
             "Comprendre l'utilisation du site et l'améliorer (mesure d'audience anonyme).",
           ],
         },
