@@ -41,15 +41,50 @@ export function CalculateurLayout({
    * En pleine largeur, le calculateur descend sous le texte : sur desktop le
    * schéma atterrit près de 1000px plus bas que le bouton qu'on vient de
    * cliquer. On l'amène donc dans le champ de vision, une seule fois.
+   *
+   * Deux passages : le widget met plusieurs secondes à dessiner le schéma, et
+   * il déplace lui-même le défilement en cours de route — d'où l'arrivée en bas
+   * du schéma. On réaligne donc en haut une fois qu'il a fini de grandir, sauf
+   * si la personne a repris la main entre-temps.
    */
   useEffect(() => {
     if (!hasResult || dejaAmene.current) return;
     dejaAmene.current = true;
-    const mouvementReduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    calculateur.current?.scrollIntoView({
-      behavior: mouvementReduit ? "auto" : "smooth",
-      block: "start",
+    const cible = calculateur.current;
+    if (!cible) return;
+
+    // Déplacement sec, jamais animé : sur mobile le navigateur annule un
+    // défilement animé dès qu'un doigt touche l'écran — celui du bouton qu'on
+    // vient d'appuyer suffit, et on reste alors sur place.
+    const amener = () => cible.scrollIntoView({ behavior: "instant", block: "start" });
+    amener();
+
+    let mainRendue = false;
+    const rendreLaMain = () => {
+      mainRendue = true;
+    };
+    const evenements = ["wheel", "touchstart", "keydown"] as const;
+    evenements.forEach((e) => window.addEventListener(e, rendreLaMain, { passive: true }));
+
+    let minuteur = 0;
+    const observateur = new ResizeObserver(() => {
+      window.clearTimeout(minuteur);
+      // Taille stable depuis 400ms : le schéma est posé, on peut recadrer.
+      minuteur = window.setTimeout(() => {
+        observateur.disconnect();
+        if (!mainRendue) amener();
+      }, 400);
     });
+    observateur.observe(cible);
+    // Filet : si le widget n'arrête jamais de bouger, on lâche l'affaire.
+    const abandon = window.setTimeout(() => observateur.disconnect(), 12000);
+
+    return () => {
+      observateur.disconnect();
+      window.clearTimeout(minuteur);
+      window.clearTimeout(abandon);
+      evenements.forEach((e) => window.removeEventListener(e, rendreLaMain));
+    };
   }, [hasResult]);
 
   return (
