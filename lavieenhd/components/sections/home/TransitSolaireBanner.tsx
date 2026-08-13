@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { findTransit, parseCsv, type Transit } from "@/lib/transit";
 
 /**
@@ -125,24 +125,28 @@ export function TransitSolaireBanner() {
   );
 }
 
+/** L'horloge ne pousse jamais de mise à jour : abonnement vide. */
+const subscribeHorloge = () => () => {};
+
+function lireDateDuJour() {
+  const brut = new Date().toLocaleDateString("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  // « samedi 8 août 2026 » → « Samedi 8 Août 2026 »
+  return brut.replace(/(^|\s)(\p{L})/gu, (_, sep, lettre) => sep + lettre.toUpperCase());
+}
+
 /**
  * Date du jour, format « Samedi 8 Août 2026 ».
- * Calculée après le montage : rendue côté serveur, elle refléterait le fuseau
- * du serveur et provoquerait un écart d'hydratation à l'approche de minuit.
+ * Rendue côté serveur, elle refléterait le fuseau du serveur et provoquerait un
+ * écart d'hydratation à l'approche de minuit : le snapshot serveur est donc
+ * vide, et React bascule sur l'horloge du client une fois l'hydratation faite.
  */
 function DateDuJour() {
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    const brut = new Date().toLocaleDateString("fr-FR", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-    // « samedi 8 août 2026 » → « Samedi 8 Août 2026 »
-    setDate(brut.replace(/(^|\s)(\p{L})/gu, (_, sep, lettre) => sep + lettre.toUpperCase()));
-  }, []);
+  const date = useSyncExternalStore(subscribeHorloge, lireDateDuJour, () => "");
 
   // Hauteur réservée : sans elle, les cards sautent d'une ligne au montage.
   return (
