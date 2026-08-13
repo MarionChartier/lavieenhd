@@ -54,6 +54,16 @@ const BODYGRAPH_RESPONSIVE_PATCH = `
      notre carte et au bloc suivant : ça faisait un grand blanc sous le schéma. */
   .bgec-chart-wrapper.bgec-chart-result-wrap.bgec-chart-portrait,
   .bgec-chart-wrapper.bgec-chart-result-wrap { padding-bottom: 8px; }
+  /* Cases de date : le widget leur met 15px de padding de chaque côté, un
+     luxe qui coûte cher sous 400px de carte — sur un petit téléphone (320px),
+     l'année n'avait plus que ~26px pour 34px de chiffres. Le texte est centré,
+     6px suffisent. */
+  @container (max-width: 400px) {
+    .bgec-section-col-3 .bgec-col-inner .bgec-input-item .bgec-input {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
   /* Tableau de propriétés : sous 420px de carte, le duo libellé/valeur se
      partage la ligne en 60/40 et coupe les valeurs en plein mot
      ("Manifesti ng Generato r"). On les empile, chacun sur toute la largeur —

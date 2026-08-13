@@ -50,3 +50,6 @@ Guide-Marion-Mise-en-ligne.html
 wetransfer_*/
 imagespourpagedeventeblooming/
 
+.vercel
+.env*
+
