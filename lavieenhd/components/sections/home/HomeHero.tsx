@@ -77,7 +77,12 @@ export function HomeHero() {
           <div className="pt-6 lg:pt-16">
             {/* Pas de whitespace-nowrap : la phrase complète a besoin de deux
                 lignes sur les petites largeurs. */}
-            <h1 className="font-script text-[26px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[44px]">
+            {/* En deux colonnes (lg+), « Ton Human Design, » fait 416px à 44px
+                et la colonne descend à ~326px en bas de bande : « Design, »
+                partait à la ligne (vu chez Marion, zoom navigateur). La taille
+                suit donc la largeur (4.4vw - 11.5px ≈ 97% de ce qui tient),
+                et retrouve ses 44px dès ~1260px de viewport. */}
+            <h1 className="font-script text-[26px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[44px] lg:text-[clamp(33px,4.4vw_-_11.5px,44px)]">
               Ton <span className="not-italic text-turquoise">Human Design</span>,
               {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
                   automatique coupe au milieu de « Human Design ». */}
