@@ -59,6 +59,10 @@ export function CalculateurLayout({
     const amener = () => cible.scrollIntoView({ behavior: "instant", block: "start" });
     amener();
 
+    // Un `wheel`/`touchstart`/`keydown` est un geste qui ne peut venir que de
+    // la personne : contrairement à un évènement `scroll`, ni notre propre
+    // amener(), ni le widget (son ancrage de scroll pendant qu'il grandit,
+    // constaté au débogage) ne peuvent le déclencher à notre place.
     let mainRendue = false;
     const rendreLaMain = () => {
       mainRendue = true;
@@ -69,15 +73,23 @@ export function CalculateurLayout({
     let minuteur = 0;
     const observateur = new ResizeObserver(() => {
       window.clearTimeout(minuteur);
-      // Taille stable depuis 400ms : le schéma est posé, on peut recadrer.
+      // Taille stable depuis 1200ms : le schéma est posé, on peut recadrer.
+      // Le widget passe par plusieurs tailles transitoires avant de se fixer,
+      // avec jusqu'à ~1s d'écart entre les deux dernières (mesuré) — un délai
+      // plus court verrouille le recalage sur une taille encore provisoire.
       minuteur = window.setTimeout(() => {
         observateur.disconnect();
         if (!mainRendue) amener();
-      }, 400);
+      }, 1200);
     });
     observateur.observe(cible);
-    // Filet : si le widget n'arrête jamais de bouger, on lâche l'affaire.
-    const abandon = window.setTimeout(() => observateur.disconnect(), 12000);
+    // Filet, volontairement PAS annulé par le recalage ci-dessus : le widget
+    // peut encore bouger une dernière fois après nos 1200ms de calme apparent,
+    // et amener() est sans risque à rappeler.
+    const abandon = window.setTimeout(() => {
+      observateur.disconnect();
+      if (!mainRendue) amener();
+    }, 12000);
 
     return () => {
       observateur.disconnect();
