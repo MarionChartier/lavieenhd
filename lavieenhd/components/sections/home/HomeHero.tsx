@@ -1,9 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
+import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 
 export function HomeHero() {
+  const hasResult = useBodygraphResult();
+
   return (
-    <section className="relative overflow-hidden px-6 pt-10 pb-16 md:px-20 md:pt-12 md:pb-24">
+    <section
+      className={`relative overflow-hidden px-6 pt-10 md:px-20 md:pt-12 ${
+        // Rien après le calculateur dans cette section : sans résultat, sa
+        // hauteur modeste rend ce padding invisible. Avec un schéma en pleine
+        // largeur, la section grandit énormément et ce même padding devient un
+        // grand vide avant la section suivante — on le réduit dans ce cas.
+        hasResult ? "pb-0" : "pb-16 md:pb-24"
+      }`}
+    >
       {/* Halos flous — profondeur ambiante */}
       <div
         aria-hidden
