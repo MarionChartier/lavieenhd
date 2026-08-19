@@ -81,6 +81,19 @@ const BODYGRAPH_RESPONSIVE_PATCH = `
     }
     .bgec-property-single-item .bgec-property-content { background: #fff; }
   }
+  /* Colonnes de planètes : le widget donne 6px de padding À DROITE aux deux,
+     alors que la colonne de droite aligne son contenu en fin de ligne
+     (bgec-reverse-details, son propre marqueur de colonne miroir). Ces 6px
+     tombent donc du côté du bord de l'écran : la pastille de droite finit à
+     11px du bord quand celle de gauche est à 5px, et le schéma paraît décalé
+     à gauche (constaté par Marion, mesuré à 375px comme à 585px). On renvoie
+     ce padding du côté intérieur, les deux pastilles retrouvent 5px.
+     Sélecteur calqué sur le leur (4 classes) : le nôtre à 2 classes perdait la
+     cascade, quel que soit l'ordre des feuilles. */
+  .bgec-chart-result-wrap .bgec-features-list-item.bgec-reverse-details .bgec-single-feature-item {
+    padding-right: 0;
+    padding-left: 6px;
+  }
 `;
 
 /**
