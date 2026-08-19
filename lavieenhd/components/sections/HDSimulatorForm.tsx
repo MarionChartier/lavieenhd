@@ -40,9 +40,13 @@ export function HDSimulatorForm() {
 
       {/* Pas de cadre ici : le widget apporte le sien. Et surtout pas
           d'overflow-hidden, qui rognerait la liste des villes. */}
-      {/* Le schéma et son tableau sont à l'étroit sur mobile : on leur rend la
-          marge de la carte, ils vont alors jusqu'à sa bordure. */}
-      <div className={`relative mt-2 ${hasResult ? "-mx-5 md:mx-0" : ""}`}>
+      {/* Le schéma et son tableau sont à l'étroit sur mobile : on leur rend une
+          partie de la marge de la carte. Pas la totalité (-mx-5) : les pastilles
+          des planètes tombaient alors à 5px du bord de l'écran et paraissaient
+          coupées. À -mx-3 il leur reste 13px, mesuré.
+          Uniquement quand un schéma est affiché : appliqué au formulaire, cet
+          élargissement rognerait ses champs de date. */}
+      <div className={`relative mt-2 ${hasResult ? "-mx-3 md:mx-0" : ""}`}>
         <BodygraphChart />
       </div>
     </div>

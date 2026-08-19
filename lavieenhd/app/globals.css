@@ -36,6 +36,14 @@
 html {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  /* Ancrage de défilement désactivé. Quand le calculateur remplace son
+     formulaire par le schéma, il grandit de ~1600px d'un coup ; Chrome
+     compensait en ajoutant autant au défilement pour garder un élément stable,
+     ce qui envoyait la personne tout en bas du schéma pendant ~1,3s, avant
+     notre recadrage. Mesuré : 1588px de saut, exactement la hauteur ajoutée.
+     Le désactiver sur le calculateur seul ne suffit pas (testé) : la décision
+     se prend au niveau du conteneur de défilement. */
+  overflow-anchor: none;
 }
 
 /* Révélation douce du message oracle */
