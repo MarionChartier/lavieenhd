@@ -8,8 +8,16 @@ export function HomeHero() {
   const hasResult = useBodygraphResult();
 
   return (
+    /* `overflow-clip` et NON `overflow-hidden` : les halos ci-dessous débordent
+       de la section (jusqu'à 160px sous elle, 96px à droite). `hidden` en fait
+       un conteneur de défilement — invisible, mais scrollable par programme —
+       et le `scrollIntoView` du calculateur (voir CalculateurLayout) faisait
+       alors défiler la SECTION de 160px sur elle-même : le contenu remontait et
+       laissait un grand vide en bas, avant « Les énergies du moment ». `clip`
+       rogne à l'identique sans créer ce conteneur, donc rien ne peut décaler le
+       contenu. */
     <section
-      className={`relative overflow-hidden px-6 pt-10 md:px-20 md:pt-12 ${
+      className={`relative overflow-clip px-6 pt-10 md:px-20 md:pt-12 ${
         // Rien après le calculateur dans cette section : sans résultat, sa
         // hauteur modeste rend ce padding invisible. Avec un schéma en pleine
         // largeur, la section grandit énormément et ce même padding devient un
