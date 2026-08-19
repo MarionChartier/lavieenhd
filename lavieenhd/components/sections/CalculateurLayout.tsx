@@ -83,13 +83,11 @@ export function CalculateurLayout({
       }, 1200);
     });
     observateur.observe(cible);
-    // Filet, volontairement PAS annulé par le recalage ci-dessus : le widget
-    // peut encore bouger une dernière fois après nos 1200ms de calme apparent,
-    // et amener() est sans risque à rappeler.
-    const abandon = window.setTimeout(() => {
-      observateur.disconnect();
-      if (!mainRendue) amener();
-    }, 12000);
+    // Filet : si le widget n'arrête jamais de bouger, on lâche l'affaire — sans
+    // recadrer. Un recadrage tardif se produirait longtemps après le résultat,
+    // donc potentiellement après que la personne a navigué ailleurs : elle
+    // cliquait « Accueil », remontait, puis se faisait redescendre ici.
+    const abandon = window.setTimeout(() => observateur.disconnect(), 12000);
 
     return () => {
       observateur.disconnect();
