@@ -38,6 +38,14 @@ export function Nav() {
    *  par-dessus la page qu'on vient d'ouvrir). */
   const [offresDismissed, setOffresDismissed] = useState(false);
 
+  /** Clic sur un lien du panneau « Mes offres » (desktop) : on relâche le focus
+   *  et on masque le panneau. Sans ça, le survol le laisse ouvert par-dessus la
+   *  page qu'on vient d'ouvrir tant que la souris n'a pas bougé. */
+  const dismissOffres = () => {
+    setOffresDismissed(true);
+    (document.activeElement as HTMLElement | null)?.blur();
+  };
+
   /** Clic sur un lien du menu. Le menu mobile reste ouvert le temps du
    *  chargement : il masque la page qu'on quitte, et l'effet sur `pathname` le
    *  referme dès que la nouvelle page est rendue (en haut, via <ScrollToTop />).
@@ -118,8 +126,7 @@ export function Nav() {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     onClick={() => {
-                      setOffresDismissed(true);
-                      (document.activeElement as HTMLElement | null)?.blur();
+                      dismissOffres();
                       handleNavClick(item.href);
                     }}
                     className={`relative flex items-center gap-1.5 py-1.5 font-body text-[12px] uppercase tracking-[0.18em] transition-colors hover:text-turquoise ${
@@ -146,7 +153,7 @@ export function Nav() {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => (document.activeElement as HTMLElement | null)?.blur()}
+                            onClick={dismissOffres}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
                           >
                             {link.label}
@@ -157,7 +164,7 @@ export function Nav() {
                             href={link.href}
                             prefetch={link.href.endsWith(".html") ? false : undefined}
                             onClick={() => {
-                              (document.activeElement as HTMLElement | null)?.blur();
+                              dismissOffres();
                               handleNavClick(link.href);
                             }}
                             className="block rounded px-4 py-2.5 font-body text-[11px] font-normal uppercase tracking-[0.12em] text-ink transition-colors hover:bg-white hover:text-turquoise"
