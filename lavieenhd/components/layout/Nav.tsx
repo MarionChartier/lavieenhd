@@ -33,6 +33,10 @@ export function Nav() {
   /** Sous-menu « Mes offres » du panneau mobile : replié par défaut, comme le
    *  survol sur desktop. */
   const [offresOpen, setOffresOpen] = useState(false);
+  /** Panneau « Mes offres » du desktop : masqué après un clic sur l'entrée, le
+   *  temps que la souris quitte la zone (sinon le survol le laisse ouvert
+   *  par-dessus la page qu'on vient d'ouvrir). */
+  const [offresDismissed, setOffresDismissed] = useState(false);
 
   /** Clic sur un lien du menu. Le menu mobile reste ouvert le temps du
    *  chargement : il masque la page qu'on quitte, et l'effet sur `pathname` le
@@ -74,7 +78,12 @@ export function Nav() {
         />
         <div className="relative rounded-2xl bg-white">
       <div className="relative flex items-center justify-between px-6 py-2 md:px-10 md:py-2">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Accueil — La vie en HD">
+        <Link
+          href="/"
+          onClick={() => handleNavClick("/")}
+          className="flex items-center gap-2.5"
+          aria-label="Accueil — La vie en HD"
+        >
           <Image
             src="/assets/logo-lavieenhd.png"
             alt=""
@@ -99,11 +108,20 @@ export function Nav() {
 
             if ("dropdown" in item && item.dropdown) {
               return (
-                <div key={item.href} className="group relative">
+                <div
+                  key={item.href}
+                  className="group relative"
+                  onMouseLeave={() => setOffresDismissed(false)}
+                  onFocus={() => setOffresDismissed(false)}
+                >
                   <Link
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={() => {
+                      setOffresDismissed(true);
+                      (document.activeElement as HTMLElement | null)?.blur();
+                      handleNavClick(item.href);
+                    }}
                     className={`relative flex items-center gap-1.5 py-1.5 font-body text-[12px] uppercase tracking-[0.18em] transition-colors hover:text-turquoise ${
                       isActive ? "text-turquoise" : "text-ink"
                     }`}
@@ -115,7 +133,11 @@ export function Nav() {
                   </Link>
 
                   {/* Panneau déroulant (pt-3 = pont de survol) */}
-                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div
+                    className={`invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${
+                      offresDismissed ? "hidden" : ""
+                    }`}
+                  >
                     <div className="min-w-[280px] rounded-md border border-ink/10 bg-paper p-2 shadow-[0_30px_60px_-25px_rgba(80,60,98,0.3)]">
                       {OFFRE_LINKS.map((link) =>
                         link.external ? (
