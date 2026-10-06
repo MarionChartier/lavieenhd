@@ -229,7 +229,7 @@ export const OFFRES: Offre[] = [
     num: "05",
     slug: "reveal",
     name: "REVEAL",
-    subtitle: "La Séance Clarté HD Pro",
+    subtitle: "La Séance Clarté HD Pro - Spécial Business",
     shortLabel: "Reveal",
     tag: "Démêler",
     shortDescription:
