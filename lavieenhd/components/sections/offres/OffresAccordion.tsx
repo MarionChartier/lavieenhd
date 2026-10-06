@@ -107,7 +107,7 @@ function OffreItem({
           </span>
           <span className="font-display text-[22px] leading-none text-ink-deep md:text-[28px]">
             {offre.name}
-            {offre.trademark && <sup className="ml-0.5 text-[0.5em]">®</sup>}
+            {offre.trademark && <sup className="ml-0.5 text-[0.5em]">™</sup>}
           </span>
         </span>
 

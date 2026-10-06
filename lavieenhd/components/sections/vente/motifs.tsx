@@ -1,7 +1,7 @@
 /**
  * Motif signature des pages de vente : le pétale.
  *
- * Il est tiré de l'univers de l'offre — la Fleur de Talents Innés® représente
+ * Il est tiré de l'univers de l'offre — la Fleur de Talents Innés™ représente
  * cinq pôles en cinq pétales — plutôt que d'une forme décorative arbitraire.
  * On le décline partout (séparateurs de section, marqueurs d'étapes, matière de
  * fond, puces de listes) pour que la page ait une identité propre au lieu d'un

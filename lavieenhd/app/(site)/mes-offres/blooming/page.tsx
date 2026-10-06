@@ -28,7 +28,7 @@ import {
 } from "@/components/sections/vente/blocks";
 
 export const metadata: Metadata = {
-  title: "Blooming — Ta Fleur de Talents Innés® | La vie en HD",
+  title: "Blooming — Ta Fleur de Talents Innés™ | La vie en HD",
   description:
     "Découvre tes talents innés et ta zone de génie, révélés grâce à une analyse croisée de ton Human Design, ta Numérologie et tes Gene Keys.",
 };
@@ -235,7 +235,7 @@ const FAQ = [
 /** Repères du menu à points, dans l'ordre de la page. */
 const POINTS = [
   { id: "pour-qui", label: "Cette Fleur est pour toi si…" },
-  { id: "offre", label: "Ce qu’est la Fleur de Talents Innés®" },
+  { id: "offre", label: "Ce qu’est la Fleur de Talents Innés™" },
   { id: "exemple", label: "À quoi ressemble une vraie Fleur ?" },
   { id: "livrables", label: "Ce que tu obtiens" },
   { id: "processus", label: "Le processus" },
@@ -274,12 +274,12 @@ export default function BloomingPage() {
           <div className="text-center">
             {/* Le nom de l’offre vit dans le logo ; on le redonne au texte pour
                 les lecteurs d’écran et l’indexation. */}
-            <h1 className="sr-only">Blooming — Ta Fleur de Talents Innés®</h1>
+            <h1 className="sr-only">Blooming — Ta Fleur de Talents Innés™</h1>
 
             <Reveal>
               <Image
                 src="/assets/blooming/logo.webp"
-                alt="Blooming — Ta Fleur de Talents Innés®"
+                alt="Blooming — Ta Fleur de Talents Innés™"
                 width={500}
                 height={500}
                 priority
@@ -310,7 +310,7 @@ export default function BloomingPage() {
                   pour montrer de quoi parle le verbatim. */}
               <Image
                 src="/assets/blooming/fleur-emilie.webp"
-                alt="La Fleur de Talents Innés® d’Émilie"
+                alt="La Fleur de Talents Innés™ d’Émilie"
                 width={1378}
                 height={1378}
                 priority
@@ -438,7 +438,7 @@ export default function BloomingPage() {
       <VenteSection id="offre" bg="paper" decor={<PetalField dense />}>
         <Reveal>
           <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-soft">
-            Ce qu’est la Fleur de Talents Innés®
+            Ce qu’est la Fleur de Talents Innés™
           </p>
           <PetalDivider centered={false} className="mt-7" />
           <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[44px]">
@@ -469,7 +469,7 @@ export default function BloomingPage() {
 
             <Image
               src="/assets/blooming/fleur-vierge.webp"
-              alt="La Fleur de Talents Innés®, ses cinq pétales"
+              alt="La Fleur de Talents Innés™, ses cinq pétales"
               width={1000}
               height={1000}
               className="mx-auto h-auto w-[210px] md:w-full"
@@ -727,7 +727,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
                   ),
                 },
                 {
-                  q: "Un mot sur la Fleur de Talents Innés® ?",
+                  q: "Un mot sur la Fleur de Talents Innés™ ?",
                   r: (
                     <>
                       Ça a été une énorme révélation pour moi&nbsp;! La fleur de talents innés est
@@ -793,7 +793,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
             </>
           }
           paragraphes={[
-            "Ta Fleur de Talents Innés® te donne ta boussole ; elle met en lumière tes forces, révèle ta zone de génie, et te donne enfin les mots pour définir tes dons.",
+            "Ta Fleur de Talents Innés™ te donne ta boussole ; elle met en lumière tes forces, révèle ta zone de génie, et te donne enfin les mots pour définir tes dons.",
             <>
               Si tu veux aller plus loin - incarner vraiment tes talents, les aligner avec ta vie
               pro, dépasser tes peurs, et passer à l’action -{" "}
@@ -830,7 +830,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
             Et si c’était le moment de te dévoiler&nbsp;tel·le que tu es vraiment&nbsp;?
           </p>
           <Cta href={COMMANDE} external className="mt-10">
-            Je veux ma Fleur de Talents Innés®
+            Je veux ma Fleur de Talents Innés™
           </Cta>
         </Reveal>
       </section>

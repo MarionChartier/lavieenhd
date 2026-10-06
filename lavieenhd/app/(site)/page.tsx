@@ -48,7 +48,7 @@ const HOME_FAQ = [
       <>
         {"Ce sont trois façons différentes d'explorer ton Human Design, selon ce dont tu as besoin :\n\n"}
         <strong className="font-semibold">Blooming</strong>
-        {" (Révéler) ; Une mise en lumière de tes dons et de ta zone de génie (avec ta Fleur de Talents Innés®) : un document PDF complet, associé à une séance de coaching d'1h30, pour identifier tes forces naturelles et savoir comment les exprimer.\n\n"}
+        {" (Révéler) ; Une mise en lumière de tes dons et de ta zone de génie (avec ta Fleur de Talents Innés™) : un document PDF complet, associé à une séance de coaching d'1h30, pour identifier tes forces naturelles et savoir comment les exprimer.\n\n"}
         <strong className="font-semibold">Reveal</strong>
         {" (Démêler) ; Une séance unique de 90 minutes, centrée sur une problématique pro que tu traverses (questionnement, blocage, indécision...). On analyse ton design sous cet angle spécifique pour t'aider à y voir clair.\n\n"}
         <strong className="font-semibold">Reconnect</strong>
