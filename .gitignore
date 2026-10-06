@@ -53,3 +53,23 @@ imagespourpagedeventeblooming/
 .vercel
 .env*
 
+
+# Sources brutes livrées par Marion — conservées en local uniquement.
+# Seules les versions optimisées dans lavieenhd/public/assets/ sont versionnées.
+# (les 7 logos déjà versionnés dans visuels/ le restent, git ignore seulement les nouveaux)
+visuels/
+
+# Archive de l'ancien site WIX (1,1 Go de rushes, photos et docs) — jamais versionnée
+SITE WEB/
+
+# Export brut de la page de vente Blooming (8,7 Mo, images en base64) — remplacé par
+# la route Next /mes-offres/blooming
+blooming-page-de-vente-2.html
+
+# Config locale de l'environnement Claude Code
+lavieenhd/.claude/
+
+# Ancienne page Blooming statique (8,7 Mo, images en base64), remplacée par la route
+# Next /mes-offres/blooming et plus référencée nulle part
+lavieenhd/public/blooming-harmonise.html
+
