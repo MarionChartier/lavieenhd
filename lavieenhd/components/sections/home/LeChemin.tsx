@@ -149,7 +149,7 @@ function Postcard({ offre }: { offre: Offre }) {
           <div className="flex flex-col gap-1.5">
             <h3 className="font-display text-[28px] leading-none text-ink-deep md:text-[32px]">
               {offre.name}
-              {offre.trademark && <sup className="ml-0.5 text-[0.5em]">®</sup>}
+              {offre.trademark && <sup className="ml-0.5 text-[0.5em]">™</sup>}
             </h3>
             {offre.subtitle && (
               <p className="font-display text-[13px] font-light leading-snug text-ink-deep md:text-[14px]">
@@ -224,7 +224,7 @@ function QuizIcon() {
   );
 }
 
-/** SVG géométrique 8-pétales pour la Fleur de Talents Innés® (placeholder en attendant le logo final) */
+/** SVG géométrique 8-pétales pour la Fleur de Talents Innés™ (placeholder en attendant le logo final) */
 function FleurSvg() {
   return (
     <svg viewBox="0 0 280 280" className="relative h-[100px] w-[100px]">

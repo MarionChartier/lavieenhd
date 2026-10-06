@@ -268,7 +268,7 @@ export const OFFRES: Offre[] = [
     num: "06",
     slug: "fleur-de-talents",
     name: "BLOOMING",
-    subtitle: "Ta Fleur de Talents Innés®",
+    subtitle: "Ta Fleur de Talents Innés™",
     subtitleNote: "avec 1h30 de coaching inclus",
     shortLabel: "BLOOMING",
     tag: "Révéler",
@@ -276,7 +276,7 @@ export const OFFRES: Offre[] = [
       "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
     lead: "Toi aussi tu as des talents extraordinaires. Il est temps de les voir.",
     briefDescription:
-      "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur de Talents Innés® est là pour révéler ta zone de génie et ton empreinte personnelle, grâce à une analyse approfondie de ton Human Design, et des éléments phares de ta Numérologie et de tes Gene Keys.",
+      "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur de Talents Innés™ est là pour révéler ta zone de génie et ton empreinte personnelle, grâce à une analyse approfondie de ton Human Design, et des éléments phares de ta Numérologie et de tes Gene Keys.",
     briefBullets: [
       "Analyse croisée HD, Numérologie, Gene Keys, *100% personnel et unique*",
       "Fleur visuelle avec tes 5 pétales de talents innés",
@@ -324,7 +324,7 @@ export const OFFRES: Offre[] = [
       "13 questionnaires hebdomadaires pour avancer pas à pas",
       "Analyses HD, tests de personnalité, exercices et tips concrets",
       "Soins énergétiques, séances d'EFT et méditations guidées",
-      "INSIDE et Fleur de Talents Innés® inclus",
+      "INSIDE et Fleur de Talents Innés™ inclus",
     ],
     longDescription:
       "L'accompagnement premium de 3 mois. Un espace d'introspection et de transformation profonde : 1 questionnaire ciblé par semaine, des soins énergétiques, des séances EFT, 3 coachings d'1h30, INSIDE et Fleur de Talents Innés inclus. Un parcours sur-mesure pour incarner ton design en profondeur.",
@@ -337,7 +337,7 @@ export const OFFRES: Offre[] = [
       "Séances EFT",
       "3 coachings d'1h30 en visio",
       "INSIDE inclus",
-      "Fleur de Talents Innés® inclus",
+      "Fleur de Talents Innés™ inclus",
       "Suivi par messagerie tout au long du parcours",
     ],
     price: "1 444 €",

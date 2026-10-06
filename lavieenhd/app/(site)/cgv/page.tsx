@@ -12,7 +12,7 @@ export default function CgvPage() {
     <LegalShell
       title="Conditions générales de vente"
       intro="Les présentes conditions régissent les prestations et accompagnements proposés par Marion Chartier. La vente et le paiement s'effectuent sur la plateforme systeme.io."
-      updatedAt="Dernière mise à jour : 1er juillet 2026"
+      updatedAt="Dernière mise à jour : 6 octobre 2026"
       sections={[
         {
           heading: "Article 1 : Champ d'application",
@@ -59,7 +59,11 @@ export default function CgvPage() {
           body: "Les accompagnements proposés relèvent du développement personnel et ne constituent ni un avis médical, ni un traitement thérapeutique, ni un conseil psychologique. Ils ne se substituent pas à un suivi par un professionnel de santé.",
         },
         {
-          heading: "Article 11 : Informations sur la société La vie en HD",
+          heading: "Article 11 : Propriété intellectuelle et usage des contenus",
+          body: "Les contenus transmis dans le cadre de RECONNECT, notamment les questionnaires, exercices, textes, supports, audios et ressources, sont réservés à l'usage personnel de la participante ou du participant. Ils ne peuvent être reproduits, adaptés, diffusés, transmis, revendus ou utilisés, en totalité ou en partie, dans le cadre d'une activité personnelle ou professionnelle sans l'autorisation écrite préalable de Marion Chartier.",
+        },
+        {
+          heading: "Article 12 : Informations sur la société La vie en HD",
           body: "La Société La vie en HD est société de droit français dont l'adresse est :\n\nMarion Chartier - La vie en HD\n\n20 chemin de Menoux\n\n74350 CERCIER\n\nEt l'adresse mail :\n\nhello@marionchartier-lavieenhd.com",
         },
       ]}

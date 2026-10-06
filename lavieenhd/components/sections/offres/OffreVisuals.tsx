@@ -52,7 +52,7 @@ export function LogoCircle({ offre }: { offre: Offre }) {
   );
 }
 
-/** SVG géométrique 8-pétales pour la Fleur de Talents Innés® */
+/** SVG géométrique 8-pétales pour la Fleur de Talents Innés™ */
 export function FleurSvg({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 280 280" className={className} aria-hidden>

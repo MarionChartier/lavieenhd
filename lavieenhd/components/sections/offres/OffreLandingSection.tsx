@@ -134,7 +134,7 @@ export function OffreLandingSection({
 
               <h2 className="mt-3 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
                 {offre.name}
-                {offre.trademark && <sup className="ml-1 text-[0.4em]">®</sup>}
+                {offre.trademark && <sup className="ml-1 text-[0.4em]">™</sup>}
               </h2>
 
               {offre.subtitle && (
