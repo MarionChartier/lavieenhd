@@ -11,12 +11,9 @@ import { fileURLToPath } from "node:url";
 
 const publicDir = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
 
-const TARGETS = [
-  "the-place-to-be.html",
-  "inside.html",
-  "reveal.html",
-  "reconnect.html",
-];
+// Seule Reconnect reste une page HTML statique : les autres pages de vente
+// sont des routes Next, leurs images passent par next/image.
+const TARGETS = ["reconnect.html"];
 
 const IMG_RE = /<img\b([^>]*?)\bsrc="(\/assets\/[^"]+\.(?:png|jpe?g))"([^>]*?)\/>/gi;
 
