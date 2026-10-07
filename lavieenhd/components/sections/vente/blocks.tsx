@@ -701,3 +701,50 @@ export function ChoixVariantes({
     </div>
   );
 }
+
+/* ------------------------------------------------------------------------- */
+/* Témoignages en captures                                                    */
+/* ------------------------------------------------------------------------- */
+
+export type Capture = { src: string; largeur: number; hauteur: number };
+
+/**
+ * Témoignages reçus en messages (captures d'écran), sans prénom à afficher.
+ * Même répartition en deux piles que <TemoignageCards>, équilibrée cette fois
+ * sur la hauteur affichée de chaque image, et même carte claire autour : les
+ * captures n'ont pas toutes le même fond, la carte les remet en famille.
+ */
+export function CapturesTemoignages({ captures, alt }: { captures: Capture[]; alt: string }) {
+  const piles: [Capture[], Capture[]] = [[], []];
+  const charges = [0, 0];
+  for (const c of captures) {
+    const i = charges[0] <= charges[1] ? 0 : 1;
+    piles[i].push(c);
+    // Hauteur relative à largeur égale, plus le cadre de la carte.
+    charges[i] += c.hauteur / c.largeur + 0.15;
+  }
+
+  return (
+    <div className="grid items-start gap-5 sm:grid-cols-2">
+      {piles.map((pile, col) => (
+        <div key={col} className="flex flex-col gap-5">
+          {pile.map((c) => (
+            <Reveal
+              key={c.src}
+              delay={stagger(col)}
+              className="rounded-[28px] border border-line bg-paper p-4 shadow-card md:p-5"
+            >
+              <Image
+                src={c.src}
+                alt={alt}
+                width={c.largeur}
+                height={c.hauteur}
+                className="h-auto w-full rounded-[16px]"
+              />
+            </Reveal>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}

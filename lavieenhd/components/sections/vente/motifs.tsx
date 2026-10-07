@@ -18,6 +18,8 @@ export const MOTIF_PATHS = {
   cercle: "M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z",
   losange: "M12 1.5 19.5 12 12 22.5 4.5 12z",
   carre: "M5 5h14v14H5z",
+  /** Étincelle à quatre branches, celle du logo du Soin énergétique. */
+  etoile: "M12 1.5C13 8 16 11 22.5 12 16 13 13 16 12 22.5 11 16 8 13 1.5 12 8 11 11 8 12 1.5z",
 } as const;
 
 export type MotifForme = keyof typeof MOTIF_PATHS;

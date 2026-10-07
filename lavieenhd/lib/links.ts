@@ -26,14 +26,15 @@ export const EXTERNAL = {
    * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages
    * de vente. Toutes les offres sont branchées.
    *
-   * Blooming, INSIDE, REVEAL et The Place to be sont reconstruites en routes Next (design harmonisé
-   * avec le site) ; les autres sont encore des pages HTML servies depuis
-   * /public, et migreront sur le même modèle. Les anciennes URL .html restent
+   * Blooming, INSIDE, REVEAL, The Place to be et le Soin énergétique sont
+   * reconstruits en routes Next (design harmonisé avec le site) ; Reconnect
+   * est encore une page HTML servie depuis /public, et migrera sur le même
+   * modèle. Les anciennes URL .html restent
    * vivantes via une redirection 308 (voir next.config.ts) : elles circulent
    * dans les mails déjà envoyés et sur systeme.io.
    */
   offre: {
-    soinEnergetique: "/soin-energetique.html",
+    soinEnergetique: "/mes-offres/soin-energetique",
     thePlaceToBe: "/mes-offres/the-place-to-be",
     insideClub: "/mes-offres/inside",
     reveal: "/mes-offres/reveal",

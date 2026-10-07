@@ -40,6 +40,11 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/the-place-to-be",
         permanent: true,
       },
+      {
+        source: "/soin-energetique.html",
+        destination: "/mes-offres/soin-energetique",
+        permanent: true,
+      },
     ];
   },
 };
