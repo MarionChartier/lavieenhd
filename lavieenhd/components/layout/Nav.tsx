@@ -85,11 +85,11 @@ export function Nav() {
           className="pointer-events-none absolute inset-0 rounded-[20px] object-cover"
         />
         <div className="relative rounded-2xl bg-white">
-      <div className="relative flex items-center justify-between px-6 py-2 md:px-10 md:py-2">
+      <div className="relative flex items-center justify-between gap-3 px-4 py-2 min-[380px]:px-6 md:px-10 md:py-2">
         <Link
           href="/"
           onClick={() => handleNavClick("/")}
-          className="flex items-center gap-2.5"
+          className="flex items-center gap-2 min-[380px]:gap-2.5"
           aria-label="Accueil — La vie en HD"
         >
           <Image
@@ -98,10 +98,13 @@ export function Nav() {
             width={80}
             height={80}
             priority
-            className="h-16 w-16 object-contain md:h-[70px] md:w-[70px]"
+            className="h-14 w-14 object-contain min-[380px]:h-16 min-[380px]:w-16 md:h-[70px] md:w-[70px]"
           />
+          {/* Le titre ne passe jamais à la ligne : coupé, « HD » retombait
+              contre « Marion Chartier ». Sous 380px, logo et titre rétrécissent
+              un peu pour tenir à côté du bouton du menu. */}
           <span className="flex flex-col items-center leading-none">
-            <span className="font-script text-[23px] leading-none text-ink-deep md:text-[27px]">
+            <span className="whitespace-nowrap font-script text-[21px] leading-none text-ink-deep min-[380px]:text-[23px] md:text-[27px]">
               La vie en HD
             </span>
             <span className="mt-1.5 font-body text-[11px] font-normal not-italic leading-none tracking-[0.16em] text-ink-soft md:mt-2 md:text-[12px]">
