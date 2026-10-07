@@ -47,4 +47,15 @@ export const QUIZZES: QuizItem[] = [
     href: "/quiz/alignement-pro.html",
     accent: "violet",
   },
+  {
+    // TODO(Marion) : textes provisoires tirés de l'intro du quiz, en attente de sa version définitive.
+    slug: "business",
+    name: "Quiz - Business Check-up",
+    subtitle: "Connais-tu vraiment ta façon d'entreprendre ?",
+    description:
+      "Des questions pour passer ton business au scanner et voir où tu suis déjà ton propre mode d'emploi.",
+    meta: "13 questions · 5 minutes",
+    href: "/quiz/business.html",
+    accent: "turquoise",
+  },
 ];
