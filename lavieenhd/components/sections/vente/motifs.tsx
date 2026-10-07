@@ -20,6 +20,8 @@ export const MOTIF_PATHS = {
   carre: "M5 5h14v14H5z",
   /** Étincelle à quatre branches, celle du logo du Soin énergétique. */
   etoile: "M12 1.5C13 8 16 11 22.5 12 16 13 13 16 12 22.5 11 16 8 13 1.5 12 8 11 11 8 12 1.5z",
+  /** Goutte, pointe en haut : la Digestion de BODY Bloom. */
+  goutte: "M12 1.5C12 1.5 19 10 19 15a7 7 0 0 1-14 0c0-5 7-13.5 7-13.5z",
 } as const;
 
 export type MotifForme = keyof typeof MOTIF_PATHS;

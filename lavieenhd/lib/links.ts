@@ -72,6 +72,16 @@ export const EXTERNAL = {
     vallees: `${LEGACY_ROOT}/commande-vallees`,
     rivages: `${LEGACY_ROOT}/commande-rivages`,
   },
+
+  /** BODY Bloom : même principe, un Guide par Digestion HD. */
+  commandeDigestion: {
+    appetit: `${LEGACY_ROOT}/commande-appetit`,
+    gout: `${LEGACY_ROOT}/commande-gout`,
+    soif: `${LEGACY_ROOT}/commande-soif`,
+    toucher: `${LEGACY_ROOT}/commande-toucher`,
+    son: `${LEGACY_ROOT}/commande-son`,
+    lumiere: `${LEGACY_ROOT}/commande-lumiere`,
+  },
 } as const;
 
 /**

@@ -631,7 +631,14 @@ export function OffresSuivantes({
 /* Tarif à variantes                                                          */
 /* ------------------------------------------------------------------------- */
 
-export type Variante = { nom: string; sousTitre: string; prix: string; href: string };
+export type Variante = {
+  nom: string;
+  sousTitre: string;
+  prix: string;
+  href: string;
+  /** Libellé propre à la carte ; sinon le libellé commun du bloc. */
+  libelle?: string;
+};
 
 /**
  * Tarif d'une offre déclinée en plusieurs versions au même contenu (The Place
@@ -649,7 +656,8 @@ export function ChoixVariantes({
   /** Mentions entre la liste et les cartes (format, accès, aide au choix). */
   apresInclus?: ReactNode;
   variantes: Variante[];
-  libelleCta: string;
+  /** Libellé commun des boutons, quand les variantes n'ont pas le leur. */
+  libelleCta?: string;
 }) {
   return (
     <div className="flex flex-col items-center gap-14">
@@ -692,7 +700,7 @@ export function ChoixVariantes({
             </div>
             <div className="px-6 py-6">
               <Cta href={v.href} external className="w-full">
-                {libelleCta}
+                {v.libelle ?? libelleCta}
               </Cta>
             </div>
           </Reveal>
