@@ -26,7 +26,7 @@ export const EXTERNAL = {
    * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages
    * de vente. Toutes les offres sont branchées.
    *
-   * Blooming, INSIDE et REVEAL sont reconstruites en routes Next (design harmonisé
+   * Blooming, INSIDE, REVEAL et The Place to be sont reconstruites en routes Next (design harmonisé
    * avec le site) ; les autres sont encore des pages HTML servies depuis
    * /public, et migreront sur le même modèle. Les anciennes URL .html restent
    * vivantes via une redirection 308 (voir next.config.ts) : elles circulent
@@ -34,11 +34,14 @@ export const EXTERNAL = {
    */
   offre: {
     soinEnergetique: "/soin-energetique.html",
-    thePlaceToBe: "/the-place-to-be.html",
+    thePlaceToBe: "/mes-offres/the-place-to-be",
     insideClub: "/mes-offres/inside",
     reveal: "/mes-offres/reveal",
     fleurDeTalents: "/mes-offres/blooming",
     reconnect: "/reconnect.html",
+    /** Page de vente pas encore construite : l'URL est déjà fixée pour que les
+     *  renvois des autres pages n'aient pas à changer le jour où elle existe. */
+    bodyBloom: "/mes-offres/body-bloom",
   },
 
   /**
@@ -53,6 +56,20 @@ export const EXTERNAL = {
     reveal: `${LEGACY_ROOT}/commande-seance-clarte`,
     fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
     reconnect: `${LEGACY_ROOT}/commande-reconnect`,
+  },
+
+  /**
+   * The Place to be : un Guide par Environnement HD, donc six bons de
+   * commande. Ils sont proposés côte à côte sur la page de vente, où
+   * l'acheteur choisit le sien.
+   */
+  commandeEnvironnement: {
+    grottes: `${LEGACY_ROOT}/commande-grottes`,
+    marches: `${LEGACY_ROOT}/commande-marches`,
+    cuisines: `${LEGACY_ROOT}/commande-cuisines`,
+    montagnes: `${LEGACY_ROOT}/commande-montagnes`,
+    vallees: `${LEGACY_ROOT}/commande-vallees`,
+    rivages: `${LEGACY_ROOT}/commande-rivages`,
   },
 } as const;
 

@@ -35,6 +35,11 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/reveal",
         permanent: true,
       },
+      {
+        source: "/the-place-to-be.html",
+        destination: "/mes-offres/the-place-to-be",
+        permanent: true,
+      },
     ];
   },
 };

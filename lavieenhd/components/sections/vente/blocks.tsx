@@ -610,7 +610,13 @@ export function OffresSuivantes({
         ))}
       </Reveal>
 
-      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+      {/* Grille à la mesure du nombre d'offres : deux cartes dans une grille
+          de trois laisseraient une colonne vide à droite. */}
+      <div
+        className={`mx-auto mt-14 grid gap-6 ${
+          offres.length === 2 ? "max-w-[880px] lg:grid-cols-2" : "lg:grid-cols-3"
+        }`}
+      >
         {offres.map((offre, i) => (
           <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full">
             <OffreCarte {...offre} />
@@ -618,5 +624,80 @@ export function OffresSuivantes({
         ))}
       </div>
     </>
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Tarif à variantes                                                          */
+/* ------------------------------------------------------------------------- */
+
+export type Variante = { nom: string; sousTitre: string; prix: string; href: string };
+
+/**
+ * Tarif d'une offre déclinée en plusieurs versions au même contenu (The Place
+ * to be : un Guide par Environnement HD). Ce qui est inclus d'abord, une seule
+ * fois, puis une petite carte de commande par variante, au bandeau de la carte
+ * de tarif : l'acheteur choisit la sienne sans relire six fois la même liste.
+ */
+export function ChoixVariantes({
+  inclus,
+  apresInclus,
+  variantes,
+  libelleCta,
+}: {
+  inclus: ReactNode[];
+  /** Mentions entre la liste et les cartes (format, accès, aide au choix). */
+  apresInclus?: ReactNode;
+  variantes: Variante[];
+  libelleCta: string;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-14">
+      <Reveal className="w-full max-w-[820px]">
+        <ul className="flex flex-col">
+          {inclus.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3.5 border-b border-line py-4 last:border-b-0 font-display text-[18px] leading-relaxed text-ink-deep"
+            >
+              <Petal className="mt-2 h-3 w-3 flex-none text-accent" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        {apresInclus && <div className="mt-8 text-center">{apresInclus}</div>}
+      </Reveal>
+
+      <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {variantes.map((v, i) => (
+          <Reveal
+            as="li"
+            key={v.nom}
+            delay={stagger(i % 3)}
+            className="overflow-hidden rounded-[28px] border border-line bg-white shadow-simu"
+          >
+            {/* Même bandeau que la carte de tarif unique : le prix accent y
+                garde le contraste mesuré pour elle. */}
+            <div className="bg-[#665b74] px-6 py-8 text-center">
+              <p className="font-body text-[11px] tracking-[0.22em] text-white/70">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-3 font-display text-[32px] font-light leading-none text-white">
+                {v.nom}
+              </p>
+              <p className="mt-2 font-display text-[17px] italic text-white/80">{v.sousTitre}</p>
+              <p className="mt-5 font-body text-[28px] leading-none text-accent [font-variant-numeric:lining-nums]">
+                {v.prix}
+              </p>
+            </div>
+            <div className="px-6 py-6">
+              <Cta href={v.href} external className="w-full">
+                {libelleCta}
+              </Cta>
+            </div>
+          </Reveal>
+        ))}
+      </ol>
+    </div>
   );
 }
