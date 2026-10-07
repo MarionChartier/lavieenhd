@@ -8,10 +8,28 @@
  * empilement de cartes génériques.
  */
 
-/** Tracé d'un pétale unique, dans une boîte 24×24 pointe en haut. */
-const PETAL_PATH = "M12 1.5c5.4 5.6 5.4 15.4 0 21-5.4-5.6-5.4-15.4 0-21z";
+/**
+ * Formes du motif, chacune dans une boîte 24×24, pointe ou sommet en haut.
+ * Chaque page de vente a la sienne (voir <VenteTheme>) ; Blooming garde le
+ * pétale.
+ */
+export const MOTIF_PATHS = {
+  petale: "M12 1.5c5.4 5.6 5.4 15.4 0 21-5.4-5.6-5.4-15.4 0-21z",
+  cercle: "M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z",
+  losange: "M12 1.5 19.5 12 12 22.5 4.5 12z",
+  carre: "M5 5h14v14H5z",
+} as const;
 
-/** Pétale seul — puce de liste, accent d'un titre. */
+export type MotifForme = keyof typeof MOTIF_PATHS;
+
+/** Identifiant du tracé partagé, déclaré une fois par <VenteTheme>. */
+export const MOTIF_ID = "vente-motif";
+
+/**
+ * Le motif seul, puce de liste, accent d'un titre. Il ne porte pas son tracé :
+ * il réutilise celui que <VenteTheme> déclare pour la page, ce qui change la
+ * forme partout sans faire passer la page de vente côté client.
+ */
 export function Petal({
   className = "",
   style,
@@ -21,7 +39,7 @@ export function Petal({
 }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden className={className} style={style}>
-      <path d={PETAL_PATH} fill="currentColor" />
+      <use href={`#${MOTIF_ID}`} fill="currentColor" />
     </svg>
   );
 }
@@ -72,9 +90,9 @@ export function Rosace({
         strokeWidth={filled ? 0 : 1}
       >
         {[0, 72, 144, 216, 288].map((angle) => (
-          <path
+          <use
             key={angle}
-            d={PETAL_PATH}
+            href={`#${MOTIF_ID}`}
             transform={`translate(24 24) rotate(${angle}) scale(0.92) translate(-12 -22)`}
           />
         ))}
@@ -106,7 +124,7 @@ export function PetalDivider({
       className={`flex items-center gap-3 ${centered ? "justify-center" : ""} ${className}`}
     >
       <span className={`block h-px ${trait} bg-gradient-to-r from-transparent to-ink-lilac/60`} />
-      <Petal className="h-3 w-3 text-turquoise" />
+      <Petal className="h-3 w-3 text-accent" />
       <span className={`block h-px ${trait} bg-gradient-to-l from-transparent to-ink-lilac/60`} />
     </div>
   );
@@ -123,13 +141,13 @@ export function PetalDivider({
  */
 const HALO = [
   { top: "-7%", left: "-6%", size: 36, rotate: -24, opacity: 0.44, tone: "text-ink-lilac" },
-  { top: "-12%", left: "24%", size: 22, rotate: 42, opacity: 0.36, tone: "text-turquoise" },
+  { top: "-12%", left: "24%", size: 22, rotate: 42, opacity: 0.36, tone: "text-accent" },
   { top: "-9%", left: "58%", size: 28, rotate: -14, opacity: 0.34, tone: "text-ink-lilac" },
-  { top: "16%", left: "-9%", size: 20, rotate: 66, opacity: 0.34, tone: "text-turquoise" },
+  { top: "16%", left: "-9%", size: 20, rotate: 66, opacity: 0.34, tone: "text-accent" },
   { top: "38%", left: "-5%", size: 14, rotate: -8, opacity: 0.4, tone: "text-ink-lilac" },
   { bottom: "16%", left: "-8%", size: 31, rotate: -44, opacity: 0.38, tone: "text-ink-lilac" },
   { bottom: "-8%", left: "13%", size: 25, rotate: 20, opacity: 0.36, tone: "text-ink-lilac" },
-  { bottom: "-6%", left: "38%", size: 18, rotate: -58, opacity: 0.28, tone: "text-turquoise" },
+  { bottom: "-6%", left: "38%", size: 18, rotate: -58, opacity: 0.28, tone: "text-accent" },
   { top: "-4%", right: "-5%", size: 23, rotate: 34, opacity: 0.32, tone: "text-beige-soft" },
 ] as const;
 
@@ -174,11 +192,11 @@ const CHAMP_LEGER = [
 const CHAMP_DENSE = [
   { x: -9, y: 2, size: 400, rotate: -24, opacity: 0.14, tone: "text-ink-lilac" },
   { x: 44, y: -12, size: 230, rotate: 58, opacity: 0.09, tone: "text-beige-soft" },
-  { x: 82, y: -6, size: 320, rotate: 36, opacity: 0.13, tone: "text-turquoise" },
+  { x: 82, y: -6, size: 320, rotate: 36, opacity: 0.13, tone: "text-accent" },
   { x: 86, y: 26, size: 460, rotate: -14, opacity: 0.1, tone: "text-ink-lilac" },
   { x: -11, y: 40, size: 360, rotate: 30, opacity: 0.12, tone: "text-beige-soft" },
   { x: 74, y: 66, size: 420, rotate: -38, opacity: 0.11, tone: "text-ink-lilac" },
-  { x: 2, y: 74, size: 280, rotate: 12, opacity: 0.13, tone: "text-turquoise" },
+  { x: 2, y: 74, size: 280, rotate: 12, opacity: 0.13, tone: "text-accent" },
   { x: 30, y: 90, size: 330, rotate: -52, opacity: 0.08, tone: "text-ink-lilac" },
 ];
 

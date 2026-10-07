@@ -17,6 +17,11 @@
   --color-line: #e8dff0;
   --color-dark: #1c1424;
 
+  /* Accent des pages de vente : turquoise par défaut, redéfini par page via
+     <VenteTheme> (chaque offre a sa couleur). */
+  --color-accent: #75ced2;
+  --color-accent-soft: #dbeef4;
+
   /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
   --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-script: var(--font-breathing), var(--font-cormorant), cursive;

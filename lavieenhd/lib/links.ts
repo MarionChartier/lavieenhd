@@ -26,16 +26,16 @@ export const EXTERNAL = {
    * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages
    * de vente. Toutes les offres sont branchées.
    *
-   * Blooming est la première page reconstruite en route Next (design harmonisé
+   * Blooming et INSIDE sont reconstruites en routes Next (design harmonisé
    * avec le site) ; les autres sont encore des pages HTML servies depuis
-   * /public, et migreront sur le même modèle. L'ancienne URL /blooming.html
-   * reste vivante via une redirection 308 (voir next.config.ts) : elle circule
+   * /public, et migreront sur le même modèle. Les anciennes URL .html restent
+   * vivantes via une redirection 308 (voir next.config.ts) : elles circulent
    * dans les mails déjà envoyés et sur systeme.io.
    */
   offre: {
     soinEnergetique: "/soin-energetique.html",
     thePlaceToBe: "/the-place-to-be.html",
-    insideClub: "/inside.html",
+    insideClub: "/mes-offres/inside",
     reveal: "/reveal.html",
     fleurDeTalents: "/mes-offres/blooming",
     reconnect: "/reconnect.html",

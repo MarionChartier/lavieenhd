@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/blooming",
         permanent: true,
       },
+      {
+        source: "/inside.html",
+        destination: "/mes-offres/inside",
+        permanent: true,
+      },
     ];
   },
 };

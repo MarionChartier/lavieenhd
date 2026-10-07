@@ -19,6 +19,8 @@ const BG = {
   deep: "bg-[#5a4e69] text-white",
   lavender: "bg-lavender-gradient",
   turquoise: "bg-turquoise-soft/60",
+  /** Teinte claire de l'accent de la page (voir <VenteTheme>). */
+  accent: "bg-accent-soft/60",
 } as const;
 
 export type VenteBg = keyof typeof BG;
@@ -89,7 +91,7 @@ export function SectionHeader({
       {eyebrow && (
         <p
           className={`font-body text-[11px] uppercase tracking-[0.28em] ${
-            onDeep ? "text-turquoise" : "text-ink-soft"
+            onDeep ? "text-accent" : "text-ink-soft"
           }`}
         >
           {eyebrow}
@@ -136,10 +138,10 @@ export function Cta({
 
   const styles = onDeep
     ? variant === "primary"
-      ? "bg-turquoise text-ink-deep hover:bg-white"
-      : "border border-turquoise text-turquoise hover:bg-turquoise hover:text-ink-deep"
+      ? "bg-accent text-ink-deep hover:bg-white"
+      : "border border-accent text-accent hover:bg-accent hover:text-ink-deep"
     : variant === "primary"
-      ? "bg-ink-deep text-white hover:bg-turquoise hover:text-ink-deep"
+      ? "bg-ink-deep text-white hover:bg-accent hover:text-ink-deep"
       : "border border-ink-deep bg-white/40 text-ink-deep hover:bg-ink-deep hover:text-white";
 
   return (

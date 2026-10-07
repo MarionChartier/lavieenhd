@@ -4,6 +4,7 @@ import { EXTERNAL } from "@/lib/links";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
+import { VenteTheme } from "@/components/sections/vente/VenteTheme";
 import {
   Petal,
   PetalDivider,
@@ -246,7 +247,7 @@ const POINTS = [
 
 export default function BloomingPage() {
   return (
-    <>
+    <VenteTheme>
       <SectionDots sections={POINTS} />
       {/* ---------------------------------------------------------------- */}
       {/* HERO                                                             */}
@@ -834,6 +835,6 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
           </Cta>
         </Reveal>
       </section>
-    </>
+    </VenteTheme>
   );
 }

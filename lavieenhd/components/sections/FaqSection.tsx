@@ -49,7 +49,7 @@ export function FaqSection({
                   </span>
                   <span
                     aria-hidden
-                    className={`flex-none text-[24px] leading-none text-turquoise transition-transform duration-300 ${
+                    className={`flex-none text-[24px] leading-none text-accent transition-transform duration-300 ${
                       isOpen ? "rotate-45" : ""
                     }`}
                   >
