@@ -21,6 +21,9 @@
      <VenteTheme> (chaque offre a sa couleur). */
   --color-accent: #75ced2;
   --color-accent-soft: #dbeef4;
+  /* Accent des textes (prénoms des témoignages), plus soutenu quand la
+     couleur d'accent est trop claire pour se lire sur fond blanc. */
+  --color-accent-texte: #75ced2;
 
   /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
   --font-display: var(--font-cormorant), "Times New Roman", serif;

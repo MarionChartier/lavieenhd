@@ -18,19 +18,29 @@ import { MOTIF_ID, MOTIF_PATHS, type MotifForme } from "@/components/sections/ve
 export function VenteTheme({
   accent = "#75ced2",
   accentSoft = "#dbeef4",
+  accentTexte,
   forme = "petale",
   children,
 }: {
   accent?: string;
   /** Teinte très claire de l'accent, pour les fonds de strate. */
   accentSoft?: string;
+  /** Accent des textes posés sur fond clair, si l'accent seul y est illisible
+   *  (un or clair, par exemple). Par défaut, l'accent lui-même. */
+  accentTexte?: string;
   forme?: MotifForme;
   children: ReactNode;
 }) {
   return (
     <div
       className="contents"
-      style={{ "--color-accent": accent, "--color-accent-soft": accentSoft } as CSSProperties}
+      style={
+        {
+          "--color-accent": accent,
+          "--color-accent-soft": accentSoft,
+          "--color-accent-texte": accentTexte ?? accent,
+        } as CSSProperties
+      }
     >
       <svg aria-hidden width="0" height="0" className="absolute">
         <defs>

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
 import { VenteTheme } from "@/components/sections/vente/VenteTheme";
 import {
+  FONDU_BORDS,
   Petal,
   PetalDivider,
   PetalField,
@@ -43,21 +44,6 @@ const COMMANDE = EXTERNAL.commande.insideClub;
  * carte de tarif) et le cercle du logo.
  */
 const THEME = { accent: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
-
-/**
- * Fondu discret des quatre bords, en transparence : les visuels se fondent
- * dans le fond de la strate au lieu de s'y arrêter net (les bras de la
- * tablette, le bureau de l'ordinateur). Les deux dégradés sont croisés, chacun
- * n'efface que sa bordure.
- */
-const FONDU = {
-  WebkitMaskImage:
-    "linear-gradient(to right, transparent, black 8%, black 92%, transparent), linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
-  maskImage:
-    "linear-gradient(to right, transparent, black 8%, black 92%, transparent), linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
-  WebkitMaskComposite: "source-in",
-  maskComposite: "intersect",
-};
 
 /** Liste à puces logée dans un paragraphe de note, dont elle partage la police. */
 function Puces({ items }: { items: ReactNode[] }) {
@@ -631,7 +617,7 @@ export default function InsidePage() {
                 height={1200}
                 priority
                 className="pointer-events-none absolute -right-6 -bottom-7 z-20 h-auto w-[120px] sm:-right-10 sm:-bottom-10 sm:w-[170px] lg:-right-[110px] lg:-bottom-[110px] lg:w-[230px]"
-                style={FONDU}
+                style={FONDU_BORDS}
               />
 
               <figcaption>
@@ -906,7 +892,7 @@ export default function InsidePage() {
                 width={1200}
                 height={1200}
                 className="h-auto w-full"
-                style={FONDU}
+                style={FONDU_BORDS}
               />
             </Reveal>
             <Reveal delay={80} className="-mt-10 hidden w-full lg:block">
@@ -916,7 +902,7 @@ export default function InsidePage() {
                 width={1200}
                 height={1200}
                 className="h-auto w-full"
-                style={FONDU}
+                style={FONDU_BORDS}
               />
             </Reveal>
           </div>

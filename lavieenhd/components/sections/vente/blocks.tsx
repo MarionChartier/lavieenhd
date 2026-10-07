@@ -173,9 +173,22 @@ export type Etape = { titre: string; texte: ReactNode };
  * Les étapes du processus. La rosace de cinq pétales sert de médaillon : le
  * numéro se lit au centre, le motif rappelle la Fleur à chaque étape.
  */
+/** Une colonne par étape en grand écran : quatre étapes dans une grille de
+ *  cinq laisseraient un vide à droite. Classes écrites en entier pour que
+ *  Tailwind les génère. */
+const COLONNES_ETAPES: Record<number, string> = {
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+  5: "lg:grid-cols-5",
+};
+
 export function ProcessusSteps({ etapes }: { etapes: Etape[] }) {
   return (
-    <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+    <ol
+      className={`grid gap-10 sm:grid-cols-2 lg:gap-6 ${
+        COLONNES_ETAPES[etapes.length] ?? "lg:grid-cols-5"
+      }`}
+    >
       {etapes.map((etape, i) => (
         <Reveal as="li" key={etape.titre} delay={stagger(i)} className="text-center">
           <span className="relative mx-auto flex h-16 w-16 items-center justify-center">
@@ -349,7 +362,7 @@ export function TemoignageHero({
           height={160}
           className="mx-auto h-auto w-[56px]"
         />
-        <p className="mt-4 font-display text-[22px] italic leading-none text-accent">{nom}</p>
+        <p className="mt-4 font-display text-[22px] italic leading-none text-accent-texte">{nom}</p>
         {contexte && (
           <p className="mt-3 font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
             {contexte}
@@ -436,7 +449,7 @@ export function TemoignageCards({ verbatims }: { verbatims: Verbatim[] }) {
                 height={600}
                 className="mx-auto h-auto w-[96px]"
               />
-              <p className="mt-3 font-display text-[20px] italic leading-none text-accent">
+              <p className="mt-3 font-display text-[20px] italic leading-none text-accent-texte">
                 {v.nom}
               </p>
               <p className="mt-5 whitespace-pre-line font-display text-[17px] font-light italic leading-relaxed text-ink-deep">

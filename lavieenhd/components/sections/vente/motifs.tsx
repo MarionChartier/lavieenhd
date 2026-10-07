@@ -250,3 +250,18 @@ export function PetalField({
     </div>
   );
 }
+
+/**
+ * Fondu discret des quatre bords, en transparence : les visuels se fondent
+ * dans le fond de la strate au lieu de s'y arrêter net (les bras de la
+ * tablette, le bureau de l'ordinateur). Les deux dégradés sont croisés, chacun
+ * n'efface que sa bordure.
+ */
+export const FONDU_BORDS: React.CSSProperties = {
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent, black 8%, black 92%, transparent), linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
+  maskImage:
+    "linear-gradient(to right, transparent, black 8%, black 92%, transparent), linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
+  WebkitMaskComposite: "source-in",
+  maskComposite: "intersect",
+};
