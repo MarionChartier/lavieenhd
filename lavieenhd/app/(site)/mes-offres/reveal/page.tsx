@@ -402,9 +402,22 @@ export default function RevealPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={120} className="relative pb-12 lg:pt-14 lg:pb-28">
-            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 shadow-simu backdrop-blur-sm md:p-8 lg:ml-0">
+          <Reveal delay={120} className="relative pb-24 sm:pb-32 lg:pt-14 lg:pb-40">
+            {/* Pied de carte allongé : le mockup a un fond plein, il ne doit
+                mordre que sur ce blanc, jamais sur le verbatim. */}
+            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 pb-12 shadow-simu backdrop-blur-sm sm:pb-14 md:p-8 md:pb-16 lg:ml-0">
               <PetalHalo />
+              {/* La Boussole d'Élise, à cheval sur l'angle inférieur droit de
+                  sa propre carte, comme sur BODY Bloom. Version numérique
+                  plutôt qu'imprimée : le livrable est un PDF. */}
+              <Image
+                src="/assets/reveal/boussole-tablette.webp"
+                alt="La Boussole REVEAL d’Élise, son compte-rendu personnalisé, affichée sur une tablette"
+                width={1122}
+                height={1402}
+                priority
+                className="pointer-events-none absolute -right-4 -bottom-[92px] z-20 h-auto w-[100px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:-right-8 sm:-bottom-[128px] sm:w-[140px] lg:-right-[80px] lg:-bottom-[166px] lg:w-[180px]"
+              />
 
               <figcaption>
                 <span className="flex items-center gap-3.5">
@@ -534,10 +547,10 @@ export default function RevealPage() {
             </div>
 
             <Image
-              src="/assets/reveal/seance-visio-cadree.webp"
-              alt="Une séance REVEAL en visio"
-              width={888}
-              height={893}
+              src="/assets/reveal/coaching.webp"
+              alt="Une séance REVEAL en visio, carnet de notes ouvert devant l’ordinateur"
+              width={1122}
+              height={1402}
               className="mx-auto h-auto w-[210px] rounded-[14px] shadow-card md:w-full"
             />
           </Reveal>
@@ -647,15 +660,29 @@ export default function RevealPage() {
         </div>
 
         {/* Le retour sur la Boussole conclut la dernière étape : en citation
-            détachée sous la frise, comme le mot de Justine sur INSIDE. */}
-        <Reveal as="figure" className="mx-auto mt-16 max-w-[640px] text-center">
-          <blockquote className="font-display text-[19px] italic leading-relaxed text-ink-deep md:text-[21px]">
-            &quot;Je l’ai imprimé pour l’avoir à portée de main...ton support est quand même vraiment
-            très beau et me met en joie 😍&quot;
-          </blockquote>
-          <figcaption className="mt-3 font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
-            Message reçu après l’envoi de la Boussole REVEAL
-          </figcaption>
+            détachée sous la frise, comme le mot de Justine sur INSIDE. La
+            Boussole imprimée l'accompagne : c'est la cliente qui a imprimé
+            son PDF, l'image ne promet donc pas un livre. */}
+        <Reveal
+          as="figure"
+          className="mx-auto mt-16 grid max-w-[760px] items-center gap-8 text-center md:grid-cols-[200px_1fr] md:gap-10 md:text-left"
+        >
+          <Image
+            src="/assets/reveal/boussole-papier.webp"
+            alt="La Boussole REVEAL imprimée"
+            width={1122}
+            height={1402}
+            className="mx-auto h-auto w-[180px] -rotate-2 rounded-[14px] border-4 border-white shadow-card md:w-full"
+          />
+          <div>
+            <blockquote className="font-display text-[19px] italic leading-relaxed text-ink-deep md:text-[21px]">
+              &quot;Je l’ai imprimé pour l’avoir à portée de main...ton support est quand même
+              vraiment très beau et me met en joie 😍&quot;
+            </blockquote>
+            <figcaption className="mt-3 font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+              Message reçu après l’envoi de la Boussole REVEAL
+            </figcaption>
+          </div>
         </Reveal>
       </VenteSection>
 
