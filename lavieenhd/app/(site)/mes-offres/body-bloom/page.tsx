@@ -386,9 +386,22 @@ export default function BodyBloomPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={120} className="relative pb-12 lg:pt-14 lg:pb-28">
-            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 shadow-simu backdrop-blur-sm md:p-8 lg:ml-0">
+          <Reveal delay={120} className="relative pb-20 sm:pb-28 lg:pt-14 lg:pb-36">
+            {/* Pied de carte allongé : le mockup a un fond plein, il ne doit
+                mordre que sur ce blanc, jamais sur le verbatim. */}
+            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 pb-12 shadow-simu backdrop-blur-sm sm:pb-14 md:p-8 md:pb-16 lg:ml-0">
               <PetalHalo />
+              {/* Le Guide posé à cheval sur l’angle inférieur droit de la
+                  carte, comme la Fleur sur Blooming : il montre de quoi parle
+                  le verbatim sans lui voler la vedette. */}
+              <Image
+                src="/assets/body-bloom/guide-tablette.webp"
+                alt="Le Guide d’Initiation à ton Intelligence Digestive affiché sur une tablette"
+                width={1254}
+                height={1254}
+                priority
+                className="pointer-events-none absolute -right-4 -bottom-[76px] z-20 h-auto w-[110px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:-right-8 sm:-bottom-[112px] sm:w-[160px] lg:-right-[80px] lg:-bottom-[150px] lg:w-[210px]"
+              />
 
               <figcaption>
                 <span className="flex items-center gap-3.5">
@@ -556,15 +569,20 @@ export default function BodyBloomPage() {
               </p>
             </div>
 
-            {/* Pas encore de mockup du Guide : une photo d'ambiance en
-                attendant ceux de Marion. */}
-            <Image
-              src="/assets/body-bloom/pissenlits.webp"
-              alt="Pissenlits dans une lumière douce"
-              width={1000}
-              height={709}
-              className="mx-auto h-auto w-[240px] rounded-[14px] shadow-card md:w-full"
-            />
+            {/* Les Guides sont montrés imprimés : la légende rappelle que le
+                livrable est un PDF, pour que l'image ne promette pas un livre. */}
+            <figure className="mx-auto w-[240px] md:w-full">
+              <Image
+                src="/assets/body-bloom/guides-papier.webp"
+                alt="Les 6 Guides d’Initiation à ton Intelligence Digestive, imprimés"
+                width={1254}
+                height={1254}
+                className="h-auto w-full rounded-[14px] shadow-card"
+              />
+              <figcaption className="mt-3 text-center font-display text-[15px] italic leading-snug text-ink-soft">
+                Un Guide par Digestion, livré en PDF, à imprimer si tu le souhaites
+              </figcaption>
+            </figure>
           </Reveal>
 
           <Reveal>
@@ -648,9 +666,10 @@ export default function BodyBloomPage() {
         />
 
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-          {/* Photos d'ambiance en attendant les mockups du Guide. Colonne plus
-              étroite que les cartes, comme sur Blooming : pleine moitié, les
-              photos prenaient le pas sur le texte. */}
+          {/* Une seule photo d'ambiance : les deux mockups du Guide sont déjà
+              dans le hero et l'offre. Colonne plus étroite que les cartes,
+              comme sur Blooming : pleine moitié, la photo prenait le pas sur
+              le texte. */}
           <div className="mx-auto flex w-full max-w-[380px] flex-col gap-6">
             <Reveal>
               <Image
@@ -658,16 +677,6 @@ export default function BodyBloomPage() {
                 alt="Champ de lavande"
                 width={1000}
                 height={1250}
-                className="h-auto w-full"
-                style={FONDU_BORDS}
-              />
-            </Reveal>
-            <Reveal delay={80} className="hidden lg:block">
-              <Image
-                src="/assets/body-bloom/pissenlit-gros-plan.webp"
-                alt="Pissenlit en gros plan"
-                width={1000}
-                height={1000}
                 className="h-auto w-full"
                 style={FONDU_BORDS}
               />
