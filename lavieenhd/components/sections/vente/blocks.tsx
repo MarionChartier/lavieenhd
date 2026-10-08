@@ -342,7 +342,13 @@ export function TemoignageHero({
   inverse?: boolean;
 }) {
   return (
-    <Reveal className="grid items-center gap-10 md:grid-cols-[300px_1fr] md:gap-14">
+    // Les largeurs de colonnes s'inversent avec le portrait : sans ça, le
+    // verbatim tombait dans la colonne de 300px.
+    <Reveal
+      className={`grid items-center gap-10 md:gap-14 ${
+        inverse ? "md:grid-cols-[1fr_300px]" : "md:grid-cols-[300px_1fr]"
+      }`}
+    >
       <Image
         src={photo}
         alt={nom}

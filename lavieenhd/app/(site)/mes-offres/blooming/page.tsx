@@ -31,7 +31,7 @@ import {
 export const metadata: Metadata = {
   title: "Blooming — Ta Fleur de Talents Innés™ | La vie en HD",
   description:
-    "Découvre tes talents innés et ta zone de génie, révélés grâce à une analyse croisée de ton Human Design, ta Numérologie et tes Gene Keys.",
+    "Révèle tes talents innés et ta zone de génie grâce à une analyse croisée de ton Human Design, ta Numérologie et tes Gene Keys.",
 };
 
 /** Bon de commande systeme.io — destination de tous les CTA d’achat. */
@@ -41,19 +41,19 @@ const PROFILS = [
   {
     titre: "Tu cherches ta direction",
     paragraphes: [
-      "Tu es en reconversion, en transition, en questionnement... et tu aimerais enfin savoir ce pour quoi tu es fait·e.",
-      "Tu ne veux pas une énième liste de compétences floues et génériques. Ce que tu recherches, c’est une révélation de TA zone de génie unique, et des propositions concrètes de métiers en adéquation avec celle-ci.",
+      "Tu es en reconversion, en transition, en questionnement... et tu aimerais mieux comprendre quelles directions professionnelles pourraient vraiment te correspondre.",
+      "Tu ne veux pas une énième liste de compétences floues et génériques. Ce que tu recherches, c’est une révélation de TA zone de génie unique, et des pistes concrètes de métiers en adéquation avec celle-ci.",
     ],
   },
   {
     titre: "Tu doutes de tes dons",
     paragraphes: [
       "Tu sens que tu as des facilités pour certaines choses, mais tu ne sais pas forcément les nommer, et tu n’oses pas vraiment te faire confiance.",
-      "Tu veux confirmer ce que tu pressens, poser des mots clairs sur tes talents innés, et avoir des conseils pratiques pour les exploiter au mieux.",
+      "Tu veux confirmer ce que tu pressens, poser des mots clairs sur tes talents innés, et mieux comprendre comment ils peuvent s’exprimer dans ta vie professionnelle.",
     ],
   },
   {
-    titre: "Tu veux clarifier ton unicité",
+    titre: "Tu es curieux.se de te découvrir sous un nouvel angle",
     paragraphes: [
       "Tu te connais bien, mais tu sens qu’il te manque un niveau de profondeur. Tu as le sentiment que les tests de personnalité classiques sont parfois bien trop réducteurs, et tu as la sensation de rester trop en surface.",
       "Tu as envie d’aller plus loin, et de plonger dans l’exploration d’outils puissants, pour enfin mettre en lumière ce qui fait de toi une personne unique.",
@@ -61,175 +61,246 @@ const PROFILS = [
   },
 ];
 
-const LIVRABLES: Livrable[] = [
+/**
+ * Les deux mots de clientes posés dans leur bénéfice, comme le verbatim
+ * d'Astrig sur INSIDE : citation en italique détaché, puis sa source en
+ * petites capitales. Des `span` en bloc et non des `p` : la carte rend son
+ * texte dans un paragraphe.
+ */
+function MotCliente({ citation, source }: { citation: string; source: string }) {
+  return (
+    <>
+      <em className="mt-4 block border-t border-accent/40 pt-4">&quot;{citation}&quot;</em>
+      <span className="mt-2 block font-body text-[11px] uppercase leading-relaxed tracking-[0.12em] text-ink-soft">
+        {source}
+      </span>
+    </>
+  );
+}
+
+const BENEFICES: Livrable[] = [
   {
-    titre: "Ta Fleur visuelle",
+    titre: "Mettre des mots sur tes talents",
     texte: (
       <>
-        La représentation graphique unique et précieuse de tes 5 pôles de Talents Innés.
-        {/* Bloc à part et non simple retour à la ligne : la phrase en italique
-            est un commentaire du livrable, elle a besoin de respirer. */}
-        <em className="mt-3 block">
-          Un livrable à garder à vie, pensé autant pour être lu sur écran, qu’imprimé sur papier,
-          et affiché comme une boussole pour les jours de doute. Elle est là pour te rappeler qui tu
-          es, ce que tu apportes, et quelle est ta juste place.
-        </em>
+        Tu identifies clairement ce qui te vient naturellement et ce que tu apportes de singulier, y
+        compris dans ce que tu avais peut-être tendance à banaliser.
+        <MotCliente
+          citation={'Ça met en lumière des atouts que l’on imagine "normaux" parce qu’on pense que tout le monde a les mêmes facultés.'}
+          source="Quelques mots d’une cliente, juste après avoir découvert sa Fleur ♡"
+        />
       </>
     ),
     taille: "pleine",
   },
   {
-    titre: "L’analyse approfondie",
+    titre: "Te sentir plus légitime",
+    texte:
+      "Tu confirmes des talents que tu pressentais déjà, tu prends conscience de ceux que tu minimisais peut-être, et tu portes un regard plus juste sur ce que tu as à offrir.",
+  },
+  {
+    titre: "Identifier ta zone de génie",
+    texte:
+      "Tu comprends comment tes différents talents s’articulent entre eux et ce qui fait ta singularité.",
+  },
+  {
+    titre: "Découvrir des pistes professionnelles qui te ressemblent",
+    texte:
+      "Tu repars avec des idées concrètes de métiers ou de directions professionnelles cohérentes avec qui tu es, qui peuvent aussi venir confirmer certaines voies que tu envisageais déjà.",
+  },
+  {
+    titre: "Savoir repérer tes warnings professionnels",
     texte: (
       <>
-        Le détail de chaque pôle de Talents avec tes données HD, Gene Keys et Numérologie qui le
-        nourrissent.
-        <em className="mt-3 block">
-          Aucun jargon, ou formulations complexes, le document est conçu pour être compris par tout
-          le monde, même sans aucune connaissance du Human Design, de la Numérologie, ou des Gene
-          Keys. Tout est simplifié et vulgarisé pour que ce soit clair et accessible à tous.
-        </em>
+        Tu sais mieux reconnaître les contextes, environnements et conditions de travail qui ne te
+        correspondent pas, ainsi que les signaux intérieurs{" "}
+        <em>(ressentis, comportements ou émotions)</em> qui t’indiquent que tu es en train de
+        t’éloigner de toi.
+        <MotCliente
+          citation="Je comprends mieux mes réactions et surtout je comprends ce qui ne va vraiment pas dans ma vie professionnelle..."
+          source="Ce qu’elle en retient, avec un peu de recul..."
+        />
       </>
     ),
-    taille: "large",
   },
   {
-    titre: "Le cœur de ta vocation",
-    texte: "La synthèse de ton fil rouge - ce pour quoi tu es là, ta zone de génie.",
-  },
-  {
-    titre: "Des pistes de métiers alignés",
-    texte: "Des directions concrètes, choisies spécifiquement pour ta propre configuration.",
-  },
-  {
-    titre: "Nuage de mots-clés",
-    texte: "Les mots qui te définissent ; pour ta bio, ton positionnement, tes prises de parole.",
-  },
-  {
-    titre: "Tes signaux d’alerte",
-    texte:
-      "Les warnings à reconnaître pour savoir quand tu nages à contre-courant, et revenir à toi dès que tu t’en éloignes.",
-  },
-  {
-    titre: "Un coaching 1h30",
+    titre: "Avoir une boussole sur laquelle revenir",
     texte: (
       <>
-        On vient approfondir tout ça ensemble une semaine à 10 jours après la réception de ton
-        document&nbsp;;{" "}
-        <em>le temps pour toi de lire, relire, et laisser infuser toutes les informations.</em>
+        Tu peux consulter ta Fleur à tout moment, <em>notamment les jours de doute</em>, pour te
+        rappeler qui tu es, ce que tu apportes, et te reconnecter à tes forces.
+        <em className="mt-3 block">
+          Pensée autant pour être consultée sur écran qu’imprimée et affichée, ta Fleur peut rester
+          près de toi comme un repère accessible en un coup d’œil.
+        </em>
       </>
     ),
     taille: "pleine",
   },
 ];
 
+/** Paragraphes d'une étape : le composant rend le texte dans un `p`, d'où
+ *  des `span` en bloc plutôt que des paragraphes imbriqués. */
 const ETAPES = [
   {
-    titre: "Tu commandes",
-    texte:
-      "Tu règles ta commande. Je t’envoie aussitôt par mail le formulaire pour me communiquer tes données - date, heure, lieu de naissance et nom-prénoms.",
-  },
-  {
-    titre: "J’analyse",
-    texte:
-      "Je décortique tes données HD, Numérologie et Gene Keys pour faire émerger tes 5 grands Pôles de Talents Innés.",
-  },
-  {
-    titre: "Je crée",
+    titre: "Tu me partages tes informations",
     texte: (
       <>
-        Je réalise ta Fleur visuelle,
-        <br />
-        et rédige ton document personnalisé
-        <br />- au moins 10 jours.
+        Une fois ta commande passée, tu reçois un formulaire par mail pour me transmettre ta date,
+        ton heure et ton lieu de naissance, ainsi que tes nom et prénoms.
+        <span className="mt-2 block">
+          Tu y choisis également la date pour ta séance, au minimum 2 semaines plus tard{" "}
+          <em>(le temps pour moi de faire ton analyse personnalisée).</em>
+        </span>
+        <em className="mt-2 block">
+          C’est notre point de départ : ta Fleur se construit autour de TES données personnelles.
+        </em>
       </>
     ),
   },
   {
-    titre: "Tu reçois ta Fleur",
+    titre: "Je me plonge dans ton analyse",
     texte: (
       <>
-        Ton document arrive dans ta boîte mail.
-        <br />
-        Tu prends le temps de le lire, le relire, et le laisser résonner en toi.
+        Avant de te retrouver, je prends le temps de croiser tes données{" "}
+        <em>(issues de ton Human Design, de ta Numérologie et de tes Gene Keys)</em> afin de faire
+        éclore ta Fleur de Talents Innés™, ainsi que les éléments clés qui en émergent pour toi.
+        <em className="mt-2 block">
+          Ta Fleur est unique : c’est le fruit d’une analyse 100% personnalisée, réalisée par mes
+          petites mains d’humaine. ♡
+        </em>
       </>
     ),
   },
   {
-    titre: "On se retrouve",
-    texte:
-      "1 semaine à 10 jours après, nous nous retrouvons en visio pour un coaching d’1h30 ensemble, pour ancrer ta Fleur dans ta réalité.",
+    titre: "On explore ta Fleur ensemble pendant 1h30",
+    texte: (
+      <>
+        On se retrouve en visio ; je te dévoile ta Fleur, je t’explique ce qui a émergé de mon
+        analyse et on parcourt ensemble tes 5 Pôles de Talents Innés, ta zone de génie et les pistes
+        professionnelles qui se dessinent.
+        <em className="mt-2 block">
+          L’idée n’est pas de te dire quelle voie choisir, mais de t’apporter des repères pour
+          poursuivre ta réflexion avec davantage de clarté.
+        </em>
+      </>
+    ),
+  },
+  {
+    titre: "Tu repars avec ta Fleur, ta synthèse personnalisée et ton replay",
+    texte: (
+      <>
+        Dans les jours qui suivent notre séance, tu reçois :
+        <span className="mt-2 block">
+          ton{" "}
+          <strong className="font-semibold text-ink-deep">
+            document PDF réunissant ta Fleur de Talents Innés™, un résumé de chacun de ses 5 pétales
+            ainsi que les éléments essentiels de ton analyse
+          </strong>
+          ,
+          <br />
+          <em>
+            (Aucun jargon ou formulation complexe : tout est simplifié et vulgarisé pour que ton
+            document soit clair et accessible, même si tu n’as aucune connaissance du Human Design,
+            de la Numérologie ou des Gene Keys.)
+          </em>
+        </span>
+        <span className="mt-2 block">
+          le <strong className="font-semibold text-ink-deep">replay de notre échange</strong>, pour
+          pouvoir revenir tranquillement dessus quand tu le souhaites.
+          <br />
+          <em>De quoi laisser infuser tout ce qui a émergé...bien après notre séance.</em>
+        </span>
+      </>
+    ),
   },
 ];
 
 const INCLUS = [
-  "Analyse croisée 100% personnalisée (HD + Numérologie + Gene Keys)",
-  "Ta Fleur visuelle unique - tes 5 Pôles de Talents Innés",
-  "Document premium d’une quarantaine de pages, entièrement rédigé par mes petites mains d’humaine",
-  "Le cœur de ta vocation ; ta zone de génie, ton fil rouge",
-  "Pistes de métiers alignés à TOI",
-  "Ton nuage de mots-clés",
-  "Tes signaux pour repérer « quand tu nages à contre-courant »",
   <>
-    Livraison digitale par email, au format PDF
+    Ta Fleur visuelle unique, regroupant tes 5 Pôles de Talents Innés
     <br />
-    (Délai minimum de 10 jours)
+    <em>
+      (issue d’une analyse croisée 100% personnalisée de ton Human Design, ta Numérologie et tes
+      Gene Keys)
+    </em>
   </>,
-  <>
-    Coaching individuel d’1h30
-    <br />
-    (1 semaine à 10 jours après réception de ta Fleur)
-  </>,
+  "Ta zone de génie, des idées de métiers ou de directions professionnelles qui peuvent te correspondre, et tes principaux points de vigilance professionnels",
+  "Une séance individuelle d’1h30 en visio pour te dévoiler ta Fleur et l’explorer ensemble",
+  "Ton document PDF de synthèse personnalisé, rédigé par mes soins",
+  "Le replay de notre séance",
 ];
 
 const FAQ = [
   {
-    q: "De quelles informations as-tu besoin pour créer ma Fleur ?",
-    a: "J’ai besoin de ta date de naissance, ton heure de naissance (aussi précise que possible), ton lieu de naissance, ainsi que tes nom-prénoms. Tu les renseignes dans le formulaire que je t’envoie par mail juste après ta commande.",
+    q: "Je ne connais pas du tout le Human Design / la Numérologie / les Gene Keys : est-ce un problème?",
+    a: "Pas du tout! Tu n’as besoin d’aucune connaissance préalable en Human Design, Numérologie ou Gene Keys pour vivre Blooming.\nJe me charge de l’analyse et je te transmets ensuite ce qui en ressort de façon claire, accessible et vulgarisée. Exit le jargon complexe! 😉",
   },
   {
-    q: "Je ne connais pas du tout le Human Design / la Numérologie / les Gene Keys ; est-ce un problème ?",
-    a: "Pas du tout. La Fleur est conçue pour être comprise par tout le monde, même sans aucune connaissance préalable. Tout est expliqué de manière claire et vulgarisée. Exit le jargon complexe ! Tu n’as besoin que de tes données personnelles - je m’occupe du reste.",
+    q: "De quelles informations as-tu besoin pour créer ma Fleur?",
+    a: "J’ai besoin de ta date de naissance, de ton heure de naissance, de ton lieu de naissance, ainsi que de tes nom et prénoms.\nTu renseignes toutes ces informations dans le formulaire que je t’envoie par mail juste après ta commande.",
   },
   {
-    q: "Dans quel délai est-ce que je reçois mon document ?",
-    a: "Ton document personnalisé t’est livré par email dans un délai de minimum 10 jours après réception de tes données. Chaque Fleur est réalisée avec soin et profondeur, par mes petites mains d’humaines.",
-  },
-  {
-    q: "Est-ce vraiment personnalisé, ou est-ce un template ?",
+    q: "Est-ce que Blooming va me dire quel métier je dois faire?",
     a: (
       <>
-        C’est 100% personnalisé. Les 5 pôles de ta Fleur émergent de l’analyse de{" "}
-        <strong className="font-semibold underline">TES</strong> données : ils diffèrent pour
-        chacun, même entre 2 personnes nées le même jour. Il n’existe pas deux Fleurs identiques.
-      </>
-    ),
-  },
-  {
-    q: "Quelle est la différence avec Reconnect ?",
-    a: "La Fleur est un livrable autonome : elle révèle, elle nomme, elle cartographie. C’est une boussole que tu gardes à vie. Reconnect est un Accompagnement individuel sur 3 mois pour incarner, transformer et passer à l’action, et la Fleur de Talents Innés est incluse dans Reconnect.",
-  },
-  {
-    q: "Si j’ai déjà ma Fleur, comment cela se passe si je veux rejoindre Reconnect après ?",
-    a: "Avec ou sans Fleur au préalable ; tu es la·le bienvenu·e dans Reconnect !\nEt ton investissement dans Blooming est loin d’être perdu.\nAprès réception de ta Fleur, tu reçois automatiquement par mail un code de réduction du montant de celle-ci pour l’Accompagnement Reconnect, valable pendant 3 mois.\nTa Fleur devient ainsi la première étape naturelle vers Reconnect, si tu ressens l’appel d’aller plus loin.",
-  },
-  {
-    q: "Puis-je offrir la Fleur à quelqu’un ?",
-    a: (
-      <>
-        Oui, absolument. C’est un cadeau rare et précieux pour quelqu’un qui traverse une transition
-        professionnelle, ou qui cherche à se reconnecter à ce qu’il est vraiment.
-        <br />
-        Dans le formulaire qui te sera envoyé par mail juste après ta commande, tu pourras préciser
-        si la Fleur est pour toi, ou si c’est un cadeau, et choisir si tu préfères un bon cadeau à
-        offrir, ou directement la Fleur{" "}
+        Non. Blooming n’a pas vocation à te donner UNE réponse toute faite ni à décider à ta place
+        de la voie que tu devrais suivre.
+        {"\n"}Ta Fleur vient mettre en lumière tes talents, ta zone de génie et faire émerger des
+        métiers ou directions professionnelles qui peuvent te correspondre.
+        {"\n"}L’idée est de t’apporter des pistes à explorer pour nourrir ta propre réflexion et tes
+        choix.
+        {"\n"}
         <em>
-          (à condition de connaître les informations personnelles de la personne à laquelle tu
-          souhaites offrir la Fleur (date, heure et lieu de naissance + nom/prénoms))
+          Et si tu ressens ensuite le besoin d’être accompagné.e pour transformer ces pistes en
+          choix concrets et remettre du mouvement vers une nouvelle direction, c’est justement le
+          rôle de RECONNECT.
         </em>
-        .
       </>
     ),
+  },
+  {
+    q: "Quand est-ce que je découvre ma Fleur après ma commande?",
+    a: "Une fois ta commande passée, tu peux choisir une date de coaching à partir de 2 semaines après ta commande.\nCe temps me permet de me plonger dans tes données, de croiser ton Human Design, ta Numérologie et tes Gene Keys, et de faire éclore ta Fleur avec toute l’attention qu’elle mérite. 🌸\nC’est ensuite pendant notre séance d’1h30 que je te dévoile ta Fleur, et qu’on l’explore ensemble.",
+  },
+  {
+    q: "Quelle est la différence entre Blooming et RECONNECT?",
+    a: (
+      <>
+        <strong className="font-semibold">
+          Blooming révèle, cartographie, donne des pistes. RECONNECT accompagne la transformation,
+          les choix et le passage à l’action.
+        </strong>
+        {"\n"}Blooming est une exploration ponctuelle et personnalisée de tes talents, de ta zone de
+        génie et des directions professionnelles qui peuvent te correspondre. RECONNECT, lui, est un
+        parcours guidé de 13 semaines pour cheminer plus largement sur ta vie professionnelle et
+        remettre du mouvement vers une direction qui te ressemble.
+        {"\n"}
+        <em>Blooming est d’ailleurs inclus dans la version RECONNECT Premium 1:1.</em>
+      </>
+    ),
+  },
+  {
+    q: "Si j’ai déjà ma Fleur, comment cela se passe si je veux rejoindre RECONNECT après?",
+    a: (
+      <>
+        Blooming et RECONNECT peuvent tout à fait se compléter.
+        {"\n"}Et si, après avoir acheté Blooming, tu décides de rejoindre{" "}
+        <strong className="font-semibold">l’offre RECONNECT Premium 1:1</strong>, dans laquelle ta
+        Fleur de Talents Innés™ est déjà incluse,{" "}
+        <strong className="font-semibold">222€ seront déduits de ton inscription</strong> pour tenir
+        compte de l’analyse et de la Fleur déjà réalisées avec moi.
+        {"\n"}Tu bénéficieras donc de RECONNECT Premium 1:1 à{" "}
+        <strong className="font-semibold">1 666€ au lieu de 1 888€</strong>, tout en conservant bien
+        les 3 séances individuelles prévues dans le parcours.
+        {"\n"}Il te suffira simplement de me contacter avant ton inscription pour que je t’indique
+        comment bénéficier de cette déduction.
+      </>
+    ),
+  },
+  {
+    q: "Puis-je offrir Blooming à quelqu’un?",
+    a: "Oui, absolument. C’est un cadeau précieux pour quelqu’un qui traverse une transition professionnelle, questionne sa voie ou a simplement envie de mieux comprendre ses talents.\nTu pourras préciser dans le formulaire reçu après ta commande qu’il s’agit d’un cadeau, et deux options seront alors possibles :\n♡ recevoir un bon cadeau à lui remettre, pour que la personne renseigne ensuite elle-même ses informations et choisisse la date de sa séance,\n♡ ou préparer toute la surprise de ton côté en me transmettant directement ses informations de naissance ainsi que son adresse mail.\nDans ce deuxième cas, je prendrai ensuite directement le relais avec elle pour la réservation de sa séance. 🎁",
   },
 ];
 
@@ -237,9 +308,9 @@ const FAQ = [
 const POINTS = [
   { id: "pour-qui", label: "Cette Fleur est pour toi si…" },
   { id: "offre", label: "Ce qu’est la Fleur de Talents Innés™" },
-  { id: "exemple", label: "À quoi ressemble une vraie Fleur ?" },
-  { id: "livrables", label: "Ce que tu obtiens" },
-  { id: "processus", label: "Le processus" },
+  { id: "exemple", label: "À quoi ressemble une vraie Fleur?" },
+  { id: "benefices", label: "Ce que Blooming peut t’apporter" },
+  { id: "processus", label: "Comment se déroule Blooming" },
   { id: "temoignages", label: "Les témoignages" },
   { id: "tarif", label: "Faire éclore ta Fleur" },
   { id: "faq", label: "FAQ" },
@@ -290,9 +361,12 @@ export default function BloomingPage() {
 
             <Reveal delay={160}>
               <p className="mx-auto mt-9 max-w-[520px] font-display text-[21px] font-light italic leading-snug text-ink-deep md:text-[27px]">
-                Découvre tes talents innés et ta zone de génie, révélés grâce à une analyse croisée
-                de ton Human Design, ta Numérologie et tes Gene Keys.
+                Révèle tes talents innés et ta zone de génie grâce à une analyse croisée de ton
+                Human Design, ta Numérologie et tes Gene Keys.
               </p>
+              <Cta href="#tarif" className="mt-9">
+                Je veux découvrir ma Fleur ♡
+              </Cta>
             </Reveal>
 
           </div>
@@ -420,10 +494,12 @@ export default function BloomingPage() {
               <p className="max-w-[640px] font-display text-[18px] font-light italic leading-relaxed text-ink md:text-[19px]">
                 (Et, entre nous... tu en as probablement ta claque des outils qui veulent te faire
                 rentrer dans une case, et tu sens bien qu’une analyse sans âme sortie tout droit de
-                ChatGPT ne te révélera jamais qui tu es vraiment&nbsp;!)
+                ChatGPT ne te révélera jamais qui tu es vraiment!)
               </p>
               <p className="mt-7 max-w-[640px] font-display text-[20px] font-semibold leading-relaxed text-ink-deep">
                 Toi tu veux du vrai, de l’authentique, du sur-mesure.
+                <br />
+                Et tu es au bon endroit pour ça. ♡
               </p>
               <Cta href="#tarif" className="mt-10">
                 Je veux donner vie à ma Fleur
@@ -449,24 +525,32 @@ export default function BloomingPage() {
           </h2>
         </Reveal>
 
-        {/* Le texte enchaîne trois sujets distincts — ce que Marion analyse, ce
-            que contient le document, puis la séance d’intégration — que rien ne
-            distinguait typographiquement. On les sépare au filet et à l’espace,
-            sans intertitres : la structure était déjà dans le texte, il suffit
+        {/* Trois temps séparés au filet, sans intertitres : l'analyse, ce
+            qu'elle donne (la Fleur et ce qu'elle éclaire), puis la séance
+            d'exploration. La structure est dans le texte de Marion, il suffit
             de la rendre lisible. */}
         <div className="mt-10 font-display text-[17px] font-light leading-loose text-ink md:text-[18px]">
           <Reveal className="grid items-center gap-8 md:grid-cols-[1fr_250px] md:gap-12">
-            <p>
-              À partir de ta date, heure et lieu de naissance, ainsi que de tes nom-prénoms,
-              j’analyse en profondeur ton schéma de Human Design, et les éléments stratégiques de ta
-              Numérologie et de tes Gene Keys.
-              <br />À travers cette étude croisée, j’épluche minutieusement l’ensemble de tes
-              données, je mets tout à plat, puis je dézoome pour faire émerger tes{" "}
-              <strong className="font-semibold text-ink-deep">
-                5 grands Pôles de Talents Innés
-              </strong>
-              , et avec eux, ta zone de génie unique.
-            </p>
+            <div>
+              <p>
+                À partir de ta date, heure et lieu de naissance, ainsi que de tes nom et prénoms,
+                j’analyse en profondeur ton schéma de Human Design, et les éléments stratégiques de
+                ta Numérologie et de tes Gene Keys.
+              </p>
+              <p className="mt-4">
+                À travers cette étude croisée, j’épluche minutieusement l’ensemble de tes données, je
+                repère les récurrences, les correspondances et les singularités qui se répondent entre
+                elles, puis je relie les points et je dézoome pour faire émerger tes{" "}
+                <strong className="font-semibold text-ink-deep">
+                  5 grands Pôles de Talents Innés
+                </strong>
+                , et avec eux, ta zone de génie unique.
+              </p>
+              <p className="mt-4">
+                Et c’est à partir de ce travail <em>(de fourmi! 😄)</em> que ta Fleur de Talents Innés™
+                prend vie!
+              </p>
+            </div>
 
             <Image
               src="/assets/blooming/fleur-vierge.webp"
@@ -481,15 +565,43 @@ export default function BloomingPage() {
 
           <Reveal>
             <p>
-              <strong className="font-semibold text-ink-deep">Le résultat</strong> : un document
-              premium d’une quarantaine de pages, entièrement rédigé par mes petites mains
-              d’humaine.
-              <br />
-              Tu y retrouves un joli visuel synthétique sous forme de fleur,{" "}
-              <em>où chaque pétale représente un de tes pôles de talents innés</em>, suivi de tout le
-              détail explicatif (et vulgarisé !) pour chacun des 5 pôles.
-              <br />
-              <br />
+              <strong className="font-semibold text-ink-deep">Le résultat :</strong> un visuel sous
+              forme de fleur symbolique, <em>comme une boussole synthétique</em>, où chaque pétale
+              traduit l’un de tes 5 Pôles de Talents Innés à travers un archétype et des mots-clés qui
+              lui sont propres.
+            </p>
+            <p className="mt-6">
+              <strong className="font-semibold text-ink-deep">Et ta Fleur ne s’arrête pas là!</strong>
+            </p>
+            <p className="mt-4">
+              Elle vient également mettre en lumière ta{" "}
+              <strong className="font-semibold text-ink-deep">zone de génie</strong>, faire émerger
+              des <strong className="font-semibold text-ink-deep">directions professionnelles</strong>{" "}
+              qui peuvent te correspondre, et t’aider à repérer ce qui, au contraire, peut te faire
+              naviguer à contre-courant.
+            </p>
+          </Reveal>
+
+          <PetalDivider full className="my-12" />
+
+          <Reveal>
+            <p>
+              <em>
+                Et parce qu’une Fleur sans session d’exploration serait un peu comme une carte au
+                trésor sans légende...
+              </em>
+              Blooming inclut également un{" "}
+              {/* Chiffres alignés : par défaut Cormorant compose des chiffres
+                  elzéviriens, dont le « 1 » et le « 3 » plongent sous la ligne
+                  de base, et « 1h30 » devenait illisible en pleine phrase. */}
+              <strong className="font-semibold text-ink-deep">
+                coaching individuel d’
+                <span className="[font-variant-numeric:lining-nums]">1h30</span>
+              </strong>{" "}
+              pour te dévoiler ta Fleur, l’explorer ensemble et faire les liens avec ta réalité
+              concrète.
+            </p>
+            <p className="mt-6">
               <em>
                 Pas un template, un profil générique, ou un copier-coller déshumanisé issu d’un
                 prompt de l’intelligence artificielle.
@@ -499,79 +611,13 @@ export default function BloomingPage() {
                 Ton empreinte d’humain.e, mise en lumière par une humaine.
               </strong>
             </p>
-
-            <p className="mt-6">
-              Et ta Fleur ne s’arrête pas là !
-              <br />
-              Le document inclut également :
-            </p>
-
-            {/* Les trois inclusions sortent du flux : c’est le passage le plus
-                concret de la section, celui qu’on vient chercher. Noyé entre
-                deux paragraphes, il se lisait comme le reste. */}
-            <ul className="mt-6 flex flex-col gap-4 rounded-[20px] border border-line bg-white/70 px-6 py-6 text-[16px] md:px-8 md:py-7 md:text-[17px]">
-              {[
-                <>des pistes concrètes de métiers alignés à qui tu es vraiment,</>,
-                <>
-                  les signaux intérieurs <em>- ressentis, comportements, émotions -</em> qui
-                  t’indiquent quand tu fais fausse route,
-                </>,
-                <>
-                  et les configurations externes{" "}
-                  <em>- contextes, environnements, conditions de travail -</em> qui sont
-                  contre-nature pour toi, et qui sont donc à éviter.
-                </>,
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 leading-relaxed">
-                  <Petal className="mt-1.5 h-3 w-3 flex-none text-turquoise" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <PetalDivider full className="my-12" />
-
-          <Reveal>
-            <p>
-              Et parce qu’une Fleur sans session d’intégration, c’est comme une carte au trésor sans
-              légende... l’offre inclut également un{" "}
-              {/* La durée passe en sans-serif : les chiffres de Cormorant sont
-                  fins et bas sur la ligne, « 1h30 » y devient illisible en
-                  plein milieu d'une phrase. */}
-              <strong className="font-semibold text-ink-deep">
-                coaching individuel d’
-                {/* Même police que la phrase, mais chiffres alignés : par
-                    défaut Cormorant compose des chiffres elzéviriens, dont le
-                    « 1 » et le « 3 » plongent sous la ligne de base comme des
-                    minuscules. D'où le « 1h30 » illisible. */}
-                <span className="[font-variant-numeric:lining-nums]">1h30</span>
-              </strong>
-              .
-              <br />
-              <em>
-                On explore ensemble ce qui a émergé pour toi, je réponds à tes questions, et on
-                ancre tout ça dans ta réalité concrète.
-              </em>
-            </p>
           </Reveal>
         </div>
 
         <Reveal className="pt-12 text-center">
-          <p className="font-display text-[18px] font-light italic leading-loose text-ink md:text-[20px]">
-            ~ Tout pour te ramener à qui tu es vraiment, et laisser éclore ce qui sommeille en toi
-            depuis toujours. ~
-          </p>
-          <div className="pt-9">
-            <Cta href="#tarif">Je veux mon empreinte unique</Cta>
-          </div>
+          <Cta href="#tarif">Je veux mon empreinte unique</Cta>
         </Reveal>
       </VenteSection>
-
-      <CitationBand tone="soft">
-        «&nbsp;Parce que certaines fleurs n’attendent qu’une chose : qu’on leur donne enfin la
-        lumière pour s’épanouir.&nbsp;»
-      </CitationBand>
 
       {/* ---------------------------------------------------------------- */}
       {/* EXEMPLE                                                          */}
@@ -586,15 +632,13 @@ export default function BloomingPage() {
             <h2 className="mt-6 font-display text-[30px] font-light leading-[1.15] text-ink-deep md:text-[42px]">
               À quoi ressemble
               <br />
-              <em className="italic text-ink">une vraie Fleur ?</em>
+              <em className="italic text-ink">une vraie Fleur?</em>
             </h2>
             <p className="mt-7 font-display text-[17px] font-light leading-loose text-ink md:text-[18px]">
-              Voici la Fleur d’Émilie, réalisée dans le cadre de son Accompagnement Reconnect. Cinq
-              pôles uniques, nés de son schéma de Human Design, de ses Gene Keys et de sa
-              Numérologie.
+              Voici la Fleur d’Émilie, réalisée dans le cadre de RECONNECT Premium 1:1.
             </p>
             <p className="mt-4 font-display text-[17px] font-light italic leading-loose text-ink md:text-[18px]">
-              ~ La tienne ne ressemblera jamais à la sienne. C’est exactement ça, la magie. ~
+              ~ La tienne ne ressemblera jamais à la sienne. Et c’est exactement ça, la magie. ~
             </p>
           </Reveal>
 
@@ -613,17 +657,22 @@ export default function BloomingPage() {
         </div>
       </VenteSection>
 
+      {/* Placée après l'exemple à la demande de Marion : la phrase répond à la
+          Fleur d'Émilie qu'on vient de voir. */}
+      <CitationBand tone="soft">
+        «&nbsp;Parce que certaines fleurs n’attendent qu’une chose : qu’on leur donne enfin la
+        lumière pour s’épanouir.&nbsp;»
+      </CitationBand>
+
       {/* ---------------------------------------------------------------- */}
-      {/* LIVRABLES                                                        */}
+      {/* BÉNÉFICES                                                        */}
       {/* ---------------------------------------------------------------- */}
-      {/* Fond turquoise clair, repris de l'ancienne strate « Le document » : le
-          violet profond tranchait trop avec le reste de la page. Les cartes
-          passent donc en version claire, et le visuel du document, qui portait
-          cette strate supprimée, les rejoint ici. */}
-      <VenteSection id="livrables" bg="turquoise" wide decor={<PetalField />}>
+      {/* Remplace l'ancienne strate « Ce que tu obtiens » : mêmes cartes, même
+          fond turquoise clair, mais centrées sur ce que la Fleur change. */}
+      <VenteSection id="benefices" bg="turquoise" wide decor={<PetalField />}>
         <SectionHeader
-          eyebrow="Ce que tu obtiens"
-          title="Un document pensé dans les moindres détails, et une session d’intégration pour aller plus loin."
+          eyebrow="Ce que Blooming peut t’apporter"
+          title="Qu’est-ce que ta Fleur de Talents Innés™ peut changer pour TOI concrètement?"
         />
 
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
@@ -649,7 +698,7 @@ export default function BloomingPage() {
             />
           </Reveal>
 
-          <LivrablesGrid livrables={LIVRABLES} />
+          <LivrablesGrid livrables={BENEFICES} />
         </div>
 
         <Reveal className="mt-14 text-center">
@@ -662,13 +711,17 @@ export default function BloomingPage() {
       {/* ---------------------------------------------------------------- */}
       {/* Fond lavande récupéré de la strate du calculateur, supprimée. */}
       <VenteSection id="processus" bg="lavender" wide>
-        <SectionHeader eyebrow="Le processus" title="Simple. Fluide. Impactant." />
+        <SectionHeader
+          eyebrow="Comment se déroule Blooming"
+          title="De ta commande à ta Fleur, voici comment se passe concrètement l’expérience."
+        />
         <div className="mt-16">
           <ProcessusSteps etapes={ETAPES} />
         </div>
 
-        {/* La fin du parcours en images, comme sur Soin énergétique : le
-            coaching d'intégration, puis la Fleur affichée chez soi. */}
+        {/* La fin du parcours en images, comme sur Soin énergétique : la
+            séance d'exploration (étape 3), puis la Fleur affichée chez soi
+            (étape 4). */}
         <div className="mx-auto mt-16 grid max-w-[980px] gap-8 md:grid-cols-2 md:gap-6">
           <Reveal as="figure">
             <Image
@@ -679,7 +732,7 @@ export default function BloomingPage() {
               className="h-auto w-full rounded-[18px] shadow-card"
             />
             <figcaption className="mt-3 text-center font-display text-[16px] italic text-ink">
-              Notre coaching d’intégration, en visio
+              On explore ta Fleur ensemble, en visio
             </figcaption>
           </Reveal>
           <Reveal as="figure" delay={80}>
@@ -768,9 +821,42 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
             </dl>
           </Reveal>
 
-          <Reveal className="mt-14 text-center">
-            <Cta href="#tarif">Waouh, moi aussi je veux ma Fleur</Cta>
-          </Reveal>
+          <PetalDivider full className="my-14" />
+
+          {/* Maryline, portrait à droite pour alterner avec Émilie. Ses deux
+              temps reprennent les petites capitales du contexte d'Émilie. */}
+          <TemoignageHero
+            photo="/assets/temoignages/Maryline-blooming.webp"
+            nom="Maryline"
+            inverse
+            texte={
+              <>
+                <span className="block font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+                  Retour à chaud
+                </span>
+                {`
+Très éclairant.
+
+C’est bluffant car ça reprend pas mal de sensations et d’impressions que j’avais déjà.
+
+Ça légitimise aussi certains aspects différents de ce que la société projette comme n’étant pas dans la norme. Et perso ça me fait du bien.
+
+C’est boostant aussi. Ça donne envie d’explorer les parties méconnues et donc de se challenger...tout ce que j’adore (même si j’ai aussi de l’appréhension 😁)
+`}
+                <span className="mt-6 block font-body text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+                  Retour à froid
+                </span>
+                {`
+Déjà, c'est bon pour mon estime de moi. 😎
+
+Ça fait beaucoup de bien de comprendre qu’en réalité, certaines choses ne sont pas bonnes pour nous parce que simplement nous sommes différents du moule dans lequel les employeurs veulent nous mettre (en tout cas dans mon cas) et je ne résiste pas par esprit de révolution ou de contradiction, mais parce que simplement mes valeurs et ce qui est important pour moi ne sont pas respectés...
+
+Petite note légère : quand je lis le contenu de ma fleur de talents, j’ai envie de m’engager 😊
+
+Quoiqu’il en soit, cela me confirme et me conforte dans le choix d’une reconversion vers une voie qui fait sens pour moi 🥰`}
+              </>
+            }
+          />
         </div>
       </VenteSection>
 
@@ -778,7 +864,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
       {/* TARIF                                                            */}
       {/* ---------------------------------------------------------------- */}
       <VenteSection id="tarif" wide decor={<PetalField dense />}>
-        <SectionHeader eyebrow="Faire éclore ta Fleur" title="Prêt·e à découvrir tes Talents Innés ?" />
+        <SectionHeader eyebrow="Faire éclore ta Fleur" title="Prêt·e à découvrir tes Talents Innés?" />
         <div className="mt-14">
           <PricingCard
             logo="/assets/blooming/logo-blanc.webp"
@@ -787,7 +873,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
             inclus={INCLUS}
             href={COMMANDE}
             libelleCta="Je commande ma Fleur"
-            note="Paiement sécurisé · Accès à vie"
+            note="Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité."
           />
         </div>
       </VenteSection>
@@ -804,30 +890,39 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
       {/* ---------------------------------------------------------------- */}
       <VenteSection bg="lavender" wide>
         <BridgeOffre
-          eyebrow="Et après ?"
+          eyebrow="Et après?"
           avant="Ta Fleur révèle."
           apres={
             <>
-              <em className="italic text-ink">Reconnect</em> transforme.
+              <em className="italic text-ink">RECONNECT</em> transforme.
             </>
           }
           paragraphes={[
-            "Ta Fleur de Talents Innés™ te donne ta boussole ; elle met en lumière tes forces, révèle ta zone de génie, et te donne enfin les mots pour définir tes dons.",
+            "Ta Fleur de Talents Innés™ te donne ta boussole ; elle met en lumière tes forces, révèle ta zone de génie, et fait émerger des directions professionnelles qui pourraient te correspondre.",
             <>
-              Si tu veux aller plus loin - incarner vraiment tes talents, les aligner avec ta vie
-              pro, dépasser tes peurs, et passer à l’action -{" "}
-              <strong className="font-semibold text-ink-deep">Reconnect</strong> est
-              l’Accompagnement qui suit naturellement.
+              Et si tu ressens ensuite le besoin d’aller plus loin, d’incarner vraiment tes talents,
+              de les aligner avec ta vie pro, de dépasser tes peurs et de passer à l’action :{" "}
+              <strong className="font-semibold text-ink-deep">
+                RECONNECT est le chemin qui suit naturellement.
+              </strong>
             </>,
           ]}
           offre={{
-            eyebrow: "Accompagnement Premium · 3 mois",
+            eyebrow: "Ton Parcours Guidé de Transformation Professionnelle",
             logo: "/assets/logo-reconnect.webp",
-            logoAlt: "Reconnect",
-            texte:
-              "Un Accompagnement individuel profond pour aligner ta vie professionnelle à qui tu es vraiment, en utilisant ton Human Design comme carte de navigation.",
+            logoAlt: "RECONNECT",
+            texte: (
+              <>
+                13 semaines pour te reconnecter à toi, clarifier ce qui a vraiment du sens pour toi
+                et remettre du mouvement vers une vie professionnelle qui te ressemble.
+                <em className="mt-3 block">
+                  Un même parcours, trois façons de le vivre, selon ce dont tu as besoin
+                  aujourd’hui.
+                </em>
+              </>
+            ),
             href: EXTERNAL.offre.reconnect,
-            libelle: "En savoir plus",
+            libelle: "Je découvre RECONNECT",
           }}
         />
       </VenteSection>
@@ -846,7 +941,7 @@ Je vais l’imprimer en grand je pense tellement elle est belle 😁 !`}
             Tes talents n’attendent que d’être <em className="italic text-ink">vus.</em>
           </h2>
           <p className="mx-auto mt-6 max-w-[440px] font-display text-[18px] font-light italic leading-snug text-ink">
-            Et si c’était le moment de te dévoiler&nbsp;tel·le que tu es vraiment&nbsp;?
+            Et si c’était le moment de mettre enfin en lumière tout ce que tu portes déjà en toi?
           </p>
           <Cta href={COMMANDE} external className="mt-10">
             Je veux ma Fleur de Talents Innés™
