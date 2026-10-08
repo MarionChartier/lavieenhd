@@ -667,13 +667,20 @@ export default function RevealPage() {
           as="figure"
           className="mx-auto mt-16 grid max-w-[760px] items-center gap-8 text-center md:grid-cols-[200px_1fr] md:gap-10 md:text-left"
         >
-          <Image
-            src="/assets/reveal/boussole-papier.webp"
-            alt="La Boussole REVEAL imprimée"
-            width={1122}
-            height={1402}
-            className="mx-auto h-auto w-[180px] -rotate-2 rounded-[14px] border-4 border-white shadow-card md:w-full"
-          />
+          {/* Légende en <p> : la figure a déjà sa figcaption, celle de la
+              citation. */}
+          <div className="mx-auto w-[180px] md:w-full">
+            <Image
+              src="/assets/reveal/boussole-papier.webp"
+              alt="La Boussole REVEAL imprimée"
+              width={1122}
+              height={1402}
+              className="h-auto w-full -rotate-2 rounded-[14px] border-4 border-white shadow-card"
+            />
+            <p className="mt-3 text-center font-display text-[15px] italic leading-snug text-ink-soft">
+              Ta Boussole est livrée en PDF, à imprimer si tu le souhaites
+            </p>
+          </div>
           <div>
             <blockquote className="font-display text-[19px] italic leading-relaxed text-ink-deep md:text-[21px]">
               &quot;Je l’ai imprimé pour l’avoir à portée de main...ton support est quand même
