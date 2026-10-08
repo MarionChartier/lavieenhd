@@ -434,9 +434,21 @@ export default function ThePlaceToBePage() {
             </Reveal>
           </div>
 
-          <Reveal delay={120} className="relative pb-12 lg:pt-14 lg:pb-28">
-            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 shadow-simu backdrop-blur-sm md:p-8 lg:ml-0">
+          <Reveal delay={120} className="relative pb-20 sm:pb-28 lg:pt-14 lg:pb-36">
+            {/* Pied de carte allongé : le mockup a un fond plein, il ne doit
+                mordre que sur ce blanc, jamais sur le verbatim. */}
+            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 pb-12 shadow-simu backdrop-blur-sm sm:pb-14 md:p-8 md:pb-16 lg:ml-0">
               <PetalHalo />
+              {/* Le Guide posé à cheval sur l’angle inférieur droit de la
+                  carte, comme sur BODY Bloom. */}
+              <Image
+                src="/assets/place-to-be/guide-tablette.webp"
+                alt="Le Guide d’Exploration de ton Environnement HD Grottes affiché sur une tablette"
+                width={1448}
+                height={1086}
+                priority
+                className="pointer-events-none absolute -right-4 -bottom-[64px] z-20 h-auto w-[130px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:-right-8 sm:-bottom-[90px] sm:w-[180px] lg:-right-[80px] lg:-bottom-[122px] lg:w-[240px]"
+              />
 
               <figcaption>
                 <span className="flex items-center gap-3.5">
@@ -625,13 +637,20 @@ export default function ThePlaceToBePage() {
               </p>
             </div>
 
-            <Image
-              src="/assets/place-to-be/mockup-laptop-cadre.webp"
-              alt="Le Guide d’Exploration de ton Environnement HD sur ordinateur"
-              width={1080}
-              height={814}
-              className="mx-auto h-auto w-[240px] rounded-[14px] shadow-card md:w-full"
-            />
+            {/* Les Guides sont montrés imprimés : la légende rappelle que le
+                livrable est un PDF, pour que l'image ne promette pas un livre. */}
+            <figure className="mx-auto w-[240px] md:w-full">
+              <Image
+                src="/assets/place-to-be/guides-papier.webp"
+                alt="Les 6 Guides d’Exploration de ton Environnement HD, imprimés"
+                width={1448}
+                height={1086}
+                className="h-auto w-full rounded-[14px] shadow-card"
+              />
+              <figcaption className="mt-3 text-center font-display text-[15px] italic leading-snug text-ink-soft">
+                Un Guide par Environnement, livré en PDF, à imprimer si tu le souhaites
+              </figcaption>
+            </figure>
           </Reveal>
 
           <Reveal>
@@ -703,24 +722,26 @@ export default function ThePlaceToBePage() {
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-10">
           {/* Deux visuels empilés, comme sur Blooming et INSIDE : la colonne de
               cartes est bien plus haute qu'un seul. Le second est réservé aux
-              deux colonnes, empilé il rallongerait la page avant les cartes. */}
+              deux colonnes, empilé il rallongerait la page avant les cartes.
+              Ce sont les mockups du hero et de l'offre : Marion n'en a fourni
+              que deux, et les anciens montraient une couverture périmée. */}
           <div className="mx-auto flex w-full max-w-[520px] flex-col gap-6">
             <Reveal>
               <Image
-                src="/assets/place-to-be/mockup-phone.webp"
-                alt="Le Guide d’Exploration de ton Environnement HD sur téléphone"
-                width={1000}
-                height={1000}
+                src="/assets/place-to-be/guide-tablette.webp"
+                alt="Le Guide d’Exploration de ton Environnement HD Grottes affiché sur une tablette"
+                width={1448}
+                height={1086}
                 className="h-auto w-full"
                 style={FONDU_BORDS}
               />
             </Reveal>
             <Reveal delay={80} className="hidden lg:block">
               <Image
-                src="/assets/place-to-be/mockup-pierre.webp"
-                alt="Le Guide d’Exploration de ton Environnement HD sur un téléphone posé contre une pierre"
-                width={1080}
-                height={720}
+                src="/assets/place-to-be/guides-papier.webp"
+                alt="Les 6 Guides d’Exploration de ton Environnement HD, imprimés"
+                width={1448}
+                height={1086}
                 className="h-auto w-full"
                 style={FONDU_BORDS}
               />
