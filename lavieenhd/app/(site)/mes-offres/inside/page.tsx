@@ -604,20 +604,20 @@ export default function InsidePage() {
             </Reveal>
           </div>
 
-          <Reveal delay={120} className="relative pb-12 lg:pt-14 lg:pb-28">
-            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 shadow-simu backdrop-blur-sm md:p-8 lg:ml-0">
+          <Reveal delay={120} className="relative pb-24 sm:pb-32 lg:pt-14 lg:pb-40">
+            {/* Pied de carte allongé : le mockup a un fond plein, il ne doit
+                mordre que sur ce blanc, jamais sur le verbatim. */}
+            <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 pb-12 shadow-simu backdrop-blur-sm sm:pb-14 md:p-8 md:pb-16 lg:ml-0">
               <PetalHalo />
-              {/* Le Guide sur tablette, à cheval sur l'angle inférieur droit.
-                  Détourée, avec un fondu léger là où les bras sortent du
-                  cadre. */}
+              {/* Le Guide sur tablette, à cheval sur l'angle inférieur droit,
+                  comme sur BODY Bloom. */}
               <Image
-                src="/assets/inside/mockup-ipad-detoure.webp"
-                alt="Le Guide d’Immersion INSIDE sur tablette"
-                width={1200}
-                height={1200}
+                src="/assets/inside/guide-tablette.webp"
+                alt="Le Guide d’Immersion INSIDE affiché sur une tablette"
+                width={1122}
+                height={1402}
                 priority
-                className="pointer-events-none absolute -right-6 -bottom-7 z-20 h-auto w-[120px] sm:-right-10 sm:-bottom-10 sm:w-[170px] lg:-right-[110px] lg:-bottom-[110px] lg:w-[230px]"
-                style={FONDU_BORDS}
+                className="pointer-events-none absolute -right-4 -bottom-[92px] z-20 h-auto w-[100px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:-right-8 sm:-bottom-[128px] sm:w-[140px] lg:-right-[80px] lg:-bottom-[166px] lg:w-[180px]"
               />
 
               <figcaption>
@@ -746,13 +746,20 @@ export default function InsidePage() {
               </p>
             </div>
 
-            <Image
-              src="/assets/inside/apercu-page.webp"
-              alt="Aperçu de la couverture du Guide d’Immersion INSIDE"
-              width={759}
-              height={1200}
-              className="mx-auto h-auto w-[210px] rounded-[14px] shadow-card md:w-full"
-            />
+            {/* Le Guide est montré imprimé : la légende rappelle que le
+                livrable est un PDF, pour que l'image ne promette pas un livre. */}
+            <figure className="mx-auto w-[210px] md:w-full">
+              <Image
+                src="/assets/inside/guide-papier.webp"
+                alt="Le Guide d’Immersion INSIDE, imprimé"
+                width={1122}
+                height={1402}
+                className="h-auto w-full rounded-[14px] shadow-card"
+              />
+              <figcaption className="mt-3 text-center font-display text-[15px] italic leading-snug text-ink-soft">
+                Ton Guide est livré en PDF, à imprimer si tu le souhaites
+              </figcaption>
+            </figure>
           </Reveal>
 
           <PetalDivider full className="my-12" />
@@ -878,29 +885,29 @@ export default function InsidePage() {
           title="Qu’est-ce que ce Guide et son coaching peuvent changer pour TOI concrètement?"
         />
 
-        {/* Colonne des visuels élargie par rapport à Blooming : les mockups
-            d'INSIDE sont carrés et détourés, à la largeur de Blooming ils
-            paraissaient perdus à côté des cartes. */}
+        {/* Visuels plafonnés à 410px : deux portraits 4:5 empilés plus larges
+            dépassaient nettement la hauteur des cartes. */}
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-10">
-          {/* Sans cadre : la tablette est détourée, et les deux visuels
-              s'effacent légèrement sur les bords. */}
-          <div className="mx-auto flex w-full max-w-[520px] flex-col items-center">
+          {/* Le coaching d'abord, seul visible en mobile : c'est ce qui
+              distingue INSIDE d'un Guide seul. Les deux visuels s'effacent
+              légèrement sur les bords. */}
+          <div className="mx-auto flex w-full max-w-[410px] flex-col items-center">
             <Reveal className="w-full">
               <Image
-                src="/assets/inside/mockup-ipad-detoure.webp"
-                alt="Le Guide d’Immersion INSIDE consulté sur tablette"
-                width={1200}
-                height={1200}
+                src="/assets/inside/coaching.webp"
+                alt="Le Guide d’Immersion INSIDE sur tablette, pendant un coaching en visio"
+                width={1122}
+                height={1402}
                 className="h-auto w-full"
                 style={FONDU_BORDS}
               />
             </Reveal>
-            <Reveal delay={80} className="-mt-10 hidden w-full lg:block">
+            <Reveal delay={80} className="mt-6 hidden w-full lg:block">
               <Image
-                src="/assets/inside/mockup-laptop.webp"
-                alt="Le Guide d’Immersion INSIDE sur ordinateur"
-                width={1200}
-                height={1200}
+                src="/assets/inside/guide-tablette.webp"
+                alt="Le Guide d’Immersion INSIDE affiché sur une tablette"
+                width={1122}
+                height={1402}
                 className="h-auto w-full"
                 style={FONDU_BORDS}
               />
