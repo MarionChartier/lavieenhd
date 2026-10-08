@@ -318,6 +318,36 @@ export default function SoinEnergetiquePage() {
         <div className="mt-16">
           <ProcessusSteps etapes={ETAPES} />
         </div>
+
+        {/* Les deux côtés du Soin, sous les étapes 2 et 3 qu'ils illustrent.
+            Colonnes au prorata des formats (4:3 et 4:5) : les deux images
+            tombent à la même hauteur sans rien recadrer du diptyque. */}
+        <div className="mx-auto mt-16 grid max-w-[980px] gap-8 md:grid-cols-[5fr_3fr] md:gap-6">
+          <Reveal as="figure">
+            <Image
+              src="/assets/soin/reception.webp"
+              alt="Une personne allongée les yeux fermés et une autre qui peint, au calme, à la lueur des bougies"
+              width={1448}
+              height={1086}
+              className="h-auto w-full rounded-[18px] shadow-card"
+            />
+            <figcaption className="mt-3 text-center font-display text-[16px] italic text-ink">
+              Toi, en mode réception
+            </figcaption>
+          </Reveal>
+          <Reveal as="figure" delay={80}>
+            <Image
+              src="/assets/soin/envoi.webp"
+              alt="Une femme de dos, bras ouverts, dans une pièce éclairée de bougies"
+              width={1122}
+              height={1402}
+              className="h-auto w-full rounded-[18px] shadow-card"
+            />
+            <figcaption className="mt-3 text-center font-display text-[16px] italic text-ink">
+              Moi, en position de transmettrice
+            </figcaption>
+          </Reveal>
+        </div>
       </VenteSection>
 
       {/* ---------------------------------------------------------------- */}
