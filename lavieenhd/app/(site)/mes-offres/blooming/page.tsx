@@ -628,35 +628,24 @@ export default function BloomingPage() {
 
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           {/* Deux visuels empilés : la colonne de cartes est bien plus haute
-              que le seul aperçu, qui laissait un grand vide sous lui. Le second
-              est plus petit et détouré, il ne concurrence pas le premier. */}
+              que le seul aperçu, qui laissait un grand vide sous lui. Les deux
+              mockups du document de Marion. */}
           <Reveal className="mx-auto flex w-full max-w-[320px] flex-col items-center gap-8 lg:sticky lg:top-28">
             <Image
-              src="/assets/blooming/mockup-1.webp"
-              alt="Aperçu de la Fleur de Talents Innés sur téléphone"
-              width={1080}
-              height={1920}
+              src="/assets/blooming/fleur-tablette.webp"
+              alt="La Fleur de Talents Innés™ sur tablette, entourée de pages du document"
+              width={1122}
+              height={1402}
               className="h-auto w-full rounded-[18px] shadow-simu"
             />
-            {/* Fondu en bas et vers le coin bas-gauche : l'avant-bras s'arrête
-                net sur le fond de la strate. Les deux dégradés sont croisés
-                (`intersect`), chacun n'efface que sa zone. */}
             <Image
-              src="/assets/blooming/mockup-2.webp"
-              alt="La Fleur de Talents Innés consultée sur un téléphone, en main"
-              width={1080}
-              height={1920}
+              src="/assets/blooming/fleur-tablette-pages.webp"
+              alt="La Fleur de Talents Innés™ sur tablette, devant deux pages du document"
+              width={1122}
+              height={1402}
               // Réservée aux deux colonnes : empilée, elle n'a plus de vide à
               // combler et rallonge la page d'un écran avant les cartes.
-              className="hidden h-auto w-[72%] lg:block"
-              style={{
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 74%, transparent 100%), linear-gradient(to bottom left, black 76%, transparent 100%)",
-                maskImage:
-                  "linear-gradient(to bottom, black 74%, transparent 100%), linear-gradient(to bottom left, black 76%, transparent 100%)",
-                WebkitMaskComposite: "source-in",
-                maskComposite: "intersect",
-              }}
+              className="hidden h-auto w-full rounded-[18px] shadow-simu lg:block"
             />
           </Reveal>
 
@@ -676,6 +665,35 @@ export default function BloomingPage() {
         <SectionHeader eyebrow="Le processus" title="Simple. Fluide. Impactant." />
         <div className="mt-16">
           <ProcessusSteps etapes={ETAPES} />
+        </div>
+
+        {/* La fin du parcours en images, comme sur Soin énergétique : le
+            coaching d'intégration, puis la Fleur affichée chez soi. */}
+        <div className="mx-auto mt-16 grid max-w-[980px] gap-8 md:grid-cols-2 md:gap-6">
+          <Reveal as="figure">
+            <Image
+              src="/assets/blooming/coaching.webp"
+              alt="Un coaching Blooming en visio, la Fleur de Talents Innés™ partagée à l’écran"
+              width={1448}
+              height={1086}
+              className="h-auto w-full rounded-[18px] shadow-card"
+            />
+            <figcaption className="mt-3 text-center font-display text-[16px] italic text-ink">
+              Notre coaching d’intégration, en visio
+            </figcaption>
+          </Reveal>
+          <Reveal as="figure" delay={80}>
+            <Image
+              src="/assets/blooming/fleur-imprimee.webp"
+              alt="Une Fleur de Talents Innés™ imprimée et encadrée au-dessus d’un bureau"
+              width={1448}
+              height={1086}
+              className="h-auto w-full rounded-[18px] shadow-card"
+            />
+            <figcaption className="mt-3 text-center font-display text-[16px] italic text-ink">
+              Ta Fleur, imprimée et affichée comme une boussole
+            </figcaption>
+          </Reveal>
         </div>
       </VenteSection>
 
