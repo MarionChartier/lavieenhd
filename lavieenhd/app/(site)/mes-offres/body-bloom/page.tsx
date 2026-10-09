@@ -7,7 +7,6 @@ import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
 import { VenteTheme } from "@/components/sections/vente/VenteTheme";
 import {
-  FONDU_BORDS,
   Petal,
   PetalDivider,
   PetalField,
@@ -665,25 +664,32 @@ export default function BodyBloomPage() {
           title="Qu’est-ce que ce Guide peut changer pour toi, concrètement?"
         />
 
-        <div className="mt-14 grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-          {/* Une seule photo d'ambiance : les deux mockups du Guide sont déjà
-              dans le hero et l'offre. Colonne plus étroite que les cartes,
-              comme sur Blooming : pleine moitié, la photo prenait le pas sur
-              le texte. */}
-          <div className="mx-auto flex w-full max-w-[380px] flex-col gap-6">
-            <Reveal>
-              <Image
-                src="/assets/body-bloom/lavande.webp"
-                alt="Champ de lavande"
-                width={1000}
-                height={1250}
-                className="h-auto w-full"
-                style={FONDU_BORDS}
-              />
-            </Reveal>
+        {/* Le Guide au centre, comme point focal, les deux premiers bénéfices
+            de part et d'autre, et le troisième, porté par le mot d'une
+            lectrice, en large dessous. Sur mobile, le Guide passe en tête. */}
+        {/* Les deux cartes latérales s'étirent sur la hauteur de la rangée
+            (`items-stretch` puis `h-full` jusqu'à la carte) : elles font la
+            même hauteur, le Guide reste centré entre elles. */}
+        <div className="mt-14 grid items-center gap-8 lg:grid-cols-[1fr_360px_1fr] lg:items-stretch lg:gap-10">
+          <Reveal className="relative mx-auto w-full max-w-[360px] lg:order-2 lg:self-center">
+            <PetalHalo />
+            <Image
+              src="/assets/body-bloom/guide-tablette.webp"
+              alt="Le Guide d’Initiation à ton Intelligence Digestive affiché sur une tablette"
+              width={1254}
+              height={1254}
+              className="relative h-auto w-full rounded-[28px] border-[6px] border-white shadow-simu"
+            />
+          </Reveal>
+          <div className="lg:order-1 lg:[&>div]:h-full">
+            <LivrablesGrid livrables={[BENEFICES[0]]} />
           </div>
-
-          <LivrablesGrid livrables={BENEFICES} />
+          <div className="lg:order-3 lg:[&>div]:h-full">
+            <LivrablesGrid livrables={[BENEFICES[1]]} />
+          </div>
+        </div>
+        <div className="mx-auto mt-5 max-w-[1080px] lg:mt-10">
+          <LivrablesGrid livrables={[BENEFICES[2]]} />
         </div>
 
         <Reveal className="mt-14 text-center">
