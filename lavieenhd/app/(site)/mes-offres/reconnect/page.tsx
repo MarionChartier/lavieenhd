@@ -7,7 +7,7 @@ import { type Onglet, Onglets } from "@/components/sections/vente/Onglets";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
 import { VenteTheme } from "@/components/sections/vente/VenteTheme";
-import { PetalDivider, PetalField, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
+import { Petal, PetalDivider, PetalField, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
 import {
   CitationBand,
   Cta,
@@ -30,14 +30,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * Couleur et forme propres à RECONNECT. Provisoires tant que Marion ne les a
- * pas validées : le vert d'eau du lotus de son logo, et le pétale, que la page
- * partage avec Blooming (la Fleur est incluse dans Premium 1:1).
+ * Couleur et forme propres à RECONNECT : le violet du mot RECONNECT de son
+ * logo, et le pétale, que la page partage avec Blooming (la Fleur est incluse
+ * dans Premium 1:1). L'accent reste clair, il est posé sur des fonds sombres
+ * (prix, boutons) ; les textes sur fond clair prennent le violet du logo.
  */
 const THEME = {
-  accent: "#9fd0c7",
-  accentSoft: "#e3f2ef",
-  accentTexte: "#3f8077",
+  accent: "#c4b6d6",
+  accentSoft: "#efeaf4",
+  accentTexte: "#746588",
   forme: "petale",
 } as const;
 
@@ -298,15 +299,6 @@ const EN_SIMPLE = [
   },
 ];
 
-/** Intertitre d'un bloc dans le détail des formules. */
-function SousTitre({ children }: { children: ReactNode }) {
-  return (
-    <h4 className="font-display text-[19px] font-semibold leading-snug text-ink-deep md:text-[21px]">
-      {children}
-    </h4>
-  );
-}
-
 /** Mot de cliente détaché, en fin de bloc. */
 function MiniPreuve({ citation, source }: { citation: string; source: string }) {
   return (
@@ -319,94 +311,149 @@ function MiniPreuve({ citation, source }: { citation: string; source: string }) 
   );
 }
 
-/** Carte d'un onglet de formule. */
-function PanneauFormule({ children }: { children: ReactNode }) {
+/** Carte d'un onglet de formule : l'accroche, puis ce qui est inclus en
+ *  pastilles, puis un bloc par composante. Avant, tout s'enchaînait en une
+ *  seule colonne de paragraphes et on ne voyait plus ce qui relevait de quoi. */
+function PanneauFormule({
+  accroche,
+  inclus,
+  noteInclus,
+  children,
+}: {
+  accroche: ReactNode;
+  inclus: string[];
+  noteInclus?: ReactNode;
+  children?: ReactNode;
+}) {
   return (
-    <div className="flex flex-col gap-4 rounded-[28px] border border-line bg-white/90 px-6 py-8 font-display text-[17px] font-light leading-relaxed text-ink-deep shadow-card md:px-10 md:py-10 md:text-[18px]">
+    <div className="rounded-[28px] border border-line bg-white/90 px-6 py-8 font-display text-[17px] font-light leading-relaxed text-ink-deep shadow-card md:px-10 md:py-10 md:text-[18px]">
+      <p className="text-center text-[19px] md:text-[21px]">{accroche}</p>
+      <div className="mt-6 flex flex-wrap justify-center gap-2">
+        {inclus.map((item) => (
+          <span
+            key={item}
+            className="rounded-full border border-accent/70 bg-accent-soft/60 px-4 pt-[8px] pb-[6px] font-body text-[11px] uppercase leading-none tracking-[0.12em] text-ink-deep"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+      {noteInclus && <p className="mt-3 text-center text-[15px] text-ink-soft">{noteInclus}</p>}
       {children}
     </div>
   );
 }
 
-const EXPLORATIONS = (
-  <p className="rounded-[16px] border border-accent/60 px-5 py-3">
-    👑 <strong className="font-semibold">Les 13 Explorations Guidées RECONNECT</strong>
-  </p>
-);
+/** Une composante de la formule, séparée de la précédente par un filet. */
+function Bloc({ titre, children }: { titre: ReactNode; children: ReactNode }) {
+  return (
+    <section className="mt-9 border-t border-line pt-8">
+      <h4 className="font-display text-[20px] font-semibold leading-snug text-ink-deep md:text-[22px]">
+        {titre}
+      </h4>
+      <div className="mt-4 flex flex-col gap-4">{children}</div>
+    </section>
+  );
+}
+
+/** La phrase à retenir d'un bloc, en exergue sur un filet d'accent. */
+function ARetenir({ children }: { children: ReactNode }) {
+  return (
+    <p className="border-l-2 border-accent pl-4 font-semibold">{children}</p>
+  );
+}
+
+const EXPLORATIONS = "👑 Les 13 Explorations Guidées RECONNECT";
+const BIBLIOTHEQUE = "💎 La Bibliothèque RECONNECT";
+const COMMUNAUTE = "💬 La Communauté RECONNECT";
 
 const DETAIL_FORMULES: Onglet[] = [
   {
     label: "Solo",
     contenu: (
-      <PanneauFormule>
-        <p>
-          Tu suis l’intégralité de ce cheminement en totale autonomie, sans espace d’échange ni
-          accompagnement individuel. Chaque lundi devient ainsi un nouveau rendez-vous avec
-          toi-même.
-        </p>
-        {EXPLORATIONS}
-      </PanneauFormule>
+      <PanneauFormule
+        accroche="Tu suis l’intégralité de ce cheminement en totale autonomie, sans espace d’échange ni accompagnement individuel. Chaque lundi devient ainsi un nouveau rendez-vous avec toi-même."
+        inclus={[EXPLORATIONS]}
+      />
     ),
   },
   {
     label: "Circle",
+    barreEnBas: true,
     contenu: (
-      <PanneauFormule>
-        <p>
-          Autour de ton rendez-vous du lundi viennent s’ajouter deux espaces de soutien : la
-          Bibliothèque et la Communauté RECONNECT.
-        </p>
-        {EXPLORATIONS}
-        <SousTitre>💎 La Bibliothèque RECONNECT</SousTitre>
-        <p>
-          Dans le mail du lundi, tu reçois également l’accès à une nouvelle ressource
-          complémentaire, pensée pour t’aider à intégrer, traverser ou approfondir ce qui se joue
-          pour toi au fil du parcours.
-        </p>
-        <p>
-          <em>
-            Cette ressource vient ensuite enrichir ta Bibliothèque RECONNECT, dans laquelle tu peux
-            aller piocher lorsque tu en ressens le besoin au fil des semaines.
-          </em>
-        </p>
-        <p>
-          Au fil du parcours, ta Bibliothèque vient ainsi accueillir : 3 séances de libération
-          émotionnelle et de reprogrammation (EFT) : &quot;Prendre sa place&quot;, &quot;Légitimité
-          &amp; Confiance en soi&quot; et &quot;Apaiser son lien à l’argent&quot;, 3 méditations
-          guidées supplémentaires <em>(soit 4 au total dans RECONNECT)</em>, 1 audio de
-          reprogrammation, ainsi que différents tips et outils, notamment sous forme d’exercices
-          pratiques et énergétiques.
-        </p>
-        <p>
-          <strong className="font-semibold">
+      <PanneauFormule
+        accroche="Autour de ton rendez-vous du lundi viennent s’ajouter deux espaces de soutien : la Bibliothèque et la Communauté RECONNECT."
+        inclus={[EXPLORATIONS, BIBLIOTHEQUE, COMMUNAUTE]}
+      >
+        <Bloc titre={BIBLIOTHEQUE}>
+          <p>
+            Dans le mail du lundi, tu reçois également l’accès à une nouvelle ressource
+            complémentaire, pensée pour t’aider à intégrer, traverser ou approfondir ce qui se joue
+            pour toi au fil du parcours.
+          </p>
+          <p>
+            <em>
+              Cette ressource vient ensuite enrichir ta Bibliothèque RECONNECT, dans laquelle tu
+              peux aller piocher lorsque tu en ressens le besoin au fil des semaines.
+            </em>
+          </p>
+          <div>
+            <p>Au fil du parcours, ta Bibliothèque vient ainsi accueillir :</p>
+            <ul className="mt-2 flex flex-col gap-1.5">
+              {[
+                <>
+                  3 séances de libération émotionnelle et de reprogrammation (EFT) : &quot;Prendre
+                  sa place&quot;, &quot;Légitimité &amp; Confiance en soi&quot; et &quot;Apaiser son
+                  lien à l’argent&quot;,
+                </>,
+                <>
+                  3 méditations guidées supplémentaires <em>(soit 4 au total dans RECONNECT)</em>,
+                </>,
+                <>1 audio de reprogrammation,</>,
+                <>
+                  ainsi que différents tips et outils, notamment sous forme d’exercices pratiques
+                  et énergétiques.
+                </>,
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3">
+                  <Petal className="mt-[0.6em] h-3 w-3 flex-none text-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ARetenir>
             Toutes les ressources de ta Bibliothèque sont téléchargeables, pour que tu puisses les
             conserver et y revenir quand tu le souhaites, même après la fin de tes 13 semaines.
-          </strong>
-        </p>
-        <SousTitre>💬 La Communauté RECONNECT</SousTitre>
-        <p>
-          Tu rejoins par ailleurs la Communauté RECONNECT, un espace collectif de discussion sur
-          Telegram dans lequel tu peux partager tes prises de conscience, tes doutes, tes
-          difficultés et tes questionnements, et échanger avec les autres membres autour de vos
-          expériences et réflexions respectives.
-        </p>
-        <p>
-          <em>
-            J’y suis également présente de manière asynchrone pour répondre à tes questions et
-            t’apporter mon regard lorsque tu en ressens le besoin, tout au long de ton parcours.
-          </em>
-        </p>
-        <p>
-          <strong className="font-semibold">
+          </ARetenir>
+        </Bloc>
+
+        <Bloc titre={COMMUNAUTE}>
+          <p>
+            Tu rejoins par ailleurs la Communauté RECONNECT, un espace collectif de discussion sur
+            Telegram dans lequel tu peux partager tes prises de conscience, tes doutes, tes
+            difficultés et tes questionnements, et échanger avec les autres membres autour de vos
+            expériences et réflexions respectives.
+          </p>
+          <p>
+            <em>
+              J’y suis également présente de manière asynchrone pour répondre à tes questions et
+              t’apporter mon regard lorsque tu en ressens le besoin, tout au long de ton parcours.
+            </em>
+          </p>
+          <ARetenir>
             Après tes 13 semaines, tu conserves ton accès à la Communauté aussi longtemps que tu le
             souhaites : tu peux continuer à consulter les discussions et à échanger avec les autres
             membres.
-          </strong>
-        </p>
-        <p>
-          <em>Mes réponses personnelles ne font alors simplement plus partie de ton accompagnement.</em>
-        </p>
-        <p className="text-center">
+          </ARetenir>
+          <p>
+            <em>
+              Mes réponses personnelles ne font alors simplement plus partie de ton accompagnement.
+            </em>
+          </p>
+        </Bloc>
+
+        <p className="mt-9 text-center text-ink">
           <em>
             Rien n’est obligatoire : ces espaces sont simplement là pour te soutenir au fil de ton
             parcours.
@@ -417,107 +464,112 @@ const DETAIL_FORMULES: Onglet[] = [
   },
   {
     label: "Premium 1:1",
+    barreEnBas: true,
     contenu: (
-      <PanneauFormule>
-        <p>
-          Ton parcours de 13 semaines devient beaucoup plus individualisé, avec un suivi personnel
-          continu de ton cheminement, et des analyses personnalisées.
-        </p>
-        {EXPLORATIONS}
-        <div className="rounded-[16px] border border-line px-5 py-4">
-          <p>Les ressources de Circle :</p>
-          <p className="mt-2 font-semibold">💎 La Bibliothèque RECONNECT</p>
-          <p className="font-semibold">💬 La Communauté RECONNECT</p>
-          <p>
-            <em>(Seulement si tu le souhaites)</em>
-          </p>
-        </div>
-
-        {/* Le visuel coaching Premium, à côté de l'accompagnement de
-            proximité qu'il illustre, comme Marion le voyait. */}
-        <div className="mt-4 grid items-start gap-6 md:grid-cols-[1fr_220px]">
-          <div className="flex flex-col gap-4">
-            <SousTitre>Ton Accompagnement de proximité</SousTitre>
-            <p>
-              <strong className="font-semibold">
+      <PanneauFormule
+        accroche="Ton parcours de 13 semaines devient beaucoup plus individualisé, avec un suivi personnel continu de ton cheminement, et des analyses personnalisées."
+        inclus={[EXPLORATIONS, BIBLIOTHEQUE, COMMUNAUTE]}
+        noteInclus={
+          <>
+            Les ressources de Circle <em>(Seulement si tu le souhaites)</em>
+          </>
+        }
+      >
+        <Bloc titre="Ton Accompagnement de proximité">
+          {/* Le visuel coaching Premium, à côté de l'accompagnement de
+              proximité qu'il illustre, comme Marion le voyait. */}
+          {/* L'image prend la hauteur du texte (recadrée au besoin) : à
+              largeur fixe, elle descendait bien plus bas que lui. */}
+          <div className="grid gap-6 md:grid-cols-[1fr_200px]">
+            <div className="flex flex-col gap-4">
+              <ARetenir>
                 Je lis régulièrement tes réponses aux questionnaires et je suis personnellement ton
                 évolution tout au long des 13 semaines.
-              </strong>
-            </p>
-            <p>
-              <em>
-                Je repère ce qui émerge ou se répète dans ton cheminement : prises de conscience,
-                croyances, contradictions, blocages éventuels, fils rouges, angles morts...et je fais
-                les liens entre ce que tu vis, tes réponses, ton Human Design, tes analyses et nos
-                échanges.
-              </em>
-            </p>
+              </ARetenir>
+              <p>
+                <em>
+                  Je repère ce qui émerge ou se répète dans ton cheminement : prises de conscience,
+                  croyances, contradictions, blocages éventuels, fils rouges, angles morts...et je
+                  fais les liens entre ce que tu vis, tes réponses, ton Human Design, tes analyses
+                  et nos échanges.
+                </em>
+              </p>
+            </div>
+            <div className="relative mx-auto w-[200px] md:w-full">
+              <Image
+                src="/assets/reconnect/premium-coaching.webp"
+                alt="Un coaching RECONNECT Premium 1:1 en visio"
+                width={1122}
+                height={1402}
+                className="h-auto w-full rounded-[14px] object-cover shadow-card md:absolute md:inset-0 md:h-full"
+              />
+            </div>
           </div>
-          <Image
-            src="/assets/reconnect/premium-coaching.webp"
-            alt="Un coaching RECONNECT Premium 1:1 en visio"
-            width={1122}
-            height={1402}
-            className="mx-auto h-auto w-[200px] rounded-[14px] shadow-card md:w-full"
-          />
-        </div>
-        <p>
-          <strong className="font-semibold">
+          <ARetenir>
             Ce regard extérieur me permet de nourrir et d’adapter nos 3 coachings individuels de
             1h30, qui viennent ponctuer ton parcours à raison d’un rendez-vous par mois, en fonction
             de ce qui se présente réellement pour toi au fil du chemin.
-          </strong>
-        </p>
-        <p>
-          Tu disposes également d’un{" "}
-          <strong className="font-semibold">
-            canal privé avec moi sur WhatsApp, 5 jours sur 7, sur des plages horaires définies
-          </strong>
-          , pour ne pas avoir à attendre le prochain coaching lorsqu’un questionnement, un doute ou
-          un blocage se présente.
-        </p>
-        <p>
-          <em>
-            Et parce que mon accompagnement est aussi intuitif, des tirages de cartes peuvent
-            également venir ponctuer nos échanges lorsque cela me semble pertinent. 🔮
-          </em>
-        </p>
-        <MiniPreuve
-          citation="Tu as réussi à dissiper la brume là où j’avais besoin d’un sacré coup de pouce...et je te remercie d’avoir eu le courage de me challenger, de ne pas me dire ce que je voudrais entendre, mais ce que j’ai besoin d’entendre. Ça, ça n’a pas de prix."
-          source="Une cliente RECONNECT Premium 1:1, au fil du parcours ♡"
-        />
+          </ARetenir>
+          <p>
+            Tu disposes également d’un{" "}
+            <strong className="font-semibold">
+              canal privé avec moi sur WhatsApp, 5 jours sur 7, sur des plages horaires définies
+            </strong>
+            , pour ne pas avoir à attendre le prochain coaching lorsqu’un questionnement, un doute
+            ou un blocage se présente.
+          </p>
+          <p>
+            <em>
+              Et parce que mon accompagnement est aussi intuitif, des tirages de cartes peuvent
+              également venir ponctuer nos échanges lorsque cela me semble pertinent. 🔮
+            </em>
+          </p>
+          <MiniPreuve
+            citation="Tu as réussi à dissiper la brume là où j’avais besoin d’un sacré coup de pouce...et je te remercie d’avoir eu le courage de me challenger, de ne pas me dire ce que je voudrais entendre, mais ce que j’ai besoin d’entendre. Ça, ça n’a pas de prix."
+            source="Une cliente RECONNECT Premium 1:1, au fil du parcours ♡"
+          />
+        </Bloc>
 
-        <SousTitre>Tes deux analyses personnalisées : INSIDE &amp; Blooming.</SousTitre>
-        <p>
-          <strong className="font-semibold">
-            INSIDE, Le Guide d’Immersion dans ton Design Unique
-          </strong>
-          , vient enrichir ton premier mois pour approfondir la compréhension des 7 clés
-          fondamentales de ton Human Design.
-        </p>
-        <p>
-          Pas pour te mettre dans une case, mais pour t’offrir un niveau de lecture supplémentaire
-          sur ton énergie, tes prises de décision, tes fonctionnements et tes besoins.
-        </p>
-        <p>
-          <strong className="font-semibold">Puis Blooming, Ta Fleur de Talents Innés™</strong>,
-          issue d’une analyse croisée de ton Human Design, de ta Numérologie et de tes Gene Keys,
-          intervient au cours du deuxième mois pour mettre en lumière tes talents, ta zone de génie
-          et les directions professionnelles qui peuvent te correspondre.
-        </p>
-        <p>
-          Ta Fleur te donne une vision d’ensemble de la façon dont tes différents talents
-          s’articulent entre eux, de ce qui fait ta singularité et de la manière dont tout cela peut
-          s’exprimer dans ta vie professionnelle.
-        </p>
-        <MiniPreuve
-          citation="Le schéma HD + la Fleur de Talents Innés...WAW...oui je suis unique et j’ai la foi désormais que je peux totalement y arriver."
-          source="Maryline, cliente RECONNECT Premium 1:1 ♡"
-        />
-        <p>
-          <strong className="font-semibold">
-            ✨️ Quelques attentions surprises viennent également ponctuer ton parcours.
-          </strong>
+        <Bloc titre={<>Tes deux analyses personnalisées : INSIDE &amp; Blooming.</>}>
+          {/* Les deux analyses côte à côte : elles se suivent dans le parcours
+              (1er puis 2e mois), le texte les présente en miroir. */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="flex flex-col gap-3 rounded-[18px] border border-line px-5 py-5">
+              <p>
+                <strong className="font-semibold">
+                  INSIDE, Le Guide d’Immersion dans ton Design Unique
+                </strong>
+                , vient enrichir ton premier mois pour approfondir la compréhension des 7 clés
+                fondamentales de ton Human Design.
+              </p>
+              <p>
+                Pas pour te mettre dans une case, mais pour t’offrir un niveau de lecture
+                supplémentaire sur ton énergie, tes prises de décision, tes fonctionnements et tes
+                besoins.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-[18px] border border-line px-5 py-5">
+              <p>
+                <strong className="font-semibold">Puis Blooming, Ta Fleur de Talents Innés™</strong>
+                , issue d’une analyse croisée de ton Human Design, de ta Numérologie et de tes Gene
+                Keys, intervient au cours du deuxième mois pour mettre en lumière tes talents, ta
+                zone de génie et les directions professionnelles qui peuvent te correspondre.
+              </p>
+              <p>
+                Ta Fleur te donne une vision d’ensemble de la façon dont tes différents talents
+                s’articulent entre eux, de ce qui fait ta singularité et de la manière dont tout
+                cela peut s’exprimer dans ta vie professionnelle.
+              </p>
+            </div>
+          </div>
+          <MiniPreuve
+            citation="Le schéma HD + la Fleur de Talents Innés...WAW...oui je suis unique et j’ai la foi désormais que je peux totalement y arriver."
+            source="Maryline, cliente RECONNECT Premium 1:1 ♡"
+          />
+        </Bloc>
+
+        <p className="mt-9 text-center font-semibold">
+          ✨️ Quelques attentions surprises viennent également ponctuer ton parcours.
         </p>
       </PanneauFormule>
     ),
@@ -986,22 +1038,11 @@ export default function ReconnectPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={120} className="relative pb-24 sm:pb-32 lg:pt-14 lg:pb-40">
+          <Reveal delay={120} className="relative lg:pt-14">
             {/* Pied de carte allongé : le mockup a un fond plein, il ne doit
                 mordre que sur ce blanc, jamais sur le verbatim. */}
             <figure className="relative z-10 mx-auto max-w-[480px] rounded-[28px] border border-line bg-white/95 p-6 pb-12 shadow-simu backdrop-blur-sm sm:pb-14 md:p-8 md:pb-16 lg:ml-0">
               <PetalHalo />
-              {/* Le questionnaire « Favori » de Marion, à cheval sur l'angle
-                  inférieur droit, comme les mockups des autres pages. */}
-              <Image
-                src="/assets/reconnect/questionnaire-favori.webp"
-                alt="Un questionnaire RECONNECT ouvert sur un ordinateur, carnet de notes à côté"
-                width={1122}
-                height={1402}
-                priority
-                className="pointer-events-none absolute -right-4 -bottom-[92px] z-20 h-auto w-[100px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:-right-8 sm:-bottom-[128px] sm:w-[140px] lg:-right-[80px] lg:-bottom-[166px] lg:w-[180px]"
-              />
-
               <figcaption>
                 <span className="flex items-center gap-3.5">
                   <Image
@@ -1030,6 +1071,19 @@ export default function ReconnectPage() {
                 </p>
               </blockquote>
             </figure>
+            {/* Le questionnaire « Favori » de Marion, sous la carte et non plus
+                dans son angle : petit et décentré, il laissait un grand vide
+                sous le verbatim à côté d'une colonne de texte bien plus haute. */}
+            <div className="relative z-20 mx-auto -mt-8 max-w-[480px] lg:ml-0">
+              <Image
+                src="/assets/reconnect/questionnaire-favori.webp"
+                alt="Un questionnaire RECONNECT ouvert sur un ordinateur, carnet de notes à côté"
+                width={1122}
+                height={1402}
+                priority
+                className="pointer-events-none mr-4 ml-auto block h-auto w-[170px] rotate-3 rounded-[14px] border-4 border-white shadow-card sm:mr-8 sm:w-[200px] lg:-mr-6 lg:w-[250px]"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -1051,24 +1105,34 @@ export default function ReconnectPage() {
             className="order-first flex flex-col items-center gap-8 lg:order-last lg:gap-10 lg:self-center"
           >
             <Image
-              src="/assets/marion-reflexion.webp"
+              src="/assets/reveal/marion-blazer.webp"
               alt="Marion Chartier"
-              width={904}
-              height={1425}
+              width={900}
+              height={1213}
               className="aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card"
             />
+            {/* Trois portraits sur desktop : les notes empilées allongent la
+                colonne de texte, deux laissaient un vide sous eux. */}
             <Image
-              src="/assets/marion-sourire.webp"
+              src="/assets/inside/marion-lecture.webp"
               alt=""
               aria-hidden
-              width={1498}
-              height={1050}
+              width={900}
+              height={1273}
+              className="hidden aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card lg:block"
+            />
+            <Image
+              src="/assets/inside/marion-mer.webp"
+              alt=""
+              aria-hidden
+              width={900}
+              height={1237}
               className="hidden aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card lg:block"
             />
           </Reveal>
 
           <div>
-            <ProfilsNotes profils={PROFILS} />
+            <ProfilsNotes profils={PROFILS} empile />
 
             <Reveal className="mt-12">
               <p className="max-w-[640px] font-display text-[18px] font-light leading-relaxed text-ink md:text-[19px]">
@@ -1142,7 +1206,7 @@ export default function ReconnectPage() {
           {/* L'histoire de Marion, en récit : carte blanche, titre manuscrit,
               et ses deux questions d'alors détachées en exergue. */}
           <Reveal className="mt-12 rounded-[28px] border border-line bg-white/85 px-6 py-9 shadow-card md:px-12 md:py-12">
-            <p className="font-script text-[30px] leading-none text-accent-texte md:text-[34px]">
+            <p className="font-script text-[30px] leading-none text-ink-deep md:text-[34px]">
               Rétrospective de mon histoire.
             </p>
             <p className="mt-7">
@@ -1360,7 +1424,7 @@ export default function ReconnectPage() {
       {/* ---------------------------------------------------------------- */}
       {/* BÉNÉFICES                                                        */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="benefices" bg="turquoise" wide decor={<PetalField />}>
+      <VenteSection id="benefices" bg="accent" wide decor={<PetalField />}>
         <SectionHeader
           eyebrow="Ce que RECONNECT peut t’apporter"
           title="Qu’est-ce que ce parcours guidé de 13 semaines peut changer pour TOI concrètement?"
@@ -1453,8 +1517,15 @@ export default function ReconnectPage() {
                 <blockquote className="font-display text-[16px] italic leading-relaxed text-ink-deep md:text-[17px]">
                   &quot;{voix.citation}&quot;
                 </blockquote>
-                <figcaption className="mt-4 font-script text-[19px] text-accent-texte">
-                  {voix.source}
+                {/* Le prénom seul en manuscrit : sur toute la ligne, l'écriture
+                    devenait illisible ; le reste passe en petites capitales. */}
+                <figcaption className="mt-5 text-accent-texte">
+                  <span className="block font-script text-[26px] leading-none">
+                    {voix.source.split(", ")[0]}
+                  </span>
+                  <span className="mt-2 block font-body text-[10px] uppercase leading-relaxed tracking-[0.16em]">
+                    {voix.source.split(", ").slice(1).join(", ")}
+                  </span>
                 </figcaption>
               </figure>
             ))}
@@ -1605,7 +1676,7 @@ export default function ReconnectPage() {
       {/* ---------------------------------------------------------------- */}
       {/* ACHAT                                                            */}
       {/* ---------------------------------------------------------------- */}
-      <VenteSection id="tarif" bg="turquoise" wide decor={<PetalField dense />}>
+      <VenteSection id="tarif" bg="accent" wide decor={<PetalField dense />}>
         <SectionHeader
           eyebrow="Un même parcours. Trois façons de le vivre."
           title="Choisis la formule qui te correspond le mieux."
@@ -1623,58 +1694,80 @@ export default function ReconnectPage() {
           </p>
         </Reveal>
 
-        {/* Circle en avant, comme sur la maquette de Marion. */}
-        <div className="mt-14 grid items-start gap-8 lg:grid-cols-3 lg:gap-6">
-          {FORMULES.map((formule, i) => (
-            <Reveal
-              key={formule.nom}
-              delay={i * 80}
-              className={`relative flex h-full flex-col rounded-[28px] border bg-white px-6 pt-8 pb-8 text-center md:px-8 ${
-                formule.enAvant
-                  ? "border-ink-deep/40 shadow-simu lg:-translate-y-4"
-                  : "border-line shadow-card"
-              }`}
-            >
-              <Image
-                src={formule.vignette}
-                alt=""
-                aria-hidden
-                width={600}
-                height={600}
-                className="mx-auto h-auto w-[150px]"
-              />
-              <p className="mt-4 font-body text-[10px] uppercase tracking-[0.22em] text-accent-texte">
-                {formule.badge}
-              </p>
-              <h3 className="mt-2 font-display text-[24px] font-semibold text-ink-deep">
-                RECONNECT · {formule.nom}
-              </h3>
-              <div className="mt-3 flex flex-col gap-2 font-display text-[16px] leading-relaxed text-ink-deep">
-                {formule.accroche}
-              </div>
-              <p className="mt-5 font-display text-[44px] font-light leading-none text-ink-deep [font-variant-numeric:lining-nums]">
-                {formule.prix}
-              </p>
-              <ul className="mt-6 flex flex-col gap-3.5 border-t border-line pt-6 text-left font-display text-[16px] leading-relaxed text-ink-deep">
-                {formule.inclus.map((item, j) => (
-                  <li key={j}>{item}</li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-8">
-                <Cta href={formule.href} external>
-                  Je choisis {formule.nom}
-                </Cta>
-                <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft">
-                  Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
+        {/* Circle en avant, comme sur la maquette de Marion : par son cadre et
+            son ombre, plus par un décalage vertical.
+
+            Sur desktop, chaque carte est une sous-grille : les 5 premières
+            rangées (vignette → prix) sont partagées, les prix tombent donc à
+            la même hauteur malgré des accroches de longueurs différentes. La
+            6e rangée (liste, bouton) n'est pas étirée : chaque carte s'arrête
+            à son contenu. Une sous-grille s'étire forcément sur toutes ses
+            rangées, alors la carte elle-même est transparente et son fond est
+            fait de deux pièces : le haut, étiré sur les rangées partagées, et
+            le bas, à sa hauteur naturelle. L'ombre est un `drop-shadow` sur
+            l'ensemble, qui épouse les deux pièces sans couture. */}
+        <div className="mt-14 grid gap-8 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-0">
+          {FORMULES.map((formule, i) => {
+            const bordure = formule.enAvant ? "border-ink-deep/40" : "border-line";
+            return (
+              <Reveal
+                key={formule.nom}
+                delay={i * 80}
+                className={`relative flex flex-col rounded-[28px] border bg-white px-6 pt-8 pb-8 text-center md:px-8 lg:row-span-6 lg:grid lg:grid-rows-subgrid lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none ${bordure} ${
+                  formule.enAvant
+                    ? "shadow-simu lg:drop-shadow-[0_24px_32px_rgba(80,60,98,0.14)]"
+                    : "shadow-card lg:drop-shadow-[0_14px_22px_rgba(80,60,98,0.10)]"
+                }`}
+              >
+                <div
+                  aria-hidden
+                  className={`hidden rounded-t-[28px] border border-b-0 bg-white lg:col-start-1 lg:row-[1/6] lg:block ${bordure}`}
+                />
+                <Image
+                  src={formule.vignette}
+                  alt=""
+                  aria-hidden
+                  width={600}
+                  height={600}
+                  className="mx-auto h-auto w-[150px] lg:col-start-1 lg:row-start-1 lg:mt-8"
+                />
+                <p className="mt-4 font-body text-[10px] uppercase tracking-[0.22em] text-accent-texte lg:col-start-1 lg:row-start-2 lg:px-8">
+                  {formule.badge}
                 </p>
-                {formule.note && (
-                  <p className="mt-4 rounded-[16px] bg-accent-soft px-4 py-3 text-left font-display text-[14px] leading-snug text-ink-deep">
-                    {formule.note}
-                  </p>
-                )}
-              </div>
-            </Reveal>
-          ))}
+                <h3 className="mt-2 font-display text-[24px] font-semibold text-ink-deep lg:col-start-1 lg:row-start-3 lg:px-8">
+                  RECONNECT · {formule.nom}
+                </h3>
+                <div className="mt-3 flex flex-col gap-2 font-display text-[16px] leading-relaxed text-ink-deep lg:col-start-1 lg:row-start-4 lg:px-8">
+                  {formule.accroche}
+                </div>
+                <p className="mt-5 font-display text-[44px] font-light leading-none text-ink-deep [font-variant-numeric:lining-nums] lg:col-start-1 lg:row-start-5 lg:px-8">
+                  {formule.prix}
+                </p>
+                <div
+                  className={`flex flex-1 flex-col lg:col-start-1 lg:row-start-6 lg:self-start lg:rounded-b-[28px] lg:border lg:border-t-0 lg:bg-white lg:px-8 lg:pb-8 ${bordure}`}
+                >
+                  <ul className="mt-6 flex flex-col gap-3.5 border-t border-line pt-6 text-left font-display text-[16px] leading-relaxed text-ink-deep">
+                    {formule.inclus.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-8">
+                    <Cta href={formule.href} external>
+                      Je choisis {formule.nom}
+                    </Cta>
+                    <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft">
+                      Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
+                    </p>
+                    {formule.note && (
+                      <p className="mt-4 rounded-[16px] bg-accent-soft px-4 py-3 text-left font-display text-[14px] leading-snug text-ink-deep">
+                        {formule.note}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
 
         {/* Le tableau récap auquel Marion tient : un vrai tableau, lisible
@@ -1759,7 +1852,9 @@ export default function ReconnectPage() {
       {/* ---------------------------------------------------------------- */}
       {/* CTA FINAL                                                        */}
       {/* ---------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-white px-6 py-24 text-center md:px-20 md:py-32">
+      {/* Haut réduit : la FAQ juste au-dessus est blanche elle aussi, ses
+          marges et celles-ci s'additionnaient en un grand vide. */}
+      <section className="relative overflow-hidden bg-white px-6 pt-4 pb-24 text-center md:px-20 md:pt-6 md:pb-32">
         <PetalField />
         <Reveal className="relative mx-auto max-w-[680px]">
           <Rosace className="mx-auto h-10 w-10 text-accent/60" />
