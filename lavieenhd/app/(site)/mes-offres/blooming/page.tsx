@@ -21,6 +21,7 @@ import {
 import {
   type Livrable,
   BridgeOffre,
+  MotCliente,
   ProfilsNotes,
   LivrablesGrid,
   PricingCard,
@@ -60,23 +61,6 @@ const PROFILS = [
     ],
   },
 ];
-
-/**
- * Les deux mots de clientes posés dans leur bénéfice, comme le verbatim
- * d'Astrig sur INSIDE : citation en italique détaché, puis sa source en
- * petites capitales. Des `span` en bloc et non des `p` : la carte rend son
- * texte dans un paragraphe.
- */
-function MotCliente({ citation, source }: { citation: string; source: string }) {
-  return (
-    <>
-      <em className="mt-4 block border-t border-accent/40 pt-4">&quot;{citation}&quot;</em>
-      <span className="mt-2 block font-body text-[11px] uppercase leading-relaxed tracking-[0.12em] text-ink-soft">
-        {source}
-      </span>
-    </>
-  );
-}
 
 const BENEFICES: Livrable[] = [
   {

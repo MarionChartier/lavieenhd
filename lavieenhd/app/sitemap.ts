@@ -13,6 +13,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/mes-offres/the-place-to-be", priority: 0.9, changeFrequency: "monthly" },
   { path: "/mes-offres/soin-energetique", priority: 0.9, changeFrequency: "monthly" },
   { path: "/mes-offres/body-bloom", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/mes-offres/reconnect", priority: 0.9, changeFrequency: "monthly" },
   { path: "/test-gratuit", priority: 0.8, changeFrequency: "monthly" },
   { path: "/qui-je-suis", priority: 0.7, changeFrequency: "yearly" },
   { path: "/mentions-legales", priority: 0.2, changeFrequency: "yearly" },

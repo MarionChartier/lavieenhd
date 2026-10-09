@@ -45,6 +45,11 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/soin-energetique",
         permanent: true,
       },
+      {
+        source: "/reconnect.html",
+        destination: "/mes-offres/reconnect",
+        permanent: true,
+      },
     ];
   },
 };

@@ -26,10 +26,9 @@ export const EXTERNAL = {
    * Pages d'offres individuelles. Les CTA renvoient directement vers ces pages
    * de vente. Toutes les offres sont branchées.
    *
-   * Blooming, INSIDE, REVEAL, The Place to be et le Soin énergétique sont
-   * reconstruits en routes Next (design harmonisé avec le site) ; Reconnect
-   * est encore une page HTML servie depuis /public, et migrera sur le même
-   * modèle. Les anciennes URL .html restent
+   * Blooming, INSIDE, REVEAL, The Place to be, le Soin énergétique et
+   * RECONNECT sont reconstruits en routes Next (design harmonisé avec le
+   * site). Les anciennes URL .html restent
    * vivantes via une redirection 308 (voir next.config.ts) : elles circulent
    * dans les mails déjà envoyés et sur systeme.io.
    */
@@ -39,7 +38,7 @@ export const EXTERNAL = {
     insideClub: "/mes-offres/inside",
     reveal: "/mes-offres/reveal",
     fleurDeTalents: "/mes-offres/blooming",
-    reconnect: "/reconnect.html",
+    reconnect: "/mes-offres/reconnect",
     /** Page de vente pas encore construite : l'URL est déjà fixée pour que les
      *  renvois des autres pages n'aient pas à changer le jour où elle existe. */
     bodyBloom: "/mes-offres/body-bloom",
@@ -57,6 +56,18 @@ export const EXTERNAL = {
     reveal: `${LEGACY_ROOT}/commande-seance-clarte`,
     fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
     reconnect: `${LEGACY_ROOT}/commande-reconnect`,
+  },
+
+  /**
+   * RECONNECT : un bon de commande par formule.
+   * TODO(bloquant avant mise en ligne) : les trois pointent provisoirement sur
+   * l'ancien bon unique, en attendant les liens Solo, Circle et Premium 1:1
+   * demandés à Marion.
+   */
+  commandeReconnect: {
+    solo: `${LEGACY_ROOT}/commande-reconnect`,
+    circle: `${LEGACY_ROOT}/commande-reconnect`,
+    premium: `${LEGACY_ROOT}/commande-reconnect`,
   },
 
   /**

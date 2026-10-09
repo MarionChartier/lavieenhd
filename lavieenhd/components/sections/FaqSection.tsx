@@ -2,7 +2,13 @@
 
 import { useState, type ReactNode } from "react";
 
-export type FaqItem = { q: string; a: ReactNode };
+export type FaqItem = {
+  q: string;
+  a: ReactNode;
+  /** Intertitre du groupe de questions. Affiché devant la première question
+   *  d'un groupe, quand il change d'une question à la suivante. */
+  groupe?: string;
+};
 
 /**
  * Section FAQ en accordéon, réutilisable (accueil + pages d'offres).
@@ -36,8 +42,18 @@ export function FaqSection({
         <div className="mt-12 flex flex-col border-t border-ink-deep/10">
           {items.map((item, i) => {
             const isOpen = open === i;
+            const nouveauGroupe = item.groupe && item.groupe !== items[i - 1]?.groupe;
             return (
               <div key={item.q} className="border-b border-ink-deep/10">
+                {nouveauGroupe && (
+                  <p
+                    className={`pb-2 font-body text-[11px] uppercase tracking-[0.22em] text-accent-texte ${
+                      i === 0 ? "pt-8" : "pt-14"
+                    }`}
+                  >
+                    {item.groupe}
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
