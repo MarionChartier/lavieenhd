@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { FlecheCourbe, Petal, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { Cta } from "@/components/sections/vente/primitives";
@@ -241,6 +241,7 @@ export function ProcessusSteps({ etapes }: { etapes: Etape[] }) {
 export function PricingCard({
   logo,
   logoAlt,
+  logoStyle,
   prix,
   inclus,
   href,
@@ -249,6 +250,8 @@ export function PricingCard({
 }: {
   logo: string;
   logoAlt: string;
+  /** Style du logo du bandeau, pour fondre une image qui n'est pas un logo. */
+  logoStyle?: CSSProperties;
   prix: string;
   inclus: ReactNode[];
   href: string;
@@ -303,6 +306,7 @@ export function PricingCard({
               width={200}
               height={200}
               className="mx-auto h-auto w-[150px]"
+              style={logoStyle}
             />
             {/* Prix en sans-serif : les chiffres fins et elzéviriens de
                 Cormorant rendaient le montant difficile à lire d'un coup d'œil.
@@ -740,37 +744,65 @@ export function ChoixVariantes({
 export type Capture = { src: string; largeur: number; hauteur: number };
 
 /**
- * Témoignages reçus en messages (captures d'écran), sans prénom à afficher.
- * Même répartition en deux piles que <TemoignageCards>, équilibrée cette fois
- * sur la hauteur affichée de chaque image, et même carte claire autour : les
- * captures n'ont pas toutes le même fond, la carte les remet en famille.
+ * Répartit les captures en `n` piles dont les bas tombent au plus près les
+ * uns des autres. Recherche exhaustive (n puissance nombre de captures, soit
+ * quelques milliers de cas) : les piles gardent l'ordre d'origine, seule la
+ * pile de chaque capture change. La hauteur d'une carte est celle de l'image
+ * à largeur égale, plus son cadre.
+ */
+function equilibrerPiles(captures: Capture[], n: number): Capture[][] {
+  const h = captures.map((c) => c.hauteur / c.largeur + 0.08);
+  let meilleur: number[] = [];
+  let ecartMin = Infinity;
+  const choix: number[] = [];
+  const sommes = new Array<number>(n).fill(0);
+  const explorer = (i: number) => {
+    if (i === captures.length) {
+      const ecart = Math.max(...sommes) - Math.min(...sommes);
+      if (ecart < ecartMin) {
+        ecartMin = ecart;
+        meilleur = [...choix];
+      }
+      return;
+    }
+    for (let p = 0; p < n; p++) {
+      choix[i] = p;
+      sommes[p] += h[i];
+      explorer(i + 1);
+      sommes[p] -= h[i];
+    }
+  };
+  explorer(0);
+  const piles: Capture[][] = Array.from({ length: n }, () => []);
+  captures.forEach((c, i) => piles[meilleur[i]].push(c));
+  return piles;
+}
+
+/**
+ * Témoignages reçus en messages (captures d'écran), sans prénom à afficher,
+ * chacun dans une carte claire : les captures n'ont pas toutes le même fond,
+ * la carte les remet en famille. Trois piles équilibrées en grand écran, pour
+ * que la section finisse à plat.
  */
 export function CapturesTemoignages({ captures, alt }: { captures: Capture[]; alt: string }) {
-  const piles: [Capture[], Capture[]] = [[], []];
-  const charges = [0, 0];
-  for (const c of captures) {
-    const i = charges[0] <= charges[1] ? 0 : 1;
-    piles[i].push(c);
-    // Hauteur relative à largeur égale, plus le cadre de la carte.
-    charges[i] += c.hauteur / c.largeur + 0.15;
-  }
+  const piles = equilibrerPiles(captures, 3);
 
   return (
-    <div className="grid items-start gap-5 sm:grid-cols-2">
+    <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {piles.map((pile, col) => (
-        <div key={col} className="flex flex-col gap-5">
+        <div key={col} className="flex flex-col gap-4">
           {pile.map((c) => (
             <Reveal
               key={c.src}
               delay={stagger(col)}
-              className="rounded-[28px] border border-line bg-paper p-4 shadow-card md:p-5"
+              className="rounded-[22px] border border-line bg-paper p-3 shadow-card"
             >
               <Image
                 src={c.src}
                 alt={alt}
                 width={c.largeur}
                 height={c.hauteur}
-                className="h-auto w-full rounded-[16px]"
+                className="h-auto w-full rounded-[14px]"
               />
             </Reveal>
           ))}

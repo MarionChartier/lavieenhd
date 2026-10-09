@@ -4,7 +4,7 @@ import { EXTERNAL } from "@/lib/links";
 import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
 import { VenteTheme } from "@/components/sections/vente/VenteTheme";
-import { Petal, PetalField, PetalHalo, Rosace } from "@/components/sections/vente/motifs";
+import { Petal, PetalField, PetalHalo } from "@/components/sections/vente/motifs";
 import { Cta, SectionHeader, VenteSection } from "@/components/sections/vente/primitives";
 import {
   type Capture,
@@ -135,9 +135,8 @@ export default function SoinEnergetiquePage() {
 
         <div className="relative mx-auto grid max-w-(--container-content) items-start gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <div className="text-center">
-            {/* Les mains lumineuses tiennent lieu de logo dans le hero, avec le
-                fondu doux vers leurs extrémités. Le logo illustré reste sur la
-                carte de tarif. */}
+            {/* Les mains lumineuses tiennent lieu de logo, dans le hero (avec un
+                fondu doux vers leurs extrémités) comme sur la carte de tarif. */}
             <Reveal>
               <Image
                 src="/assets/soin/mains-lumiere.webp"
@@ -197,9 +196,13 @@ export default function SoinEnergetiquePage() {
               de la section témoignages et posés en notes : la première en
               avant, la seconde décalée derrière elle, à contre-angle. Les
               captures brutes, fond noir et police système, juraient avec le
-              reste du premier écran. L'étiquette du rendez-vous vient en
-              dernier, à cheval sur le bas de la note de devant. */}
-          <Reveal delay={120} className="relative mx-auto w-full max-w-[500px] pb-16 lg:ml-0 lg:pt-10">
+              reste du premier écran. La colonne s'étire sur toute la hauteur
+              du texte : le rendez-vous, en scotch, se pose tout en bas et
+              comble le vide sous la pile. */}
+          <Reveal
+            delay={120}
+            className="relative mx-auto flex w-full max-w-[500px] flex-col pb-4 lg:ml-0 lg:self-stretch lg:pt-10"
+          >
             <span aria-hidden className="pointer-events-none absolute inset-0">
               <Petal className="absolute top-0 right-[14%] h-7 w-7 text-accent-texte/50" />
               <Petal className="absolute top-[38%] -left-3 h-4 w-4 text-accent" />
@@ -252,9 +255,11 @@ export default function SoinEnergetiquePage() {
               </blockquote>
             </figure>
 
-            {/* Le rendez-vous, en étiquette */}
-            <p className="relative z-20 mx-auto -mt-4 flex w-fit items-center gap-2.5 rounded-full border border-line bg-white px-5 pt-[9px] pb-[8px] font-body text-[12px] tracking-[0.06em] text-ink-deep shadow-card">
-              <Petal className="h-3.5 w-3.5 flex-none text-accent-texte" />
+            {/* Le rendez-vous, en scotch : coins vifs comme les badges des notes
+                « pour qui », mais posé droit. La marge basse le cale à hauteur du
+                bouton de la colonne de gauche (mesuré à 1440px). */}
+            <p className="relative z-20 mx-auto mt-10 flex w-fit items-center gap-3 border border-accent/70 bg-accent-soft/90 px-6 pt-[12px] pb-[10px] font-body text-[12px] uppercase tracking-[0.16em] text-ink-deep shadow-[0_4px_12px_rgba(80,60,98,0.16)] lg:mt-auto lg:mb-[62px]">
+              <Petal className="h-4 w-4 flex-none text-accent-texte" />
               Le dernier dimanche du mois · 21h00
             </p>
           </Reveal>
@@ -363,7 +368,7 @@ export default function SoinEnergetiquePage() {
             Quelques mots reçus après les Soins. ♡
           </p>
         </Reveal>
-        <div className="mx-auto mt-14 max-w-[900px]">
+        <div className="mx-auto mt-14 max-w-[1000px]">
           <CapturesTemoignages
             captures={CAPTURES}
             alt="Témoignage reçu après un Soin énergétique"
@@ -391,7 +396,15 @@ export default function SoinEnergetiquePage() {
         </Reveal>
         <div className="mt-14">
           <PricingCard
-            logo="/assets/logo-soin-hands.webp"
+            logo="/assets/soin/mains-lumiere.webp"
+            // Fondu plus prononcé que dans le hero et léger effacement : sur le
+            // bandeau violet, l'image doit rester discrète derrière le prix.
+            logoStyle={{
+              opacity: 0.9,
+              WebkitMaskImage:
+                "radial-gradient(ellipse 50% 50% at 50% 50%, black 40%, transparent 95%)",
+              maskImage: "radial-gradient(ellipse 50% 50% at 50% 50%, black 40%, transparent 95%)",
+            }}
             logoAlt="Soin énergétique collectif"
             prix="20€"
             inclus={INCLUS}
@@ -401,21 +414,6 @@ export default function SoinEnergetiquePage() {
           />
         </div>
       </VenteSection>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* CTA FINAL                                                        */}
-      {/* ---------------------------------------------------------------- */}
-      {/* Le texte de Marion ne porte ici que le bouton : pas de FAQ ni de
-          passerelle sur cette page. */}
-      <section className="relative overflow-hidden bg-white px-6 py-24 text-center md:px-20 md:py-28">
-        <PetalField />
-        <Reveal className="relative mx-auto max-w-[640px]">
-          <Rosace className="mx-auto h-10 w-10 text-accent-texte/60" />
-          <Cta href={COMMANDE} external className="mt-8">
-            Je m’offre ma parenthèse énergétique
-          </Cta>
-        </Reveal>
-      </section>
     </VenteTheme>
   );
 }
