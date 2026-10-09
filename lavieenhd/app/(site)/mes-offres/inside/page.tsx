@@ -45,13 +45,17 @@ const COMMANDE = EXTERNAL.commande.insideClub;
  */
 const THEME = { accent: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
 
-/** Liste à puces logée dans un paragraphe de note, dont elle partage la police. */
+/** Liste à puces logée dans un paragraphe de note, dont elle partage la
+ *  police. La puce est centrée dans une boîte haute d'une ligne (`1lh`) :
+ *  elle suit la première ligne du texte quel que soit l'interlignage. */
 function Puces({ items }: { items: ReactNode[] }) {
   return (
     <>
       {items.map((item, i) => (
         <span key={i} className="mt-1.5 flex items-start gap-2.5">
-          <Petal className="mt-[7px] h-2.5 w-2.5 flex-none text-accent" />
+          <span className="flex h-[1lh] flex-none items-center">
+            <Petal className="h-2.5 w-2.5 translate-y-[1px] text-accent" />
+          </span>
           <span>{item}</span>
         </span>
       ))}
@@ -691,10 +695,21 @@ export default function InsidePage() {
               height={1273}
               className="hidden aspect-[3/4] w-full max-w-[320px] rounded-[28px] object-cover shadow-card lg:block"
             />
+            {/* Grands cercles diffus (le motif d'INSIDE) juste sous le dernier
+                portrait, dans le vide qui fait face au texte de conclusion.
+                Ancre de hauteur nulle : le décor ne pousse rien. Grand écran
+                seulement, en colonne unique il n'y a pas de vide. */}
+            <span aria-hidden className="pointer-events-none relative hidden h-0 w-full lg:block">
+              {/* Trois tailles en diagonale, espacées d'au moins 60px entre
+                  leurs bords (flou compris) : les cercles ne se touchent pas. */}
+              <span className="absolute top-6 right-0 h-[200px] w-[200px] rounded-full bg-accent/20 blur-md" />
+              <span className="absolute top-0 left-4 h-[80px] w-[80px] rounded-full bg-accent/20 blur-sm" />
+              <span className="absolute top-[210px] left-0 h-[130px] w-[130px] rounded-full bg-ink-lilac/15 blur-sm" />
+            </span>
           </Reveal>
 
           <div>
-            <ProfilsNotes profils={PROFILS} />
+            <ProfilsNotes profils={PROFILS} empile />
 
             <Reveal className="mt-12">
               <p className="max-w-[640px] font-display text-[18px] font-light italic leading-relaxed text-ink md:text-[19px]">

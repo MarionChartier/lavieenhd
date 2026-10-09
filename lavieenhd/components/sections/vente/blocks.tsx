@@ -55,7 +55,15 @@ const NOTES = [
  * paragraphes donnaient des notes deux fois plus hautes que larges, qui
  * écrasaient tout le reste de la strate.
  */
-export function ProfilsNotes({ profils }: { profils: Profil[] }) {
+export function ProfilsNotes({
+  profils,
+  empile = false,
+}: {
+  profils: Profil[];
+  /** Titre au-dessus du texte plutôt qu'à sa gauche : pour les notes
+   *  longues, où la colonne de titre laissait un grand vide sous lui. */
+  empile?: boolean;
+}) {
   return (
     // L'écart tient compte de la rotation : penchées, les cartes se rapprochent
     // par leurs coins et le scotch suivant vient toucher le bas de la
@@ -78,7 +86,7 @@ export function ProfilsNotes({ profils }: { profils: Profil[] }) {
                 {String(i + 1).padStart(2, "0")}
               </span>
 
-              <div className="grid gap-3 md:grid-cols-[190px_1fr] md:gap-7">
+              <div className={`grid gap-3 ${empile ? "" : "md:grid-cols-[190px_1fr] md:gap-7"}`}>
                 <h3 className="font-display text-[20px] font-semibold leading-snug text-ink-deep md:text-[22px]">
                   {profil.titre}
                 </h3>
@@ -559,7 +567,21 @@ export type OffreLiee = {
  * même force mettraient les offres sur le même plan. Le liseré et l'ombre
  * suffisent à la détacher du fond lavande.
  */
-function OffreCarte({ eyebrow, logo, logoAlt, accroche, texte, href, libelle }: OffreLiee) {
+function OffreCarte({
+  eyebrow,
+  logo,
+  logoAlt,
+  accroche,
+  texte,
+  href,
+  libelle,
+  enRangee = false,
+}: OffreLiee & {
+  /** Carte posée à côté d'autres : l'eyebrow réserve trois lignes en grand
+   *  écran, pour que les logos des cartes voisines tombent à la même hauteur
+   *  quelle que soit la longueur de leur eyebrow. */
+  enRangee?: boolean;
+}) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-[28px] border border-ink-lilac/45 bg-white px-8 py-10 text-center shadow-card md:px-10">
       {/* Deux grands motifs entrant par des coins opposés, rognés par
@@ -572,7 +594,13 @@ function OffreCarte({ eyebrow, logo, logoAlt, accroche, texte, href, libelle }: 
       </span>
 
       <div className="relative flex flex-1 flex-col">
-        <p className="font-body text-[11px] uppercase tracking-[0.22em] text-ink-soft">{eyebrow}</p>
+        <p
+          className={`font-body text-[11px] uppercase leading-relaxed tracking-[0.22em] text-ink-soft ${
+            enRangee ? "lg:min-h-[3lh]" : ""
+          }`}
+        >
+          {eyebrow}
+        </p>
         {/* La lueur est ancrée sur le logo lui-même, et non à un pourcentage
             de la carte : calée sur la carte, elle se retrouvait sous le logo
             et décalée à droite. */}
@@ -598,7 +626,14 @@ function OffreCarte({ eyebrow, logo, logoAlt, accroche, texte, href, libelle }: 
         {/* `mt-auto` : les boutons s'alignent en bas des cartes voisines,
             quelle que soit la longueur du texte. */}
         <div className="mt-auto pt-8">
-          <Cta href={href} variant="ghost">
+          {/* Pleine largeur et sur une ligne : d'une carte à l'autre, les
+              libellés de longueurs différentes donnaient des boutons sur une
+              ou deux lignes, de hauteurs et largeurs inégales. */}
+          <Cta
+            href={href}
+            variant="ghost"
+            className="w-full whitespace-nowrap px-5! tracking-[0.16em]!"
+          >
             {libelle}
           </Cta>
         </div>
@@ -646,7 +681,7 @@ export function OffresSuivantes({
       >
         {offres.map((offre, i) => (
           <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full">
-            <OffreCarte {...offre} />
+            <OffreCarte {...offre} enRangee />
           </Reveal>
         ))}
       </div>
