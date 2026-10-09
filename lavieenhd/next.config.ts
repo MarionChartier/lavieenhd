@@ -25,6 +25,31 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/blooming",
         permanent: true,
       },
+      {
+        source: "/inside.html",
+        destination: "/mes-offres/inside",
+        permanent: true,
+      },
+      {
+        source: "/reveal.html",
+        destination: "/mes-offres/reveal",
+        permanent: true,
+      },
+      {
+        source: "/the-place-to-be.html",
+        destination: "/mes-offres/the-place-to-be",
+        permanent: true,
+      },
+      {
+        source: "/soin-energetique.html",
+        destination: "/mes-offres/soin-energetique",
+        permanent: true,
+      },
+      {
+        source: "/reconnect.html",
+        destination: "/mes-offres/reconnect",
+        permanent: true,
+      },
     ];
   },
 };

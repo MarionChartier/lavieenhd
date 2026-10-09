@@ -9,8 +9,14 @@ export type PointSection = { id: string; label: string };
  * repère des pages systeme.io de Marion. Le nom de la section apparaît au
  * survol et au focus clavier.
  *
- * Masqué sous `lg` : sur un écran étroit il mordrait sur le texte, et le pouce
- * n'a pas de survol pour lire les libellés.
+ * Affiché dès `md` (768px) : sous `lg` il manquait aux petits portables et
+ * aux fenêtres réduites, et la marge des strates l'y tient à distance du texte.
+ * Masqué sur téléphone : la marge n'y fait que 24px, et le pouce n'a pas de
+ * survol pour lire les libellés.
+ *
+ * Le point actif prend l'accent « texte » de la page (voir <VenteTheme>) :
+ * l'accent seul, quand il est pâle (or, vert tendre), se verrait moins sur
+ * fond blanc que les points inactifs.
  */
 export function SectionDots({ sections }: { sections: PointSection[] }) {
   const [actif, setActif] = useState(sections[0]?.id ?? "");
@@ -38,7 +44,7 @@ export function SectionDots({ sections }: { sections: PointSection[] }) {
   return (
     <nav
       aria-label="Sections de la page"
-      className="pointer-events-none fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
+      className="pointer-events-none fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 md:block"
     >
       <ul className="pointer-events-auto flex flex-col items-end gap-4">
         {sections.map(({ id, label }) => {
@@ -63,8 +69,8 @@ export function SectionDots({ sections }: { sections: PointSection[] }) {
                   aria-hidden
                   className={`block h-2.5 w-2.5 rounded-full border transition-colors duration-200 motion-reduce:transition-none ${
                     estActif
-                      ? "border-turquoise bg-turquoise"
-                      : "border-ink-deep/35 bg-white/70 group-hover:border-turquoise"
+                      ? "border-accent-texte bg-accent-texte"
+                      : "border-ink-deep/35 bg-white/70 group-hover:border-accent-texte"
                   }`}
                 />
                 <span className="sr-only">{label}</span>

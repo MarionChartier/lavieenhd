@@ -32,7 +32,7 @@ export default function MentionsLegalesPage() {
           heading: "Hébergement",
           body: [
             "Le site est hébergé par Vercel Inc.",
-            "340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis.",
+            "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.",
             "Site : vercel.com.",
           ],
         },

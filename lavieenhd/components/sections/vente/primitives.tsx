@@ -19,6 +19,8 @@ const BG = {
   deep: "bg-[#5a4e69] text-white",
   lavender: "bg-lavender-gradient",
   turquoise: "bg-turquoise-soft/60",
+  /** Teinte claire de l'accent de la page (voir <VenteTheme>). */
+  accent: "bg-accent-soft/60",
 } as const;
 
 export type VenteBg = keyof typeof BG;
@@ -89,7 +91,7 @@ export function SectionHeader({
       {eyebrow && (
         <p
           className={`font-body text-[11px] uppercase tracking-[0.28em] ${
-            onDeep ? "text-turquoise" : "text-ink-soft"
+            onDeep ? "text-accent" : "text-ink-soft"
           }`}
         >
           {eyebrow}
@@ -136,10 +138,10 @@ export function Cta({
 
   const styles = onDeep
     ? variant === "primary"
-      ? "bg-turquoise text-ink-deep hover:bg-white"
-      : "border border-turquoise text-turquoise hover:bg-turquoise hover:text-ink-deep"
+      ? "bg-accent text-ink-deep hover:bg-white"
+      : "border border-accent text-accent hover:bg-accent hover:text-ink-deep"
     : variant === "primary"
-      ? "bg-ink-deep text-white hover:bg-turquoise hover:text-ink-deep"
+      ? "bg-ink-deep text-white hover:bg-accent hover:text-ink-deep"
       : "border border-ink-deep bg-white/40 text-ink-deep hover:bg-ink-deep hover:text-white";
 
   return (
@@ -181,19 +183,21 @@ export function CitationBand({
   children,
   cite,
   tone = "deep",
+  decor,
 }: {
   children: ReactNode;
   cite?: string;
-  tone?: "deep" | "soft";
+  /** `paper` prolonge une strate crème au lieu de rompre le fond. */
+  tone?: "deep" | "soft" | "paper";
+  /** Décor de fond pleine largeur, comme sur <VenteSection>. */
+  decor?: ReactNode;
 }) {
   const isDeep = tone === "deep";
+  const bg = { deep: "bg-ink-deep", soft: "bg-line/50", paper: "bg-paper" }[tone];
 
   return (
-    <div
-      className={`relative overflow-hidden px-6 py-16 text-center md:py-20 ${
-        isDeep ? "bg-ink-deep" : "bg-line/50"
-      }`}
-    >
+    <div className={`relative overflow-hidden px-6 py-16 text-center md:py-20 ${bg}`}>
+      {decor}
       <Reveal className="relative mx-auto max-w-[720px]">
         <blockquote
           className={`font-display text-[22px] font-light italic leading-[1.5] md:text-[30px] ${

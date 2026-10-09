@@ -17,6 +17,14 @@
   --color-line: #e8dff0;
   --color-dark: #1c1424;
 
+  /* Accent des pages de vente : turquoise par défaut, redéfini par page via
+     <VenteTheme> (chaque offre a sa couleur). */
+  --color-accent: #75ced2;
+  --color-accent-soft: #dbeef4;
+  /* Accent des textes (prénoms des témoignages), plus soutenu quand la
+     couleur d'accent est trop claire pour se lire sur fond blanc. */
+  --color-accent-texte: #75ced2;
+
   /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
   --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-script: var(--font-breathing), var(--font-cormorant), cursive;
@@ -65,6 +73,10 @@ body {
   line-height: 1.6;
   letter-spacing: 0.01em;
   font-size: 15px;
+  /* Cormorant compose par défaut des chiffres elzéviriens : le « 1 » et le
+     « 3 » plongent sous la ligne de base et « 13 » devient illisible en pleine
+     phrase. Hérité partout, le réglage vaut pour toutes les polices. */
+  font-variant-numeric: lining-nums;
 }
 
 /* Reset doux pour les titres : le design veut du léger partout.
