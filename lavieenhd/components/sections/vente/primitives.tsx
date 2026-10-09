@@ -183,19 +183,21 @@ export function CitationBand({
   children,
   cite,
   tone = "deep",
+  decor,
 }: {
   children: ReactNode;
   cite?: string;
-  tone?: "deep" | "soft";
+  /** `paper` prolonge une strate crème au lieu de rompre le fond. */
+  tone?: "deep" | "soft" | "paper";
+  /** Décor de fond pleine largeur, comme sur <VenteSection>. */
+  decor?: ReactNode;
 }) {
   const isDeep = tone === "deep";
+  const bg = { deep: "bg-ink-deep", soft: "bg-line/50", paper: "bg-paper" }[tone];
 
   return (
-    <div
-      className={`relative overflow-hidden px-6 py-16 text-center md:py-20 ${
-        isDeep ? "bg-ink-deep" : "bg-line/50"
-      }`}
-    >
+    <div className={`relative overflow-hidden px-6 py-16 text-center md:py-20 ${bg}`}>
+      {decor}
       <Reveal className="relative mx-auto max-w-[720px]">
         <blockquote
           className={`font-display text-[22px] font-light italic leading-[1.5] md:text-[30px] ${

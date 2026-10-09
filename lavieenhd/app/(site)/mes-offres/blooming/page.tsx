@@ -573,7 +573,7 @@ export default function BloomingPage() {
               <em>
                 Et parce qu’une Fleur sans session d’exploration serait un peu comme une carte au
                 trésor sans légende...
-              </em>
+              </em>{" "}
               Blooming inclut également un{" "}
               {/* Chiffres alignés : par défaut Cormorant compose des chiffres
                   elzéviriens, dont le « 1 » et le « 3 » plongent sous la ligne
@@ -635,7 +635,7 @@ export default function BloomingPage() {
               className="h-auto w-full"
             />
             <figcaption className="mt-3 text-center font-body text-[10px] uppercase tracking-[0.18em] text-ink-soft">
-              Exemple — Fleur d’Émilie
+              Exemple · Fleur d’Émilie
             </figcaption>
           </Reveal>
         </div>
@@ -643,7 +643,7 @@ export default function BloomingPage() {
 
       {/* Placée après l'exemple à la demande de Marion : la phrase répond à la
           Fleur d'Émilie qu'on vient de voir. */}
-      <CitationBand tone="soft">
+      <CitationBand tone="paper" decor={<PetalField />}>
         «&nbsp;Parce que certaines fleurs n’attendent qu’une chose : qu’on leur donne enfin la
         lumière pour s’épanouir.&nbsp;»
       </CitationBand>
@@ -679,6 +679,14 @@ export default function BloomingPage() {
               // Réservée aux deux colonnes : empilée, elle n'a plus de vide à
               // combler et rallonge la page d'un écran avant les cartes.
               className="hidden h-auto w-full rounded-[18px] shadow-simu lg:block"
+            />
+            {/* Marion en dernier : son geste désigne les cartes à côté. */}
+            <Image
+              src="/assets/marion-check-particules.png"
+              alt="Marion Chartier, souriante, désignant les bénéfices"
+              width={1086}
+              height={1448}
+              className="h-auto w-full rounded-[18px] bg-white shadow-simu"
             />
           </Reveal>
 
