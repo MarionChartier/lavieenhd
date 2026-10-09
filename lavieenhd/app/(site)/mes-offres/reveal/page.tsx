@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { EXTERNAL } from "@/lib/links";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -6,7 +7,6 @@ import { Reveal } from "@/components/sections/vente/Reveal";
 import { SectionDots } from "@/components/sections/vente/SectionDots";
 import { VenteTheme } from "@/components/sections/vente/VenteTheme";
 import {
-  FONDU_BORDS,
   PetalDivider,
   PetalField,
   PetalHalo,
@@ -77,6 +77,7 @@ const BENEFICES: Livrable[] = [
     titre: "Une vision plus claire",
     texte:
       "Tu TE comprends mieux et tu comprends ce qui se joue derrière ce qui coince ou te questionne aujourd’hui dans ton Business.",
+    taille: "pleine",
   },
   {
     titre: "Un autre regard & de nouvelles pistes",
@@ -89,6 +90,7 @@ const BENEFICES: Livrable[] = [
         </em>
       </>
     ),
+    taille: "pleine",
   },
   {
     titre: "Des clés concrètes et personnalisées",
@@ -490,7 +492,7 @@ export default function RevealPage() {
           </Reveal>
 
           <div>
-            <ProfilsNotes profils={PROFILS} />
+            <ProfilsNotes profils={PROFILS} empile />
 
             <Reveal className="mt-12">
               <p className="max-w-[640px] font-display text-[18px] font-light leading-relaxed text-ink md:text-[19px]">
@@ -534,7 +536,10 @@ export default function RevealPage() {
 
         <div className="mt-10 font-display text-[17px] font-light leading-loose text-ink md:text-[18px]">
           <Reveal className="grid items-center gap-8 md:grid-cols-[1fr_250px] md:gap-12">
-            <div>
+            {/* Texte resserré dans sa colonne : sur toute la largeur, les deux
+                paragraphes tenaient en trois lignes à côté d'une image bien
+                plus haute. */}
+            <div className="md:max-w-[420px]">
               <p>
                 <strong className="font-semibold text-ink-deep">
                   REVEAL part de TOI et de ce que tu vis aujourd’hui dans ton Business.
@@ -612,6 +617,18 @@ export default function RevealPage() {
       {/* ---------------------------------------------------------------- */}
       {/* BÉNÉFICES — dans la strate des livrables de Blooming             */}
       {/* ---------------------------------------------------------------- */}
+      {/* Or adouci pour cette strate seulement : le fond teinté et le halo des
+          cartes reprennent l'accent de la page, et l'or plein y était trop
+          présent sur toute une hauteur d'écran. */}
+      <div
+        className="contents"
+        style={
+          {
+            "--color-accent": "#efe3c0",
+            "--color-accent-soft": "#fbf7ec",
+          } as CSSProperties
+        }
+      >
       <VenteSection id="benefices" bg="accent" wide decor={<PetalField />}>
         <SectionHeader
           eyebrow="Ce que REVEAL peut t’apporter"
@@ -623,25 +640,44 @@ export default function RevealPage() {
           }
         />
 
-        <div className="mt-14 grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-          <Reveal className="mx-auto w-full max-w-[420px]">
+        {/* La Boussole en haut à gauche, les deux premiers bénéfices empilés à
+            sa droite, puis les deux suivants côte à côte sur toute la largeur.
+            Cartes d'une même rangée à hauteur égale. Sur mobile, la Boussole
+            passe en tête et les cartes s'empilent. */}
+        <div className="mt-14 grid gap-6 lg:grid-cols-[380px_1fr] lg:gap-x-10">
+          <Reveal className="relative mx-auto w-full max-w-[380px] self-center">
+            <PetalHalo />
             <Image
-              src="/assets/reveal/ambiance-clarte-cadree.webp"
-              alt="Bouquet de fleurs séchées dans la lumière"
-              width={637}
-              height={955}
-              className="h-auto w-full"
-              style={FONDU_BORDS}
+              src="/assets/reveal/boussole-tablette.webp"
+              alt="La Boussole REVEAL, le compte-rendu personnalisé, affichée sur une tablette"
+              width={1122}
+              height={1402}
+              className="relative h-auto w-full rounded-[28px] border-[6px] border-white shadow-simu"
             />
           </Reveal>
-
-          <LivrablesGrid livrables={BENEFICES} />
+          <div className="flex flex-col gap-6">
+            <div className="lg:flex-1 lg:[&>div]:h-full">
+              <LivrablesGrid livrables={[BENEFICES[0]]} />
+            </div>
+            <div className="lg:flex-1 lg:[&>div]:h-full">
+              <LivrablesGrid livrables={[BENEFICES[1]]} />
+            </div>
+          </div>
+          <div className="grid gap-6 lg:col-span-2 lg:grid-cols-2 lg:gap-x-10">
+            <div className="lg:[&>div]:h-full">
+              <LivrablesGrid livrables={[BENEFICES[2]]} />
+            </div>
+            <div className="lg:[&>div]:h-full">
+              <LivrablesGrid livrables={[BENEFICES[3]]} />
+            </div>
+          </div>
         </div>
 
         <Reveal className="mt-14 text-center">
           <Cta href="#tarif">Je veux trouver ce qui marche pour moi</Cta>
         </Reveal>
       </VenteSection>
+      </div>
 
       {/* ---------------------------------------------------------------- */}
       {/* PROCESSUS                                                        */}
@@ -752,8 +788,9 @@ Puis, quelques heures après : "Ça bouge déjà...2 offres se dessinent vraimen
       {/* CTA FINAL                                                        */}
       {/* ---------------------------------------------------------------- */}
       {/* Pas de passerelle vers une autre offre : le texte de Marion enchaîne
-          directement de la FAQ à la clôture. */}
-      <section className="relative overflow-hidden bg-white px-6 py-24 text-center md:px-20 md:py-32">
+          directement de la FAQ à la clôture. Peu de marge haute : la FAQ,
+          sur le même fond blanc, a déjà la sienne en bas. */}
+      <section className="relative overflow-hidden bg-white px-6 pt-6 pb-24 text-center md:px-20 md:pt-8 md:pb-32">
         <PetalField />
         <Reveal className="relative mx-auto max-w-[640px]">
           <Rosace className="mx-auto h-10 w-10 text-accent/70" />
