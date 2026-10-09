@@ -16,7 +16,6 @@ import {
   Rosace,
 } from "@/components/sections/vente/motifs";
 import {
-  CitationBand,
   Cta,
   SectionHeader,
   VenteSection,
@@ -53,13 +52,17 @@ const THEME = {
   forme: "carre",
 } as const;
 
-/** Liste à puces logée dans un paragraphe, dont elle partage la police. */
+/** Liste à puces logée dans un paragraphe, dont elle partage la police. La
+ *  puce est centrée dans une boîte haute d'une ligne (`1lh`) : elle suit la
+ *  première ligne du texte quel que soit l'interlignage. */
 function Puces({ items }: { items: ReactNode[] }) {
   return (
     <>
       {items.map((item, i) => (
         <span key={i} className="mt-1.5 flex items-start gap-2.5">
-          <Petal className="mt-[9px] h-2.5 w-2.5 flex-none text-accent" />
+          <span className="flex h-[1lh] flex-none items-center">
+            <Petal className="h-2.5 w-2.5 translate-y-[1px] text-accent" />
+          </span>
           <span>{item}</span>
         </span>
       ))}
@@ -707,8 +710,6 @@ export default function ThePlaceToBePage() {
           </p>
         </Reveal>
       </VenteSection>
-
-      <CitationBand tone="soft">«&nbsp;L’âme s’apaise quand le lieu résonne.&nbsp;»</CitationBand>
 
       {/* ---------------------------------------------------------------- */}
       {/* BÉNÉFICES — dans la strate des livrables de Blooming             */}
