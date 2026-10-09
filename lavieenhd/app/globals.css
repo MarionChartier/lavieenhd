@@ -73,6 +73,10 @@ body {
   line-height: 1.6;
   letter-spacing: 0.01em;
   font-size: 15px;
+  /* Cormorant compose par défaut des chiffres elzéviriens : le « 1 » et le
+     « 3 » plongent sous la ligne de base et « 13 » devient illisible en pleine
+     phrase. Hérité partout, le réglage vaut pour toutes les polices. */
+  font-variant-numeric: lining-nums;
 }
 
 /* Reset doux pour les titres : le design veut du léger partout.
