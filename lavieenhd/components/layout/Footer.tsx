@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ManageCookiesButton } from "@/components/legal/ManageCookiesButton";
+import { EXTERNAL } from "@/lib/links";
 
 const CONTACT = {
   email: "hello@marionchartier-lavieenhd.com",
@@ -10,8 +11,12 @@ const CONTACT = {
 const LEGAL_LINKS = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "CGV", href: "/cgv" },
+  // Masqué tant que Marion n'a pas fourni l'URL (voir EXTERNAL.retractation).
+  ...(EXTERNAL.retractation
+    ? [{ label: "Formulaire de rétractation", href: EXTERNAL.retractation }]
+    : []),
   { label: "Confidentialité", href: "/confidentialite" },
-] as const;
+];
 
 /** Bulle de discussion avec « ... » (demandée par Marion à la place de l'enveloppe). */
 function ChatIcon({ className }: { className?: string }) {
