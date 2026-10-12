@@ -88,7 +88,7 @@ export function HomeHero() {
             sur ton chemin professionnel.
           </p>
           <p>
-            <strong className="font-semibold">Le but?</strong> Que tu te sentes (enfin) à ta place
+            <strong className="font-semibold">Le but?</strong>{" "}Que tu te sentes (enfin) à ta place
             dans ta vie pro, et que tu n&rsquo;aies pas à te trahir pour réussir.
           </p>
           <p>

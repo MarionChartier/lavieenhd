@@ -183,14 +183,14 @@ export function OffreCard({
     <Link
       href={offre.href}
       prefetch={isStaticFile ? false : undefined}
-      className={`group grid min-h-[300px] grid-cols-[72px_1fr] items-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[210px] lg:min-h-[150px] lg:grid-cols-[105px_1fr_auto] lg:gap-x-5 ${
+      className={`group grid min-h-[332px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[210px] sm:grid-cols-[72px_1fr] lg:min-h-[150px] lg:grid-cols-[105px_1fr_auto] lg:gap-x-5 ${
         complement
           ? "border border-ink/12 bg-white/60"
           : "bg-white shadow-[0_5px_16px_rgba(70,50,80,0.04)] hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
       }`}
     >
       <div
-        className={`relative grid h-[72px] place-items-center overflow-hidden rounded-xl lg:h-[84px] ${thumbClass} ${
+        className={`relative grid h-[72px] w-[72px] place-items-center sm:w-auto overflow-hidden rounded-xl lg:h-[84px] ${thumbClass} ${
           complement ? "opacity-75 saturate-50" : ""
         }`}
       >
@@ -220,7 +220,7 @@ export function OffreCard({
           ))}
       </div>
 
-      <span className="col-start-2 inline-flex items-center gap-2.5 font-body text-[13px] font-semibold text-ink-deep lg:col-start-3">
+      <span className="inline-flex items-center gap-2.5 sm:col-start-2 font-body text-[13px] font-semibold text-ink-deep lg:col-start-3">
         Découvrir
         <span
           aria-hidden

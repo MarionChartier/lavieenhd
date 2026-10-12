@@ -58,7 +58,7 @@ export function TransitSolaireBanner() {
   }, []);
 
   return (
-    <section className="bg-white px-6 py-16 md:px-20 md:py-24">
+    <section className="bg-white px-6 pt-16 pb-6 md:px-20 md:pt-24 md:pb-8">
       {/* Transition depuis les témoignages (maquette V36) */}
       <div className="mx-auto mb-10 max-w-[760px] text-center font-display text-ink-deep md:mb-12">
         <p className="text-[19px] font-semibold leading-relaxed md:text-[22px]">

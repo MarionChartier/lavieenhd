@@ -27,25 +27,26 @@ export function HDSimulatorForm({
     >
       {/* Logo Marion — premier plan, en haut à droite de la carte. Sur mobile la
           carte va de bord à bord : le logo rentre dedans (right-0), sinon il
-          dépasserait du viewport et créerait un scroll horizontal. */}
-      <div className="absolute -top-6 right-0 z-10 h-[96px] w-[96px] overflow-hidden rounded-full border border-line bg-white shadow-[0_18px_40px_-15px_rgba(80,60,98,0.3)] md:-top-8 md:-right-8 md:h-[110px] md:w-[110px]">
-        <Image
-          src="/assets/logo-main.png"
-          alt=""
-          width={128}
-          height={128}
-          className="h-full w-full object-contain"
-        />
-      </div>
+          dépasserait du viewport et créerait un scroll horizontal. Sans titre
+          (home), pas de logo : il n'a que le titre à côté de quoi se poser, et
+          seul il imposerait une bande vide au-dessus des champs. */}
+      {titre && (
+        <div className="absolute -top-6 right-0 z-10 h-[96px] w-[96px] overflow-hidden rounded-full border border-line bg-white shadow-[0_18px_40px_-15px_rgba(80,60,98,0.3)] md:-top-8 md:-right-8 md:h-[110px] md:w-[110px]">
+          <Image
+            src="/assets/logo-main.png"
+            alt=""
+            width={128}
+            height={128}
+            className="h-full w-full object-contain"
+          />
+        </div>
+      )}
 
       {/* pr-* garantit que le titre ne passera jamais sous le logo */}
-      {titre ? (
+      {titre && (
         <h2 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
           Il est temps de révéler ton <em className="italic text-turquoise">mode d’emploi personnel</em>.
         </h2>
-      ) : (
-        // Sans titre, cet espace garde les champs du widget hors de portée du logo.
-        <div aria-hidden className="h-14 md:h-12" />
       )}
 
       {/* Pas de cadre ici : le widget apporte le sien. Et surtout pas

@@ -28,7 +28,7 @@ export function Approche() {
             <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment?</em>
           </p>
           <p>
-            C&rsquo;est clairement le <strong className={b}>Human Design</strong> qui m&rsquo;a
+            C&rsquo;est clairement le <strong className={b}>Human Design</strong>{" "}qui m&rsquo;a
             permis de{" "}
             <strong className={b}>
               sortir du brouillard, de trouver ma voie et ma propre façon de construire mon
@@ -47,7 +47,7 @@ export function Approche() {
           </p>
           <p>
             Aujourd&rsquo;hui, je peux enfin dire que je me sens <strong className={b}>à ma place</strong>{" "}
-            et que ma <strong className={b}>mission de cœur</strong> est, à mon tour, de t&rsquo;aider
+            et que ma <strong className={b}>mission de cœur</strong>{" "}est, à mon tour, de t&rsquo;aider
             à trouver{" "}
             <strong className={b}>
               TA voie, TA façon de travailler et TA propre recette pour réussir, sans te trahir. 💜
