@@ -10,21 +10,28 @@ export const metadata: Metadata = {
     "À partir de ta date, ton heure et ton lieu de naissance, génère ton schéma de Human Design complet en quelques secondes, gratuitement.",
 };
 
+/** Chaque puce : un titre en gras, un paragraphe, puis une phrase en italique. */
 const DECOUVERTES = [
-  <>
-    Ton schéma visuel complet&nbsp;; tes Centres, tes canaux, tes Portes
-    activées selon les différentes planètes, tes Lignes, tes variables.
-  </>,
-  <>
-    Un code couleur te permettant d&apos;identifier tes facettes conscientes et
-    inconscientes.
-  </>,
-  <>
-    Les clés principales de ton Design&nbsp;; ton Type énergétique parmi les 5
-    existants (Generator, MG, Projector, Manifestor, Reflector), ton Autorité
-    intérieure qui indique ta façon unique de faire des choix, ton Profil de
-    personnalité, ton Environnement idéal, ta Croix d&apos;Incarnation,...
-  </>,
+  {
+    titre: "Un schéma qui ressemble à des hiéroglyphes!",
+    texte:
+      "On ne va pas se mentir...à première vue, entre formes, chiffres, couleurs et termes flous, rien de très intuitif!",
+    italique: "Spoiler : c'est normal d'avoir l'impression de ne rien comprendre! 😄",
+  },
+  {
+    titre: "Derrière ces symboles obscurs, des clés pour mieux te comprendre.",
+    texte:
+      "Et pourtant, tout cela a du sens et cache une véritable mine d'informations sur TOI!",
+    italique:
+      "Ton fonctionnement énergétique (ton \"Type\"), ta façon de décider (ton \"Autorité intérieure\")...et d'autres clés de ton propre mode d'emploi.",
+  },
+  {
+    titre: "Des éclairages précieux pour ta vie pro et ton Business.",
+    texte:
+      "En approfondissant la lecture, ton Design peut aussi révéler tes talents, tes dynamiques de travail, ta façon de communiquer...",
+    italique:
+      "Autant de pistes pour t'aider à te réaligner dans ta vie pro ou faire évoluer ton Business à TA façon.",
+  },
 ];
 
 export default function TestGratuitPage() {
@@ -39,7 +46,7 @@ export default function TestGratuitPage() {
 
         <p className="mx-auto mt-8 max-w-[680px] font-display text-[18px] font-light italic leading-snug text-ink md:text-[22px]">
           À partir de ta date, ton heure et ton lieu de naissance, génère ton
-          schéma complet ... en seulement&nbsp;quelques&nbsp;secondes.
+          schéma complet en seulement&nbsp;quelques&nbsp;secondes.
         </p>
       </section>
 
@@ -76,13 +83,12 @@ export default function TestGratuitPage() {
                 Ton Design
               </p>
               <p className="relative mt-5 font-display text-[18px] italic leading-snug text-ink-deep md:mt-6 md:text-[22px]">
-                tel qu’il est inscrit dans le ciel à ta naissance.
+                Une cartographie de qui tu es, révélée à partir de tes infos de naissance.
               </p>
 
               <p className="mt-5 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-                À partir de ta date, ton heure et ton lieu de naissance, ton schéma Human
-                Design se révèle. Tu obtiens ton Type, ton Autorité intérieure, ton Profil et
-                bien plus. C’est la base de tout&nbsp;: la cartographie unique de ton énergie.
+                Ton schéma de Human Design est LE point de départ pour explorer ta propre
+                façon de fonctionner.
               </p>
 
               {/* CE QUE TU DÉCOUVRES — card dorée penchée, même style que le fun fact */}
@@ -91,17 +97,21 @@ export default function TestGratuitPage() {
                   <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                     Ce que tu découvres
                   </span>
-                  <ul className="mt-3 flex flex-col gap-3">
-                    {DECOUVERTES.map((item, i) => (
+                  <ul className="mt-3 flex flex-col gap-6">
+                    {DECOUVERTES.map((item) => (
                       <li
-                        key={i}
+                        key={item.titre}
                         className="flex items-start gap-3 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]"
                       >
                         <span
                           aria-hidden
                           className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-ink-deep"
                         />
-                        <span>{item}</span>
+                        <span>
+                          <strong className="font-semibold">{item.titre}</strong>
+                          <span className="mt-2 block">{item.texte}</span>
+                          <em className="mt-2 block italic">{item.italique}</em>
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -118,21 +128,24 @@ export default function TestGratuitPage() {
               et les descriptions prennent toute la largeur du bloc. */}
           <div className="mt-10 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
             <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
-              À savoir avant de commencer
+              Quelques précisions utiles
             </p>
             <ul className="mt-5 flex flex-col gap-5 lg:mt-7 lg:gap-7">
               <li>
                 <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  Heure de naissance précise
+                  Heure de naissance
                 </p>
                 <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Même 10 minutes peuvent changer ton Profil ou ton Autorité intérieure. Si
-                  tu ne la connais pas ou que tu as un doute, je t’invite à te rapprocher du
-                  siège de l’administration de ta ville de naissance. (Si tu es né.e en
-                  France ou que tu as la nationalité française&nbsp;; tu peux obtenir ton
-                  heure de naissance en demandant la copie intégrale de ton acte de
-                  naissance auprès de la mairie de ta commune de naissance (service gratuit,
-                  souvent en ligne).)
+                  La plus précise possible : même 10 minutes peuvent changer certaines
+                  informations essentielles de ton schéma.
+                </p>
+                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                  Si tu ne connais pas précisément ton heure de naissance ou que tu as un
+                  doute, tu peux la retrouver sur la copie intégrale de ton acte de naissance.
+                </p>
+                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                  Si tu es né.e en France, tu peux demander gratuitement ce document auprès
+                  de la mairie de ta commune de naissance (souvent directement en ligne).
                 </p>
               </li>
               <li>
@@ -140,9 +153,10 @@ export default function TestGratuitPage() {
                   Lieu de naissance
                 </p>
                 <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Une ville suffit, pas besoin de l’hôpital. Cependant vérifie bien la
-                  combinaison entière proposée&nbsp;; ville - région - pays. Le calculateur
-                  s’occupe du fuseau horaire et des coordonnées.
+                  Une ville suffit, pas besoin de préciser l&apos;hôpital. Vérifie simplement
+                  que la localisation proposée correspond bien à ton lieu de naissance
+                  (ville, région, pays). Le calculateur se charge du fuseau horaire et des
+                  coordonnées.
                 </p>
               </li>
               <li>
@@ -150,15 +164,7 @@ export default function TestGratuitPage() {
                   Aucun engagement
                 </p>
                 <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Le calculateur est gratuit, et ton schéma t’appartient. Tu peux ensuite
-                  explorer{" "}
-                  <Link
-                    href="/mes-offres"
-                    className="text-ink-deep underline decoration-turquoise underline-offset-2 transition-colors hover:text-turquoise"
-                  >
-                    mes offres
-                  </Link>{" "}
-                  si tu veux aller plus loin.
+                  Le calculateur est gratuit, et ton schéma t’appartient.
                 </p>
               </li>
             </ul>
@@ -174,22 +180,19 @@ export default function TestGratuitPage() {
         <div className="mx-auto max-w-(--container-content)">
           <div className="rounded-2xl border border-ink-deep/8 bg-paper p-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:p-14">
             <h3 className="font-display text-[32px] font-light leading-tight text-ink-deep md:text-[44px]">
-              Envie d’aller plus loin&nbsp;?
+              Envie d’aller plus loin?
             </h3>
             <p className="mx-auto mt-5 max-w-[560px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
-              Explore{" "}
-              <Link
-                href="/mes-offres"
-                className="text-ink-deep underline decoration-turquoise underline-offset-4 transition-colors hover:text-turquoise"
-              >
-                tous les espaces
-              </Link>{" "}
-              de La vie en HD.
+              <span className="underline decoration-turquoise underline-offset-4">
+                3 portes d&apos;entrée
+              </span>{" "}
+              dans l&apos;univers de La vie en HD. À toi de choisir!
             </p>
             <p className="mx-auto mt-4 max-w-[560px] font-body text-[14px] leading-relaxed text-ink md:text-[15px]">
-              Du quiz découverte au programme d’incarnation de&nbsp;3&nbsp;mois,
-              <br />
-              chaque offre correspond à un besoin et à un moment de&nbsp;ton&nbsp;parcours.
+              Que tu souhaites te réaligner dans ta vie pro, faire évoluer ton Business à TA
+              façon ou simplement explorer ton Human Design, je t&apos;invite à découvrir mes
+              Quiz gratuits et mes différentes offres, selon tes besoins et tes envies du
+              moment.
             </p>
             <Link
               href="/mes-offres"
