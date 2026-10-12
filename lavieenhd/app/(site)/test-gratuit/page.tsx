@@ -91,9 +91,9 @@ export default function TestGratuitPage() {
                 façon de fonctionner.
               </p>
 
-              {/* CE QUE TU DÉCOUVRES — card dorée penchée, même style que le fun fact */}
+              {/* CE QUE TU DÉCOUVRES — card dorée, légèrement penchée dès md (droite sur mobile, où le texte long rendait la pente trop visible) */}
               <div className="relative mt-10">
-                <div className="relative rotate-[-2deg] rounded-[28px] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-8 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11">
+                <div className="relative rounded-[28px] md:rotate-[-1deg] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-6 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11">
                   <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                     Ce que tu découvres
                   </span>
