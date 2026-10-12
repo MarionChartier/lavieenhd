@@ -9,7 +9,12 @@ import { BodygraphChart, useBodygraphResult } from "@/components/sections/Bodygr
  * de Marion), dans une carte habillée aux couleurs du site. Le schéma s'affiche
  * là où le formulaire a été rempli, en pleine largeur (voir CalculateurLayout).
  */
-export function HDSimulatorForm() {
+export function HDSimulatorForm({
+  titre = true,
+}: {
+  /** false quand la section porte déjà le titre à côté de la carte (home). */
+  titre?: boolean;
+} = {}) {
   const hasResult = useBodygraphResult();
 
   return (
@@ -34,9 +39,14 @@ export function HDSimulatorForm() {
       </div>
 
       {/* pr-* garantit que le titre ne passera jamais sous le logo */}
-      <h2 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
-        Il est temps de révéler ton <em className="italic text-turquoise">mode d’emploi personnel</em>.
-      </h2>
+      {titre ? (
+        <h2 className="pr-24 font-display text-[26px] leading-tight text-ink-deep md:pr-28 md:text-[32px]">
+          Il est temps de révéler ton <em className="italic text-turquoise">mode d’emploi personnel</em>.
+        </h2>
+      ) : (
+        // Sans titre, cet espace garde les champs du widget hors de portée du logo.
+        <div aria-hidden className="h-14 md:h-12" />
+      )}
 
       {/* Pas de cadre ici : le widget apporte le sien. Et surtout pas
           d'overflow-hidden, qui rognerait la liste des villes. */}

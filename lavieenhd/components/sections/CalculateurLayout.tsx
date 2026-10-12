@@ -27,10 +27,13 @@ import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 export function CalculateurLayout({
   columns,
   temoignages,
+  titreFormulaire = true,
   children,
 }: {
   columns: string;
   temoignages: readonly TemoignageKey[];
+  /** false quand le texte à côté porte déjà le titre du calculateur (home). */
+  titreFormulaire?: boolean;
   children: ReactNode;
 }) {
   const hasResult = useBodygraphResult();
@@ -108,7 +111,7 @@ export function CalculateurLayout({
         ref={calculateur}
         className={`relative scroll-mt-24 ${hasResult ? "" : "lg:pt-2"}`}
       >
-        <HDSimulatorForm />
+        <HDSimulatorForm titre={titreFormulaire} />
         {/* Le vide sous le formulaire n'existe que dans l'état deux colonnes :
             en pleine largeur le schéma occupe toute la place. */}
         {!hasResult && <CalculateurTemoignages items={temoignages} />}

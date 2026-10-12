@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { findTransit, parseCsv, type Transit } from "@/lib/transit";
+import { SOIN_ENERGETIQUE } from "@/lib/content/portes";
+import { OffreCard } from "@/components/sections/home/TroisPortes";
 
 /**
  * Bandeau "Transit solaire" + "Phase lunaire".
@@ -56,7 +58,18 @@ export function TransitSolaireBanner() {
   }, []);
 
   return (
-    <section className="bg-white px-6 py-10 md:px-20 md:py-14">
+    <section className="bg-white px-6 py-16 md:px-20 md:py-24">
+      {/* Transition depuis les témoignages (maquette V36) */}
+      <div className="mx-auto mb-10 max-w-[760px] text-center font-display text-ink-deep md:mb-12">
+        <p className="text-[19px] font-semibold leading-relaxed md:text-[22px]">
+          Et parce que nous traversons aussi des cycles qui viennent colorer ce que nous vivons...
+        </p>
+        <p className="mt-2 text-[17px] font-light italic leading-relaxed md:text-[18px]">
+          Je te propose ici un petit éclairage sur ce qui se joue pour nous, au niveau collectif,
+          aujourd’hui.
+        </p>
+      </div>
+
       <div className="mx-auto mb-8 max-w-(--container-content) text-center md:mb-10">
         {/* leading généreux : les jambages de la script descendent bas et
             viennent croiser la date si on serre l'interligne. */}
@@ -120,6 +133,33 @@ export function TransitSolaireBanner() {
             </p>
           )}
         </BannerCard>
+      </div>
+
+      {/* Le Soin énergétique, placé sous les 3 portes (maquette V36) */}
+      <div className="mx-auto mt-12 max-w-(--container-content) md:mt-14">
+        <p className="mx-auto mb-6 max-w-[760px] text-center font-display text-[17px] font-light italic leading-relaxed text-ink-deep md:text-[18px]">
+          Et si, au-delà de ces énergies collectives, tu ressens le besoin de revenir à toi...
+        </p>
+        <OffreCard
+          offre={{
+            name: SOIN_ENERGETIQUE.name,
+            href: SOIN_ENERGETIQUE.href,
+            logoSrc: SOIN_ENERGETIQUE.logoSrc,
+          }}
+          thumbClass="bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]"
+        >
+          <p className="mt-0.5 font-body text-[13px] font-semibold text-ink md:text-[14px]">
+            {SOIN_ENERGETIQUE.subtitle}
+          </p>
+          {SOIN_ENERGETIQUE.description.map((ligne) => (
+            <p
+              key={ligne}
+              className="mt-1.5 font-body text-[12.5px] leading-relaxed text-ink md:text-[13.5px]"
+            >
+              {ligne}
+            </p>
+          ))}
+        </OffreCard>
       </div>
     </section>
   );
