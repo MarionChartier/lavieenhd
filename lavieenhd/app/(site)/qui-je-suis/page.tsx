@@ -348,9 +348,10 @@ export default function QuiJeSuisPage() {
 
             {/* Récit en paragraphes courts, au rythme de la
                 maquette de Marion */}
-            {/* Bloc simple (pas flex) : seuls des paragraphes en flux normal
-                contournent le flottant. */}
-            <div className="space-y-6 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+            {/* Bloc simple (pas flex) pour contourner le flottant. Chaque
+                paragraphe est un `flow-root` : il se place en entier à côté de
+                la photo ou en entier dessous, jamais coupé entre les deux. */}
+            <div className="space-y-6 font-display lg:[&>p]:flow-root text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               <p>
                 Ayant des &quot;facilités&quot;,{" "}
                 <em className="italic">
