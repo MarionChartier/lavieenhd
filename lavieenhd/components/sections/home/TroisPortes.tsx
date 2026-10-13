@@ -219,7 +219,13 @@ export function OffreCard({
           rognait le bas du logo. `fill` cale l'image sur le cadre, quelle que
           soit la largeur de la colonne. */}
       <div
-        className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass}`}
+        className={`relative overflow-hidden rounded-xl ${
+          // Une photo remplit tout son cadre : à taille égale, elle pèse plus
+          // lourd qu'un logo entouré de marge. On la réduit d'un cran.
+          photo
+            ? "h-[60px] w-[60px] lg:h-[76px] lg:w-[76px] lg:justify-self-center"
+            : "h-[72px] w-[72px] lg:h-[96px] lg:w-[96px]"
+        } ${thumbClass}`}
       >
         <Image
           src={offre.logoSrc}
