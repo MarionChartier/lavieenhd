@@ -98,7 +98,7 @@ function PorteAccordeon({
           <span className="block font-body text-[15px] font-semibold uppercase leading-snug tracking-[0.06em] text-ink-deep md:text-[18px]">
             {porte.title}
           </span>
-          <span className="mt-2 block font-display text-[15px] font-light leading-relaxed text-ink md:text-[16px]">
+          <span className="mt-2 block font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[18px]">
             {porte.description}
           </span>
           <span className="mt-3 flex flex-wrap gap-2">
