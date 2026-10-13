@@ -25,6 +25,11 @@ const TEMOIGNAGES = {
     photo: "/assets/temoignages/Ludivine.png",
     text: "J’y ai retrouvé des choses tellement vraies, tellement moi ; un peu l’histoire de ma vie ! […] Je trouve le HD vraiment magique, c’est ma plus belle découverte de l’année.",
   },
+  barbara: {
+    name: "Barbara",
+    photo: "/assets/temoignages/Barbara.png",
+    text: "Le HD me change la vie, et pas que professionnellement, c’est un vrai bonheur.",
+  },
   fabienne: {
     name: "Fabienne",
     photo: "/assets/temoignages/Fabienne.png",
