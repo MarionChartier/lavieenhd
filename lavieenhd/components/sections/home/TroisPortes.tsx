@@ -99,16 +99,18 @@ function PorteAccordeon({
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="grid w-full grid-cols-[52px_1fr_40px] items-center gap-3 px-4 py-6 text-left md:grid-cols-[90px_1fr_54px] md:gap-6 md:px-8 md:py-7"
+        className="grid w-full grid-cols-[1fr_auto] items-center gap-x-3 gap-y-4 px-5 py-6 text-left md:grid-cols-[90px_1fr_54px] md:gap-6 md:px-8 md:py-7"
       >
+        {/* Mobile : chiffre en haut à gauche, chevron en haut à droite, texte en
+            pleine largeur dessous. Dès md : les trois sur une ligne. */}
         <span
-          className={`font-display text-[44px] font-light leading-none transition-colors md:text-[68px] ${
+          className={`col-start-1 row-start-1 font-display text-[44px] font-light leading-none transition-colors md:text-[68px] ${
             isOpen ? ton.num : "text-ink/25"
           }`}
         >
           {porte.num}
         </span>
-        <span>
+        <span className="col-span-2 row-start-2 md:col-span-1 md:col-start-2 md:row-start-1">
           <span className="block font-body text-[15px] font-semibold uppercase leading-snug tracking-[0.06em] text-ink-deep md:text-[18px]">
             {porte.title}
           </span>
@@ -128,7 +130,7 @@ function PorteAccordeon({
         </span>
         <span
           aria-hidden
-          className={`grid h-10 w-10 place-items-center rounded-full text-ink-deep md:h-12 md:w-12 ${ton.chev}`}
+          className={`col-start-2 row-start-1 grid h-10 w-10 place-items-center justify-self-end rounded-full text-ink-deep md:col-start-3 md:h-12 md:w-12 ${ton.chev}`}
         >
           <svg
             viewBox="0 0 24 24"
