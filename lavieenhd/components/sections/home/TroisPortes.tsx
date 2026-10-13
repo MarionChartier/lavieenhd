@@ -37,7 +37,7 @@ export function TroisPortes() {
   return (
     <section id="portes" className="scroll-mt-24 bg-paper px-6 py-20 md:px-20 md:py-28">
       <div className="mx-auto max-w-(--container-content)">
-        <div className="mb-10 grid gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+        <div className="mb-10 grid gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
           <h2 className="font-display text-[36px] font-light leading-tight text-ink-deep md:text-[56px]">
             Qu’est-ce qui t’appelle le plus <em className="italic text-turquoise">aujourd’hui?</em>
           </h2>
