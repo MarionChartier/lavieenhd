@@ -8,7 +8,7 @@ export function Approche() {
   return (
     <section className="bg-lavender-gradient px-6 py-20 md:px-20 md:py-28">
       <div className="mx-auto max-w-[760px]">
-        <h2 className="text-center font-script text-[30px] leading-[1.4] text-ink-deep md:text-[40px]">
+        <h2 className="text-center font-display text-[36px] font-light leading-tight text-balance text-ink-deep md:text-[52px]">
           Sortir des cases pour avancer à TA façon
         </h2>
 
