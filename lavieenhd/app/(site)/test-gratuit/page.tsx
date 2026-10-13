@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
-import { CalculateurTemoignages } from "@/components/sections/CalculateurTemoignages";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 
 export const metadata: Metadata = {
@@ -58,55 +56,28 @@ export default function TestGratuitPage() {
         </div>
       </div>
 
-      {/* SECTION — CALCULATEUR HD */}
-      <section id="simulateur" className="scroll-mt-24 bg-white px-6 pt-12 pb-16 md:px-20 md:pt-16 md:pb-20">
-        <div className="mx-auto max-w-(--container-content)">
-          {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe.
-              Même ratio que le hero : sous ~630px de carte, le champ année de la
-              ligne de date rogne les quatre chiffres saisis. */}
-          <CalculateurLayout
-            columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
-            temoignages={[]}
-          >
-            {/* Contenu pédagogique — présentation du Design */}
-            <>
-              {/* Visuel en arrière-plan de la colonne, discret */}
-              <Image
-                src="/assets/simulateur-aligne.jpeg"
-                alt=""
-                aria-hidden
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="pointer-events-none -z-10 object-cover opacity-[0.05] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]"
-              />
+      {/* SECTION — TON DESIGN : bloc à part au-dessus du formulaire, sur une seule
+          colonne, comme la maquette de Marion. */}
+      <section className="bg-white px-6 pt-12 pb-16 md:px-20 md:pt-16 md:pb-20">
+        <div className="mx-auto max-w-[900px]">
+          <p className="font-script text-[30px] leading-[1.3] text-ink-deep md:text-[40px]">
+            Ton Design
+          </p>
+          <p className="mt-5 font-display text-[18px] italic leading-snug text-ink-deep md:mt-6 md:text-[22px]">
+            Une cartographie de qui tu es, révélée à partir de tes infos de naissance.
+          </p>
+          <p className="mt-5 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+            Ton schéma de Human Design est LE point de départ pour explorer ta propre façon de
+            fonctionner.
+          </p>
 
-              <p className="relative font-script text-[30px] leading-[1.3] text-ink-deep md:text-[40px]">
-                Ton Design
-              </p>
-              <p className="relative mt-5 font-display text-[18px] italic leading-snug text-ink-deep md:mt-6 md:text-[22px]">
-                Une cartographie de qui tu es, révélée à partir de tes infos de naissance.
-              </p>
-
-              <p className="mt-5 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-                Ton schéma de Human Design est LE point de départ pour explorer ta propre
-                façon de fonctionner.
-              </p>
-
-              {/* Témoignage sous le texte, à gauche, comme sur l'accueil */}
-              <CalculateurTemoignages items={["fabienne"]} />
-            </>
-          </CalculateurLayout>
-
-          {/* CE QUE TU DÉCOUVRES — card dorée sous les deux colonnes. Dans la
-              colonne de gauche, ses trois puces devenues longues l'étiraient en
-              un bandeau étroit qui descendait bien plus bas que le formulaire ;
-              en pleine largeur, elles se lisent côte à côte dès lg. */}
-          <div className="relative mt-16 md:mt-20">
-            <div className="relative rounded-[28px] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-6 pt-9 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11 md:pt-12">
-              <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
+          {/* CE QUE TU DÉCOUVRES — card dorée, trois puces empilées */}
+          <div className="relative mt-14">
+            <div className="relative rounded-[28px] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-6 pt-9 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:px-11 md:pt-12 md:pb-10">
+              <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center whitespace-nowrap rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                 Ce que tu découvres
               </span>
-              <ul className="grid gap-8 lg:grid-cols-3 lg:gap-10">
+              <ul className="flex flex-col gap-7">
                 {DECOUVERTES.map((item) => (
                   <li
                     key={item.titre}
@@ -126,18 +97,32 @@ export default function TestGratuitPage() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* À SAVOIR — précisions sur les champs, structure label + texte.
-              Sous les deux colonnes et non dedans : dans la colonne de gauche il
-              étirait le texte 500px plus bas que le calculateur, et c'est de la
-              consigne à lire avant de remplir, pas de l'argumentaire. En pleine
-              largeur ses trois points restent empilés — titre, texte, titre suivant —
-              et les descriptions prennent toute la largeur du bloc. */}
-          <div className="mt-10 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
+      {/* SÉPARATEUR avant le calculateur */}
+      <div className="bg-white px-6 md:px-20">
+        <div className="mx-auto max-w-(--container-content)">
+          <div className="border-t border-ink-deep/10" />
+        </div>
+      </div>
+
+      {/* SECTION — CALCULATEUR HD : formulaire centré, précisions dessous */}
+      <section id="simulateur" className="scroll-mt-24 bg-white px-6 pt-12 pb-16 md:px-20 md:pt-16 md:pb-20">
+        <div className="mx-auto max-w-(--container-content)">
+          {/* Une colonne centrée avant le calcul, pleine largeur dès qu'un schéma
+              existe. 680px : sous ~630px de carte, le champ année de la ligne de
+              date rogne les quatre chiffres saisis. */}
+          <CalculateurLayout columns="mx-auto w-full max-w-[680px]" temoignages={[]}>
+            {null}
+          </CalculateurLayout>
+
+          {/* À SAVOIR — sous le formulaire, à sa largeur, comme sur la maquette */}
+          <div className="mx-auto mt-10 max-w-[680px] rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
             <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
               Quelques précisions utiles
             </p>
-            <ul className="mt-5 flex max-w-[760px] flex-col gap-5 lg:mt-7 lg:gap-7">
+            <ul className="mt-5 flex flex-col gap-5 lg:mt-7 lg:gap-7">
               <li>
                 <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
                   Heure de naissance
