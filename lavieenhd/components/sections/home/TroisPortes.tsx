@@ -194,7 +194,7 @@ export function OffreCard({
   complement?: boolean;
   /** Pastille au-dessus du nom, comme « Quiz gratuit » (ex. « Soin collectif à distance ») */
   badge?: { label: string; className: string };
-  /** Vignette photo (bord à bord) plutôt que logo (centré, avec marge) */
+  /** Vignette photo : plus de marge qu'un logo, sinon elle écrase le cadre */
   photo?: boolean;
   /** Fond, bordure et ombre de la carte, à la place du blanc par défaut */
   surface?: string;
@@ -219,20 +219,14 @@ export function OffreCard({
           rognait le bas du logo. `fill` cale l'image sur le cadre, quelle que
           soit la largeur de la colonne. */}
       <div
-        className={`relative overflow-hidden rounded-xl ${
-          // Une photo remplit tout son cadre : à taille égale, elle pèse plus
-          // lourd qu'un logo entouré de marge. On la réduit d'un cran.
-          photo
-            ? "h-[60px] w-[60px] lg:h-[76px] lg:w-[76px] lg:justify-self-center"
-            : "h-[72px] w-[72px] lg:h-[96px] lg:w-[96px]"
-        } ${thumbClass}`}
+        className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass}`}
       >
         <Image
           src={offre.logoSrc}
           alt=""
           fill
           sizes="96px"
-          className={photo ? "object-cover" : "object-contain p-1.5"}
+          className={photo ? "object-contain p-2.5 lg:p-3.5" : "object-contain p-1.5"}
         />
       </div>
 
