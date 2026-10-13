@@ -4,6 +4,8 @@ type LegalSection = {
   body?: string | string[];
   /** Liste à puces optionnelle, affichée sous les paragraphes. */
   items?: string[];
+  /** Paragraphes affichés sous la liste à puces. */
+  after?: string | string[];
 };
 
 type LegalShellProps = {
@@ -35,8 +37,9 @@ export function LegalShell({ title, intro, updatedAt, sections }: LegalShellProp
 
         <div className="mt-12 flex flex-col gap-10">
           {sections.map((s) => {
-            const paragraphs =
-              s.body === undefined ? [] : Array.isArray(s.body) ? s.body : [s.body];
+            const asList = (v?: string | string[]) =>
+              v === undefined ? [] : Array.isArray(v) ? v : [v];
+            const paragraphs = asList(s.body);
 
             return (
               <div key={s.heading}>
@@ -60,6 +63,15 @@ export function LegalShell({ title, intro, updatedAt, sections }: LegalShellProp
                     ))}
                   </ul>
                 )}
+
+                {asList(s.after).map((p, i) => (
+                  <p
+                    key={i}
+                    className="mt-3 whitespace-pre-line font-sans text-[15px] font-normal leading-relaxed text-ink-deep md:text-[16px]"
+                  >
+                    {p}
+                  </p>
+                ))}
               </div>
             );
           })}
