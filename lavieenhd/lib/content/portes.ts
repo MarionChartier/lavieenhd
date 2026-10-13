@@ -142,7 +142,7 @@ export const SOIN_ENERGETIQUE = {
   subtitle: "Soin collectif à distance",
   description: [
     "Une parenthèse rien que pour toi, chaque dernier dimanche du mois, pour ralentir, te recentrer et prendre soin de ton énergie.",
-    "Tu n’as rien à faire, juste à te laisser chouchouter. ✨",
+    "Tu n’as rien à faire, juste à te laisser chouchouter. ✨",
   ],
   href: EXTERNAL.offre.soinEnergetique,
   logoSrc: "/assets/soin-energetique-mains.png",

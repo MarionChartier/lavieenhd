@@ -147,18 +147,18 @@ export function TransitSolaireBanner() {
             logoSrc: SOIN_ENERGETIQUE.logoSrc,
           }}
           thumbClass="bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]"
+          badge={{
+            label: SOIN_ENERGETIQUE.subtitle,
+            className: "border-[#e5d4b4] bg-[#f5ecdf] text-[#8a6a3c]",
+          }}
+          photo
         >
-          <p className="mt-0.5 font-body text-[13px] font-semibold text-ink md:text-[14px]">
-            {SOIN_ENERGETIQUE.subtitle}
-          </p>
-          {SOIN_ENERGETIQUE.description.map((ligne) => (
-            <p
-              key={ligne}
-              className="mt-1.5 font-display text-[16px] leading-snug text-ink-deep md:text-[17px]"
-            >
-              {ligne}
-            </p>
-          ))}
+          {/* Ligne de lecture bornée : sur toute la largeur de la carte, la phrase
+              filait sur 1 300px et laissait « énergie. » seule à la ligne. */}
+          <div className="mt-1.5 max-w-[640px] font-display text-[16px] leading-snug text-ink-deep md:text-[17px]">
+            <p>{SOIN_ENERGETIQUE.description[0]}</p>
+            <p className="mt-1.5 italic">{SOIN_ENERGETIQUE.description[1]}</p>
+          </div>
         </OffreCard>
       </div>
     </section>

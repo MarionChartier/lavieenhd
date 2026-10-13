@@ -184,11 +184,17 @@ export function OffreCard({
   offre,
   thumbClass,
   complement = false,
+  badge,
+  photo = false,
   children,
 }: {
   offre: Pick<PorteOffre, "name" | "href" | "logoSrc" | "quiz"> & { description?: string };
   thumbClass: string;
   complement?: boolean;
+  /** Pastille au-dessus du nom, comme « Quiz gratuit » (ex. « Soin collectif à distance ») */
+  badge?: { label: string; className: string };
+  /** Vignette photo (bord à bord) plutôt que logo (centré, avec marge) */
+  photo?: boolean;
   /** Contenu libre sous le nom, à la place de la description */
   children?: ReactNode;
 }) {
@@ -211,13 +217,23 @@ export function OffreCard({
       <div
         className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass}`}
       >
-        <Image src={offre.logoSrc} alt="" fill sizes="96px" className="object-contain p-1.5" />
+        <Image
+          src={offre.logoSrc}
+          alt=""
+          fill
+          sizes="96px"
+          className={photo ? "object-cover" : "object-contain p-1.5"}
+        />
       </div>
 
       <div>
-        {offre.quiz && (
-          <span className="mb-1.5 inline-flex rounded-full border border-[#ddd1e7] bg-[#f4ecfa] px-2.5 pt-[4px] pb-[3px] font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-[#765d8d]">
-            Quiz gratuit
+        {(offre.quiz || badge) && (
+          <span
+            className={`mb-1.5 inline-flex rounded-full border px-2.5 pt-[4px] pb-[3px] font-body text-[10px] font-semibold uppercase tracking-[0.12em] ${
+              badge?.className ?? "border-[#ddd1e7] bg-[#f4ecfa] text-[#765d8d]"
+            }`}
+          >
+            {badge?.label ?? "Quiz gratuit"}
           </span>
         )}
         <p className="font-display text-[17px] font-semibold leading-snug text-ink-deep md:text-[21px]">
