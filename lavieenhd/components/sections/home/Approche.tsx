@@ -11,7 +11,7 @@ export function Approche() {
         <h2 className="text-center font-display text-[36px] font-light leading-tight text-ink-deep md:text-[52px]">
           Sortir des cases pour avancer à
           <br />
-          TA façon
+          <span className="font-script">TA façon</span>
         </h2>
 
         <div className="mt-10 flex flex-col gap-5 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[18px]">
