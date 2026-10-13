@@ -14,13 +14,13 @@ export function AboutTeaser() {
     <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
       Marion,
       <br />
-      <em className="italic">derrière La vie en HD</em>
+      <em className="italic">derrière La vie en&nbsp;HD</em>
     </h2>
   );
 
   return (
-    <section className="px-6 py-24 md:px-20 md:py-32">
-      <div className="mx-auto grid max-w-(--container-content) gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
+    <section className="px-6 pt-14 pb-20 md:px-20 md:py-32">
+      <div className="mx-auto grid max-w-(--container-content) gap-10 md:gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
         {/* Empilé (mobile, tablette), le titre annonce la photo ; en deux
             colonnes il retrouve sa place en tête de la colonne de texte. */}
         <div className="lg:hidden">{titre}</div>

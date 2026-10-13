@@ -16,7 +16,7 @@ export function SchemaGenerateur() {
       className={`scroll-mt-24 bg-paper px-6 pt-20 md:px-20 md:pt-28 ${
         // Avec un schéma en pleine largeur, la section grandit énormément et le
         // padding bas devient un grand vide avant la section suivante.
-        hasResult ? "pb-0" : "pb-20 md:pb-28"
+        hasResult ? "pb-0" : "pb-8 md:pb-28"
       }`}
     >
       {/* Ratio repris de l'ancien hero : sous ~630px de carte, le champ année du
