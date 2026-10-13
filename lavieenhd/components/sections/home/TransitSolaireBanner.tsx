@@ -152,6 +152,8 @@ export function TransitSolaireBanner() {
             className: "border-[#e5d4b4] bg-[#f5ecdf] text-[#8a6a3c]",
           }}
           photo
+          // Section blanche : le blanc par défaut s'y confondait avec le fond.
+          surface="border border-[#e5d4b4]/70 bg-[linear-gradient(135deg,#fdf8ef_0%,#f5ecdf_100%)] shadow-[0_18px_40px_-22px_rgba(138,106,60,0.35)] hover:shadow-[0_24px_50px_-22px_rgba(138,106,60,0.45)]"
         >
           {/* Ligne de lecture bornée : sur toute la largeur de la carte, la phrase
               filait sur 1 300px et laissait « énergie. » seule à la ligne. */}

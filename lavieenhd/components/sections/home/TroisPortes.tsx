@@ -186,6 +186,7 @@ export function OffreCard({
   complement = false,
   badge,
   photo = false,
+  surface,
   children,
 }: {
   offre: Pick<PorteOffre, "name" | "href" | "logoSrc" | "quiz"> & { description?: string };
@@ -195,6 +196,8 @@ export function OffreCard({
   badge?: { label: string; className: string };
   /** Vignette photo (bord à bord) plutôt que logo (centré, avec marge) */
   photo?: boolean;
+  /** Fond, bordure et ombre de la carte, à la place du blanc par défaut */
+  surface?: string;
   /** Contenu libre sous le nom, à la place de la description */
   children?: ReactNode;
 }) {
@@ -206,9 +209,10 @@ export function OffreCard({
       href={offre.href}
       prefetch={isStaticFile ? false : undefined}
       className={`group grid min-h-[320px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[192px] sm:grid-cols-[72px_1fr] lg:min-h-[160px] lg:grid-cols-[96px_1fr_auto] lg:gap-x-5 ${
-        complement
+        surface ??
+        (complement
           ? "border border-ink/12 bg-white hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
-          : "bg-white shadow-[0_5px_16px_rgba(70,50,80,0.04)] hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
+          : "bg-white shadow-[0_5px_16px_rgba(70,50,80,0.04)] hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]")
       }`}
     >
       {/* Vignette carrée comme les logos (500×500) : un cadre rectangulaire
