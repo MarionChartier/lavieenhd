@@ -39,16 +39,14 @@ export const metadata: Metadata = {
 const COMMANDE = EXTERNAL.commande.reveal;
 
 /**
- * Couleur et forme propres à REVEAL. Provisoires tant que Marion n'a pas
- * arrêté la répartition des couleurs entre les pages : un or doux, pour la
- * clarté (4.1:1 en prix sur le bandeau de la carte de tarif), et le losange
- * qui brille au cœur de l'œil du logo.
+ * Couleur et forme propres à REVEAL : un or doux, pour la clarté, et le
+ * losange qui brille au cœur de l'œil du logo. La couleur ne teinte que les
+ * fonds de section et les formes en filigrane ; les petits éléments restent
+ * turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#e6cf8b",
+  motif: "#e6cf8b",
   accentSoft: "#f7efd6",
-  // Or clair illisible sur blanc (1.6:1) : les prénoms passent en or soutenu (4:1).
-  accentTexte: "#9c7a2a",
   forme: "losange",
 } as const;
 
@@ -368,7 +366,7 @@ export default function RevealPage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/15 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/15 blur-3xl"
         />
         <PetalField />
 

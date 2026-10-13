@@ -145,13 +145,13 @@ export function PetalDivider({
  */
 const HALO = [
   { top: "-7%", left: "-6%", size: 36, rotate: -24, opacity: 0.44, tone: "text-ink-lilac" },
-  { top: "-12%", left: "24%", size: 22, rotate: 42, opacity: 0.36, tone: "text-accent" },
+  { top: "-12%", left: "24%", size: 22, rotate: 42, opacity: 0.36, tone: "text-motif" },
   { top: "-9%", left: "58%", size: 28, rotate: -14, opacity: 0.34, tone: "text-ink-lilac" },
-  { top: "16%", left: "-9%", size: 20, rotate: 66, opacity: 0.34, tone: "text-accent" },
+  { top: "16%", left: "-9%", size: 20, rotate: 66, opacity: 0.34, tone: "text-motif" },
   { top: "38%", left: "-5%", size: 14, rotate: -8, opacity: 0.4, tone: "text-ink-lilac" },
   { bottom: "16%", left: "-8%", size: 31, rotate: -44, opacity: 0.38, tone: "text-ink-lilac" },
   { bottom: "-8%", left: "13%", size: 25, rotate: 20, opacity: 0.36, tone: "text-ink-lilac" },
-  { bottom: "-6%", left: "38%", size: 18, rotate: -58, opacity: 0.28, tone: "text-accent" },
+  { bottom: "-6%", left: "38%", size: 18, rotate: -58, opacity: 0.28, tone: "text-motif" },
   { top: "-4%", right: "-5%", size: 23, rotate: 34, opacity: 0.32, tone: "text-beige-soft" },
 ] as const;
 
@@ -196,11 +196,11 @@ const CHAMP_LEGER = [
 const CHAMP_DENSE = [
   { x: -9, y: 2, size: 400, rotate: -24, opacity: 0.14, tone: "text-ink-lilac" },
   { x: 44, y: -12, size: 230, rotate: 58, opacity: 0.09, tone: "text-beige-soft" },
-  { x: 82, y: -6, size: 320, rotate: 36, opacity: 0.13, tone: "text-accent" },
+  { x: 82, y: -6, size: 320, rotate: 36, opacity: 0.13, tone: "text-motif" },
   { x: 86, y: 26, size: 460, rotate: -14, opacity: 0.1, tone: "text-ink-lilac" },
   { x: -11, y: 40, size: 360, rotate: 30, opacity: 0.12, tone: "text-beige-soft" },
   { x: 74, y: 66, size: 420, rotate: -38, opacity: 0.11, tone: "text-ink-lilac" },
-  { x: 2, y: 74, size: 280, rotate: 12, opacity: 0.13, tone: "text-accent" },
+  { x: 2, y: 74, size: 280, rotate: 12, opacity: 0.13, tone: "text-motif" },
   { x: 30, y: 90, size: 330, rotate: -52, opacity: 0.08, tone: "text-ink-lilac" },
 ];
 

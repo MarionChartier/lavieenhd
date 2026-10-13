@@ -39,16 +39,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Couleur et forme propres à The Place to be. Provisoires tant que Marion n'a
- * pas arrêté la répartition des couleurs entre les pages : un vert tendre,
- * pour les lieux et la nature (3.9:1 en prix sur le bandeau des cartes de
- * commande), et le carré, pour les espaces. Les prénoms passent en vert
- * soutenu, le vert tendre ne se lisant pas sur blanc.
+ * Couleur et forme propres à The Place to be : un vert tendre, pour les lieux
+ * et la nature, et le carré, pour les espaces. La couleur ne teinte que les
+ * fonds de section et les formes en filigrane ; les petits éléments restent
+ * turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#b5d3a8",
+  motif: "#b5d3a8",
   accentSoft: "#e8f1e3",
-  accentTexte: "#4f7a48",
   forme: "carre",
 } as const;
 
@@ -164,13 +162,13 @@ const BENEFICES: Livrable[] = [
 const VERBATIMS: Verbatim[] = [
   {
     nom: "Nathalie",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Nathalie-place-to-be.webp",
     texte:
       "Franchement bluffée de ce guide ! Il est agréable à lire, et surtout totalement juste. C'est rigolo car je m'aperçois que j'ai spontanément peint mon bureau de travail aux couleurs de mon environnement! :) Merci infiniment Marion.",
   },
   {
     nom: "Gloria",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Gloria-place-to-be.webp",
     texte:
       "Merci Marion pour ce Guide d'exploration! Déjà j'ai beaucoup aimé le format, la charte visuelle, c'est pétillant! Je ne m'y connaissais pas du tout en Human Design et j'ai adoré ce preview sur mon environnement. C'est un guide super révélateur et hallucinant de justesse! Ça donne vraiment envie de découvrir les autres parties du HD! Par rapport à mon profil, je m'aperçois que je suis à l'opposé dans ma vie actuelle, et que c'est un vrai facteur d'anxiété pour moi. C'est vraiment un déclic de plus pour chercher à me construire une vie plus alignée avec moi, plus slow. Merci Marion pour tous les conseils pratiques! Pour l'anecdote, j'ai trouvé ça fou que mon environnement soit \"Cuisines\" parmi les 6, car je viens de ce milieu-là! Mon père a un magasin de cuisines, et, en tant qu'italienne, la cuisine est un lieu de réunion et de partage important! 😍",
   },
@@ -182,19 +180,19 @@ const VERBATIMS: Verbatim[] = [
   },
   {
     nom: "Nicolas",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Nicolas-place-to-be.webp",
     texte:
       "À la première lecture de mon guide d'exploration, j'étais sceptique. Je me disais que tout le monde pouvait se reconnaître dans la description de mon Environnement. Mais, dans les jours qui ont suivis, des détails ont refait surface et m'ont interpellés. J'ai donc décidé de relire une seconde fois mon guide. Et là, je dois avouer que tout a changé. Les mots de Marion me parlaient vraiment, avec une résonance bluffante. Je me suis reconnu dans tous les aspects, même certains dont je n'avais pas conscience avant. J'ai hâte de continuer mon expérience du HD avec Marion. Mon conseil pour les sceptiques? Essayez, vous serez bluffés!",
   },
   {
     nom: "Eloïse",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Eloise-place-to-be.webp",
     texte:
       "Qui aurait cru qu'à partir de mes infos de naissance j'aurais pu en apprendre autant sur moi? Grâce au guide d'exploration de Marion, j'ai pu comprendre mon Environnement et identifier ce qui me correspond le mieux en terme d'aménagement et d'ambiance par exemple. L'ebook que j'ai reçu est très instructif et utile. Merci beaucoup Marion 🥰",
   },
   {
     nom: "Astrig",
-    photo: "/assets/temoignages/Astrig2.png",
+    photo: "/assets/temoignages/Astrig-place-to-be.webp",
     texte:
       "Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi! Mais ce que j'ai découvert, c'est bien plus que ça! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment! Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien. Encore merci Marion 🌟",
   },
@@ -402,7 +400,7 @@ export default function ThePlaceToBePage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/20 blur-3xl"
         />
         <PetalField />
 
@@ -806,23 +804,26 @@ Merci Marion pour cette belle découverte !`}
 
         <div className="mt-14">
           <ChoixVariantes
-            inclus={INCLUS}
+            inclus={[
+              ...INCLUS,
+              <>
+                <strong className="font-semibold">Accès immédiat après ta commande</strong>
+                <br />
+                Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
+                explorer TON Environnement sans attendre.
+              </>,
+              <em key="format" className="italic">
+                Format PDF • Créé par mes petites mains d’humaine • À conserver et relire à
+                l’infini. ♡
+              </em>,
+            ]}
             apresInclus={
-              <div className="flex flex-col gap-5 font-display text-[17px] leading-relaxed text-ink">
-                <p className="italic">
-                  Format PDF • À conserver et relire à l’infini • Créé par mes petites mains
-                  d’humaine ♡
-                </p>
+              // Encadré pour distinguer l'aide au choix de la liste du dessus.
+              <div className="rounded-2xl border border-line bg-accent-soft/70 px-6 py-5 font-display text-[17px] leading-relaxed text-ink md:px-8">
                 <p>
                   <strong className="font-semibold text-ink-deep">
-                    Accès immédiat après ta commande
+                    Tu ne sais pas/plus quel est ton Environnement HD?
                   </strong>
-                  <br />
-                  Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
-                  explorer TON Environnement sans attendre.
-                </p>
-                <p>
-                  Tu ne sais pas/plus quel est ton Environnement HD?
                   <br />
                   Clique ici pour le découvrir rapidement grâce à ton{" "}
                   {lienTest("TEST HD GRATUIT")}.
@@ -867,7 +868,7 @@ Merci Marion pour cette belle découverte !`}
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

@@ -23,15 +23,14 @@ export const metadata: Metadata = {
 const COMMANDE = EXTERNAL.commande.soinEnergetique;
 
 /**
- * Couleur et forme propres au Soin énergétique. Provisoires tant que Marion
- * n'a pas arrêté la répartition des couleurs entre les pages : un abricot
- * doux, la lumière des mains du logo (4.1:1 en prix sur le bandeau de la carte
- * de tarif), et l'étincelle à quatre branches du logo.
+ * Couleur et forme propres au Soin énergétique : un abricot doux, la lumière
+ * des mains du logo, et l'étincelle à quatre branches du logo. La couleur ne
+ * teinte que les fonds de section et les formes en filigrane ; les petits
+ * éléments restent turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#f0c8a0",
+  motif: "#f0c8a0",
   accentSoft: "#fbefe3",
-  accentTexte: "#9a5e33",
   forme: "etoile",
 } as const;
 
@@ -46,7 +45,7 @@ const ETAPES = [
   {
     titre: "Tu t’inscris",
     texte:
-      "Le jour du Soin, je t’envoies un email avec le déroulement et mes quelques « petites consignes ».",
+      "Le jour du Soin, je t’envoie un email avec le déroulement et mes quelques « petites consignes ».",
   },
   {
     titre: "Le jour J, à 21h, tu te mets en mode réception",
@@ -129,7 +128,7 @@ export default function SoinEnergetiquePage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/25 blur-3xl"
         />
         <PetalField />
 

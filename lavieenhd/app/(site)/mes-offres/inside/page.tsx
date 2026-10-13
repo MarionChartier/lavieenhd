@@ -38,12 +38,11 @@ export const metadata: Metadata = {
 const COMMANDE = EXTERNAL.commande.insideClub;
 
 /**
- * Couleur et forme propres à INSIDE. Provisoires tant que Marion n'a pas
- * arrêté la répartition des couleurs entre les pages : un mauve clair (même
- * contraste que le turquoise de Blooming, 3.5:1 en prix sur le bandeau de la
- * carte de tarif) et le cercle du logo.
+ * Couleur et forme propres à INSIDE : un mauve clair et le cercle du logo. La
+ * couleur ne teinte que les fonds de section et les formes en filigrane ; les
+ * petits éléments restent turquoise, comme sur Blooming (demande de Marion).
  */
-const THEME = { accent: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
+const THEME = { motif: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
 
 /** Liste à puces logée dans un paragraphe de note, dont elle partage la
  *  police. La puce est centrée dans une boîte haute d'une ligne (`1lh`) :
@@ -315,7 +314,7 @@ Franchement merci beaucoup Marion 🥰`,
   },
   {
     nom: "Sylvie",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Sylvie-inside.webp",
     texte:
       "Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds. Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature. Je croyais que le Human Design était réservé aux initiés, mais en réalité, c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi. Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'inviter dans ma vie.",
   },
@@ -570,7 +569,7 @@ export default function InsidePage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/10 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/10 blur-3xl"
         />
         <PetalField />
 
@@ -702,8 +701,8 @@ export default function InsidePage() {
             <span aria-hidden className="pointer-events-none relative hidden h-0 w-full lg:block">
               {/* Trois tailles en diagonale, espacées d'au moins 60px entre
                   leurs bords (flou compris) : les cercles ne se touchent pas. */}
-              <span className="absolute top-6 right-0 h-[200px] w-[200px] rounded-full bg-accent/20 blur-md" />
-              <span className="absolute top-0 left-4 h-[80px] w-[80px] rounded-full bg-accent/20 blur-sm" />
+              <span className="absolute top-6 right-0 h-[200px] w-[200px] rounded-full bg-motif/20 blur-md" />
+              <span className="absolute top-0 left-4 h-[80px] w-[80px] rounded-full bg-motif/20 blur-sm" />
               <span className="absolute top-[210px] left-0 h-[130px] w-[130px] rounded-full bg-ink-lilac/15 blur-sm" />
             </span>
           </Reveal>
@@ -1010,7 +1009,7 @@ export default function InsidePage() {
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

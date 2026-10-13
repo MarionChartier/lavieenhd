@@ -306,7 +306,9 @@ export function PricingCard({
               compact, entouré de blanc, le même ton paraissait plus dense
               qu'en pleine largeur. Le prix turquoise y garde 3.48:1 — au-dessus
               du seuil de 3:1 qui s'applique à ses 46px — et le lettrage blanc
-              du logo, qui est fin, 6.34:1. */}
+              du logo, qui est fin, 6.34:1. Turquoise sur toutes les pages, pas
+              l'accent de l'offre : demande de Marion, les autres teintes sortent
+              de sa DA à cet endroit. */}
           <div className="bg-[#665b74] px-7 py-9 text-center">
             <Image
               src={logo}
@@ -320,16 +322,17 @@ export function PricingCard({
                 Cormorant rendaient le montant difficile à lire d'un coup d'œil.
                 Léger recalage à droite : le « € » massif en fin de montant tire
                 l'œil vers la gauche du bloc. */}
-            <p className="mt-5 translate-x-[4px] font-body text-[38px] leading-none tracking-[0.02em] text-accent [font-variant-numeric:lining-nums]">
+            <p className="mt-5 translate-x-[4px] font-body text-[38px] leading-none tracking-[0.02em] text-turquoise [font-variant-numeric:lining-nums]">
               {prix}
             </p>
           </div>
 
           <div className="px-6 py-7">
-            <Cta href={href} external className="w-full">
+            <Cta href={href} external survolTurquoise className="w-full">
               {libelleCta}
             </Cta>
-            <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
+            {/* Mention discrète : en Luciole italique, elle pesait presque autant que le bouton. */}
+            <p className="mt-4 text-center font-display text-[14px] italic leading-snug text-ink-soft/80">{note}</p>
           </div>
         </Reveal>
         </div>
@@ -626,13 +629,14 @@ function OffreCarte({
         {/* `mt-auto` : les boutons s'alignent en bas des cartes voisines,
             quelle que soit la longueur du texte. */}
         <div className="mt-auto pt-8">
-          {/* Pleine largeur et sur une ligne : d'une carte à l'autre, les
-              libellés de longueurs différentes donnaient des boutons sur une
-              ou deux lignes, de hauteurs et largeurs inégales. */}
+          {/* Pleine largeur et, dès lg, sur une ligne : d'une carte à l'autre,
+              les libellés de longueurs différentes donnaient des boutons sur
+              une ou deux lignes, de hauteurs et largeurs inégales. Pas en
+              dessous : un long libellé élargissait la carte au-delà de l'écran. */}
           <Cta
             href={href}
             variant="ghost"
-            className="w-full whitespace-nowrap px-5! tracking-[0.16em]!"
+            className="w-full px-5! tracking-[0.16em]! lg:whitespace-nowrap"
           >
             {libelle}
           </Cta>
@@ -680,7 +684,7 @@ export function OffresSuivantes({
         }`}
       >
         {offres.map((offre, i) => (
-          <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full">
+          <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full min-w-0">
             <OffreCarte {...offre} enRangee />
           </Reveal>
         ))}
@@ -746,7 +750,7 @@ export function ChoixVariantes({
             delay={stagger(i % 3)}
             className="overflow-hidden rounded-[28px] border border-line bg-white shadow-simu"
           >
-            {/* Même bandeau que la carte de tarif unique : le prix accent y
+            {/* Même bandeau que la carte de tarif unique : le prix turquoise y
                 garde le contraste mesuré pour elle. */}
             <div className="bg-[#665b74] px-6 py-8 text-center">
               <p className="font-body text-[11px] tracking-[0.22em] text-white/70">
@@ -756,12 +760,12 @@ export function ChoixVariantes({
                 {v.nom}
               </p>
               <p className="mt-2 font-display text-[17px] italic text-white/80">{v.sousTitre}</p>
-              <p className="mt-5 font-body text-[28px] leading-none text-accent [font-variant-numeric:lining-nums]">
+              <p className="mt-5 font-body text-[28px] leading-none text-turquoise [font-variant-numeric:lining-nums]">
                 {v.prix}
               </p>
             </div>
             <div className="px-6 py-6">
-              <Cta href={v.href} external className="w-full">
+              <Cta href={v.href} external survolTurquoise className="w-full">
                 {v.libelle ?? libelleCta}
               </Cta>
             </div>

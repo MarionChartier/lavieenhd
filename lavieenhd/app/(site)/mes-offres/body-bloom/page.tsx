@@ -38,16 +38,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Couleur et forme propres à BODY Bloom. Provisoires tant que Marion n'a pas
- * arrêté la répartition des couleurs entre les pages : un rose poudré, pour le
- * corps et l'éclosion (3.9:1 en prix sur le bandeau des cartes de commande),
- * et la goutte, pour la Digestion. Les prénoms passent en rose soutenu, le
- * rose poudré ne se lisant pas sur blanc.
+ * Couleur et forme propres à BODY Bloom : un rose poudré, pour le corps et
+ * l'éclosion, et la goutte, pour la Digestion. La couleur ne teinte que les
+ * fonds de section et les formes en filigrane ; les petits éléments restent
+ * turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#efbfd0",
+  motif: "#efbfd0",
   accentSoft: "#fbeef3",
-  accentTexte: "#a5506f",
   forme: "goutte",
 } as const;
 
@@ -347,7 +345,7 @@ export default function BodyBloomPage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/25 blur-3xl"
         />
         <PetalField />
 
@@ -745,21 +743,22 @@ Franchement, c'est pépite!"`}
 
         <div className="mt-14">
           <ChoixVariantes
-            inclus={INCLUS}
+            inclus={[
+              ...INCLUS,
+              <>
+                <strong className="font-semibold">Accès immédiat après ta commande</strong>
+                <br />
+                Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
+                explorer TON Intelligence Digestive sans attendre.
+              </>,
+              <em key="format" className="italic">
+                Format PDF • Créé par mes petites mains d’humaine • À conserver et relire à
+                l’infini. ♡
+              </em>,
+            ]}
             apresInclus={
-              <div className="flex flex-col gap-5 font-display text-[17px] leading-relaxed text-ink">
-                <p className="italic">
-                  Format PDF • À conserver et relire à l’infini • Créé par mes petites mains
-                  d’humaine ♡
-                </p>
-                <p>
-                  <strong className="font-semibold text-ink-deep">
-                    Accès immédiat après ta commande
-                  </strong>
-                  <br />
-                  Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
-                  explorer TON Intelligence Digestive sans attendre.
-                </p>
+              // Encadré pour distinguer l'aide au choix de la liste du dessus.
+              <div className="rounded-2xl border border-line bg-accent-soft/70 px-6 py-5 font-display text-[17px] leading-relaxed text-ink md:px-8">
                 <p>
                   <strong className="font-semibold text-ink-deep">
                     Tu ne sais pas/plus quelle est ta Digestion HD?
@@ -809,7 +808,7 @@ Franchement, c'est pépite!"`}
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

@@ -24,6 +24,8 @@
   /* Accent des textes (prénoms des témoignages), plus soutenu quand la
      couleur d'accent est trop claire pour se lire sur fond blanc. */
   --color-accent-texte: #75ced2;
+  /* Décor de fond des pages de vente (formes en filigrane), à la couleur de l'offre. */
+  --color-motif: #75ced2;
 
   /* Polices — déclarées via next/font dans app/layout.tsx (--font-* variables) */
   --font-display: var(--font-cormorant), "Times New Roman", serif;

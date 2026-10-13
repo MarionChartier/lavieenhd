@@ -986,7 +986,7 @@ export default function ReconnectPage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/20 blur-3xl"
         />
         <PetalField />
 
@@ -1004,7 +1004,9 @@ export default function ReconnectPage() {
                 priority
                 className="mx-auto h-auto w-[200px] md:w-[230px]"
               />
-              <p className="mx-auto mt-6 max-w-[520px] font-display text-[24px] font-light uppercase leading-[1.25] tracking-[0.04em] text-ink-deep md:text-[28px]">
+              {/* Sous-titre de l'offre, au format de ceux que les autres logos
+                  portent : petit, en italique, collé au logo. */}
+              <p className="mx-auto mt-3 max-w-[320px] font-body text-[15px] italic leading-snug text-ink-deep md:text-[16px]">
                 Ton Parcours Guidé de Transformation Professionnelle
               </p>
             </Reveal>
@@ -1580,8 +1582,6 @@ export default function ReconnectPage() {
       {/* ---------------------------------------------------------------- */}
       {/* TÉMOIGNAGES                                                      */}
       {/* ---------------------------------------------------------------- */}
-      {/* Un troisième témoignage arrive : il s'ajoutera à la suite, portrait à
-          droite (`inverse`) pour garder l'alternance. */}
       <VenteSection id="temoignages" bg="white" wide>
         <SectionHeader filet={false} title="Leurs mots valent plus qu’un long discours. ♡" />
         <Reveal className="mt-5 text-center">
@@ -1664,6 +1664,71 @@ export default function ReconnectPage() {
                     "5/5 satisfaction globale",
                     "Intention de départ atteinte",
                     "En route vers sa vie pro idéale",
+                    "Actions concrètes déjà engagées",
+                  ]}
+                />
+              </>
+            }
+          />
+
+          <TemoignageHero
+            photo="/assets/temoignages/Maryline-blooming.webp"
+            nom="Maryline"
+            contexte="★★★★★"
+            texte={
+              <>
+                <strong className="block font-semibold">
+                  &quot;Je recommande à 1000 % cette aventure incroyable!
+                </strong>
+                <span className="mt-4 block">
+                  Marion est une personne magnifique, d’une bienveillance authentique, solaire,
+                  professionnelle (et pas que...).
+                </span>
+                <span className="mt-4 block">
+                  Je ne m’attendais pas vraiment à sortir du brouillard dans lequel j’étais, tout au
+                  plus faire 1 pas ou 2 vers un mieux...
+                </span>
+                <span className="mt-4 block">
+                  Le processus RECONNECT et les coachings associés m’ont aidée à dissiper cette
+                  brume, mais surtout ce cheminement a été pour moi une révélation.
+                </span>
+                <span className="mt-4 block">
+                  J’en ressors avec une idée précise de ce que je veux, de comment je fonctionne, de
+                  mes faiblesses mais plus important encore de mes forces, ce qui contribue à
+                  légitimer la voie que je me prépare tout doucement.
+                </span>
+                <span className="mt-4 block">
+                  Tu m’as bousculée lorsque c’était nécessaire et ça n’a pas toujours été facile,
+                  mais j’étais prête à recevoir ces retours constructifs.
+                </span>
+                <span className="mt-4 block">
+                  Je me sens désormais confiante d’avancer vers ce qui me nourrit en faisant fi des
+                  peurs et des blocages.&quot;
+                </span>
+                <span className="mt-6 block rounded-[20px] bg-accent-soft px-5 py-5 text-left">
+                  <span className="block font-body text-[11px] uppercase tracking-[0.18em] text-accent-texte">
+                    Son avant / après
+                  </span>
+                  <span className="mt-2 block italic">
+                    &quot;Avant : l’image d’une femme dos courbé qui avance dans le brouillard, qui
+                    ne voit pas à 1 mètre, tout comme ses idées / souhaits professionnels futurs
+                    restant dans une brume constante.
+                  </span>
+                  <span className="mt-3 block italic">
+                    Après : le vent a soufflé et nous avons dépoussiéré ce qui était déjà là pour
+                    l’honorer...je suis prête à monter ces premières marches vers mon avenir de
+                    rêve.&quot;
+                  </span>
+                </span>
+                <strong className="mt-6 block font-semibold">
+                  &quot;Merci infiniment Marion! Je recommencerais 1000 fois sans aucune
+                  hésitation!&quot;
+                </strong>
+                <Indicateurs
+                  items={[
+                    "5/5 satisfaction globale",
+                    "Plus de clarté",
+                    "Intention de départ atteinte",
                     "Actions concrètes déjà engagées",
                   ]}
                 />
@@ -1755,7 +1820,7 @@ export default function ReconnectPage() {
                     <Cta href={formule.href} external>
                       Je choisis {formule.nom}
                     </Cta>
-                    <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft">
+                    <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft/80">
                       Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
                     </p>
                     {formule.note && (
@@ -1824,8 +1889,8 @@ export default function ReconnectPage() {
           </table>
         </Reveal>
 
-        <Reveal className="mt-6 text-center font-display text-[15px] leading-relaxed text-ink">
-          <p className="italic">
+        <Reveal className="mt-6 text-center">
+          <p className="font-display text-[14px] italic leading-snug text-ink-soft/80">
             Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
           </p>
           <p className="mt-8">
