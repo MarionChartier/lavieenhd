@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 
 /**
  * Preuve sociale glissée sous le calculateur, dans la place que sa colonne
@@ -36,6 +39,10 @@ export type TemoignageKey = keyof typeof TEMOIGNAGES;
  * combler et ce serait de la longueur en plus avant le formulaire.
  */
 export function CalculateurTemoignages({ items }: { items: readonly TemoignageKey[] }) {
+  // Une fois le schéma affiché en pleine largeur, il n'y a plus de vide à combler.
+  const hasResult = useBodygraphResult();
+  if (hasResult || items.length === 0) return null;
+
   return (
     <div className="mt-10 hidden flex-col gap-7 lg:flex">
       {items.map((key) => {
