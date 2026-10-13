@@ -114,7 +114,7 @@ export function CalculateurLayout({
         <HDSimulatorForm titre={titreFormulaire} />
         {/* Le vide sous le formulaire n'existe que dans l'état deux colonnes :
             en pleine largeur le schéma occupe toute la place. */}
-        {!hasResult && <CalculateurTemoignages items={temoignages} />}
+        {!hasResult && temoignages.length > 0 && <CalculateurTemoignages items={temoignages} />}
       </div>
     </div>
   );

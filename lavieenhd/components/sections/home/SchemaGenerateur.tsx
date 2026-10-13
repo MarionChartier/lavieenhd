@@ -2,6 +2,7 @@
 
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
 import { useBodygraphResult } from "@/components/sections/BodygraphChart";
+import { CalculateurTemoignages } from "@/components/sections/CalculateurTemoignages";
 
 /**
  * Calculateur de schéma de l'accueil, sorti du hero dans sa propre section
@@ -26,7 +27,8 @@ export function SchemaGenerateur() {
       <div className="relative mx-auto max-w-(--container-content)">
         <CalculateurLayout
           columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
-          temoignages={["ludivine", "fabienne"]}
+          // Témoignages sous le texte, à gauche (et non sous le formulaire)
+          temoignages={[]}
           titreFormulaire={false}
         >
           <div className="lg:pt-10">
@@ -39,6 +41,7 @@ export function SchemaGenerateur() {
               Renseigne ta date, ton heure et ton lieu de naissance pour générer gratuitement ton
               schéma de Human Design.
             </p>
+            {!hasResult && <CalculateurTemoignages items={["ludivine", "fabienne"]} />}
           </div>
         </CalculateurLayout>
       </div>
