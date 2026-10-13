@@ -166,23 +166,26 @@ const PORTES_FINALES = [
   {
     href: "/mes-offres#porte-1",
     eyebrow: "01 · VIE PRO",
-    titre: "JE VEUX ME RÉALIGNER DANS MA VIE PRO",
+    titre: "Je veux me réaligner dans ma vie pro",
     motsCles: "Transition pro · Reconversion · Quête de sens",
     ton: "border-[#d7c2e5] bg-[linear-gradient(155deg,#f5eefb,#fff)]",
+    accent: "text-[#8d71a8]",
   },
   {
     href: "/mes-offres#porte-2",
     eyebrow: "02 · BUSINESS",
-    titre: "JE VEUX QUE MON BUSINESS ME RESSEMBLE",
+    titre: "Je veux que mon Business me ressemble",
     motsCles: "Entrepreneuriat · Fluidité · Stratégie alignée",
     ton: "border-[#aadfe2] bg-[linear-gradient(155deg,#eaf9f9,#fff)]",
+    accent: "text-[#4f9ea3]",
   },
   {
     href: "/mes-offres#porte-3",
     eyebrow: "03 · HUMAN DESIGN",
-    titre: "JE VEUX EXPLORER MON HUMAN DESIGN",
+    titre: "Je veux explorer mon Human Design",
     motsCles: "Connaissance de soi · Exploration · Fonctionnement",
     ton: "border-[#dfcfb7] bg-[linear-gradient(155deg,#faf5e9,#fff)]",
+    accent: "text-[#a67c3d]",
   },
 ] as const;
 
@@ -714,13 +717,15 @@ export default function QuiJeSuisPage() {
                   href={porte.href}
                   className={`flex flex-col gap-2.5 rounded-[19px] border-[1.5px] px-5 py-5 text-ink-deep shadow-[0_9px_21px_rgba(66,43,83,0.045)] transition-all hover:-translate-y-[3px] hover:shadow-[0_13px_24px_rgba(66,43,83,0.10)] md:min-h-[216px] md:gap-4 md:px-6 md:py-6 ${porte.ton}`}
                 >
-                  <span className="font-body text-[12px] font-semibold tracking-[0.16em]">
+                  {/* Trois registres : repère en capitales fines à la couleur de la
+                      porte, titre en Cormorant, mots-clés en italique discret. */}
+                  <span className={`font-body text-[11px] tracking-[0.2em] ${porte.accent}`}>
                     {porte.eyebrow}
                   </span>
-                  <span className="font-body text-[16px] font-semibold leading-[1.33] tracking-[0.02em] md:flex-1 md:text-[18px]">
+                  <span className="font-display text-[23px] font-medium leading-[1.2] md:flex-1 md:text-[26px]">
                     {porte.titre}
                   </span>
-                  <span className="font-body text-[11px] leading-[1.55] text-ink md:text-[12px]">
+                  <span className="font-display text-[15px] italic leading-snug text-ink md:text-[16px]">
                     {porte.motsCles}
                   </span>
                 </Link>
