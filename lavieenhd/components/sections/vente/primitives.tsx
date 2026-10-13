@@ -122,6 +122,7 @@ export function Cta({
   variant = "primary",
   external = false,
   onDeep = false,
+  survolTurquoise = false,
   className = "",
 }: {
   href: string;
@@ -131,6 +132,9 @@ export function Cta({
   /** Variante pour les strates sombres : le violet du bouton plein s'y noierait.
    *  On prend le turquoise d'accent, qui donne 5.32:1 avec le texte encre. */
   onDeep?: boolean;
+  /** Survol turquoise au lieu de l'accent de l'offre (cartes d'achat, demande de
+   *  Marion : les accents par offre sortent de sa DA à cet endroit). */
+  survolTurquoise?: boolean;
   className?: string;
 }) {
   const base =
@@ -141,7 +145,9 @@ export function Cta({
       ? "bg-accent text-ink-deep hover:bg-white"
       : "border border-accent text-accent hover:bg-accent hover:text-ink-deep"
     : variant === "primary"
-      ? "bg-ink-deep text-white hover:bg-accent hover:text-ink-deep"
+      ? `bg-ink-deep text-white hover:text-ink-deep ${
+          survolTurquoise ? "hover:bg-turquoise" : "hover:bg-accent"
+        }`
       : "border border-ink-deep bg-white/40 text-ink-deep hover:bg-ink-deep hover:text-white";
 
   return (

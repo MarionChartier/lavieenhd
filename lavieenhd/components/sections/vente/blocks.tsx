@@ -328,7 +328,7 @@ export function PricingCard({
           </div>
 
           <div className="px-6 py-7">
-            <Cta href={href} external className="w-full">
+            <Cta href={href} external survolTurquoise className="w-full">
               {libelleCta}
             </Cta>
             <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
@@ -763,7 +763,7 @@ export function ChoixVariantes({
               </p>
             </div>
             <div className="px-6 py-6">
-              <Cta href={v.href} external className="w-full">
+              <Cta href={v.href} external survolTurquoise className="w-full">
                 {v.libelle ?? libelleCta}
               </Cta>
             </div>
