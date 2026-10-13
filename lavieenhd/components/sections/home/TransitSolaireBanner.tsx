@@ -152,6 +152,7 @@ export function TransitSolaireBanner() {
             className: "border-[#e5d4b4] bg-[#f5ecdf] text-[#8a6a3c]",
           }}
           photo
+          centrerMobile
           // Carte blanche sur section blanche : un liseré fin dessine le haut,
           // que l'ombre portée vers le bas ne marquait pas, et une ombre diffuse
           // tout autour la détache du fond.
@@ -159,7 +160,7 @@ export function TransitSolaireBanner() {
         >
           {/* Ligne de lecture bornée : sur toute la largeur de la carte, la phrase
               filait sur 1 300px et laissait « énergie. » seule à la ligne. */}
-          <div className="mt-1.5 max-w-[640px] font-display text-[16px] leading-snug text-ink-deep md:text-[17px]">
+          <div className="mx-auto mt-1.5 max-w-[640px] font-display sm:mx-0 text-[16px] leading-snug text-ink-deep md:text-[17px]">
             <p>{SOIN_ENERGETIQUE.description[0]}</p>
             <p className="mt-1.5 italic">{SOIN_ENERGETIQUE.description[1]}</p>
           </div>

@@ -187,6 +187,7 @@ export function OffreCard({
   badge,
   photo = false,
   surface,
+  centrerMobile = false,
   children,
 }: {
   offre: Pick<PorteOffre, "name" | "href" | "logoSrc" | "quiz"> & { description?: string };
@@ -198,6 +199,8 @@ export function OffreCard({
   photo?: boolean;
   /** Fond, bordure et ombre de la carte, à la place du blanc par défaut */
   surface?: string;
+  /** Empilée (sous sm), contenu centré : pour une carte posée seule dans une section centrée */
+  centrerMobile?: boolean;
   /** Contenu libre sous le nom, à la place de la description */
   children?: ReactNode;
 }) {
@@ -209,6 +212,8 @@ export function OffreCard({
       href={offre.href}
       prefetch={isStaticFile ? false : undefined}
       className={`group grid min-h-[320px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[192px] sm:grid-cols-[72px_1fr] lg:min-h-[160px] lg:grid-cols-[96px_1fr_auto] lg:gap-x-5 ${
+        centrerMobile ? "justify-items-center text-center sm:justify-items-stretch sm:text-left " : ""
+      }${
         surface ??
         (complement
           ? "border border-ink/12 bg-white hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
