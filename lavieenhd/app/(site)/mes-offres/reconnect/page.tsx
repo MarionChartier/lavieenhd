@@ -986,7 +986,7 @@ export default function ReconnectPage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/20 blur-3xl"
         />
         <PetalField />
 

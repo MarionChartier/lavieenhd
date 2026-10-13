@@ -128,7 +128,7 @@ export default function SoinEnergetiquePage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-accent/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[480px] w-[480px] rounded-full bg-motif/25 blur-3xl"
         />
         <PetalField />
 
