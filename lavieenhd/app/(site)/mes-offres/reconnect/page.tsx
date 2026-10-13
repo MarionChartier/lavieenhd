@@ -1004,7 +1004,9 @@ export default function ReconnectPage() {
                 priority
                 className="mx-auto h-auto w-[200px] md:w-[230px]"
               />
-              <p className="mx-auto mt-6 max-w-[520px] font-display text-[24px] font-light uppercase leading-[1.25] tracking-[0.04em] text-ink-deep md:text-[28px]">
+              {/* Sous-titre de l'offre, au format de ceux que les autres logos
+                  portent : petit, en italique, collé au logo. */}
+              <p className="mx-auto mt-3 max-w-[320px] font-body text-[15px] italic leading-snug text-ink-deep md:text-[16px]">
                 Ton Parcours Guidé de Transformation Professionnelle
               </p>
             </Reveal>
@@ -1755,7 +1757,7 @@ export default function ReconnectPage() {
                     <Cta href={formule.href} external>
                       Je choisis {formule.nom}
                     </Cta>
-                    <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft">
+                    <p className="mt-3 font-display text-[14px] italic leading-snug text-ink-soft/80">
                       Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
                     </p>
                     {formule.note && (
@@ -1824,8 +1826,8 @@ export default function ReconnectPage() {
           </table>
         </Reveal>
 
-        <Reveal className="mt-6 text-center font-display text-[15px] leading-relaxed text-ink">
-          <p className="italic">
+        <Reveal className="mt-6 text-center">
+          <p className="font-display text-[14px] italic leading-snug text-ink-soft/80">
             Paiement en plusieurs fois possible via PayPal sous réserve d’éligibilité.
           </p>
           <p className="mt-8">

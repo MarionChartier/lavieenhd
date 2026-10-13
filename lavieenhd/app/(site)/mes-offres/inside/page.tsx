@@ -1009,7 +1009,7 @@ export default function InsidePage() {
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

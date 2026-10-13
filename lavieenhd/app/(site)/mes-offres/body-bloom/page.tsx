@@ -743,21 +743,22 @@ Franchement, c'est pépite!"`}
 
         <div className="mt-14">
           <ChoixVariantes
-            inclus={INCLUS}
+            inclus={[
+              ...INCLUS,
+              <>
+                <strong className="font-semibold">Accès immédiat après ta commande</strong>
+                <br />
+                Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
+                explorer TON Intelligence Digestive sans attendre.
+              </>,
+              <em key="format" className="italic">
+                Format PDF • Créé par mes petites mains d’humaine • À conserver et relire à
+                l’infini. ♡
+              </em>,
+            ]}
             apresInclus={
-              <div className="flex flex-col gap-5 font-display text-[17px] leading-relaxed text-ink">
-                <p className="italic">
-                  Format PDF • À conserver et relire à l’infini • Créé par mes petites mains
-                  d’humaine ♡
-                </p>
-                <p>
-                  <strong className="font-semibold text-ink-deep">
-                    Accès immédiat après ta commande
-                  </strong>
-                  <br />
-                  Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
-                  explorer TON Intelligence Digestive sans attendre.
-                </p>
+              // Encadré pour distinguer l'aide au choix de la liste du dessus.
+              <div className="rounded-2xl border border-line bg-accent-soft/70 px-6 py-5 font-display text-[17px] leading-relaxed text-ink md:px-8">
                 <p>
                   <strong className="font-semibold text-ink-deep">
                     Tu ne sais pas/plus quelle est ta Digestion HD?
@@ -807,7 +808,7 @@ Franchement, c'est pépite!"`}
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

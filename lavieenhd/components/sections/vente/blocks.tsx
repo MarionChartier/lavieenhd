@@ -331,7 +331,8 @@ export function PricingCard({
             <Cta href={href} external survolTurquoise className="w-full">
               {libelleCta}
             </Cta>
-            <p className="mt-4 text-center font-body text-[13px] italic text-ink-soft">{note}</p>
+            {/* Mention discrète : en Luciole italique, elle pesait presque autant que le bouton. */}
+            <p className="mt-4 text-center font-display text-[14px] italic leading-snug text-ink-soft/80">{note}</p>
           </div>
         </Reveal>
         </div>
@@ -628,13 +629,14 @@ function OffreCarte({
         {/* `mt-auto` : les boutons s'alignent en bas des cartes voisines,
             quelle que soit la longueur du texte. */}
         <div className="mt-auto pt-8">
-          {/* Pleine largeur et sur une ligne : d'une carte à l'autre, les
-              libellés de longueurs différentes donnaient des boutons sur une
-              ou deux lignes, de hauteurs et largeurs inégales. */}
+          {/* Pleine largeur et, dès lg, sur une ligne : d'une carte à l'autre,
+              les libellés de longueurs différentes donnaient des boutons sur
+              une ou deux lignes, de hauteurs et largeurs inégales. Pas en
+              dessous : un long libellé élargissait la carte au-delà de l'écran. */}
           <Cta
             href={href}
             variant="ghost"
-            className="w-full whitespace-nowrap px-5! tracking-[0.16em]!"
+            className="w-full px-5! tracking-[0.16em]! lg:whitespace-nowrap"
           >
             {libelle}
           </Cta>
@@ -682,7 +684,7 @@ export function OffresSuivantes({
         }`}
       >
         {offres.map((offre, i) => (
-          <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full">
+          <Reveal key={offre.logoAlt} delay={stagger(i)} className="h-full min-w-0">
             <OffreCarte {...offre} enRangee />
           </Reveal>
         ))}

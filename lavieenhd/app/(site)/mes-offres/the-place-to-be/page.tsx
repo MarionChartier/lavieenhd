@@ -804,23 +804,26 @@ Merci Marion pour cette belle découverte !`}
 
         <div className="mt-14">
           <ChoixVariantes
-            inclus={INCLUS}
+            inclus={[
+              ...INCLUS,
+              <>
+                <strong className="font-semibold">Accès immédiat après ta commande</strong>
+                <br />
+                Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
+                explorer TON Environnement sans attendre.
+              </>,
+              <em key="format" className="italic">
+                Format PDF • Créé par mes petites mains d’humaine • À conserver et relire à
+                l’infini. ♡
+              </em>,
+            ]}
             apresInclus={
-              <div className="flex flex-col gap-5 font-display text-[17px] leading-relaxed text-ink">
-                <p className="italic">
-                  Format PDF • À conserver et relire à l’infini • Créé par mes petites mains
-                  d’humaine ♡
-                </p>
+              // Encadré pour distinguer l'aide au choix de la liste du dessus.
+              <div className="rounded-2xl border border-line bg-accent-soft/70 px-6 py-5 font-display text-[17px] leading-relaxed text-ink md:px-8">
                 <p>
                   <strong className="font-semibold text-ink-deep">
-                    Accès immédiat après ta commande
+                    Tu ne sais pas/plus quel est ton Environnement HD?
                   </strong>
-                  <br />
-                  Une fois ton achat validé, tu peux télécharger ton Guide directement et commencer à
-                  explorer TON Environnement sans attendre.
-                </p>
-                <p>
-                  Tu ne sais pas/plus quel est ton Environnement HD?
                   <br />
                   Clique ici pour le découvrir rapidement grâce à ton{" "}
                   {lienTest("TEST HD GRATUIT")}.
@@ -865,7 +868,7 @@ Merci Marion pour cette belle découverte !`}
           </p>
         </Reveal>
         <div className="mt-14">
-          <HDSimulatorForm />
+          <HDSimulatorForm titre={false} />
         </div>
       </VenteSection>
 

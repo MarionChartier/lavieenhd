@@ -45,7 +45,7 @@ const ETAPES = [
   {
     titre: "Tu t’inscris",
     texte:
-      "Le jour du Soin, je t’envoies un email avec le déroulement et mes quelques « petites consignes ».",
+      "Le jour du Soin, je t’envoie un email avec le déroulement et mes quelques « petites consignes ».",
   },
   {
     titre: "Le jour J, à 21h, tu te mets en mode réception",
