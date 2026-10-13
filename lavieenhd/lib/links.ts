@@ -65,16 +65,11 @@ export const EXTERNAL = {
     reconnect: `${LEGACY_ROOT}/commande-reconnect`,
   },
 
-  /**
-   * RECONNECT : un bon de commande par formule.
-   * TODO(bloquant avant mise en ligne) : les trois pointent provisoirement sur
-   * l'ancien bon unique, en attendant les liens Solo, Circle et Premium 1:1
-   * demandés à Marion.
-   */
+  /** RECONNECT : un bon de commande par formule (liens transmis par Marion le 13/10). */
   commandeReconnect: {
-    solo: `${LEGACY_ROOT}/commande-reconnect`,
-    circle: `${LEGACY_ROOT}/commande-reconnect`,
-    premium: `${LEGACY_ROOT}/commande-reconnect`,
+    solo: `${LEGACY_ROOT}/commande-reconnect-solo`,
+    circle: `${LEGACY_ROOT}/commande-reconnect-circle`,
+    premium: `${LEGACY_ROOT}/commande-reconnect-premium`,
   },
 
   /**

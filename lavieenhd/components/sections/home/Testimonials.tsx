@@ -27,18 +27,25 @@ const PHOTO = (file: string) => `/assets/temoignages/${file}`;
  */
 const TESTIMONIALS: Testimonial[] = [
   {
-    // TODO(Marion) : témoignage provisoire, en attente du texte final de
-    // Maryline. Photo, prénom et mise en page restent ; seul le texte changera.
+    // Témoignage final de Maryline (page RECONNECT V96) : accroche en extrait,
+    // le cœur du récit dans la suite.
     name: "Maryline",
     offre: "Reconnect",
     photo: PHOTO("Maryline-blooming.webp"),
     extrait:
-      "Avant j'étais dans le brouillard complet, aujourd'hui plus du tout, je vois le cap à l'horizon...",
+      "Je recommande à 1000 % cette aventure incroyable! Je ne m'attendais pas vraiment à sortir du brouillard dans lequel j'étais...",
     suite: (
-      <p>
-        J&apos;ai aussi mis de l&apos;ordre dans ce qu&apos;il faut entreprendre pour démarrer.
-        [...] Je me sens plus résolue que jamais.
-      </p>
+      <>
+        <p>
+          Le processus RECONNECT et les coachings associés m&apos;ont aidée à dissiper cette brume,
+          mais surtout ce cheminement a été pour moi une révélation.
+        </p>
+        <p>
+          Je me sens désormais confiante d&apos;avancer vers ce qui me nourrit en faisant fi des peurs
+          et des blocages. Merci infiniment Marion! Je recommencerais 1000 fois sans aucune
+          hésitation!
+        </p>
+      </>
     ),
   },
   {
