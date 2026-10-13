@@ -306,7 +306,9 @@ export function PricingCard({
               compact, entouré de blanc, le même ton paraissait plus dense
               qu'en pleine largeur. Le prix turquoise y garde 3.48:1 — au-dessus
               du seuil de 3:1 qui s'applique à ses 46px — et le lettrage blanc
-              du logo, qui est fin, 6.34:1. */}
+              du logo, qui est fin, 6.34:1. Turquoise sur toutes les pages, pas
+              l'accent de l'offre : demande de Marion, les autres teintes sortent
+              de sa DA à cet endroit. */}
           <div className="bg-[#665b74] px-7 py-9 text-center">
             <Image
               src={logo}
@@ -320,7 +322,7 @@ export function PricingCard({
                 Cormorant rendaient le montant difficile à lire d'un coup d'œil.
                 Léger recalage à droite : le « € » massif en fin de montant tire
                 l'œil vers la gauche du bloc. */}
-            <p className="mt-5 translate-x-[4px] font-body text-[38px] leading-none tracking-[0.02em] text-accent [font-variant-numeric:lining-nums]">
+            <p className="mt-5 translate-x-[4px] font-body text-[38px] leading-none tracking-[0.02em] text-turquoise [font-variant-numeric:lining-nums]">
               {prix}
             </p>
           </div>
@@ -746,7 +748,7 @@ export function ChoixVariantes({
             delay={stagger(i % 3)}
             className="overflow-hidden rounded-[28px] border border-line bg-white shadow-simu"
           >
-            {/* Même bandeau que la carte de tarif unique : le prix accent y
+            {/* Même bandeau que la carte de tarif unique : le prix turquoise y
                 garde le contraste mesuré pour elle. */}
             <div className="bg-[#665b74] px-6 py-8 text-center">
               <p className="font-body text-[11px] tracking-[0.22em] text-white/70">
@@ -756,7 +758,7 @@ export function ChoixVariantes({
                 {v.nom}
               </p>
               <p className="mt-2 font-display text-[17px] italic text-white/80">{v.sousTitre}</p>
-              <p className="mt-5 font-body text-[28px] leading-none text-accent [font-variant-numeric:lining-nums]">
+              <p className="mt-5 font-body text-[28px] leading-none text-turquoise [font-variant-numeric:lining-nums]">
                 {v.prix}
               </p>
             </div>
