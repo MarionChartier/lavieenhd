@@ -17,7 +17,7 @@ const PHOTOS = {
 
 const PILLS = [
   "Manifesting Generator 2/4",
-  "Coach transformationnelle",
+  "Coach HD • Vie pro & Business",
   "Maman d'un petit Manifestor",
 ] as const;
 
@@ -27,7 +27,7 @@ const HD_ATTRIBUTES = [
     value: "Manifesting Generator",
     blurb: (
       <>
-        {"Je suis multi-casquette, multi-tâches, multi-potentielle. Plusieurs vies dans une même vie. "}
+        {"Je suis multi-casquette, multi-tâches, multi-potentielle. J'ai besoin que ça bouge (vite) et de vivre plusieurs vies en une. "}
         <em className="italic">
           {"Exit l'étiquette de la nana instable : c'est un besoin viscéral pour moi de jongler!"}
         </em>
@@ -40,9 +40,9 @@ const HD_ATTRIBUTES = [
     blurb: (
       <>
         {"J'adore mes bulles de solitude "}
-        <em className="italic">{"(et j'en ai besoin!)"}</em>
-        {", mais j'aime aussi profondément tisser des liens, et vivre des moments de partage avec les autres. "}
-        <em className="italic">{`Tout un paradoxe à cultiver et à assumer! "On me voit, on me voit plus!"`}</em>
+        <em className="italic">{"(et j'en ai vraiment besoin!)"}</em>
+        {", mais j'aime aussi profondément créer du lien, et vivre des moments de partage avec les autres. "}
+        <em className="italic">{`Tout un paradoxe à cultiver et à assumer : "On me voit, on me voit plus!"`}</em>
       </>
     ),
   },
@@ -51,7 +51,7 @@ const HD_ATTRIBUTES = [
     value: "Émotionnelle",
     blurb: (
       <>
-        {"Je traverse des vagues émotionnelles, mon lac intérieur est parfois agité, et j'ai besoin d'attendre que l'eau soit calme pour faire des choix. "}
+        {"Je traverse des vagues émotionnelles et mon lac intérieur est parfois agité. Je sais que j'ai besoin d'attendre que l'eau soit calme pour faire des choix. "}
         <em className="italic">
           {`"Tu prends les choses trop à cœur Marion!" Non, je vis juste des émotions intenses tonton Roger!`}
         </em>
@@ -64,7 +64,7 @@ const HD_ATTRIBUTES = [
     blurb: (
       <>
         {"Les sentiments de satisfaction, d'accomplissement et de paix intérieure sont mes petits jalons qui m'indiquent que je marche dans le bon sens. "}
-        <em className="italic">{"Les did-lists sont d'ailleurs désormais mes amies!"}</em>
+        <em className="italic">{"Les did-lists sont d'ailleurs devenues de vraies amies!"}</em>
       </>
     ),
   },
@@ -75,9 +75,9 @@ const HD_ATTRIBUTES = [
       <>
         {"La frustration "}
         <em className="italic">{"(et la colère)"}</em>
-        {" sont clairement mes warnings intérieurs. Quand ces émotions se pointent, je sais maintenant qu'il y a simplement quelque chose à réajuster. "}
+        {" sont clairement mes warnings intérieurs. Quand ces émotions débarquent, je sais maintenant qu'il y a quelque chose à aller regarder et probablement réajuster. "}
         <em className="italic">
-          {"J'ai dû apprendre à gérer ces émotions mal perçues, et accepter qu'elles avaient un message pour moi!"}
+          {"J'ai dû apprendre à accueillir ces émotions souvent mal perçues, et à reconnaître qu'elles pouvaient aussi avoir un message pour moi!"}
         </em>
       </>
     ),
@@ -87,7 +87,10 @@ const HD_ATTRIBUTES = [
     value: "Répondre",
     blurb: (
       <>
-        {"Je suis à l'écoute de ce que la vie et les autres me proposent, et je fais confiance à mon sacral pour savoir s'il faut saisir l'opportunité ou non (+ j'informe de mes actions avec mon côté Manifestor). "}
+        {"Je suis à l'écoute de ce que la vie et les autres me proposent, et je fais confiance à mon sacral pour savoir s'il faut saisir l'opportunité ou non."}
+        <br />
+        {"En parallèle, avec mon côté Manifestor, je fais attention de bien informer de mes actions et virages."}
+        <br />
         <em className="italic">{"J'accepte d'être la reine des synchronicités!"}</em>
       </>
     ),
@@ -97,7 +100,8 @@ const HD_ATTRIBUTES = [
     value: "Double",
     blurb: (
       <>
-        {"La présence des autres permet de faire le pont entre tous mes centres énergétiques. "}
+        {"J'ai parfois besoin de la présence des autres pour que des connexions se fassent dans mon Design, et pouvoir y voir plus clair."}
+        <br />
         <em className="italic">
           {"Mes 2 voix intérieures sont bien réelles ; elles ont juste besoin de temps pour se relier et se mettre d'accord!"}
         </em>
@@ -109,9 +113,9 @@ const HD_ATTRIBUTES = [
     value: "Montagnes",
     blurb: (
       <>
-        {"J'ai besoin de grand air, d'altitude, et de vue à 360! "}
+        {"J'ai besoin de prendre de la hauteur, au sens propre comme au figuré : grand air, espace et vue à 360! "}
         <em className="italic">
-          {"Je n'ai pas choisi ma région de cœur pour rien : Annecy et ses environs sont ma favourite place!"}
+          {"Je n'ai pas choisi ma région de cœur par hasard : Annecy et ses montagnes sont ma favourite place!"}
         </em>
       </>
     ),
@@ -119,30 +123,71 @@ const HD_ATTRIBUTES = [
 ];
 
 /** `chute` : la phrase de fin, détachée et en italique dans la card. */
-const PILIERS: { title: string; titleNote?: string; blurb: string; chute: string }[] = [
+const PILIERS: { title: string; titleNote?: string; paragraphes: string[]; chute: string }[] = [
   {
     title: "Bienveillance",
     titleNote: "(sans complaisance)",
-    blurb:
-      "Je t'écoute sans jugement, mais je ne te materne pas non plus. Je crois profondément au pouvoir de la responsabilisation ; je ne te dis pas ce que tu as envie d'entendre, mais je te guide pour reprendre ton pouvoir d'action, à ton rythme.",
+    paragraphes: [
+      "Je t'écoute avec ouverture et sans jugement, mais je ne te materne pas non plus.",
+      "Je crois profondément au pouvoir de la responsabilisation : je ne suis pas là pour te dire ce que tu as envie d'entendre, ni pour décider à ta place.",
+      "Je t'aide à y voir plus clair, et je n'hésite pas à te \"bousculer\" quand c'est utile, pour que tu puisses questionner certaines croyances ou façons de faire, et reprendre ton pouvoir.",
+    ],
     chute:
-      "Ici, pas de pression de performance, juste un espace où tu peux te déposer, sans avoir à te justifier.",
+      "Le tout à ton rythme, sans pression de performance, dans un espace où tu peux être pleinement TOI.",
   },
   {
-    title: "Clarté et sens pratique",
-    blurb:
-      "Je suis une scientifique avec les pieds sur Terre, et à travers mon cheminement spirituel, j'ai vraiment fait le constat de combien il est primordial de ramener certains aspects plus ésotériques dans la réalité de la vie de tous les jours!",
+    title: "Clarté & sens pratique",
+    paragraphes: [
+      "Mon côté scientifique avec les pieds sur Terre n'est jamais bien loin!",
+      "À travers mon propre cheminement, j'ai compris combien il était important de rendre simples, compréhensibles et surtout UTILISABLES des notions qui peuvent parfois sembler très théoriques ou un peu perchées au premier abord!",
+      "Découvrir son Design, c'est passionnant. Mais ce qui me plaît particulièrement, c'est de traduire tout ça en pistes concrètes que TU peux tester et t'approprier.",
+    ],
     chute:
-      "La vulgarisation et l'accessibilité à tous sont des non négociables pour moi.",
+      "La vulgarisation, le concret et l'accessibilité sont des non-négociables pour moi.",
   },
   {
     title: "Personnalisation",
-    blurb:
-      "L'unicité de chacun n'est plus à démontrer, et on n'accompagne pas un Generator ou un MG, comme on accompagne un Projector, un Manifestor ou un Reflector.",
+    paragraphes: [
+      "Tu l'auras compris : les recettes toutes faites, très peu pour moi.",
+      "Ton Design est unique, mais ton histoire, tes envies, tes contraintes et tes objectifs le sont aussi.",
+      "J'utilise le Human Design comme une grille de lecture pour explorer avec toi tes propres pistes, et j'adapte mes outils et mon accompagnement à la personne que j'ai réellement en face de moi.",
+    ],
     chute:
-      "L'adaptation au fonctionnement de chacun est essentielle, et le coaching se doit d'être sur-mesure!",
+      "Du sur-mesure, donc. Parce que le coaching \"taille unique\", c'est has been...et que Monsieur/Madame Tout le monde n'existe PAS!",
   },
 ];
+
+/**
+ * Portes de la conclusion, vers les sections de « Mes offres ».
+ * TODO(mes-offres) : les ancres #porte-1/2/3 seront posées avec la nouvelle page
+ * « Mes offres » de Marion ; d'ici là, le lien ouvre la page en haut.
+ */
+const PORTES_FINALES = [
+  {
+    href: "/mes-offres#porte-1",
+    eyebrow: "01 · VIE PRO",
+    titre: "Je veux me réaligner dans ma vie pro",
+    motsCles: "Transition pro · Reconversion · Quête de sens",
+    ton: "border-[#d7c2e5] bg-[linear-gradient(155deg,#f5eefb,#fff)]",
+    accent: "text-[#8d71a8]",
+  },
+  {
+    href: "/mes-offres#porte-2",
+    eyebrow: "02 · BUSINESS",
+    titre: "Je veux que mon Business me ressemble",
+    motsCles: "Entrepreneuriat · Fluidité · Stratégie alignée",
+    ton: "border-[#aadfe2] bg-[linear-gradient(155deg,#eaf9f9,#fff)]",
+    accent: "text-[#4f9ea3]",
+  },
+  {
+    href: "/mes-offres#porte-3",
+    eyebrow: "03 · HUMAN DESIGN",
+    titre: "Je veux explorer mon Human Design",
+    motsCles: "Connaissance de soi · Exploration · Fonctionnement",
+    ton: "border-[#dfcfb7] bg-[linear-gradient(155deg,#faf5e9,#fff)]",
+    accent: "text-[#a67c3d]",
+  },
+] as const;
 
 export default function QuiJeSuisPage() {
   return (
@@ -188,7 +233,9 @@ export default function QuiJeSuisPage() {
             </div>
 
             <p className="mt-8 max-w-[520px] font-display text-[20px] font-light italic leading-snug text-ink-deep md:text-[26px]">
-              «&nbsp;Je crois qu’on a tous une zone de génie. Mon job, c’est de t’aider à voir la tienne, et à l’exploiter.&nbsp;»
+              «&nbsp;Je ne crois pas aux recettes toutes faites. Je crois qu’on a chacun notre
+              façon unique de fonctionner, de travailler...et de réussir. Et je t’aide à trouver
+              TA propre recette magique!&nbsp;»
             </p>
 
             <p className="mt-7 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
@@ -197,30 +244,28 @@ export default function QuiJeSuisPage() {
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-              Après des années d’ingénierie dans des grosses entreprises, et surtout des
-              années de quête de sens professionnel à ne pas trouver ma place, je me suis
-              finalement retrouvée grâce à un plongeon dans le Human Design, et je suis
-              aujourd’hui Coach transformationnelle, pour toi.♥
+              Après des années d’ingénierie dans de grosses entreprises, et surtout des années à
+              chercher ma place dans ma vie pro, le Human Design a été une vraie clé pour mieux
+              me comprendre et commencer à tracer mon propre chemin. Et aujourd’hui, je suis
+              Coach HD spécialisée Vie pro &amp; Business, pour toi.♥
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-              Je suis également maman d’un petit Manifestor, qui me montre chaque jour à quel
-              point on est finalement aligné naturellement à sa vraie nature lorsqu’on est
-              enfant. Et c’est une priorité essentielle pour moi de le maintenir connecté à
-              lui au maximum, loin des moules rigides et des injonctions qui pourraient
-              l’éteindre <em className="italic">(surtout en tant que Manifestor!)</em>. Je
-              veux lui éviter le piège courant de se retrouver paumé une fois adulte,
-              complètement éloigné de lui-même.{" "}
-              <em className="italic">
-                Je suis passée par là, et je vois aussi malheureusement trop de personnes
-                dans ce cas.
-              </em>
+              Je suis également maman d’un petit Manifestor, qui me rappelle chaque jour à quel
+              point les enfants peuvent être spontanément eux-mêmes. Et c’est essentiel pour moi
+              de l’aider à rester connecté à qui il est, loin des moules rigides et des
+              injonctions qui pourraient l’éteindre{" "}
+              <em className="italic">(surtout en tant que Manifestor!)</em>.
+              <br />
+              Parce que je sais ce que c’est de se sentir éloignée de soi une fois adulte...et je
+              croise beaucoup de personnes qui vivent la même chose.
             </p>
 
             <p className="mt-4 max-w-[520px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-              C’est donc une vraie mission de cœur pour moi aujourd’hui de t’accompagner
-              grâce à des outils puissants comme le Human Design, à te retrouver pour te
-              révéler pleinement dans ta vie pro <em className="italic">(et au-delà!)</em>.
+              Et c’est aussi ce qui anime mes accompagnements aujourd’hui&nbsp;: t’aider à mieux
+              te comprendre, à revenir à TOI, à la personne que tu es vraiment derrière toutes
+              ces couches de conditionnements, et à explorer ce qui fonctionne pour TOI afin
+              d’avancer vers une vie pro qui te ressemble, avec le Human Design comme boussole.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3 lg:mt-auto lg:pb-6 lg:pt-9">
@@ -269,9 +314,11 @@ export default function QuiJeSuisPage() {
       {/* SECTION 02 — MON CHEMIN, narrative biographique éditoriale */}
       <section className="bg-white px-6 pt-16 pb-24 md:px-20 md:pt-20 md:pb-32">
         <div className="mx-auto max-w-(--container-content)">
-          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-            {/* Colonne gauche : titre sticky + petite photo */}
-            <div>
+          {/* En desktop, titre et photo flottent à gauche : le récit, devenu bien plus
+              long que la photo, reprend toute la largeur une fois passé dessous. */}
+          <div className="lg:flow-root">
+            {/* Gauche : titre + photo */}
+            <div className="mb-14 lg:float-left lg:mr-20 lg:mb-10 lg:w-[40%]">
               {/* Photo mobile/tablette — au-dessus du titre ; la version desktop reste sous le titre */}
               <div className="relative mb-8 h-[300px] w-full overflow-hidden rounded-md md:h-[380px] lg:hidden">
                 <Image
@@ -299,50 +346,98 @@ export default function QuiJeSuisPage() {
               </div>
             </div>
 
-            {/* Colonne droite : narration en plusieurs paragraphes */}
-            <div className="flex flex-col gap-7 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+            {/* Récit en paragraphes courts, au rythme de la
+                maquette de Marion */}
+            {/* Bloc simple (pas flex) pour contourner le flottant. Chaque
+                paragraphe est un `flow-root` : il se place en entier à côté de
+                la photo ou en entier dessous, jamais coupé entre les deux. */}
+            <div className="space-y-6 font-display lg:[&>p]:flow-root text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               <p>
-                Ayant des &quot;facilités&quot; mais ne sachant pas réellement quoi faire
-                lorsque j’ai été en âge de devoir choisir ma voie...j’ai opté pour un chemin
-                conventionnel me permettant d’avoir un &quot;bon poste&quot;, un &quot;bon
-                salaire&quot;, et la &quot;sécurité&quot; de l’emploi&nbsp;: études
-                supérieures puis CDI dans des industries multinationales.
+                Ayant des &quot;facilités&quot;,{" "}
+                <em className="italic">
+                  mais pas vraiment d&apos;idée de ce que je voulais faire de ma vie
+                </em>
+                , j’ai choisi, quand il a fallu m’orienter, un chemin plutôt conventionnel&nbsp;:
+                études supérieures, puis CDI dans de grandes industries multinationales.
               </p>
               <p>
-                Mais après plusieurs années à cocher des cases qui n’étaient pas faites pour
-                moi, il est arrivé un moment où je ne pouvais plus me cacher la réalité
-                latente&nbsp;: je ressentais un profond manque de sens, ce métier
-                d’ingénieure n’était pas fait pour moi.
+                <em className="italic">
+                  Sur le papier, j’avais tout ce qu’il fallait&nbsp;: un &quot;bon poste&quot;, un
+                  &quot;bon salaire&quot;, la &quot;sécurité&quot; de l’emploi.
+                </em>
               </p>
               <p>
-                Une fois le constat fait (et accepté!)&nbsp;: le vide.
-                <br />
+                Mais après plusieurs années d&apos;ingénierie, il est arrivé un moment où je ne
+                pouvais plus me cacher la réalité&nbsp;: le fond de mon métier me plaisait
+                vraiment, mais le contexte et la façon de l&apos;exercer...beaucoup moins.
+              </p>
+              <p>
+                <em className="italic">
+                  La hiérarchie, le manque de sens et d&apos;autonomie, cette sensation d&apos;être
+                  un pion dans une grosse machine...
+                </em>
+                <strong className="font-semibold">je m&apos;y éteignais à petits feux.</strong>
+              </p>
+              <p>
+                Puis mon entreprise a fermé. J&apos;aurais pu reprendre le même type de poste
+                ailleurs. C&apos;était la suite logique. La voie raisonnable. Sauf que...non. 😅
+              </p>
+              <p>
+                <strong className="font-semibold">Mais une fois cette décision prise&nbsp;: le vide.</strong>
+              </p>
+              <p>
                 <em className="italic">
                   Vers quoi aller? Pour quoi je suis faite? Quelle est ma place?
                 </em>
-                <br />
-                Beaucoup de questions, mais peu de réponses.
               </p>
+              <p>Beaucoup de questions...et très peu de réponses.</p>
               <p>
-                S’en suit une longue phase de flou artistique, et de quête existentielle.
+                S&apos;en est suivie une longue période de flou artistique et de quête
+                existentielle.
                 <br />
                 <em className="italic">
-                  J’ai lu des dizaines de livres, fait plusieurs bilans de compétences,
-                  suivi des coachings, testé différents métiers,...
+                  Livres, bilans de compétences, coachings, différents métiers testés...
                 </em>
-                <br />
-                J’ai vécu la frustration, le stress, l’épuisement et la lassitude de ne pas
-                savoir.
+              </p>
+              <p>J&apos;ai avancé, reculé, pensé avoir trouvé, changé d&apos;avis, recommencé.</p>
+              <p>J’ai cherché LA réponse. LA bonne voie. LA recette qui allait enfin fonctionner.</p>
+              <p>
+                <strong className="font-semibold">Pendant 5 ans.</strong>
               </p>
               <p>
-                Et puis le Human Design est arrivé dans ma vie. Et tout a basculé. Pas comme
-                une révélation magique, mais comme un outil de clarté profonde qui m’a enfin
-                permis de me comprendre vraiment, et de trouver ma voie.
+                <em className="italic">
+                  J&apos;ai vécu la frustration, le stress, la lassitude...et, à mesure que les
+                  années passaient, une forme de honte et de culpabilité de ne toujours pas
+                  savoir, de ne pas trouver.
+                </em>
               </p>
               <p>
-                Aujourd’hui je peux enfin dire que je me sens à ma place (c’était pas
-                gagné!), et j’ai vraiment à cœur de t’aider, toi aussi, à trouver ce chemin
-                vers ton épanouissement pro. ღ
+                <strong className="font-semibold">Puis le Human Design est entré dans ma vie.</strong>
+              </p>
+              <p>
+                <em className="italic">
+                  Spoiler&nbsp;: non, il ne m&apos;a pas soufflé à l&apos;oreille le nom du métier
+                  parfait que je devais faire. 😄
+                </em>
+              </p>
+              <p>
+                Mais il m&apos;a offert une nouvelle grille de lecture pour mieux me comprendre,
+                remettre du sens sur certaines choses et relier des points que je n&apos;arrivais
+                pas à relier jusque-là.
+              </p>
+              <p>
+                <em className="italic">
+                  Et petit à petit, les pièces ont commencé à s&apos;emboîter autrement.
+                </em>
+              </p>
+              <p>
+                Aujourd&apos;hui, après tous ces détours, je peux enfin dire que je me sens à ma
+                place dans ma vie pro <em className="italic">(c&apos;était loin d&apos;être gagné! 😄)</em>.
+              </p>
+              <p>
+                Pas parce que j&apos;ai trouvé LE métier parfait pour le reste de ma vie. Mais
+                parce que j&apos;ai appris à mieux me connaître, à comprendre ce dont j&apos;avais
+                besoin...et à construire petit à petit une vie pro qui me&nbsp;ressemble.&nbsp;ღ
               </p>
             </div>
           </div>
@@ -392,7 +487,8 @@ export default function QuiJeSuisPage() {
               </h2>
 
               <p className="mt-4 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]">
-                Voici ce que dit mon Design, et ce que ça signifie concrètement&nbsp;:
+                Voici ce que racontent certaines clés de mon Design, et comment elles se
+                traduisent concrètement dans ma vraie vie&nbsp;:
               </p>
 
               <ul className="mt-7 grid flex-1 grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2">
@@ -442,15 +538,23 @@ export default function QuiJeSuisPage() {
             <h2 className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
               Ma façon de <em className="italic text-turquoise">t’accompagner</em>.
             </h2>
-            <p className="mx-auto mt-7 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
-              N&apos;étant moi-même pas une grande adepte du «&nbsp;full-théorie&nbsp;» et des
-              grandes leçons moralisatrices, je mets un point d&apos;honneur à écouter
-              activement tes problématiques, et à te partager un maximum de clés et conseils
-              concrets et applicables dans ton quotidien.{" "}
-              <strong className="font-semibold">
-                Voici 3 principes qui guident chacune de mes séances&nbsp;:
-              </strong>
-            </p>
+            <div className="mt-7">
+              <p className="mx-auto max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+                N&apos;étant moi-même pas une grande adepte du &quot;full théorie&quot; et des
+                grandes leçons moralisatrices, je mets un point d&apos;honneur à partir de
+                TOI&nbsp;: de ce que tu vis, de ce qui te questionne, de ce qui coince...et de ce
+                dont tu as réellement besoin.
+              </p>
+              <p className="mx-auto mt-5 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+                Parce qu&apos;une prise de conscience, c&apos;est chouette. Mais quand elle change
+                réellement quelque chose dans ta vraie vie, c&apos;est encore mieux.
+              </p>
+              <p className="mx-auto mt-5 max-w-[640px] font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+                <strong className="font-semibold">
+                  Voici 3 principes qui guident ma façon de t&apos;accompagner&nbsp;:
+                </strong>
+              </p>
+            </div>
           </div>
 
           {/* 3 cards — même design moderne que les cartes de quiz */}
@@ -495,9 +599,14 @@ export default function QuiJeSuisPage() {
                     </span>
                   </h3>
 
-                  <p className="relative z-10 mt-4 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                    {p.blurb}
-                  </p>
+                  {p.paragraphes.map((texte) => (
+                    <p
+                      key={texte}
+                      className="relative z-10 mt-4 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]"
+                    >
+                      {texte}
+                    </p>
+                  ))}
 
                   <p className="relative z-10 mt-4 font-display text-[16px] font-light italic leading-relaxed text-ink-deep md:text-[17px]">
                     {p.chute}
@@ -538,12 +647,21 @@ export default function QuiJeSuisPage() {
                 <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
                   Fun fact
                 </span>
-                <p className="mt-3 font-display text-[19px] font-light italic leading-relaxed text-ink-deep md:text-[23px]">
-                  «&nbsp;Je n’ai pas découvert le Human Design par hasard, il s’est carrément
-                  imposé à moi&nbsp;! 😄 C’est en recherchant une nounou pour mon bébé que l’une
-                  d’elles (qui n’est même pas devenue son ass’ mat’&nbsp;!) a évoqué cet outil
-                  fantastique. Je ne savais pas encore que ça allait changer toute ma vie&nbsp;!&nbsp;»
-                </p>
+                <div className="mt-3 flex flex-col gap-3.5 font-display text-[19px] font-light italic leading-relaxed text-ink-deep md:text-[23px]">
+                  <p>
+                    «&nbsp;Je n&apos;ai pas découvert le Human Design par hasard, il s&apos;est
+                    carrément imposé à moi! 😄
+                  </p>
+                  <p>
+                    C&apos;est en recherchant une nounou pour mon bébé que l&apos;une d&apos;elles
+                    (qui n&apos;est même pas devenue son ass&apos; mat&apos;!) m&apos;a parlé de cet
+                    outil.
+                  </p>
+                  <p>
+                    Je ne savais pas encore que ça allait changer la suite de mon
+                    parcours!&nbsp;»
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -557,10 +675,9 @@ export default function QuiJeSuisPage() {
             <p className="font-display text-[22px] font-light italic leading-snug text-ink-deep md:text-[26px]">
               ...et j&apos;adooore aussi les oracles. Et toi, tu crois au «&nbsp;hasard&nbsp;»&nbsp;?
             </p>
-            <p className="mx-auto mt-4 max-w-[520px] font-body text-[14px] leading-relaxed text-ink-deep md:text-[15px]">
-              Clique ici pour un petit&nbsp;supplément&nbsp;d&apos;âme&nbsp;;
-              <br />
-              un message aléatoire rien&nbsp;que&nbsp;pour&nbsp;toi.&nbsp;😘
+            <p className="mx-auto mt-4 max-w-[440px] font-body text-[15px] font-semibold leading-snug text-ink-deep md:text-[17px]">
+              Et si tu repartais avec un petit supplément d&apos;âme? Un message surprise, rien
+              que pour&nbsp;TOI.&nbsp;😘
             </p>
           </div>
           <div className="mt-8">
@@ -569,31 +686,52 @@ export default function QuiJeSuisPage() {
         </div>
       </section>
 
-      {/* SECTION 05 — CTA BAS, pont vers Test gratuit + Mes offres */}
+      {/* SECTION 05 — CONCLUSION : les 3 portes vers « Mes offres » */}
       <section className="bg-white px-6 pt-10 pb-24 md:px-20 md:pt-16 md:pb-32">
         <div className="mx-auto max-w-(--container-content)">
-          <div className="rounded-2xl border border-ink-deep/8 bg-paper p-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:p-16">
-            <h3 className="font-display text-[32px] font-light leading-tight text-ink-deep md:text-[52px]">
-              Deux façons de faire <em className="italic text-turquoise">le premier pas</em>.
-            </h3>
-            <p className="mx-auto mt-5 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]">
-              Tu peux commencer par découvrir ton schéma personnel de Human Design, ou
-              explorer tout l’écosystème de La vie en HD.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
-              <Link
-                href="/test-gratuit"
-                className="inline-flex items-center justify-center rounded-full bg-ink-deep px-8 pt-[17px] pb-[15px] font-body text-[12px] leading-none uppercase tracking-[0.22em] text-white transition-colors hover:bg-turquoise hover:text-ink-deep"
-              >
-                Faire le test HD gratuit
-              </Link>
-              <Link
-                href="/mes-offres"
-                className="inline-flex items-center justify-center rounded-full border border-ink-deep bg-white px-8 pt-[17px] pb-[15px] font-body text-[12px] leading-none uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
-              >
-                Découvrir mes offres
-              </Link>
+          <div className="rounded-2xl border border-ink-deep/8 bg-paper px-5 py-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:px-12 md:py-14">
+            <h2 className="font-display text-[34px] font-light leading-tight text-ink-deep md:text-[56px]">
+              Et maintenant, à toi.&nbsp;✨
+            </h2>
+            <div className="mx-auto mt-6 flex max-w-[860px] flex-col gap-4 font-display text-[18px] font-light leading-relaxed text-ink-deep md:text-[21px]">
+              <p>
+                Si quelque chose dans mon histoire ou ma façon de voir les choses t&apos;a parlé,
+                il est peut-être temps de revenir à TOI.
+              </p>
+              <p>
+                Que tu te questionnes sur ta vie pro, que tu aies envie de faire évoluer ton
+                Business à TA façon, ou que tu sois simplement curieux.se de découvrir ton Human
+                Design...
+              </p>
             </div>
+            <p className="mt-7 font-display text-[18px] font-semibold text-ink-deep md:text-[21px]">
+              Choisis la porte qui t&apos;appelle aujourd&apos;hui.
+            </p>
+
+            <nav
+              aria-label="Explorer les trois univers de La vie en HD"
+              className="mx-auto mt-8 grid max-w-[1050px] gap-3.5 text-left md:grid-cols-3 md:gap-4"
+            >
+              {PORTES_FINALES.map((porte) => (
+                <Link
+                  key={porte.href}
+                  href={porte.href}
+                  className={`flex flex-col gap-2.5 rounded-[19px] border-[1.5px] px-5 py-5 text-ink-deep shadow-[0_9px_21px_rgba(66,43,83,0.045)] transition-all hover:-translate-y-[3px] hover:shadow-[0_13px_24px_rgba(66,43,83,0.10)] md:min-h-[216px] md:gap-4 md:px-6 md:py-6 ${porte.ton}`}
+                >
+                  {/* Trois registres : repère en capitales fines à la couleur de la
+                      porte, titre en Cormorant, mots-clés en italique discret. */}
+                  <span className={`font-body text-[11px] tracking-[0.2em] ${porte.accent}`}>
+                    {porte.eyebrow}
+                  </span>
+                  <span className="font-display text-[23px] font-medium leading-[1.2] md:flex-1 md:text-[26px]">
+                    {porte.titre}
+                  </span>
+                  <span className="font-display text-[15px] italic leading-snug text-ink md:text-[16px]">
+                    {porte.motsCles}
+                  </span>
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </section>
