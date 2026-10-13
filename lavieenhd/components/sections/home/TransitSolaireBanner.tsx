@@ -154,7 +154,7 @@ export function TransitSolaireBanner() {
           {SOIN_ENERGETIQUE.description.map((ligne) => (
             <p
               key={ligne}
-              className="mt-1.5 font-body text-[12.5px] leading-relaxed text-ink md:text-[13.5px]"
+              className="mt-1.5 font-display text-[16px] leading-snug text-ink-deep md:text-[17px]"
             >
               {ligne}
             </p>

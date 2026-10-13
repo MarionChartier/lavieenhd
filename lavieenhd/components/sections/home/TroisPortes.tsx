@@ -183,24 +183,21 @@ export function OffreCard({
     <Link
       href={offre.href}
       prefetch={isStaticFile ? false : undefined}
-      className={`group grid min-h-[332px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[210px] sm:grid-cols-[72px_1fr] lg:min-h-[150px] lg:grid-cols-[105px_1fr_auto] lg:gap-x-5 ${
+      className={`group grid min-h-[320px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[192px] sm:grid-cols-[72px_1fr] lg:min-h-[160px] lg:grid-cols-[96px_1fr_auto] lg:gap-x-5 ${
         complement
           ? "border border-ink/12 bg-white/60"
           : "bg-white shadow-[0_5px_16px_rgba(70,50,80,0.04)] hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
       }`}
     >
+      {/* Vignette carrée comme les logos (500×500) : un cadre rectangulaire
+          rognait le bas du logo. `fill` cale l'image sur le cadre, quelle que
+          soit la largeur de la colonne. */}
       <div
-        className={`relative grid h-[72px] w-[72px] place-items-center sm:w-auto overflow-hidden rounded-xl lg:h-[84px] ${thumbClass} ${
+        className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass} ${
           complement ? "opacity-75 saturate-50" : ""
         }`}
       >
-        <Image
-          src={offre.logoSrc}
-          alt=""
-          width={105}
-          height={84}
-          className="h-full w-full object-contain p-1.5"
-        />
+        <Image src={offre.logoSrc} alt="" fill sizes="96px" className="object-contain p-1.5" />
       </div>
 
       <div className={complement ? "opacity-85" : undefined}>
@@ -209,12 +206,12 @@ export function OffreCard({
             Quiz gratuit
           </span>
         )}
-        <p className="font-display text-[17px] leading-snug text-ink-deep md:text-[21px]">
+        <p className="font-display text-[17px] font-semibold leading-snug text-ink-deep md:text-[21px]">
           {offre.name}
         </p>
         {children ??
           (offre.description && (
-            <p className="mt-1 font-body text-[12.5px] leading-relaxed text-ink md:text-[13.5px]">
+            <p className="mt-1 font-display text-[16px] leading-snug text-ink-deep md:text-[17px]">
               {offre.description}
             </p>
           ))}
