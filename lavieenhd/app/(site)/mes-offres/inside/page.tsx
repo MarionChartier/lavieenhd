@@ -314,7 +314,7 @@ Franchement merci beaucoup Marion 🥰`,
   },
   {
     nom: "Sylvie",
-    photo: "/assets/temoignages/Anonyme.png",
+    photo: "/assets/temoignages/Sylvie-inside.webp",
     texte:
       "Marion m'a permis de mettre des mots clairs sur ce que je ressentais depuis longtemps : mon mode de fonctionnement, mes élans, mes besoins profonds. Grâce à sa passion communicative et à la richesse de ses connaissances, j'ai enfin pu me reconnecter à ma vraie nature. Je croyais que le Human Design était réservé aux initiés, mais en réalité, c'est un outil à la fois accessible et incroyablement concret. Beaucoup de choses ont fait sens pour moi. Il ne reste plus qu'à l'explorer au quotidien, et laisser les déclics s'inviter dans ma vie.",
   },
