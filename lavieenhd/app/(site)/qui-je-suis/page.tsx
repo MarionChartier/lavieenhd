@@ -311,9 +311,11 @@ export default function QuiJeSuisPage() {
       {/* SECTION 02 — MON CHEMIN, narrative biographique éditoriale */}
       <section className="bg-white px-6 pt-16 pb-24 md:px-20 md:pt-20 md:pb-32">
         <div className="mx-auto max-w-(--container-content)">
-          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-            {/* Colonne gauche : titre sticky + petite photo */}
-            <div>
+          {/* En desktop, titre et photo flottent à gauche : le récit, devenu bien plus
+              long que la photo, reprend toute la largeur une fois passé dessous. */}
+          <div className="lg:flow-root">
+            {/* Gauche : titre + photo */}
+            <div className="mb-14 lg:float-left lg:mr-20 lg:mb-10 lg:w-[40%]">
               {/* Photo mobile/tablette — au-dessus du titre ; la version desktop reste sous le titre */}
               <div className="relative mb-8 h-[300px] w-full overflow-hidden rounded-md md:h-[380px] lg:hidden">
                 <Image
@@ -341,9 +343,11 @@ export default function QuiJeSuisPage() {
               </div>
             </div>
 
-            {/* Colonne droite : narration en paragraphes courts, au rythme de la
+            {/* Récit en paragraphes courts, au rythme de la
                 maquette de Marion */}
-            <div className="flex flex-col gap-6 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+            {/* Bloc simple (pas flex) : seuls des paragraphes en flux normal
+                contournent le flottant. */}
+            <div className="space-y-6 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
               <p>
                 Ayant des &quot;facilités&quot;,{" "}
                 <em className="italic">
