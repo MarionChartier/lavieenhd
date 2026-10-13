@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { PORTES, type Porte, type PorteOffre, type PorteTon } from "@/lib/content/portes";
 
 /** Fond de la porte ouverte, numéro et chevron, par ton. */
@@ -73,10 +73,24 @@ function PorteAccordeon({
 }) {
   const ton = TONS[porte.ton];
   const panelId = `porte-${porte.num}`;
+  const racine = useRef<HTMLDivElement>(null);
+
+  // À l'ouverture, on amène le haut de la porte sous la nav. Après la
+  // transition (300ms) : la porte précédente se replie au-dessus et décalerait
+  // la cible si on défilait tout de suite.
+  useEffect(() => {
+    if (!isOpen) return;
+    const t = window.setTimeout(
+      () => racine.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      320,
+    );
+    return () => window.clearTimeout(t);
+  }, [isOpen]);
 
   return (
     <div
-      className={`overflow-hidden rounded-[28px] border border-ink/12 transition-colors duration-300 ${
+      ref={racine}
+      className={`scroll-mt-32 overflow-hidden rounded-[28px] border border-ink/12 transition-colors duration-300 ${
         isOpen ? ton.open : "bg-white"
       }`}
     >
