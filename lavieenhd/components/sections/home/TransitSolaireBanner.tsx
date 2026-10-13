@@ -152,9 +152,10 @@ export function TransitSolaireBanner() {
             className: "border-[#e5d4b4] bg-[#f5ecdf] text-[#8a6a3c]",
           }}
           photo
-          // Carte blanche sur section blanche : une ombre un peu plus présente
-          // que celle des cartes des portes suffit à la détacher du fond.
-          surface="bg-white shadow-[0_12px_32px_-14px_rgba(80,60,98,0.2)] hover:shadow-[0_16px_38px_-14px_rgba(80,60,98,0.28)]"
+          // Carte blanche sur section blanche : un liseré fin dessine le haut,
+          // que l'ombre portée vers le bas ne marquait pas, et une ombre diffuse
+          // tout autour la détache du fond.
+          surface="border border-ink/10 bg-white shadow-[0_6px_26px_-8px_rgba(80,60,98,0.18)] hover:shadow-[0_10px_32px_-8px_rgba(80,60,98,0.26)]"
         >
           {/* Ligne de lecture bornée : sur toute la largeur de la carte, la phrase
               filait sur 1 300px et laissait « énergie. » seule à la ligne. */}
