@@ -84,7 +84,7 @@ export function InstagramBanner() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-ink-deep px-8 pt-[18px] pb-[14px] font-body text-[12px] leading-none uppercase tracking-[0.18em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-paper"
+            className="inline-flex items-center gap-2 rounded-full border border-ink-deep px-8 pt-[15px] pb-[11px] font-body text-[12px] leading-[1.5] uppercase tracking-[0.18em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-paper"
           >
             <InstagramIcon className="h-4 w-4" />
             Me suivre sur Instagram
