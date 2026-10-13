@@ -19,7 +19,7 @@ export function SoulLetterBanner() {
           De temps en temps, je t’écris en toute intimité.
         </h2>
         <p className="mx-auto mt-4 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink md:text-[18px]">
-          Des tips de Human Design et d’alignement de vie professionnelle, des réflexions, des prises de conscience, des actualités de La vie en HD, mais aussi les coulisses de mon quotidien.
+          Des tips de Human Design, des réflexions autour de la vie pro et du Business, des prises de conscience, des actualités de La vie en HD, mais aussi les coulisses de mon quotidien.
           Sans bullshit, sans diffusion massive.
         </p>
       </div>

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { findTransit, parseCsv, type Transit } from "@/lib/transit";
+import { SOIN_ENERGETIQUE } from "@/lib/content/portes";
+import { OffreCard } from "@/components/sections/home/TroisPortes";
 
 /**
  * Bandeau "Transit solaire" + "Phase lunaire".
@@ -56,7 +58,18 @@ export function TransitSolaireBanner() {
   }, []);
 
   return (
-    <section className="bg-white px-6 py-10 md:px-20 md:py-14">
+    <section className="bg-white px-6 pt-16 pb-6 md:px-20 md:pt-24 md:pb-8">
+      {/* Transition depuis les témoignages (maquette V36) */}
+      <div className="mx-auto mb-10 max-w-[760px] text-center font-display text-ink-deep md:mb-12">
+        <p className="text-[19px] font-semibold leading-relaxed md:text-[22px]">
+          Et parce que nous traversons aussi des cycles qui viennent colorer ce que nous vivons...
+        </p>
+        <p className="mt-2 text-[17px] font-light italic leading-relaxed md:text-[18px]">
+          Je te propose ici un petit éclairage sur ce qui se joue pour nous, au niveau collectif,
+          aujourd’hui.
+        </p>
+      </div>
+
       <div className="mx-auto mb-8 max-w-(--container-content) text-center md:mb-10">
         {/* leading généreux : les jambages de la script descendent bas et
             viennent croiser la date si on serre l'interligne. */}
@@ -120,6 +133,38 @@ export function TransitSolaireBanner() {
             </p>
           )}
         </BannerCard>
+      </div>
+
+      {/* Le Soin énergétique, placé sous les 3 portes (maquette V36) */}
+      <div className="mx-auto mt-12 max-w-(--container-content) md:mt-14">
+        <p className="mx-auto mb-6 max-w-[760px] text-center font-display text-[17px] font-light italic leading-relaxed text-ink-deep md:text-[18px]">
+          Et si, au-delà de ces énergies collectives, tu ressens le besoin de revenir à toi...
+        </p>
+        <OffreCard
+          offre={{
+            name: SOIN_ENERGETIQUE.name,
+            href: SOIN_ENERGETIQUE.href,
+            logoSrc: SOIN_ENERGETIQUE.logoSrc,
+          }}
+          thumbClass="bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]"
+          badge={{
+            label: SOIN_ENERGETIQUE.subtitle,
+            className: "border-[#e5d4b4] bg-[#f5ecdf] text-[#8a6a3c]",
+          }}
+          photo
+          centrerMobile
+          // Carte blanche sur section blanche : un liseré fin dessine le haut,
+          // que l'ombre portée vers le bas ne marquait pas, et une ombre diffuse
+          // tout autour la détache du fond.
+          surface="border border-ink/10 bg-white shadow-[0_6px_26px_-8px_rgba(80,60,98,0.18)] hover:shadow-[0_10px_32px_-8px_rgba(80,60,98,0.26)]"
+        >
+          {/* Ligne de lecture bornée : sur toute la largeur de la carte, la phrase
+              filait sur 1 300px et laissait « énergie. » seule à la ligne. */}
+          <div className="mx-auto mt-1.5 max-w-[640px] font-display sm:mx-0 text-[16px] leading-snug text-ink-deep md:text-[17px]">
+            <p>{SOIN_ENERGETIQUE.description[0]}</p>
+            <p className="mt-1.5 italic">{SOIN_ENERGETIQUE.description[1]}</p>
+          </div>
+        </OffreCard>
       </div>
     </section>
   );

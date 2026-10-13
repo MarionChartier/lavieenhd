@@ -2,119 +2,148 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { EXTERNAL } from "@/lib/links";
 
 type Testimonial = {
   name: string;
-  text: string;
-  /** Portrait rond (liseré doré) fourni par la cliente, sinon "Anonyme". */
-  photo: string;
   /** Offre dont est issu le témoignage — affichée en pastille sur la card. */
-  offre: string;
+  offre: Offre;
+  photo: string;
+  /** Début du témoignage, toujours visible. */
+  extrait: string;
+  /** Suite, affichée par « Lire la suite ». */
+  suite: ReactNode;
 };
 
-/** Dossier des portraits de témoignages (photos clientes, liseré doré déjà intégré). */
+type Offre = "Reconnect" | "Blooming" | "Reveal" | "Inside" | "The Place to be" | "Body Bloom";
+
+/** Dossier des portraits de témoignages. */
 const PHOTO = (file: string) => `/assets/temoignages/${file}`;
 
-/** Sélection de Marion : un témoignage par offre, dans l'ordre du parcours. */
+/**
+ * Sélection de Marion (maquette V36), partagée par la home et /test-gratuit
+ * (et /mes-offres en attendant sa refonte).
+ */
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Barbara",
-    offre: "Soin énergétique",
-    photo: PHOTO("Barbara.png"),
-    text: `Je dois vraiment te dire merci du fond du cœur car je pense que le soin de décembre a ouvert la porte derrière laquelle je restais coincée.
-
-On en parlait avec une amie cet après-midi : elle a fait le soin aussi, elle a le même ressenti. 💖`,
-  },
-  {
-    name: "Astrig",
-    offre: "The Place to be",
-    photo: PHOTO("Astrig2.png"),
-    text: `Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi ! Mais ce que j'ai découvert, c'est bien plus que ça ! J'ai dévoré ce guide comme si je lisais le meilleur roman du moment !
-
-Merci Marion pour la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c'est pépite ! Les explications sont claires et précises, et on est vraiment guidés pas à pas pour décrypter notre environnement et appliquer des changements concrets dans notre quotidien.
-
-Encore merci Marion 🌟`,
-  },
-  {
-    name: "Louise-Armance",
-    offre: "Inside",
-    photo: PHOTO("Louise-Armance.png"),
-    text: `Je ne connaissais absolument rien du tout au Human Design, et le guide d'immersion m'a donné beaucoup d'indications réellement étonnantes ; je me suis retrouvée dans énormément de descriptions et j'ai appris plein de choses sur moi !
-
-Je ne pensais pas que mes seules infos de naissance pourraient en dévoiler autant alors qu'on ne se connait pas ! 😮 Et c'est quand même dingue d'avoir attendu plus de 35 ans pour découvrir que j'avais été livrée avec un mode d'emploi ! 😂
-
-Clairement je me reconnais vraiment dans ma personnalité et mon fonctionnement, c'est tout à fait moi, depuis enfant, c'est fou ! Et il y a d'autres aspects de moi que je découvre et que j'ai envie de creuser du coup ! 😍
-
-Merci mille fois pour toutes ces informations précieuses Marion, ça résonne beaucoup en moi, c'est très parlant ! Bluffant même ! 💥`,
-  },
-  {
-    name: "Marjory",
-    offre: "Reveal",
-    photo: PHOTO("Marjory.png"),
-    text: `Marion a été d'une aide précieuse pour mon questionnement professionnel assez complexe... Elle a éclairé mes lumières sur de nombreux points d'une manière bluffante !
-
-Je suis repartie avec une vraie clarté sur les domaines dans lesquels je pouvais exceller, la manière également d'y arriver et d'être efficace. Et surtout, grâce à elle, je me suis autorisée à accueillir la version de moi qui rêvait GRAND mais qui n'osait pas l'assumer ! Ça a débloqué une grosse partie de moi qui se sentait pas légitime et pas capable. Donc juste MERCI pour ça ! 🙏🙏🙏
-
-J'y vois beaucoup plus clair, et j'ai ouvert des portes que je ne soupçonnais pas possibles pour moi.
-
-Quelques mois après : « Honnêtement merci encore Marion parce que vraiment tes conseils ont été précieux et aujourd'hui ils sont ancrés. Peu importe ce que les gens me disent je sais, moi, toute seule ce qui est le mieux et ça a tout changé dans ma vie. 🙏 »`,
+    // TODO(Marion) : témoignage provisoire, en attente du texte final de
+    // Maryline. Photo, prénom et mise en page restent ; seul le texte changera.
+    name: "Maryline",
+    offre: "Reconnect",
+    photo: PHOTO("Maryline-blooming.webp"),
+    extrait:
+      "Avant j'étais dans le brouillard complet, aujourd'hui plus du tout, je vois le cap à l'horizon...",
+    suite: (
+      <p>
+        J&apos;ai aussi mis de l&apos;ordre dans ce qu&apos;il faut entreprendre pour démarrer.
+        [...] Je me sens plus résolue que jamais.
+      </p>
+    ),
   },
   {
     name: "Émilie",
     offre: "Blooming",
     photo: PHOTO("Emilie.png"),
-    text: `Waw 😍🥲 !
-
-Je suis complètement bluffée par la justesse de ton analyse ! Je me retrouve dans 95% de ce qui est écrit (et les 5%, doivent venir du conditionnement 🧘🤗).
-
-Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.
-Je vais l'imprimer en grand je pense tellement elle est belle 😁 !`,
+    extrait:
+      "Waw 😍🥹! Je suis complètement bluffée par la justesse de ton analyse! Pour la fleur 🌸 juste en la regardant, je me suis sentie reconnue.",
+    suite: (
+      <p>
+        [...] Elle m&apos;a permis de confirmer certaines intuitions, elle a renforcé ma confiance
+        sur des talents que je n&apos;osais pas trop exploiter, elle m&apos;a ouvert les yeux sur
+        certains métiers à envisager, et m&apos;a permis de découvrir ma zone de génie. [...] Ça a
+        été une énorme révélation pour moi! La fleur de talents innés est d&apos;une justesse
+        incroyable.
+      </p>
+    ),
   },
   {
-    name: "Justine",
-    offre: "Reconnect",
-    photo: PHOTO("Justine.png"),
-    text: `Cela fait plusieurs années maintenant que je fais des coachings professionnels, des bilans de compétences, des tests de personnalité, thème astral, numérologie etc... pour essayer de trouver ma voie professionnelle. C'est donc en toute connaissance de cause que je peux affirmer que Reconnect est l'accompagnement le plus complet que j'ai fait jusqu'à présent.
-
-Ce que j'ai beaucoup aimé c'est le format : un questionnaire par semaine, que l'on peut faire n'importe où. Cela permet vraiment d'avancer à son rythme sur la semaine et chaque lundi on a la surprise du nouveau questionnaire, c'est un peu comme un cadeau que l'on se fait à soi même :)
-
-J'adore également le fait (et c'est aussi selon moi ce qui fait que l'accompagnement se démarque complètement de tous les autres) que Marion utilise tous les outils à sa disposition pour nous aider : le Human Design bien sûr qui est un outil que je ne connaissais pas et qui m'a vraiment bluffée (très complet), la numérologie, l'EFT, des tests de personnalité, des exercices pratiques et concrets, des guidances sur certaines thématiques, des soins énergétiques...
-En fait, TOUT est vraiment mélangé et recoupé en un accompagnement hyper puissant parce que Marion maitrise ses sujets et grâce à elle et à ses coachings on avance vraiment. Il y a un avant et un après l'accompagnement. J'ai appris énormément de choses que je ne soupçonnais même pas sur moi alors que vraiment cela fait plusieurs années que je fais tous les tests de personnalité possibles^^ et inversement cela m'a aussi conforté dans certains choix professionnels.
-
-De plus, Marion est super disponible et à l'écoute. Son super pouvoir selon moi c'est vraiment cette capacité à vulgariser ce qui peut nous sembler abstrait pour le rendre concret, compréhensible et que l'on puisse l'appliquer à notre vie de tous les jours. Elle est vraiment impliquée pour nous aider et nous faire avancer, de sa disponibilité en passant par les retours de soins énergétiques jusqu'à ses exercices pratiques « bonus » en fin de mail hebdomadaires, tout a vraiment été pensé et mis en place pour les personnes qui suivent le programme.
-
-Je recommande les yeux fermés, à mon sens c'est vraiment l'accompagnement le plus complet que j'ai pu vivre jusqu'à maintenant.
-C'est LA clé si vous êtes bloqués dans votre vie professionnelle.
-
-Encore Merci !!!`,
+    name: "Élise",
+    offre: "Reveal",
+    photo: PHOTO("Elise-reveal.webp"),
+    extrait:
+      "Cet échange m'a apporté un nouveau regard et des approfondissements sur ma façon de voir...",
+    suite: (
+      <>
+        <p>...et ce qu&apos;est mon business, tout en me respectant!</p>
+        <p>
+          <em>Puis, quelques heures après :</em>
+          <br />
+          Ça bouge déjà...2 offres se dessinent vraiment...Merci encore 🙏
+        </p>
+      </>
+    ),
+  },
+  {
+    name: "Camille",
+    offre: "Inside",
+    photo: PHOTO("Camille.png"),
+    extrait:
+      "C'est IN-CROY-ABLE!!! On dirait que tu me connais depuis 30 ans, tout est juste, c'est fou...",
+    suite: (
+      <p>
+        ...je n&apos;en reviens pas! 🤩 C&apos;est impressionnant! Maintenant que j&apos;ai ce
+        guide, je trouve ça hyper apaisant, rassurant et déculpabilisant de constater que certains
+        de mes fonctionnements ne sont pas juste une &quot;lubie&quot; de ma part, mais que ça fait
+        parti de moi en fait! Merci infiniment Marion! 💖
+      </p>
+    ),
+  },
+  {
+    name: "Astrig",
+    offre: "The Place to be",
+    photo: PHOTO("Astrig2.png"),
+    extrait:
+      "Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi! Mais ce que j'ai découvert, c'est bien plus que ça!",
+    suite: (
+      <p>
+        J&apos;ai dévoré ce guide comme si je lisais le meilleur roman du moment! Merci Marion pour
+        la richesse de cet ebook, et pour tous ces détails et conseils pratiques : c&apos;est
+        pépite!
+      </p>
+    ),
+  },
+  {
+    name: "Yohan",
+    offre: "Body Bloom",
+    photo: PHOTO("Yohan-body-bloom.webp"),
+    extrait:
+      "Avec mon conjoint, ayant la même digestion HD, nous avons lu le Guide sur notre intelligence digestive...",
+    suite: (
+      <p>
+        ...et nous l&apos;avons trouvé génial et rempli de vérités! Nous nous sommes reconnus
+        pleinement. Merci beaucoup pour ce précieux Guide avec un visuel magnifique. On a
+        adoré!! ❤️
+      </p>
+    ),
   },
 ];
 
-/** Couleur du badge alignée sur la card de l'offre associée (section « parcours »). */
-const BADGE_COLORS: Record<string, string> = {
-  "Soin énergétique": "border-[#e5d4b4] bg-[#f0e3cc]/70",
-  "The Place to be": "border-[#dccef0] bg-[#ece4f5]/70",
-  Inside: "border-[#c5e6e9] bg-[#dbeef4]/70",
-  Reveal: "border-[#dccef0] bg-[#ece4f5]/70",
-  Blooming: "border-[#c5e6e9] bg-[#dbeef4]/70",
+/** Couleur du badge alignée sur la couleur de l'offre associée. */
+const BADGE_COLORS: Record<Offre, string> = {
   Reconnect: "border-[#dccef0] bg-[#ece4f5]/70",
+  Blooming: "border-[#c5e6e9] bg-[#dbeef4]/70",
+  Reveal: "border-[#dccef0] bg-[#ece4f5]/70",
+  Inside: "border-[#c5e6e9] bg-[#dbeef4]/70",
+  "The Place to be": "border-[#dccef0] bg-[#ece4f5]/70",
+  "Body Bloom": "border-[#e5d4b4] bg-[#f0e3cc]/70",
 };
-const BADGE_FALLBACK = "border-turquoise/50 bg-turquoise-soft/60";
 
 /** Page de vente de l'offre associée au témoignage (clic sur le badge). */
-const OFFRE_HREF: Record<string, string> = {
-  "Soin énergétique": EXTERNAL.offre.soinEnergetique,
-  "The Place to be": EXTERNAL.offre.thePlaceToBe,
-  Inside: EXTERNAL.offre.insideClub,
-  Reveal: EXTERNAL.offre.reveal,
-  Blooming: EXTERNAL.offre.fleurDeTalents,
+const OFFRE_HREF: Record<Offre, string> = {
   Reconnect: EXTERNAL.offre.reconnect,
+  Blooming: EXTERNAL.offre.fleurDeTalents,
+  Reveal: EXTERNAL.offre.reveal,
+  Inside: EXTERNAL.offre.insideClub,
+  "The Place to be": EXTERNAL.offre.thePlaceToBe,
+  "Body Bloom": EXTERNAL.offre.bodyBloom,
 };
 
-/** Renvoie les indices des cards qui partagent la même ligne dans la grille desktop (3 cols). */
-function getRowMates(index: number, total: number, rowSize = 3): number[] {
+/** Nombre de colonnes de la grille desktop. */
+const COLONNES = 2;
+
+/** Renvoie les indices des cards qui partagent la même ligne dans la grille desktop. */
+function getRowMates(index: number, total: number, rowSize = COLONNES): number[] {
   const rowStart = Math.floor(index / rowSize) * rowSize;
   return Array.from({ length: rowSize }, (_, i) => rowStart + i).filter(
     (i) => i < total,
@@ -125,9 +154,9 @@ export function Testimonials() {
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) => {
-    // Grille 3 colonnes (desktop) : on déplie toute la ligne pour garder les
-    // cards alignées. En 1 colonne (mobile), seule la card cliquée s'ouvre,
-    // sinon les cards du dessus poussent le texte hors de l'écran.
+    // Grille desktop : on déplie toute la ligne pour garder les cards alignées.
+    // En 1 colonne (mobile), seule la card cliquée s'ouvre, sinon les cards du
+    // dessus poussent le texte hors de l'écran.
     const isGrid = window.matchMedia("(min-width: 1024px)").matches;
     const targets = isGrid ? getRowMates(i, TESTIMONIALS.length) : [i];
     const isCurrentlyExpanded = expanded.has(i);
@@ -143,7 +172,10 @@ export function Testimonials() {
   };
 
   return (
-    <section className="bg-lavender-gradient relative overflow-hidden px-6 py-20 md:px-20 md:py-24">
+    <section
+      id="temoignages"
+      className="bg-lavender-gradient relative overflow-hidden px-6 py-20 md:px-20 md:py-24"
+    >
       {/* Image smile en arrière-plan discret */}
       <Image
         src="/assets/marion-sourire.webp"
@@ -156,14 +188,16 @@ export function Testimonials() {
       />
 
       <div className="relative z-10 mx-auto max-w-(--container-content)">
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-14 text-center md:mb-20">
           <h2 className="font-display text-[36px] font-light leading-tight text-ink-deep md:text-[64px]">
-            Des <em className="italic text-turquoise">retours</em> qui me touchent.
+            Leurs <em className="italic text-turquoise">mots</em>, leurs
+            <br />
+            déclics.
           </h2>
         </div>
 
-        {/* Grid 1 col mobile, 3 cols desktop — 6 cards, toutes condensées par défaut */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* 1 colonne mobile, 2 colonnes desktop ; toutes condensées par défaut */}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-2">
           {TESTIMONIALS.map((t, i) => (
             <div key={t.name} className="flex">
               <TestimonialCard
@@ -181,9 +215,10 @@ export function Testimonials() {
 
 function TestimonialCard({
   name,
-  text,
-  photo,
   offre,
+  photo,
+  extrait,
+  suite,
   isExpanded,
   onToggle,
 }: Testimonial & {
@@ -191,45 +226,27 @@ function TestimonialCard({
   onToggle: () => void;
 }) {
   return (
-    <article
-      className={`relative flex w-full flex-col rounded-md border border-ink/10 bg-white/80 p-7 backdrop-blur-sm md:p-9 ${
-        // Hauteur fixe quand dépliée pour garder une cohérence visuelle dans la grille,
-        // même si le texte est court.
-        isExpanded ? "min-h-[520px]" : ""
-      }`}
-    >
-      {/* Badge « scotch » — centré à cheval sur le bord haut de la card */}
+    <article className="relative flex w-full flex-col items-center rounded-md border border-ink/10 bg-white/80 px-7 pt-10 pb-7 text-center backdrop-blur-sm md:px-9 md:pb-9">
+      {/* Portrait centré, à cheval sur le bord haut de la card */}
+      <div className="absolute -top-9 left-1/2 h-[72px] w-[72px] -translate-x-1/2 overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_6px_16px_-6px_rgba(80,60,98,0.3)]">
+        <Image src={photo} alt={`Portrait de ${name}`} fill sizes="72px" className="object-cover" />
+      </div>
+
+      {/* Badge « scotch » vers la page de vente de l'offre */}
       <Link
-        href={OFFRE_HREF[offre] ?? "/mes-offres"}
+        href={OFFRE_HREF[offre]}
         prefetch={false}
-        className={`absolute -top-3 left-1/2 z-10 inline-flex -translate-x-1/2 -rotate-2 items-center border px-4 pt-[6px] pb-[4px] font-body text-[9px] uppercase leading-none tracking-[0.18em] whitespace-nowrap text-ink-deep shadow-[0_2px_6px_rgba(80,60,98,0.14)] transition-[border-color] hover:border-ink-deep/50 ${
-          BADGE_COLORS[offre] ?? BADGE_FALLBACK
-        }`}
+        className={`mt-4 inline-flex -rotate-2 items-center border px-4 pt-[6px] pb-[4px] font-body text-[9px] uppercase leading-none tracking-[0.18em] whitespace-nowrap text-ink-deep shadow-[0_2px_6px_rgba(80,60,98,0.14)] transition-[border-color] hover:border-ink-deep/50 ${BADGE_COLORS[offre]}`}
       >
         {offre}
       </Link>
 
-      <div className="mb-5 flex items-center gap-4">
-        <div className="relative h-16 w-16 flex-none">
-          <Image
-            src={photo}
-            alt={`Portrait de ${name}`}
-            fill
-            sizes="64px"
-            className="object-contain"
-          />
-        </div>
-        <p className="font-display text-[20px] italic text-ink-deep md:text-[22px]">{name}</p>
-      </div>
+      <p className="mt-4 font-display text-[22px] italic text-ink-deep md:text-[24px]">{name}</p>
 
-      <blockquote
-        className={`relative font-display text-[15px] leading-relaxed whitespace-pre-line text-ink-deep md:text-[16px] ${
-          !isExpanded ? "line-clamp-3" : ""
-        }`}
-        dangerouslySetInnerHTML={{
-          __html: text.replace(/Quelques mois après/g, '<u>Quelques mois après</u>')
-        }}
-      />
+      <blockquote className="mt-3 flex flex-col gap-3 font-display text-[15px] leading-relaxed text-ink-deep md:text-[17px]">
+        <p>{extrait}</p>
+        {isExpanded && suite}
+      </blockquote>
 
       <button
         type="button"

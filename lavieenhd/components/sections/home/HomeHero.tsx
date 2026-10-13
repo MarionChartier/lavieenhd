@@ -1,30 +1,16 @@
-"use client";
-
 import Image from "next/image";
-import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
-import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 
+/**
+ * Hero de l'accueil, resserré (maquette V36) : le récit d'origine est passé
+ * dans la section « Sortir des cases » (Approche) et le calculateur dans sa
+ * propre section plus bas (SchemaGenerateur).
+ */
 export function HomeHero() {
-  const hasResult = useBodygraphResult();
-
   return (
     /* `overflow-clip` et NON `overflow-hidden` : les halos ci-dessous débordent
-       de la section (jusqu'à 160px sous elle, 96px à droite). `hidden` en fait
-       un conteneur de défilement — invisible, mais scrollable par programme —
-       et le `scrollIntoView` du calculateur (voir CalculateurLayout) faisait
-       alors défiler la SECTION de 160px sur elle-même : le contenu remontait et
-       laissait un grand vide en bas, avant « Les énergies du moment ». `clip`
-       rogne à l'identique sans créer ce conteneur, donc rien ne peut décaler le
-       contenu. */
-    <section
-      className={`relative overflow-clip px-6 pt-10 md:px-20 md:pt-12 ${
-        // Rien après le calculateur dans cette section : sans résultat, sa
-        // hauteur modeste rend ce padding invisible. Avec un schéma en pleine
-        // largeur, la section grandit énormément et ce même padding devient un
-        // grand vide avant la section suivante — on le réduit dans ce cas.
-        hasResult ? "pb-0" : "pb-16 md:pb-24"
-      }`}
-    >
+       de la section. `hidden` en ferait un conteneur de défilement, scrollable
+       par programme ; `clip` rogne à l'identique sans créer ce conteneur. */
+    <section className="relative overflow-clip px-6 pt-10 pb-16 md:px-20 md:pt-12 md:pb-24">
       {/* Halos flous — profondeur ambiante */}
       <div
         aria-hidden
@@ -64,7 +50,7 @@ export function HomeHero() {
         </g>
       </svg>
 
-      {/* Silhouette en arrière-plan — ancrée en haut de section pour être visible dès l'ouverture */}
+      {/* Silhouette en arrière-plan, centrée derrière le texte */}
       <Image
         src="/assets/marion_home.png"
         alt=""
@@ -72,7 +58,7 @@ export function HomeHero() {
         height={300}
         priority
         aria-hidden
-        className="pointer-events-none absolute top-40 left-1/2 h-auto w-[560px] max-w-none -translate-x-1/2 opacity-[0.22] mix-blend-multiply lg:top-32 lg:left-[10%] lg:w-[700px] lg:translate-x-0"
+        className="pointer-events-none absolute top-40 left-1/2 h-auto w-[560px] max-w-none -translate-x-1/2 opacity-[0.22] mix-blend-multiply lg:top-32 lg:w-[700px]"
         style={{
           WebkitMaskImage:
             "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%)",
@@ -83,90 +69,34 @@ export function HomeHero() {
         }}
       />
 
-      {/* Deux colonnes avant le calcul, pleine largeur dès qu'un schéma existe.
-          Le plancher, c'est le champ année de la ligne de date : le widget lui
-          donne une fraction de la carte, et sous ~630px de carte les quatre
-          chiffres saisis sont rognés. 690px lui laissent 79px pour les 67px dont
-          il a besoin, soit une bonne digit de marge. Les paragraphes retombent du
-          coup sur ~510px, la mesure pour laquelle ils ont été écrits. */}
-      <div className="relative mx-auto max-w-(--container-content)">
-        <CalculateurLayout
-          columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
-          temoignages={["camille", "ludivine"]}
-        >
-          {/* LEFT — copy */}
-          <div className="pt-6 lg:pt-16">
-            {/* Pas de whitespace-nowrap : la phrase complète a besoin de deux
-                lignes sur les petites largeurs. */}
-            {/* En deux colonnes (lg+), « Ton Human Design, » fait 416px à 44px
-                et la colonne descend à ~326px en bas de bande : « Design, »
-                partait à la ligne (vu chez Marion, zoom navigateur). La taille
-                suit donc la largeur (4.4vw - 11.5px ≈ 97% de ce qui tient),
-                et retrouve ses 44px dès ~1260px de viewport. */}
-            <h1 className="font-script text-[26px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[44px] lg:text-[clamp(33px,4.4vw_-_11.5px,44px)]">
-              Ton <span className="not-italic text-turquoise">Human Design</span>,
-              {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
-                  automatique coupe au milieu de « Human Design ». */}
-              <span className="mt-2 block text-[0.82em] md:mt-3">ta boussole.</span>
-            </h1>
+      <div className="relative mx-auto max-w-[760px] pt-6 text-center lg:pt-14">
+        <h1 className="font-script text-[34px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[56px]">
+          Ton <span className="not-italic text-turquoise">Human Design</span>,
+          {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
+              automatique coupe au milieu de « Human Design ». */}
+          <span className="mt-2 block text-[0.82em] md:mt-3">ta boussole.</span>
+        </h1>
 
-            <p className="mt-5 font-display text-[16px] font-light leading-snug text-ink md:text-[18px]">
-              Le chemin idéal pour te retrouver, te révéler pleinement, et (enfin) trouver ta
-              voie professionnelle.
-            </p>
+        <p className="mt-8 font-display text-[22px] font-semibold leading-snug text-ink-deep md:text-[28px]">
+          Ici, on revient à TOI.
+        </p>
 
-            {/* Le récit existe en deux longueurs. Sur un petit écran la version
-                complète repousse le calculateur très bas, alors que c'est lui
-                qu'on vient chercher : on sert donc une version resserrée
-                jusqu'à `lg`. Seuls ces trois paragraphes changent, l'accroche
-                et la conclusion sont communes. */}
-            <div className="mt-7 hidden lg:block">
-              <p className="font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Au fil de notre vie, nous nous construisons à travers des <strong className="font-semibold">figures</strong> qui nous <strong className="font-semibold">élèvent</strong>, nous <strong className="font-semibold">éduquent</strong>, nous <strong className="font-semibold">influencent</strong> (parents, éducateurs, professeurs, société,...), et par le biais de ce que nous <strong className="font-semibold">traversons</strong>. C&rsquo;est ainsi que nous <strong className="font-semibold">grandissons toutes et tous</strong> avec des <strong className="font-semibold">conditionnements</strong>, plus ou moins ancrés, et que nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, <strong className="font-semibold">bien éloignés de qui ils sont vraiment, déconnectés de leur vraie nature</strong>.
-              </p>
-
-              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> au sujet de laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
-                <br />
-                <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
-              </p>
-
-              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Et c&rsquo;est clairement le <strong className="font-semibold">Human Design</strong> qui m&rsquo;a permis de <strong className="font-semibold">sortir du brouillard</strong>, révéler ma <strong className="font-semibold">zone de génie</strong>, et <strong className="font-semibold">trouver ma voie</strong>.
-                <br />
-                Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être.
-                <br />
-                <em>Pas un horoscope ou une case dans laquelle t&rsquo;enfermer. Plutôt un miroir qui te permet de te (re)découvrir toi-même, et d&rsquo;enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.</em>
-              </p>
-            </div>
-
-            <div className="mt-7 lg:hidden">
-              <p className="font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Nous <strong className="font-semibold">grandissons toutes et tous</strong> avec des <strong className="font-semibold">conditionnements</strong>, plus ou moins ancrés, et nombre d&rsquo;entre nous se retrouvent, à l&rsquo;âge adulte, <strong className="font-semibold">bien éloignés de qui ils sont vraiment</strong>.
-              </p>
-
-              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                Moi la première, je suis passée par là, et cela a eu un impact direct sur ma <strong className="font-semibold">vie professionnelle</strong> au sujet de laquelle j&rsquo;étais <strong className="font-semibold">perdue</strong>.
-                <br />
-                <em>Comment savoir pour quoi j&rsquo;étais faite, sans comprendre qui j&rsquo;étais vraiment&nbsp;?</em>
-              </p>
-
-              <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-                C&rsquo;est clairement le <strong className="font-semibold">Human Design</strong> qui m&rsquo;a permis de <strong className="font-semibold">sortir du brouillard</strong>, révéler ma <strong className="font-semibold">zone de génie</strong>, et <strong className="font-semibold">trouver ma voie</strong>.
-                <br />
-                Cet outil puissant, <strong className="font-semibold">basé sur tes informations de naissance</strong>, permet d&rsquo;obtenir ta <strong className="font-semibold">carte d&rsquo;identité énergétique unique</strong> et comprendre ton <strong className="font-semibold">fonctionnement originel</strong>, au-delà de tout ce qu&rsquo;on t&rsquo;a appris à être, <em>pour enfin arrêter de te comparer, de forcer, de douter, ou de vouloir cocher les «&nbsp;bonnes&nbsp;» cases.</em>
-              </p>
-            </div>
-
-            <p className="mt-5 font-display text-[16px] font-light leading-relaxed text-ink-deep">
-              Aujourd&rsquo;hui je peux enfin dire que je me sens <strong className="font-semibold">à ma place</strong>, et c&rsquo;est une vraie <strong className="font-semibold">mission de cœur</strong> pour moi de <strong className="font-semibold">t&rsquo;accompagner</strong> à trouver toi-aussi ce chemin vers ton <strong className="font-semibold">épanouissement pro</strong>. ღ
-            </p>
-
-            <p className="mt-10 font-script text-[24px] leading-none text-ink-deep md:text-[28px]">
-              La vie en HD, à ta portée
-            </p>
-          </div>
-        </CalculateurLayout>
+        <div className="mx-auto mt-8 flex max-w-[640px] flex-col gap-5 font-display text-[17px] font-light leading-relaxed text-ink-deep md:text-[19px]">
+          <p>
+            À travers le Human Design, je t&rsquo;aide à sortir du flou, à mieux comprendre qui tu
+            es et ce qui est juste pour TOI, et surtout à trouver TA propre façon d&rsquo;avancer
+            sur ton chemin professionnel.
+          </p>
+          <p>
+            <strong className="font-semibold">Le but?</strong>{" "}Que tu te sentes (enfin) à ta place
+            dans ta vie pro, et que tu n&rsquo;aies pas à te trahir pour réussir.
+          </p>
+          <p>
+            <strong className="font-semibold">
+              Parce que je crois que chacun a SA propre recette magique. ✨
+            </strong>
+          </p>
+        </div>
       </div>
     </section>
   );

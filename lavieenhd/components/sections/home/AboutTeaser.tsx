@@ -5,7 +5,7 @@ const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.png";
 
 const PILLS = [
   "Manifesting Generator 2/4",
-  "Coach transformationnelle",
+  "Coach HD • Vie pro & Business",
   "Maman d'un petit Manifestor",
 ] as const;
 
@@ -14,13 +14,13 @@ export function AboutTeaser() {
     <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
       Marion,
       <br />
-      <em className="italic">multi-passionnée.</em>
+      <em className="italic">derrière La vie en&nbsp;HD</em>
     </h2>
   );
 
   return (
-    <section className="px-6 py-24 md:px-20 md:py-32">
-      <div className="mx-auto grid max-w-(--container-content) gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
+    <section className="px-6 pt-14 pb-20 md:px-20 md:py-32">
+      <div className="mx-auto grid max-w-(--container-content) gap-10 md:gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
         {/* Empilé (mobile, tablette), le titre annonce la photo ; en deux
             colonnes il retrouve sa place en tête de la colonne de texte. */}
         <div className="lg:hidden">{titre}</div>
@@ -52,14 +52,22 @@ export function AboutTeaser() {
           {/* Le titre est passé au-dessus de la photo tant qu'on est empilé :
               la marge haute ne sert plus qu'en deux colonnes. */}
           <p className="lg:mt-7 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
-            Après des années d’ingénierie en multinationales à chercher ma place, je me suis
-            retrouvée grâce au Human Design. Aujourd’hui, je t’accompagne à te révéler
-            pleinement, dans ta vie pro et au-delà.
+            Ingénieure de formation, coach HD spécialisée Vie pro & Business et passionnée par
+            tout ce qui touche à l’humain et à ce qui fait sa singularité, j’utilise aujourd’hui
+            principalement le Human Design pour t’aider à mettre de la clarté sur ce que tu vis,
+            mieux comprendre ton fonctionnement et avancer d’une façon qui te ressemble vraiment.
+          </p>
+
+          <p className="mt-4 max-w-[520px] font-display text-[16px] font-light leading-relaxed text-ink">
+            La Numérologie et d’autres outils de connaissance de soi viennent parfois compléter
+            cette approche, avec une idée simple : t’aider à faire des choix plus justes pour
+            toi, dans ta vie professionnelle comme dans ton Business.
           </p>
 
           <p className="mt-4 max-w-[520px] font-display text-[16px] italic leading-relaxed text-ink">
-            « Je crois qu’on a tous une zone de génie. Mon job, c’est de t’aider à voir la
-            tienne, et à l’exploiter. »
+            « Je ne crois pas aux recettes toutes faites. Je crois qu’on a chacun notre propre
+            façon de fonctionner, de travailler...et de réussir. Et je t’aide à trouver TA propre
+            recette magique! »
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
