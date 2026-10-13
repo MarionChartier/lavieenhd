@@ -38,16 +38,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Couleur et forme propres à BODY Bloom. Provisoires tant que Marion n'a pas
- * arrêté la répartition des couleurs entre les pages : un rose poudré, pour le
- * corps et l'éclosion (3.9:1 en prix sur le bandeau des cartes de commande),
- * et la goutte, pour la Digestion. Les prénoms passent en rose soutenu, le
- * rose poudré ne se lisant pas sur blanc.
+ * Couleur et forme propres à BODY Bloom : un rose poudré, pour le corps et
+ * l'éclosion, et la goutte, pour la Digestion. La couleur ne teinte que les
+ * fonds de section et les formes en filigrane ; les petits éléments restent
+ * turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#efbfd0",
+  motif: "#efbfd0",
   accentSoft: "#fbeef3",
-  accentTexte: "#a5506f",
   forme: "goutte",
 } as const;
 

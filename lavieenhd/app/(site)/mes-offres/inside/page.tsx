@@ -38,12 +38,11 @@ export const metadata: Metadata = {
 const COMMANDE = EXTERNAL.commande.insideClub;
 
 /**
- * Couleur et forme propres à INSIDE. Provisoires tant que Marion n'a pas
- * arrêté la répartition des couleurs entre les pages : un mauve clair (même
- * contraste que le turquoise de Blooming, 3.5:1 en prix sur le bandeau de la
- * carte de tarif) et le cercle du logo.
+ * Couleur et forme propres à INSIDE : un mauve clair et le cercle du logo. La
+ * couleur ne teinte que les fonds de section et les formes en filigrane ; les
+ * petits éléments restent turquoise, comme sur Blooming (demande de Marion).
  */
-const THEME = { accent: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
+const THEME = { motif: "#cdb8ea", accentSoft: "#ece4f5", forme: "cercle" } as const;
 
 /** Liste à puces logée dans un paragraphe de note, dont elle partage la
  *  police. La puce est centrée dans une boîte haute d'une ligne (`1lh`) :

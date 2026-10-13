@@ -39,16 +39,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Couleur et forme propres à The Place to be. Provisoires tant que Marion n'a
- * pas arrêté la répartition des couleurs entre les pages : un vert tendre,
- * pour les lieux et la nature (3.9:1 en prix sur le bandeau des cartes de
- * commande), et le carré, pour les espaces. Les prénoms passent en vert
- * soutenu, le vert tendre ne se lisant pas sur blanc.
+ * Couleur et forme propres à The Place to be : un vert tendre, pour les lieux
+ * et la nature, et le carré, pour les espaces. La couleur ne teinte que les
+ * fonds de section et les formes en filigrane ; les petits éléments restent
+ * turquoise, comme sur Blooming (demande de Marion).
  */
 const THEME = {
-  accent: "#b5d3a8",
+  motif: "#b5d3a8",
   accentSoft: "#e8f1e3",
-  accentTexte: "#4f7a48",
   forme: "carre",
 } as const;
 
