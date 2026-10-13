@@ -185,7 +185,7 @@ export function OffreCard({
       prefetch={isStaticFile ? false : undefined}
       className={`group grid min-h-[320px] grid-cols-1 content-between items-center sm:content-center gap-x-3 gap-y-3 rounded-[18px] px-3.5 py-3 transition-all hover:-translate-y-0.5 sm:min-h-[192px] sm:grid-cols-[72px_1fr] lg:min-h-[160px] lg:grid-cols-[96px_1fr_auto] lg:gap-x-5 ${
         complement
-          ? "border border-ink/12 bg-white/60"
+          ? "border border-ink/12 bg-white hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
           : "bg-white shadow-[0_5px_16px_rgba(70,50,80,0.04)] hover:shadow-[0_12px_30px_-16px_rgba(80,60,98,0.25)]"
       }`}
     >
@@ -193,14 +193,12 @@ export function OffreCard({
           rognait le bas du logo. `fill` cale l'image sur le cadre, quelle que
           soit la largeur de la colonne. */}
       <div
-        className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass} ${
-          complement ? "opacity-75 saturate-50" : ""
-        }`}
+        className={`relative h-[72px] w-[72px] overflow-hidden rounded-xl lg:h-[96px] lg:w-[96px] ${thumbClass}`}
       >
         <Image src={offre.logoSrc} alt="" fill sizes="96px" className="object-contain p-1.5" />
       </div>
 
-      <div className={complement ? "opacity-85" : undefined}>
+      <div>
         {offre.quiz && (
           <span className="mb-1.5 inline-flex rounded-full border border-[#ddd1e7] bg-[#f4ecfa] px-2.5 pt-[4px] pb-[3px] font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-[#765d8d]">
             Quiz gratuit
