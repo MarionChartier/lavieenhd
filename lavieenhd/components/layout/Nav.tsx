@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { scrollToTopInstant } from "@/components/layout/ScrollToTop";
 import { OFFRES } from "@/lib/content/offres";
-import { EXTERNAL } from "@/lib/links";
 
 const NAV_ITEMS = [
   { href: "/", label: "Accueil" },
@@ -18,22 +17,15 @@ const NAV_ITEMS = [
 /** Liens du menu déroulant "Mes offres" : vue d'ensemble + chaque offre.
  *  Le Quiz (offre 01) mène à /quiz. Les offres avec une page dédiée pointent
  *  directement dessus ; les autres (page à venir) renvoient vers leur section
- *  dans la frise /mes-offres#slug.
- *
- *  BODY Bloom n'est pas (encore) dans OFFRES : la liste alimente aussi la
- *  frise et la page /mes-offres, qui seront refaites avec la restructuration
- *  en 3 portes. Elle n'entre donc que dans le menu, juste après The Place to
- *  be, son offre sœur. */
-const BODY_BLOOM_LINK = { label: "BODY BLOOM", href: EXTERNAL.offre.bodyBloom, external: false };
+ *  dans la frise /mes-offres#slug. */
 
 const OFFRE_LINKS: { label: string; href: string; external: boolean }[] = [
   { label: "Toutes les offres", href: "/mes-offres", external: false },
-  ...OFFRES.flatMap((o) => {
-    const lien = o.href
+  ...OFFRES.map((o) =>
+    o.href
       ? { label: o.name, href: o.href, external: o.href.startsWith("http") }
-      : { label: o.name, href: `/mes-offres#${o.slug}`, external: false };
-    return o.slug === "place-to-be" ? [lien, BODY_BLOOM_LINK] : [lien];
-  }),
+      : { label: o.name, href: `/mes-offres#${o.slug}`, external: false },
+  ),
 ];
 
 export function Nav() {

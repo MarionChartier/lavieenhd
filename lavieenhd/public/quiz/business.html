@@ -555,4 +555,11 @@ $('next').onclick=()=>{if(answers[i]===null)return;if(i<12){i++;render();request
 
 $('restart').onclick=()=>{i=0;answers.fill(null);showInsideAlternative=false;$('results').classList.add('hidden');$('capture').classList.add('hidden');$('detail').classList.add('hidden');$('experience').classList.remove('hidden');$('quiz').classList.add('hidden');$('intro').classList.remove('hidden');$('zoom').innerHTML='';$('scan').innerHTML='';window.scrollTo({top:0,behavior:'smooth'})};
 });
-</script></body></html>
+</script><script>
+/* Démarrage direct sur la question 1 (?start=1) : boutons de la page Mes offres.
+   Sans paramètre, la page d'introduction reste affichée (liens Instagram, partages). */
+document.addEventListener("DOMContentLoaded", function () {
+  if (new URLSearchParams(location.search).has("start")) document.getElementById("start").click();
+});
+</script>
+</body></html>

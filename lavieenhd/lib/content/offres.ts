@@ -13,8 +13,6 @@ export interface Offre {
   subtitleNote?: string;
   /** FAQ dédiée à l'offre (sinon une FAQ générique est affichée sur la page) */
   faq?: { q: string; a: string }[];
-  /** Label compact pour les composants type stepper / mini-nav (ex: "QUIZ HD", "PLACE TO BE") */
-  shortLabel: string;
   trademark?: boolean;
   tag: string;
   /** Description courte (~15 mots max) affichée dans les cards Le Chemin */
@@ -31,7 +29,8 @@ export interface Offre {
   forWhom: string;
   /** Liste complète des éléments inclus dans l'offre (bloc détail) */
   included: string[];
-  price: string;
+  /** Absent pour RECONNECT : 3 formules, les prix sont sur sa page de vente. */
+  price?: string;
   imgUrl: string;
   /** Path vers logo dans /public/assets (null si pas de logo dédié) */
   logoSrc: string | null;
@@ -42,9 +41,12 @@ export interface Offre {
   /**
    * Accès direct au bon de commande ("Foncer sans détour"), court-circuitant
    * la page de vente. Absent pour le Quiz (offre gratuite). Pour The Place to be,
-   * pointe vers la page de vente (choix de l'Environnement obligatoire).
+   * pointe vers la page de vente (choix de l'Environnement obligatoire). Absent
+   * pour RECONNECT : seul le bouton « Découvrir » est proposé.
    */
   orderHref?: string;
+  /** Libellé du bouton principal, « Découvrir » par défaut. */
+  ctaLabel?: string;
   /** Offre signature (Fleur de Talents Innés) → traitement visuel spécial */
   signature?: boolean;
 }
@@ -55,7 +57,6 @@ export const OFFRES: Offre[] = [
     slug: "quiz",
     name: "Quiz gratuits",
     subtitle: "Des petits quiz ludiques pour t'éclairer",
-    shortLabel: "Quiz gratuits",
     tag: "Explorer",
     shortDescription:
       "Découvre à la fois dans quel type de lieux ton corps se sent le plus à son aise, et également ton niveau d'alignement actuel avec ta vie professionnelle.",
@@ -63,8 +64,9 @@ export const OFFRES: Offre[] = [
     briefDescription:
       "Des quiz rapides et 100% offerts. Résultat instantané à chaque fois.",
     briefBullets: [
+      "Quiz - Es-tu vraiment à ta place dans ta vie pro?",
+      "Quiz - Business Check-up",
       "Quiz - Ton lieu de vie/de travail idéal",
-      "Quiz - Ton alignement vie pro actuel",
     ],
     longDescription:
       "Le Human Design définit pour chacun un « Environnement idéal » parmi 6 profils : Marchés, Cuisines, Grottes, Côtes, Jardins, Sommets. C'est l'environnement où ton énergie circule au mieux, où tu te ressources naturellement. En 12 questions intuitives, ce quiz te donne ton profil + une explication détaillée de pourquoi cet espace te nourrit.",
@@ -85,61 +87,129 @@ export const OFFRES: Offre[] = [
   },
   {
     num: "02",
-    slug: "soin-energetique",
-    name: "SOIN ÉNERGÉTIQUE",
-    subtitle: "Soin collectif à distance",
-    shortLabel: "Soin énergétique",
-    tag: "Libérer",
+    slug: "fleur-de-talents",
+    name: "Blooming",
+    subtitle: "Ta Fleur de Talents Innés™",
+    subtitleNote: "avec 1h30 de coaching individuel inclus",
+    tag: "Révéler",
     shortDescription:
-      "On se retrouve chaque dernier dimanche du mois à 21h, pour un soin collectif à distance afin de libérer tes blocages, et pumper ton énergie.",
-    lead: "Un temps rien que pour toi, où tu n'as rien à faire d'autre que de te laisser chouchouter énergétiquement.",
-    briefDescription:
-      "Un Soin profond pour t'aider à te libérer de tes blocages actuels *(visibles ou non)*, refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence.",
+      "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
+    lead: "Toi aussi tu as des talents extraordinaires. Il est temps de les voir.",
+    briefDescription: "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur est là pour révéler tes talents innés, ta zone de génie et faire émerger des pistes professionnelles qui pourraient te correspondre, grâce à une analyse croisée 100% personnalisée de ton Human Design, ta Numérologie et tes Gene Keys.",
     briefBullets: [
-      "Entre 1h et 1h15 de soin énergétique collectif",
-      "À distance *(pas de présentiel ni de live)*",
-      "Chaque dernier Dimanche du mois à 21h00",
-      "Consignes et conseils envoyés par email le jour du soin",
-      "Feedback détaillé par email le lendemain matin du soin",
-      "+ Tirage au sort pour une mini-guidance intuitive personnalisée",
+      "Ta Fleur visuelle unique, réunissant tes 5 Pôles de Talents Innés",
+      "Ta zone de génie et des pistes de métiers ou de directions professionnelles",
+      "Tes principaux points de vigilance professionnels",
+      "Une séance individuelle d'1h30 en visio pour te dévoiler ta Fleur et l'explorer ensemble",
+      "Ton compte-rendu personnalisé incluant ta Fleur, une synthèse de chacun de tes 5 Pôles de Talents Innés et les éléments essentiels de ton analyse",
+      "Le replay de notre séance pour pouvoir revenir sur nos échanges à ton rythme",
     ],
     longDescription:
-      "Un Soin complet pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. Pas de présentiel, pas de live : tout se fait à distance. Tu poses l'intention, tu t'installes en mode cocooning, et tu te laisses chouchouter énergétiquement. Le lendemain, Marion t'envoie son feedback détaillé par email : ressentis, perceptions, travail énergétique effectué, et très souvent des canalisations groupées.",
+      "Le programme signature de Marion. Une exploration croisée de tes grands pôles de talents innés à partir de trois grilles de lecture : Human Design, Numérologie et Gene Keys. Rendu sous forme d'une fleur visuelle, accompagné d'environ 40 pages de détails, d'une liste de métiers potentiels, des signaux de désalignement à reconnaître, et d'1h30 de coaching pour faire les liens avec ta vie.",
     forWhom:
-      "Ce soin est ouvert à tous ceux qui en ressentent l'appel. Il peut t'être bénéfique si tu rencontres des résistances en ce moment, si tu te sens un peu « à plat » ou dans le flou, ou simplement si tu as envie d'ouvrir les fenêtres en grand pour libérer ce qu'il y a à libérer et repimper ton énergie.",
+      "Tu cherches à révéler tes talents profonds (pas juste tes compétences acquises). Tu veux comprendre la trace unique que tu peux laisser, et reconnaître les signaux quand tu t'en éloignes.",
     included: [
-      "Soin énergétique collectif à distance (1h à 1h15 environ)",
-      "Chaque dernier dimanche du mois à 21h",
-      "Feedback détaillé de Marion par email le lendemain",
-      "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
+      "Analyse croisée Human Design, Numérologie et Gene Keys",
+      "Ta fleur de talents uniques en rendu visuel",
+      "Un document d'environ 40 pages personnalisé",
+      "Liste de métiers et activités potentiellement alignés",
+      "Signaux de désalignement à reconnaître",
+      "1h30 de coaching pour faire les liens avec ta vie",
     ],
-    price: "20 €",
+    price: "333 €",
     imgUrl:
-      "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/soin-energetique-mains.png",
-    color: "beige",
-    href: EXTERNAL.offre.soinEnergetique,
-    orderHref: EXTERNAL.commande.soinEnergetique,
+      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
+    logoSrc: "/assets/logo-blooming.png",
+    color: "turquoise",
+    signature: true,
+    href: EXTERNAL.offre.fleurDeTalents,
+    orderHref: EXTERNAL.commande.fleurDeTalents,
   },
   {
     num: "03",
+    slug: "reconnect",
+    name: "RECONNECT",
+    subtitle: "Ton Parcours Guidé de Transformation Professionnelle",
+    tag: "Incarner",
+    shortDescription:
+      "3 mois d'Accompagnement pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
+    lead: "Et si revenir à TOI était le premier pas pour retrouver ta direction...et l'élan d'avancer?",
+    briefDescription: "Tu sais ce que tu ne veux plus dans ta vie professionnelle, mais tu ne sais pas encore ce que tu veux vraiment ni vers quoi t'engager?\n\nOu peut-être que tu as déjà une piste, mais que tu doutes de la voie à prendre ou n'arrives pas à franchir le cap?\n\nOu peut-être encore que tu sens simplement que quelque chose mérite d'évoluer dans ta vie pro, sans forcément vouloir tout changer?\n\nC'est précisément pour ça que RECONNECT existe : un parcours guidé de 13 semaines pour te reconnecter à toi, clarifier ta direction et remettre du mouvement vers une vie professionnelle qui te ressemble et qui a du sens pour toi.\n\nEt parce que chacun avance à sa façon, RECONNECT se décline en 3 formules : Solo, Circle et Premium 1:1.\n\nUn même parcours, à vivre de différentes manières : en toute autonomie, avec des ressources complémentaires et un espace d'échanges, ou encore avec un accompagnement individuel et personnalisé à mes côtés.\n\n*Au cœur des 3 formules : 13 Explorations Guidées RECONNECT*\n\nDes questionnaires introspectifs avec tests, mises en pratique, mini-analyses HD intégrées à certaines étapes et, plus ponctuellement, des éclairages ciblés en Numérologie.\n\nUn nouveau rendez-vous chaque lundi, dès le lundi suivant ton inscription.",
+    briefBullets: [],
+    longDescription:
+      "L'accompagnement premium de 3 mois. Un espace d'introspection et de transformation profonde : 1 questionnaire ciblé par semaine, des soins énergétiques, des séances EFT, 3 coachings d'1h30, INSIDE et Fleur de Talents Innés inclus. Un parcours sur-mesure pour incarner ton design en profondeur.",
+    forWhom:
+      "Tu sens que c'est le moment d'une vraie transformation. Tu veux un accompagnement structuré et complet pour aligner ta vie sur qui tu es vraiment, pas juste un coaching ponctuel.",
+    included: [
+      "Accompagnement personnalisé sur 3 mois",
+      "1 questionnaire ciblé par semaine pour avancer",
+      "Soins énergétiques",
+      "Séances EFT",
+      "3 coachings d'1h30 en visio",
+      "INSIDE inclus",
+      "Fleur de Talents Innés™ inclus",
+      "Suivi par messagerie tout au long du parcours",
+    ],
+    imgUrl:
+      "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
+    logoSrc: "/assets/logo-reconnect.png",
+    color: "violet",
+    href: EXTERNAL.offre.reconnect,
+    ctaLabel: "Découvrir RECONNECT",
+  },
+  {
+    num: "04",
+    slug: "reveal",
+    name: "REVEAL",
+    subtitle: "La Séance Clarté HD Pro - Spécial Business",
+    tag: "Démêler",
+    shortDescription:
+      "1h30 ensemble en visio pour dénouer une situation bloquante de ta vie professionnelle, clarifier une décision ou éclairer un questionnement, grâce à une analyse ciblée de ton Human Design.",
+    lead: "Il n'existe pas UNE bonne façon d'entreprendre. Il existe celle qui fonctionne pour TOI.",
+    briefDescription: "Tu rencontres des blocages ou des questionnements dans ton Business? Tu t'épuises dans ta façon de travailler, tu peines à vendre, tu doutes de la direction à prendre...ou tu as simplement envie de faire évoluer ton Business pour qu'il te ressemble encore davantage?\n\nREVEAL part de TA réalité Business. À partir de ce que tu me partages, je me plonge dans ton Human Design pour éclairer ce qui te questionne, ce qui coince ou ce que tu souhaites faire évoluer.\n\nEnsuite, pendant 1h30 en visio, on explore tout ça ensemble pour faire émerger des pistes concrètes et des actions qui tiennent compte de TON fonctionnement, plutôt que d'appliquer une énième recette toute faite.",
+    briefBullets: [
+      "Un questionnaire préparatoire pour me partager ce que tu vis dans ton Business",
+      "Mon analyse ciblée de TON Human Design, à partir de tes questionnements",
+      "1h30 d'exploration et de coaching ensemble en visio",
+      "Le replay de notre échange",
+      "Ta Boussole REVEAL au format PDF, pour garder une synthèse des éléments clés explorés",
+    ],
+    longDescription:
+      "REVEAL est une séance individuelle de clarté HD pro. Tu pars d'une problématique précise (un blocage, un choix à faire, un projet en suspens), Marion fait une analyse HD ciblée sur ta thématique, puis vous explorez ensemble en 1h30 de visio. À la fin de la séance, tu repars avec une clarté concrète et un plan d'action aligné avec ton design.",
+    forWhom:
+      "Tu as un sujet précis qui te bloque ou te questionne, pro ou perso. Tu cherches une expertise HD pour décortiquer une situation et trouver ta voie, pas une recette générique.",
+    included: [
+      "Échange préalable pour cadrer ta problématique",
+      "Analyse HD ciblée préparée par Marion en amont",
+      "1h30 de visio en tête-à-tête",
+      "Plan d'action concret et aligné avec ton design",
+      "Replay de la séance",
+    ],
+    price: "222 €",
+    imgUrl:
+      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
+    logoSrc: "/assets/logo-reveal.png",
+    color: "violet",
+    href: EXTERNAL.offre.reveal,
+    orderHref: EXTERNAL.commande.reveal,
+  },
+  {
+    num: "05",
     slug: "place-to-be",
-    name: "THE PLACE TO BE",
+    name: "THE PLACE to be",
     subtitle: "Le Guide d'Exploration de ton Environnement HD",
-    shortLabel: "The Place to be",
     tag: "S'initier",
     shortDescription:
       "Un Guide complet pour adapter facilement ton lieu de vie et de travail selon ton propre Environnement de Human Design, et booster ainsi ta vitalité, ton bien-être et tes performances.",
-    lead: "Retrouve ta pleine énergie et ton plein potentiel, en t'entourant du bon espace pour toi.",
-    briefDescription:
-      "Ce Guide complet met en lumière ton lieu de vie idéal, et le meilleur environnement de travail pour toi selon ton Human Design ; découvre ainsi le type d'endroits qui te ressource, t'apaise et te booste.",
+    lead: "Et si te sentir à ta place commençait aussi par l'endroit où tu te trouves?",
+    briefDescription: "Tu remarques que certains endroits t'apaisent ou te rechargent quand d'autres te fatiguent? Ou tu es simplement curieux.se de découvrir cette facette encore méconnue de ton Human Design?\n\nCe Guide dédié à TON Environnement HD t'aide à comprendre quels types de lieux peuvent davantage te ressourcer, t'apaiser ou te stimuler, dans ta vie comme dans ton travail.",
     briefBullets: [
-      "Plus de 30 pages pdf, *personnalisées sur ton propre Environnement*",
-      "Explications claires et décryptées, *sans jargon complexe*",
-      "Exemples et conseils pratiques et faciles à mettre en place",
-      "Espaces de réflexions personnelles",
-      "Visuels et inspirations de décoration",
-      "Planche d'ambiance couleurs & matières",
+      "Ton Guide complet de plus de 30 pages au format PDF, consacré à TON Environnement HD",
+      "Le décryptage de ses caractéristiques et de ses nuances, sans jargon complexe",
+      "Des exemples concrets et des pistes d'expérimentation chez toi et au travail",
+      "Des espaces de réflexion et d'observation pour faire le lien avec ton quotidien",
+      "Des inspirations visuelles et une planche d'ambiance couleurs & matières",
+      "En bonus : la nuance \"profil actif\" ou \"profil passif\" associée à ton Environnement",
     ],
     longDescription:
       "Un guide personnalisé qui explore en profondeur ton Environnement HD idéal (parmi 6 profils possibles). Au-delà du quiz, tu reçois un guide écrit qui décrit ton environnement de prédilection avec précision : ce qui te ressource, ce qui t'épuise, comment aménager ton espace de vie ou de travail pour respecter ta vraie nature.",
@@ -183,29 +253,64 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-place.png",
     color: "violet",
     href: EXTERNAL.offre.thePlaceToBe,
-    // Exception : le choix de l'Environnement se fait sur la page de vente.
-    orderHref: EXTERNAL.offre.thePlaceToBe,
+    // Exception : le choix de l'Environnement se fait dans la section d'achat de la page de vente.
+    orderHref: `${EXTERNAL.offre.thePlaceToBe}#tarif`,
   },
   {
-    num: "04",
+    num: "06",
+    slug: "body-bloom",
+    name: "BODY Bloom",
+    subtitle: "Le Guide d'Initiation à ton Intelligence Digestive",
+    tag: "S'initier",
+    shortDescription:
+      "Un Guide pour mieux comprendre ta Digestion HD, dans ton alimentation comme dans ta façon d'assimiler les informations.",
+    lead: "Et si ton corps savait déjà ce qui lui convient?",
+    briefDescription:
+      "Tu t'intéresses à ton alimentation et au bien-être de ton corps? Ou tu as simplement envie de découvrir une dimension de ton Human Design que tu n'as pas encore explorée?\n\nCe Guide t'aide à mieux comprendre ta Digestion HD, aussi bien dans ton alimentation que dans ta façon d'assimiler les informations, avec des éclairages et des pistes concrètes à expérimenter dans ton quotidien.",
+    briefBullets: [
+      "Ton Guide complet d'environ 30 pages au format PDF, consacré à TA Digestion HD",
+      "Le décryptage de ses caractéristiques et de ses nuances, sans jargon complexe",
+      "Des pistes concrètes autour de ton alimentation et du contexte de tes repas",
+      "Des éclairages sur ta manière d'assimiler les informations",
+      "Des questions et pistes d'observation pour faire le lien avec ton quotidien",
+      "Des conseils pratiques et expérimentations simples à tester à ton rythme",
+      "En bonus : la nuance \"profil actif\" ou \"profil passif\" associée à ta Digestion",
+    ],
+    longDescription:
+      "Ce Guide t'aide à mieux comprendre ta Digestion HD, aussi bien dans ton alimentation que dans ta façon d'assimiler les informations, avec des éclairages et des pistes concrètes à expérimenter dans ton quotidien.",
+    forWhom:
+      "Tu t'intéresses à ton alimentation et au bien-être de ton corps, ou tu as envie de découvrir une dimension de ton Human Design que tu n'as pas encore explorée.",
+    included: [
+      "Guide d'environ 30 pages au format PDF, consacré à ta Digestion HD (1 parmi 6)",
+      "Pistes concrètes autour de ton alimentation et de ta façon d'assimiler les informations",
+      "Bonus : la nuance profil actif ou profil passif",
+    ],
+    price: "22 €",
+    imgUrl: "/assets/body-bloom/guide-tablette.webp",
+    logoSrc: "/assets/logo-bodybloom.webp",
+    color: "turquoise",
+    href: EXTERNAL.offre.bodyBloom,
+    // Comme The Place to be : le choix de la Digestion se fait dans la section d'achat.
+    orderHref: `${EXTERNAL.offre.bodyBloom}#tarif`,
+  },
+  {
+    num: "07",
     slug: "inside",
     name: "INSIDE",
     subtitle: "Le Guide d'Immersion dans ton Design Unique",
-    subtitleNote: "avec 1h de coaching inclus",
-    shortLabel: "Inside",
+    subtitleNote: "avec 1h de coaching individuel inclus",
     tag: "Découvrir",
     shortDescription:
       "Un Guide de décryptage personnalisé des 7 clés fondamentales de ton schéma de Human Design ; pour mieux te comprendre, arrêter de douter de tes choix, et te reconnecter à ta vraie nature. 1h de coaching inclus.",
     lead: "Plonge dans les fondamentaux de ton Design pour te reconnecter à ta vraie nature.",
-    briefDescription:
-      "Reviens à qui tu es vraiment grâce à une analyse personnalisée des 7 informations principales de ton schéma de Human Design ; *ton Type, ton Autorité intérieure, ta Signature, ton Non Soi, ta Stratégie, ta Définition et ton Profil,* pour mieux comprendre comment ton énergie fonctionne, comment prendre des décisions justes, et comment attirer à toi les meilleures opportunités.",
+    briefDescription: "Tu as parfois le sentiment de t'être éloigné.e de toi-même, tu te poses des questions sur ta façon de fonctionner, ou tu es simplement curieux.se de découvrir ton Human Design?\n\nINSIDE t'invite à explorer les 7 clés fondamentales de TON Design à travers un Guide personnalisé, clair et concret, pour mieux comprendre ton énergie, ta façon de prendre des décisions et tes mécanismes naturels...et commencer à expérimenter tout cela dans ton quotidien.",
     briefBullets: [
-      "Guide personnalisé et accessible à vie",
-      "Environ 40 pages pdf",
-      "Explications claires et décryptées, *sans jargon complexe*",
-      "Exemples concrets et conseils pratiques",
-      "Espaces de réflexion et de mises en pratique",
-      "1h de coaching en visio pour approfondir et incarner",
+      "Ton Guide d'Immersion personnalisé d'environ 40 pages au format PDF",
+      "Le décryptage des 7 clés fondamentales de TON Human Design",
+      "Des exemples concrets, conseils pratiques et pistes d'expérimentation",
+      "Des espaces de réflexion pour faire les liens avec ton quotidien",
+      "1h de coaching individuel en visio pour poser tes questions et aller plus loin dans l'exploration de ton Design",
+      "Le replay de notre séance pour y revenir à ton rythme",
     ],
     longDescription:
       "INSIDE est LA porte d'entrée si tu découvres le Human Design. On y explore les bases personnalisées de ton schéma : tes 7 piliers fondamentaux (Type, Autorité intérieure, Signature, Non-Soi, Stratégie, Profil, Croix d'incarnation). Tu reçois un guide écrit à partir de tes données de naissance, suivi d'1h de coaching en visio pour digérer, questionner, et faire le lien avec ta vie.",
@@ -226,126 +331,37 @@ export const OFFRES: Offre[] = [
     orderHref: EXTERNAL.commande.insideClub,
   },
   {
-    num: "05",
-    slug: "reveal",
-    name: "REVEAL",
-    subtitle: "La Séance Clarté HD Pro - Spécial Business",
-    shortLabel: "Reveal",
-    tag: "Démêler",
+    num: "08",
+    slug: "soin-energetique",
+    name: "SOIN ÉNERGÉTIQUE",
+    subtitle: "Soin collectif à distance",
+    tag: "Libérer",
     shortDescription:
-      "1h30 ensemble en visio pour dénouer une situation bloquante de ta vie professionnelle, clarifier une décision ou éclairer un questionnement, grâce à une analyse ciblée de ton Human Design.",
-    lead: "1h30 pour dénouer ce qui te bloque aujourd'hui dans ta vie pro.",
-    briefDescription:
-      "Tu fais face à un blocage, un questionnement, un besoin de clarté ou de prise de décision dans ton parcours professionnel ?\n\nJe prépare une analyse HD orientée sur ta problématique, puis nous explorons et allons dénouer tout ça ensemble en visio.",
+      "On se retrouve chaque dernier dimanche du mois à 21h, pour un soin collectif à distance afin de libérer tes blocages, et pumper ton énergie.",
+    lead: "Un temps rien que pour toi, où tu n'as rien à faire d'autre que de te laisser chouchouter énergétiquement.",
+    briefDescription: "Tu traverses une période chargée, tu te sens à plat ou un peu dispersé.e? Ou tu as simplement envie de t'offrir une parenthèse pour ralentir, te recentrer et prendre soin de ton énergie?\n\nChaque dernier dimanche du mois à 21h, je te propose un Soin énergétique collectif à distance. Tu t'installes tranquillement de ton côté, sans visio ni live, pendant que je réalise le Soin. Un moment pour faire une pause, relâcher ce qui te pèse et accueillir ce qui se présente.",
     briefBullets: [
-      "Analyse ciblée de ton Human Design",
-      "Décryptage concret et clair",
-      "90 minutes de coaching en 1:1",
-      "Guidance intuitive partagée au fil de l'échange",
-      "Conseils pratiques et adaptés à toi",
-      "Compte-rendu des points clés à relire à l'infini",
+      "Un Soin énergétique collectif à distance d'environ 1h à 1h15",
+      "Un rendez-vous chaque dernier dimanche du mois à 21h",
+      "Mes indications pour accueillir au mieux le Soin, envoyées par email le jour même",
+      "Mon feedback détaillé par email le lendemain : mes ressentis, perceptions et éventuelles canalisations",
     ],
     longDescription:
-      "REVEAL est une séance individuelle de clarté HD pro. Tu pars d'une problématique précise (un blocage, un choix à faire, un projet en suspens), Marion fait une analyse HD ciblée sur ta thématique, puis vous explorez ensemble en 1h30 de visio. À la fin de la séance, tu repars avec une clarté concrète et un plan d'action aligné avec ton design.",
+      "Un Soin complet pour t'aider à te libérer de tes blocages actuels (visibles ou non), refaire circuler l'énergie dans tous tes centres énergétiques, et venir te recalibrer sur la plus haute fréquence. Pas de présentiel, pas de live : tout se fait à distance. Tu poses l'intention, tu t'installes en mode cocooning, et tu te laisses chouchouter énergétiquement. Le lendemain, Marion t'envoie son feedback détaillé par email : ressentis, perceptions, travail énergétique effectué, et très souvent des canalisations groupées.",
     forWhom:
-      "Tu as un sujet précis qui te bloque ou te questionne, pro ou perso. Tu cherches une expertise HD pour décortiquer une situation et trouver ta voie, pas une recette générique.",
+      "Ce soin est ouvert à tous ceux qui en ressentent l'appel. Il peut t'être bénéfique si tu rencontres des résistances en ce moment, si tu te sens un peu « à plat » ou dans le flou, ou simplement si tu as envie d'ouvrir les fenêtres en grand pour libérer ce qu'il y a à libérer et repimper ton énergie.",
     included: [
-      "Échange préalable pour cadrer ta problématique",
-      "Analyse HD ciblée préparée par Marion en amont",
-      "1h30 de visio en tête-à-tête",
-      "Plan d'action concret et aligné avec ton design",
-      "Replay de la séance",
+      "Soin énergétique collectif à distance (1h à 1h15 environ)",
+      "Chaque dernier dimanche du mois à 21h",
+      "Feedback détaillé de Marion par email le lendemain",
+      "Bonus : tirage au sort d'une mini-guidance intuitive personnalisée",
     ],
-    price: "222 €",
+    price: "20 €",
     imgUrl:
-      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/logo-reveal.png",
-    color: "violet",
-    href: EXTERNAL.offre.reveal,
-    orderHref: EXTERNAL.commande.reveal,
-  },
-  {
-    num: "06",
-    slug: "fleur-de-talents",
-    name: "BLOOMING",
-    subtitle: "Ta Fleur de Talents Innés™",
-    subtitleNote: "avec 1h30 de coaching inclus",
-    shortLabel: "BLOOMING",
-    tag: "Révéler",
-    shortDescription:
-      "Mise en lumière de ta zone de génie, de tes dons, et de tes métiers potentiels, grâce à une exploration croisée HD, Numérologie et Gene Keys. 1h30 de coaching inclus.",
-    lead: "Toi aussi tu as des talents extraordinaires. Il est temps de les voir.",
-    briefDescription:
-      "Tu cherches ta direction, tu doutes de tes dons ou tu veux clarifier ce qui fait de toi une personne unique ?\n\nTa Fleur de Talents Innés™ est là pour révéler ta zone de génie et ton empreinte personnelle, grâce à une analyse approfondie de ton Human Design, et des éléments phares de ta Numérologie et de tes Gene Keys.",
-    briefBullets: [
-      "Analyse croisée HD, Numérologie, Gene Keys, *100% personnel et unique*",
-      "Fleur visuelle avec tes 5 pétales de talents innés",
-      "+ de 40 pages de détails vulgarisés et concrets",
-      "Ta zone de génie, et des pistes de métiers alignés à toi",
-      "Les configurations contre-nature pour toi *(+ tes signaux d'alerte)*",
-      "1h30 de coaching individuel pour ancrer tout ça dans TA réalité",
-    ],
-    longDescription:
-      "Le programme signature de Marion. Une exploration croisée de tes grands pôles de talents innés à partir de trois grilles de lecture : Human Design, Numérologie et Gene Keys. Rendu sous forme d'une fleur visuelle, accompagné d'environ 40 pages de détails, d'une liste de métiers potentiels, des signaux de désalignement à reconnaître, et d'1h30 de coaching pour faire les liens avec ta vie.",
-    forWhom:
-      "Tu cherches à révéler tes talents profonds (pas juste tes compétences acquises). Tu veux comprendre la trace unique que tu peux laisser, et reconnaître les signaux quand tu t'en éloignes.",
-    included: [
-      "Analyse croisée Human Design, Numérologie et Gene Keys",
-      "Ta fleur de talents uniques en rendu visuel",
-      "Un document d'environ 40 pages personnalisé",
-      "Liste de métiers et activités potentiellement alignés",
-      "Signaux de désalignement à reconnaître",
-      "1h30 de coaching pour faire les liens avec ta vie",
-    ],
-    price: "333 €",
-    imgUrl:
-      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/logo-blooming.png",
-    color: "turquoise",
-    signature: true,
-    href: EXTERNAL.offre.fleurDeTalents,
-    orderHref: EXTERNAL.commande.fleurDeTalents,
-  },
-  {
-    num: "07",
-    slug: "reconnect",
-    name: "RECONNECT",
-    subtitle: "L'Accompagnement Premium de Reconnexion Professionnelle",
-    shortLabel: "Reconnect",
-    tag: "Incarner",
-    shortDescription:
-      "3 mois d'Accompagnement pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
-    lead: "3 mois pour sortir du flou ; savoir qui tu es, ce que tu veux, et enfin trouver ta juste place.",
-    briefDescription:
-      "Tu sais ce que tu ne veux plus pour ta vie professionnelle, mais tu ne sais pas ce que tu veux vraiment et vers quoi t'engager, tu doutes sur la voie à prendre et sur tes talents ?\n\nL'Accompagnement multi-dimensionnel Reconnect a été conçu pour toi ; il est là pour t'apporter clarté, direction et élan, afin de réaligner ta vie professionnelle à tes aspirations de cœur.",
-    briefBullets: [
-      "Accompagnement individuel et transformationnel",
-      "3 coachings d'1h30, *et un suivi privé et continu pendant les 3 mois*",
-      "13 questionnaires hebdomadaires pour avancer pas à pas",
-      "Analyses HD, tests de personnalité, exercices et tips concrets",
-      "Soins énergétiques, séances d'EFT et méditations guidées",
-      "INSIDE et Fleur de Talents Innés™ inclus",
-    ],
-    longDescription:
-      "L'accompagnement premium de 3 mois. Un espace d'introspection et de transformation profonde : 1 questionnaire ciblé par semaine, des soins énergétiques, des séances EFT, 3 coachings d'1h30, INSIDE et Fleur de Talents Innés inclus. Un parcours sur-mesure pour incarner ton design en profondeur.",
-    forWhom:
-      "Tu sens que c'est le moment d'une vraie transformation. Tu veux un accompagnement structuré et complet pour aligner ta vie sur qui tu es vraiment, pas juste un coaching ponctuel.",
-    included: [
-      "Accompagnement personnalisé sur 3 mois",
-      "1 questionnaire ciblé par semaine pour avancer",
-      "Soins énergétiques",
-      "Séances EFT",
-      "3 coachings d'1h30 en visio",
-      "INSIDE inclus",
-      "Fleur de Talents Innés™ inclus",
-      "Suivi par messagerie tout au long du parcours",
-    ],
-    price: "1 444 €",
-    imgUrl:
-      "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/logo-reconnect.png",
-    color: "violet",
-    href: EXTERNAL.offre.reconnect,
-    orderHref: EXTERNAL.commande.reconnect,
+      "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
+    logoSrc: "/assets/soin-energetique-mains.png",
+    color: "beige",
+    href: EXTERNAL.offre.soinEnergetique,
+    orderHref: EXTERNAL.commande.soinEnergetique,
   },
 ];

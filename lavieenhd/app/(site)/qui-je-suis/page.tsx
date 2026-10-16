@@ -158,9 +158,7 @@ const PILIERS: { title: string; titleNote?: string; paragraphes: string[]; chute
 ];
 
 /**
- * Portes de la conclusion, vers les sections de « Mes offres ».
- * TODO(mes-offres) : les ancres #porte-1/2/3 seront posées avec la nouvelle page
- * « Mes offres » de Marion ; d'ici là, le lien ouvre la page en haut.
+ * Portes de la conclusion, vers les sections de « Mes offres » (#porte-1/2/3).
  */
 const PORTES_FINALES = [
   {
