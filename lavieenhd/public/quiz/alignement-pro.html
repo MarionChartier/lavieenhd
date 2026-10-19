@@ -873,13 +873,13 @@ function sendLeadToSystemeIo(prenom, email) {
 }
 
 /* ===================================================================
-   TAG PAR RÉSULTAT : branchement en attente
-   Marion veut un tag systeme.io par résultat. Il sera posé par une route
-   serveur du site (clé API en variable d'environnement, jamais ici).
-   Tant que QUIZ_TAG.endpoint est vide, rien n'est envoyé.
+   TAG PAR RÉSULTAT
+   Marion veut un tag systeme.io par résultat. Il est posé par la route
+   serveur du site /api/quiz-tag (clé API en variable d'environnement,
+   jamais ici). Vider QUIZ_TAG.endpoint coupe l'envoi.
    =================================================================== */
 var QUIZ_TAG = {
-  endpoint: "", /* futur : "/api/quiz-tag" */
+  endpoint: "/api/quiz-tag",
   quiz: "alignement-pro"
 };
 
