@@ -7,8 +7,10 @@
 export type TagsResult = { ok: true; email: string; tags: string[] } | { ok: false; error: string };
 
 /**
- * Préfixe des tags : les noms des tags « par quiz » de Marion, déjà posés par ses
- * automatisations. Le tag par résultat les reprend, suivi du résultat.
+ * Préfixe des tags : les noms des tags « par quiz » de Marion. Le tag par résultat
+ * les reprend, suivi du résultat. Le tag par quiz lui-même est aussi posé ici :
+ * ses automatisations « formulaire inscrit » ne se déclenchent pas pour les envois
+ * des quiz (diagnostic du 19/10/2026, aucun contact tagué).
  */
 const BUSINESS_PREFIX = "❔ QUIZ Business check-up";
 
@@ -69,5 +71,6 @@ export function tagsFor(payload: unknown): TagsResult {
 
   const tags = quiz === "business" ? businessTags(result) : singleResultTags(quiz, result);
   if (!tags) return { ok: false, error: "résultat invalide" };
-  return { ok: true, email: email.trim(), tags };
+  const quizTag = quiz === "business" ? BUSINESS_PREFIX : SINGLE_RESULT_QUIZZES[quiz].prefix;
+  return { ok: true, email: email.trim(), tags: [quizTag, ...tags] };
 }
