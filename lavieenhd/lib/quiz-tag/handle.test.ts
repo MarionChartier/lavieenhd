@@ -26,7 +26,7 @@ describe("handleQuizTag", () => {
     const res = await handleQuizTag(request(body), { client, log });
 
     expect(res.status).toBe(204);
-    expect(client.applyTags).toHaveBeenCalledWith(email, ["❔ QUIZ Alignement Pro - PERDU"]);
+    expect(client.applyTags).toHaveBeenCalledWith(email, ["❔ QUIZ Alignement Pro", "❔ QUIZ Alignement Pro - PERDU"]);
   });
 
   it.each([

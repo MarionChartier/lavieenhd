@@ -4,19 +4,19 @@ import { tagsFor } from "./tags";
 const email = "lea@example.com";
 
 describe("tagsFor", () => {
-  it("tague le résultat du quiz alignement", () => {
+  it("pose le tag du quiz puis celui du résultat (quiz alignement)", () => {
     expect(tagsFor({ quiz: "alignement-pro", email, result: "OK" })).toEqual({
       ok: true,
       email,
-      tags: ["❔ QUIZ Alignement Pro - OK"],
+      tags: ["❔ QUIZ Alignement Pro", "❔ QUIZ Alignement Pro - OK"],
     });
   });
 
-  it("tague le résultat du quiz environnement", () => {
+  it("pose le tag du quiz puis celui du résultat (quiz environnement)", () => {
     expect(tagsFor({ quiz: "environnement", email, result: "RIVAGES" })).toEqual({
       ok: true,
       email,
-      tags: ["❔ QUIZ Lieu idéal - RIVAGES"],
+      tags: ["❔ QUIZ Lieu idéal", "❔ QUIZ Lieu idéal - RIVAGES"],
     });
   });
 
@@ -34,6 +34,7 @@ describe("tagsFor", () => {
       ok: true,
       email,
       tags: [
+        "❔ QUIZ Business check-up",
         "❔ QUIZ Business check-up - 👀 COMMUNICATION",
         "❔ QUIZ Business check-up - 💡 FORCES",
         "❔ QUIZ Business check-up - 👀 ENERGIE",
@@ -42,9 +43,13 @@ describe("tagsFor", () => {
     });
   });
 
-  it("ne pose aucun tag business quand toutes les zones sont green (💜)", () => {
+  it("ne pose que le tag du quiz business quand toutes les zones sont green (💜)", () => {
     const calme = Object.fromEntries(Object.keys(scan).map((zone) => [zone, "green"]));
-    expect(tagsFor({ quiz: "business", email, result: calme })).toEqual({ ok: true, email, tags: [] });
+    expect(tagsFor({ quiz: "business", email, result: calme })).toEqual({
+      ok: true,
+      email,
+      tags: ["❔ QUIZ Business check-up"],
+    });
   });
 
   it("retire les espaces autour de l'email", () => {
