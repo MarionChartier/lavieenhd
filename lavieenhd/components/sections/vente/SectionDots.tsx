@@ -9,10 +9,11 @@ export type PointSection = { id: string; label: string };
  * repère des pages systeme.io de Marion. Le nom de la section apparaît au
  * survol et au focus clavier.
  *
- * Affiché dès `md` (768px) : sous `lg` il manquait aux petits portables et
- * aux fenêtres réduites, et la marge des strates l'y tient à distance du texte.
- * Masqué sur téléphone : la marge n'y fait que 24px, et le pouce n'a pas de
- * survol pour lire les libellés.
+ * Affiché aussi sur téléphone, à la demande de Marion. Sous `md` (768px), la
+ * marge des strates ne fait que 24px : les points y sont plus petits et collés
+ * au bord pour ne pas toucher le texte, leur zone de tap est agrandie sans
+ * déplacer le visuel, et les libellés restent masqués faute de survol au pouce
+ * (le nom de la section reste lu par les lecteurs d'écran).
  *
  * Le point actif prend l'accent « texte » de la page (voir <VenteTheme>) :
  * l'accent seul, quand il est pâle (or, vert tendre), se verrait moins sur
@@ -44,9 +45,9 @@ export function SectionDots({ sections }: { sections: PointSection[] }) {
   return (
     <nav
       aria-label="Sections de la page"
-      className="pointer-events-none fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 md:block"
+      className="pointer-events-none fixed right-1.5 top-1/2 z-40 -translate-y-1/2 md:right-6"
     >
-      <ul className="pointer-events-auto flex flex-col items-end gap-4">
+      <ul className="pointer-events-auto flex flex-col items-end gap-2 md:gap-4">
         {sections.map(({ id, label }) => {
           const estActif = id === actif;
           return (
@@ -54,20 +55,20 @@ export function SectionDots({ sections }: { sections: PointSection[] }) {
               <a
                 href={`#${id}`}
                 aria-current={estActif ? "true" : undefined}
-                className="group flex items-center justify-end gap-3"
+                className="group flex items-center justify-end gap-3 p-1.5 md:p-0"
               >
                 {/* Libellé discret : ni capitales, ni pastille, ni ombre. Il
                     n'accompagne le point que le temps du survol, il ne doit pas
                     peser plus que le texte de la page. Le fond très pâle sert
                     seulement à rester lisible au-dessus d'un visuel. */}
                 <span
-                  className="pointer-events-none rounded bg-white/80 px-2 pt-[5px] pb-[4px] font-body text-[11px] font-normal leading-none tracking-normal text-ink-soft opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none"
+                  className="pointer-events-none hidden rounded bg-white/80 px-2 pt-[5px] pb-[4px] font-body text-[11px] font-normal leading-none tracking-normal text-ink-soft opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none md:inline"
                 >
                   {label}
                 </span>
                 <span
                   aria-hidden
-                  className={`block h-2.5 w-2.5 rounded-full border transition-colors duration-200 motion-reduce:transition-none ${
+                  className={`block h-2 w-2 rounded-full md:h-2.5 md:w-2.5 border transition-colors duration-200 motion-reduce:transition-none ${
                     estActif
                       ? "border-accent-texte bg-accent-texte"
                       : "border-ink-deep/35 bg-white/70 group-hover:border-accent-texte"
