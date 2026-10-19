@@ -62,7 +62,6 @@ export const EXTERNAL = {
     insideClub: `${LEGACY_ROOT}/commande-guide_design-guidee`,
     reveal: `${LEGACY_ROOT}/commande-seance-clarte`,
     fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
-    reconnect: `${LEGACY_ROOT}/commande-reconnect`,
   },
 
   /** RECONNECT : un bon de commande par formule (liens transmis par Marion le 13/10). */

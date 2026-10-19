@@ -975,5 +975,12 @@ function retryQuiz() {
   requestAnimationFrame(scrollQuizToTop);
 }
 </script>
+<script>
+/* Démarrage direct sur la question 1 (?start=1) : boutons de la page Mes offres.
+   Sans paramètre, la page d'introduction reste affichée (liens Instagram, partages). */
+document.addEventListener("DOMContentLoaded", function () {
+  if (new URLSearchParams(location.search).has("start")) startQuiz();
+});
+</script>
 </body>
 </html>
