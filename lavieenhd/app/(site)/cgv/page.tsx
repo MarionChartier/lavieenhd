@@ -60,6 +60,7 @@ export default function CgvPage() {
         },
         {
           heading: "Article 11 : Propriété intellectuelle et usage des contenus",
+          id: "article-11",
           body: "Les contenus transmis dans le cadre de RECONNECT, notamment les questionnaires, exercices, textes, supports, audios et ressources, sont réservés à l'usage personnel de la participante ou du participant. Ils ne peuvent être reproduits, adaptés, diffusés, transmis, revendus ou utilisés, en totalité ou en partie, dans le cadre d'une activité personnelle ou professionnelle sans l'autorisation écrite préalable de Marion Chartier.",
         },
         {
