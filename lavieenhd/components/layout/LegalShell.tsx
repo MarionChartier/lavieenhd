@@ -1,7 +1,11 @@
+import type { ReactNode } from "react";
+
 type LegalSection = {
   heading: string;
+  /** Ancre facultative pour pointer directement vers la section. */
+  id?: string;
   /** Un ou plusieurs paragraphes. */
-  body?: string | string[];
+  body?: ReactNode | ReactNode[];
   /** Liste à puces optionnelle, affichée sous les paragraphes. */
   items?: string[];
   /** Paragraphes affichés sous la liste à puces. */
@@ -37,12 +41,12 @@ export function LegalShell({ title, intro, updatedAt, sections }: LegalShellProp
 
         <div className="mt-12 flex flex-col gap-10">
           {sections.map((s) => {
-            const asList = (v?: string | string[]) =>
+            const asList = (v?: ReactNode | ReactNode[]) =>
               v === undefined ? [] : Array.isArray(v) ? v : [v];
             const paragraphs = asList(s.body);
 
             return (
-              <div key={s.heading}>
+              <div key={s.heading} id={s.id} className="scroll-mt-24">
                 <h2 className="font-display text-[24px] font-light leading-snug text-ink-deep md:text-[28px]">
                   {s.heading}
                 </h2>
