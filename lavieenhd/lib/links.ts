@@ -16,12 +16,8 @@ export const EXTERNAL = {
   /** Quiz "Quel est ton environnement idéal" — formulaire Tally */
   quiz: "https://tally.so/r/meORLk",
 
-  /**
-   * Formulaire de rétractation (lien du pied de page, maquette home V36).
-   * TODO(Marion) : URL pas encore fournie. Tant qu'elle vaut null, le lien
-   * n'est pas affiché dans le footer.
-   */
-  retractation: null as string | null,
+  /** Formulaire de rétractation (pied de page et article 8.6 des CGV) */
+  retractation: "https://form.marionchartier-lavieenhd.com/retractation",
 
   /** Simulateur HD complet — temporairement = base */
   simulateur: LEGACY_BASE,
