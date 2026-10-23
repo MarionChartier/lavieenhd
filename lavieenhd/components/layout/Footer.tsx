@@ -11,10 +11,7 @@ const CONTACT = {
 const LEGAL_LINKS = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "CGV", href: "/cgv" },
-  // Masqué tant que Marion n'a pas fourni l'URL (voir EXTERNAL.retractation).
-  ...(EXTERNAL.retractation
-    ? [{ label: "Formulaire de rétractation", href: EXTERNAL.retractation }]
-    : []),
+  { label: "Formulaire de rétractation", href: EXTERNAL.retractation },
   { label: "Confidentialité", href: "/confidentialite" },
 ];
 
