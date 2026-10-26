@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PORTE_SECTIONS } from "@/lib/content/mes-offres";
 import { QUIZZES, type QuizAccent } from "@/lib/content/quizzes";
 
 export const metadata: Metadata = {
   title: "Quiz gratuits · La vie en HD",
   description:
-    "Deux quiz gratuits et ludiques pour mieux te connaître : ton lieu de vie/de travail idéal et ton alignement dans ta vie pro.",
+    "Trois quiz gratuits et ludiques pour mieux te connaître : ton alignement dans ta vie pro, ta façon d'entreprendre et ton lieu de vie/de travail idéal.",
 };
 
 const ACCENT: Record<
@@ -30,6 +31,12 @@ const ACCENT: Record<
   },
 };
 
+/** Mêmes textes et même ordre que les 3 portes de /mes-offres ; le lien ouvre directement la question 1. */
+const CARDS = PORTE_SECTIONS.map(({ quiz }) => ({
+  ...quiz,
+  accent: QUIZZES.find((q) => quiz.href.startsWith(q.href))!.accent,
+}));
+
 export default function QuizPage() {
   return (
     <>
@@ -41,25 +48,22 @@ export default function QuizPage() {
         <h1 className="mt-5 font-display text-[45px] font-light leading-[0.95] text-ink-deep md:text-[78px]">
           Mes <em className="italic text-turquoise">quiz gratuits</em>
         </h1>
-        <p className="mx-auto mt-8 max-w-[620px] font-display text-[18px] font-light italic leading-snug text-ink-deep md:text-[22px]">
-          J’ai créé pour toi des petits voyages introspectifs, ludiques et
-          révélateurs. Suis celui qui t’appelle aujourd’hui, et laisse la lumière
-          se faire.
-        </p>
       </section>
 
       {/* CARTES QUIZ */}
       <section className="bg-white px-6 pb-24 md:px-20 md:pb-32">
-        <div className="mx-auto grid max-w-[980px] items-start gap-6 md:grid-cols-2 md:gap-8">
-          {QUIZZES.map((quiz) => {
+        {/* Chaque carte occupe 5 lignes en subgrid : méta, titre, question, description
+            et bouton s'alignent d'une carte à l'autre sur une même rangée. */}
+        <div className="mx-auto grid max-w-[980px] gap-6 md:grid-cols-2 md:gap-8">
+          {CARDS.map((quiz) => {
             const a = ACCENT[quiz.accent];
             return (
               <a
-                key={quiz.slug}
+                key={quiz.href}
                 href={quiz.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col items-center overflow-hidden rounded-[28px] border text-center ${a.border} ${a.card} p-9 shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_64px_-28px_rgba(80,60,98,0.32)] md:p-11`}
+                className={`group relative row-span-5 grid grid-rows-subgrid justify-items-center gap-y-0 overflow-hidden md:odd:last:col-span-2 md:odd:last:w-[calc(50%-1rem)] md:odd:last:justify-self-center rounded-[28px] border text-center ${a.border} ${a.card} p-9 shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_64px_-28px_rgba(80,60,98,0.32)] md:p-11`}
               >
                 {/* Couche de masque dédiée : clip-path arrondi qui rogne proprement
                     le blob flouté/animé (l'overflow-hidden du parent le laisse fuir
@@ -81,21 +85,22 @@ export default function QuizPage() {
                 </span>
 
                 <h2 className="relative mt-5 pt-4 font-script text-[26px] leading-[2.05] text-ink-deep md:pt-6 md:text-[31px] md:leading-[1.95]">
-                  {quiz.name.replace(/^Quiz\s*[-–]\s*/, "")}
+                  {quiz.title}
                 </h2>
 
                 <p className={`relative mt-5 text-center font-display text-[17px] italic leading-snug md:text-[19px] ${a.desc}`}>
-                  {quiz.subtitle}
+                  {quiz.question}
                 </p>
 
+                {/* Toujours rendu, même vide, pour garder la ligne de la subgrid. */}
                 <p className="relative mt-3 max-w-[340px] text-center font-body text-[13px] leading-relaxed text-ink-soft md:text-[14px]">
                   {quiz.description}
                 </p>
 
                 <span
-                  className={`relative mt-7 inline-flex w-fit items-center justify-center self-center rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
+                  className={`relative mt-7 inline-flex w-fit items-center justify-center self-end rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
                 >
-                  Faire le quiz
+                  {quiz.cta} <span aria-hidden className="ml-2">→</span>
                 </span>
               </a>
             );

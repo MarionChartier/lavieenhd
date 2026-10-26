@@ -64,11 +64,13 @@ export default function TestGratuitPage() {
               Même ratio que le hero : sous ~630px de carte, le champ année de la
               ligne de date rogne les quatre chiffres saisis. */}
           <CalculateurLayout
-            columns="gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
+            columns="gap-12 max-lg:gap-y-0 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
             temoignages={["fabienne"]}
           >
-            {/* Contenu pédagogique — présentation du Design */}
-            <>
+            {/* Contenu pédagogique — présentation du Design. Masqué sur mobile et tablette
+                (demande de Marion) : le lien « TEST HD GRATUIT » doit mener
+                directement au calculateur. */}
+            <div className="max-lg:hidden">
               {/* Visuel en arrière-plan de la colonne, discret */}
               <Image
                 src="/assets/simulateur-aligne.jpeg"
@@ -120,7 +122,7 @@ export default function TestGratuitPage() {
                   </ul>
                 </div>
               </div>
-            </>
+            </div>
           </CalculateurLayout>
 
           {/* À SAVOIR — précisions sur les champs, sous les deux colonnes */}
