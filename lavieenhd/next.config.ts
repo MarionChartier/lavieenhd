@@ -50,6 +50,16 @@ const nextConfig: NextConfig = {
         destination: "/mes-offres/reconnect",
         permanent: true,
       },
+      /**
+       * Lien imprimé dans la dernière page des guides PDF de Marion : ne jamais
+       * le supprimer ni le renommer. Temporaire (307) pour que les navigateurs
+       * ne mettent pas la cible en cache et qu'on puisse la changer plus tard.
+       */
+      {
+        source: "/start",
+        destination: "/#portes",
+        permanent: false,
+      },
     ];
   },
 };

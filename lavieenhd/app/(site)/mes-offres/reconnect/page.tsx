@@ -32,15 +32,10 @@ export const metadata: Metadata = {
 /**
  * Couleur et forme propres à RECONNECT : le violet du mot RECONNECT de son
  * logo, et le pétale, que la page partage avec Blooming (la Fleur est incluse
- * dans Premium 1:1). L'accent reste clair, il est posé sur des fonds sombres
- * (prix, boutons) ; les textes sur fond clair prennent le violet du logo.
+ * dans Premium 1:1). Comme sur les autres pages, le violet se limite aux fonds
+ * et aux motifs : les petits éléments restent turquoise (demande de Marion).
  */
-const THEME = {
-  accent: "#c4b6d6",
-  accentSoft: "#efeaf4",
-  accentTexte: "#746588",
-  forme: "petale",
-} as const;
+const THEME = { motif: "#c4b6d6", accentSoft: "#efeaf4", forme: "petale" } as const;
 
 /** La pensée « dans ta tête » de chaque profil, mise en exergue. */
 function Pensee({ children }: { children: ReactNode }) {

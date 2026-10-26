@@ -7,9 +7,9 @@ import { MOTIF_ID, MOTIF_PATHS, type MotifForme } from "@/components/sections/ve
  * Demande de Marion : la couleur de l'offre se limite aux fonds de section
  * (`accentSoft`) et aux formes décoratives en filigrane (`motif`). Les petits
  * éléments (puces, prix, prénoms, « + » de la FAQ…) restent turquoise comme
- * sur Blooming, sauf page qui passe explicitement `accent` / `accentTexte`
- * (RECONNECT, au violet de son logo). C'est tout ce qui change d'une offre à l'autre, la structure et les
- * blocs restent ceux de Blooming.
+ * sur Blooming, sauf page qui passe explicitement `accent` / `accentTexte`.
+ * C'est tout ce qui change d'une offre à l'autre, la structure et les blocs
+ * restent ceux de Blooming.
  *
  * La couleur passe par les variables `--color-accent*`, lues par les utilitaires
  * `text-accent`, `bg-accent-soft`… La forme est déclarée une fois en `<defs>`
