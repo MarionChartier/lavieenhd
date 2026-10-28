@@ -136,7 +136,7 @@ export const PORTES: Porte[] = [
   },
 ];
 
-/** Le Soin énergétique, proposé sous les 3 portes (après les énergies du moment). */
+/** Le Soin énergétique, proposé sous les 3 portes (après la météo énergétique du jour). */
 export const SOIN_ENERGETIQUE = {
   name: "SOIN ÉNERGÉTIQUE",
   subtitle: "Soin collectif à distance",

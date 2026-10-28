@@ -14,7 +14,7 @@ export function AboutTeaser() {
     <h2 className="font-display text-[44px] font-light leading-[1] text-ink-deep md:text-[72px]">
       Marion,
       <br />
-      <em className="italic">derrière La vie en&nbsp;HD</em>
+      <em className="italic text-turquoise">derrière La vie en&nbsp;HD</em>
     </h2>
   );
 
