@@ -2,72 +2,30 @@ import Image from "next/image";
 import type { Offre } from "@/lib/content/offres";
 
 /**
- * Cercle logo d'une offre — partagé entre la vue d'ensemble /mes-offres
- * et les pages d'offres dédiées /mes-offres/[slug].
+ * Fondu des bords d'une photo de mockup : deux dégradés croisés, pour que la
+ * photo se dissolve dans le fond de section au lieu de s'y arrêter net.
  */
-export function LogoCircle({ offre }: { offre: Offre }) {
+const FONDU =
+  "[mask-image:linear-gradient(to_right,transparent,black_9%,black_91%,transparent),linear-gradient(to_bottom,transparent,black_9%,black_91%,transparent)] [mask-composite:intersect] [-webkit-mask-image:linear-gradient(to_right,transparent,black_9%,black_91%,transparent),linear-gradient(to_bottom,transparent,black_9%,black_91%,transparent)] [-webkit-mask-composite:source-in]";
+
+/**
+ * Mockup de l'offre dans la vue d'ensemble de /mes-offres, tiré de sa page de
+ * vente (demande de Marion : le logo passe en petit au bout du titre).
+ */
+export function OffreVisuel({ offre }: { offre: Offre }) {
+  const { visuel } = offre;
+  if (!visuel) return null;
 
   return (
-    <div
-      className={`relative grid place-items-center rounded-full bg-white/65 shadow-[0_30px_80px_-40px_rgba(80,60,98,0.25)] backdrop-blur-sm h-[300px] w-[300px] md:h-[420px] md:w-[420px]`}
-    >
-      {/* Le Soin est le seul visuel photo. Un halo doré derrière prolonge sa
-          lumière jusqu'au bord du cercle : sans lui, la photo se lit comme une
-          vignette rapportée au lieu de rayonner depuis le cercle. */}
-      {offre.slug === "soin-energetique" && (
-        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_46%,rgba(255,240,216,0.7)_0%,rgba(238,201,143,0.26)_40%,transparent_68%)]" />
-      )}
-      {offre.logoSrc ? (
-        <Image
-          src={offre.logoSrc}
-          alt={offre.name}
-          width={280}
-          height={180}
-          className={`relative object-contain ${
-            offre.slug === "soin-energetique"
-              ? // Fondu réel : un masque radial dissout les bords de la photo
-                // dans le cercle, au lieu de les arrêter net.
-                "h-auto w-[58%] opacity-80 [mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)] [-webkit-mask-image:radial-gradient(circle_at_50%_50%,black_48%,transparent_82%)]"
-              : offre.slug === "inside"
-                ? "max-h-[82%] max-w-[88%]"
-                : "max-h-[60%] max-w-[65%]"
-          }`}
-        />
-      ) : offre.signature ? (
-        <FleurSvg className="relative h-[55%] w-[55%]" />
-      ) : (
-        <span className="relative font-display text-[80px] italic text-ink-deep">
-          {offre.num}
-        </span>
-      )}
-    </div>
-  );
-}
-
-/** SVG géométrique 8-pétales pour la Fleur de Talents Innés™ */
-export function FleurSvg({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 280 280" className={className} aria-hidden>
-      <g fill="none" stroke="#503c62" strokeWidth="2" strokeLinecap="round">
-        {Array.from({ length: 8 }).map((_, i) => {
-          const angleDeg = (i * 360) / 8 - 90;
-          const rad = (angleDeg * Math.PI) / 180;
-          const cx = 140 + Math.cos(rad) * 60;
-          const cy = 140 + Math.sin(rad) * 60;
-          return (
-            <ellipse
-              key={i}
-              cx={cx}
-              cy={cy}
-              rx="22"
-              ry="58"
-              transform={`rotate(${angleDeg + 90} ${cx} ${cy})`}
-            />
-          );
-        })}
-        <circle cx="140" cy="140" r="18" fill="#75ced2" stroke="none" opacity="0.5" />
-        <circle cx="140" cy="140" r="8" fill="#503c62" stroke="none" />
-      </g>
-    </svg>
+    <Image
+      src={visuel.src}
+      alt={visuel.alt}
+      width={visuel.width}
+      height={visuel.height}
+      sizes="(min-width: 1024px) 520px, 90vw"
+      className={`h-auto w-full max-w-[520px] ${
+        visuel.detoure ? "max-h-[460px] object-contain" : `rounded-[28px] ${FONDU}`
+      }`}
+    />
   );
 }

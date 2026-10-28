@@ -34,6 +34,11 @@ export interface Offre {
   imgUrl: string;
   /** Path vers logo dans /public/assets (null si pas de logo dédié) */
   logoSrc: string | null;
+  /**
+   * Mockup tiré de la page de vente, affiché dans la vue d'ensemble de
+   * /mes-offres. `detoure` : fond transparent, pas de fondu sur les bords.
+   */
+  visuel?: { src: string; width: number; height: number; alt: string; detoure?: boolean };
   /** Couleur du fond de la zone sous-marque */
   color: OffreColor;
   /** Lien externe vers l'écosystème systeme.io */
@@ -120,6 +125,13 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-blooming.png",
+    visuel: {
+      src: "/assets/blooming/fleur-emilie.webp",
+      width: 1378,
+      height: 1378,
+      alt: "Une Fleur de Talents Innés et ses 5 pôles",
+      detoure: true,
+    },
     color: "turquoise",
     signature: true,
     href: EXTERNAL.offre.fleurDeTalents,
@@ -153,6 +165,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-reconnect.png",
+    visuel: {
+      src: "/assets/reconnect/questionnaire-favori.webp",
+      width: 1122,
+      height: 1402,
+      alt: "Le parcours RECONNECT ouvert sur un ordinateur portable",
+    },
     color: "violet",
     href: EXTERNAL.offre.reconnect,
     ctaLabel: "Découvrir RECONNECT",
@@ -189,6 +207,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-reveal.png",
+    visuel: {
+      src: "/assets/reveal/boussole-tablette.webp",
+      width: 1122,
+      height: 1402,
+      alt: "La Boussole, le compte-rendu personnalisé de REVEAL, sur une tablette",
+    },
     color: "violet",
     href: EXTERNAL.offre.reveal,
     orderHref: EXTERNAL.commande.reveal,
@@ -251,6 +275,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-place.png",
+    visuel: {
+      src: "/assets/place-to-be/guide-tablette.webp",
+      width: 1448,
+      height: 1086,
+      alt: "Le Guide d’Exploration de ton Environnement HD sur une tablette",
+    },
     color: "violet",
     href: EXTERNAL.offre.thePlaceToBe,
     // Exception : le choix de l'Environnement se fait dans la section d'achat de la page de vente.
@@ -288,6 +318,12 @@ export const OFFRES: Offre[] = [
     price: "22 €",
     imgUrl: "/assets/body-bloom/guide-tablette.webp",
     logoSrc: "/assets/logo-bodybloom.webp",
+    visuel: {
+      src: "/assets/body-bloom/guide-tablette.webp",
+      width: 1254,
+      height: 1254,
+      alt: "Le Guide d’Initiation à ton Intelligence Digestive sur une tablette",
+    },
     color: "turquoise",
     href: EXTERNAL.offre.bodyBloom,
     // Comme The Place to be : le choix de la Digestion se fait dans la section d'achat.
@@ -326,6 +362,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-inside.png",
+    visuel: {
+      src: "/assets/inside/guide-tablette.webp",
+      width: 1122,
+      height: 1402,
+      alt: "Le Guide d’Immersion dans ton Design Unique sur une tablette",
+    },
     color: "turquoise",
     href: EXTERNAL.offre.insideClub,
     orderHref: EXTERNAL.commande.insideClub,
@@ -359,7 +401,14 @@ export const OFFRES: Offre[] = [
     price: "20 €",
     imgUrl:
       "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=900&q=80&auto=format&fit=crop",
-    logoSrc: "/assets/soin-energetique-mains.png",
+    logoSrc: null,
+    visuel: {
+      src: "/assets/soin/mains-lumiere.webp",
+      width: 1024,
+      height: 807,
+      alt: "Des mains ouvertes portant une lumière",
+      detoure: true,
+    },
     color: "beige",
     href: EXTERNAL.offre.soinEnergetique,
     orderHref: EXTERNAL.commande.soinEnergetique,

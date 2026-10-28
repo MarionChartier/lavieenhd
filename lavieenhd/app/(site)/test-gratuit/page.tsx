@@ -65,7 +65,7 @@ export default function TestGratuitPage() {
               ligne de date rogne les quatre chiffres saisis. */}
           <CalculateurLayout
             columns="gap-12 max-lg:gap-y-0 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
-            temoignages={["fabienne"]}
+            temoignages={["barbara", "fabienne"]}
           >
             {/* Contenu pédagogique — présentation du Design. Masqué sur mobile et tablette
                 (demande de Marion) : le lien « TEST HD GRATUIT » doit mener

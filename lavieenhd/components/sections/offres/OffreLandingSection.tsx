@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Offre, OffreColor } from "@/lib/content/offres";
-import { LogoCircle } from "@/components/sections/offres/OffreVisuals";
+import { OffreVisuel } from "@/components/sections/offres/OffreVisuals";
 
 /** Fond de section selon la couleur sous-marque de l'offre */
 const SECTION_BG: Record<OffreColor, string> = {
@@ -99,16 +99,29 @@ export function OffreLandingSection({
               isReversed ? "lg:[&>*:first-child]:order-2" : ""
             }`}
           >
-            {/* Cercle logo */}
+            {/* Mockup de l'offre */}
             <div className="flex items-center justify-center">
-              <LogoCircle offre={offre} />
+              <OffreVisuel offre={offre} />
             </div>
 
             {/* Contenu hero */}
             <div>
-              <Heading className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
-                {offre.name}
-                {offre.trademark && <sup className="ml-1 text-[0.4em]">™</sup>}
+              {/* Logo en petit au bout du titre, centré sur sa ligne. */}
+              <Heading className="flex flex-wrap items-center gap-x-4 gap-y-2 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
+                <span>
+                  {offre.name}
+                  {offre.trademark && <sup className="ml-1 text-[0.4em]">™</sup>}
+                </span>
+                {offre.logoSrc && (
+                  <Image
+                    src={offre.logoSrc}
+                    alt=""
+                    width={500}
+                    height={500}
+                    sizes="92px"
+                    className="h-[64px] w-[64px] flex-none object-contain md:h-[92px] md:w-[92px]"
+                  />
+                )}
               </Heading>
 
               {offre.subtitle && (

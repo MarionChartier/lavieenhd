@@ -16,11 +16,15 @@ export type FaqItem = {
  */
 export function FaqSection({
   items,
-  title = "Questions fréquentes",
+  title = (
+    <>
+      Questions <span className="text-turquoise">fréquentes</span>
+    </>
+  ),
   eyebrow,
 }: {
   items: FaqItem[];
-  title?: string;
+  title?: ReactNode;
   eyebrow?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);

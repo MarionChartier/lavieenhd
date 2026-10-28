@@ -16,7 +16,7 @@ export function SoulLetterBanner() {
       {/* Titre + description au-dessus du bandeau */}
       <div className="mx-auto mb-8 max-w-[680px] text-center md:mb-10">
         <h2 className="font-display text-[28px] font-light italic leading-tight text-ink-deep md:text-[40px]">
-          De temps en temps, je t’écris en toute intimité.
+          De temps en temps, je t’écris <span className="text-turquoise">en toute intimité</span>.
         </h2>
         <p className="mx-auto mt-4 max-w-[560px] font-display text-[16px] font-light leading-relaxed text-ink md:text-[18px]">
           Des tips de Human Design, des réflexions autour de la vie pro et du Business, des prises de conscience, des actualités de La vie en HD, mais aussi les coulisses de mon quotidien.

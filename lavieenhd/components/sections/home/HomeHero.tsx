@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
-import { CalculateurTemoignages } from "@/components/sections/CalculateurTemoignages";
 import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 import { useIsDesktop } from "@/components/sections/home/useIsDesktop";
 
@@ -16,7 +15,7 @@ const COLONNES = "gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20";
  *
  * Mobile : texte seul et centré, le calculateur vient plus bas
  * (SchemaGenerateur). Desktop, à la demande de Marion : le calculateur reste
- * dans le hero, à droite du texte ; le témoignage de Barbara sous le texte.
+ * dans le hero, à droite du texte.
  */
 export function HomeHero() {
   const desktop = useIsDesktop();
@@ -52,12 +51,6 @@ export function HomeHero() {
             Parce que je crois que chacun a SA propre recette magique. ✨
           </strong>
         </p>
-      </div>
-
-      {/* Témoignage de Barbara sous le texte (desktop uniquement, masqué une
-          fois le schéma affiché) : il occupe le vide face au calculateur. */}
-      <div className="text-left">
-        <CalculateurTemoignages items={["barbara"]} />
       </div>
     </div>
   );

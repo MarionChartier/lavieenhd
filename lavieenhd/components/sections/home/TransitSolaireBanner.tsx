@@ -74,7 +74,7 @@ export function TransitSolaireBanner() {
         {/* leading généreux : les jambages de la script descendent bas et
             viennent croiser la date si on serre l'interligne. */}
         <h2 className="font-script text-[30px] leading-[1.5] text-ink-deep md:text-[36px]">
-          Les énergies du moment
+          La <span className="text-turquoise">météo énergétique</span> du jour
         </h2>
         <DateDuJour />
       </div>
