@@ -5,25 +5,25 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { PORTES, type Porte, type PorteOffre, type PorteTon } from "@/lib/content/portes";
 
-/** Fond de la porte ouverte, numéro et chevron, par ton. */
-const TONS: Record<PorteTon, { open: string; num: string; chev: string; thumb: string }> = {
+/**
+ * Bordure, fond, numéro et chevron, par ton : les couleurs des portes de fin de
+ * « Qui suis-je ? », visibles sans ouvrir la porte. Les logos restent sur blanc.
+ */
+const TONS: Record<PorteTon, { surface: string; num: string; chev: string }> = {
   violet: {
-    open: "bg-[#eee4f8]",
+    surface: "border-[#d7c2e5] bg-[linear-gradient(155deg,#f5eefb,#fff)]",
     num: "text-[#8d71a8]",
     chev: "bg-[#f4ecfa]",
-    thumb: "bg-[linear-gradient(135deg,#ece4f5_0%,#dccef0_100%)]",
   },
   turquoise: {
-    open: "bg-[#e5f4f5]",
-    num: "text-[#68afb4]",
+    surface: "border-[#aadfe2] bg-[linear-gradient(155deg,#eaf9f9,#fff)]",
+    num: "text-[#4f9ea3]",
     chev: "bg-[#e2f2f3]",
-    thumb: "bg-[linear-gradient(135deg,#dbeef4_0%,#c5e6e9_100%)]",
   },
   beige: {
-    open: "bg-[#f5ecdf]",
-    num: "text-[#b78c4a]",
+    surface: "border-[#dfcfb7] bg-[linear-gradient(155deg,#faf5e9,#fff)]",
+    num: "text-[#a67c3d]",
     chev: "bg-[#f3e9db]",
-    thumb: "bg-[linear-gradient(135deg,#f0e3cc_0%,#e5d4b4_100%)]",
   },
 };
 
@@ -90,9 +90,7 @@ function PorteAccordeon({
   return (
     <div
       ref={racine}
-      className={`scroll-mt-32 overflow-hidden rounded-[28px] border border-ink/12 transition-colors duration-300 ${
-        isOpen ? ton.open : "bg-white"
-      }`}
+      className={`scroll-mt-32 overflow-hidden rounded-[28px] border-[1.5px] ${ton.surface}`}
     >
       <button
         type="button"
@@ -104,9 +102,7 @@ function PorteAccordeon({
         {/* Mobile : chiffre en haut à gauche, chevron en haut à droite, texte en
             pleine largeur dessous. Dès md : les trois sur une ligne. */}
         <span
-          className={`col-start-1 row-start-1 font-display text-[44px] font-light leading-none transition-colors md:text-[68px] ${
-            isOpen ? ton.num : "text-ink/25"
-          }`}
+          className={`col-start-1 row-start-1 font-display text-[44px] font-light leading-none md:text-[68px] ${ton.num}`}
         >
           {porte.num}
         </span>
@@ -155,14 +151,14 @@ function PorteAccordeon({
         <div className="overflow-hidden" inert={!isOpen}>
           <div className="flex flex-col gap-3 px-3 pb-6 md:px-6">
             {porte.offres.map((offre) => (
-              <OffreCard key={offre.name} offre={offre} thumbClass={ton.thumb} />
+              <OffreCard key={offre.name} offre={offre} thumbClass="bg-white" />
             ))}
             {porte.complement && (
               <>
                 <p className="mx-1 mt-2 border-t border-ink/15 pt-4 font-body text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
                   En complément
                 </p>
-                <OffreCard offre={porte.complement} thumbClass={ton.thumb} complement />
+                <OffreCard offre={porte.complement} thumbClass="bg-white" complement />
               </>
             )}
           </div>
