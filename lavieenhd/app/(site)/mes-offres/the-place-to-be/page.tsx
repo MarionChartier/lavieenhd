@@ -454,7 +454,7 @@ export default function ThePlaceToBePage() {
               <figcaption>
                 <span className="flex items-center gap-3.5">
                   <Image
-                    src="/assets/temoignages/Astrig2.png"
+                    src="/assets/temoignages/Astrig-place-to-be.webp"
                     alt=""
                     aria-hidden
                     width={96}

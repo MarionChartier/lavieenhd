@@ -99,7 +99,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Astrig",
     offre: "The Place to be",
-    photo: PHOTO("Astrig2.png"),
+    photo: PHOTO("Astrig-place-to-be.webp"),
     extrait:
       "Je m'attendais à sortir le globe terrestre pour poser une petite gommette sur le lieu de vie idéal pour moi! Mais ce que j'ai découvert, c'est bien plus que ça!",
     suite: (
