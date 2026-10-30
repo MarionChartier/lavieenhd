@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import type { Offre, OffreColor } from "@/lib/content/offres";
 import { OffreVisuel } from "@/components/sections/offres/OffreVisuals";
@@ -30,6 +31,15 @@ function avecItaliques(texte: string) {
 }
 
 /**
+ * Hauteur d'un logo recadré pour qu'il occupe la même surface qu'un carré de
+ * `cote` px : un logo large et plat (BODY Bloom) s'étale en largeur, un logo
+ * haut (Blooming) prend de la hauteur, et tous paraissent de même poids.
+ */
+function hauteurLogo({ width, height }: { width: number; height: number }, cote: number) {
+  return Math.round(cote * Math.sqrt(height / width));
+}
+
+/**
  * Vue d'ensemble d'une offre sur /mes-offres : logo + brief + bouton "Découvrir"
  * qui mène vers la page dédiée (/mes-offres/[slug]).
  */
@@ -43,6 +53,7 @@ export function OffreLandingSection({
   /** h3 dans une porte, sous son titre h2 ; h2 hors des portes (Soin). */
   heading?: "h2" | "h3";
 }) {
+  const logo = offre.logoTitre;
   const bg = SECTION_BG[offre.color];
   const bulletColor = BULLET_COLOR[offre.color];
   const isReversed = index % 2 === 1;
@@ -106,32 +117,41 @@ export function OffreLandingSection({
 
             {/* Contenu hero */}
             <div>
-              {/* Logo en petit au bout du titre, centré sur sa ligne. */}
-              <Heading className="flex flex-wrap items-center gap-x-4 gap-y-2 font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
-                <span>
-                  {offre.name}
-                  {offre.trademark && <sup className="ml-1 text-[0.4em]">™</sup>}
-                </span>
-                {offre.logoSrc && (
+              {/* Le logo porte déjà le nom de l'offre (demande de Marion) : il
+                  remplace titre et sous-titre. Sans logo (Soin), titre texte. */}
+              {logo ? (
+                <Heading>
                   <Image
-                    src={offre.logoSrc}
-                    alt=""
-                    width={500}
-                    height={500}
-                    sizes="92px"
-                    className="h-[64px] w-[64px] flex-none object-contain md:h-[92px] md:w-[92px]"
+                    src={logo.src}
+                    alt={offre.name}
+                    width={logo.width}
+                    height={logo.height}
+                    sizes="(min-width: 768px) 240px, 180px"
+                    className="h-(--logo-h) w-auto md:h-(--logo-h-md)"
+                    style={
+                      {
+                        "--logo-h": `${hauteurLogo(logo, 135)}px`,
+                        "--logo-h-md": `${hauteurLogo(logo, 175)}px`,
+                      } as CSSProperties
+                    }
                   />
-                )}
-              </Heading>
-
-              {offre.subtitle && (
-                <p className="mt-3 font-display text-[19px] font-light leading-snug text-ink md:text-[22px]">
-                  {offre.subtitle}
-                </p>
+                </Heading>
+              ) : (
+                <>
+                  <Heading className="font-display text-[44px] font-light leading-[0.95] text-ink-deep md:text-[72px]">
+                    {offre.name}
+                    {offre.trademark && <sup className="ml-1 text-[0.4em]">™</sup>}
+                  </Heading>
+                  {offre.subtitle && (
+                    <p className="mt-3 font-display text-[19px] font-light leading-snug text-ink md:text-[22px]">
+                      {offre.subtitle}
+                    </p>
+                  )}
+                </>
               )}
 
               {offre.subtitleNote && (
-                <p className="mt-1.5 font-display text-[15px] font-light italic leading-snug text-ink-soft md:text-[16px]">
+                <p className="mt-4 font-display text-[15px] font-light italic leading-snug text-ink-soft md:text-[16px]">
                   {offre.subtitleNote}
                 </p>
               )}
