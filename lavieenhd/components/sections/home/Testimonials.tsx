@@ -195,11 +195,12 @@ export function Testimonials() {
       />
 
       <div className="relative z-10 mx-auto max-w-(--container-content)">
-        <div className="mb-14 text-center md:mb-20">
+        {/* En desktop, titre sur une ligne et calé à gauche : centré, il passerait
+            sur le sourire de l'image de fond, à droite. */}
+        <div className="mb-14 text-center md:mb-20 lg:text-left">
           <h2 className="font-display text-[36px] font-light leading-tight text-ink-deep md:text-[64px]">
             Leurs <em className="italic text-turquoise">mots</em>, leurs
-            <br />
-            déclics.
+            <br className="lg:hidden" /> déclics.
           </h2>
         </div>
 

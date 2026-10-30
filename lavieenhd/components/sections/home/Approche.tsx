@@ -8,7 +8,9 @@ export function Approche() {
   return (
     <section className="bg-lavender-gradient px-6 py-20 md:px-20 md:py-28">
       <div className="mx-auto max-w-[760px]">
-        <h2 className="text-center font-script text-[30px] leading-[1.4] text-ink-deep md:text-[40px]">
+        {/* En desktop, le titre (~820px) déborde de la colonne de 760px pour
+            tenir sur une ligne : sinon « façon » part seul à la ligne. */}
+        <h2 className="text-center font-script text-[30px] leading-[1.4] text-ink-deep md:text-[40px] lg:-mx-16 lg:whitespace-nowrap">
           Sortir des cases pour avancer <span className="text-turquoise">à TA façon</span>
         </h2>
 
