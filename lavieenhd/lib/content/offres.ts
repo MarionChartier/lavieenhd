@@ -34,11 +34,23 @@ export interface Offre {
   imgUrl: string;
   /** Path vers logo dans /public/assets (null si pas de logo dédié) */
   logoSrc: string | null;
+  /** Logo recadré sur son contenu, qui remplace le titre sur /mes-offres */
+  logoTitre?: { src: string; width: number; height: number };
   /**
    * Mockup tiré de la page de vente, affiché dans la vue d'ensemble de
    * /mes-offres. `detoure` : fond transparent, pas de fondu sur les bords.
    */
-  visuel?: { src: string; width: number; height: number; alt: string; detoure?: boolean };
+  visuel?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    detoure?: boolean;
+    /** Petite image posée dans le coin bas droit du visuel (ex. la Boussole de REVEAL) */
+    incrustation?: { src: string; width: number; height: number; alt: string };
+    /** Seconde image affichée sous le visuel (ex. les 6 Guides papier) */
+    complement?: { src: string; width: number; height: number; alt: string };
+  };
   /** Couleur du fond de la zone sous-marque */
   color: OffreColor;
   /** Lien externe vers l'écosystème systeme.io */
@@ -125,12 +137,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-blooming.png",
+    logoTitre: { src: "/assets/logos-titres/blooming.webp", width: 491, height: 448 },
     visuel: {
-      src: "/assets/blooming/fleur-emilie.webp",
-      width: 1378,
-      height: 1378,
-      alt: "Une Fleur de Talents Innés et ses 5 pôles",
-      detoure: true,
+      src: "/assets/blooming/fleur-tablette-pages.webp",
+      width: 1122,
+      height: 1402,
+      alt: "La Fleur de Talents Innés sur une tablette, entourée de pages du document personnalisé",
     },
     color: "turquoise",
     signature: true,
@@ -142,6 +154,8 @@ export const OFFRES: Offre[] = [
     slug: "reconnect",
     name: "RECONNECT",
     subtitle: "Ton Parcours Guidé de Transformation Professionnelle",
+    // Seule ligne gardée sous le logo sur /mes-offres (le sous-titre n'y est plus affiché).
+    subtitleNote: "Ton Parcours Guidé de Transformation Professionnelle",
     tag: "Incarner",
     shortDescription:
       "3 mois d'Accompagnement pour réaligner ta vie professionnelle à tes aspirations de cœur, et oser prendre ta place. Inclus : INSIDE, BLOOMING, questionnaires et tests, coachings, soins énergétiques, EFT, méditations guidées.",
@@ -165,6 +179,7 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-reconnect.png",
+    logoTitre: { src: "/assets/logos-titres/reconnect.webp", width: 484, height: 314 },
     visuel: {
       src: "/assets/reconnect/questionnaire-favori.webp",
       width: 1122,
@@ -207,11 +222,18 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-reveal.png",
+    logoTitre: { src: "/assets/logos-titres/reveal.webp", width: 436, height: 406 },
     visuel: {
-      src: "/assets/reveal/boussole-tablette.webp",
+      src: "/assets/reveal/coaching.webp",
       width: 1122,
       height: 1402,
-      alt: "La Boussole, le compte-rendu personnalisé de REVEAL, sur une tablette",
+      alt: "Une séance de coaching REVEAL en visio",
+      incrustation: {
+        src: "/assets/reveal/boussole-tablette.webp",
+        width: 1122,
+        height: 1402,
+        alt: "La Boussole, le compte-rendu personnalisé de REVEAL, sur une tablette",
+      },
     },
     color: "violet",
     href: EXTERNAL.offre.reveal,
@@ -275,11 +297,18 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-place.png",
+    logoTitre: { src: "/assets/logos-titres/place-to-be-sans-halo.webp", width: 492, height: 249 },
     visuel: {
       src: "/assets/place-to-be/guide-tablette.webp",
       width: 1448,
       height: 1086,
       alt: "Le Guide d’Exploration de ton Environnement HD sur une tablette",
+      complement: {
+        src: "/assets/place-to-be/guides-papier.webp",
+        width: 1448,
+        height: 1086,
+        alt: "Les 6 Guides d’Exploration de ton Environnement HD",
+      },
     },
     color: "violet",
     href: EXTERNAL.offre.thePlaceToBe,
@@ -318,11 +347,18 @@ export const OFFRES: Offre[] = [
     price: "22 €",
     imgUrl: "/assets/body-bloom/guide-tablette.webp",
     logoSrc: "/assets/logo-bodybloom.webp",
+    logoTitre: { src: "/assets/logos-titres/body-bloom.webp", width: 406, height: 240 },
     visuel: {
       src: "/assets/body-bloom/guide-tablette.webp",
       width: 1254,
       height: 1254,
       alt: "Le Guide d’Initiation à ton Intelligence Digestive sur une tablette",
+      complement: {
+        src: "/assets/body-bloom/guides-papier.webp",
+        width: 1254,
+        height: 1254,
+        alt: "Les 6 Guides d’Initiation à ton Intelligence Digestive",
+      },
     },
     color: "turquoise",
     href: EXTERNAL.offre.bodyBloom,
@@ -362,11 +398,12 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-inside.png",
+    logoTitre: { src: "/assets/logos-titres/inside-sans-halo.webp", width: 354, height: 213 },
     visuel: {
-      src: "/assets/inside/guide-tablette.webp",
+      src: "/assets/inside/coaching.webp",
       width: 1122,
       height: 1402,
-      alt: "Le Guide d’Immersion dans ton Design Unique sur une tablette",
+      alt: "Le Guide d’Immersion dans ton Design Unique sur une tablette, pendant une séance de coaching en visio",
     },
     color: "turquoise",
     href: EXTERNAL.offre.insideClub,

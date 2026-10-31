@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PORTE_SECTIONS } from "@/lib/content/mes-offres";
-import { QUIZZES, type QuizAccent } from "@/lib/content/quizzes";
+import type { QuizAccent } from "@/lib/content/quizzes";
 
 export const metadata: Metadata = {
   title: "Quiz gratuits · La vie en HD",
@@ -31,10 +31,14 @@ const ACCENT: Record<
   },
 };
 
-/** Mêmes textes et même ordre que les 3 portes de /mes-offres ; le lien ouvre directement la question 1. */
-const CARDS = PORTE_SECTIONS.map(({ quiz }) => ({
+/**
+ * Mêmes textes et même ordre que les 3 portes de /mes-offres ; le lien ouvre directement la question 1.
+ * Couleur selon la position et non selon le quiz : l'alternance violet/turquoise/violet tient
+ * quel que soit l'ordre des portes.
+ */
+const CARDS = PORTE_SECTIONS.map(({ quiz }, i) => ({
   ...quiz,
-  accent: QUIZZES.find((q) => quiz.href.startsWith(q.href))!.accent,
+  accent: (i % 2 === 0 ? "violet" : "turquoise") as QuizAccent,
 }));
 
 export default function QuizPage() {
@@ -52,8 +56,8 @@ export default function QuizPage() {
 
       {/* CARTES QUIZ */}
       <section className="bg-white px-6 pb-24 md:px-20 md:pb-32">
-        {/* Chaque carte occupe 5 lignes en subgrid : méta, titre, question, description
-            et bouton s'alignent d'une carte à l'autre sur une même rangée. */}
+        {/* Contenu centré verticalement dans chaque carte (demande de Marion) : chaque
+            carte s'équilibre seule, sans s'aligner ligne à ligne sur sa voisine. */}
         <div className="mx-auto grid max-w-[980px] gap-6 md:grid-cols-2 md:gap-8">
           {CARDS.map((quiz) => {
             const a = ACCENT[quiz.accent];
@@ -63,7 +67,7 @@ export default function QuizPage() {
                 href={quiz.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative row-span-5 grid grid-rows-subgrid justify-items-center gap-y-0 overflow-hidden md:odd:last:col-span-2 md:odd:last:w-[calc(50%-1rem)] md:odd:last:justify-self-center rounded-[28px] border text-center ${a.border} ${a.card} p-9 shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_64px_-28px_rgba(80,60,98,0.32)] md:p-11`}
+                className={`group relative flex flex-col items-center overflow-hidden md:odd:last:col-span-2 md:odd:last:w-[calc(50%-1rem)] md:odd:last:justify-self-center rounded-[28px] border text-center ${a.border} ${a.card} p-9 shadow-[0_18px_44px_-26px_rgba(80,60,98,0.28)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_64px_-28px_rgba(80,60,98,0.32)] md:p-11`}
               >
                 {/* Couche de masque dédiée : clip-path arrondi qui rogne proprement
                     le blob flouté/animé (l'overflow-hidden du parent le laisse fuir
@@ -77,28 +81,33 @@ export default function QuizPage() {
                   />
                 </span>
 
-                {/* Méta en haut à gauche, sans pastille */}
+                {/* Textes centrés dans la hauteur libre, bouton en bas : chaque carte
+                    reste équilibrée et les boutons d'une même rangée s'alignent. */}
+                <div className="relative flex flex-1 flex-col items-center justify-center">
+                  {/* Méta en haut à gauche, sans pastille */}
+                  <span
+                    className={`relative font-body text-[11px] uppercase tracking-[0.2em] ${a.meta}`}
+                  >
+                    {quiz.meta}
+                  </span>
+
+                  <h2 className="relative mt-5 pt-4 font-script text-[26px] leading-[2.05] text-ink-deep md:pt-6 md:text-[31px] md:leading-[1.95]">
+                    {quiz.title}
+                  </h2>
+
+                  <p className={`relative mt-5 text-center font-display text-[17px] italic leading-snug md:text-[19px] ${a.desc}`}>
+                    {quiz.question}
+                  </p>
+
+                  {quiz.description && (
+                    <p className="relative mt-3 max-w-[340px] text-center font-body text-[13px] leading-relaxed text-ink-soft md:text-[14px]">
+                      {quiz.description}
+                    </p>
+                  )}
+                </div>
+
                 <span
-                  className={`relative font-body text-[11px] uppercase tracking-[0.2em] ${a.meta}`}
-                >
-                  {quiz.meta}
-                </span>
-
-                <h2 className="relative mt-5 pt-4 font-script text-[26px] leading-[2.05] text-ink-deep md:pt-6 md:text-[31px] md:leading-[1.95]">
-                  {quiz.title}
-                </h2>
-
-                <p className={`relative mt-5 text-center font-display text-[17px] italic leading-snug md:text-[19px] ${a.desc}`}>
-                  {quiz.question}
-                </p>
-
-                {/* Toujours rendu, même vide, pour garder la ligne de la subgrid. */}
-                <p className="relative mt-3 max-w-[340px] text-center font-body text-[13px] leading-relaxed text-ink-soft md:text-[14px]">
-                  {quiz.description}
-                </p>
-
-                <span
-                  className={`relative mt-7 inline-flex w-fit items-center justify-center self-end rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
+                  className={`relative mt-7 inline-flex w-fit items-center justify-center rounded-full px-7 pt-[15px] pb-[13px] font-body text-[12px] uppercase tracking-[0.2em] transition-colors ${a.cta}`}
                 >
                   {quiz.cta} <span aria-hidden className="ml-2">→</span>
                 </span>

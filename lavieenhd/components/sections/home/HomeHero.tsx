@@ -62,8 +62,10 @@ export function HomeHero() {
     <section
       className={`relative overflow-clip px-6 pt-10 md:px-20 md:pt-12 ${
         // Avec un schéma en pleine largeur, la section grandit énormément et le
-        // padding bas devient un grand vide avant la section suivante.
-        desktop && hasResult ? "pb-0" : "pb-16 md:pb-24"
+        // padding bas devient un grand vide avant la section suivante. En
+        // desktop, la carte du calculateur a déjà sa marge interne sous le
+        // bouton : le padding bas complet s'y ajoutait en un grand blanc.
+        desktop && hasResult ? "pb-0" : "pb-16 md:pb-24 lg:pb-8"
       }`}
     >
       {/* Halos flous — profondeur ambiante */}
