@@ -55,7 +55,7 @@ export const EXTERNAL = {
    */
   commande: {
     soinEnergetique: `${LEGACY_ROOT}/commande-soinenergetique`,
-    insideClub: `${LEGACY_ROOT}/commande-guide_design-guidee`,
+    insideClub: `${LEGACY_ROOT}/commande-inside`,
     reveal: `${LEGACY_ROOT}/commande-seance-clarte`,
     fleurDeTalents: `${LEGACY_ROOT}/commande-blooming`,
   },
