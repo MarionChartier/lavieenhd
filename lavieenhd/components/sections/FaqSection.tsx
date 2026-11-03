@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { ancrerPendant } from "@/lib/ancrage";
 
 export type FaqItem = {
   q: string;
@@ -60,7 +61,12 @@ export function FaqSection({
                 )}
                 <button
                   type="button"
-                  onClick={() => setOpen(isOpen ? null : i)}
+                  onClick={(e) => {
+                    // La réponse ouverte au-dessus se replie : sans ancrage, la
+                    // question cliquée remonterait hors de l'écran.
+                    ancrerPendant(e.currentTarget, 320);
+                    setOpen(isOpen ? null : i);
+                  }}
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-6 py-5 text-left"
                 >
