@@ -193,6 +193,18 @@ export function Testimonials() {
         aria-hidden
         className="pointer-events-none absolute top-0 left-[68%] hidden h-auto w-[820px] -translate-x-1/2 opacity-20 mask-t-from-88% mask-r-from-85% mask-b-from-25% mix-blend-multiply lg:block"
       />
+      {/* Mobile et tablette : le même sourire, centré derrière le titre (la
+          bouche est à 72 % de la largeur de l'image). */}
+      <Image
+        src="/assets/marion-sourire.webp"
+        alt=""
+        width={1498}
+        height={1050}
+        priority={false}
+        aria-hidden
+        sizes="600px"
+        className="pointer-events-none absolute top-0 left-1/2 h-auto w-[600px] max-w-none -translate-x-[72%] opacity-20 mask-b-from-30% mix-blend-multiply lg:hidden"
+      />
 
       <div className="relative z-10 mx-auto max-w-(--container-content)">
         {/* En desktop, titre sur une ligne et calé à gauche : centré, il passerait

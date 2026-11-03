@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 
 const EMAIL = "hello@marionchartier-lavieenhd.com";
 
+/** Formulaire type annexé aux CGV (article 8.6), fourni par Marion. */
+const FORMULAIRE_RETRACTATION_PDF = "/documents/formulaire-retractation.pdf";
+
 const linkClass = "underline underline-offset-2 transition-colors hover:text-turquoise";
 const textClass =
   "font-sans text-[15px] font-normal leading-relaxed text-ink-deep md:text-[16px]";
@@ -715,6 +718,19 @@ export default function CgvPage() {
             </P>
             <P>
               {"Le client peut saisir le médiateur dans les conditions prévues par la réglementation applicable."}
+            </P>
+          </Article>
+
+          <Article id="annexe" title="Annexe : Modèle de formulaire de rétractation">
+            <P>
+              <a
+                href={FORMULAIRE_RETRACTATION_PDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Consulter et télécharger le formulaire type de rétractation (PDF)
+              </a>
             </P>
           </Article>
         </div>

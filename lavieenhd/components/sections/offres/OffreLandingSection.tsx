@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 import Image from "next/image";
 import type { Offre, OffreColor } from "@/lib/content/offres";
 import { OffreVisuel } from "@/components/sections/offres/OffreVisuals";
@@ -58,6 +58,15 @@ export function OffreLandingSection({
   const bulletColor = BULLET_COLOR[offre.color];
   const isReversed = index % 2 === 1;
   const isSoin = offre.slug === "soin-energetique";
+  // Sur mobile, le visuel passe dans le texte (avant les puces), sauf pour le
+  // Soin où il reste en tête (demande de Marion).
+  const visuelDansTexte = !isSoin && offre.visuel !== undefined;
+  const avantParagraphe = offre.visuel?.avantParagrapheMobile;
+  const visuelMobile = (
+    <div className="mt-8 flex justify-center lg:hidden">
+      <OffreVisuel offre={offre} />
+    </div>
+  );
   // Lien externe systeme.io → nouvel onglet ; pages de vente internes → même onglet
   const externalProps = (url: string) =>
     url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {};
@@ -111,7 +120,9 @@ export function OffreLandingSection({
             }`}
           >
             {/* Mockup de l'offre */}
-            <div className="flex items-center justify-center">
+            <div
+              className={`flex items-center justify-center ${visuelDansTexte ? "max-lg:hidden" : ""}`}
+            >
               <OffreVisuel offre={offre} />
             </div>
 
@@ -161,13 +172,15 @@ export function OffreLandingSection({
               </p>
 
               {offre.briefDescription.split("\n\n").map((para, i) => (
-                <p
-                  key={i}
-                  className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]"
-                >
-                  {avecItaliques(para)}
-                </p>
+                <Fragment key={i}>
+                  {visuelDansTexte && avantParagraphe === i && visuelMobile}
+                  <p className="mt-5 max-w-[480px] font-sans text-[14px] font-normal leading-relaxed text-ink-deep md:text-[15px]">
+                    {avecItaliques(para)}
+                  </p>
+                </Fragment>
               ))}
+
+              {visuelDansTexte && avantParagraphe === undefined && visuelMobile}
 
               {offre.briefBullets.length > 0 && (
                 <ul className="mt-6 flex flex-col gap-3">

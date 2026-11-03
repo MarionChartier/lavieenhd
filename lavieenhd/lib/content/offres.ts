@@ -50,6 +50,12 @@ export interface Offre {
     incrustation?: { src: string; width: number; height: number; alt: string };
     /** Seconde image affichée sous le visuel (ex. les 6 Guides papier) */
     complement?: { src: string; width: number; height: number; alt: string };
+    /**
+     * Sur mobile, le visuel se place dans le texte, avant les puces (demande de
+     * Marion). Pour une offre sans puces, indice du paragraphe de
+     * `briefDescription` devant lequel le placer.
+     */
+    avantParagrapheMobile?: number;
   };
   /** Couleur du fond de la zone sous-marque */
   color: OffreColor;
@@ -139,10 +145,16 @@ export const OFFRES: Offre[] = [
     logoSrc: "/assets/logo-blooming.png",
     logoTitre: { src: "/assets/logos-titres/blooming.webp", width: 491, height: 448 },
     visuel: {
-      src: "/assets/blooming/fleur-tablette-pages.webp",
-      width: 1122,
-      height: 1402,
-      alt: "La Fleur de Talents Innés sur une tablette, entourée de pages du document personnalisé",
+      src: "/assets/blooming/coaching.webp",
+      width: 1448,
+      height: 1086,
+      alt: "Un coaching Blooming en visio, la Fleur de Talents Innés partagée à l'écran",
+      incrustation: {
+        src: "/assets/blooming/fleur-tablette.webp",
+        width: 1122,
+        height: 1402,
+        alt: "La Fleur de Talents Innés sur une tablette, entourée de pages du document personnalisé",
+      },
     },
     color: "turquoise",
     signature: true,
@@ -185,6 +197,8 @@ export const OFFRES: Offre[] = [
       width: 1122,
       height: 1402,
       alt: "Le parcours RECONNECT ouvert sur un ordinateur portable",
+      // Avant « Et parce que chacun avance à sa façon… »
+      avantParagrapheMobile: 4,
     },
     color: "violet",
     href: EXTERNAL.offre.reconnect,

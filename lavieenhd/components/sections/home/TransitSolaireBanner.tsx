@@ -276,21 +276,29 @@ function Wordmark({
 }
 
 /**
- * Point d'interrogation cerclé — tooltip au survol et au focus clavier.
+ * Point d'interrogation cerclé — tooltip au survol, au focus clavier et au
+ * toucher (mobile : pas de survol, et iOS ne donne pas le focus au bouton).
  * Le panneau s'aligne sur le bord droit du bouton (coin de card oblige).
  */
 function InfoTooltip({ id, texte }: { id: string; texte: string }) {
+  const [ouvert, setOuvert] = useState(false);
+
   return (
     <button
       type="button"
       aria-describedby={id}
+      aria-expanded={ouvert}
+      onClick={() => setOuvert((o) => !o)}
+      onBlur={() => setOuvert(false)}
       className="group relative grid h-6 w-6 flex-none cursor-help place-items-center rounded-full border border-ink-deep/40 font-body text-[13px] text-ink-deep/70 transition-colors hover:border-turquoise hover:text-turquoise focus-visible:border-turquoise focus-visible:text-turquoise focus-visible:outline-none"
     >
       <span className="inline-block translate-y-[3px] leading-none">?</span>
       <span
         role="tooltip"
         id={id}
-        className="pointer-events-none invisible absolute top-8 right-0 z-20 w-[290px] rounded-md border border-ink/10 bg-white px-4 py-3 text-left font-sans text-[13px] font-normal not-italic leading-relaxed normal-case tracking-normal text-ink shadow-[0_18px_40px_-18px_rgba(80,60,98,0.45)] opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 md:w-[340px]"
+        className={`pointer-events-none absolute top-8 right-0 z-20 w-[290px] rounded-md border border-ink/10 bg-white px-4 py-3 text-left font-sans text-[13px] font-normal not-italic leading-relaxed normal-case tracking-normal text-ink shadow-[0_18px_40px_-18px_rgba(80,60,98,0.45)] transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 md:w-[340px] ${
+          ouvert ? "visible opacity-100" : "invisible opacity-0"
+        }`}
       >
         {texte}
       </span>

@@ -689,7 +689,10 @@ export default function QuiJeSuisPage() {
         <div className="mx-auto max-w-(--container-content)">
           <div className="rounded-2xl border border-ink-deep/8 bg-paper px-5 py-10 text-center shadow-[0_20px_50px_-20px_rgba(80,60,98,0.18)] md:px-12 md:py-14">
             <h2 className="font-display text-[34px] font-light leading-tight text-ink-deep md:text-[56px]">
-              Et maintenant, <em className="italic text-turquoise">à toi</em>.&nbsp;✨
+              Et maintenant,{" "}
+              <span className="whitespace-nowrap">
+                <em className="italic text-turquoise">à toi</em>.&nbsp;✨
+              </span>
             </h2>
             <div className="mx-auto mt-6 flex max-w-[860px] flex-col gap-4 font-display text-[18px] font-light leading-relaxed text-ink-deep md:text-[21px]">
               <p>

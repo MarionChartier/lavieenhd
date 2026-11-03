@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ancrerPendant } from "@/lib/ancrage";
 import { PORTES, type Porte, type PorteOffre, type PorteTon } from "@/lib/content/portes";
 
 /**
@@ -76,13 +77,13 @@ function PorteAccordeon({
   const racine = useRef<HTMLDivElement>(null);
 
   // À l'ouverture, on amène le haut de la porte sous la nav. Après la
-  // transition (300ms) : la porte précédente se replie au-dessus et décalerait
-  // la cible si on défilait tout de suite.
+  // transition (300ms) et l'ancrage du clic (310ms) : la porte précédente se
+  // replie au-dessus et décalerait la cible si on défilait tout de suite.
   useEffect(() => {
     if (!isOpen) return;
     const t = window.setTimeout(
       () => racine.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-      320,
+      360,
     );
     return () => window.clearTimeout(t);
   }, [isOpen]);
@@ -94,7 +95,12 @@ function PorteAccordeon({
     >
       <button
         type="button"
-        onClick={onToggle}
+        onClick={(e) => {
+          // La porte ouverte au-dessus se replie pendant 300ms : on garde celle-ci
+          // en place jusqu'au défilement final de l'effet ci-dessus.
+          ancrerPendant(e.currentTarget, 310);
+          onToggle();
+        }}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className="grid w-full grid-cols-[1fr_auto] items-center gap-x-3 gap-y-4 px-5 py-6 text-left md:grid-cols-[90px_1fr_54px] md:gap-6 md:px-8 md:py-7"
