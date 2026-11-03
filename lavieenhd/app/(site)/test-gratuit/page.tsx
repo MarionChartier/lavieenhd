@@ -50,8 +50,9 @@ export default function TestGratuitPage() {
         </p>
       </section>
 
-      {/* SÉPARATEUR fin avant le calculateur */}
-      <div className="bg-white px-6 md:px-20">
+      {/* SÉPARATEUR fin avant le calculateur. Absent sur mobile : la carte du
+          calculateur y passe en pleine largeur avec sa propre bordure haute. */}
+      <div className="bg-white px-6 max-md:hidden md:px-20">
         <div className="mx-auto max-w-(--container-content)">
           <div className="border-t border-ink-deep/10" />
         </div>

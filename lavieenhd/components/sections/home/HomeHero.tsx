@@ -26,7 +26,7 @@ export function HomeHero() {
       {/* En colonne (lg+), la taille suit la largeur pour que « Human Design, »
           tienne sur une ligne, comme dans l'ancien hero. */}
       <h1 className="font-script text-[34px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[56px] lg:text-[clamp(33px,4.4vw_-_11.5px,44px)]">
-        Ton <span className="not-italic text-turquoise">Human Design</span>,
+        Ton <span className="not-italic whitespace-nowrap text-turquoise">Human Design</span>,
         {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
             automatique coupe au milieu de « Human Design ». */}
         <span className="mt-2 block text-[0.82em] md:mt-3">ta boussole.</span>
