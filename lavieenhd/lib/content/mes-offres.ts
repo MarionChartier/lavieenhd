@@ -32,7 +32,7 @@ export interface PorteSection {
   offres: string[];
   /** Petite carte INSIDE renvoyant vers sa carte complète (portes 1 et 2) */
   insideComplement?: PorteComplement;
-  /** Offre complète affichée sous « En complément » (INSIDE dans la porte 3) */
+  /** Offre complète affichée en fin de porte (INSIDE dans la porte 3) */
   complementOffre?: string;
 }
 

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Fragment } from "react";
 import { OFFRES, type Offre } from "@/lib/content/offres";
 import { HERO, PORTE_SECTIONS, SOIN_TRANSITION } from "@/lib/content/mes-offres";
 import { OffreLandingSection } from "@/components/sections/offres/OffreLandingSection";
 import {
-  ComplementLabel,
   InsideComplement,
   PorteHeading,
   PortesCards,
@@ -65,14 +63,7 @@ export default function MesOffresPage() {
           <QuizPresentation quiz={section.quiz} ton={section.porte.ton} />
           {section.offres.map((slug) => carte(slug))}
           {section.insideComplement && <InsideComplement label={section.insideComplement.label} />}
-          {section.complementOffre && (
-            <Fragment>
-              <div className="bg-[linear-gradient(135deg,#f8f6fa,#edf9f9)] px-6 pt-12 pb-2 md:pt-16">
-                <ComplementLabel>En complément</ComplementLabel>
-              </div>
-              {carte(section.complementOffre)}
-            </Fragment>
-          )}
+          {section.complementOffre && carte(section.complementOffre)}
         </section>
       ))}
 

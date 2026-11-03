@@ -55,7 +55,8 @@ export function OffreVisuel({ offre }: { offre: Offre }) {
   if (!complement) return principal;
 
   return (
-    <div className="flex w-full max-w-[520px] flex-col items-center gap-6">
+    // Mobile : images rapprochées, leurs bords fondus laissaient un grand vide.
+    <div className="flex w-full max-w-[520px] flex-col items-center gap-6 max-lg:-space-y-10 max-lg:gap-0">
       {principal}
       <Image
         src={complement.src}
