@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { ancrerPendant } from "@/lib/ancrage";
 import { PORTES, type Porte, type PorteOffre, type PorteTon } from "@/lib/content/portes";
 
@@ -74,30 +74,14 @@ function PorteAccordeon({
 }) {
   const ton = TONS[porte.ton];
   const panelId = `porte-${porte.num}`;
-  const racine = useRef<HTMLDivElement>(null);
-
-  // À l'ouverture, on amène le haut de la porte sous la nav. Après la
-  // transition (300ms) et l'ancrage du clic (310ms) : la porte précédente se
-  // replie au-dessus et décalerait la cible si on défilait tout de suite.
-  useEffect(() => {
-    if (!isOpen) return;
-    const t = window.setTimeout(
-      () => racine.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-      360,
-    );
-    return () => window.clearTimeout(t);
-  }, [isOpen]);
 
   return (
-    <div
-      ref={racine}
-      className={`scroll-mt-32 overflow-hidden rounded-[28px] border-[1.5px] ${ton.surface}`}
-    >
+    <div className={`overflow-hidden rounded-[28px] border-[1.5px] ${ton.surface}`}>
       <button
         type="button"
         onClick={(e) => {
-          // La porte ouverte au-dessus se replie pendant 300ms : on garde celle-ci
-          // en place jusqu'au défilement final de l'effet ci-dessus.
+          // La porte ouverte au-dessus se replie pendant 300ms : on garde le
+          // chevron cliqué sous le doigt, sans remonter en haut de la porte.
           ancrerPendant(e.currentTarget, 310);
           onToggle();
         }}
