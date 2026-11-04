@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee.png";
+const PHOTO_MARION_LIVING = "/assets/marion-multipassionnee-recadree.png";
 
 const PILLS = [
   "Manifesting Generator 2/4",
@@ -36,7 +36,7 @@ export function AboutTeaser() {
               alt="Marion Chartier"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-[50%_22%]"
+              className="object-cover object-[50%_18%]"
             />
           </div>
           {/* HD Card — sous la photo en mobile (pas de superposition), flottante dès md */}

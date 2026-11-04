@@ -412,7 +412,7 @@ export const OFFRES: Offre[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80&auto=format&fit=crop",
     logoSrc: "/assets/logo-inside.png",
-    logoTitre: { src: "/assets/logos-titres/inside-sans-halo.webp", width: 354, height: 213 },
+    logoTitre: { src: "/assets/logos-titres/inside-sans-arc.webp", width: 384, height: 255 },
     visuel: {
       src: "/assets/inside/coaching.webp",
       width: 1122,
