@@ -23,9 +23,9 @@ export function HomeHero() {
 
   const texte = (
     <div className="mx-auto max-w-[760px] pt-6 text-center lg:mx-0 lg:max-w-none lg:pt-16 lg:text-left">
-      {/* En colonne (lg+), la taille suit la largeur pour que « Human Design, »
-          tienne sur une ligne, comme dans l'ancien hero. */}
-      <h1 className="font-script text-[34px] font-normal leading-[1.35] text-balance text-ink-deep md:text-[56px] lg:text-[clamp(33px,4.4vw_-_11.5px,44px)]">
+      {/* En colonne (lg+) comme sur petit mobile, la taille suit la largeur pour
+          que « Ton Human Design, » tienne sur une ligne. */}
+      <h1 className="font-script text-[min(34px,calc((100vw_-_48px)/9.7))] font-normal leading-[1.35] text-balance text-ink-deep md:text-[56px] lg:text-[clamp(33px,4.4vw_-_11.5px,44px)]">
         Ton <span className="not-italic whitespace-nowrap text-turquoise">Human Design</span>,
         {/* Seconde ligne fixe et un cran plus petite : sans ça, l'équilibrage
             automatique coupe au milieu de « Human Design ». */}

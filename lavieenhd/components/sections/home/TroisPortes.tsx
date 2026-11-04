@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
-import { ancrerPendant } from "@/lib/ancrage";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { PORTES, type Porte, type PorteOffre, type PorteTon } from "@/lib/content/portes";
 
 /**
@@ -29,12 +28,11 @@ const TONS: Record<PorteTon, { surface: string; num: string; chev: string }> = {
 };
 
 /**
- * Les 3 portes d'entrée de l'accueil, en accordéon : une seule porte ouverte à
- * la fois. L'ancre #portes est utilisée par la FAQ (« Par où je commence ? »).
+ * Les 3 portes d'entrée de l'accueil, en accordéon : chacune s'ouvre et se ferme
+ * indépendamment des autres (demande de Marion). L'ancre #portes est utilisée
+ * par la FAQ (« Par où je commence ? »).
  */
 export function TroisPortes() {
-  const [open, setOpen] = useState<number | null>(null);
-
   return (
     <section id="portes" className="scroll-mt-24 bg-paper px-6 py-20 md:px-20 md:py-28">
       <div className="mx-auto max-w-(--container-content)">
@@ -49,13 +47,8 @@ export function TroisPortes() {
         </div>
 
         <div className="flex flex-col gap-4">
-          {PORTES.map((porte, i) => (
-            <PorteAccordeon
-              key={porte.num}
-              porte={porte}
-              isOpen={open === i}
-              onToggle={() => setOpen(open === i ? null : i)}
-            />
+          {PORTES.map((porte) => (
+            <PorteAccordeon key={porte.num} porte={porte} />
           ))}
         </div>
       </div>
@@ -63,28 +56,22 @@ export function TroisPortes() {
   );
 }
 
-function PorteAccordeon({
-  porte,
-  isOpen,
-  onToggle,
-}: {
-  porte: Porte;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
+function PorteAccordeon({ porte }: { porte: Porte }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const panneau = useRef<HTMLDivElement>(null);
   const ton = TONS[porte.ton];
   const panelId = `porte-${porte.num}`;
+
+  // À l'ouverture, on amène le début du menu déroulant sous la nav.
+  useEffect(() => {
+    if (isOpen) panneau.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [isOpen]);
 
   return (
     <div className={`overflow-hidden rounded-[28px] border-[1.5px] ${ton.surface}`}>
       <button
         type="button"
-        onClick={(e) => {
-          // La porte ouverte au-dessus se replie pendant 300ms : on garde le
-          // chevron cliqué sous le doigt, sans remonter en haut de la porte.
-          ancrerPendant(e.currentTarget, 310);
-          onToggle();
-        }}
+        onClick={() => setIsOpen((v) => !v)}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className="grid w-full grid-cols-[1fr_auto] items-center gap-x-3 gap-y-4 px-5 py-6 text-left md:grid-cols-[90px_1fr_54px] md:gap-6 md:px-8 md:py-7"
@@ -134,7 +121,8 @@ function PorteAccordeon({
 
       <div
         id={panelId}
-        className={`grid transition-all duration-300 ease-out ${
+        ref={panneau}
+        className={`grid scroll-mt-28 md:scroll-mt-32 transition-all duration-300 ease-out ${
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
