@@ -2,7 +2,7 @@
  *  Hors du bandeau sticky : il défile avec la page et ne reste pas à l'écran.
  *  À retirer de app/(site)/layout.tsx à la fin de l'offre. */
 const PROMO_CODE = "TADAAA";
-const PROMO_END = "19/11/2026";
+const PROMO_END = "20/11/2026 à 23h59";
 
 export function PromoBanner() {
   return (
@@ -11,7 +11,7 @@ export function PromoBanner() {
       <span className="font-bold tracking-[0.18em] text-ink-deep">{PROMO_CODE}</span>{" "}
       <span className="whitespace-nowrap">(hors RECONNECT)</span> jusqu&apos;au{" "}
       <span className="whitespace-nowrap">
-        {PROMO_END} minuit. <span aria-hidden className="text-turquoise">✦</span>
+        {PROMO_END}. <span aria-hidden className="text-turquoise">✦</span>
       </span>
     </p>
   );
