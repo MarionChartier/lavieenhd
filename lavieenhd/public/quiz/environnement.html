@@ -222,6 +222,9 @@
     cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
   }
   .btn-retry:hover { border-color: var(--violet); background: rgba(118,100,136,0.04); }
+  .explore-site { border-top: 1px solid rgba(118,100,136,0.15); margin-top: 1.8rem; padding-top: 1.5rem; text-align: center; }
+  .explore-site a { color: var(--violet); text-decoration: underline; text-underline-offset: 3px; font-size: 1rem; line-height: 1.6; }
+  .explore-site a:hover { opacity: 0.8; }
 
   .screen { display: none; animation: fadeIn 0.45s ease; }
   .screen.active { display: block; }
@@ -826,6 +829,7 @@ function showResult() {
 
 
     <button class="btn-retry" onclick="retryQuiz()">Recommencer le quiz</button>
+    <p class="explore-site"><a href="/" target="_top">✨ Je poursuis mon exploration sur le site</a></p>
   `
   el.classList.add('active');
   el.scrollIntoView({ behavior: 'smooth', block: 'start' });
