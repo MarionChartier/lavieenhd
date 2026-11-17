@@ -13,7 +13,7 @@ export default function ConfidentialitePage() {
   return (
     <LegalShell
       title="Politique de confidentialité"
-      updatedAt="Dernière mise à jour : 13 octobre 2026"
+      updatedAt="Dernière mise à jour : 17 novembre 2026"
       sections={[
         {
           heading: "1. Responsable du traitement",
@@ -145,6 +145,7 @@ export default function ConfidentialitePage() {
             "Le site La vie en HD peut utiliser des cookies et autres traceurs nécessaires à son fonctionnement, ainsi que des outils permettant de mesurer son audience et d'améliorer l'expérience des visiteurs.",
             "Les cookies strictement nécessaires au fonctionnement du site peuvent être utilisés sans consentement préalable, conformément à la réglementation applicable.",
             "Les cookies et traceurs non essentiels, notamment ceux utilisés à des fins de mesure d'audience non exemptée ou de publicité, ne sont déposés qu'après avoir recueilli le consentement du visiteur.",
+            "Le site utilise Vercel Web Analytics, l'outil de mesure d'audience de son hébergeur Vercel Inc. Cet outil ne dépose aucun cookie et ne lit ni n'écrit aucune information sur l'appareil du visiteur. Il produit uniquement des statistiques agrégées (pages consultées, site de provenance, pays, type d'appareil et de navigateur), sans identifier les personnes : un visiteur est reconnu par une empreinte anonymisée, calculée à partir de la requête et renouvelée chaque jour. Ces statistiques sont conservées un mois au plus.",
             "Lorsque ce consentement est requis, le visiteur peut accepter ou refuser les cookies concernés et modifier son choix à tout moment grâce au dispositif de gestion des cookies mis à sa disposition sur le site.",
             "Pour davantage d'informations sur les cookies utilisés, leurs finalités et leurs durées de conservation, le visiteur peut consulter les informations fournies par le dispositif de gestion des cookies du site.",
           ],
