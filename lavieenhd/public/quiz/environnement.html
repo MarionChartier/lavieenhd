@@ -694,6 +694,7 @@ function nextQuestion() {
     if (topKeys.length > 1) {
       // Tie - show tiebreak
       document.getElementById('screen-tiebreak').classList.add('active');
+      if (window.lvehTrack) lvehTrack('quiz_tiebreak_shown');
     } else {
       winner = topKeys[0];
       document.getElementById('screen-capture').classList.add('active');
@@ -806,7 +807,7 @@ function showResult() {
   el.innerHTML = `
     <img class="quiz-logo" src="${logoSrc}" alt="La vie en HD">
     <span class="result-pill" style="background: rgba(190,164,216,0.12); color: var(--violet-pale)">${r.pill}</span>
-    <p class="result-context">D'après tes réponses${greeting ? `<strong>${greeting}</strong>` : ''}, voici l'environnement qui semble le plus résonner avec toi aujourd'hui...</p>
+    <p class="result-context">D'après tes réponses${greeting ? `<strong data-clarity-mask="true">${greeting}</strong>` : ''}, voici l'environnement qui semble le plus résonner avec toi aujourd'hui...</p>
     <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin:1rem 0 0.6rem">${r.icon} ${r.subtitle}</p>
     <p class="result-poem">${r.poem}</p>
     <p class="result-body">${r.body}</p>

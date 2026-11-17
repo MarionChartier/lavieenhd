@@ -961,7 +961,7 @@ function showResultQ1() {
   const el = document.getElementById('screen-result');
   el.innerHTML = `
     <p style="font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);font-weight:700;margin-bottom:0.55rem">🧭 TON RÉSULTAT EST PRÊT!</p>
-    <p style="font-size:0.92rem;color:var(--text-muted);font-style:italic;margin-bottom:1.2rem">Alors ${prenom}, où sembles-tu en être dans ta vie pro aujourd'hui? 👀</p>
+    <p style="font-size:0.92rem;color:var(--text-muted);font-style:italic;margin-bottom:1.2rem">Alors <span data-clarity-mask="true">${prenom}</span>, où sembles-tu en être dans ta vie pro aujourd'hui? 👀</p>
     <span class="result-pill" style="background: ${r.pillBg}; color: ${r.pillColor}">${r.pill}</span>
     <h2 class="result-title">${r.title}</h2>
     <p class="result-body">${r.body}</p>
