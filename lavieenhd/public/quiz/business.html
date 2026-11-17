@@ -265,6 +265,8 @@ button{font:inherit}.btn{appearance:none;-webkit-appearance:none;border:0;border
 <!-- Vercel Web Analytics : pages vues sans cookie (le layout Next ne couvre pas ces pages statiques). -->
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<!-- Bandeau cookies, Microsoft Clarity et suivi du parcours (lvehTrack), partagés par les 3 quiz. -->
+<script defer src="/quiz/consent.js"></script>
 </head>
 <body><main class="wrap">
 <div class="brand-logo-wrap">
@@ -314,7 +316,7 @@ button{font:inherit}.btn{appearance:none;-webkit-appearance:none;border:0;border
 
 <section id="results" class="hidden">
 <div class="eyebrow">👑 TON BUSINESS CHECK-UP EST PRÊT!</div>
-<h2>Alors <span id="resultFirstname"></span>, qu'est-ce que ton business semble avoir à te raconter? 👀</h2>
+<h2>Alors <span id="resultFirstname" data-clarity-mask="true"></span>, qu'est-ce que ton business semble avoir à te raconter? 👀</h2>
 <p>J'ai passé tes réponses au scanner 🔎 et voici ce qui semble se dessiner dans ta façon de vivre et piloter ton business aujourd'hui.</p>
 <p class="note"><strong>Petit rappel avant de plonger dedans :</strong> ce résultat n'est évidemment pas une vérité absolue sur toi ou ton business. Il reflète simplement les tendances qui ressortent de TES réponses à ce test.</p>
 <p class="note">Prends donc ce qui résonne, questionne le reste... et utilise-le surtout comme une invitation à observer certains endroits d'un peu plus près. 💜</p>
@@ -466,6 +468,7 @@ function showChoice(zones,kind){
 }
 function finish(){
  $('experience').classList.add('hidden');$('capture').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});
+ if (window.lvehTrack) lvehTrack('quiz_email_shown');
  const scores={};Object.keys(META).forEach(z=>scores[z]=[]);
  Q.slice(0,12).forEach((q,n)=>scores[q[0]].push(q[2][answers[n]][1]));
  const lev={};Object.keys(scores).forEach(z=>lev[z]=level(scores[z]));
@@ -543,7 +546,7 @@ function returnToResults(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
- $('start').onclick=()=>{ $('intro').classList.add('hidden'); $('quiz').classList.remove('hidden'); render(); window.scrollTo({top:0,behavior:'smooth'}); };
+ $('start').onclick=()=>{ $('intro').classList.add('hidden'); $('quiz').classList.remove('hidden'); render(); window.scrollTo({top:0,behavior:'smooth'}); if (window.lvehTrack) lvehTrack('quiz_start'); };
  $('prev').onclick=()=>{if(i>0){i--;render();requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'auto'}))}};
 $('next').onclick=()=>{if(answers[i]===null)return;if(i<12){i++;render();requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'auto'}))}else finish()};
 
@@ -555,6 +558,7 @@ $('next').onclick=()=>{if(answers[i]===null)return;if(i<12){i++;render();request
  const firstName=$('firstname').value.trim(), email=$('email').value.trim();
  sendLeadToSystemeIo(firstName, email);
  sendResultTag(email, lastScan);
+ if (window.lvehTrack) lvehTrack('quiz_email_submitted', lastScan);
  $('resultFirstname').textContent=firstName||'';
  $('capture').classList.add('hidden');
  $('results').classList.remove('hidden');

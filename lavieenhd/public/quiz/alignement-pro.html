@@ -461,6 +461,8 @@
 <!-- Vercel Web Analytics : pages vues sans cookie (le layout Next ne couvre pas ces pages statiques). -->
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<!-- Bandeau cookies, Microsoft Clarity et suivi du parcours (lvehTrack), partagés par les 3 quiz. -->
+<script defer src="/quiz/consent.js"></script>
 </head>
 <body>
 
@@ -759,6 +761,7 @@ function startQuiz() {
   document.getElementById('screen-question').classList.add('active');
   renderQuestion();
   requestAnimationFrame(scrollQuizToTop);
+  if (window.lvehTrack) lvehTrack('quiz_start');
 }
 
 let answers = [];
@@ -827,6 +830,7 @@ function nextQuestion() {
     document.getElementById('screen-question').classList.remove('active');
     document.getElementById('screen-capture').classList.add('active');
     requestAnimationFrame(scrollQuizToTop);
+    if (window.lvehTrack) lvehTrack('quiz_email_shown');
   }
 }
 
@@ -929,6 +933,7 @@ function showResultQ1() {
   const winner = tiePriority.reduce((best, key) => scores[key] > scores[best] ? key : best, tiePriority[0]);
   const r = results[winner];
   sendResultTag(email, winner);
+  if (window.lvehTrack) lvehTrack('quiz_email_submitted', winner);
   document.getElementById('screen-question').classList.remove('active');
 
   const offerIntroHTML = r.offerIntro ? `<p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;font-weight:300;margin-bottom:1rem;font-style:italic">${r.offerIntro}</p>` : '';
@@ -956,7 +961,7 @@ function showResultQ1() {
   const el = document.getElementById('screen-result');
   el.innerHTML = `
     <p style="font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);font-weight:700;margin-bottom:0.55rem">🧭 TON RÉSULTAT EST PRÊT!</p>
-    <p style="font-size:0.92rem;color:var(--text-muted);font-style:italic;margin-bottom:1.2rem">Alors ${prenom}, où sembles-tu en être dans ta vie pro aujourd'hui? 👀</p>
+    <p style="font-size:0.92rem;color:var(--text-muted);font-style:italic;margin-bottom:1.2rem">Alors <span data-clarity-mask="true">${prenom}</span>, où sembles-tu en être dans ta vie pro aujourd'hui? 👀</p>
     <span class="result-pill" style="background: ${r.pillBg}; color: ${r.pillColor}">${r.pill}</span>
     <h2 class="result-title">${r.title}</h2>
     <p class="result-body">${r.body}</p>
