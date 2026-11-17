@@ -334,6 +334,8 @@
 <!-- Vercel Web Analytics : pages vues sans cookie (le layout Next ne couvre pas ces pages statiques). -->
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<!-- Bandeau cookies, Microsoft Clarity et suivi du parcours (lvehTrack), partagés par les 3 quiz. -->
+<script defer src="/quiz/consent.js"></script>
 </head>
 <body>
 
@@ -623,6 +625,7 @@ function startQuiz() {
   document.getElementById('screen-intro').classList.remove('active');
   document.getElementById('screen-question').classList.add('active');
   renderQuestion();
+  if (window.lvehTrack) lvehTrack('quiz_start');
 }
 
 function renderQuestion() {
@@ -694,6 +697,7 @@ function nextQuestion() {
     } else {
       winner = topKeys[0];
       document.getElementById('screen-capture').classList.add('active');
+      if (window.lvehTrack) lvehTrack('quiz_email_shown');
     }
   }
 }
@@ -793,6 +797,7 @@ function showResult() {
   document.getElementById('screen-capture').classList.remove('active');
   sendLeadToSystemeIo(prenom, email);
   sendResultTag(email, winner);
+  if (window.lvehTrack) lvehTrack('quiz_email_submitted', winner);
 
   const r = results[winner];
   const el = document.getElementById('screen-result');
@@ -856,6 +861,7 @@ function confirmTiebreak() {
   winner = tiebreakWinner;
   document.getElementById('screen-tiebreak').classList.remove('active');
   document.getElementById('screen-capture').classList.add('active');
+  if (window.lvehTrack) lvehTrack('quiz_email_shown');
 }
 
 function retryQuiz() {
