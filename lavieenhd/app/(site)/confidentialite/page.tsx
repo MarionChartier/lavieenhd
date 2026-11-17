@@ -13,7 +13,7 @@ export default function ConfidentialitePage() {
   return (
     <LegalShell
       title="Politique de confidentialité"
-      updatedAt="Dernière mise à jour : 13 octobre 2026"
+      updatedAt="Dernière mise à jour : 17 novembre 2026"
       sections={[
         {
           heading: "1. Responsable du traitement",
@@ -146,6 +146,8 @@ export default function ConfidentialitePage() {
             "Les cookies strictement nécessaires au fonctionnement du site peuvent être utilisés sans consentement préalable, conformément à la réglementation applicable.",
             "Les cookies et traceurs non essentiels, notamment ceux utilisés à des fins de mesure d'audience non exemptée ou de publicité, ne sont déposés qu'après avoir recueilli le consentement du visiteur.",
             "Lorsque ce consentement est requis, le visiteur peut accepter ou refuser les cookies concernés et modifier son choix à tout moment grâce au dispositif de gestion des cookies mis à sa disposition sur le site.",
+            "Avec son accord, le site utilise Microsoft Clarity, outil d'analyse de Microsoft Corporation, qui dépose des cookies pour mesurer l'audience et comprendre l'utilisation des pages (clics, défilement, enregistrement anonymisé des sessions de navigation). Clarity n'est chargé qu'après acceptation dans le bandeau cookies, et ce choix peut être retiré à tout moment via le lien « Gérer les cookies » en bas de page.",
+            `Le site utilise également Vercel Web Analytics, l'outil de mesure d'audience de son hébergeur Vercel Inc. Cet outil ne dépose aucun cookie ni identifiant persistant sur l'appareil du visiteur. Il produit des statistiques agrégées (pages consultées, site de provenance, pays, type d'appareil, système d'exploitation et navigateur), sans identifier les personnes : un visiteur est reconnu par une empreinte pseudonymisée et non réversible, calculée à partir de la requête et renouvelée chaque jour. Ces statistiques sont consultables pendant un mois. Le visiteur peut s'opposer à cette mesure en écrivant à ${CONTACT}.`,
             "Pour davantage d'informations sur les cookies utilisés, leurs finalités et leurs durées de conservation, le visiteur peut consulter les informations fournies par le dispositif de gestion des cookies du site.",
           ],
         },

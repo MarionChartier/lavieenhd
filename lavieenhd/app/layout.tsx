@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { Clarity } from "@/components/analytics/Clarity";
 import { CookieBanner } from "@/components/legal/CookieBanner";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
@@ -119,6 +120,8 @@ export default function RootLayout({
         {children}
         <CookieBanner />
         <Clarity />
+        {/* Vercel Web Analytics : pages vues sans cookie, chargé pour tous les visiteurs. */}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
