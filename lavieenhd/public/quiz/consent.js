@@ -138,9 +138,7 @@
     box.setAttribute("aria-label", "Consentement aux cookies");
     box.innerHTML =
       '<div class="lc-in">' +
-      "<p>Ce site utilise des cookies pour comprendre comment il est utilisé et l'améliorer. " +
-      "Tu peux les accepter ou les refuser, et modifier ton choix à tout moment. " +
-      "Aucun cookie de mesure n'est déposé sans ton accord.</p>" +
+      "<p>Gérer les cookies</p>" +
       '<div class="lc-row">' +
       '<a class="lc-link" href="/confidentialite" target="_top">Politique de confidentialité</a>' +
       '<div class="lc-btns">' +
