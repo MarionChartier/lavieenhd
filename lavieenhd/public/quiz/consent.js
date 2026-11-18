@@ -170,7 +170,9 @@
       setConsent(null);
       showBanner();
     });
-    document.body.appendChild(p);
+    // Dans le conteneur du quiz : alignement-pro et environnement ont un body en flex
+    // horizontal, où un enfant direct se placerait à droite du quiz.
+    (document.querySelector(".quiz-wrapper") || document.body).appendChild(p);
   }
 
   function init() {
