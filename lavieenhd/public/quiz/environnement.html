@@ -762,16 +762,19 @@ var QUIZ_TAG = {
   quiz: "environnement"
 };
 
-function sendResultTag(email, result) {
+/* Le prénom permet à la route de créer le contact quand le formulaire n'a pas pu
+   (navigateur intégré d'Instagram). Un échec est signalé à Clarity (quiz_signup_failed). */
+function sendResultTag(email, result, firstName) {
   if (!QUIZ_TAG.endpoint) return;
+  function failed() { if (window.lvehTrack) lvehTrack('quiz_signup_failed'); }
   try {
     fetch(QUIZ_TAG.endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ quiz: QUIZ_TAG.quiz, email: email, result: result }),
+      body: JSON.stringify({ quiz: QUIZ_TAG.quiz, email: email, firstName: firstName, result: result }),
       keepalive: true
-    }).catch(function () {});
-  } catch (e) { /* ne jamais bloquer l'affichage du résultat */ }
+    }).then(function (res) { if (!res.ok) failed(); }, failed);
+  } catch (e) { failed(); /* ne jamais bloquer l'affichage du résultat */ }
 }
 
 function showResult() {
@@ -797,7 +800,7 @@ function showResult() {
   document.getElementById('field-email').style.borderColor = '';
   document.getElementById('screen-capture').classList.remove('active');
   sendLeadToSystemeIo(prenom, email);
-  sendResultTag(email, winner);
+  sendResultTag(email, winner, prenom);
   if (window.lvehTrack) lvehTrack('quiz_email_submitted', winner);
 
   const r = results[winner];

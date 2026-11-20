@@ -7,7 +7,7 @@ import { tagsFor } from "./tags";
 
 type Deps = {
   /** null quand la clé API n'est pas configurée. */
-  client: { applyTags: (email: string, tags: string[]) => Promise<ApplyTagsOutcome> } | null;
+  client: { applyTags: (email: string, tags: string[], firstName?: string) => Promise<ApplyTagsOutcome> } | null;
   log: (message: string) => void;
 };
 
@@ -50,10 +50,10 @@ export async function handleQuizTag(request: Request, { client, log }: Deps): Pr
   }
 
   try {
-    const outcome = await client.applyTags(parsed.email, parsed.tags);
-    // 204 dans les deux cas : un 404 dirait à n'importe qui si un email est inscrit chez Marion.
-    if (outcome === "contact-not-found") {
-      log(`[quiz-tag] contact introuvable, tags non posés : ${parsed.tags.join(", ")}`);
+    const outcome = await client.applyTags(parsed.email, parsed.tags, parsed.firstName);
+    // 204 dans les deux cas : une réponse différente dirait à n'importe qui si un email est inscrit chez Marion.
+    if (outcome === "created") {
+      log(`[quiz-tag] contact créé par l'API (formulaire non reçu), tags : ${parsed.tags.join(", ")}`);
     }
     return status(204);
   } catch (error) {

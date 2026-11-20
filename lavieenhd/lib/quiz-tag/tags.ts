@@ -4,7 +4,12 @@
  * qui sort de la liste blanche ci-dessous est rejeté.
  */
 
-export type TagsResult = { ok: true; email: string; tags: string[] } | { ok: false; error: string };
+export type TagsResult =
+  | { ok: true; email: string; firstName?: string; tags: string[] }
+  | { ok: false; error: string };
+
+/** Le prénom sert à créer le contact quand le formulaire n'a pas pu le faire. */
+const FIRST_NAME_MAX_LENGTH = 100;
 
 /**
  * Préfixe des tags : les noms des tags « par quiz » de Marion. Le tag par résultat
@@ -60,11 +65,14 @@ function singleResultTags(quiz: string, result: unknown): string[] | null {
 
 export function tagsFor(payload: unknown): TagsResult {
   if (!isRecord(payload)) return { ok: false, error: "payload invalide" };
-  const { quiz, email, result } = payload;
+  const { quiz, email, firstName, result } = payload;
 
   if (typeof email !== "string" || email.length > EMAIL_MAX_LENGTH || !EMAIL.test(email.trim())) {
     return { ok: false, error: "email invalide" };
   }
+  if (firstName !== undefined && typeof firstName !== "string") return { ok: false, error: "prénom invalide" };
+  // Tronqué plutôt que rejeté : les champs prénom des quiz n'ont pas de maxlength.
+  const cleanFirstName = firstName?.trim().slice(0, FIRST_NAME_MAX_LENGTH) || undefined;
   const knownQuiz =
     typeof quiz === "string" && (quiz === "business" || Object.hasOwn(SINGLE_RESULT_QUIZZES, quiz));
   if (!knownQuiz) return { ok: false, error: "quiz inconnu" };
@@ -72,5 +80,5 @@ export function tagsFor(payload: unknown): TagsResult {
   const tags = quiz === "business" ? businessTags(result) : singleResultTags(quiz, result);
   if (!tags) return { ok: false, error: "résultat invalide" };
   const quizTag = quiz === "business" ? BUSINESS_PREFIX : SINGLE_RESULT_QUIZZES[quiz].prefix;
-  return { ok: true, email: email.trim(), tags: [quizTag, ...tags] };
+  return { ok: true, email: email.trim(), firstName: cleanFirstName, tags: [quizTag, ...tags] };
 }

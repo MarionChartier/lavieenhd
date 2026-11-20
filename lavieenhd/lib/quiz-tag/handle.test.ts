@@ -26,7 +26,11 @@ describe("handleQuizTag", () => {
     const res = await handleQuizTag(request(body), { client, log });
 
     expect(res.status).toBe(204);
-    expect(client.applyTags).toHaveBeenCalledWith(email, ["❔ QUIZ Alignement Pro", "❔ QUIZ Alignement Pro - PERDU"]);
+    expect(client.applyTags).toHaveBeenCalledWith(
+      email,
+      ["❔ QUIZ Alignement Pro", "❔ QUIZ Alignement Pro - PERDU"],
+      undefined,
+    );
   });
 
   it.each([
@@ -53,14 +57,26 @@ describe("handleQuizTag", () => {
     expect(client.applyTags).not.toHaveBeenCalled();
   });
 
-  it("répond 204 même quand le contact n'apparaît pas (pas d'oracle d'inscription), sans journaliser l'email", async () => {
-    const { client, log } = setup(async () => "contact-not-found");
+  it("transmet le prénom pour créer le contact s'il manque", async () => {
+    const { client, log } = setup();
 
-    const res = await handleQuizTag(request(body), { client, log });
+    await handleQuizTag(request({ ...body, firstName: "Léa" }), { client, log });
+
+    expect(client.applyTags).toHaveBeenCalledWith(
+      email,
+      ["❔ QUIZ Alignement Pro", "❔ QUIZ Alignement Pro - PERDU"],
+      "Léa",
+    );
+  });
+
+  it("répond 204 et journalise la création du contact par l'API, sans l'email ni le prénom", async () => {
+    const { client, log } = setup(async () => "created");
+
+    const res = await handleQuizTag(request({ ...body, firstName: "Léa" }), { client, log });
 
     expect(res.status).toBe(204);
-    expect(log).toHaveBeenCalled();
-    expect(JSON.stringify(log.mock.calls)).not.toContain(email);
+    expect(JSON.stringify(log.mock.calls)).toContain("contact créé par l'API");
+    expect(JSON.stringify(log.mock.calls)).not.toMatch(/lea|Léa/i);
   });
 
   it("répond 502 quand systeme.io échoue, sans journaliser l'email", async () => {
