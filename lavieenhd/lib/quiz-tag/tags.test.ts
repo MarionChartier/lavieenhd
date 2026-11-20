@@ -52,6 +52,33 @@ describe("tagsFor", () => {
     });
   });
 
+  it("transmet le prénom, sans les espaces autour", () => {
+    expect(tagsFor({ quiz: "alignement-pro", email, firstName: "  Léa ", result: "OK" })).toMatchObject({
+      ok: true,
+      firstName: "Léa",
+    });
+  });
+
+  it.each([
+    ["absent", undefined],
+    ["vide", "   "],
+  ])("laisse le prénom de côté quand il est %s", (_, firstName) => {
+    const parsed = tagsFor({ quiz: "alignement-pro", email, firstName, result: "OK" });
+    expect(parsed.ok && parsed.firstName).toBeUndefined();
+  });
+
+  it("rejette un prénom qui n'est pas du texte", () => {
+    expect(tagsFor({ quiz: "alignement-pro", email, firstName: 42, result: "OK" })).toEqual({
+      ok: false,
+      error: "prénom invalide",
+    });
+  });
+
+  it("tronque un prénom de plus de 100 caractères plutôt que de perdre l'inscription", () => {
+    const parsed = tagsFor({ quiz: "alignement-pro", email, firstName: "a".repeat(150), result: "OK" });
+    expect(parsed.ok && parsed.firstName).toBe("a".repeat(100));
+  });
+
   it("retire les espaces autour de l'email", () => {
     expect(tagsFor({ quiz: "alignement-pro", email: `  ${email} `, result: "LOIN" })).toMatchObject({
       ok: true,

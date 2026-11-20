@@ -71,13 +71,94 @@ describe("applyTags", () => {
     ]);
   });
 
-  it("attend le contact créé par le formulaire, puis abandonne après 3 essais", async () => {
-    const { client, calls, sleeps } = fakeApi(() => ({ status: 200, json: { items: [], hasMore: false } }));
+  it("attend le contact créé par le formulaire, puis le crée lui-même après 3 essais", async () => {
+    const { client, calls, sleeps } = fakeApi(({ method, url }) => {
+      if (method === "GET" && url.startsWith(`${API}/contacts`)) return { status: 200, json: { items: [], hasMore: false } };
+      if (method === "POST" && url === `${API}/contacts`) return { status: 201, json: { id: 77 } };
+      if (method === "GET" && url.startsWith(`${API}/tags`))
+        return { status: 200, json: { items: [{ id: 7, name: "Quiz alignement - OK" }], hasMore: false } };
+      return { status: 204 };
+    });
 
-    await expect(client.applyTags(email, ["Quiz alignement - OK"])).resolves.toBe("contact-not-found");
+    await expect(client.applyTags(email, ["Quiz alignement - OK"], "Léa")).resolves.toBe("created");
 
-    expect(calls.map((c) => c.url)).toEqual(Array(3).fill(`${API}/contacts?email=lea%2Bquiz%40example.com`));
+    expect(calls.slice(0, 3).map((c) => c.url)).toEqual(Array(3).fill(`${API}/contacts?email=lea%2Bquiz%40example.com`));
     expect(sleeps).toEqual([2000, 2000]);
+    expect(calls[3]).toEqual({
+      method: "POST",
+      url: `${API}/contacts`,
+      body: { email, fields: [{ slug: "first_name", value: "Léa" }] },
+      apiKey: "test-key",
+    });
+    expect(calls.at(-1)).toEqual({ method: "POST", url: `${API}/contacts/77/tags`, body: { tagId: 7 }, apiKey: "test-key" });
+  });
+
+  it("crée le contact sans prénom quand le quiz n'en envoie pas", async () => {
+    const { client, calls } = fakeApi(({ method, url }) => {
+      if (method === "GET" && url.startsWith(`${API}/contacts`)) return { status: 200, json: { items: [], hasMore: false } };
+      if (method === "POST" && url === `${API}/contacts`) return { status: 201, json: { id: 77 } };
+      if (method === "GET") return { status: 200, json: { items: [{ id: 7, name: "Quiz alignement - OK" }], hasMore: false } };
+      return { status: 204 };
+    });
+
+    await expect(client.applyTags(email, ["Quiz alignement - OK"])).resolves.toBe("created");
+
+    expect(calls.find((c) => c.method === "POST" && c.url === `${API}/contacts`)?.body).toEqual({ email });
+  });
+
+  it("relit le contact quand la création échoue en 422 (le formulaire l'a créé entre-temps)", async () => {
+    let lectures = 0;
+    const { client, calls } = fakeApi(({ method, url }) => {
+      if (method === "GET" && url.startsWith(`${API}/contacts`)) {
+        lectures++;
+        return { status: 200, json: { items: lectures > 3 ? [{ id: 42 }] : [], hasMore: false } };
+      }
+      if (method === "POST" && url === `${API}/contacts`) return { status: 422, json: { violations: [] } };
+      if (method === "GET") return { status: 200, json: { items: [{ id: 7, name: "Quiz alignement - OK" }], hasMore: false } };
+      return { status: 204 };
+    });
+
+    await expect(client.applyTags(email, ["Quiz alignement - OK"], "Léa")).resolves.toBe("tagged");
+
+    expect(calls.at(-1)).toEqual({ method: "POST", url: `${API}/contacts/42/tags`, body: { tagId: 7 }, apiKey: "test-key" });
+  });
+
+  it.each([400, 409])("relit aussi le contact, après une attente, quand la création échoue en %i", async (status) => {
+    let lectures = 0;
+    const { client, sleeps } = fakeApi(({ method, url }) => {
+      if (method === "GET" && url.startsWith(`${API}/contacts`)) {
+        lectures++;
+        return { status: 200, json: { items: lectures > 3 ? [{ id: 42 }] : [], hasMore: false } };
+      }
+      if (method === "POST" && url === `${API}/contacts`) return { status };
+      if (method === "GET") return { status: 200, json: { items: [{ id: 7, name: "Quiz alignement - OK" }], hasMore: false } };
+      return { status: 204 };
+    });
+
+    await expect(client.applyTags(email, ["Quiz alignement - OK"])).resolves.toBe("tagged");
+    expect(sleeps).toEqual([2000, 2000, 2000]);
+  });
+
+  it.each([401, 403, 429, 500])("relance l'erreur sans relire le contact quand la création échoue en %i", async (status) => {
+    const { client, calls } = fakeApi(({ method, url }) => {
+      if (method === "POST" && url === `${API}/contacts`) return { status };
+      return { status: 200, json: { items: [], hasMore: false } };
+    });
+
+    await expect(client.applyTags(email, ["Quiz alignement - OK"])).rejects.toMatchObject({ status });
+    expect(calls.filter((c) => c.method === "GET")).toHaveLength(3);
+  });
+
+  it("lève une SystemeIoError 422 quand la création échoue et que le contact reste introuvable", async () => {
+    const { client } = fakeApi(({ method, url }) => {
+      if (method === "POST" && url === `${API}/contacts`) return { status: 422, json: { violations: [] } };
+      return { status: 200, json: { items: [], hasMore: false } };
+    });
+
+    await expect(client.applyTags(email, ["Quiz alignement - OK"])).rejects.toMatchObject({
+      name: "SystemeIoError",
+      status: 422,
+    });
   });
 
   it("tague le contact dès qu'il apparaît", async () => {
