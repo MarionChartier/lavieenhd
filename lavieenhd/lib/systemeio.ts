@@ -1,10 +1,11 @@
 /**
  * Client minimal de l'API publique systeme.io (https://developer.systeme.io/reference/api),
- * limité à ce qu'il faut pour taguer un contact à l'issue d'un quiz.
+ * limité à ce qu'il faut pour inscrire et taguer un contact à l'issue d'un quiz.
  *
- * Le contact n'est jamais créé ici : c'est le formulaire embarqué du quiz qui le
- * crée, avec son consentement et son éventuel double opt-in. Comme les deux
- * envois partent en même temps, on attend qu'il apparaisse.
+ * Le formulaire embarqué du quiz crée normalement le contact. Comme les deux envois
+ * partent en même temps, on attend qu'il apparaisse, puis on le crée ici s'il manque
+ * toujours (envoi par iframe bloqué, notamment dans le navigateur intégré d'Instagram).
+ * Le consentement est recueilli par la case à cocher du quiz avant tout envoi.
  */
 
 type Deps = {
@@ -13,7 +14,7 @@ type Deps = {
   sleep: (ms: number) => Promise<void>;
 };
 
-export type ApplyTagsOutcome = "tagged" | "contact-not-found";
+export type ApplyTagsOutcome = "tagged" | "created";
 
 /** status 0 : pas de réponse exploitable (réseau, timeout, JSON illisible). */
 export class SystemeIoError extends Error {
@@ -34,6 +35,12 @@ const CONTACT_RETRY_MS = 2000;
 const CALL_TIMEOUT_MS = 3000;
 
 type Collection<T> = { items: T[]; hasMore: boolean };
+
+/**
+ * La réponse de systeme.io à un email déjà inscrit n'est pas documentée (422 attendu) :
+ * tout refus du contenu (4xx hors authentification et quota) vaut un « peut-être déjà là ».
+ */
+const mayAlreadyExist = (status: number) => status >= 400 && status < 500 && ![401, 403, 429].includes(status);
 type Tag = { id: number; name: string };
 
 export function createSystemeIoClient({ apiKey, fetch, sleep }: Deps) {
@@ -62,10 +69,15 @@ export function createSystemeIoClient({ apiKey, fetch, sleep }: Deps) {
     }
   }
 
+  async function lookupContactId(email: string): Promise<number | null> {
+    const { items } = await call<Collection<{ id: number }>>("GET", `/contacts?${new URLSearchParams({ email })}`);
+    return items.length > 0 ? items[0].id : null;
+  }
+
   async function findContactId(email: string): Promise<number | null> {
     for (let attempt = 1; attempt <= CONTACT_ATTEMPTS; attempt++) {
-      const { items } = await call<Collection<{ id: number }>>("GET", `/contacts?${new URLSearchParams({ email })}`);
-      if (items.length > 0) return items[0].id;
+      const id = await lookupContactId(email);
+      if (id !== null) return id;
       if (attempt < CONTACT_ATTEMPTS) await sleep(CONTACT_RETRY_MS);
     }
     return null;
@@ -82,15 +94,33 @@ export function createSystemeIoClient({ apiKey, fetch, sleep }: Deps) {
     return (await call<Tag>("POST", "/tags", { name })).id;
   }
 
+  /**
+   * Crée le contact quand le formulaire embarqué n'a pas pu le faire (navigateur intégré
+   * d'Instagram, qui bloque l'envoi par iframe). Un refus veut dire, en pratique, que le
+   * formulaire l'a créé entre-temps : on le relit une fois, après une attente, avant d'abandonner.
+   */
+  async function createContact(email: string, firstName?: string): Promise<{ id: number; created: boolean }> {
+    const body = firstName ? { email, fields: [{ slug: "first_name", value: firstName }] } : { email };
+    try {
+      return { id: (await call<{ id: number }>("POST", "/contacts", body)).id, created: true };
+    } catch (error) {
+      if (!(error instanceof SystemeIoError) || !mayAlreadyExist(error.status)) throw error;
+      await sleep(CONTACT_RETRY_MS);
+      const id = await lookupContactId(email);
+      if (id === null) throw error;
+      return { id, created: false };
+    }
+  }
+
   return {
-    async applyTags(email: string, tags: string[]): Promise<ApplyTagsOutcome> {
+    async applyTags(email: string, tags: string[], firstName?: string): Promise<ApplyTagsOutcome> {
       if (tags.length === 0) return "tagged";
-      const contactId = await findContactId(email);
-      if (contactId === null) return "contact-not-found";
+      const existingId = await findContactId(email);
+      const contact = existingId === null ? await createContact(email, firstName) : { id: existingId, created: false };
       for (const name of tags) {
-        await call("POST", `/contacts/${contactId}/tags`, { tagId: await tagId(name) });
+        await call("POST", `/contacts/${contact.id}/tags`, { tagId: await tagId(name) });
       }
-      return "tagged";
+      return contact.created ? "created" : "tagged";
     },
   };
 }
