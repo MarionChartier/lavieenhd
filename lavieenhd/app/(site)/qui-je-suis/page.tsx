@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { OracleDuJour } from "@/components/sections/home/OracleDuJour";
 
 export const metadata: Metadata = {
@@ -21,7 +22,13 @@ const PILLS = [
   "Maman d'un petit Manifestor",
 ] as const;
 
-const HD_ATTRIBUTES = [
+/** `pleineLargeur` : la clé occupe les deux colonnes (dernière ligne, seule). */
+const HD_ATTRIBUTES: {
+  label: string;
+  value: string;
+  pleineLargeur?: boolean;
+  blurb: ReactNode;
+}[] = [
   {
     label: "Type",
     value: "Manifesting Generator",
@@ -117,6 +124,18 @@ const HD_ATTRIBUTES = [
         <em className="italic">
           {"Je n'ai pas choisi ma région de cœur par hasard : Annecy et ses montagnes sont ma favourite place!"}
         </em>
+      </>
+    ),
+  },
+  {
+    label: "Digestion",
+    value: "Son, Silence",
+    pleineLargeur: true,
+    blurb: (
+      <>
+        {"J'ai toujours eu besoin d'un calme absolu pour apprendre et me concentrer. Je pensais juste être un peu chiante avec le bruit...mais mon Design m'a aidée à accueillir ce besoin, y compris en mangeant!"}
+        <br />
+        {`Bon...les repas en silence quand on est maman, c'est pas le plus simple! 😂 Surtout avec mon fils, Digestion "Nerveuse", qui aime papoter ++ à table!`}
       </>
     ),
   },
@@ -480,7 +499,12 @@ export default function QuiJeSuisPage() {
                 />
               </div>
 
-              <h2 className="font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[56px]">
+              {/* Ancre sur le titre et non sur la section : sur mobile, la carte et
+                  la photo le précèdent. Ciblée depuis « Test HD gratuit ». */}
+              <h2
+                id="ma-carte"
+                className="scroll-mt-36 font-display text-[40px] font-light leading-[0.95] text-ink-deep md:text-[56px]"
+              >
                 Ma carte, <em className="italic text-turquoise">en clair</em>.
               </h2>
 
@@ -493,7 +517,9 @@ export default function QuiJeSuisPage() {
                 {HD_ATTRIBUTES.map((attr) => (
                   <li
                     key={attr.label}
-                    className="border-b border-ink-deep/10 pb-3"
+                    className={`border-b border-ink-deep/10 pb-3 ${
+                      attr.pleineLargeur ? "sm:col-span-2" : ""
+                    }`}
                   >
                     <div className="flex items-baseline justify-between gap-3">
                       <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
@@ -512,7 +538,7 @@ export default function QuiJeSuisPage() {
 
               <Link
                 href="/test-gratuit"
-                className="mt-7 inline-flex w-fit items-center justify-center rounded-full border border-ink-deep bg-white px-8 pt-[17px] pb-[15px] font-body text-[12px] leading-none uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
+                className="mt-7 inline-flex w-fit items-center justify-center self-center rounded-full border border-ink-deep bg-white px-8 pt-[17px] pb-[15px] font-body text-[12px] leading-none uppercase tracking-[0.22em] text-ink-deep transition-colors hover:bg-ink-deep hover:text-white"
               >
                 Découvre ta propre carte
               </Link>
