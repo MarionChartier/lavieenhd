@@ -68,7 +68,7 @@ export default function TestGratuitPage() {
             columns="gap-12 max-lg:gap-y-0 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"
             temoignages={["barbara", "fabienne"]}
           >
-            {/* Contenu pédagogique — présentation du Design. Masqué sur mobile et tablette
+            {/* Présentation du Design et précisions sur les champs. Masqué sur mobile et tablette
                 (demande de Marion) : le lien « TEST HD GRATUIT » doit mener
                 directement au calculateur. */}
             <div className="max-lg:hidden">
@@ -94,81 +94,109 @@ export default function TestGratuitPage() {
                 façon de fonctionner.
               </p>
 
-              {/* CE QUE TU DÉCOUVRES — card dorée sous le texte, à gauche du
-                  calculateur (configuration préférée de Marion). Légèrement
-                  penchée dès md, droite sur mobile où le texte long rendait la
-                  pente trop visible. */}
-              <div className="relative mt-10">
-                <div className="relative rounded-[28px] md:rotate-[-1deg] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-6 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11">
-                  <span className="absolute -top-3.5 left-8 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm">
-                    Ce que tu découvres
-                  </span>
-                  <ul className="mt-3 flex flex-col gap-6">
-                    {DECOUVERTES.map((item) => (
-                      <li
-                        key={item.titre}
-                        className="flex items-start gap-3 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]"
-                      >
-                        <span
-                          aria-hidden
-                          className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-ink-deep"
-                        />
-                        <span>
-                          <strong className="font-semibold">{item.titre}</strong>
-                          <span className="mt-2 block">{item.texte}</span>
-                          <em className="mt-2 block italic">{item.italique}</em>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {/* À SAVOIR — précisions sur les champs, à côté du calculateur */}
+              <div className="relative mt-10 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
+                <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
+                  Quelques précisions utiles
+                </p>
+                <ul className="mt-5 flex max-w-[760px] flex-col gap-5 lg:mt-7 lg:gap-7">
+                  <li>
+                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                      Heure de naissance
+                    </p>
+                    <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                      La plus précise possible : même 10 minutes peuvent changer certaines
+                      informations essentielles de ton schéma.
+                    </p>
+                    <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                      Si tu ne connais pas précisément ton heure de naissance ou que tu as un
+                      doute, tu peux la retrouver sur la copie intégrale de ton acte de naissance.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                      Lieu de naissance
+                    </p>
+                    <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                      Une ville suffit, pas besoin de préciser l&apos;hôpital. Vérifie simplement
+                      que la localisation proposée correspond bien à ton lieu de naissance
+                      (ville, région, pays). Le calculateur se charge du fuseau horaire et des
+                      coordonnées.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                      Aucun engagement
+                    </p>
+                    <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
+                      Le calculateur est gratuit, et ton schéma t’appartient.
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
           </CalculateurLayout>
 
-          {/* À SAVOIR — précisions sur les champs, sous les deux colonnes */}
-          <div className="mt-10 rounded-md border border-ink-deep/10 bg-paper/60 p-6 md:p-9">
-            <p className="font-body text-[11px] uppercase tracking-[0.28em] text-ink-deep/70">
-              Quelques précisions utiles
-            </p>
-            <ul className="mt-5 flex max-w-[760px] flex-col gap-5 lg:mt-7 lg:gap-7">
-              <li>
-                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  Heure de naissance
-                </p>
-                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  La plus précise possible : même 10 minutes peuvent changer certaines
-                  informations essentielles de ton schéma.
-                </p>
-                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Si tu ne connais pas précisément ton heure de naissance ou que tu as un
-                  doute, tu peux la retrouver sur la copie intégrale de ton acte de naissance.
-                </p>
-                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Si tu es né.e en France, tu peux demander gratuitement ce document auprès
-                  de la mairie de ta commune de naissance (souvent directement en ligne).
-                </p>
-              </li>
-              <li>
-                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  Lieu de naissance
-                </p>
-                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Une ville suffit, pas besoin de préciser l&apos;hôpital. Vérifie simplement
-                  que la localisation proposée correspond bien à ton lieu de naissance
-                  (ville, région, pays). Le calculateur se charge du fuseau horaire et des
-                  coordonnées.
-                </p>
-              </li>
-              <li>
-                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  Aucun engagement
-                </p>
-                <p className="mt-2 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[17px]">
-                  Le calculateur est gratuit, et ton schéma t’appartient.
-                </p>
-              </li>
+          {/* CE QUE TU DÉCOUVRES — sous le calculateur et son éventuel schéma,
+              toujours visible, sur mobile comme sur ordinateur. */}
+          <div className="relative mt-16 rounded-[28px] border border-[#d8bf8b]/35 bg-[linear-gradient(160deg,rgba(248,239,214,0.5)_0%,rgba(236,214,166,0.5)_100%)] p-6 shadow-[0_26px_55px_-26px_rgba(80,60,98,0.22)] md:p-11">
+            <span className="absolute -top-3.5 left-6 inline-flex items-center rounded-full bg-ink-deep px-4 py-1.5 font-body text-[10px] uppercase tracking-[0.22em] text-white shadow-sm md:left-8">
+              Ce que tu découvres
+            </span>
+            <ul className="mt-3 grid gap-6 lg:grid-cols-3 lg:gap-10">
+              {DECOUVERTES.map((item) => (
+                <li
+                  key={item.titre}
+                  className="flex items-start gap-3 font-display text-[16px] font-light leading-relaxed text-ink-deep md:text-[18px]"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-ink-deep"
+                  />
+                  <span>
+                    <strong className="font-semibold">{item.titre}</strong>
+                    <span className="mt-2 block">{item.texte}</span>
+                    <em className="mt-2 block italic">{item.italique}</em>
+                  </span>
+                </li>
+              ))}
             </ul>
+          </div>
+
+          {/* ENVIE D'ALLER PLUS LOIN — encart turquoise, distinct de la carte dorée :
+              les deux informations qui ouvrent la suite du parcours. */}
+          <div className="mt-8 grid gap-8 rounded-[28px] border border-turquoise/50 bg-[linear-gradient(160deg,#e4f4f5_0%,#c3e8ea_100%)] p-6 text-ink-deep shadow-[0_26px_55px_-26px_rgba(80,60,98,0.3)] md:p-11 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+            <div>
+              <h2 className="font-display text-[26px] font-semibold leading-tight md:text-[32px]">
+                💡 Envie d’aller plus loin?
+              </h2>
+              <p className="mt-4 font-display text-[17px] leading-relaxed md:text-[19px]">
+                Les petites 🔎 présentes dans tes résultats te mèneront vers mes offres pour
+                approfondir l’exploration de ton Design!
+              </p>
+            </div>
+            <div className="border-t border-ink-deep/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-14">
+              <p className="font-display text-[19px] font-semibold leading-snug md:text-[22px]">
+                Et si je te montrais ce que ça donne concrètement?
+              </p>
+              <p className="mt-3 font-display text-[17px] leading-relaxed md:text-[19px]">
+                J’ai décrypté plusieurs clés de mon propre schéma HD pour te montrer comment
+                elles se traduisent dans ma vraie vie.
+              </p>
+              <p className="mt-3 font-display text-[17px] italic leading-relaxed md:text-[19px]">
+                Et qui sait, tu retrouveras peut-être quelques points communs avec ton propre
+                Design! 😉
+              </p>
+              {/* Nouvel onglet : on garde ses résultats sous la main pour comparer. */}
+              <a
+                href="/qui-je-suis#ma-carte"
+                target="_blank"
+                rel="noopener"
+                className="mt-7 inline-flex items-center justify-center rounded-full border border-ink-deep bg-ink-deep px-8 pt-[17px] pb-[15px] text-center font-body text-[12px] leading-[1.4] uppercase tracking-[0.18em] text-white transition-colors hover:bg-white hover:text-ink-deep max-md:w-full"
+              >
+                Voir un exemple concret de décryptage
+              </a>
+            </div>
           </div>
         </div>
       </section>
