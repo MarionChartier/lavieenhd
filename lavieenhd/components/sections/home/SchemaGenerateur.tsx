@@ -1,7 +1,6 @@
 "use client";
 
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
-import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 import { useIsDesktop } from "@/components/sections/home/useIsDesktop";
 
 /**
@@ -10,7 +9,6 @@ import { useIsDesktop } from "@/components/sections/home/useIsDesktop";
  * et son widget n'est jamais monté. L'ancre #schema-hd permet d'y renvoyer.
  */
 export function SchemaGenerateur() {
-  const hasResult = useBodygraphResult();
   const desktop = useIsDesktop();
 
   const texte = (
@@ -30,11 +28,7 @@ export function SchemaGenerateur() {
   return (
     <section
       id="schema-hd"
-      className={`scroll-mt-24 bg-paper px-6 pt-20 md:px-20 md:pt-28 lg:hidden ${
-        // Avec un schéma en pleine largeur, la section grandit énormément et le
-        // padding bas devient un grand vide avant la section suivante.
-        hasResult ? "pb-0" : "pb-8 md:pb-28"
-      }`}
+      className="scroll-mt-24 bg-paper px-6 pt-20 pb-8 md:px-20 md:pt-28 md:pb-28 lg:hidden"
     >
       <div className="relative mx-auto max-w-(--container-content)">
         {desktop === false ? (

@@ -7,7 +7,8 @@ import { BodygraphChart, useBodygraphResult } from "@/components/sections/Bodygr
  * Calculateur Human Design — partagé entre la home (HomeHero) et la page
  * Test HD gratuit. On embarque le widget officiel Bodygraphchart (le back-end
  * de Marion), dans une carte habillée aux couleurs du site. Le schéma s'affiche
- * là où le formulaire a été rempli, en pleine largeur (voir CalculateurLayout).
+ * là où le formulaire a été rempli, en pleine largeur (voir CalculateurLayout),
+ * sauf depuis la home, qui emmène sur Test HD gratuit (voir RedirectionTestHD).
  */
 export function HDSimulatorForm({
   titre = true,
