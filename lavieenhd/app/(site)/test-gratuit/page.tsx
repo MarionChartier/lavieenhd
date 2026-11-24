@@ -185,7 +185,7 @@ export default function TestGratuitPage() {
               </p>
               <p className="mt-3 font-display text-[17px] italic leading-relaxed md:text-[19px]">
                 Et qui sait, tu retrouveras peut-être quelques points communs avec ton propre
-                Design! 😉
+                Design!&nbsp;😉
               </p>
               {/* Nouvel onglet : on garde ses résultats sous la main pour comparer. */}
               <a
