@@ -2,10 +2,8 @@
 
 import Script from "next/script";
 import { useEffect, useRef, useState, type ComponentType } from "react";
+import { hasBodygraphResult } from "@/lib/bodygraph";
 import { BODYGRAPH } from "@/lib/links";
-
-/** Préfixe du hash dans lequel le widget encode les données de naissance. */
-const RESULT_HASH = "#chart,";
 
 /**
  * Le web component servi par Bodygraph. React 19 transmet correctement les
@@ -152,7 +150,7 @@ export function useBodygraphResult(): boolean {
   const [hasResult, setHasResult] = useState(false);
 
   useEffect(() => {
-    const read = () => setHasResult(window.location.hash.startsWith(RESULT_HASH));
+    const read = () => setHasResult(hasBodygraphResult(window.location.hash));
     read();
     window.addEventListener("hashchange", read);
     return () => window.removeEventListener("hashchange", read);

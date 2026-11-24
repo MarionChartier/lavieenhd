@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { CalculateurLayout } from "@/components/sections/CalculateurLayout";
-import { useBodygraphResult } from "@/components/sections/BodygraphChart";
 import { useIsDesktop } from "@/components/sections/home/useIsDesktop";
 
 /** Colonnes texte / calculateur du hero desktop. Sous ~630px de carte, le champ
@@ -19,7 +18,6 @@ const COLONNES = "gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20";
  */
 export function HomeHero() {
   const desktop = useIsDesktop();
-  const hasResult = useBodygraphResult();
 
   const texte = (
     <div className="mx-auto max-w-[760px] pt-6 text-center lg:mx-0 lg:max-w-none lg:pt-16 lg:text-left">
@@ -60,13 +58,9 @@ export function HomeHero() {
        de la section. `hidden` en ferait un conteneur de défilement, scrollable
        par programme ; `clip` rogne à l'identique sans créer ce conteneur. */
     <section
-      className={`relative overflow-clip px-6 pt-10 md:px-20 md:pt-12 ${
-        // Avec un schéma en pleine largeur, la section grandit énormément et le
-        // padding bas devient un grand vide avant la section suivante. En
-        // desktop, la carte du calculateur a déjà sa marge interne sous le
-        // bouton : le padding bas complet s'y ajoutait en un grand blanc.
-        desktop && hasResult ? "pb-0" : "pb-16 md:pb-24 lg:pb-8"
-      }`}
+      // En desktop, la carte du calculateur a déjà sa marge interne sous le
+      // bouton : le padding bas complet s'y ajoutait en un grand blanc.
+      className="relative overflow-clip px-6 pt-10 pb-16 md:px-20 md:pt-12 md:pb-24 lg:pb-8"
     >
       {/* Halos flous — profondeur ambiante */}
       <div

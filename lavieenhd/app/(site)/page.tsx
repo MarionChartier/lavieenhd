@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HomeHero } from "@/components/sections/home/HomeHero";
+import { RedirectionTestHD } from "@/components/sections/home/RedirectionTestHD";
 import { TroisPortes } from "@/components/sections/home/TroisPortes";
 import { Approche } from "@/components/sections/home/Approche";
 import { SchemaGenerateur } from "@/components/sections/home/SchemaGenerateur";
@@ -102,6 +103,7 @@ const HOME_FAQ = [
 export default function HomePage() {
   return (
     <>
+      <RedirectionTestHD />
       <HomeHero />
       <TroisPortes />
       <Approche />
