@@ -196,6 +196,10 @@ export default function TestGratuitPage() {
               >
                 Voir un exemple concret de décryptage
               </a>
+              <p className="mt-3 text-balance font-display text-[15px] italic leading-snug text-ink-deep/80 max-md:text-center md:text-[16px]">
+                Un nouvel onglet s’ouvrira pour te permettre de garder ton schéma sous
+                les&nbsp;yeux.
+              </p>
             </div>
           </div>
         </div>
