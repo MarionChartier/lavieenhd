@@ -135,7 +135,9 @@ const HD_ATTRIBUTES: {
       <>
         {"J'ai toujours eu besoin d'un calme absolu pour apprendre et me concentrer. Je pensais juste être un peu chiante avec le bruit...mais mon Design m'a aidée à accueillir ce besoin, y compris en mangeant!"}
         <br />
-        {`Bon...les repas en silence quand on est maman, c'est pas le plus simple! 😂 Surtout avec mon fils, Digestion "Nerveuse", qui aime papoter ++ à table!`}
+        <em className="italic">
+          {`Bon...les repas en silence quand on est maman, c'est pas le plus simple! 😂 Surtout avec mon fils, Digestion "Nerveuse", qui aime papoter ++ à table!`}
+        </em>
       </>
     ),
   },
