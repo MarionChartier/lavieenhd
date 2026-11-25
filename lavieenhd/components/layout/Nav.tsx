@@ -111,9 +111,11 @@ export function Nav() {
             <span className="mt-1.5 font-body text-[11px] font-normal not-italic leading-none tracking-[0.16em] text-ink-soft md:mt-2 md:text-[12px]">
               Marion Chartier
             </span>
+            {/* Baseline en Cormorant : Luciole n'est chargée qu'en gras, elle ferait
+                jeu égal avec le nom. */}
             {/* Sous 360px l'étiquette ne tient pas sur une ligne à côté du menu :
                 elle passe sur deux, sans le point de séparation. */}
-            <span className="mt-1 text-center font-body text-[9px] font-normal leading-[1.2] text-ink-soft min-[360px]:whitespace-nowrap md:mt-1.5 md:text-[10px] md:tracking-[0.02em]">
+            <span className="mt-1 text-center font-display text-[10px] font-normal leading-[1.1] text-ink-soft min-[360px]:whitespace-nowrap min-[360px]:text-[11px] md:text-[12px] md:tracking-[0.02em]">
               Human Design <span className="max-[359px]:hidden">•</span>{" "}
               <br className="min-[360px]:hidden" />
               Vie pro &amp; Business
